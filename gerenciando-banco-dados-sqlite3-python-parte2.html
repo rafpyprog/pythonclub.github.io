@@ -87,11 +87,9 @@
             </section>
             <p>Esta é a continuação do artigo <a class="reference external" href="http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html">Gerenciando banco de dados SQLite3 com Python - Parte 1</a>. Na 1ª parte nós vimos como realizar o CRUD num banco de dados SQLite3 usando o Python, mas cada tarefa foi feita num arquivo <tt class="docutils literal">.py</tt> separado. A intenção agora é utilizar um <strong>único arquivo</strong> e, usando classes e métodos realizar as mesmas tarefas, só que de uma forma mais sofisticada.</p>
 <blockquote>
-<p>PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 também.</p>
-<p>Tem video no YouTube.</p>
-</blockquote>
+Também fiz uma série de videos, assista a primeira aula abaixo ou acesse todas as aulas no <a class="reference external" href="https://www.youtube.com/watch?v=Qe3N7jiGZAc&amp;list=PLsGCdfxkV9upVUtH0zsJ2f4WhQvJrZsVb">YouTube</a>.</blockquote>
 <a class="reference external image-reference" href="https://www.youtube.com/watch?v=Qe3N7jiGZAc&amp;list=PLsGCdfxkV9upVUtH0zsJ2f4WhQvJrZsVb"><img alt="youtube_logo.png" src="images/regisdasilva/youtube_logo.png" /></a>
-<p>Vou repetir a tabela <tt class="docutils literal">clientes</tt> apenas por comodidade:</p>
+<div class="youtube" align="left"><iframe width="420" height="315" src="https://www.youtube.com/embed/Qe3N7jiGZAc" frameborder="0"></iframe></div><p>Vou repetir a tabela <tt class="docutils literal">clientes</tt> apenas por comodidade:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="28%" />
@@ -148,7 +146,8 @@
 </tbody>
 </table>
 <p>Obs: O campo <tt class="docutils literal">bloqueado</tt> nós vamos inserir depois com o comando <tt class="docutils literal">ALTER TABLE</tt>.</p>
-<!-- Assista os videos no `youtube <http://>`_ . -->
+<blockquote>
+PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 também.</blockquote>
 <p>Veja os exemplos em <a class="reference external" href="https://github.com/rg3915/python-sqlite">github</a>.</p>
 <p><a class="reference internal" href="#preparando-o-terreno">Preparando o terreno</a></p>
 <p><a class="reference internal" href="#configurando-um-virtualenv-para-python-3">Configurando um VirtualEnv para Python 3</a></p>
@@ -897,7 +896,7 @@ sqlite_sequence
 <h2>Conectando-se a outro banco</h2>
 <p>Agora, no mesmo arquivo <a class="reference external" href="https://github.com/rg3915/python-sqlite/blob/master/intermediario/manager_db_.py">manager_db.py</a> vamos criar uma outra instância chamada <tt class="docutils literal">PessoasDb()</tt>. Neste exemplo vamos relacionar duas tabelas: <tt class="docutils literal">pessoas</tt> e <tt class="docutils literal">cidades</tt>.</p>
 <p>Veja na figura a seguir como as tabelas se relacionam.</p>
-<img alt="tabelas.jpg" src="images/regisdasilva/tabelas.jpg" />
+<img alt="tabelas.png" src="images/regisdasilva/tabelas.png" />
 <p>Agora os códigos:</p>
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">PessoasDb</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
@@ -1013,7 +1012,7 @@ sqlite_sequence
 </div>
 <div class="section" id="exemplos">
 <h2>Exemplos</h2>
-<!-- Assista os videos no `youtube <http://>`_ . -->
+<p>Assista os videos no <a class="reference external" href="https://www.youtube.com/watch?v=Qe3N7jiGZAc&amp;list=PLsGCdfxkV9upVUtH0zsJ2f4WhQvJrZsVb">youtube</a>.</p>
 <p>Veja os exemplos no <a class="reference external" href="https://github.com/rg3915/python-sqlite">github</a>.</p>
 </div>
 <div class="section" id="referencias">
