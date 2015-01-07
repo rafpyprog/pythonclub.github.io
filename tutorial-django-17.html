@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PythonClub, ">
+
+        <link rel="alternate"  href="http://pythonclub.com.br/feeds/all.atom.xml" type="application/atom+xml" title="PythonClub Full Atom Feed"/>
+        <link rel="alternate" href="http://pythonclub.com.br/feeds/all.rss.xml" type="application/rss+xml" title="PythonClub Full RSS Feed"/>
+
+    <link rel="shortcut icon" href="http://pythonclub.com.br/theme/images/favicon.ico" >
+
+            <title>Tutorial Django 1.7 por Regis da Silva // #PythonClub // </title>
+
+    <meta property="fb:app_id" content="1487080281503641" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Tutorial Django 1.7" />
+    <meta property="og:site_name" content="PythonClub" />
+    <meta property="og:url" content="http://pythonclub.com.br/tutorial-django-17.html" />
+    <meta property="og:description" content="Veja como criar um projeto usando Django 1.7 baseado em Intro to Django no site oficial Django project." />
+    <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/custom.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pygments.css">
+
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50935105-1', 'pythonclub.com.br');
+      ga('require', 'linkid', 'linkid.js');
+      ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript">
+      window.liveSettings = {
+        api_key: "f8fd260a9bdc4e9195c80e31416bb254",
+        picker: "bottom-right",
+        detectlang: true,
+        autocollect: true
+      };
+    </script>
+    <script type="text/javascript" src="//cdn.transifex.com/live.js"></script>
+    <meta name="google-site-verification" content="XQc_QtnTecI9nxAfplXGtECCpZQDwbDRcn7pyDVa1LE" />
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://pythonclub.com.br/author/regis-da-silva.html" title="See posts by Regis da Silva">
+                        <img class="article-avatar" alt="Regis da Silva" src="http://www.gravatar.com/avatar/2a2df360031bb022af11138a2a4a8db9">
+                </a>
+                <h2 class="article-info">Regis da Silva</h2>
+    			<ul class="author-social">
+                    <li>
+                        <a target="_blank" href="https://github.com/rg3915">
+                            <i class="fa fa-lg fa-fw fa-github"></i>
+                            <strong>Github</strong>
+                        </a>
+                    </li>
+                </ul>
+                <h5>Publicado em:</h5>
+                <p>Wed 07 January 2015</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Tutorial Django 1.7</h1>
+                        <p class="post-meta">
+                            // Tags                                 <a class="post-category" href="http://pythonclub.com.br/tag/python.html">Python</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/django.html">Django</a>
+                        </p>
+                </header>
+            </section>
+            <p>Fiz um video com um tutorial do Django 1.7 seguindo o modelo que tem no site oficial <a class="reference external" href="https://www.djangoproject.com/">Django project</a>.</p>
+<div class="youtube" align="left"><iframe width="420" height="315" src="https://www.youtube.com/embed/OayIF9Pz7rE" frameborder="0"></iframe></div><p>Mas... apesar de já existir os posts <a class="reference external" href="http://pythonclub.com.br/criar-site-com-form-lista-30-min.html">Como criar um site com formulário e lista em 30 minutos?</a> e <a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html">Seu primeiro projeto Django com Sublime Text no Linux</a> eu resolvi dar uma <em>atualizada</em>. E para acrescentar algumas novidades, neste post, eu falo também sobre <strong>shell</strong> e <strong>json</strong>.</p>
+<p>Git Hub: <a class="reference external" href="https://github.com/rg3915/django1.7">https://github.com/rg3915/django1.7</a></p>
+<p><a class="reference internal" href="#o-que-voce-precisa">O que você precisa?</a></p>
+<p><a class="reference internal" href="#criando-o-ambiente">Criando o ambiente</a></p>
+<p><a class="reference internal" href="#instalando-django-1-7-django-bootstrap3">Instalando Django 1.7 + django-bootstrap3</a></p>
+<p><a class="reference internal" href="#criando-o-projeto-e-a-app">Criando o projeto e a App</a></p>
+<p><a class="reference internal" href="#editando-settings-py">Editando settings.py</a></p>
+<p><a class="reference internal" href="#editando-models-py">Editando models.py</a></p>
+<p><a class="reference internal" href="#editando-urls-py">Editando urls.py</a></p>
+<p><a class="reference internal" href="#editando-views-py">Editando views.py</a></p>
+<p><a class="reference internal" href="#comandos-basicos-do-manage-py">Comandos básicos do manage.py</a></p>
+<p><a class="reference internal" href="#shell">shell</a></p>
+<p><a class="reference internal" href="#criando-os-templates">Criando os templates</a></p>
+<p><a class="reference internal" href="#forms-py">forms.py</a></p>
+<p><a class="reference internal" href="#admin-py">admin.py</a></p>
+<p><a class="reference internal" href="#carregando-dados-de-um-json">Carregando dados de um json</a></p>
+<p><a class="reference internal" href="#video-e-github">Video e GitHub</a></p>
+<div class="section" id="o-que-voce-precisa">
+<h2>O que você precisa?</h2>
+<ul class="simple">
+<li><a class="reference external" href="https://virtualenv.pypa.io/en/latest/">VirtualEnv</a></li>
+</ul>
+<div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install -y virtualenv
+</pre></div>
+<ul class="simple">
+<li><a class="reference external" href="http://pip.readthedocs.org/en/latest/">pip</a></li>
+</ul>
+<div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install -y python-pip
+</pre></div>
+</div>
+<div class="section" id="criando-o-ambiente">
+<h2>Criando o ambiente</h2>
+<p>Vamos criar um ambiente usando o <strong>Python 3</strong>, então digite</p>
+<div class="highlight"><pre><span class="nv">$ </span>virtualenv -p /usr/bin/python3 django1.7
+</pre></div>
+<p>onde <tt class="docutils literal">django1.7</tt> é o nome do ambiente.</p>
+<p>Entre na pasta</p>
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>django1.7
+</pre></div>
+<p>e <em>ative o ambiente</em></p>
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">source </span>bin/activate
+</pre></div>
+<p>Para diminuir o caminho do prompt digite</p>
+<div class="highlight"><pre><span class="nv">$ PS1</span><span class="o">=</span><span class="s2">&quot;(`basename \&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">\&quot;`):/\W</span><span class="nv">$ </span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="section" id="instalando-django-1-7-django-bootstrap3">
+<h2>Instalando Django 1.7 + django-bootstrap3</h2>
+<div class="highlight"><pre><span class="nv">$ </span>pip install <span class="nv">django</span><span class="o">==</span>1.7.2 django-bootstrap3
+</pre></div>
+<p><em>Dica</em>: se você digitar <tt class="docutils literal">pip freeze</tt> você verá a versão dos programas instalados.</p>
+</div>
+<div class="section" id="criando-o-projeto-e-a-app">
+<h2>Criando o projeto e a App</h2>
+<p>Para criar o projeto digite</p>
+<div class="highlight"><pre><span class="nv">$ </span>django-admin.py startproject mysite .
+</pre></div>
+<p>repare no ponto no final do comando, isto permite que o arquivo <tt class="docutils literal">manage.py</tt> fique nesta mesma pasta <em>django1.7</em>.</p>
+<p>Agora vamos criar a <em>app</em> <strong>bands</strong>, mas vamos deixar esta <em>app</em> dentro da pasta <em>mysite</em>. Então entre na pasta</p>
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>mysite
+</pre></div>
+<p>e digite</p>
+<div class="highlight"><pre><span class="nv">$ </span>python ../manage.py startapp bands
+</pre></div>
+<p>A intenção é que os arquivos tenham a seguinte hierarquia nas pastas:</p>
+<div class="highlight"><pre>.
+├── fixtures.json
+├── manage.py
+├── mysite
+│   ├── bands
+│   │   ├── admin.py
+│   │   ├── forms.py
+│   │   ├── models.py
+│   │   ├── templates
+│   │   │   ├── bands
+│   │   │   │   ├── band_contact.html
+│   │   │   │   ├── band_detail.html
+│   │   │   │   ├── band_form.html
+│   │   │   │   ├── band_listing.html
+│   │   │   │   ├── member_form.html
+│   │   │   │   └── protected.html
+│   │   │   ├── base.html
+│   │   │   ├── home.html
+│   │   │   └── menu.html
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── settings.py
+│   ├── urls.py
+</pre></div>
+<p>Agora permaneça sempre na pasta <em>django1.7</em></p>
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> ..
+</pre></div>
+<p>e digite</p>
+<div class="highlight"><pre><span class="nv">$ </span>python manage.py migrate
+</pre></div>
+<p>para criar a primeira <em>migração</em> e</p>
+<div class="highlight"><pre><span class="nv">$ </span>python manage.py runserver
+</pre></div>
+<p>e veja que o projeto já está funcionando.</p>
+</div>
+<div class="section" id="editando-settings-py">
+<h2>Editando settings.py</h2>
+<p>Em <tt class="docutils literal">INSTALLED_APPS</tt> acrescente as linhas abaixo.</p>
+<div class="highlight"><pre><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="o">...</span>
+    <span class="s">&#39;mysite.bands&#39;</span><span class="p">,</span>
+    <span class="s">&#39;bootstrap3&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+<p>E mude também o idioma.</p>
+<div class="highlight"><pre><span class="n">LANGUAGE_CODE</span> <span class="o">=</span> <span class="s">&#39;pt-br&#39;</span>
+</pre></div>
+</div>
+<div class="section" id="editando-models-py">
+<h2>Editando models.py</h2>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+
+<span class="k">class</span> <span class="nc">Band</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;A model of a rock band.&quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">can_rock</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s">&#39;band&#39;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">&#39;bands&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="c"># count members by band</span>
+    <span class="c"># conta os membros por banda</span>
+    <span class="k">def</span> <span class="nf">get_members_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">band</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+    <span class="c"># retorna a url no formato /bands/1</span>
+    <span class="k">def</span> <span class="nf">get_band_detail_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">u&quot;/bands/</span><span class="si">%i</span><span class="s">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span>
+
+
+<span class="k">class</span> <span class="nc">Member</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;A model of a rock band member.&quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s">&quot;Member&#39;s name&quot;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">instrument</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">(</span>
+        <span class="p">(</span><span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&quot;Guitar&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&quot;Bass&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="s">&quot;Drums&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="s">&quot;Vocal&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="s">&quot;Piano&quot;</span><span class="p">),</span>
+    <span class="p">),</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">)</span>
+
+    <span class="n">band</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">&quot;Band&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;band&#39;</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s">&#39;member&#39;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">&#39;members&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<div class="section" id="editando-urls-py">
+<h2>Editando urls.py</h2>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">patterns</span><span class="p">,</span> <span class="n">include</span><span class="p">,</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">mysite.bands.views</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span>
+    <span class="s">&#39;mysite.bands.views&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^$&#39;</span><span class="p">,</span> <span class="s">&#39;home&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;home&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^bands/$&#39;</span><span class="p">,</span> <span class="s">&#39;band_listing&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;bands&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^bands/(?P&lt;pk&gt;\d+)/$&#39;</span><span class="p">,</span> <span class="s">&#39;band_detail&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;band_detail&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^bandform/$&#39;</span><span class="p">,</span> <span class="n">BandForm</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;band_form&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^memberform/$&#39;</span><span class="p">,</span> <span class="n">MemberForm</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;member_form&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^contact/$&#39;</span><span class="p">,</span> <span class="s">&#39;band_contact&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;contact&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^protected/$&#39;</span><span class="p">,</span> <span class="s">&#39;protected_view&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;protected&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^accounts/login/$&#39;</span><span class="p">,</span> <span class="s">&#39;message&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;admin&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="editando-views-py">
+<h2>Editando views.py</h2>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
+<span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">CreateView</span>
+<span class="kn">from</span> <span class="nn">django.core.urlresolvers</span> <span class="kn">import</span> <span class="n">reverse_lazy</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Band</span><span class="p">,</span> <span class="n">Member</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">BandContactForm</span>
+</pre></div>
+<p>A função a seguir retorna um <em>HttpResponse</em>, ou seja, uma mensagem simples no navegador.</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">home</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s">&#39;Welcome to the site!&#39;</span><span class="p">)</span>
+</pre></div>
+<p>A próxima função (use uma ou outra) renderiza um <em>template</em>, uma página html no navegador.</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">home</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;home.html&#39;</span><span class="p">)</span>
+</pre></div>
+<p>A função <tt class="docutils literal">band_listing</tt> retorna todas as bandas.</p>
+<p>Para fazer a <em>busca</em> por nome de banda usamos o comando <tt class="docutils literal">var_get_search = <span class="pre">request.GET.get('search_box')</span></tt>, onde <tt class="docutils literal">search_box</tt> é o nome do campo no template <em>band_listing.html</em>.</p>
+<p>E os nomes são retornados a partir do comando <tt class="docutils literal">bands = bands.filter(name__icontains=var_get_search)</tt>. Onde <tt class="docutils literal">icontains</tt> procura um texto que contém a palavra, ou seja, você pode digitar o nome incompleto.</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">band_listing</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; A view of all bands. &quot;&quot;&quot;</span>
+    <span class="n">bands</span> <span class="o">=</span> <span class="n">Band</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">var_get_search</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;search_box&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">var_get_search</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">bands</span> <span class="o">=</span> <span class="n">bands</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__icontains</span><span class="o">=</span><span class="n">var_get_search</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;bands/band_listing.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;bands&#39;</span><span class="p">:</span> <span class="n">bands</span><span class="p">})</span>
+</pre></div>
+<p>A função <tt class="docutils literal">band_contact</tt> mostra como tratar um formulário na <em>view</em>.</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">band_contact</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; A example of form &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">BandContactForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">BandContactForm</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;bands/band_contact.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
+</pre></div>
+<p>A função <tt class="docutils literal">band_detail</tt> retorna todos os membros de cada banda, usando o <tt class="docutils literal">pk</tt> da banda junto com o comando <tt class="docutils literal">filter</tt> em members.</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">band_detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; A view of all members by bands. &quot;&quot;&quot;</span>
+    <span class="n">band</span> <span class="o">=</span> <span class="n">Band</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="n">members</span> <span class="o">=</span> <span class="n">Member</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="n">band</span><span class="p">)</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;members&#39;</span><span class="p">:</span> <span class="n">members</span><span class="p">,</span> <span class="s">&#39;band&#39;</span><span class="p">:</span> <span class="n">band</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;bands/band_detail.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</pre></div>
+<p><tt class="docutils literal">BandForm</tt> e <tt class="docutils literal">MemberForm</tt> usam o <a class="reference external" href="https://docs.djangoproject.com/en/1.7/topics/class-based-views/">Class Based View</a> para tratar formulário de uma forma mais simplificada usando a classe <tt class="docutils literal">CreateView</tt>. O <tt class="docutils literal">reverse_lazy</tt> serve para tratar a url de retorno de página.</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">BandForm</span><span class="p">(</span><span class="n">CreateView</span><span class="p">):</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s">&#39;bands/band_form.html&#39;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Band</span>
+    <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s">&#39;bands&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">MemberForm</span><span class="p">(</span><span class="n">CreateView</span><span class="p">):</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s">&#39;bands/member_form.html&#39;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Member</span>
+    <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s">&#39;bands&#39;</span><span class="p">)</span>
+</pre></div>
+<p>A próxima função requer que você entre numa página somente quando estiver logado.</p>
+<p><a class="reference external" href="https://docs.djangoproject.com/en/1.7/topics/auth/default/#django.contrib.auth.decorators.login_required">&#64;login_required</a> é um <em>decorator</em>.</p>
+<p><tt class="docutils literal"><span class="pre">login_url='/accounts/login/'</span></tt> é página de erro, ou seja, quando o usuário não conseguiu logar.</p>
+<p>E <tt class="docutils literal">render(request, <span class="pre">'bands/protected.html',...</span></tt> é página de sucesso.</p>
+<div class="highlight"><pre><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s">&#39;/accounts/login/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">protected_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; A view that can only be accessed by logged-in users &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;bands/protected.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;current_user&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">})</span>
+</pre></div>
+<p><tt class="docutils literal">HttpResponse</tt> retorna uma mensagem simples no navegador sem a necessidade de um template.</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">message</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Message if is not authenticated. Simple view! &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s">&#39;Access denied!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="comandos-basicos-do-manage-py">
+<h2>Comandos básicos do manage.py</h2>
+<p>Para criar novas migrações com base nas alterações feitas nos seus modelos</p>
+<div class="highlight"><pre><span class="nv">$ </span>python manage.py makemigrations bands
+</pre></div>
+<p>Para aplicar as migrações, bem como anular e listar seu status</p>
+<div class="highlight"><pre><span class="nv">$ </span>python manage.py migrate
+</pre></div>
+<p>Para criar um usuário e senha para o admin</p>
+<div class="highlight"><pre><span class="nv">$ </span>python manage.py createsuperuser
+</pre></div>
+<p>Para rodar a aplicação</p>
+<div class="highlight"><pre><span class="nv">$ </span>python manage.py runserver
+</pre></div>
+</div>
+<div class="section" id="shell">
+<h2>shell</h2>
+<p>É o <em>interpretador interativo do python</em> rodando <em>via terminal</em> direto na aplicação do django.</p>
+<div class="highlight"><pre><span class="nv">$ </span>python manage.py shell
+</pre></div>
+<p>Veja a seguir como inserir dados direto pelo <em>shell</em>.</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">mysite.bands.models</span> <span class="kn">import</span> <span class="n">Band</span><span class="p">,</span> <span class="n">Member</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c"># criando o objeto e salvando</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">band</span> <span class="o">=</span> <span class="n">Band</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;Metallica&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">band</span><span class="o">.</span><span class="n">name</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">band</span><span class="o">.</span><span class="n">can_rock</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">band</span><span class="o">.</span><span class="n">id</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c"># criando uma instancia da banda a partir do id</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Band</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">band</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c"># criando uma instancia do Membro e associando o id da banda a ela</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Member</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;James Hetfield&#39;</span><span class="p">,</span> <span class="n">instrument</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="n">band</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">name</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c"># retornando o instrumento</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">instrument</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">get_instrument_display</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">band</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c"># salvando</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c"># listando todas as bandas</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Band</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c"># listando todos os membros</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Member</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c"># criando mais uma banda</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">band</span> <span class="o">=</span> <span class="n">Band</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;The Beatles&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">band</span> <span class="o">=</span> <span class="n">Band</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;The Beatles&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">band</span><span class="o">.</span><span class="n">id</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Band</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">band</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c"># criando mais um membro</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Member</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;John Lennon&#39;</span><span class="p">,</span> <span class="n">instrument</span><span class="o">=</span><span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="n">band</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c"># listando tudo novamente</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Band</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Member</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="criando-os-templates">
+<h2>Criando os templates</h2>
+<div class="highlight"><pre><span class="nv">$ </span>mkdir mysite/bands/templates
+<span class="nv">$ </span>mkdir mysite/bands/templates/bands
+<span class="nv">$ </span>touch mysite/bands/templates/<span class="o">{</span>menu.html,base.html,home.html<span class="o">}</span>
+<span class="nv">$ </span>touch mysite/bands/templates/bands/<span class="o">{</span>band_listing.html,band_contact.html,protected.html<span class="o">}</span>
+</pre></div>
+<p>Veja o código de cada template no <a class="reference external" href="https://github.com/rg3915/django1.7/tree/master/mysite/bands/templates">github</a>.</p>
+<blockquote>
+Vou comentar apenas os comandos que se destacam.</blockquote>
+<p><strong>menu.html</strong></p>
+<p>Repare que no <strong>menu</strong> usamos <em>links nomeados</em>, exemplo:</p>
+<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;navbar-brand&quot;</span> <span class="na">href=</span><span class="s">&quot;{% url &#39;home&#39; %}&quot;</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+<p>onde 'home' é o nome que foi dado ao link lá em urls.py.</p>
+<div class="highlight"><pre><span class="n">url</span><span class="p">(</span><span class="s">r&#39;^$&#39;</span><span class="p">,</span> <span class="s">&#39;home&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;home&#39;</span><span class="p">),</span>
+</pre></div>
+<p><strong>base.html</strong></p>
+<p>Note que em <strong>base</strong> carregamos o <a class="reference external" href="http://django-bootstrap3.readthedocs.org/en/latest/">bootstrap3</a> com o comando</p>
+<div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="n">load</span> <span class="n">bootstrap3</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">bootstrap_css</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">bootstrap_javascript</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+<p>E também o comando <strong>include</strong> para inserir o <em>menu</em> em <em>base</em>.</p>
+<div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="n">include</span> <span class="s">&quot;menu.html&quot;</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+<p><strong>home.html</strong></p>
+<p>Em <strong>home</strong> usamos o comando <strong>extends</strong> para usar a estrutura inicial do <em>base</em>.</p>
+<div class="highlight"><pre>{% extends &quot;base.html&quot; %}
+</pre></div>
+<img alt="home.png" src="images/regisdasilva/home.png" />
+<p><strong>band_listing.html</strong></p>
+<p>Neste template usamos um campo de busca com o nome <tt class="docutils literal"><span class="pre">name=&quot;search_box&quot;</span></tt>. Este nome será usada na <em>views</em> para localizar um nome de banda.</p>
+<p>E para lista as bandas usamos o comando</p>
+<div class="highlight"><pre>...
+{% for band in bands %}
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li&gt;</span>
+            <span class="nt">&lt;h4&gt;</span>{{ band.name}}<span class="nt">&lt;/h4&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+{% endfor %}
+...
+</pre></div>
+<img alt="band_listing.png" src="images/regisdasilva/band_listing.png" />
+<p><strong>band_contact</strong></p>
+<p>Usando o <em>django-bootstrap3</em> podemos digitar apenas</p>
+<div class="highlight"><pre>{% load bootstrap3 %}
+<span class="nt">&lt;form&gt;</span>
+...
+    {% bootstrap_form form %}
+...
+<span class="nt">&lt;/form&gt;</span>
+</pre></div>
+<p>que todos os campos do formulário serão inseridos automaticamente.</p>
+<img alt="form.png" src="images/regisdasilva/form.png" />
+<p><strong>band_detail.html</strong></p>
+<p>Um destaque para o <em>if</em> que &quot;pinta&quot; de azul os membros que são vocal.</p>
+<div class="highlight"><pre>...
+{% if member.instrument == &#39;v&#39; %}
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;list-group-item list-group-item-info&quot;</span><span class="nt">&gt;</span>
+{% else %}
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;list-group-item&quot;</span><span class="nt">&gt;</span>
+{% endif %}
+...
+</pre></div>
+<p>E <tt class="docutils literal">{{ member.get_instrument_display }}</tt> que retorna o segundo elemento da lista <tt class="docutils literal">choices</tt> em <em>models.py</em>. Ou seja, retorna 'vocal' ao invés de 'v'.</p>
+<img alt="band_detail.png" src="images/regisdasilva/band_detail.png" />
+<p><strong>band_form.html</strong></p>
+<div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="n">extends</span> <span class="s">&quot;base.html&quot;</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="n">load</span> <span class="n">bootstrap3</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="n">block</span> <span class="n">title</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">Band</span> <span class="n">Form</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endblock</span> <span class="n">title</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="n">block</span> <span class="n">content</span> <span class="o">%</span><span class="p">}</span>
+
+    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Create</span> <span class="n">band</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">form</span> <span class="n">class</span><span class="o">=</span><span class="s">&quot;form col-sm-4&quot;</span> <span class="n">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="o">%</span> <span class="n">csrf_token</span> <span class="o">%</span><span class="p">}</span>
+        <span class="p">{</span><span class="o">%</span> <span class="n">bootstrap_form</span> <span class="n">form</span> <span class="o">%</span><span class="p">}</span>
+        <span class="p">{</span><span class="o">%</span> <span class="n">buttons</span> <span class="o">%</span><span class="p">}</span>
+            <span class="o">&lt;</span><span class="n">button</span> <span class="nb">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="o">&gt;</span><span class="n">Submit</span><span class="o">&lt;/</span><span class="n">button</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="o">%</span> <span class="n">endbuttons</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;/</span><span class="n">form</span><span class="o">&gt;</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="n">endblock</span> <span class="n">content</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+<img alt="band_form.png" src="images/regisdasilva/band_form.png" />
+<p><strong>member_form.html</strong></p>
+<p>Pegue o código no GitHub.</p>
+<img alt="member_form.png" src="images/regisdasilva/member_form.png" />
+</div>
+<div class="section" id="forms-py">
+<h2>forms.py</h2>
+<div class="highlight"><pre><span class="nv">$ </span>touch mysite/bands/forms.py
+</pre></div>
+<p>Edite o forms.py.</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Band</span><span class="p">,</span> <span class="n">Member</span>
+
+
+<span class="k">class</span> <span class="nc">BandContactForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">subject</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">Textarea</span><span class="p">)</span>
+    <span class="n">sender</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">EmailField</span><span class="p">()</span>
+    <span class="n">cc_myself</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">BandForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Band</span>
+
+
+<span class="k">class</span> <span class="nc">MemberForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Member</span>
+</pre></div>
+</div>
+<div class="section" id="admin-py">
+<h2>admin.py</h2>
+<p>Criamos uma customização para o admin onde em <em>members</em> aparece um <strong>filtro</strong> por <em>bandas</em>.</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Band</span><span class="p">,</span> <span class="n">Member</span>
+
+
+<span class="k">class</span> <span class="nc">MemberAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Customize the look of the auto-generated admin for the Member model&quot;&quot;&quot;</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="s">&#39;instrument&#39;</span><span class="p">)</span>
+    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;band&#39;</span><span class="p">,)</span>
+
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Band</span><span class="p">)</span>  <span class="c"># Use the default options</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Member</span><span class="p">,</span> <span class="n">MemberAdmin</span><span class="p">)</span>  <span class="c"># Use the customized options</span>
+</pre></div>
+<img alt="admin.png" src="images/regisdasilva/admin.png" />
+</div>
+<div class="section" id="carregando-dados-de-um-json">
+<h2>Carregando dados de um json</h2>
+<p>Baixe o arquivo <em>fixtures.json</em> no github e no terminal digite</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">loaddata</span> <span class="n">fixtures</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<div class="section" id="video-e-github">
+<h2>Video e GitHub</h2>
+<p>Video: <a class="reference external" href="https://www.youtube.com/watch?v=OayIF9Pz7rE">https://www.youtube.com/watch?v=OayIF9Pz7rE</a></p>
+<p>Git Hub: <a class="reference external" href="https://github.com/rg3915/django1.7">https://github.com/rg3915/django1.7</a></p>
+</div>
+
+
+            <div class="licence">
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licença Creative Commons"
+                                                                                               style="border-width:0"
+                                                                                               src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"/></a><br/><a
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title"
+                    href="http://pythonclub.com.br/tutorial-django-17.html">"Tutorial Django 1.7"</a> de <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="http://pythonclub.com.br/author/regis-da-silva.html"
+                    property="cc:attributionName" rel="cc:attributionURL">"Regis da Silva"</a> está licenciado com uma Licença
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons -
+                    Atribuição-NãoComercial-SemDerivações 4.0 Internacional</a>.
+            </div>
+
+            <div class="sharing">
+                <!-- Facebook sharing -->
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=1487080281503641&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-share-button" data-href="http://pythonclub.com.br/tutorial-django-17.html" data-type="button_count"></div>
+
+                <!-- Google+ sharing -->
+                <div class="g-plus alinhar" data-action="share" data-annotation="bubble" data-href="http://pythonclub.com.br/tutorial-django-17.html"></div>
+
+                <!-- Twitter sharing -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="pt" style="margin-bottom: -4px !important;">Tweetar</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Topo</a>
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES: THIS CODE IS ONLY AN EXAMPLE * * */
+                        var disqus_shortname = 'pythonclub'; // Required - Replace example with your forum shortname
+                        var disqus_identifier = 'tutorial-django-17.html';
+                        var disqus_title = 'Tutorial Django 1.7';
+                        var disqus_url = 'http://pythonclub.com.br/tutorial-django-17.html';
+                    
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </div>
+<footer class="footer">
+    <p>&copy; PythonClub &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+        $(window).load(function(){
+          $("iframe").css("margin-bottom", "-6px")
+          $("#twitter-widget-0").css("margin-bottom", "-5px");
+          $("#twitter-widget-0").css("margin-left", "-1px");
+        });
+    </script>
+    <script type="text/javascript" src="https://apis.google.com/js/platform.js">
+      {lang: 'pt-BR'}
+    </script>
+
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>
