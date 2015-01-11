@@ -5,37 +5,44 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/</loc>
-<lastmod>2015-01-07T16:43:25-00:00</lastmod>
+<lastmod>2015-01-11T20:19:33-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2015-01-07T16:43:25-00:00</lastmod>
+<lastmod>2015-01-11T20:19:33-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2015-01-07T16:43:25-00:00</lastmod>
+<lastmod>2015-01-11T20:19:33-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2015-01-07T16:43:25-00:00</lastmod>
+<lastmod>2015-01-11T20:19:33-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2015-01-07T16:43:25-00:00</lastmod>
+<lastmod>2015-01-11T20:19:33-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/testes-de-carga-com-o-locust.html</loc>
+<lastmod>2015-01-11T18:00:00-02:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -319,6 +326,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/category/load-testing.html</loc>
+<lastmod>2015-01-11T18:00:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/category/pelican.html</loc>
 <lastmod>2014-08-28T00:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -425,14 +439,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/tutorial.html</loc>
-<lastmod>2014-09-05T18:00:00-03:06</lastmod>
+<lastmod>2015-01-11T18:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/web.html</loc>
-<lastmod>2014-07-24T14:42:00-03:06</lastmod>
+<lastmod>2015-01-11T18:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -523,7 +537,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/test.html</loc>
-<lastmod>2014-05-06T19:35:00-03:06</lastmod>
+<lastmod>2015-01-11T18:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -669,6 +683,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/tag/load-testing.html</loc>
+<lastmod>2015-01-11T18:00:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/locust.html</loc>
+<lastmod>2015-01-11T18:00:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/tag/django.html</loc>
 <lastmod>2015-01-07T06:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -762,6 +790,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/author/bruno-cezar-rocha.html</loc>
 <lastmod>2014-06-19T22:30:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/author/diego-garcia.html</loc>
+<lastmod>2015-01-11T18:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
