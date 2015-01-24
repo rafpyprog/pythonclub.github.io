@@ -567,7 +567,7 @@ PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;. Mas o programa roda 
 &lt;h2&gt;Configurando um VirtualEnv para Python 3&lt;/h2&gt;
 &lt;p&gt;Não é obrigatório, mas como eu tenho no meu SO o Python 3.4, tive que criar um virtualenv, que se configura da seguinte forma:&lt;/p&gt;
 &lt;p&gt;Faça um clone deste repositório&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git clone git@github.com:rg3915/python-sqlite.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git clone https://github.com/rg3915/python-sqlite.git
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Crie o virtualenv com o nome &lt;strong&gt;python-sqlite&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;virtualenv python-sqlite
