@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 11 Jan 2015 18:00:00 -0200</lastBuildDate><item><title>Testes de carga com o Locust</title><link>http://pythonclub.com.br/testes-de-carga-com-o-locust.html</link><description>&lt;figure style="float:right;"&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 20 Jan 2015 10:30:00 -0200</lastBuildDate><item><title>Entrevista com Henrique Bastos</title><link>http://pythonclub.com.br/entrevista-henrique-bastos.html</link><description>&lt;h2&gt;Entrevista com Henrique Bastos&lt;/h2&gt;
+&lt;p&gt;A primeira vez que ouvi o &lt;a href="https://twitter.com/henriquebastos"&gt;HenriqueBastos&lt;/a&gt; foi no &lt;a href="http://www.grokpodcast.com/"&gt;GrokPodcast&lt;/a&gt;, foi o que me motivou a pesquisar sobre Python&lt;/p&gt;
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;a href="http://www.grokpodcast.com/2010/10/20/episodio-6-a-linguagem-python-parte-1/"&gt;Episodio 6 - A linguagem Python - Parte 1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.grokpodcast.com/2010/10/28/episodio-7-a-linguagem-python-parte-2/"&gt;Episodio 7 - A linguagem Python - Parte 2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.grokpodcast.com/2010/12/01/episodio-12-django-o-framework-web-para-perfeccionistas/"&gt;Episodio 12 - Django - O framework web para perfeccionistas&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Li todos os posts no blog &lt;a href="http://henriquebastos.net/"&gt;henriquebastos.net&lt;/a&gt;. Mas precisava de algo mais,conhecer mais de perto o Henrique e seus conhecimentos foi entao que ingressei
+no curso &lt;a href="http://welcometothedjango.com.br/"&gt;Welcome To The Django&lt;/a&gt;, o qual RECOMENDO FORTEMENTE, mesmo para quem usa outro framework ou linguagem, as boas práticas de desenvolvimento ensinadas no curso são para a vida toda.&lt;/p&gt;
+&lt;p&gt;Atualmente acompanho o Henrique Bastos pelo youtube e no podcast &lt;a href="http://www.curtocircuito.cc/"&gt;Curto Circuito&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Seguem as respostas do Henrique.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Muito obrigado Henrique!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;1. Em que momentos na vida agradeceu por ter escolhido Python e quais os motivos?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Essa pergunta e cabulosa e tem muitas sutilezas nas entrelinhas.&lt;/p&gt;
+&lt;p&gt;Minha resposta curta é: NENHUM.&lt;/p&gt;
+&lt;p&gt;Não me entenda mal. Eu gosto muitíssimo da linguagem Python e de todo o seu ecossistema. Mas observe que eu só "escolhi Python" porquê gosto, porquê percebo afinidades que me atraem. Esses valores subjetivos são difíceis de demonstrar, mas por sorte temos uma pequena referência no Zen do Python, por exemplo. De todo modo, eu programo mais em Python do que em outras linguagens, mas estou sempre aprendendo algo novo.&lt;/p&gt;
+&lt;p&gt;Se há algo pelo que agradecer, fica meu agradecimento para todas as pessoas que colaboraram direta ou indiretamente para que Python exista. E do meu lado, fica a satisfação de "me ouvir" continuamente e insistir na busca pelo que gosto.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;2. Qual conselho compartilha com jovens desenvolvedores?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Seja cético, principalmente com as suas certezas. Mas seja passional com as suas preferências, sem esquecer que são apenas &lt;em&gt;suas&lt;/em&gt; &lt;em&gt;preferências&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;3. Qual pergunta que não fiz você gostaria de responder e qual e a resposta?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Que dia e hoje?&lt;/p&gt;
+&lt;p&gt;Dia 2 de Janeiro de 2014.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matheus Ap Godoy Ribeiro</dc:creator><pubDate>Tue, 20 Jan 2015 10:30:00 -0200</pubDate><guid>tag:pythonclub.com.br,2015-01-20:entrevista-henrique-bastos.html</guid><category>python</category><category>entrevistas</category></item><item><title>Testes de carga com o Locust</title><link>http://pythonclub.com.br/testes-de-carga-com-o-locust.html</link><description>&lt;figure style="float:right;"&gt;
 &lt;img style="border-radius: 50%;" src="/images/drgarcia1986/the_locust.jpg"&gt;
 &lt;/figure&gt;
 
@@ -1323,7 +1346,7 @@ PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;. Mas o programa roda 
 &lt;h2&gt;Configurando um VirtualEnv para Python 3&lt;/h2&gt;
 &lt;p&gt;Não é obrigatório, mas como eu tenho no meu SO o Python 3.4, tive que criar um virtualenv, que se configura da seguinte forma:&lt;/p&gt;
 &lt;p&gt;Faça um clone deste repositório&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git clone https://github.com/rg3915/python-sqlite.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git clone git@github.com:rg3915/python-sqlite.git
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Crie o virtualenv com o nome &lt;strong&gt;python-sqlite&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;virtualenv python-sqlite
