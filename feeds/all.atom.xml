@@ -1,5 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2015-01-25T11:30:00-02:00</updated><entry><title>Publicando seu Hello World no Heroku</title><link href="http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html" rel="alternate"></link><updated>2015-01-25T11:30:00-02:00</updated><author><name>Diego Garcia</name></author><id>tag:pythonclub.com.br,2015-01-25:publicando-seu-hello-world-no-heroku.html</id><summary type="html">&lt;figure style="float:left;"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2015-01-25T13:00:00-02:00</updated><entry><title>Conteinerizando suas aplicações django com docker e fig</title><link href="http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html" rel="alternate"></link><updated>2015-01-25T13:00:00-02:00</updated><author><name>Hudson Brendon</name></author><id>tag:pythonclub.com.br,2015-01-25:conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html</id><summary type="html">&lt;p&gt;&lt;img alt="Docker" src="/images/hudsonbrendon/django-fig.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Se você como eu é um desenvolvedor incansável quando o assunto é automatizar ao máximo seu workflow de trabalho,este post foi feito para você. O &lt;a href="http://www.fig.sh/"&gt;fig&lt;/a&gt; utilizando-se do docker, torna a criação de ambientes de desenvolvimento algo muito simples.&lt;/p&gt;
+&lt;h1&gt;Instalação&lt;/h1&gt;
+&lt;p&gt;A instalação do fig é bem simples, primeiro você terá que ter o docker instalado em sua máquina, caso não tenha, siga esse &lt;a href="http://hudsonbrendon.com/docker-introducao-e-aplicacao.html"&gt;tutorial&lt;/a&gt; onde exemplifico a instalação do mesmo de forma bem simples. Com o docker pronto, é hora de instalar o fig, essa ferramenta é um pacote python, e a forma mais simples de instalá-la é através do pip, que é o gerenciador de pacotes do python, caso não o tenha instalado em sua máquina, acesse o &lt;a href="https://pip.pypa.io/en/latest/installing.html"&gt;site oficial&lt;/a&gt; e veja a forma mais simples para você obtê-lo. Com tudo pronto, execute no terminal.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;pip install -U fig
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Utilizando o fig com django&lt;/h1&gt;
+&lt;p&gt;Com o docker e o fig devidamente instalados em sua máquina, é hora de integrar o django com essa maravilhosa ferramenta, para tanto, criaremos um diretório com um nome qualquer, aqui chamado de "app", e dentro do mesmo criaremos um arquivo chamado "Dockerfile", com o seguinte conteúdo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;FROM python:2.7
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /code
+WORKDIR /code
+ADD requirements.txt /code/
+RUN pip install -r requirements.txt
+ADD . /code/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Em seguinda criaremos um arquivo chamado "requirements.txt", com os seguintes pacotes.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Django
+psycopg2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;E por fim um arquivo, "fig.yml", com a configuração abaixo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;db:
+  image: postgres
+web:
+  build: .
+  &lt;span class="nb"&gt;command&lt;/span&gt;: python manage.py runserver 0.0.0.0:8000
+  volumes:
+    - .:/code
+  ports:
+    - &lt;span class="s2"&gt;&amp;quot;8000:8000&amp;quot;&lt;/span&gt;
+  links:
+  - db
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Quem é quem no jogo do bicho&lt;/h1&gt;
+&lt;p&gt;Com os arquivos criados é hora de entender qual a função de cada um no workflow.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Dockerfile&lt;/strong&gt; - É o arquivo que especifica como uma imagem no docker será criada, os pacotes que serão instalados, usuários que serão criados, portas que serão expostas, diretórios que serão compartilhados entre o host e um container, etc. Para mais informações &lt;a href="http://hudsonbrendon.com/docker-introducao-e-aplicacao.html"&gt;acesse&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;requirements.txt&lt;/strong&gt; - É um arquivo que guarda todas as dependências de um projeto python.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;fig.yml&lt;/strong&gt; - É o arquivo de configuração do fig, é composto por blocos e cada bloco corresponde a um container, podendo eles serem "linkados", o fig utilizará esse arquivo como base para criar os conteineres necessários, e executar tudo que foi especificado no mesmo.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Com os arquivos finalizados, é hora de criar uma aplicação em django, para isso basta.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;fig run web django-admin.py startproject figexample .
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;E o resultado será esse:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ls
+Dockerfile       fig.yml          figexample       manage.py        requirements.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Com a aplicação em mãos, a primeira coisa que você deve fazer é abrir o arquivo settings.py de sua aplicação, e configurar o banco de dados da mesma. Para isso no arquivo figexample/settings.py basta especificar as configurações abaixo no banco de dados.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DATABASES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;ENGINE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;django.db.backends.postgresql_psycopg2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;postgres&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;USER&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;postgres&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;HOST&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;PORT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;5432&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Com o banco configurado é hora de subir sua aplicação, na pasta raiz do projeto use.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;fig up
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O fig se encarregará de criar todos os conteineres, linkalos, e startar sua aplicação na porta 8000, acesse seu &lt;a href="http://localhost:8000/"&gt;localhost:8000&lt;/a&gt; e você verá sua aplicação em execução.&lt;/p&gt;
+&lt;p&gt;Para rodar os comandos do django, você pode fazer da seguinte forma.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;fig run &amp;lt;bloco&amp;gt; &amp;lt;comando&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Por exemplo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;fig run web ./manage.py syncdb
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lembrando que esse comando sempre será o padrão.&lt;/p&gt;
+&lt;h1&gt;Conclusão&lt;/h1&gt;
+&lt;p&gt;Como você pode ver, o fig em conjunto com o docker torna seu workflow algo extremamente simples e eficaz. O melhor disso tudo, é que, para trabalhar com esse mesmo ambiente em uma nova máquina, você apenas precisará do fig e docker instalados, acessar a rais do projeto e executar um fig up, gerando com isso,uma comodidade jamais vista.&lt;/p&gt;</summary><category term="django"></category><category term="docker"></category><category term="fig"></category></entry><entry><title>Publicando seu Hello World no Heroku</title><link href="http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html" rel="alternate"></link><updated>2015-01-25T11:30:00-02:00</updated><author><name>Diego Garcia</name></author><id>tag:pythonclub.com.br,2015-01-25:publicando-seu-hello-world-no-heroku.html</id><summary type="html">&lt;figure style="float:left;"&gt;
 &lt;img style="border-radius: 50%;" src="/images/drgarcia1986/heroku.png"&gt;
 &lt;/figure&gt;
 
