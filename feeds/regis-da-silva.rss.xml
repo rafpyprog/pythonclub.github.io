@@ -1,5 +1,438 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/regis-da-silva.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 07 Jan 2015 06:00:00 -0200</lastBuildDate><item><title>Tutorial Django 1.7</title><link>http://pythonclub.com.br/tutorial-django-17.html</link><description>&lt;p&gt;Fiz um video com um tutorial do Django 1.7 seguindo o modelo que tem no site oficial &lt;a class="reference external" href="https://www.djangoproject.com/"&gt;Django project&lt;/a&gt;.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/regis-da-silva.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 15 Feb 2015 12:00:00 -0200</lastBuildDate><item><title>Tutorial PostgreSql</title><link>http://pythonclub.com.br/tutorial-postgresql.html</link><description>&lt;p&gt;Para quem já leu &lt;a class="reference external" href="http://twoscoopspress.com/products/two-scoops-of-django-1-6"&gt;Two Scoops of Django&lt;/a&gt; sabe que o &lt;a class="reference external" href="http://www.pydanny.com/"&gt;PyDanny&lt;/a&gt; recomenda fortemente o uso do &lt;a class="reference external" href="http://www.postgresql.org/"&gt;PostgreSQL&lt;/a&gt; em seus projetos.&lt;/p&gt;
+&lt;p&gt;Então eu resolvi escrever esta série de 3 posts sobre PostgreSQL. Onde os outros 2 são:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;PostgreSql e Python3&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;PostgreSql e Django&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Sumário:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#instalacao"&gt;Instalação&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#criando-um-banco-de-dados"&gt;Criando um banco de dados&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#usando-o-banco-de-dados"&gt;Usando o banco de dados&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#criando-as-tabelas"&gt;Criando as tabelas&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#inserindo-dados"&gt;Inserindo dados&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#lendo-os-dados"&gt;Lendo os dados&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#atualizando"&gt;Atualizando&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#deletando"&gt;Deletando&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#heranca"&gt;Herança&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#modificando-tabelas"&gt;Modificando tabelas&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#backup"&gt;Backup&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+Ah, talvez isso aqui também seja útil &lt;a class="reference external" href="http://www.postgresonline.com/downloads/special_feature/postgresql90_cheatsheet_A4.pdf"&gt;postgresql cheat sheet&lt;/a&gt;.&lt;/blockquote&gt;
+&lt;div class="section" id="instalacao"&gt;
+&lt;h2&gt;Instalação&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Eu apanhei bastante para instalar até descobrir que meu SO estava zuado... então se você tiver problemas na instalação não me pergunte porque eu não saberei responder. Eu recorri à comunidade... e Google sempre! Dai eu formatei minha máquina instalei um Linux do zero e deu certo... (não sei instalar no Windows)...&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Bom, vamos lá. No seu &lt;strong&gt;terminal&lt;/strong&gt; digite esta sequência:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;dpkg -l &lt;span class="p"&gt;|&lt;/span&gt; grep -i postgres
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Este comando é só pra ver se não tem alguma coisa já instalado.&lt;/p&gt;
+&lt;p&gt;Agora instale...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install -y python3-dev python3-setuptools postgresql-9.3 postgresql-contrib-9.3 pgadmin3 libpq-dev build-essential binutils g++
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.pgadmin.org/"&gt;pgadmin3&lt;/a&gt; é a versão com interface visual... no &lt;a class="reference external" href="https://www.youtube.com/results?search_query=pgadmin"&gt;youtube&lt;/a&gt;  tem vários tutoriais legais. É bem fácil de mexer.&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;binutils g++&lt;/tt&gt; talvez não seja necessário, mas no meu caso precisou.&lt;/p&gt;
+&lt;p&gt;No final, se você conseguir ver a versão do programa é porque deu tudo certo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;psql -V
+psql &lt;span class="o"&gt;(&lt;/span&gt;PostgreSQL&lt;span class="o"&gt;)&lt;/span&gt; 9.3.5
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="criando-um-banco-de-dados"&gt;
+&lt;h2&gt;Criando um banco de dados&lt;/h2&gt;
+&lt;p&gt;Usando o &lt;strong&gt;terminal&lt;/strong&gt; sempre!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo su - postgres
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Seu prompt vai ficar assim:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;postgres@usuario:~&lt;span class="err"&gt;$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Criando o banco&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;createdb mydb
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se quiser deletar o banco&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;dropdb mydb
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Criando um usuário&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;createuser -P myuser
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Acessando o banco&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;psql mydb
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;O comando a seguir define direito de acesso ao novo usuário.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="k"&gt;GRANT&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="k"&gt;DATABASE&lt;/span&gt; &lt;span class="n"&gt;mydb&lt;/span&gt; &lt;span class="k"&gt;TO&lt;/span&gt; &lt;span class="n"&gt;myuser&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para sair do programa &lt;strong&gt;psql&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="se"&gt;\q&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para sair do &lt;em&gt;root&lt;/em&gt; pressione &lt;tt class="docutils literal"&gt;ctrl+d&lt;/tt&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="usando-o-banco-de-dados"&gt;
+&lt;h2&gt;Usando o banco de dados&lt;/h2&gt;
+&lt;p&gt;Antes vamos criar 2 arquivos porque nós iremos usá-los mais na frente.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;person.csv&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;cat &amp;gt; person.csv &lt;span class="s"&gt;&amp;lt;&amp;lt; EOF&lt;/span&gt;
+&lt;span class="s"&gt;name,age,city_id&lt;/span&gt;
+&lt;span class="s"&gt;Abel,12,1&lt;/span&gt;
+&lt;span class="s"&gt;Jose,54,2&lt;/span&gt;
+&lt;span class="s"&gt;Thiago,15,3&lt;/span&gt;
+&lt;span class="s"&gt;Veronica,28,1&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;basics.sql&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;basics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;sql&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;EOF&lt;/span&gt;
+&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;cities&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="nb"&gt;SERIAL&lt;/span&gt; &lt;span class="k"&gt;PRIMARY&lt;/span&gt; &lt;span class="k"&gt;KEY&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;city&lt;/span&gt; &lt;span class="nb"&gt;VARCHAR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;uf&lt;/span&gt; &lt;span class="nb"&gt;VARCHAR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;cities&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;city&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;uf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;São Paulo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;cities&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;DROP&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;cities&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;EOF&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora, vamos abrir o banco de dados &lt;em&gt;mydb&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;psql mydb
+psql &lt;span class="o"&gt;(&lt;/span&gt;9.3.5&lt;span class="o"&gt;)&lt;/span&gt;
+Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; help.
+
+&lt;span class="nv"&gt;mydb&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para rodar os comandos que estão no arquivo &lt;em&gt;basics.sql&lt;/em&gt; digite&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;mydb&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&amp;gt; &lt;span class="se"&gt;\i&lt;/span&gt; basics.sql
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Resultado:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;CREATE TABLE
+INSERT &lt;span class="m"&gt;0&lt;/span&gt; 1
+ id &lt;span class="p"&gt;|&lt;/span&gt;   city    &lt;span class="p"&gt;|&lt;/span&gt; uf
+----+-----------+----
+  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; São Paulo &lt;span class="p"&gt;|&lt;/span&gt; SP
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; row&lt;span class="o"&gt;)&lt;/span&gt;
+
+DROP TABLE
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Como você deve ter percebido, criamos uma tabela &lt;em&gt;cities&lt;/em&gt;, inserimos um registro, lemos o registro e excluimos a tabela.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="criando-as-tabelas"&gt;
+&lt;h2&gt;Criando as tabelas&lt;/h2&gt;
+&lt;p&gt;Daqui pra frente vou omitir o prompt, assumindo que seja este:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;mydb&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Considere as tabelas a seguir:&lt;/p&gt;
+&lt;img alt="erd.png" src="images/regisdasilva/erd.png" /&gt;
+&lt;p&gt;Então vamos criar as tabelas...&lt;/p&gt;
+&lt;blockquote&gt;
+Ah, talvez isso aqui também seja útil &lt;a class="reference external" href="http://www.postgresonline.com/downloads/special_feature/postgresql90_cheatsheet_A4.pdf"&gt;postgresql cheat sheet&lt;/a&gt;.&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;cities&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="nb"&gt;SERIAL&lt;/span&gt; &lt;span class="k"&gt;PRIMARY&lt;/span&gt; &lt;span class="k"&gt;KEY&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;city&lt;/span&gt; &lt;span class="nb"&gt;VARCHAR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;uf&lt;/span&gt; &lt;span class="nb"&gt;VARCHAR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="nb"&gt;SERIAL&lt;/span&gt; &lt;span class="k"&gt;PRIMARY&lt;/span&gt; &lt;span class="k"&gt;KEY&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="nb"&gt;VARCHAR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;age&lt;/span&gt; &lt;span class="nb"&gt;INT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;city_id&lt;/span&gt; &lt;span class="nb"&gt;INT&lt;/span&gt; &lt;span class="k"&gt;REFERENCES&lt;/span&gt; &lt;span class="n"&gt;cities&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;created&lt;/span&gt; &lt;span class="k"&gt;TIMESTAMP&lt;/span&gt; &lt;span class="k"&gt;WITH&lt;/span&gt; &lt;span class="n"&gt;TIME&lt;/span&gt; &lt;span class="k"&gt;ZONE&lt;/span&gt; &lt;span class="k"&gt;NOT&lt;/span&gt; &lt;span class="k"&gt;NULL&lt;/span&gt; &lt;span class="k"&gt;DEFAULT&lt;/span&gt; &lt;span class="n"&gt;NOW&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Alguns comandos:&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;SERIAL&lt;/tt&gt; é o conhecido &lt;em&gt;auto incremento&lt;/em&gt; numérico.&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;TIMESTAMP WITH TIME ZONE&lt;/tt&gt; data e hora com &lt;em&gt;time zone&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;DEFAULT NOW()&lt;/tt&gt; insere a data e hora atual automaticamente.&lt;/p&gt;
+&lt;p&gt;Mais tipos de campos em &lt;a class="reference external" href="http://www.postgresql.org/docs/9.4/static/datatype.html"&gt;Chapter 8. Data Types&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Para ver as tabelas&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="se"&gt;\d&lt;/span&gt;t
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Resultado:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;        List of relations
+ Schema &lt;span class="p"&gt;|&lt;/span&gt;  Name  &lt;span class="p"&gt;|&lt;/span&gt; Type  &lt;span class="p"&gt;|&lt;/span&gt; Owner
+--------+--------+-------+--------
+ public &lt;span class="p"&gt;|&lt;/span&gt; cities &lt;span class="p"&gt;|&lt;/span&gt; table &lt;span class="p"&gt;|&lt;/span&gt; myuser
+ public &lt;span class="p"&gt;|&lt;/span&gt; person &lt;span class="p"&gt;|&lt;/span&gt; table &lt;span class="p"&gt;|&lt;/span&gt; myuser
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt; rows&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para ver o esquema de cada tabela&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="se"&gt;\d&lt;/span&gt; cities
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Resultado:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;                            Table &lt;span class="s2"&gt;&amp;quot;public.cities&amp;quot;&lt;/span&gt;
+ Column &lt;span class="p"&gt;|&lt;/span&gt;         Type          &lt;span class="p"&gt;|&lt;/span&gt;                      Modifiers
+--------+-----------------------+-----------------------------------------------------
+ id     &lt;span class="p"&gt;|&lt;/span&gt; integer               &lt;span class="p"&gt;|&lt;/span&gt; not null default nextval&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cities_id_seq&amp;#39;&lt;/span&gt;::regclass&lt;span class="o"&gt;)&lt;/span&gt;
+ city   &lt;span class="p"&gt;|&lt;/span&gt; character varying&lt;span class="o"&gt;(&lt;/span&gt;50&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+ uf     &lt;span class="p"&gt;|&lt;/span&gt; character varying&lt;span class="o"&gt;(&lt;/span&gt;2&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="p"&gt;|&lt;/span&gt;
+Indexes:
+    &lt;span class="s2"&gt;&amp;quot;cities_pkey&amp;quot;&lt;/span&gt; PRIMARY KEY, btree &lt;span class="o"&gt;(&lt;/span&gt;id&lt;span class="o"&gt;)&lt;/span&gt;
+Referenced by:
+    TABLE &lt;span class="s2"&gt;&amp;quot;person&amp;quot;&lt;/span&gt; CONSTRAINT &lt;span class="s2"&gt;&amp;quot;person_city_id_fkey&amp;quot;&lt;/span&gt; FOREIGN KEY &lt;span class="o"&gt;(&lt;/span&gt;city_id&lt;span class="o"&gt;)&lt;/span&gt; REFERENCES cities&lt;span class="o"&gt;(&lt;/span&gt;id&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para deletar as tabelas&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;DROP&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;cities&lt;/span&gt;
+&lt;span class="k"&gt;DROP&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para definir o &lt;em&gt;timezone&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;SET&lt;/span&gt; &lt;span class="n"&gt;timezone&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;America/Sao_Paulo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Caso dê erro ao inserir a data tente&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;SET&lt;/span&gt; &lt;span class="n"&gt;timezone&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;UTC&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Dica: &lt;a class="reference external" href="http://stackoverflow.com/a/6158432/802542"&gt;stackoverflow&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="inserindo-dados"&gt;
+&lt;h2&gt;Inserindo dados&lt;/h2&gt;
+&lt;p&gt;Pra quem já manja de SQL...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;cities&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;city&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;uf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;São Paulo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Salvador&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;BA&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Curitiba&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;PR&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;city_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se lembra do arquivo &lt;em&gt;person.csv&lt;/em&gt; que criamos lá em cima?&lt;/p&gt;
+&lt;p&gt;Troque &lt;em&gt;user&lt;/em&gt; pelo nome do seu usuário!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;COPY&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;city_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/home/user/person.csv&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;DELIMITER&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;,&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;CSV&lt;/span&gt; &lt;span class="n"&gt;HEADER&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Erro:&lt;/strong&gt; Comigo deu o seguinte erro:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;ERROR:  must be superuser to COPY to or from a file
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ou seja, você deve entrar como &lt;em&gt;root&lt;/em&gt;. Saia do programa e entre novamente.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo su - postgres
+&lt;span class="nv"&gt;$ &lt;/span&gt;psql mydb
+&lt;span class="nv"&gt;mydb&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="c"&gt;# COPY person (name,age,city_id) FROM &amp;#39;/home/user/person.csv&amp;#39; DELIMITER &amp;#39;,&amp;#39; CSV HEADER;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Repare que o prompt ficou com &lt;tt class="docutils literal"&gt;#&lt;/tt&gt;, ou seja, você entrou como &lt;em&gt;root&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="lendo-os-dados"&gt;
+&lt;h2&gt;Lendo os dados&lt;/h2&gt;
+&lt;p&gt;Pra quem não sabe usar &lt;tt class="docutils literal"&gt;JOIN&lt;/tt&gt;...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="k"&gt;ORDER&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="k"&gt;INNER&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="n"&gt;cities&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;person&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;city_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cities&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;ORDER&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Resultado:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; id &lt;span class="p"&gt;|&lt;/span&gt;   name   &lt;span class="p"&gt;|&lt;/span&gt; age &lt;span class="p"&gt;|&lt;/span&gt; city_id &lt;span class="p"&gt;|&lt;/span&gt;            created            &lt;span class="p"&gt;|&lt;/span&gt; id &lt;span class="p"&gt;|&lt;/span&gt;   city    &lt;span class="p"&gt;|&lt;/span&gt; uf
+----+----------+-----+---------+-------------------------------+----+-----------+----
+  &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Abel     &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;12&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02 &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; São Paulo &lt;span class="p"&gt;|&lt;/span&gt; SP
+  &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Jose     &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;54&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02 &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Salvador  &lt;span class="p"&gt;|&lt;/span&gt; BA
+  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Regis    &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;35&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:47:10.63258-02  &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; São Paulo &lt;span class="p"&gt;|&lt;/span&gt; SP
+  &lt;span class="m"&gt;4&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Thiago   &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;15&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02 &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Curitiba  &lt;span class="p"&gt;|&lt;/span&gt; PR
+  &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Veronica &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;28&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02 &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; São Paulo &lt;span class="p"&gt;|&lt;/span&gt; SP
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt; rows&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="section" id="exemplo-de-count-e-inner-join"&gt;
+&lt;h3&gt;Exemplo de count e inner join&lt;/h3&gt;
+&lt;p&gt;Um exemplo interessante, e talvez útil, é saber quantas pessoas moram em cada cidade.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;cities&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;city&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;person&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;city_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;persons&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;cities&lt;/span&gt; &lt;span class="k"&gt;INNER&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;cities&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;city_id&lt;/span&gt;
+&lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;cities&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;city&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Mais em &lt;a class="reference external" href="http://www.postgresql.org/docs/9.4/static/tutorial-agg.html"&gt;2.7. Aggregate Functions&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;   city    &lt;span class="p"&gt;|&lt;/span&gt; persons
+-----------+---------
+ São Paulo &lt;span class="p"&gt;|&lt;/span&gt;       3
+ Curitiba  &lt;span class="p"&gt;|&lt;/span&gt;       1
+ Salvador  &lt;span class="p"&gt;|&lt;/span&gt;       1
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt; rows&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;E apenas para não esquecer, o operador para &lt;em&gt;diferente&lt;/em&gt; é&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;city_id&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="atualizando"&gt;
+&lt;h2&gt;Atualizando&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;UPDATE&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="k"&gt;SET&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Jose da Silva&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Jose&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;antes: &lt;tt class="docutils literal"&gt;SELECT * FROM person WHERE name Like 'Jose';&lt;/tt&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; id &lt;span class="p"&gt;|&lt;/span&gt; name &lt;span class="p"&gt;|&lt;/span&gt; age &lt;span class="p"&gt;|&lt;/span&gt; city_id &lt;span class="p"&gt;|&lt;/span&gt;            created
+----+------+-----+---------+-------------------------------
+  &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Jose &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;54&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;depois: &lt;tt class="docutils literal"&gt;SELECT * FROM person WHERE id=3;&lt;/tt&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; id &lt;span class="p"&gt;|&lt;/span&gt;     name      &lt;span class="p"&gt;|&lt;/span&gt; age &lt;span class="p"&gt;|&lt;/span&gt; city_id &lt;span class="p"&gt;|&lt;/span&gt;            created
+----+---------------+-----+---------+-------------------------------
+  &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Jose da Silva &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;52&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Note que &lt;tt class="docutils literal"&gt;age = age - 2&lt;/tt&gt; fez com que a idade diminuisse de 54 para 52. Ou seja, dá pra fazer operações algébricas com &lt;tt class="docutils literal"&gt;UPDATE&lt;/tt&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="deletando"&gt;
+&lt;h2&gt;Deletando&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;DELETE&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Fazendo &lt;tt class="docutils literal"&gt;SELECT * FROM person;&lt;/tt&gt; repare que foram excluidos &lt;em&gt;Abel&lt;/em&gt; e &lt;em&gt;Thiago&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; id &lt;span class="p"&gt;|&lt;/span&gt;     name      &lt;span class="p"&gt;|&lt;/span&gt; age &lt;span class="p"&gt;|&lt;/span&gt; city_id &lt;span class="p"&gt;|&lt;/span&gt;            created
+----+---------------+-----+---------+-------------------------------
+  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Regis         &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;35&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:47:10.63258-02
+  &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Veronica      &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;28&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02
+  &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Jose da Silva &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;52&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Mais informações em &lt;a class="reference external" href="http://www.postgresql.org/docs/9.4/static/tutorial-sql.html"&gt;Chapter 2. The SQL Language&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="heranca"&gt;
+&lt;h2&gt;Herança&lt;/h2&gt;
+&lt;p&gt;Considere o banco de dados chamado &lt;em&gt;vendas&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Suponha que você tenha duas tabelas: &lt;em&gt;person&lt;/em&gt; (pessoa) e &lt;em&gt;seller&lt;/em&gt; (vendedor).&lt;/p&gt;
+&lt;img alt="erd_vendas.png" src="images/regisdasilva/erd_vendas.png" /&gt;
+&lt;p&gt;Então façamos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo su - postgres
+&lt;span class="nv"&gt;$ &lt;/span&gt;createdb vendas
+&lt;span class="nv"&gt;$ &lt;/span&gt;psql vendas
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="nb"&gt;SERIAL&lt;/span&gt; &lt;span class="k"&gt;PRIMARY&lt;/span&gt; &lt;span class="k"&gt;KEY&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="nb"&gt;TEXT&lt;/span&gt;
+&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;seller&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="nb"&gt;SERIAL&lt;/span&gt; &lt;span class="k"&gt;PRIMARY&lt;/span&gt; &lt;span class="k"&gt;KEY&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="nb"&gt;TEXT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;commission&lt;/span&gt; &lt;span class="nb"&gt;DECIMAL&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Paulo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;seller&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;commission&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Roberto&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;149&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;99&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Dai criamos uma VIEW:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;VIEW&lt;/span&gt; &lt;span class="n"&gt;peoples&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt;
+    &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt;
+        &lt;span class="k"&gt;UNION&lt;/span&gt;
+    &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;seller&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;peoples&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Que retorna:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;  name
+---------
+ Paulo
+ Roberto
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt; rows&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Lembre-se que 'Paulo' pertence a &lt;em&gt;person&lt;/em&gt; e 'Roberto' pertence a &lt;em&gt;seller&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Mas esta não é a melhor solução. Usando a herança façamos da seguinte forma:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;DROP&lt;/span&gt; &lt;span class="k"&gt;VIEW&lt;/span&gt; &lt;span class="n"&gt;peoples&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;DROP&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;seller&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="nb"&gt;SERIAL&lt;/span&gt; &lt;span class="k"&gt;PRIMARY&lt;/span&gt; &lt;span class="k"&gt;KEY&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="nb"&gt;VARCHAR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;seller&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;commission&lt;/span&gt; &lt;span class="nb"&gt;DECIMAL&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;INHERITS&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;person&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Fazendo&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;\d person
+                                Table &amp;quot;public.person&amp;quot;
+ Column |         Type          |                      Modifiers
+--------+-----------------------+-----------------------------------------------------
+ id     | integer               | not null default nextval(&amp;#39;person_id_seq&amp;#39;::regclass)
+ name   | character varying(50) |
+Indexes:
+    &amp;quot;person_pkey&amp;quot; PRIMARY KEY, btree (id)
+Number of child tables: 1 (Use \d+ to list them.)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;E&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="se"&gt;\d&lt;/span&gt; seller
+                              Table &lt;span class="s2"&gt;&amp;quot;public.seller&amp;quot;&lt;/span&gt;
+   Column   &lt;span class="p"&gt;|&lt;/span&gt;         Type          &lt;span class="p"&gt;|&lt;/span&gt;                      Modifiers
+------------+-----------------------+-----------------------------------------------------
+ id         &lt;span class="p"&gt;|&lt;/span&gt; integer               &lt;span class="p"&gt;|&lt;/span&gt; not null default nextval&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;person_id_seq&amp;#39;&lt;/span&gt;::regclass&lt;span class="o"&gt;)&lt;/span&gt;
+ name       &lt;span class="p"&gt;|&lt;/span&gt; character varying&lt;span class="o"&gt;(&lt;/span&gt;50&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+ commission &lt;span class="p"&gt;|&lt;/span&gt; numeric&lt;span class="o"&gt;(&lt;/span&gt;6,2&lt;span class="o"&gt;)&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt;
+Inherits: person
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;A diferença é que com menos código criamos as duas tabelas e não precisamos criar VIEW. Mas a tabela &lt;em&gt;seller&lt;/em&gt; depende da tabela &lt;em&gt;person&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Portanto não conseguimos deletar a tabela &lt;em&gt;person&lt;/em&gt; sozinha, precisaríamos deletar as duas tabelas de uma vez.&lt;/p&gt;
+&lt;p&gt;Vamos inserir alguns dados.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Paulo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Fernando&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;seller&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;commission&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Roberto&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;149&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;99&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Rubens&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;85&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;01&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Fazendo&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+       &lt;span class="n"&gt;name&lt;/span&gt;
+&lt;span class="c1"&gt;----------&lt;/span&gt;
+ &lt;span class="n"&gt;Paulo&lt;/span&gt;
+ &lt;span class="n"&gt;Fernando&lt;/span&gt;
+ &lt;span class="n"&gt;Roberto&lt;/span&gt;
+ &lt;span class="n"&gt;Rubens&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="k"&gt;rows&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Obtemos todos os nomes porque na verdade um &lt;em&gt;seller&lt;/em&gt; também é um &lt;em&gt;person&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Agora vejamos somente os registros de &lt;em&gt;person&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="k"&gt;ONLY&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+   &lt;span class="n"&gt;name&lt;/span&gt;
+&lt;span class="c1"&gt;----------&lt;/span&gt;
+ &lt;span class="n"&gt;Paulo&lt;/span&gt;
+ &lt;span class="n"&gt;Fernando&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;rows&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;E somente os registros de &lt;em&gt;seller&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;seller&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="n"&gt;name&lt;/span&gt;
+&lt;span class="c1"&gt;---------&lt;/span&gt;
+ &lt;span class="n"&gt;Roberto&lt;/span&gt;
+ &lt;span class="n"&gt;Rubens&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;rows&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Mais informações em &lt;a class="reference external" href="http://www.postgresql.org/docs/9.4/static/tutorial-inheritance.html"&gt;3.6. Inheritance&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="modificando-tabelas"&gt;
+&lt;h2&gt;Modificando tabelas&lt;/h2&gt;
+&lt;p&gt;Vejamos agora como inserir um novo campo numa tabela existente e como alterar as propriedades de um outro campo.&lt;/p&gt;
+&lt;p&gt;Para inserir um novo campo façamos&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;ALTER&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="k"&gt;ADD&lt;/span&gt; &lt;span class="k"&gt;COLUMN&lt;/span&gt; &lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="nb"&gt;VARCHAR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para alterar as propriedades de um campo existente façamos&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;ALTER&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="k"&gt;ALTER&lt;/span&gt; &lt;span class="k"&gt;COLUMN&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="k"&gt;TYPE&lt;/span&gt; &lt;span class="nb"&gt;VARCHAR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Antes era &lt;tt class="docutils literal"&gt;name VARCHAR(50)&lt;/tt&gt;, agora é &lt;tt class="docutils literal"&gt;name VARCHAR(80)&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Também podemos inserir um campo com um valor padrão já definido.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;ALTER&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;seller&lt;/span&gt; &lt;span class="k"&gt;ADD&lt;/span&gt; &lt;span class="k"&gt;COLUMN&lt;/span&gt; &lt;span class="n"&gt;active&lt;/span&gt; &lt;span class="nb"&gt;BOOLEAN&lt;/span&gt; &lt;span class="k"&gt;DEFAULT&lt;/span&gt; &lt;span class="k"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="n"&gt;seller&lt;/span&gt;
+                              &lt;span class="k"&gt;Table&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;public.seller&amp;quot;&lt;/span&gt;
+   &lt;span class="k"&gt;Column&lt;/span&gt;   &lt;span class="o"&gt;|&lt;/span&gt;         &lt;span class="k"&gt;Type&lt;/span&gt;          &lt;span class="o"&gt;|&lt;/span&gt;                      &lt;span class="n"&gt;Modifiers&lt;/span&gt;
+&lt;span class="c1"&gt;------------+-----------------------+-----------------------------------------------------&lt;/span&gt;
+ &lt;span class="n"&gt;id&lt;/span&gt;         &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;integer&lt;/span&gt;               &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="k"&gt;null&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;nextval&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;person_id_seq&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;regclass&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="n"&gt;name&lt;/span&gt;       &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;character&lt;/span&gt; &lt;span class="nb"&gt;varying&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;
+ &lt;span class="n"&gt;commission&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;          &lt;span class="o"&gt;|&lt;/span&gt;
+ &lt;span class="n"&gt;active&lt;/span&gt;     &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;boolean&lt;/span&gt;               &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="k"&gt;true&lt;/span&gt;
+&lt;span class="k"&gt;Inherits&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Façamos SELECT novamente.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;seller&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+ &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;  &lt;span class="n"&gt;name&lt;/span&gt;   &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;commission&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;active&lt;/span&gt;
+&lt;span class="c1"&gt;----+---------+------------+--------&lt;/span&gt;
+  &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;Roberto&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;     &lt;span class="mi"&gt;149&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;99&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;
+  &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;Rubens&lt;/span&gt;  &lt;span class="o"&gt;|&lt;/span&gt;      &lt;span class="mi"&gt;85&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;01&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;rows&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vamos definir um email para cada pessoa. O comando &lt;tt class="docutils literal"&gt;lower&lt;/tt&gt; torna tudo &lt;strong&gt;minúsculo&lt;/strong&gt; e &lt;tt class="docutils literal"&gt;||&lt;/tt&gt; &lt;strong&gt;concatena&lt;/strong&gt; textos.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;UPDATE&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="k"&gt;SET&lt;/span&gt; &lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lower&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;@example.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+ &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;   &lt;span class="n"&gt;name&lt;/span&gt;   &lt;span class="o"&gt;|&lt;/span&gt;        &lt;span class="n"&gt;email&lt;/span&gt;
+&lt;span class="c1"&gt;----+----------+----------------------&lt;/span&gt;
+  &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;Paulo&lt;/span&gt;    &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;paulo&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
+  &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;Fernando&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;fernando&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
+  &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;Roberto&lt;/span&gt;  &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;roberto&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
+  &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;Rubens&lt;/span&gt;   &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;rubens&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="k"&gt;rows&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Leia &lt;a class="reference external" href="http://www.postgresql.org/docs/9.1/static/functions-string.html"&gt;9.4. String Functions and Operators&lt;/a&gt; e &lt;a class="reference external" href="http://www.postgresql.org/docs/9.3/static/sql-altertable.html"&gt;ALTER TABLE&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="backup"&gt;
+&lt;h2&gt;Backup&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pg_dump mydb &amp;gt; bkp.dump
+&lt;span class="c"&gt;# ou&lt;/span&gt;
+pg_dump -f bkp.dump mydb
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Excluindo o banco&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;dropdb mydb
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Criando novamente e &lt;strong&gt;recuperando os dados&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;createdb mydb&lt;span class="p"&gt;;&lt;/span&gt; psql mydb &amp;lt; bkp.dump
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Leia &lt;a class="reference external" href="http://www.postgresql.org/docs/9.1/static/backup-dump.html"&gt;24.1. SQL Dump&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+Se você quiser aqui tem o &lt;a class="reference external" href="https://gist.github.com/rg3915/936f09f361fc43d8c2dd"&gt;post resumido&lt;/a&gt; , ou seja, somente os comandos.&lt;/blockquote&gt;
+&lt;p&gt;Leia também&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;PostgreSql + Python3&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;PostgreSql + Django&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Mais alguns links:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.postgresonline.com/downloads/special_feature/postgresql90_cheatsheet_A4.pdf"&gt;http://www.postgresonline.com/downloads/special_feature/postgresql90_cheatsheet_A4.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.postgresql.org/docs/9.4/static/tutorial-createdb.html"&gt;http://www.postgresql.org/docs/9.4/static/tutorial-createdb.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.postgresql.org/docs/9.4/static/index.html"&gt;http://www.postgresql.org/docs/9.4/static/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.postgresql.org/docs/9.4/static/tutorial-sql.html"&gt;http://www.postgresql.org/docs/9.4/static/tutorial-sql.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.postgresql.org/docs/9.4/static/datatype.html"&gt;http://www.postgresql.org/docs/9.4/static/datatype.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.postgresql.org/docs/9.1/static/functions-datetime.html#FUNCTIONS-DATETIME-CURRENT"&gt;http://www.postgresql.org/docs/9.1/static/functions-datetime.html#FUNCTIONS-DATETIME-CURRENT&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Regis da Silva</dc:creator><pubDate>Sun, 15 Feb 2015 12:00:00 -0200</pubDate><guid>tag:pythonclub.com.br,2015-02-15:tutorial-postgresql.html</guid><category>python</category><category>postresql</category><category>banco de dados</category></item><item><title>Tutorial Django 1.7</title><link>http://pythonclub.com.br/tutorial-django-17.html</link><description>&lt;p&gt;Fiz um video com um tutorial do Django 1.7 seguindo o modelo que tem no site oficial &lt;a class="reference external" href="https://www.djangoproject.com/"&gt;Django project&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="youtube" align="left"&gt;&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/OayIF9Pz7rE" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Mas... apesar de já existir os posts &lt;a class="reference external" href="http://pythonclub.com.br/criar-site-com-form-lista-30-min.html"&gt;Como criar um site com formulário e lista em 30 minutos?&lt;/a&gt; e &lt;a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html"&gt;Seu primeiro projeto Django com Sublime Text no Linux&lt;/a&gt; eu resolvi dar uma &lt;em&gt;atualizada&lt;/em&gt;. E para acrescentar algumas novidades, neste post, eu falo também sobre &lt;strong&gt;shell&lt;/strong&gt; e &lt;strong&gt;json&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Git Hub: &lt;a class="reference external" href="https://github.com/rg3915/django1.7"&gt;https://github.com/rg3915/django1.7&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#o-que-voce-precisa"&gt;O que você precisa?&lt;/a&gt;&lt;/p&gt;
