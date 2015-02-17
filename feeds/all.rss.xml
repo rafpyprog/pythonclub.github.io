@@ -36,7 +36,7 @@ Nele é possível fazer um &lt;em&gt;step-by-step&lt;/em&gt; do código, verific
 &lt;p&gt;Avança o debug até o próximo &lt;strong&gt;breakpoint&lt;/strong&gt; ou até ocorrer uma &lt;strong&gt;exception&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3&gt;l (list)&lt;/h3&gt;
 &lt;p&gt;Lista algumas linhas do código que estão em volta da linha atual.
-Por padrão serão apresentadas 11 linhas (5 a cima e 5 a baixo).&lt;/p&gt;
+Por padrão serão apresentadas 11 linhas (5 acima e 5 abaixo).&lt;/p&gt;
 &lt;h3&gt;s (step into)&lt;/h3&gt;
 &lt;p&gt;Ao realizar a navegação através do comando &lt;code&gt;n&lt;/code&gt; o debug &lt;strong&gt;não&lt;/strong&gt; irá &lt;em&gt;entrar&lt;/em&gt; em métodos que possívelmente forem invocados.
 Para que o debug entre no método que está sendo invocado na linha corrente, basta trocar o comando &lt;code&gt;n&lt;/code&gt;, pelo comando &lt;code&gt;s&lt;/code&gt;.&lt;/p&gt;
@@ -60,7 +60,7 @@ Para que o debug entre no método que está sendo invocado na linha corrente, ba
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;No comando a cima, setamos um breakpoint na linha 21 de nosso script.&lt;/p&gt;
+&lt;p&gt;No comando acima, setamos um breakpoint na linha 21 de nosso script.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Pdb&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;
 &lt;span class="n"&gt;Breakpoint&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;
@@ -83,7 +83,7 @@ O pdb informa qual linha ele setou o breakpoint, em nosso exemplo o método &lt;
 
 
 &lt;h3&gt;ENTER&lt;/h3&gt;
-&lt;p&gt;Se você precionar o &lt;code&gt;ENTER&lt;/code&gt; sem nenhum comando no pdb, ele irá repetir o último comando executado. &lt;/p&gt;
+&lt;p&gt;Se você pressionar o &lt;code&gt;ENTER&lt;/code&gt; sem nenhum comando no pdb, ele irá repetir o último comando executado. &lt;/p&gt;
 &lt;h2&gt;Debug na prática&lt;/h2&gt;
 &lt;p&gt;Vamos utilizar um script python simples e didático como exemplo.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NumberList&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -116,19 +116,19 @@ O pdb informa qual linha ele setou o breakpoint, em nosso exemplo o método &lt;
 
 
 &lt;p&gt;Esse script possui uma classe chamada &lt;code&gt;NumberList&lt;/code&gt; que armazena uma lista de numeros e retorna a soma deles. 
-Além destas classe, esse script também realiza algumas operações como instaciar essa classe e realizar alguns testes de asserção.
+Além destas classe, esse script também realiza algumas operações como instanciar essa classe e realizar alguns testes de asserção.
 Salve esse script em um arquivo chamado &lt;code&gt;numbers.py&lt;/code&gt; para ser utilizado em nossos exemplos.&lt;/p&gt;
 &lt;h2&gt;Modos de uso do pdb&lt;/h2&gt;
 &lt;p&gt;Na prática o pdb se assemelha bastante ao prompt interativo do python, com a diferença dos caracteres identificadores.
 Enquanto que no prompt interativo do python o identificador é o &lt;code&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;, no pdb o identificador é &lt;code&gt;(Pdb)&lt;/code&gt;.
-Existem algumas maneiras de usar o pdb, depende da forma como você pretende realizer o debbug. &lt;/p&gt;
+Existem algumas maneiras de usar o pdb, depende da forma como você pretende realizer o debug. &lt;/p&gt;
 &lt;h3&gt;pdb.py&lt;/h3&gt;
 &lt;p&gt;Uma delas é através da chamada do script &lt;code&gt;pdb.py&lt;/code&gt; passando como paramêtro o script para ser feito do debug, por exemplo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;python -m pdb numbers.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Isso fará com o pdb seja iniciado na primeira linha do script &lt;code&gt;numbers.py&lt;/code&gt;, no caso, a declaração da classe &lt;code&gt;NumberList()&lt;/code&gt;.
+&lt;p&gt;Isso fará com que o pdb seja iniciado na primeira linha do script &lt;code&gt;numbers.py&lt;/code&gt;, no caso, a declaração da classe &lt;code&gt;NumberList()&lt;/code&gt;.
 Caso você execute o comando &lt;code&gt;n&lt;/code&gt;, a próxima linha será o &lt;code&gt;if "__main__" == __name__:&lt;/code&gt; e assim por diante.
 Utilizando desta maneira, você pode verificar linha a linha do script ou &lt;em&gt;setar&lt;/em&gt; um breakpoint assim que entrar no debug, por exemplo, se você quer criar um breakpoint na execução do método &lt;code&gt;sum()&lt;/code&gt; de uma instância da classe &lt;code&gt;NumberList()&lt;/code&gt;, basta executar o comando &lt;code&gt;b numbers.sum&lt;/code&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="nd"&gt;@machine&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;pdb&lt;/span&gt; &lt;span class="n"&gt;numbers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; 
@@ -162,10 +162,7 @@ Utilizando desta maneira, você pode verificar linha a linha do script ou &lt;em
 &lt;h3&gt;pdb.set_trace()&lt;/h3&gt;
 &lt;p&gt;Outra forma é utilizando o método &lt;code&gt;set_trace()&lt;/code&gt; do pacote &lt;code&gt;pdb&lt;/code&gt;.
 Com o &lt;code&gt;pdb.set_trace()&lt;/code&gt; você pode definir onde será o seu breakpoint via código, por exemplo, faremos uma alteração em nosso script para setar um breakpoint no método &lt;code&gt;NumberList().sum()&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pdb&lt;/span&gt;
-
-
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NumberList&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NumberList&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;numbers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
@@ -175,6 +172,7 @@ Com o &lt;code&gt;pdb.set_trace()&lt;/code&gt; você pode definir onde será o s
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;numbers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pdb&lt;/span&gt;
         &lt;span class="n"&gt;pdb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_trace&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
         &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
@@ -764,7 +762,7 @@ Para conhecer um pouco do processo de &lt;em&gt;deploy&lt;/em&gt; do heroku, cri
 &lt;h4&gt;Python, Pip, VirtualEnv&lt;/h4&gt;
 &lt;p&gt;Bem, você vai criar sua aplicação em python não? Além da boa organização e isolamento para seu ambiente proporcionado pelo &lt;strong&gt;virtualenv&lt;/strong&gt;, manter seu app em um virtualenv proporciona algumas praticidades.&lt;/p&gt;
 &lt;h3&gt;Instalando o Toolbet&lt;/h3&gt;
-&lt;p&gt;O &lt;strong&gt;Toolbet&lt;/strong&gt; é uma poderosa ferramente de linha de comando do heroku. É através dela que iremos criar nosso app no heroku.
+&lt;p&gt;O &lt;strong&gt;Toolbet&lt;/strong&gt; é uma poderosa ferramenta de linha de comando do heroku. É através dela que iremos criar nosso app no heroku.
 No ubuntu (ou outras distribuições baseadas no debian) para instalar não poderia ser diferente, basta usar o todo poderoso &lt;code&gt;apt-get&lt;/code&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;user@machine:~/&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install heroku 
 &lt;/pre&gt;&lt;/div&gt;
@@ -823,7 +821,7 @@ user@machine:~/heroku_hello_world&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span 
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Um detalhe importante fica por conta da variável &lt;code&gt;port&lt;/code&gt;. No heroku não é possível subir o app na porta 5000 (porta default do Flask), mas o heroku seta a variável de ambiente &lt;code&gt;PORT&lt;/code&gt; em seu ambiente, definindo em qual porta a aplicação deve rodar. Da maneira como está implementado nosso app, iremos conseguir podar tanto no heroku como localmente (através da porta 5000).&lt;/p&gt;
+&lt;p&gt;Um detalhe importante fica por conta da variável &lt;code&gt;port&lt;/code&gt;. No heroku não é possível subir o app na porta 5000 (porta default do Flask), mas o heroku seta a variável de ambiente &lt;code&gt;PORT&lt;/code&gt; em seu ambiente, definindo em qual porta a aplicação deve rodar. Da maneira como está implementado nosso app, iremos conseguir rodar tanto no heroku como localmente (através da porta 5000).&lt;/p&gt;
 &lt;p&gt;O heroku precisa conhecer as dependências de nosso app para que, no momento do deploy ele construa o ambiente de forma correta. Seguindo o padrão, o heroku procura pelas dependências através do arquivo &lt;code&gt;requirements.txt&lt;/code&gt;. Como já isolamos nosso app em um virtualenv, basta utilizar o &lt;code&gt;pip freeze&lt;/code&gt; para listar os packages instalados e direcionar a saida desse comando para o arquivo &lt;em&gt;requirements.txt&lt;/em&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;user@machine:~/heroku_hello_world&lt;span class="nv"&gt;$ &lt;/span&gt;pip freeze &amp;gt; requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
@@ -1179,7 +1177,7 @@ Note que os resultados são apresentados por cada &lt;em&gt;Task&lt;/em&gt; e s�
 
 
 &lt;p&gt;A aplicação representada no código acima consiste em uma página inicial (&lt;code&gt;/&lt;/code&gt;), uma página de login (&lt;code&gt;/login&lt;/code&gt;), uma página de logout (&lt;code&gt;/logout&lt;/code&gt;) e uma página home do usuário (&lt;code&gt;/home&lt;/code&gt;) que só está acessivel para usuários logados. Obviamente esse é só um exemplo didático. &lt;/p&gt;
-&lt;p&gt;Se criarmos um script Locust para testar essa aplicação e nele não realizaros o login do usuário, teriamos uma série de falhas para consumir o método remoto &lt;code&gt;/home&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Se criarmos um script Locust para testar essa aplicação e nele não realizarmos o login do usuário, teriamos uma série de falhas para consumir o método remoto &lt;code&gt;/home&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="locust" src="/images/drgarcia1986/locust_session_fail.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Porém a classe &lt;code&gt;TaskSet&lt;/code&gt; do Locust possui o método &lt;code&gt;on_start&lt;/code&gt; que consiste no método que será executado (apenas uma vez) antes do cliente Locust iniciar as tasks. Será nele que iremos realizar o &lt;em&gt;login&lt;/em&gt; do usuário.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;locust&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpLocust&lt;/span&gt;

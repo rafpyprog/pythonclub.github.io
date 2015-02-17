@@ -380,7 +380,7 @@ Note que os resultados são apresentados por cada <em>Task</em> e são totalizad
 
 
 <p>A aplicação representada no código acima consiste em uma página inicial (<code>/</code>), uma página de login (<code>/login</code>), uma página de logout (<code>/logout</code>) e uma página home do usuário (<code>/home</code>) que só está acessivel para usuários logados. Obviamente esse é só um exemplo didático. </p>
-<p>Se criarmos um script Locust para testar essa aplicação e nele não realizaros o login do usuário, teriamos uma série de falhas para consumir o método remoto <code>/home</code>.</p>
+<p>Se criarmos um script Locust para testar essa aplicação e nele não realizarmos o login do usuário, teriamos uma série de falhas para consumir o método remoto <code>/home</code>.</p>
 <p><img alt="locust" src="/images/drgarcia1986/locust_session_fail.png" /></p>
 <p>Porém a classe <code>TaskSet</code> do Locust possui o método <code>on_start</code> que consiste no método que será executado (apenas uma vez) antes do cliente Locust iniciar as tasks. Será nele que iremos realizar o <em>login</em> do usuário.</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">locust</span> <span class="kn">import</span> <span class="n">TaskSet</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">HttpLocust</span>

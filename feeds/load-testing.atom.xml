@@ -270,7 +270,7 @@ Note que os resultados são apresentados por cada &lt;em&gt;Task&lt;/em&gt; e s�
 
 
 &lt;p&gt;A aplicação representada no código acima consiste em uma página inicial (&lt;code&gt;/&lt;/code&gt;), uma página de login (&lt;code&gt;/login&lt;/code&gt;), uma página de logout (&lt;code&gt;/logout&lt;/code&gt;) e uma página home do usuário (&lt;code&gt;/home&lt;/code&gt;) que só está acessivel para usuários logados. Obviamente esse é só um exemplo didático. &lt;/p&gt;
-&lt;p&gt;Se criarmos um script Locust para testar essa aplicação e nele não realizaros o login do usuário, teriamos uma série de falhas para consumir o método remoto &lt;code&gt;/home&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Se criarmos um script Locust para testar essa aplicação e nele não realizarmos o login do usuário, teriamos uma série de falhas para consumir o método remoto &lt;code&gt;/home&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="locust" src="/images/drgarcia1986/locust_session_fail.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Porém a classe &lt;code&gt;TaskSet&lt;/code&gt; do Locust possui o método &lt;code&gt;on_start&lt;/code&gt; que consiste no método que será executado (apenas uma vez) antes do cliente Locust iniciar as tasks. Será nele que iremos realizar o &lt;em&gt;login&lt;/em&gt; do usuário.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;locust&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpLocust&lt;/span&gt;

@@ -36,7 +36,7 @@ Nele é possível fazer um &lt;em&gt;step-by-step&lt;/em&gt; do código, verific
 &lt;p&gt;Avança o debug até o próximo &lt;strong&gt;breakpoint&lt;/strong&gt; ou até ocorrer uma &lt;strong&gt;exception&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3&gt;l (list)&lt;/h3&gt;
 &lt;p&gt;Lista algumas linhas do código que estão em volta da linha atual.
-Por padrão serão apresentadas 11 linhas (5 a cima e 5 a baixo).&lt;/p&gt;
+Por padrão serão apresentadas 11 linhas (5 acima e 5 abaixo).&lt;/p&gt;
 &lt;h3&gt;s (step into)&lt;/h3&gt;
 &lt;p&gt;Ao realizar a navegação através do comando &lt;code&gt;n&lt;/code&gt; o debug &lt;strong&gt;não&lt;/strong&gt; irá &lt;em&gt;entrar&lt;/em&gt; em métodos que possívelmente forem invocados.
 Para que o debug entre no método que está sendo invocado na linha corrente, basta trocar o comando &lt;code&gt;n&lt;/code&gt;, pelo comando &lt;code&gt;s&lt;/code&gt;.&lt;/p&gt;
@@ -60,7 +60,7 @@ Para que o debug entre no método que está sendo invocado na linha corrente, ba
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;No comando a cima, setamos um breakpoint na linha 21 de nosso script.&lt;/p&gt;
+&lt;p&gt;No comando acima, setamos um breakpoint na linha 21 de nosso script.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Pdb&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;
 &lt;span class="n"&gt;Breakpoint&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;
@@ -83,7 +83,7 @@ O pdb informa qual linha ele setou o breakpoint, em nosso exemplo o método &lt;
 
 
 &lt;h3&gt;ENTER&lt;/h3&gt;
-&lt;p&gt;Se você precionar o &lt;code&gt;ENTER&lt;/code&gt; sem nenhum comando no pdb, ele irá repetir o último comando executado. &lt;/p&gt;
+&lt;p&gt;Se você pressionar o &lt;code&gt;ENTER&lt;/code&gt; sem nenhum comando no pdb, ele irá repetir o último comando executado. &lt;/p&gt;
 &lt;h2&gt;Debug na prática&lt;/h2&gt;
 &lt;p&gt;Vamos utilizar um script python simples e didático como exemplo.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NumberList&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -116,19 +116,19 @@ O pdb informa qual linha ele setou o breakpoint, em nosso exemplo o método &lt;
 
 
 &lt;p&gt;Esse script possui uma classe chamada &lt;code&gt;NumberList&lt;/code&gt; que armazena uma lista de numeros e retorna a soma deles. 
-Além destas classe, esse script também realiza algumas operações como instaciar essa classe e realizar alguns testes de asserção.
+Além destas classe, esse script também realiza algumas operações como instanciar essa classe e realizar alguns testes de asserção.
 Salve esse script em um arquivo chamado &lt;code&gt;numbers.py&lt;/code&gt; para ser utilizado em nossos exemplos.&lt;/p&gt;
 &lt;h2&gt;Modos de uso do pdb&lt;/h2&gt;
 &lt;p&gt;Na prática o pdb se assemelha bastante ao prompt interativo do python, com a diferença dos caracteres identificadores.
 Enquanto que no prompt interativo do python o identificador é o &lt;code&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;, no pdb o identificador é &lt;code&gt;(Pdb)&lt;/code&gt;.
-Existem algumas maneiras de usar o pdb, depende da forma como você pretende realizer o debbug. &lt;/p&gt;
+Existem algumas maneiras de usar o pdb, depende da forma como você pretende realizer o debug. &lt;/p&gt;
 &lt;h3&gt;pdb.py&lt;/h3&gt;
 &lt;p&gt;Uma delas é através da chamada do script &lt;code&gt;pdb.py&lt;/code&gt; passando como paramêtro o script para ser feito do debug, por exemplo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;python -m pdb numbers.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Isso fará com o pdb seja iniciado na primeira linha do script &lt;code&gt;numbers.py&lt;/code&gt;, no caso, a declaração da classe &lt;code&gt;NumberList()&lt;/code&gt;.
+&lt;p&gt;Isso fará com que o pdb seja iniciado na primeira linha do script &lt;code&gt;numbers.py&lt;/code&gt;, no caso, a declaração da classe &lt;code&gt;NumberList()&lt;/code&gt;.
 Caso você execute o comando &lt;code&gt;n&lt;/code&gt;, a próxima linha será o &lt;code&gt;if "__main__" == __name__:&lt;/code&gt; e assim por diante.
 Utilizando desta maneira, você pode verificar linha a linha do script ou &lt;em&gt;setar&lt;/em&gt; um breakpoint assim que entrar no debug, por exemplo, se você quer criar um breakpoint na execução do método &lt;code&gt;sum()&lt;/code&gt; de uma instância da classe &lt;code&gt;NumberList()&lt;/code&gt;, basta executar o comando &lt;code&gt;b numbers.sum&lt;/code&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="nd"&gt;@machine&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;pdb&lt;/span&gt; &lt;span class="n"&gt;numbers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; 
@@ -162,10 +162,7 @@ Utilizando desta maneira, você pode verificar linha a linha do script ou &lt;em
 &lt;h3&gt;pdb.set_trace()&lt;/h3&gt;
 &lt;p&gt;Outra forma é utilizando o método &lt;code&gt;set_trace()&lt;/code&gt; do pacote &lt;code&gt;pdb&lt;/code&gt;.
 Com o &lt;code&gt;pdb.set_trace()&lt;/code&gt; você pode definir onde será o seu breakpoint via código, por exemplo, faremos uma alteração em nosso script para setar um breakpoint no método &lt;code&gt;NumberList().sum()&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pdb&lt;/span&gt;
-
-
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NumberList&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NumberList&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;numbers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
@@ -175,6 +172,7 @@ Com o &lt;code&gt;pdb.set_trace()&lt;/code&gt; você pode definir onde será o s
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;numbers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pdb&lt;/span&gt;
         &lt;span class="n"&gt;pdb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_trace&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
         &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;

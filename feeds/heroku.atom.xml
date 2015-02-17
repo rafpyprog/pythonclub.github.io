@@ -18,7 +18,7 @@ Para conhecer um pouco do processo de &lt;em&gt;deploy&lt;/em&gt; do heroku, cri
 &lt;h4&gt;Python, Pip, VirtualEnv&lt;/h4&gt;
 &lt;p&gt;Bem, você vai criar sua aplicação em python não? Além da boa organização e isolamento para seu ambiente proporcionado pelo &lt;strong&gt;virtualenv&lt;/strong&gt;, manter seu app em um virtualenv proporciona algumas praticidades.&lt;/p&gt;
 &lt;h3&gt;Instalando o Toolbet&lt;/h3&gt;
-&lt;p&gt;O &lt;strong&gt;Toolbet&lt;/strong&gt; é uma poderosa ferramente de linha de comando do heroku. É através dela que iremos criar nosso app no heroku.
+&lt;p&gt;O &lt;strong&gt;Toolbet&lt;/strong&gt; é uma poderosa ferramenta de linha de comando do heroku. É através dela que iremos criar nosso app no heroku.
 No ubuntu (ou outras distribuições baseadas no debian) para instalar não poderia ser diferente, basta usar o todo poderoso &lt;code&gt;apt-get&lt;/code&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;user@machine:~/&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install heroku 
 &lt;/pre&gt;&lt;/div&gt;
@@ -77,7 +77,7 @@ user@machine:~/heroku_hello_world&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span 
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Um detalhe importante fica por conta da variável &lt;code&gt;port&lt;/code&gt;. No heroku não é possível subir o app na porta 5000 (porta default do Flask), mas o heroku seta a variável de ambiente &lt;code&gt;PORT&lt;/code&gt; em seu ambiente, definindo em qual porta a aplicação deve rodar. Da maneira como está implementado nosso app, iremos conseguir podar tanto no heroku como localmente (através da porta 5000).&lt;/p&gt;
+&lt;p&gt;Um detalhe importante fica por conta da variável &lt;code&gt;port&lt;/code&gt;. No heroku não é possível subir o app na porta 5000 (porta default do Flask), mas o heroku seta a variável de ambiente &lt;code&gt;PORT&lt;/code&gt; em seu ambiente, definindo em qual porta a aplicação deve rodar. Da maneira como está implementado nosso app, iremos conseguir rodar tanto no heroku como localmente (através da porta 5000).&lt;/p&gt;
 &lt;p&gt;O heroku precisa conhecer as dependências de nosso app para que, no momento do deploy ele construa o ambiente de forma correta. Seguindo o padrão, o heroku procura pelas dependências através do arquivo &lt;code&gt;requirements.txt&lt;/code&gt;. Como já isolamos nosso app em um virtualenv, basta utilizar o &lt;code&gt;pip freeze&lt;/code&gt; para listar os packages instalados e direcionar a saida desse comando para o arquivo &lt;em&gt;requirements.txt&lt;/em&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;user@machine:~/heroku_hello_world&lt;span class="nv"&gt;$ &lt;/span&gt;pip freeze &amp;gt; requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
