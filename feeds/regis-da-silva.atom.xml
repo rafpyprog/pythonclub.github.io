@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/regis-da-silva.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2015-02-19T14:10:00-02:00</updated><entry><title>PostgreSql e Django</title><link href="http://pythonclub.com.br/postgresql-e-django.html" rel="alternate"></link><updated>2015-02-19T14:10:00-02:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2015-02-19:postgresql-e-django.html</id><summary type="html">&lt;p&gt;Se você já leu o &lt;em&gt;Tutorial Postgresql&lt;/em&gt; e &lt;em&gt;Postgresql e Python3&lt;/em&gt;, este post é uma continuação. Aqui nós veremos usar PostgreSql no &lt;a class="reference external" href="http://pythonclub.com.br/tutorial-django-17.html"&gt;Django&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Para quem já leu &lt;a class="reference external" href="http://twoscoopspress.com/products/two-scoops-of-django-1-6"&gt;Two Scoops of Django&lt;/a&gt; sabe que o &lt;a class="reference external" href="http://www.pydanny.com/"&gt;PyDanny&lt;/a&gt; recomenda fortemente o uso do &lt;a class="reference external" href="http://www.postgresql.org/"&gt;PostgreSQL&lt;/a&gt; em seus projetos.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/regis-da-silva.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2015-02-19T14:10:00-02:00</updated><entry><title>PostgreSql e Django - parte 3</title><link href="http://pythonclub.com.br/postgresql-e-django.html" rel="alternate"></link><updated>2015-02-19T14:10:00-02:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2015-02-19:postgresql-e-django.html</id><summary type="html">&lt;p&gt;Se você já leu o &lt;a class="reference external" href="http://pythonclub.com.br/tutorial-postgresql.html"&gt;Tutorial Postgresql - parte 1&lt;/a&gt; e &lt;a class="reference external" href="http://pythonclub.com.br/postgresql-e-python3.html"&gt;PostgreSql e Python3 - parte 2&lt;/a&gt; , este post é uma continuação. Aqui nós veremos como usar &lt;a class="reference external" href="http://www.postgresql.org/"&gt;PostgreSQL&lt;/a&gt; no &lt;a class="reference external" href="http://pythonclub.com.br/tutorial-django-17.html"&gt;Django&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Para quem já leu &lt;a class="reference external" href="http://twoscoopspress.com/products/two-scoops-of-django-1-6"&gt;Two Scoops of Django&lt;/a&gt; sabe que o &lt;a class="reference external" href="http://www.pydanny.com/"&gt;PyDanny&lt;/a&gt; recomenda fortemente o uso do mesmo SGBD tanto em &lt;strong&gt;produção&lt;/strong&gt; como em &lt;strong&gt;testes&lt;/strong&gt;. Então esqueça &lt;a class="reference external" href="http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html"&gt;sqlite&lt;/a&gt; para testes, use &lt;a class="reference external" href="http://www.mysql.com/"&gt;MySql&lt;/a&gt; ou &lt;a class="reference external" href="http://www.oracle.com/br/products/database/overview/index.html"&gt;Oracle&lt;/a&gt; ou &lt;a class="reference external" href="http://www.postgresql.org/"&gt;PostgreSQL&lt;/a&gt; tanto em produção como em testes, e é sobre este último que vamos falar agora.&lt;/p&gt;
+&lt;div class="figure"&gt;
+&lt;img alt="postgresql_django.png" src="/images/regisdasilva/postgresql_django.png" /&gt;
+&lt;/div&gt;
 &lt;p&gt;Então vejamos aqui como configurar o Postgresql para ser usado no &lt;a class="reference external" href="http://pythonclub.com.br/tutorial-django-17.html"&gt;Django&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="section" id="precisamos-criar-o-banco-manualmente"&gt;
 &lt;h2&gt;Precisamos criar o banco manualmente&lt;/h2&gt;
@@ -20,7 +23,7 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;exit&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id2"&gt;
+&lt;div class="section" id="id3"&gt;
 &lt;h2&gt;Django&lt;/h2&gt;
 &lt;p&gt;Vamos criar um virtualenv e instalar o &lt;a class="reference external" href="http://initd.org/psycopg/docs/install.html#use-a-python-package-manager"&gt;psycopg2&lt;/a&gt;, além do django.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;virtualenv -p /usr/bin/python3 teste
@@ -48,7 +51,8 @@ python ../manage.py startapp core
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DATABASES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="s"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="s"&gt;&amp;#39;ENGINE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;django.db.backends.postgresql_psycopg2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s"&gt;&amp;#39;NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BASE_DIR&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;mydb&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;mydb&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="c"&gt;# &amp;#39;NAME&amp;#39;: os.path.join(BASE_DIR, &amp;#39;mydb&amp;#39;),&lt;/span&gt;
         &lt;span class="s"&gt;&amp;#39;USER&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;myuser&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
         &lt;span class="s"&gt;&amp;#39;PASSWORD&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;mypassword&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
         &lt;span class="s"&gt;&amp;#39;HOST&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;127.0.0.1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -95,11 +99,12 @@ python manage.py runserver
 &lt;p&gt;&lt;strong&gt;Faça um migrate&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;python manage.py makemigrations core
 python manage.py migrate
+python manage.py createsuperuser
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="um-pouco-de-shell"&gt;
 &lt;h3&gt;Um pouco de shell&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;python manage.py shell
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py shell
 Python 3.4.0 &lt;span class="o"&gt;(&lt;/span&gt;default, Apr &lt;span class="m"&gt;11&lt;/span&gt; 2014, 13:05:18&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;GCC 4.8.2&lt;span class="o"&gt;]&lt;/span&gt; on linux
 Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;credits&amp;quot;&lt;/span&gt; or &lt;span class="s2"&gt;&amp;quot;license&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; more information.
@@ -121,8 +126,8 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span clas
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Leia mais em&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Tutorial PostgreSql&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;PostgreSql e Python3&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://pythonclub.com.br/tutorial-postgresql.html"&gt;Tutorial Postgresql - parte 1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://pythonclub.com.br/postgresql-e-python3.html"&gt;PostgreSql e Python3 - parte 2&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://pythonclub.com.br/tutorial-django-17.html"&gt;Tutorial Django 1.7&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://pythonclub.com.br/criar-site-com-form-lista-30-min.html"&gt;Como criar um site com formulário e lista em 30 minutos?&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-django-with-postgres-nginx-and-gunicorn"&gt;How To Install and Configure Django with Postgres, Nginx, and Gunicorn&lt;/a&gt;&lt;/p&gt;
@@ -131,7 +136,7 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span clas
 &lt;p&gt;&lt;a class="reference external" href="http://www.postgresql.org/docs/9.4/static/tutorial-sql.html"&gt;http://www.postgresql.org/docs/9.4/static/tutorial-sql.html&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="python"></category><category term="postresql"></category><category term="banco de dados"></category></entry><entry><title>PostgreSql e Python3</title><link href="http://pythonclub.com.br/postgresql-e-python3.html" rel="alternate"></link><updated>2015-02-17T13:00:00-02:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2015-02-17:postgresql-e-python3.html</id><summary type="html">&lt;p&gt;Se você já leu o &lt;a class="reference external" href="http://pythonclub.com.br/tutorial-postgresql.html"&gt;Tutorial Postgresql&lt;/a&gt;  este post é uma continuação. Aqui nós veremos como manipular um banco de dados PostgreSql no Python3.&lt;/p&gt;
+</summary><category term="python"></category><category term="postresql"></category><category term="banco de dados"></category></entry><entry><title>PostgreSql e Python3 - parte 2</title><link href="http://pythonclub.com.br/postgresql-e-python3.html" rel="alternate"></link><updated>2015-02-17T13:00:00-02:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2015-02-17:postgresql-e-python3.html</id><summary type="html">&lt;p&gt;Se você já leu o &lt;a class="reference external" href="http://pythonclub.com.br/tutorial-postgresql.html"&gt;Tutorial Postgresql - parte 1&lt;/a&gt;  este post é uma continuação. Aqui nós veremos como manipular um banco de dados PostgreSql no Python3.&lt;/p&gt;
 &lt;div class="figure"&gt;
 &lt;img alt="postgresql_python.png" src="/images/regisdasilva/postgresql_python.png" /&gt;
 &lt;/div&gt;
@@ -191,17 +196,17 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span clas
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Leia também&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://pythonclub.com.br/tutorial-postgresql.html"&gt;Tutorial Postgresql&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;PostgreSql e Django&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://pythonclub.com.br/tutorial-postgresql.html"&gt;Tutorial Postgresql - parte 1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://pythonclub.com.br/postgresql-e-django.html"&gt;PostgreSql e Django - parte 3&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://initd.org/psycopg/docs/"&gt;http://initd.org/psycopg/docs/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://initd.org/psycopg/docs/usage.html"&gt;http://initd.org/psycopg/docs/usage.html&lt;/a&gt;&lt;/p&gt;
-</summary><category term="python"></category><category term="postresql"></category><category term="banco de dados"></category></entry><entry><title>Tutorial PostgreSql</title><link href="http://pythonclub.com.br/tutorial-postgresql.html" rel="alternate"></link><updated>2015-02-15T12:00:00-02:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2015-02-15:tutorial-postgresql.html</id><summary type="html">&lt;p&gt;Para quem já leu &lt;a class="reference external" href="http://twoscoopspress.com/products/two-scoops-of-django-1-6"&gt;Two Scoops of Django&lt;/a&gt; sabe que o &lt;a class="reference external" href="http://www.pydanny.com/"&gt;PyDanny&lt;/a&gt; recomenda fortemente o uso do mesmo SGBD tanto em &lt;strong&gt;produção&lt;/strong&gt; como em &lt;strong&gt;testes&lt;/strong&gt;. Então esqueça &lt;a class="reference external" href="http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html"&gt;sqlite&lt;/a&gt; para testes, use &lt;a class="reference external" href="http://www.mysql.com/"&gt;MySql&lt;/a&gt; ou &lt;a class="reference external" href="http://www.oracle.com/br/products/database/overview/index.html"&gt;Oracle&lt;/a&gt; ou &lt;a class="reference external" href="http://www.postgresql.org/"&gt;PostgreSQL&lt;/a&gt; tanto em produção como em testes, e é sobre este último que vamos falar agora.&lt;/p&gt;
+</summary><category term="python"></category><category term="postresql"></category><category term="banco de dados"></category></entry><entry><title>Tutorial PostgreSql - parte 1</title><link href="http://pythonclub.com.br/tutorial-postgresql.html" rel="alternate"></link><updated>2015-02-15T12:00:00-02:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2015-02-15:tutorial-postgresql.html</id><summary type="html">&lt;p&gt;Para quem já leu &lt;a class="reference external" href="http://twoscoopspress.com/products/two-scoops-of-django-1-6"&gt;Two Scoops of Django&lt;/a&gt; sabe que o &lt;a class="reference external" href="http://www.pydanny.com/"&gt;PyDanny&lt;/a&gt; recomenda fortemente o uso do mesmo SGBD tanto em &lt;strong&gt;produção&lt;/strong&gt; como em &lt;strong&gt;testes&lt;/strong&gt;. Então esqueça &lt;a class="reference external" href="http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html"&gt;sqlite&lt;/a&gt; para testes, use &lt;a class="reference external" href="http://www.mysql.com/"&gt;MySql&lt;/a&gt; ou &lt;a class="reference external" href="http://www.oracle.com/br/products/database/overview/index.html"&gt;Oracle&lt;/a&gt; ou &lt;a class="reference external" href="http://www.postgresql.org/"&gt;PostgreSQL&lt;/a&gt; tanto em produção como em testes, e é sobre este último que vamos falar agora.&lt;/p&gt;
 &lt;div class="figure"&gt;
 &lt;img alt="postgresql.png" src="/images/regisdasilva/postgresql.png" /&gt;
 &lt;/div&gt;
 &lt;p&gt;Então eu resolvi escrever esta série de 3 posts sobre PostgreSQL. Onde os outros 2 são:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://pythonclub.com.br/postgresql-e-python3.html"&gt;PostgreSql e Python3&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;PostgreSql e Django&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://pythonclub.com.br/postgresql-e-python3.html"&gt;PostgreSql e Python3 - parte 2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://pythonclub.com.br/postgresql-e-django.html"&gt;PostgreSql e Django - parte 3&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Sumário:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#instalacao"&gt;Instalação&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#criando-um-banco-de-dados"&gt;Criando um banco de dados&lt;/a&gt;&lt;/p&gt;
@@ -523,6 +528,18 @@ Inherits: person
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;A diferença é que com menos código criamos as duas tabelas e não precisamos criar VIEW. Mas a tabela &lt;em&gt;seller&lt;/em&gt; depende da tabela &lt;em&gt;person&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Portanto não conseguimos deletar a tabela &lt;em&gt;person&lt;/em&gt; sozinha, precisaríamos deletar as duas tabelas de uma vez.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Vantagem:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;a associação é do tipo &lt;em&gt;one-to-one&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;o esquema é extensível&lt;/li&gt;
+&lt;li&gt;evita duplicação de tabelas com campos semelhantes&lt;/li&gt;
+&lt;li&gt;a relação de dependência é do tipo pai e filho&lt;/li&gt;
+&lt;li&gt;podemos consultar o modelo pai e o modelo filho&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Desvantagem:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;adiciona sobrecarga substancial, uma vez que cada consulta em uma tabela filho requer um &lt;em&gt;join&lt;/em&gt; com todas as tabelas pai.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Vamos inserir alguns dados.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;person&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Paulo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Fernando&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;seller&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;commission&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt;
@@ -621,8 +638,8 @@ pg_dump -f bkp.dump mydb
 &lt;blockquote&gt;
 Se você quiser aqui tem o &lt;a class="reference external" href="https://gist.github.com/rg3915/936f09f361fc43d8c2dd"&gt;post resumido&lt;/a&gt; , ou seja, somente os comandos.&lt;/blockquote&gt;
 &lt;p&gt;Leia também&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://pythonclub.com.br/postgresql-e-python3.html"&gt;PostgreSql e Python3&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;PostgreSql e Django&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://pythonclub.com.br/postgresql-e-python3.html"&gt;PostgreSql e Python3 - parte 2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://pythonclub.com.br/postgresql-e-django.html"&gt;PostgreSql e Django - parte 3&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Mais alguns links:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://www.postgresonline.com/downloads/special_feature/postgresql90_cheatsheet_A4.pdf"&gt;http://www.postgresonline.com/downloads/special_feature/postgresql90_cheatsheet_A4.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://www.postgresql.org/docs/9.4/static/tutorial-createdb.html"&gt;http://www.postgresql.org/docs/9.4/static/tutorial-createdb.html&lt;/a&gt;&lt;/p&gt;
