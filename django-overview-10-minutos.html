@@ -97,8 +97,9 @@
             </section>
             <p>Em março de 2012 foi lançada a versão 1.4 e por aqui que nossa jornada começa, o objetivo não é entrar em detalhes em todas as features que foram implementadas e sim um <cite>overview</cite> sobre as que considero mais importantes para nosso dia a dia.</p>
 <div class="section" id="versao-1-4-ha-3-anos">
-<h2>Versão 1.4 (Há 3 anos)</h2>
+<h2>Versão <a class="reference external" href="https://docs.djangoproject.com/en/1.4/releases/1.4/">1.4</a> (Há 3 anos)</h2>
 <p>Lançada em Março de 2012, suporta Python 2.5 &gt;= 2.7.</p>
+<p>Foi a primeira versão LTS (long-term support), ou seja, ela recebeu correções e atualizações de segurança por pelo menos 3 anos após à data de lançamento.</p>
 <p>É a primeira versão a permitir o uso de <a class="reference external" href="https://docs.djangoproject.com/en/1.4/ref/django-admin/#django-admin-startproject">custom project template</a> e tornar o arquivo <cite>manage.py</cite> <em>o</em> que conhecemos hoje.</p>
 <p>Foi a primeira versão a suportar o <a class="reference external" href="https://docs.djangoproject.com/en/1.4/topics/testing/#django.test.LiveServerTestCase">testes</a> feitos com frameworks que utilizam o browser como o <a class="reference external" href="http://pythonclub.com.br/selenium-parte-1.html">Selenium</a>.</p>
 <p>Algumas outras coisas legais foram:</p>
@@ -111,7 +112,7 @@
 </blockquote>
 </div>
 <div class="section" id="versao-1-5-ha-2-anos">
-<h2>Versão 1.5 (Há 2 anos)</h2>
+<h2>Versão <a class="reference external" href="https://docs.djangoproject.com/en/1.5/releases/1.5/">1.5</a> (Há 2 anos)</h2>
 <p>Lançada em Fevereiro de 2013, suporta Python 2.6.5 &gt;= 2.7 (Python 3 - Experimental).</p>
 <p>A versão 1.5 ficou bem conhecida pela reformulação na aplicação de autenticação, é possível <a class="reference external" href="https://docs.djangoproject.com/en/1.5/topics/auth/customizing/#auth-custom-user">customizar um usuário</a> conforme nossas necessidades.</p>
 <p>É possivel também passar os campos que você <a class="reference external" href="https://docs.djangoproject.com/en/1.5/ref/models/instances/#specifying-which-fields-to-save">gostaria de atualizar</a> quando for salvar um objeto.</p>
@@ -124,7 +125,7 @@
 </blockquote>
 </div>
 <div class="section" id="versao-1-6-ha-1-ano-e-meio">
-<h2>Versão 1.6 (Há 1 ano e meio)</h2>
+<h2>Versão <a class="reference external" href="https://docs.djangoproject.com/en/1.6/releases/1.6/">1.6</a> (Há 1 ano e meio)</h2>
 <p>Lançada em Novembro de 2013, suporta Python 2.6.5 &gt;= 3.3. (Python 3!!!!)</p>
 <p>A versão 1.6 alterou um pouco do <cite>layout</cite> padrão dos projetos que estávamos acostumados, para nossa alegria o <cite>admin.py</cite> é adicionado por padrão na aplicação :)</p>
 <p>Transações possuem <cite>autocommit</cite> habilitado por padrão!</p>
@@ -137,19 +138,37 @@
 </blockquote>
 </div>
 <div class="section" id="versao-1-7-ha-8-meses">
-<h2>Versão 1.7 (Há 8 meses)</h2>
+<h2>Versão <a class="reference external" href="https://docs.djangoproject.com/en/1.7/releases/1.7/">1.7</a> (Há 8 meses)</h2>
 <p>Lançada em Setembro de 2014, suporta Python 2.7 &gt;= 3.4.</p>
 <p>Um novo conceito de <a class="reference external" href="https://docs.djangoproject.com/en/1.7/topics/migrations/">migrações</a> foi implementado, até o momento a maioria utilizava o <a class="reference external" href="https://south.readthedocs.org/en/latest/">South</a>, nessa versão tudo é <cite>built-in</cite>.</p>
 <p>Para criar uma aplicação não é necessário mais conter o arquivo <cite>models.py</cite>.</p>
-<p>O <cite>conceito de aplicação &lt;https://docs.djangoproject.com/en/1.7/ref/applications/&gt;</cite> foi atualizado e existem vários novas maneiras de se customizar seus dados :)</p>
+<p>O <a class="reference external" href="https://docs.djangoproject.com/en/1.7/ref/applications/">conceito de aplicação</a> foi atualizado e existem vários novas maneiras de se customizar seus dados :)</p>
 <p>O comando <cite>check</cite> foi evoluído e agora realiza uma varredura quase completa no seu código para identificar possíveis problemas.</p>
 </div>
 <div class="section" id="versao-1-8">
-<h2>Versão 1.8</h2>
+<h2>Versão <a class="reference external" href="https://docs.djangoproject.com/en/1.8/releases/1.8/">1.8</a></h2>
 <p>Lançada em Abril de 2015, a versão 1.8 introduz várias features legais!</p>
-<p>Possibilidade de utilizar <a class="reference external" href="https://docs.djangoproject.com/en/1.8/topics/templates/">várias engines</a> de templates.</p>
+<p>É a segunda versão LTS (long-term support), ou seja, vai receber correções e atualizações de segurança por pelo menos 3 anos após à data de lançamento.</p>
+<p>Agora há a possibilidade de utilizar <a class="reference external" href="https://docs.djangoproject.com/en/1.8/topics/templates/">várias linguagens(engines)</a> de templates, ou seja, você pode usar simuntaneamente (não no mesmo arquivo) a <a class="reference external" href="https://docs.djangoproject.com/en/1.8/ref/templates/language/">Django Template Language</a> ou <a class="reference external" href="http://jinja.pocoo.org/">Jinja2</a>. Há uma API padronizada para quem quiser adicionar suporte para outras linguagens de template no futuro. Há um <a class="reference external" href="https://docs.djangoproject.com/en/1.8/ref/templates/upgrading/">guia de migração</a> .</p>
 <p>Novos campos foram introduzidos como <a class="reference external" href="https://docs.djangoproject.com/en/1.8/ref/models/fields/#django.db.models.UUIDField">UUIDField</a> e <a class="reference external" href="https://docs.djangoproject.com/en/1.8/ref/models/fields/#django.db.models.DurationField">DurationField</a> e  ainda tem mais!</p>
-<p>Acompanhe as <a class="reference external" href="https://docs.djangoproject.com/en/1.8/releases/">releases</a>.</p>
+<p>O <a class="reference external" href="https://docs.djangoproject.com/en/1.8/releases/1.8/#model-meta-api">Model._meta API</a> foi totalmente refatorado e padronizado. O <cite>Model._meta</cite> API foi incluida no Django 0.96 e serve para obter informações sobre campos do Model, contudo, essa api era considerada de uso privado, e não tinha qualquer documentação ou comentários. Agora com tudo padronizado, abre uma gama de novas opções para criar apps plugaveis que fazem coisas com Models arbitrarios.</p>
+<p>Algumas outras coisas legais foram:</p>
+<blockquote>
+<ul class="simple">
+<li>O comando de gerenciamento <a class="reference external" href="https://docs.djangoproject.com/en/1.8/howto/legacy-databases/#integrating-django-with-a-legacy-database">inspectdb</a> agora suporta fazer engenharia reversa tambem de Database Views (nas versões anteriores, o inspectdb inspecionava somente tabelas, mas não conseguia &quot;ver&quot; as views).</li>
+<li>Adição/Melhoria de <a class="reference external" href="https://docs.djangoproject.com/en/1.8/releases/1.8/#query-expressions-conditional-expressions-and-database-functions">Query Expressions, Conditional Expressions, and Database Functions</a> . Isso adiciona muito mais flexibilidade para fazer pesquisas mais complexas no banco de dados.</li>
+</ul>
+</blockquote>
+<p>Há várias outras ótimas melhorias que omiti, veja o <a class="reference external" href="https://docs.djangoproject.com/en/1.8/releases/">release note</a> completo.</p>
+</div>
+<div class="section" id="o-futuro">
+<h2>O Futuro</h2>
+<div class="section" id="versao-1-9-com-lancamento-previsto-para-outubro-de-2016">
+<h3>Versão 1.9 (Com lançamento previsto para Outubro de 2016)</h3>
+<p>O Django 1.8 mal foi lançado, e já há algumas novidades que talvez venham no Django 1.9.</p>
+<p>Muito provavelmete, o Django 1.9 vai adicionar os tão esperados <a class="reference external" href="https://github.com/django/deps/pull/12">Campos Compostos</a> . Isso vai permitir fazer coisas mais complexas, como ter um campo Dinheiro, que &quot;sabe&quot; como fazer conversões de moeda (ex. Real para Dolar).</p>
+<p>Veja o <a class="reference external" href="https://code.djangoproject.com/wiki/Version1.9Roadmap">Roadmap</a> do que vem por ai no Django 1.9</p>
+</div>
 </div>
 
 
