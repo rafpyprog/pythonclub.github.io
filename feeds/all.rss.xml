@@ -1,5 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 10 May 2015 13:55:00 -0300</lastBuildDate><item><title>Como otimizar suas consultas no Django - De N a 1 em 20 minutos</title><link>http://pythonclub.com.br/django-introducao-queries.html</link><description>&lt;p&gt;Essa semana fiz uma palestra em um BEV no &lt;a class="reference external" href="http://luizalabs.com/"&gt;Luizalabs&lt;/a&gt;.
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 24 May 2015 00:00:00 -0300</lastBuildDate><item><title>Criação de aplicações no Google App Engine com o Tekton</title><link>http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html</link><description>&lt;h2&gt;Google App Engine (GAE)&lt;/h2&gt;
+&lt;p&gt;É a plataforma de Cloud Computing do Google, com ela você pode desenvolver e hospedar aplicações usando Python (2.7) que escalam facilmente, &lt;a href="https://cloud.google.com/appengine/pricing"&gt;pagando muito pouco por isso&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As desvantagens (em relação a outras plataformas de nuvem, como o Heroku por exemplo) são:
+- Você terá que desenvolver pensando na plataforma (banco de dados NoSQL, por isso o &lt;a href="http://imasters.com.br/desenvolvimento/app-engine-e-django-hell/"&gt;Django não é recomendável&lt;/a&gt;.).
+- Versão do Python é antiga e não há planos para mudar isso no momento.&lt;/p&gt;
+&lt;h2&gt;Tekton&lt;/h2&gt;
+&lt;p&gt;É um framework para desenvolvimento Web especialmente pensado para uso no Google App Engine. Nele podemos aproveitar o melhor do Django (scaffold, código HTML e validação de formulários a partir de modelos, apps isoladas) sem perder as vantagens que o GAE nos oferece.  &lt;/p&gt;
+&lt;p&gt;## Como iniciar
+ O primeiro passo é baixar  o &lt;a href="https://cloud.google.com/appengine/downloads"&gt;SDK do Google App Engine&lt;/a&gt;, com isso pronto podemos começar a conhecer o Tekton:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;wget https://github.com/renzon/tekton/archive/master.zip
+&lt;span class="nv"&gt;$ &lt;/span&gt;unzip master
+&lt;span class="nv"&gt;$ &lt;/span&gt;mv master projeto_appengine &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;projeto_appengine     
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Nesse ponto podemos explorar e conhecer a estrutura de diretórios.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;└── backend
+ ├── appengine
+ ├── apps
+ ├── build_scripts
+ ├── test
+ └── venv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;backend/venv/ &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; ./venv.sh
+&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt; ./bin/activate         
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Com o ambiente virtual pronto, tudo deve estar funcionando. Para testar, 
+vamos utilizar o próprio servidor que vem com o pacote antes de subir parao GAE.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;cd ../appengine &amp;amp;&amp;amp; dev_appserver.py . 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Tudo certo! Você deve estar vendo o projeto template no seu localhost:8080&lt;/p&gt;
+&lt;p&gt;Para realizar o deploy no App Engine:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;appcfg.py update . --oauth2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Você pode conhecer mais sobre o projeto no &lt;a href="https://github.com/renzon/tekton"&gt;Github&lt;/a&gt;, no &lt;a href="https://groups.google.com/forum/#!forum/tekton-web"&gt;grupo de discussões&lt;/a&gt; ou nas vídeo aulas gratuitas no &lt;a href="https://www.youtube.com/playlist?list=PLA05yVJtRWYRGIeBxag8uT-3ftcMVT5oF"&gt;Youtube&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guido Luz Percú</dc:creator><pubDate>Sun, 24 May 2015 00:00:00 -0300</pubDate><guid>tag:pythonclub.com.br,2015-05-24:desenvolvendo-para-google-app-engine-com-tekton.html</guid><category>tekton</category><category>python</category><category>google app engine</category><category>tutorial</category></item><item><title>Como otimizar suas consultas no Django - De N a 1 em 20 minutos</title><link>http://pythonclub.com.br/django-introducao-queries.html</link><description>&lt;p&gt;Essa semana fiz uma palestra em um BEV no &lt;a class="reference external" href="http://luizalabs.com/"&gt;Luizalabs&lt;/a&gt;.
 Resolvi falar sobre Django, pois é um framework que utilizamos na empresa para diversos projetos.&lt;/p&gt;
 &lt;p&gt;O objetivo é ensinar algumas técnicas simples e que auxiliam a diminuir o número de consultas que realizamos
 no banco de dados.&lt;/p&gt;
