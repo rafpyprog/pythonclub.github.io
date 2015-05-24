@@ -161,8 +161,8 @@ Gera uma representação SQL de um QuerySet.</li>
 <p>Agora que conhecemos os 5 elementos principais, vamos falar sobre <strong>QuerySet</strong>, é com ele
 que vamos conseguir construir queries mais eficientes.</p>
 </div>
-<div class="section" id="queryset-sao-lazy">
-<h2>QuerySet são Lazy</h2>
+<div class="section" id="querysets-sao-lazy">
+<h2>QuerySets são Lazy</h2>
 <p>Algo que é importante notar sobre o comportamento das QuerySets, são que elas são Lazy.</p>
 <p>Mas o que é isso?</p>
 <p>Imaginem as seguintes consultas:</p>
@@ -223,7 +223,7 @@ QuerySets podem ser:</p>
     <span class="k">print</span> <span class="n">cadastro</span><span class="o">.</span><span class="n">user</span>
 </pre></div>
 <p>Esse é um código simples e que geralmente não vemos problemas nenhum, mas iremos nos supreender
-quantas queries são realizadas no banco de dados.</p>
+com quantas queries são realizadas no banco de dados.</p>
 <div class="highlight"><pre><span class="c"># https://docs.djangoproject.com/en/1.8/faq/models/#how-can-i-see-the-raw-sql-queries-django-is-running</span>
 <span class="o">&gt;&gt;</span> <span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">connection</span>
 
@@ -235,10 +235,10 @@ quantas queries são realizadas no banco de dados.</p>
 <span class="o">&gt;&gt;</span> <span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">queries</span><span class="p">)</span>
 <span class="mi">501</span>
 </pre></div>
-<p>Foram realizadas <strong>501</strong> consultas iterar sobre 500 cadastros (1 consulta para retornar todos os cadastros e 1 consulta para cada vez que acessamos o atributo <tt class="docutils literal">user</tt>).
+<p>Foram realizadas <strong>501</strong> consultas para iterar sobre 500 cadastros (1 consulta para retornar todos os cadastros e 1 consulta para cada vez que acessamos o atributo <tt class="docutils literal">user</tt>).
 Isso ocorre, porque estamos acessando um atributo que é um relacionamento para outra tabela,
-cada vez que o Django acessa esse atributo ele precisa fazer uma nova consulta no banco de dados.</p>
-<p>Isso é válido tanto para campos OneToOne e ForeignKey.</p>
+cada vez que o Django acessa esse atributo uma nova consulta precisa ser realizada no banco de dados.</p>
+<p>Isso é válido tanto para OneToOne e ForeignKey.</p>
 <p>Como podemos resolver isso? Utilizando o método do QuerySet chamado <tt class="docutils literal">select_related</tt>.</p>
 </div>
 <div class="section" id="select-related">
@@ -261,7 +261,7 @@ Ele faz isso através de um <tt class="docutils literal">JOIN</tt> na instruçã
 </div>
 <div class="section" id="relacionamento-reverso">
 <h2>Relacionamento reverso</h2>
-<p>Por padrão o Django adiciona um relacionamento reverso quando sua tabela quando ela é referenciada por uma chave estrangeira.</p>
+<p>Por padrão o Django adiciona um relacionamento reverso quando sua tabela é referenciada por uma chave estrangeira.</p>
 <p>Se não passar o parâmetro related_name, irá seguir o padrão &lt;nome_tabela&gt;_set</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
 <span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>

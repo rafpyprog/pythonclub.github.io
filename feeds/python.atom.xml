@@ -65,8 +65,8 @@ Gera uma representação SQL de um QuerySet.&lt;/li&gt;
 &lt;p&gt;Agora que conhecemos os 5 elementos principais, vamos falar sobre &lt;strong&gt;QuerySet&lt;/strong&gt;, é com ele
 que vamos conseguir construir queries mais eficientes.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class="section" id="queryset-sao-lazy"&gt;
-&lt;h2&gt;QuerySet são Lazy&lt;/h2&gt;
+&lt;div class="section" id="querysets-sao-lazy"&gt;
+&lt;h2&gt;QuerySets são Lazy&lt;/h2&gt;
 &lt;p&gt;Algo que é importante notar sobre o comportamento das QuerySets, são que elas são Lazy.&lt;/p&gt;
 &lt;p&gt;Mas o que é isso?&lt;/p&gt;
 &lt;p&gt;Imaginem as seguintes consultas:&lt;/p&gt;
@@ -127,7 +127,7 @@ QuerySets podem ser:&lt;/p&gt;
     &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;cadastro&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Esse é um código simples e que geralmente não vemos problemas nenhum, mas iremos nos supreender
-quantas queries são realizadas no banco de dados.&lt;/p&gt;
+com quantas queries são realizadas no banco de dados.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# https://docs.djangoproject.com/en/1.8/faq/models/#how-can-i-see-the-raw-sql-queries-django-is-running&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;connection&lt;/span&gt;
 
@@ -139,10 +139,10 @@ quantas queries são realizadas no banco de dados.&lt;/p&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;queries&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="mi"&gt;501&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Foram realizadas &lt;strong&gt;501&lt;/strong&gt; consultas iterar sobre 500 cadastros (1 consulta para retornar todos os cadastros e 1 consulta para cada vez que acessamos o atributo &lt;tt class="docutils literal"&gt;user&lt;/tt&gt;).
+&lt;p&gt;Foram realizadas &lt;strong&gt;501&lt;/strong&gt; consultas para iterar sobre 500 cadastros (1 consulta para retornar todos os cadastros e 1 consulta para cada vez que acessamos o atributo &lt;tt class="docutils literal"&gt;user&lt;/tt&gt;).
 Isso ocorre, porque estamos acessando um atributo que é um relacionamento para outra tabela,
-cada vez que o Django acessa esse atributo ele precisa fazer uma nova consulta no banco de dados.&lt;/p&gt;
-&lt;p&gt;Isso é válido tanto para campos OneToOne e ForeignKey.&lt;/p&gt;
+cada vez que o Django acessa esse atributo uma nova consulta precisa ser realizada no banco de dados.&lt;/p&gt;
+&lt;p&gt;Isso é válido tanto para OneToOne e ForeignKey.&lt;/p&gt;
 &lt;p&gt;Como podemos resolver isso? Utilizando o método do QuerySet chamado &lt;tt class="docutils literal"&gt;select_related&lt;/tt&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="select-related"&gt;
@@ -165,7 +165,7 @@ Ele faz isso através de um &lt;tt class="docutils literal"&gt;JOIN&lt;/tt&gt; n
 &lt;/div&gt;
 &lt;div class="section" id="relacionamento-reverso"&gt;
 &lt;h2&gt;Relacionamento reverso&lt;/h2&gt;
-&lt;p&gt;Por padrão o Django adiciona um relacionamento reverso quando sua tabela quando ela é referenciada por uma chave estrangeira.&lt;/p&gt;
+&lt;p&gt;Por padrão o Django adiciona um relacionamento reverso quando sua tabela é referenciada por uma chave estrangeira.&lt;/p&gt;
 &lt;p&gt;Se não passar o parâmetro related_name, irá seguir o padrão &amp;lt;nome_tabela&amp;gt;_set&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
