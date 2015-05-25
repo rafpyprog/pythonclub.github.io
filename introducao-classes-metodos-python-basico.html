@@ -110,10 +110,21 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">NomeDaClasse</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
         <span class="n">atributo1</span> <span class="o">=</span> <span class="bp">None</span>
 
-        <span class="k">def</span> <span class="nf">metodo</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">metodo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
                 <span class="k">pass</span>
 </pre></div>
-<p><tt class="docutils literal">pass</tt> significa que você pode escrever o seu código no lugar. E <tt class="docutils literal">atributo1</tt> é um atributo com valor inicial <tt class="docutils literal">None</tt> (nada). Poderia ser <tt class="docutils literal">atributo1 = 0</tt>, por exemplo.</p>
+<p>A primeira pergunta que você vai ter é o porque do <tt class="docutils literal">self</tt> em <tt class="docutils literal">metodo</tt>. A resposta curta é, todo metodo criado dentro de uma classe deve definir como primeiro parametro o <tt class="docutils literal">self</tt>. Para a resposta longa, por favor, leia a excelente explicação que o Pedro Werneck fez: <a class="reference external" href="http://www.pedrowerneck.com/o-porque-do-self-explicito-em-python-pt-br.html">http://www.pedrowerneck.com/o-porque-do-self-explicito-em-python-pt-br.html</a></p>
+<p>A segunda pergunta é: para que serve o <tt class="docutils literal">pass</tt>?</p>
+<p>A resposta é que, em Python, ao contrario de várias outras liguagens de programação, os blocos de código <strong>NÃO</strong> são definidos com os caracteres <tt class="docutils literal">{</tt> e <tt class="docutils literal">}</tt>, mas sim com indentação e o caractere <tt class="docutils literal">:</tt>. Devido a esse fato, python necessitava de algo para explicitar quando se quer definir um bloco vazio. O <tt class="docutils literal">pass</tt> foi criado exatamente para explicitar essa situação.</p>
+<p>Um exemplo de uma função vazia feita em linguagem C e a mesma função vazia feita em Python:</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">metodo</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">){</span>
+
+<span class="p">}</span>
+</pre></div>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">metodo</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+<p>Voltando a explicação sobre a classe: O <tt class="docutils literal">atributo1</tt> é um atributo com valor inicial <tt class="docutils literal">None</tt> (nada). Poderia ser <tt class="docutils literal">atributo1 = 0</tt>, por exemplo.</p>
 <p>Importante: Note que para nome de <strong>classes</strong> usamos <em>PalavrasComeçandoPorMaiúscula</em> (isso tambem é conhecido como &quot;CamelCase&quot;) e para nome de <strong>métodos (funções)</strong> usamos <em>minúsculas_separadas_por_underscore</em>. Esta é uma convenção adotada pelos <em>Pythonistas</em> segundo o <a class="reference external" href="http://www.python.org.br/wiki/GuiaDeEstilo">Guia de Estilo</a> <strong>PEP 8</strong> - <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/">Style Guide for Python Code</a> escrito por <a class="reference external" href="http://www.python.org.br/wiki/GuidoVanRossum">Guido Van Rossum</a>.</p>
 <div class="section" id="exemplo-1-calculadora-simples">
 <h2>Exemplo 1 - Calculadora simples</h2>

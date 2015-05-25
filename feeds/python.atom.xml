@@ -761,10 +761,21 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NomeDaClasse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="n"&gt;atributo1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
 
-        &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;metodo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;metodo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
                 &lt;span class="k"&gt;pass&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;tt class="docutils literal"&gt;pass&lt;/tt&gt; significa que você pode escrever o seu código no lugar. E &lt;tt class="docutils literal"&gt;atributo1&lt;/tt&gt; é um atributo com valor inicial &lt;tt class="docutils literal"&gt;None&lt;/tt&gt; (nada). Poderia ser &lt;tt class="docutils literal"&gt;atributo1 = 0&lt;/tt&gt;, por exemplo.&lt;/p&gt;
+&lt;p&gt;A primeira pergunta que você vai ter é o porque do &lt;tt class="docutils literal"&gt;self&lt;/tt&gt; em &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt;. A resposta curta é, todo metodo criado dentro de uma classe deve definir como primeiro parametro o &lt;tt class="docutils literal"&gt;self&lt;/tt&gt;. Para a resposta longa, por favor, leia a excelente explicação que o Pedro Werneck fez: &lt;a class="reference external" href="http://www.pedrowerneck.com/o-porque-do-self-explicito-em-python-pt-br.html"&gt;http://www.pedrowerneck.com/o-porque-do-self-explicito-em-python-pt-br.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A segunda pergunta é: para que serve o &lt;tt class="docutils literal"&gt;pass&lt;/tt&gt;?&lt;/p&gt;
+&lt;p&gt;A resposta é que, em Python, ao contrario de várias outras liguagens de programação, os blocos de código &lt;strong&gt;NÃO&lt;/strong&gt; são definidos com os caracteres &lt;tt class="docutils literal"&gt;{&lt;/tt&gt; e &lt;tt class="docutils literal"&gt;}&lt;/tt&gt;, mas sim com indentação e o caractere &lt;tt class="docutils literal"&gt;:&lt;/tt&gt;. Devido a esse fato, python necessitava de algo para explicitar quando se quer definir um bloco vazio. O &lt;tt class="docutils literal"&gt;pass&lt;/tt&gt; foi criado exatamente para explicitar essa situação.&lt;/p&gt;
+&lt;p&gt;Um exemplo de uma função vazia feita em linguagem C e a mesma função vazia feita em Python:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;metodo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;metodo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Voltando a explicação sobre a classe: O &lt;tt class="docutils literal"&gt;atributo1&lt;/tt&gt; é um atributo com valor inicial &lt;tt class="docutils literal"&gt;None&lt;/tt&gt; (nada). Poderia ser &lt;tt class="docutils literal"&gt;atributo1 = 0&lt;/tt&gt;, por exemplo.&lt;/p&gt;
 &lt;p&gt;Importante: Note que para nome de &lt;strong&gt;classes&lt;/strong&gt; usamos &lt;em&gt;PalavrasComeçandoPorMaiúscula&lt;/em&gt; (isso tambem é conhecido como &amp;quot;CamelCase&amp;quot;) e para nome de &lt;strong&gt;métodos (funções)&lt;/strong&gt; usamos &lt;em&gt;minúsculas_separadas_por_underscore&lt;/em&gt;. Esta é uma convenção adotada pelos &lt;em&gt;Pythonistas&lt;/em&gt; segundo o &lt;a class="reference external" href="http://www.python.org.br/wiki/GuiaDeEstilo"&gt;Guia de Estilo&lt;/a&gt; &lt;strong&gt;PEP 8&lt;/strong&gt; - &lt;a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/"&gt;Style Guide for Python Code&lt;/a&gt; escrito por &lt;a class="reference external" href="http://www.python.org.br/wiki/GuidoVanRossum"&gt;Guido Van Rossum&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="section" id="exemplo-1-calculadora-simples"&gt;
 &lt;h2&gt;Exemplo 1 - Calculadora simples&lt;/h2&gt;
