@@ -6,11 +6,12 @@
 - Versão do Python é antiga e não há planos para mudar isso no momento.&lt;/p&gt;
 &lt;h2&gt;Tekton&lt;/h2&gt;
 &lt;p&gt;É um framework para desenvolvimento Web especialmente pensado para uso no Google App Engine. Nele podemos aproveitar o melhor do Django (scaffold, código HTML e validação de formulários a partir de modelos, apps isoladas) sem perder as vantagens que o GAE nos oferece.  &lt;/p&gt;
-&lt;p&gt;## Como iniciar
- O primeiro passo é baixar  o &lt;a href="https://cloud.google.com/appengine/downloads"&gt;SDK do Google App Engine&lt;/a&gt;, com isso pronto podemos começar a conhecer o Tekton:&lt;/p&gt;
+&lt;h2&gt;Como iniciar&lt;/h2&gt;
+&lt;p&gt;O primeiro passo é baixar  o &lt;a href="https://cloud.google.com/appengine/downloads"&gt;SDK do Google App Engine&lt;/a&gt;, com isso pronto podemos começar a conhecer o Tekton.&lt;/p&gt;
+&lt;p&gt;Em seguida, vamos baixar a aplicação template.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;wget https://github.com/renzon/tekton/archive/master.zip
-&lt;span class="nv"&gt;$ &lt;/span&gt;unzip master
-&lt;span class="nv"&gt;$ &lt;/span&gt;mv master projeto_appengine &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;projeto_appengine     
+&lt;span class="nv"&gt;$ &lt;/span&gt;unzip master &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; rm master.zip
+&lt;span class="nv"&gt;$ &lt;/span&gt;mv tekton-master projeto_appengine &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;projeto_appengine     
 &lt;/pre&gt;&lt;/div&gt;
 
 
