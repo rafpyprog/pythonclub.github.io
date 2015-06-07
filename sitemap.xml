@@ -5,37 +5,44 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/</loc>
-<lastmod>2015-05-31T22:01:20-00:00</lastmod>
+<lastmod>2015-06-07T14:46:43-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2015-05-31T22:01:20-00:00</lastmod>
+<lastmod>2015-06-07T14:46:43-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2015-05-31T22:01:20-00:00</lastmod>
+<lastmod>2015-06-07T14:46:43-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2015-05-31T22:01:20-00:00</lastmod>
+<lastmod>2015-06-07T14:46:43-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2015-05-31T22:01:20-00:00</lastmod>
+<lastmod>2015-06-07T14:46:43-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html</loc>
+<lastmod>2015-06-07T11:00:00-03:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -375,6 +382,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/category/anti-patterns.html</loc>
+<lastmod>2015-06-07T11:00:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/category/banco-de-dados.html</loc>
 <lastmod>2014-05-16T01:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -564,8 +578,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/ipython.html</loc>
-<lastmod>2015-02-15T22:30:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/anti-pattern.html</loc>
+<lastmod>2015-06-07T11:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -732,6 +746,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/tag/mutable.html</loc>
+<lastmod>2015-06-07T11:00:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/tag/vitualenv.html</loc>
 <lastmod>2014-05-11T02:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -748,6 +769,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/tag/testes-funcionais.html</loc>
 <lastmod>2014-05-09T12:00:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/function.html</loc>
+<lastmod>2015-06-07T11:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -782,7 +810,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/python.html</loc>
-<lastmod>2015-05-24T00:00:00-03:06</lastmod>
+<lastmod>2015-06-07T11:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -816,6 +844,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/tag/six.html</loc>
+<lastmod>2014-05-04T22:21:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/tag/coverage.html</loc>
 <lastmod>2014-05-06T19:35:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -837,8 +872,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/six.html</loc>
-<lastmod>2014-05-04T22:21:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/class.html</loc>
+<lastmod>2015-06-07T11:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -874,6 +909,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/tag/djangobook.html</loc>
 <lastmod>2014-05-01T13:16:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/what-the-flask.html</loc>
+<lastmod>2014-06-19T22:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -970,8 +1012,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/what-the-flask.html</loc>
-<lastmod>2014-06-19T22:30:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/ipython.html</loc>
+<lastmod>2015-02-15T22:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1020,7 +1062,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/author/diego-garcia.html</loc>
-<lastmod>2015-02-15T22:30:00-03:06</lastmod>
+<lastmod>2015-06-07T11:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
