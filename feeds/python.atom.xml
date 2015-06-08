@@ -52,7 +52,7 @@ Responsável por interagir diretamente com a Query.&lt;/li&gt;
 &lt;/dd&gt;
 &lt;dt&gt;&lt;strong&gt;Query&lt;/strong&gt;&lt;/dt&gt;
 &lt;dd&gt;&lt;ul class="first last simple"&gt;
-&lt;li&gt;Cria uma estrutura de dados complexa com todos selementos presentes em uma consulta.
+&lt;li&gt;Cria uma estrutura de dados complexa com todos os elementos presentes em uma consulta.
 Gera uma representação SQL de um QuerySet.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/dd&gt;
@@ -239,7 +239,7 @@ Ele faz isso através de um &lt;tt class="docutils literal"&gt;JOIN&lt;/tt&gt; n
     &lt;span class="s"&gt;&amp;#39;Lucas&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Teste 01&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Teste 02&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Nome 3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c"&gt;# 1000 nomes no total&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 
-&lt;span class="c"&gt;# Inserimos um cadastro para cada nome que existe na nossa varivavel `nomes`&lt;/span&gt;
+&lt;span class="c"&gt;# Inserimos um cadastro para cada nome que existe na nossa variável `nomes`&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;nomes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;Cadastro&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 

@@ -148,7 +148,7 @@ Responsável por interagir diretamente com a Query.</li>
 </dd>
 <dt><strong>Query</strong></dt>
 <dd><ul class="first last simple">
-<li>Cria uma estrutura de dados complexa com todos selementos presentes em uma consulta.
+<li>Cria uma estrutura de dados complexa com todos os elementos presentes em uma consulta.
 Gera uma representação SQL de um QuerySet.</li>
 </ul>
 </dd>
@@ -335,7 +335,7 @@ Ele faz isso através de um <tt class="docutils literal">JOIN</tt> na instruçã
     <span class="s">&#39;Lucas&#39;</span><span class="p">,</span> <span class="s">&#39;Teste 01&#39;</span><span class="p">,</span> <span class="s">&#39;Teste 02&#39;</span><span class="p">,</span> <span class="s">&#39;Nome 3&#39;</span><span class="p">,</span> <span class="c"># 1000 nomes no total</span>
 <span class="p">]</span>
 
-<span class="c"># Inserimos um cadastro para cada nome que existe na nossa varivavel `nomes`</span>
+<span class="c"># Inserimos um cadastro para cada nome que existe na nossa variável `nomes`</span>
 <span class="o">&gt;&gt;</span> <span class="k">for</span> <span class="n">nome</span> <span class="ow">in</span> <span class="n">nomes</span><span class="p">:</span>
     <span class="n">Cadastro</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nome</span><span class="o">=</span><span class="n">nome</span><span class="p">)</span>
 
