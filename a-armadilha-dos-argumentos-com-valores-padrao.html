@@ -263,6 +263,17 @@ Ou seja, por questões de optimização, seguindo nosso exemplo, o python não c
 </pre></div>
 
 
+<p>Ou, para deixar o código ainda mais elegante, podemos simplificar a condicional com um simples <code>or</code>:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">my_list</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">my_list</span> <span class="o">=</span> <span class="n">my_list</span> <span class="ow">or</span> <span class="p">[]</span>
+    <span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+</pre></div>
+
+
+<blockquote>
+<p>Obrigado <a href="http://pythonclub.com.br/author/bruno-cezar-rocha.html">Bruno Rocha</a> pela sugestão.</p>
+</blockquote>
 <p>Pronto, sem surpresas e sem armadilhas :).</p>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">my_function</span><span class="p">()</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
