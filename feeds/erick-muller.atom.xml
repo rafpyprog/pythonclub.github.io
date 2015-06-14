@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/erick-muller.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2015-06-14T12:58:00-03:00</updated><entry><title>Instalando o PyCharm no Ubuntu (e irmãos)</title><link href="http://pythonclub.com.br/instalando-pycharm-ubuntu.html" rel="alternate"></link><updated>2015-06-14T12:58:00-03:00</updated><author><name>Erick Müller</name></author><id>tag:pythonclub.com.br,2015-06-14:instalando-pycharm-ubuntu.html</id><summary type="html">&lt;h2&gt;Instalando o PyCharm no Ubuntu (e irmãos)&lt;/h2&gt;
+&lt;h1&gt;Instalando o PyCharm no Ubuntu (e irmãos)&lt;/h1&gt;
+&lt;p&gt;O objetivo aqui é instalar o PyCharm no Ubuntu e distribuições "irmãs" (como o Mint); estou instalando a versão &lt;strong&gt;Community Edition&lt;/strong&gt;, que acredito que é a que muita gente que começa com essa poderosa IDE vai instalar pra dar os primeiros passos, experimentar.&lt;/p&gt;
+&lt;p&gt;(aliás, bom avisar antes de começar: fiz o guia baseado no Ubuntu 14.04 e no Linux Mint 17.1; mas já fiz o mesmo procedimento em versões anteriores tanto do PyCharm quanto do Ubuntu, e com a versão "completa" do PyCharm, e funcionou bem.)  &lt;/p&gt;
+&lt;h2&gt;Parte 1 - instalar o Java&lt;/h2&gt;
+&lt;p&gt;As aplicações da JetBrains não são exatamente compatíveis com a versão do Java que vem por padrão no Ubuntu. Por isso, precisamos atualizar. &lt;/p&gt;
+&lt;p&gt;Abra o terminal e execute os comandos abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+sudo apt-get install oracle-java8-installer -y
+sudo apt-get install oracle-java8-set-default -y
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Após os comandos acima, veja se a instalação está correta, executando no console:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;java -version
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;a saída esperada é algo como:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;java version &amp;quot;1.8.0_45&amp;quot;
+Java(TM) SE Runtime Environment (build 1.8.0_45-b14)
+Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Parte 2 - pip e virtualenv&lt;/h2&gt;
+&lt;p&gt;O PyCharm usa o &lt;strong&gt;pip&lt;/strong&gt; para baixar módulos/bibliotecas/extensões (como quiser chamar) do python, e o &lt;strong&gt;virtualenv&lt;/strong&gt; para criar os queridos ambientes virtuais que mantém a sanidade dos programadores python. Então, para tirar proveito dessas funcionalidades, é bom garantir que estejam instalados também. &lt;/p&gt;
+&lt;p&gt;Para isto, abra o console e:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;cd ~/Downloads
+wget -c https://bootstrap.pypa.io/get-pip.py
+sudo -H python2 get-pip.py
+sudo -H python3 get-pip.py
+sudo -H pip2 install virtualenv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Parte 3 - copiar o PyCharm&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;clique no link ao lado para ir à página de &lt;a href="https://www.jetbrains.com/pycharm/download/"&gt;Download do PyCharm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;clique em "Download Community"&lt;/li&gt;
+&lt;li&gt;grave o arquivo no diretório que quiser&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Parte 4 - instalar o PyCharm&lt;/h2&gt;
+&lt;p&gt;Com os pré-requisitos prontos e instalados, vamos ao prato principal: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo tar -C /opt/ -xzf &amp;lt;diretorio_onde_gravou_o_download&amp;gt;/pycharm-community-4.5.1.tar.gz
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Abra o navegador de arquivos e vá ao diretório &lt;em&gt;/opt/pycharm-community-4.5.1&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Entre no diretório 'bin' e, com dois cliques sobre, execute o script &lt;em&gt;'pycharm.sh'&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Se aparecer uma janela perguntando como rodar o programa, clique no último botão (&lt;em&gt;'Executar'&lt;/em&gt; ou &lt;em&gt;'Run'&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;Dê "OK" na janela que abrir &lt;/li&gt;
+&lt;li&gt;E na próxima janela, deixe todas as últimas opções selecionadas. Ao clicar em &lt;em&gt;'OK'&lt;/em&gt; o PyCharm vai pedir a senha de 'root' para criar as entradas no menu. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img src="/images/ehriq/ConfigPyCharm.png" alt="Tela de configuração final"&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Pronto, é isso. O software está instalado, e pronto para uso.&lt;/p&gt;</summary><category term="python"></category><category term="blog"></category><category term="tutorial"></category><category term="pycharm"></category></entry></feed>
