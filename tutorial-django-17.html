@@ -110,14 +110,21 @@
 <div class="section" id="o-que-voce-precisa">
 <h2>O que você precisa?</h2>
 <ul class="simple">
-<li><a class="reference external" href="https://virtualenv.pypa.io/en/latest/">VirtualEnv</a></li>
+<li>Instale primeiro o <a class="reference external" href="http://pip.readthedocs.org/en/latest/">pip</a></li>
 </ul>
-<div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install -y virtualenv
+<p>Primeira opção</p>
+<div class="highlight"><pre><span class="nv">$ </span>wget https://bootstrap.pypa.io/get-pip.py
+<span class="nv">$ </span>sudo python get-pip.py
+</pre></div>
+<p>Segunda opção</p>
+<div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install -y python-pip
 </pre></div>
 <ul class="simple">
-<li><a class="reference external" href="http://pip.readthedocs.org/en/latest/">pip</a></li>
+<li><a class="reference external" href="https://virtualenv.pypa.io/en/latest/">VirtualEnv</a></li>
 </ul>
-<div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install -y python-pip
+<div class="highlight"><pre><span class="nv">$ </span>sudo pip install virtualenv
+<span class="nv">$ </span><span class="c"># ou</span>
+<span class="nv">$ </span>sudo apt-get install -y virtualenv
 </pre></div>
 </div>
 <div class="section" id="criando-o-ambiente">

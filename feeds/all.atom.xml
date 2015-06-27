@@ -2454,14 +2454,21 @@ Note que os resultados são apresentados por cada &lt;em&gt;Task&lt;/em&gt; e s�
 &lt;div class="section" id="o-que-voce-precisa"&gt;
 &lt;h2&gt;O que você precisa?&lt;/h2&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://virtualenv.pypa.io/en/latest/"&gt;VirtualEnv&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Instale primeiro o &lt;a class="reference external" href="http://pip.readthedocs.org/en/latest/"&gt;pip&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install -y virtualenv
+&lt;p&gt;Primeira opção&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;wget https://bootstrap.pypa.io/get-pip.py
+&lt;span class="nv"&gt;$ &lt;/span&gt;sudo python get-pip.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Segunda opção&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install -y python-pip
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://pip.readthedocs.org/en/latest/"&gt;pip&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://virtualenv.pypa.io/en/latest/"&gt;VirtualEnv&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install -y python-pip
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo pip install virtualenv
+&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="c"&gt;# ou&lt;/span&gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install -y virtualenv
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="criando-o-ambiente"&gt;
