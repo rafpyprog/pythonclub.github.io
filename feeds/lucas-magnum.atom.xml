@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/lucas-magnum.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2015-05-10T13:55:00-03:00</updated><entry><title>Como otimizar suas consultas no Django - De N a 1 em 20 minutos</title><link href="http://pythonclub.com.br/django-introducao-queries.html" rel="alternate"></link><updated>2015-05-10T13:55:00-03:00</updated><author><name>Lucas Magnum</name></author><id>tag:pythonclub.com.br,2015-05-10:django-introducao-queries.html</id><summary type="html">&lt;p&gt;Essa semana fiz uma palestra em um BEV no &lt;a class="reference external" href="http://luizalabs.com/"&gt;Luizalabs&lt;/a&gt;.
 Resolvi falar sobre Django, pois é um framework que utilizamos na empresa para diversos projetos.&lt;/p&gt;
 &lt;p&gt;O objetivo é ensinar algumas técnicas simples e que auxiliam a diminuir o número de consultas que realizamos
-no banco de dados.&lt;/p&gt;
+no banco de dados.de&lt;/p&gt;
 &lt;p&gt;Os slides podem acessados &lt;a class="reference external" href="https://docs.google.com/presentation/d/1SV27J8rFfORxE_JrU5NPahfqDJk6y87MuQUeKVTA0Gw/edit?usp=sharing"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Então, vamos lá!&lt;/p&gt;
 &lt;div class="section" id="overview"&gt;
@@ -317,7 +317,7 @@ Se fosse preciso apagar todos os dados, seria comum se alguém escrevesse assim:
 &lt;p&gt;Porém, pode-se fazer dessa maneira:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;connection&lt;/span&gt;
 
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Cadastro&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delete&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Cadastro&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delete&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;queries&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="mi"&gt;1&lt;/span&gt;

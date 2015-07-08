@@ -18,7 +18,7 @@
     <meta property="og:title" content="Como otimizar suas consultas no Django - De N a 1 em 20 minutos" />
     <meta property="og:site_name" content="PythonClub" />
     <meta property="og:url" content="http://pythonclub.com.br/django-introducao-queries.html" />
-    <meta property="og:description" content="Essa semana fiz uma palestra em um BEV no Luizalabs. Resolvi falar sobre Django, pois é um framework que utilizamos na empresa para diversos projetos. O objetivo é ensinar algumas técnicas simples e que auxiliam a diminuir o número de consultas que realizamos no banco de dados. Os slides podem ..." />
+    <meta property="og:description" content="Essa semana fiz uma palestra em um BEV no Luizalabs. Resolvi falar sobre Django, pois é um framework que utilizamos na empresa para diversos projetos. O objetivo é ensinar algumas técnicas simples e que auxiliam a diminuir o número de consultas que realizamos no banco de dados.de Os slides ..." />
     <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
@@ -98,7 +98,7 @@
             <p>Essa semana fiz uma palestra em um BEV no <a class="reference external" href="http://luizalabs.com/">Luizalabs</a>.
 Resolvi falar sobre Django, pois é um framework que utilizamos na empresa para diversos projetos.</p>
 <p>O objetivo é ensinar algumas técnicas simples e que auxiliam a diminuir o número de consultas que realizamos
-no banco de dados.</p>
+no banco de dados.de</p>
 <p>Os slides podem acessados <a class="reference external" href="https://docs.google.com/presentation/d/1SV27J8rFfORxE_JrU5NPahfqDJk6y87MuQUeKVTA0Gw/edit?usp=sharing">aqui</a>.</p>
 <p>Então, vamos lá!</p>
 <div class="section" id="overview">
@@ -413,7 +413,7 @@ Se fosse preciso apagar todos os dados, seria comum se alguém escrevesse assim:
 <p>Porém, pode-se fazer dessa maneira:</p>
 <div class="highlight"><pre><span class="o">&gt;&gt;</span> <span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">connection</span>
 
-<span class="o">&gt;&gt;</span> <span class="n">Cadastro</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="o">&gt;&gt;</span> <span class="n">Cadastro</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 
 <span class="o">&gt;&gt;</span> <span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">queries</span><span class="p">)</span>
 <span class="mi">1</span>
