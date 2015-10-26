@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/raphael-passini-diniz.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2015-10-23T10:00:00-02:00</updated><entry><title>Class Based Views no Django</title><link href="http://pythonclub.com.br/class-based-views-django.html" rel="alternate"></link><updated>2015-10-23T10:00:00-02:00</updated><author><name>Raphael Passini Diniz</name></author><id>tag:pythonclub.com.br,2015-10-23:class-based-views-django.html</id><summary type="html">&lt;p&gt;Esse tutorial tem como objetivo explicar o básico sobre Class Based Views
+no Django. Por motivos de agilidade vou usar &lt;code&gt;CBV&lt;/code&gt; para me referir as
+&lt;code&gt;Class Based Views&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Segundo a documentação do Django sobre CBV:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CBV's permitem você estruturar as suas views e reutilizar código aproveitando
+  heranças e mixinis&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;O Django já vem CBV's genéricas que atendem as necessidades da maioria das aplicações.
+Essas views genéricas são flexiveis o sufiente para você poder adaptá-las as
+suas necessidades.&lt;/p&gt;
+&lt;p&gt;Nesse tutorial eu vou falar brevemente sobre os 4 grupos de CBV's que existem
+no Django atualmente:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#base_views"&gt;Base views&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#view"&gt;View&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#template_view"&gt;TemplateView&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#redirect_view"&gt;RedirectView&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#display_views"&gt;Display views&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#detail_view"&gt;DetailView&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#list_view"&gt;ListView&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#editing_views"&gt;Editing views&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#model_view"&gt;Model based Views&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#create_update_delete_view"&gt;CreateView, UpdateView, DeleteView&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#date_views"&gt;Date views&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#archive_view"&gt;ArchiveView&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#year_view"&gt;YearView&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#month_view"&gt;MonthView&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#week_view"&gt;WeekView&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#day_view"&gt;DayView&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#today_view"&gt;TodayView&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#date_detail_view"&gt;DateDetailView&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#conclusao"&gt;Conclusão&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ref"&gt;Referências&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Antes de começarmos a falar sobre as CBV's vamos ver como apontar uma rota
+ do Django para uma CBV:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TemplateView&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;meuapp.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;AboutView&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^about/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AboutView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;()),&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;&lt;a name="base_views"&gt;&lt;/a&gt;Base Views&lt;/h2&gt;
+&lt;p&gt;As classes listadas abaixo contém muito da funcionalidade necessária para criar
+views no Django. Essas classes são a base sob a qual as outras CBV's são
+construídas.&lt;/p&gt;
+&lt;h3&gt;&lt;a name="view"&gt;&lt;/a&gt;View&lt;/h3&gt;
+&lt;p&gt;A classe génerica &lt;em&gt;master&lt;/em&gt;. &lt;strong&gt;Todas&lt;/strong&gt; as outras classes herdam dessa classe.
+O fluxo básico de execução dessa classe quando recebe uma requisição é:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;dispatch()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;http_method_not_allowed()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;options()&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A função &lt;code&gt;dispatch()&lt;/code&gt; verifica se a classe tem um método com o nome do verbo
+HTTP usado na requisição. Caso não haja um &lt;code&gt;http.HttpResponseNotAllowed&lt;/code&gt; é
+retornado.&lt;/p&gt;
+&lt;p&gt;Essa classe sempre responde a requisições com o verbo &lt;code&gt;OPTIONS&lt;/code&gt; retornando
+nesse caso uma lista com os verbos suportados. A não ser que o método
+&lt;code&gt;options()&lt;/code&gt; seja sobrescrito.&lt;/p&gt;
+&lt;p&gt;Um exemplo de implementação:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;View&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;View&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Hello, World!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;No exemplo acima a classe só responde a requisições do tipo &lt;code&gt;GET&lt;/code&gt; e
+&lt;code&gt;OPTIONS&lt;/code&gt;, todas as outras requisições retornam
+&lt;code&gt;http.HttpResponseNotAllowed&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;&lt;a name="template_view"&gt;&lt;/a&gt;Template View&lt;/h3&gt;
+&lt;p&gt;Renderiza um template. O fluxo básico de execução dessa clase quando recebe
+uma requisição é:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;dispatch()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;http_method_not_allowed()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_context_data()&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Quando você precisa apenas renderizar uma página para o usuário essa com certeza
+é a melhor CBV para o caso. Você pode editar o contexto que o template recebe
+sobrescrevendo a função &lt;code&gt;get_context_data()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Um exemplo de implementação:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TemplateView&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;articles.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;HomePageView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TemplateView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="n"&gt;template_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;home.html&amp;quot;&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_context_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HomePageView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_context_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;latest_articles&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()[:&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;No exemplo acima o template &lt;em&gt;home.html&lt;/em&gt; será renderizado e vai receber como
+contexto uma variável chamada &lt;code&gt;lastest_articles&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Uma coisa interessante é que o contexto da &lt;code&gt;TemplateView&lt;/code&gt; é populado pelo
+&lt;a href="https://docs.djangoproject.com/en/1.8/ref/class-based-views/mixins-simple/#django.views.generic.base.ContextMixin"&gt;ContextMixin&lt;/a&gt;
+esse mixin pega automaticamente os argumentos da URL que serviu a View.&lt;/p&gt;
+&lt;p&gt;Considere por exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HelloView&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^say_hello/(?P&amp;lt;name&amp;gt;[\w_-]+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HelloView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;say_hello&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;No caso do exemplo acima o template renderizado pela &lt;code&gt;HelloView&lt;/code&gt; teria
+em seu contexto a variável &lt;code&gt;name&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;&lt;a name="redirect_view"&gt;&lt;/a&gt;Redirect View&lt;/h3&gt;
+&lt;p&gt;Redireciona o usuário para a url informada.&lt;/p&gt;
+&lt;p&gt;A URL a ser redirecionada pode conter parâmetros no estilo dicionário-de-strings.
+Os parâmetros capturados na URL do &lt;code&gt;RedirectView&lt;/code&gt; serão repassados para a
+URL que o usuário está sendo redirecionado.&lt;/p&gt;
+&lt;p&gt;O fluxo básico de execução dessa clase quando recebe
+uma requisição é:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;dispatch()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;http_method_not_allowed()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_redirect_url()&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Considere a seguinte configuração de URL's para o exemplo de implementação:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;RedirectView&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;article.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArticleCounterRedirectView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ArticleDetail&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^counter/(?P&amp;lt;pk&amp;gt;[0-9]+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ArticleCounterRedirectView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;article-counter&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^details/(?P&amp;lt;pk&amp;gt;[0-9]+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ArticleDetail&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;article-detail&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Exemplo de implementação:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.shortcuts&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;get_object_or_404&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;RedirectView&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;articles.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ArticleCounterRedirectView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;RedirectView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="n"&gt;permanent&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+    &lt;span class="n"&gt;query_string&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+    &lt;span class="n"&gt;pattern_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;article-detail&amp;#39;&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_redirect_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;article&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_object_or_404&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Article&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pk&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;pk&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+        &lt;span class="n"&gt;article&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;update_counter&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ArticleCounterRedirectView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_redirect_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Principais atributos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;url&lt;/code&gt;: A URL destino no formato de String&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pattern_name&lt;/code&gt;: O nome do padrão de URL. Um &lt;code&gt;reverse&lt;/code&gt; será aplicado
+  usando os mesmos
+  &lt;code&gt;args&lt;/code&gt; e &lt;code&gt;kwargs&lt;/code&gt; passados para a &lt;code&gt;RedirectView&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;permanent&lt;/code&gt;: Se for &lt;code&gt;True&lt;/code&gt; retorna o status code como 301 caso contrário
+  retorna 302.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;query_string&lt;/code&gt;: Se for &lt;code&gt;True&lt;/code&gt; a query_string será enviada para a URL de
+  destino.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a name="display_views"&gt;&lt;/a&gt;Display Views&lt;/h2&gt;
+&lt;p&gt;As duas views abaixo foram desenvolvidas para exibir informações. Tipicamente
+essas views são as mais usadas na maioria dos projetos.&lt;/p&gt;
+&lt;h3&gt;&lt;a name="detail_view"&gt;&lt;/a&gt;DetailView&lt;/h3&gt;
+&lt;p&gt;Renderiza um template contendo em seu contexto &lt;strong&gt;um objeto&lt;/strong&gt; obtido pelo
+parâmetro enviado na URL.&lt;/p&gt;
+&lt;p&gt;No fluxo de execução dessa view o objeto que está sendo utilizado está em
+&lt;code&gt;self.object&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;O fluxo básico de execução dessa clase quando recebe
+uma requisição é:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;dispatch()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;http_method_not_allowed()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_template_names()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_slug_field()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_queryset()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_object()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_context_object_name()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_context_data()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;render_to_response()&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;O fluxo parece grande e complexo mas na verdade é muito simples e facilmente
+customizável. Basicamente o que acontece é:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;get_template_names()&lt;/code&gt; retorna uma lista de templates que devem ser usados para
+renderizar a resposta. Caso o primeiro template da lista não seja encontrado o
+Django tenta o segundo e assim por diante.&lt;/p&gt;
+&lt;p&gt;Em seguida o &lt;code&gt;get_slug_field()&lt;/code&gt; entra em ação, essa função deve retornar o
+nome do campo que será usado para fazer a busca pelo objeto. Por default o
+Django procura pelo campo &lt;code&gt;slug&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Agora o &lt;code&gt;get_queryset&lt;/code&gt; deve retornar um queryset que será usado para buscar
+um objeto. Aqui é um ótimo lugar para, por exemplo, aplicar um filtro para
+exibir somente o Artigo cujo autor é o usuário logado. Considere o exemplo
+abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;ArtigoView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;DetailView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Artigo&lt;/span&gt;
+
+    &lt;span class="n"&gt;get_queryset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# ... o restante do código foi suprimido&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;IMPORTANTE:&lt;/strong&gt; O &lt;code&gt;get_queryset()&lt;/code&gt; é chamado pela implementação default do
+método &lt;code&gt;get_object()&lt;/code&gt;, se o &lt;code&gt;get_object()&lt;/code&gt; for sobrescrito a chamada ao
+&lt;code&gt;get_queryset()&lt;/code&gt; pode não ser realizada.&lt;/p&gt;
+&lt;p&gt;O &lt;code&gt;get_object()&lt;/code&gt; então é o responsável por retornar o objeto que será enviado
+para o template. Normalmente essa função não precisa ser sobrescrita.&lt;/p&gt;
+&lt;p&gt;Depois de obter o objeto que será enviado para o template é necessário saber
+qual será o nome desse objeto no contexto do template, isso é feito pela função
+&lt;code&gt;get_context_object_name()&lt;/code&gt;, por default o nome do objeto no template será o
+nome do &lt;code&gt;Model&lt;/code&gt;, no exemplo acima seria &lt;code&gt;artigo&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Depois disso temos o &lt;code&gt;get_context_data()&lt;/code&gt; que já foi comentado acima e então
+o &lt;code&gt;get()&lt;/code&gt; que obtém o objeto e coloca no contexto, e em seguida o
+&lt;code&gt;render_to_response&lt;/code&gt; que renderiza o template.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IMPORTANTE:&lt;/strong&gt; É importante notar que o Django oferece variáveis de
+instância para facilitar a customização do comportamento da classe.
+Por exemplo a troca do nome do objeto pode ser feita alterando a variável de
+instância &lt;code&gt;context_object_name&lt;/code&gt; ao invés de sobrescrever a função
+&lt;code&gt;get_object_name()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Abaixo segue um exemplo, onde exibir os detalhes de um &lt;em&gt;Artigo&lt;/em&gt; somente se o
+usuário for o autor dele e vamos pegar esse &lt;em&gt;Artigo&lt;/em&gt; pelo campo &lt;code&gt;titulo&lt;/code&gt; e
+renderizar esse artigo no template &lt;code&gt;detalhe_artigo.html&lt;/code&gt; com o nome
+&lt;code&gt;meu_artigo&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;views.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.detail&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DetailView&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.utils&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;timezone&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;articles.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ArticleDetailView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;DetailView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;slug_field&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;titulo&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
+    &lt;span class="n"&gt;context_object_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;meu_artigo&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;template_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;detalhe_artigo.html&amp;#39;&lt;/span&gt;
+
+    &lt;span class="n"&gt;get_queryset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;article.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArticleDetailView&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^(?P&amp;lt;titulo&amp;gt;[-\w]+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ArticleDetailView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;article-detail&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;detalhe_artigo.html&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;{{ meu_artigo.titulo }}&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;{{ meu_artigo.conteudo }}&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Reporter: {{ meu_artigo.user.name }}&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Published: {{ meu_artigo.data_publicacao|date }}&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;&lt;a name="list_view"&gt;&lt;/a&gt;ListView&lt;/h3&gt;
+&lt;p&gt;Uma página que representa uma lista de objetos.
+Enquanto essa view está executando a variável &lt;code&gt;self.object_list&lt;/code&gt; vai conter
+a lista de objetos que a view está utilizando.&lt;/p&gt;
+&lt;p&gt;O fluxo básico de execução dessa clase quando recebe
+uma requisição é:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;dispatch()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;http_method_not_allowed()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_template_names()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_queryset()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_object()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_context_object_name()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_context_data()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;render_to_response()&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Nada de novo aqui certo? Podemos exibir apenas uma lista de Artigos que estão
+com &lt;code&gt;status='publicado'&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.list&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ListView&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.utils&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;timezone&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;articles.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Artigo&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ArticleListView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ListView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Artigo&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_queryset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Artigo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;publicado&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Outra opção seria:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.list&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ListView&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.utils&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;timezone&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;articles.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Artigo&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ArticleListView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ListView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Artigo&lt;/span&gt;
+    &lt;span class="n"&gt;queryset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Artigo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;publicado&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;artigo_list.html&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Articles&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+{% for article in object_list %}
+    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;{{ article.pub_date|date }} - {{ article.headline }}&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+{% empty %}
+    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;No articles yet.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+{% endfor %}
+&lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;DICA:&lt;/strong&gt; Normalmente sobrescrevemos as funções quando o retorno depende dos
+parâmetros da requisição e utilizamos as variáveis de instância quando não há
+essa dependência.&lt;/p&gt;
+&lt;p&gt;O nome do template que é usado em ambas as views &lt;code&gt;DetailView&lt;/code&gt; e &lt;code&gt;ListView&lt;/code&gt;
+é determinado da seguinte forma:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;O valor da variável &lt;code&gt;template_name&lt;/code&gt; na View (se definido)&lt;/li&gt;
+&lt;li&gt;O valor do campo &lt;code&gt;template_name_field&lt;/code&gt; na instância do objeto que a view
+  esta usando.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;app_label&amp;gt;/&amp;lt;model_name&amp;gt;&amp;lt;template_name_suffix&amp;gt;.html&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a name="editing_views"&gt;&lt;/a&gt;Editing Views&lt;/h2&gt;
+&lt;p&gt;As views descritas abaixo contém o comportamento básico para edição de conteúdo&lt;/p&gt;
+&lt;h3&gt;&lt;a name="form_view"&gt;&lt;/a&gt;FormView&lt;/h3&gt;
+&lt;p&gt;Uma view que mostra um formulário. Se houver erro, mostra o formulário novamente
+contendo os erros de validação; Em caso de sucesso redireciona o usuário para
+uma nova URL.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;forms.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ContactForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Form&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;message&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;widget&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Textarea&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;send_email&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="c"&gt;# send email using the self.cleaned_data dictionary&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;views.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.forms&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ContactForm&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.edit&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;FormView&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ContactView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;FormView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;template_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;contact.html&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;form_class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ContactForm&lt;/span&gt;
+    &lt;span class="n"&gt;success_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/thanks/&amp;#39;&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;form_valid&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="c"&gt;# This method is called when valid form data has been POSTed.&lt;/span&gt;
+        &lt;span class="c"&gt;# It should return an HttpResponse.&lt;/span&gt;
+        &lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send_email&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ContactView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;form_valid&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;contact.html&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;form&lt;/span&gt; &lt;span class="na"&gt;action=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;method=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;{% csrf_token %}
+    {{ form.as_p }}
+    &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;submit&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Send message&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;As funções mais importantes do &lt;code&gt;FormView&lt;/code&gt; são:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;form_valid()&lt;/code&gt;: Chamada quando o formulário é validado com sucesso&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;form_invalid()&lt;/code&gt;: Chamada quando o formuĺário contém erros&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_sucess_url()&lt;/code&gt;: Chamada quando o formulário é validado com sucesso
+  e retorna a url para qual o usuário deve ser redirecionado.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a name="model_view"&gt;&lt;/a&gt;Views para lidar com &lt;code&gt;models&lt;/code&gt; (ModelForms)&lt;/h3&gt;
+&lt;p&gt;Grande parte do "poder" das CBV's vem quando precisamos trabalhar com models.&lt;/p&gt;
+&lt;p&gt;As views listadas abaixo: &lt;code&gt;CreateView&lt;/code&gt;, &lt;code&gt;UpdateView&lt;/code&gt; e &lt;code&gt;DeleteView&lt;/code&gt; foram
+criadas para facilitar esse trabalho com os models, essas views podem gerar um
+&lt;code&gt;ModelForm&lt;/code&gt; de maneira automatica, desde que seja possível determinar qual
+é o model que a view esta utilizando.&lt;/p&gt;
+&lt;p&gt;A view vai tentar determinar o model a ser usado das seguintes formas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Se houver um atributo &lt;code&gt;model&lt;/code&gt; na classe&lt;/li&gt;
+&lt;li&gt;Se o método &lt;code&gt;get_object()&lt;/code&gt; retorna um objeto, a classe desse objeto será
+  usada&lt;/li&gt;
+&lt;li&gt;Se houver um atributo &lt;code&gt;queryset&lt;/code&gt; o model do &lt;code&gt;queryset&lt;/code&gt; será utilizado&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Você não precisa nem mesmo definir um &lt;code&gt;success_url&lt;/code&gt; as views &lt;code&gt;CreateView&lt;/code&gt; e
+&lt;code&gt;UpdateView&lt;/code&gt; utilizam automaticamente a função &lt;code&gt;get_absolute_url()&lt;/code&gt; do model
+se essa função existir.&lt;/p&gt;
+&lt;p&gt;Você também pode customizar o formulário usado na view se você precisar de algum
+tratamento adicional, para fazer isso basta definir a classe de formulários a ser
+usada no atributo &lt;code&gt;form_class&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.edit&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CreateView&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.forms&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;AuthorForm&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AuthorCreate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CreateView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;
+    &lt;span class="n"&gt;form_class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;AuthorForm&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;&lt;a name="create_update_delete_view"&gt;&lt;/a&gt;CreateView, UpdateView e DeleteView&lt;/h3&gt;
+&lt;p&gt;Uma view que exibe um form para criar, atualizar ou apagaer um objeto.
+Caso existam erros no formulário, este é exibido novamente junto com as
+mensagens de erro.&lt;/p&gt;
+&lt;p&gt;Em caso de sucesso o objeto é salvo.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;models.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.urlresolvers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_absolute_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;author-detail&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;pk&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pk&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;views.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.edit&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CreateView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;UpdateView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;DeleteView&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.urlresolvers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;reverse_lazy&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AuthorCreate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CreateView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;
+    &lt;span class="n"&gt;fields&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AuthorUpdate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;UpdateView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;
+    &lt;span class="n"&gt;fields&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AuthorDelete&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;DeleteView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;
+    &lt;span class="n"&gt;success_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;reverse_lazy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;author-list&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;AuthorCreate&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AuthorUpdate&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AuthorDelete&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="c"&gt;# ...&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;author/add/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AuthorCreate&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;author_add&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;author/(?P&amp;lt;pk&amp;gt;[0-9]+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AuthorUpdate&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;author_update&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;author/(?P&amp;lt;pk&amp;gt;[0-9]+)/delete/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AuthorDelete&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;author_delete&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O atributo &lt;code&gt;fields&lt;/code&gt; determina quais campos do model devem estar presentes no
+formulário. É obrigatório especificar o atributo &lt;code&gt;fields&lt;/code&gt; ou então o atributo
+&lt;code&gt;form_class&lt;/code&gt;, nunca os dois ao mesmo tempo, pois isso geraria uma exceção
+&lt;a href="https://docs.djangoproject.com/en/1.8/ref/exceptions/#django.core.exceptions.ImproperlyConfigured"&gt;&lt;code&gt;ImproperlyConfigured&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;É importante notar também que a &lt;code&gt;DeleteView&lt;/code&gt; exibe as informações do objeto que
+será deletado quando é acessada usando o verbo &lt;code&gt;GET&lt;/code&gt;, quando usado o verbo
+&lt;code&gt;POST&lt;/code&gt; o objeto é efetivamente apagado.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DICA&lt;/strong&gt;: O nome dos templates é determinado da seguinte forma:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;CreateView&lt;/code&gt; e UpdateView usam myapp/author_form.html&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DeleteView&lt;/code&gt; usa myapp/author_confirm_delete.html&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a name="date_views"&gt;&lt;/a&gt;Date Views&lt;/h2&gt;
+&lt;p&gt;Date-based generic views são views com a função de exibir páginas com dados
+filtrados por datas, por exemplo: posts em um blog, notícias, consultas ao médico, etc.&lt;/p&gt;
+&lt;h3&gt;&lt;a name="archive_view"&gt;&lt;/a&gt;ArchiveIndexView&lt;/h3&gt;
+&lt;p&gt;Uma página que exibe os "últimas" objetos inseridos, desconsiderando aqueles com uma
+data futura a não ser que o atributo &lt;code&gt;allow_future&lt;/code&gt; seja definido como &lt;code&gt;True&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;É importante notar que:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;O nome default do &lt;code&gt;context_object_name&lt;/code&gt; é &lt;code&gt;latest&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;O sufixo &lt;code&gt;_archive&lt;/code&gt; no nome do template.&lt;/li&gt;
+&lt;li&gt;Além da lista de objetos o contexto também contem a variável &lt;code&gt;date_list&lt;/code&gt;
+  contendo todos os anos que tem objetos em ordem decrescente.
+  Isso pode ser alterado para mês ou dia usando o atributo
+  &lt;code&gt;date_list_period&lt;/code&gt;. Isso se aplica a todas as &lt;em&gt;Data-based generic views&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Implementação simples:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArchiveIndexView&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^archive/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;ArchiveIndexView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Article&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;date_field&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;pub_date&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;article_archive&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;&lt;a name="year_view"&gt;&lt;/a&gt;YearArchiveView&lt;/h3&gt;
+&lt;p&gt;Uma página para exibir um arquivo anual. Retorna todos os objetos de um
+determinado ano.&lt;/p&gt;
+&lt;p&gt;No contexto além da lista de objetos temos ainda:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;date_list&lt;/code&gt;: Um objeto QuerySet contendo todos os meses que tenham objetos
+    naquele ano representados como objetos datetime.datetime em ordem crescente.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;year&lt;/code&gt;: Um objeto datetime.datetime representando o ano atual&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;next_year&lt;/code&gt;: Um objeto datetime.datetime representando o próximo ano&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;previous_year&lt;/code&gt;: Um objeto datetime.datetime representando o ano anterior&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Exemplo de implementação:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;views.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;YearArchiveView&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ArticleYearArchiveView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;YearArchiveView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;queryset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;date_field&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;pub_date&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;make_object_list&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+    &lt;span class="n"&gt;allow_future&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArticleYearArchiveView&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^(?P&amp;lt;year&amp;gt;[0-9]{4})/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;ArticleYearArchiveView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+        &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;article_year_archive&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;article_archive_year.html&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+    {% for date in date_list %}
+        &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;{{ date|date }}&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    {% endfor %}
+&lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;&lt;a name="month_view"&gt;&lt;/a&gt;MonthArchiveView&lt;/h3&gt;
+&lt;p&gt;Uma página para exibir um arquivo mensal. Retorna todos os objetos de um
+determinado mês.&lt;/p&gt;
+&lt;p&gt;No contexto além da lista de objetos temos ainda:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;date_list&lt;/code&gt;: Um objeto QuerySet contendo todos os dias que tenham objetos
+    naquele mês representados como objetos datetime.datetime em ordem crescente.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;month&lt;/code&gt;: Um objeto datetime.datetime representando o mês atual&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;next_month&lt;/code&gt;: Um objeto datetime.datetime representando o próximo mês&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;previous_month&lt;/code&gt;: Um objeto datetime.datetime representando o mês anterior&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Exemplo de implementação:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;views.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MonthArchiveView&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ArticleMonthArchiveView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MonthArchiveView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;queryset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;date_field&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;pub_date&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;allow_future&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArticleMonthArchiveView&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="c"&gt;# Example: /2012/aug/&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^(?P&amp;lt;year&amp;gt;[0-9]{4})/(?P&amp;lt;month&amp;gt;[-\w]+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;ArticleMonthArchiveView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+        &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;archive_month&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="c"&gt;# Example: /2012/08/&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^(?P&amp;lt;year&amp;gt;[0-9]{4})/(?P&amp;lt;month&amp;gt;[0-9]+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;ArticleMonthArchiveView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;month_format&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;%m&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;archive_month_numeric&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;article_archive_month.html&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+    {% for article in object_list %}
+        &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;{{ article.pub_date|date:&amp;quot;F j, Y&amp;quot; }}: {{ article.title }}&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    {% endfor %}
+&lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
+    {% if previous_month %}
+        Previous Month: {{ previous_month|date:&amp;quot;F Y&amp;quot; }}
+    {% endif %}
+    {% if next_month %}
+        Next Month: {{ next_month|date:&amp;quot;F Y&amp;quot; }}
+    {% endif %}
+&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;&lt;a name="week_view"&gt;&lt;/a&gt;WeekArchiveView&lt;/h3&gt;
+&lt;p&gt;Uma página para exibir um arquivo semanal. Retorna todos os objetos de uma
+determinada semana.&lt;/p&gt;
+&lt;p&gt;No contexto além da lista de objetos temos ainda:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;week&lt;/code&gt;: Um objeto datetime.datetime representando a semana atual&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;next_week&lt;/code&gt;: Um objeto datetime.datetime representando a próxima semana&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;previous_week&lt;/code&gt;: Um objeto datetime.datetime representando a semana anterior&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Implementação simples:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;views.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;WeekArchiveView&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ArticleWeekArchiveView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;WeekArchiveView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;queryset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;date_field&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;pub_date&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;week_format&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;%W&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;allow_future&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArticleWeekArchiveView&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="c"&gt;# Example: /2012/week/23/&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^(?P&amp;lt;year&amp;gt;[0-9]{4})/week/(?P&amp;lt;week&amp;gt;[0-9]+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;ArticleWeekArchiveView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+        &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;archive_week&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;article_archive_week.html&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Week {{ week|date:&amp;#39;W&amp;#39; }}&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+    {% for article in object_list %}
+        &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;{{ article.pub_date|date:&amp;quot;F j, Y&amp;quot; }}: {{ article.title }}&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    {% endfor %}
+&lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
+    {% if previous_week %}
+        Previous Week: {{ previous_week|date:&amp;quot;F Y&amp;quot; }}
+    {% endif %}
+    {% if previous_week and next_week %}--{% endif %}
+    {% if next_week %}
+        Next week: {{ next_week|date:&amp;quot;F Y&amp;quot; }}
+    {% endif %}
+&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;&lt;a name="day_view"&gt;&lt;/a&gt;DayArchiveView&lt;/h3&gt;
+&lt;p&gt;Uma página para exibir um arquivo diário. Retorna todos os objetos de um
+determinado dia.&lt;/p&gt;
+&lt;p&gt;No contexto além da lista de objetos temos ainda:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;day&lt;/code&gt;: Um objeto datetime.datetime representando o dia atual&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;next_day&lt;/code&gt;: Um objeto datetime.datetime representando o próximo dia&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;previous_day&lt;/code&gt;: Um objeto datetime.datetime representando o dia anterior&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;next_month&lt;/code&gt;: Um objeto datetime.datetime representando o primeiro dia do
+    próximo mês&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;previous_month&lt;/code&gt;: Um objeto datetime.datetime representando o primeiro dia
+    do mês anterior&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Implementação simples:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;views.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DayArchiveView&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ArticleDayArchiveView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;DayArchiveView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;queryset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;date_field&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;pub_date&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;allow_future&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArticleDayArchiveView&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="c"&gt;# Example: /2012/nov/10/&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^(?P&amp;lt;year&amp;gt;[0-9]{4})/(?P&amp;lt;month&amp;gt;[-\w]+)/(?P&amp;lt;day&amp;gt;[0-9]+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;ArticleDayArchiveView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+        &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;archive_day&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;article_archive_day.html&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;{{ day }}&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+    {% for article in object_list %}
+        &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;{{ article.pub_date|date:&amp;quot;F j, Y&amp;quot; }}: {{ article.title }}&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    {% endfor %}
+&lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
+    {% if previous_day %}
+        Previous Day: {{ previous_day }}
+    {% endif %}
+    {% if previous_day and next_day %}--{% endif %}
+    {% if next_day %}
+        Next Day: {{ next_day }}
+    {% endif %}
+&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;&lt;a name="today_view"&gt;&lt;/a&gt;TodayArchiveView&lt;/h3&gt;
+&lt;p&gt;É a mesma coisa do &lt;code&gt;DayArchiveView&lt;/code&gt; mas não usa os parâmetros da URL para
+determinar o ano/mês/dia.&lt;/p&gt;
+&lt;p&gt;O que muda é o urls.py, veja o exemplo abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArticleTodayArchiveView&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^today/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;ArticleTodayArchiveView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+        &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;archive_today&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;&lt;a name="date_detail_view"&gt;&lt;/a&gt;DateDetailView&lt;/h3&gt;
+&lt;p&gt;É a mesma coisa que a &lt;code&gt;DetailView&lt;/code&gt; com a diferença que a data é utilizada
+junto com o pk/slug para determinar qual objeto deve ser obtido.&lt;/p&gt;
+&lt;p&gt;O que muda é o urls.py, veja o exemplo abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DateDetailView&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^(?P&amp;lt;year&amp;gt;[0-9]{4})/(?P&amp;lt;month&amp;gt;[-\w]+)/(?P&amp;lt;day&amp;gt;[0-9]+)/(?P&amp;lt;pk&amp;gt;[0-9]+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;DateDetailView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Article&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;date_field&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;pub_date&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;archive_date_detail&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;&lt;a name="conclusao"&gt;&lt;/a&gt;Conclusão&lt;/h3&gt;
+&lt;p&gt;Longe de tentar exaurir um assunto de tamanha complexidade e abrangência minha
+intenção com esse artigo foi mostrar o funcionamento básico das Class Based Views
+e quem sabe incentivar você a utilizar CBV's no seu próximo projeto.&lt;/p&gt;
+&lt;p&gt;Envie para mim qualquer dúvida, crítica ou sugestão que você tiver em qualquer
+uma das minhas redes sociais, posso demorar um pouco a responder mas eu respondo! :)&lt;/p&gt;
+&lt;p&gt;Ah, se você se interessou pelo assunto e quer se aprofundar mais eu aconselho
+começar pela &lt;a href="https://docs.djangoproject.com/en/1.8/topics/class-based-views/intro/"&gt;Documentação oficial&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;a name="ref"&gt;&lt;/a&gt;Referências&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/1.8/topics/class-based-views/"&gt;https://docs.djangoproject.com/en/1.8/topics/class-based-views/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/1.8/ref/class-based-views/"&gt;https://docs.djangoproject.com/en/1.8/ref/class-based-views/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/django/blob/master/django/views/generic/"&gt;https://github.com/django/django/blob/master/django/views/generic/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="python"></category><category term="blog"></category><category term="tutorial"></category><category term="django"></category><category term="cbv"></category></entry></feed>

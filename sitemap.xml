@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/</loc>
-<lastmod>2015-10-26T12:36:08-00:00</lastmod>
+<lastmod>2015-10-26T18:32:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2015-10-26T12:36:08-00:00</lastmod>
+<lastmod>2015-10-26T18:32:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2015-10-26T12:36:08-00:00</lastmod>
+<lastmod>2015-10-26T18:32:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2015-10-26T12:36:08-00:00</lastmod>
+<lastmod>2015-10-26T18:32:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2015-10-26T12:36:08-00:00</lastmod>
+<lastmod>2015-10-26T18:32:02-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
@@ -41,6 +41,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/django-na-pratica-aula-01.html</loc>
 <lastmod>2015-10-26T09:25:00-02:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/class-based-views-django.html</loc>
+<lastmod>2015-10-23T10:00:00-02:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
@@ -446,7 +453,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/category/django.html</loc>
-<lastmod>2015-03-02T00:20:00-03:06</lastmod>
+<lastmod>2015-10-23T10:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -613,8 +620,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/static.html</loc>
-<lastmod>2014-09-18T19:00:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/cbv.html</loc>
+<lastmod>2015-10-23T10:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -635,7 +642,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/tutorial.html</loc>
-<lastmod>2015-10-21T09:00:00-03:06</lastmod>
+<lastmod>2015-10-23T10:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -669,8 +676,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/google-app-engine.html</loc>
-<lastmod>2015-05-24T00:00:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/tuplas.html</loc>
+<lastmod>2015-02-24T10:17:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -726,7 +733,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/blog.html</loc>
-<lastmod>2015-07-08T12:40:00-03:06</lastmod>
+<lastmod>2015-10-23T10:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -741,6 +748,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/tag/heroku.html</loc>
 <lastmod>2015-01-25T11:30:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/paas.html</loc>
+<lastmod>2014-09-05T18:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -928,8 +942,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/paas.html</loc>
-<lastmod>2014-09-05T18:00:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/static.html</loc>
+<lastmod>2014-09-18T19:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -977,8 +991,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/tuplas.html</loc>
-<lastmod>2015-02-24T10:17:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/google-app-engine.html</loc>
+<lastmod>2015-05-24T00:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1259,6 +1273,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/author/raphael-passini.html</loc>
 <lastmod>2014-09-18T19:00:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/author/raphael-passini-diniz.html</loc>
+<lastmod>2015-10-23T10:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
