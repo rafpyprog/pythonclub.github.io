@@ -20,13 +20,13 @@
 &lt;div class="section" id="instalacao"&gt;
 &lt;h2&gt;Instalação&lt;/h2&gt;
 &lt;p&gt;Ative seu virtualenv e instale o Django na versão 1.8:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.8
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;pip install &lt;span class="s2"&gt;&amp;quot;django&amp;gt;=1.8,&amp;lt;1.9&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Se tiver alguma duvida, você pode olhar na &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.8/intro/install/"&gt;documentação&lt;/a&gt; como instalar o framework.&lt;/p&gt;
 &lt;p&gt;Para verificar se está tudo certo, abra o interpretador python e verifique a versão do Django:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_version&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
-&lt;span class="mf"&gt;1.8&lt;/span&gt;
+&lt;span class="mf"&gt;1.8&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Isso é tudo que precisamos para começar =)&lt;/p&gt;
 &lt;/div&gt;
@@ -60,7 +60,7 @@
 &lt;p&gt;Abra o arquivo &lt;tt class="docutils literal"&gt;helloworld.py&lt;/tt&gt; e insira uma SECRET_KEY qualquer:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SECRET_KEY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;helloworld&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Para ambiente de teste não existe nenhum problema em deixar nossa SECRET_KEY com esse valor, porém para o ambiente de produção é necessário que seja um valor randômico. A SECRET_KEY é utilizada em diversas partes da sua aplicação e você NÂO DEVE deixá-la pública para ambientes de produção.
+&lt;p&gt;Para ambiente de teste não existe nenhum problema em deixar nossa SECRET_KEY com esse valor, porém para o ambiente de produção é necessário que seja um valor randômico. A SECRET_KEY é utilizada em diversas partes do Django para criar hashes e encriptar chaves. Por esse fato, você NUNCA DEVE deixar pública o valor de SECRET_KEY utizado em ambientes de produção.
 Mais informações &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.8/ref/settings/#secret-key"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Executando novamente nosso ambiente, teremos o seguinte erro:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;django-admin.py runserver --pythonpath&lt;span class="o"&gt;=&lt;/span&gt;. --settings&lt;span class="o"&gt;=&lt;/span&gt;helloworld
@@ -84,8 +84,8 @@ WARNINGS:
     HINT: Django 1.7 changed the global defaults &lt;span class="k"&gt;for&lt;/span&gt; the MIDDLEWARE_CLASSES. django.contrib.sessions.middleware.SessionMiddleware, django.contrib.auth.middleware.AuthenticationMiddleware, and django.contrib.messages.middleware.MessageMiddleware were removed from the defaults. If your project needs these middleware &lt;span class="k"&gt;then&lt;/span&gt; you should configure this setting.
 
 System check identified &lt;span class="m"&gt;1&lt;/span&gt; issue &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; silenced&lt;span class="o"&gt;)&lt;/span&gt;.
-September 10, &lt;span class="m"&gt;2015&lt;/span&gt; - 15:50:09
-Django version 1.8.4, using settings &lt;span class="s1"&gt;&amp;#39;helloworld&amp;#39;&lt;/span&gt;
+September 26, &lt;span class="m"&gt;2015&lt;/span&gt; - 08:50:09
+Django version 1.8.5, using settings &lt;span class="s1"&gt;&amp;#39;helloworld&amp;#39;&lt;/span&gt;
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 &lt;/pre&gt;&lt;/div&gt;

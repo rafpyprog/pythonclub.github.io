@@ -117,13 +117,13 @@
 <div class="section" id="instalacao">
 <h2>Instalação</h2>
 <p>Ative seu virtualenv e instale o Django na versão 1.8:</p>
-<div class="highlight"><pre><span class="nv">$ </span>pip install <span class="nv">django</span><span class="o">==</span>1.8
+<div class="highlight"><pre><span class="nv">$ </span>pip install <span class="s2">&quot;django&gt;=1.8,&lt;1.9&quot;</span>
 </pre></div>
 <p>Se tiver alguma duvida, você pode olhar na <a class="reference external" href="https://docs.djangoproject.com/en/1.8/intro/install/">documentação</a> como instalar o framework.</p>
 <p>Para verificar se está tudo certo, abra o interpretador python e verifique a versão do Django:</p>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">django</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">django</span><span class="o">.</span><span class="n">get_version</span><span class="p">())</span>
-<span class="mf">1.8</span>
+<span class="mf">1.8</span><span class="o">.</span><span class="mi">5</span>
 </pre></div>
 <p>Isso é tudo que precisamos para começar =)</p>
 </div>
@@ -157,7 +157,7 @@
 <p>Abra o arquivo <tt class="docutils literal">helloworld.py</tt> e insira uma SECRET_KEY qualquer:</p>
 <div class="highlight"><pre><span class="n">SECRET_KEY</span><span class="o">=</span><span class="s">&#39;helloworld&#39;</span>
 </pre></div>
-<p>Para ambiente de teste não existe nenhum problema em deixar nossa SECRET_KEY com esse valor, porém para o ambiente de produção é necessário que seja um valor randômico. A SECRET_KEY é utilizada em diversas partes da sua aplicação e você NÂO DEVE deixá-la pública para ambientes de produção.
+<p>Para ambiente de teste não existe nenhum problema em deixar nossa SECRET_KEY com esse valor, porém para o ambiente de produção é necessário que seja um valor randômico. A SECRET_KEY é utilizada em diversas partes do Django para criar hashes e encriptar chaves. Por esse fato, você NUNCA DEVE deixar pública o valor de SECRET_KEY utizado em ambientes de produção.
 Mais informações <a class="reference external" href="https://docs.djangoproject.com/en/1.8/ref/settings/#secret-key">aqui</a>.</p>
 <p>Executando novamente nosso ambiente, teremos o seguinte erro:</p>
 <div class="highlight"><pre><span class="nv">$ </span>django-admin.py runserver --pythonpath<span class="o">=</span>. --settings<span class="o">=</span>helloworld
@@ -181,8 +181,8 @@ WARNINGS:
     HINT: Django 1.7 changed the global defaults <span class="k">for</span> the MIDDLEWARE_CLASSES. django.contrib.sessions.middleware.SessionMiddleware, django.contrib.auth.middleware.AuthenticationMiddleware, and django.contrib.messages.middleware.MessageMiddleware were removed from the defaults. If your project needs these middleware <span class="k">then</span> you should configure this setting.
 
 System check identified <span class="m">1</span> issue <span class="o">(</span><span class="m">0</span> silenced<span class="o">)</span>.
-September 10, <span class="m">2015</span> - 15:50:09
-Django version 1.8.4, using settings <span class="s1">&#39;helloworld&#39;</span>
+September 26, <span class="m">2015</span> - 08:50:09
+Django version 1.8.5, using settings <span class="s1">&#39;helloworld&#39;</span>
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 </pre></div>
