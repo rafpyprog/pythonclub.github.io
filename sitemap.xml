@@ -5,42 +5,42 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/</loc>
-<lastmod>2015-10-20T03:22:35-00:00</lastmod>
+<lastmod>2015-10-26T12:24:42-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2015-10-20T03:22:35-00:00</lastmod>
+<lastmod>2015-10-26T12:24:42-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2015-10-20T03:22:35-00:00</lastmod>
+<lastmod>2015-10-26T12:24:42-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2015-10-20T03:22:35-00:00</lastmod>
+<lastmod>2015-10-26T12:24:42-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2015-10-20T03:22:35-00:00</lastmod>
+<lastmod>2015-10-26T12:24:42-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html</loc>
-<lastmod>2015-10-21T09:00:00-02:00</lastmod>
+<loc>http://pythonclub.com.br/django-na-pratica-aula-01.html</loc>
+<lastmod>2015-09-09T18:55:00-03:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
@@ -453,7 +453,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/category/flask.html</loc>
-<lastmod>2015-10-21T09:00:00-03:06</lastmod>
+<lastmod>2014-06-19T22:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -488,7 +488,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/category/python.html</loc>
-<lastmod>2015-07-08T12:40:00-03:06</lastmod>
+<lastmod>2015-09-09T18:55:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -628,7 +628,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/tutorial.html</loc>
-<lastmod>2015-10-21T09:00:00-03:06</lastmod>
+<lastmod>2015-06-14T12:58:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/nose.html</loc>
+<lastmod>2014-05-06T19:35:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -642,7 +649,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/web.html</loc>
-<lastmod>2015-10-21T09:00:00-03:06</lastmod>
+<lastmod>2015-01-25T11:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -670,7 +677,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/flask.html</loc>
-<lastmod>2015-10-21T09:00:00-03:06</lastmod>
+<lastmod>2015-02-17T12:35:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -711,8 +718,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/compatibility.html</loc>
-<lastmod>2014-05-04T22:21:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/github.html</loc>
+<lastmod>2014-05-13T01:40:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -795,8 +802,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/nose.html</loc>
-<lastmod>2014-05-06T19:35:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/testes-funcionais.html</loc>
+<lastmod>2014-05-09T12:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -838,7 +845,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/python.html</loc>
-<lastmod>2015-07-08T12:40:00-03:06</lastmod>
+<lastmod>2015-09-09T18:55:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -846,6 +853,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/tag/openshift.html</loc>
 <lastmod>2014-09-05T18:00:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/compatibility.html</loc>
+<lastmod>2014-05-04T22:21:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -872,8 +886,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/github.html</loc>
-<lastmod>2014-05-13T01:40:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/what-the-flask.html</loc>
+<lastmod>2014-06-19T22:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -916,13 +930,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/tag/paas.html</loc>
 <lastmod>2014-09-05T18:00:00-03:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://pythonclub.com.br/tag/ipython.html</loc>
-<lastmod>2015-02-15T22:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -985,7 +992,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/django.html</loc>
-<lastmod>2015-05-10T13:55:00-03:06</lastmod>
+<lastmod>2015-09-09T18:55:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1012,8 +1019,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/testes-funcionais.html</loc>
-<lastmod>2014-05-09T12:00:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/django-na-pratica.html</loc>
+<lastmod>2015-09-09T18:55:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1047,8 +1054,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/what-the-flask.html</loc>
-<lastmod>2015-10-21T09:00:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/ipython.html</loc>
+<lastmod>2015-02-15T22:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1090,7 +1097,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/author/bruno-cezar-rocha.html</loc>
-<lastmod>2015-10-21T09:00:00-03:06</lastmod>
+<lastmod>2014-06-19T22:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1209,7 +1216,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/author/lucas-magnum.html</loc>
-<lastmod>2015-05-10T13:55:00-03:06</lastmod>
+<lastmod>2015-09-09T18:55:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
