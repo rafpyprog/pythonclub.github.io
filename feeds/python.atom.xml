@@ -4,6 +4,7 @@
 &lt;div class="section" id="requisitos"&gt;
 &lt;h2&gt;Requisitos&lt;/h2&gt;
 &lt;ul class="simple"&gt;
+&lt;li&gt;Linux (Ubuntu)&lt;/li&gt;
 &lt;li&gt;Python 3.X&lt;/li&gt;
 &lt;li&gt;Virtualenv&lt;/li&gt;
 &lt;li&gt;pip&lt;/li&gt;
