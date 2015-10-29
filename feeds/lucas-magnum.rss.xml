@@ -60,7 +60,7 @@
 &lt;p&gt;Abra o arquivo &lt;tt class="docutils literal"&gt;helloworld.py&lt;/tt&gt; e insira uma SECRET_KEY qualquer:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SECRET_KEY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;helloworld&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Para ambiente de teste não existe nenhum problema em deixar nossa SECRET_KEY com esse valor, porém para o ambiente de produção é necessário que seja um valor randômico. A SECRET_KEY é utilizada em diversas partes do Django para criar hashes e encriptar chaves. Por esse fato, você NUNCA DEVE deixar pública o valor de SECRET_KEY utizado em ambientes de produção.
+&lt;p&gt;Para ambiente de teste não existe nenhum problema em deixar nossa SECRET_KEY com esse valor, porém para o ambiente de produção é necessário que seja um valor randômico. A SECRET_KEY é utilizada em diversas partes do Django para criar hashes e encriptar chaves. Por esse fato, você NUNCA DEVE deixar pública o valor de SECRET_KEY utilizado em ambientes de produção.
 Mais informações &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.8/ref/settings/#secret-key"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Executando novamente nosso ambiente, teremos o seguinte erro:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;django-admin.py runserver --pythonpath&lt;span class="o"&gt;=&lt;/span&gt;. --settings&lt;span class="o"&gt;=&lt;/span&gt;helloworld
@@ -97,10 +97,10 @@ Quit the server with CONTROL-C.
 &lt;p&gt;Se você visualizar no terminal onde o ambiente está sendo executado, verá a seguinte mensagem:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;AttributeError: &lt;span class="s1"&gt;&amp;#39;Settings&amp;#39;&lt;/span&gt; object has no attribute &lt;span class="s1"&gt;&amp;#39;ROOT_URLCONF&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Para encontrar as views* que serão renderizadas no projeto, o Django procura primeiro as configurações no
+&lt;p&gt;Para encontrar as &lt;em&gt;views&lt;/em&gt; que serão renderizadas no projeto, o Django procura primeiro as configurações no
 arquivo apontado pelo &lt;tt class="docutils literal"&gt;ROOT_URLCONF&lt;/tt&gt;.&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;uma view é uma função responsável por retornar algo para ser renderizado no browser, pode ser um html, um arquivo, um json e etc. *&lt;/li&gt;
+&lt;li&gt;uma view é uma função responsável por retornar algo para ser renderizado no browser, pode ser um html, um arquivo, um json e etc.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Como toda nossa aplicação ficará por enquanto no arquivo &lt;tt class="docutils literal"&gt;helloworld.py&lt;/tt&gt;, vamos apontar nosso &lt;tt class="docutils literal"&gt;ROOT_URLCONF&lt;/tt&gt; para ele.&lt;/p&gt;
 &lt;p&gt;Abra o arquivo &lt;tt class="docutils literal"&gt;helloworld.py&lt;/tt&gt; e insira o seguinte código:&lt;/p&gt;

@@ -5,10 +5,10 @@ no Django. Por motivos de agilidade vou usar &lt;code&gt;CBV&lt;/code&gt; para m
 &lt;p&gt;Segundo a documentação do Django sobre CBV:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;CBV's permitem você estruturar as suas views e reutilizar código aproveitando
-  heranças e mixinis&lt;/p&gt;
+  heranças e mixins&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;O Django já vem CBV's genéricas que atendem as necessidades da maioria das aplicações.
-Essas views genéricas são flexiveis o sufiente para você poder adaptá-las as
+Essas views genéricas são flexiveis o suficiente para você poder adaptá-las as
 suas necessidades.&lt;/p&gt;
 &lt;p&gt;Nesse tutorial eu vou falar brevemente sobre os 4 grupos de CBV's que existem
 no Django atualmente:&lt;/p&gt;
@@ -59,7 +59,7 @@ no Django atualmente:&lt;/p&gt;
 views no Django. Essas classes são a base sob a qual as outras CBV's são
 construídas.&lt;/p&gt;
 &lt;h3&gt;&lt;a name="view"&gt;&lt;/a&gt;View&lt;/h3&gt;
-&lt;p&gt;A classe génerica &lt;em&gt;master&lt;/em&gt;. &lt;strong&gt;Todas&lt;/strong&gt; as outras classes herdam dessa classe.
+&lt;p&gt;A classe genérica &lt;em&gt;master&lt;/em&gt;. &lt;strong&gt;Todas&lt;/strong&gt; as outras classes herdam dessa classe.
 O fluxo básico de execução dessa classe quando recebe uma requisição é:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;dispatch()&lt;/code&gt;&lt;/li&gt;
@@ -67,7 +67,7 @@ O fluxo básico de execução dessa classe quando recebe uma requisição é:&lt
 &lt;li&gt;&lt;code&gt;options()&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;A função &lt;code&gt;dispatch()&lt;/code&gt; verifica se a classe tem um método com o nome do verbo
-HTTP usado na requisição. Caso não haja um &lt;code&gt;http.HttpResponseNotAllowed&lt;/code&gt; é
+HTTP usado na requisição. Caso não haja, um &lt;code&gt;http.HttpResponseNotAllowed&lt;/code&gt; é
 retornado.&lt;/p&gt;
 &lt;p&gt;Essa classe sempre responde a requisições com o verbo &lt;code&gt;OPTIONS&lt;/code&gt; retornando
 nesse caso uma lista com os verbos suportados. A não ser que o método
@@ -87,7 +87,7 @@ nesse caso uma lista com os verbos suportados. A não ser que o método
 &lt;code&gt;OPTIONS&lt;/code&gt;, todas as outras requisições retornam
 &lt;code&gt;http.HttpResponseNotAllowed&lt;/code&gt;.&lt;/p&gt;
 &lt;h3&gt;&lt;a name="template_view"&gt;&lt;/a&gt;Template View&lt;/h3&gt;
-&lt;p&gt;Renderiza um template. O fluxo básico de execução dessa clase quando recebe
+&lt;p&gt;Renderiza um template. O fluxo básico de execução dessa classe quando recebe
 uma requisição é:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;dispatch()&lt;/code&gt;&lt;/li&gt;
@@ -136,7 +136,7 @@ em seu contexto a variável &lt;code&gt;name&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;A URL a ser redirecionada pode conter parâmetros no estilo dicionário-de-strings.
 Os parâmetros capturados na URL do &lt;code&gt;RedirectView&lt;/code&gt; serão repassados para a
 URL que o usuário está sendo redirecionado.&lt;/p&gt;
-&lt;p&gt;O fluxo básico de execução dessa clase quando recebe
+&lt;p&gt;O fluxo básico de execução dessa classe quando recebe
 uma requisição é:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;dispatch()&lt;/code&gt;&lt;/li&gt;
@@ -181,7 +181,7 @@ uma requisição é:&lt;/p&gt;
 &lt;li&gt;&lt;code&gt;pattern_name&lt;/code&gt;: O nome do padrão de URL. Um &lt;code&gt;reverse&lt;/code&gt; será aplicado
   usando os mesmos
   &lt;code&gt;args&lt;/code&gt; e &lt;code&gt;kwargs&lt;/code&gt; passados para a &lt;code&gt;RedirectView&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;permanent&lt;/code&gt;: Se for &lt;code&gt;True&lt;/code&gt; retorna o status code como 301 caso contrário
+&lt;li&gt;&lt;code&gt;permanent&lt;/code&gt;: Se for &lt;code&gt;True&lt;/code&gt; retorna o status code como 301, caso contrário,
   retorna 302.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;query_string&lt;/code&gt;: Se for &lt;code&gt;True&lt;/code&gt; a query_string será enviada para a URL de
   destino.&lt;/li&gt;
@@ -194,7 +194,7 @@ essas views são as mais usadas na maioria dos projetos.&lt;/p&gt;
 parâmetro enviado na URL.&lt;/p&gt;
 &lt;p&gt;No fluxo de execução dessa view o objeto que está sendo utilizado está em
 &lt;code&gt;self.object&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;O fluxo básico de execução dessa clase quando recebe
+&lt;p&gt;O fluxo básico de execução dessa classe quando recebe
 uma requisição é:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;dispatch()&lt;/code&gt;&lt;/li&gt;
@@ -215,7 +215,7 @@ renderizar a resposta. Caso o primeiro template da lista não seja encontrado o
 Django tenta o segundo e assim por diante.&lt;/p&gt;
 &lt;p&gt;Em seguida o &lt;code&gt;get_slug_field()&lt;/code&gt; entra em ação, essa função deve retornar o
 nome do campo que será usado para fazer a busca pelo objeto. Por default o
-Django procura pelo campo &lt;code&gt;slug&lt;/code&gt;&lt;/p&gt;
+Django procura pelo campo &lt;code&gt;slug&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Agora o &lt;code&gt;get_queryset&lt;/code&gt; deve retornar um queryset que será usado para buscar
 um objeto. Aqui é um ótimo lugar para, por exemplo, aplicar um filtro para
 exibir somente o Artigo cujo autor é o usuário logado. Considere o exemplo
@@ -291,7 +291,7 @@ renderizar esse artigo no template &lt;code&gt;detalhe_artigo.html&lt;/code&gt; 
 &lt;p&gt;Uma página que representa uma lista de objetos.
 Enquanto essa view está executando a variável &lt;code&gt;self.object_list&lt;/code&gt; vai conter
 a lista de objetos que a view está utilizando.&lt;/p&gt;
-&lt;p&gt;O fluxo básico de execução dessa clase quando recebe
+&lt;p&gt;O fluxo básico de execução dessa classe quando recebe
 uma requisição é:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;dispatch()&lt;/code&gt;&lt;/li&gt;
@@ -353,14 +353,14 @@ essa dependência.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;O valor da variável &lt;code&gt;template_name&lt;/code&gt; na View (se definido)&lt;/li&gt;
 &lt;li&gt;O valor do campo &lt;code&gt;template_name_field&lt;/code&gt; na instância do objeto que a view
-  esta usando.&lt;/li&gt;
+  está usando.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;&amp;lt;app_label&amp;gt;/&amp;lt;model_name&amp;gt;&amp;lt;template_name_suffix&amp;gt;.html&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;&lt;a name="editing_views"&gt;&lt;/a&gt;Editing Views&lt;/h2&gt;
-&lt;p&gt;As views descritas abaixo contém o comportamento básico para edição de conteúdo&lt;/p&gt;
+&lt;p&gt;As views descritas abaixo contém o comportamento básico para edição de conteúdo.&lt;/p&gt;
 &lt;h3&gt;&lt;a name="form_view"&gt;&lt;/a&gt;FormView&lt;/h3&gt;
 &lt;p&gt;Uma view que mostra um formulário. Se houver erro, mostra o formulário novamente
-contendo os erros de validação; Em caso de sucesso redireciona o usuário para
+contendo os erros de validação. Em caso de sucesso redireciona o usuário para
 uma nova URL.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;forms.py&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;
@@ -411,8 +411,8 @@ uma nova URL.&lt;/p&gt;
 &lt;p&gt;Grande parte do "poder" das CBV's vem quando precisamos trabalhar com models.&lt;/p&gt;
 &lt;p&gt;As views listadas abaixo: &lt;code&gt;CreateView&lt;/code&gt;, &lt;code&gt;UpdateView&lt;/code&gt; e &lt;code&gt;DeleteView&lt;/code&gt; foram
 criadas para facilitar esse trabalho com os models, essas views podem gerar um
-&lt;code&gt;ModelForm&lt;/code&gt; de maneira automatica, desde que seja possível determinar qual
-é o model que a view esta utilizando.&lt;/p&gt;
+&lt;code&gt;ModelForm&lt;/code&gt; de maneira automática, desde que seja possível determinar qual
+é o model que a view está utilizando.&lt;/p&gt;
 &lt;p&gt;A view vai tentar determinar o model a ser usado das seguintes formas:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Se houver um atributo &lt;code&gt;model&lt;/code&gt; na classe&lt;/li&gt;
@@ -437,7 +437,7 @@ usada no atributo &lt;code&gt;form_class&lt;/code&gt;:&lt;/p&gt;
 
 
 &lt;h3&gt;&lt;a name="create_update_delete_view"&gt;&lt;/a&gt;CreateView, UpdateView e DeleteView&lt;/h3&gt;
-&lt;p&gt;Uma view que exibe um form para criar, atualizar ou apagaer um objeto.
+&lt;p&gt;Uma view que exibe um form para criar, atualizar ou apagar um objeto.
 Caso existam erros no formulário, este é exibido novamente junto com as
 mensagens de erro.&lt;/p&gt;
 &lt;p&gt;Em caso de sucesso o objeto é salvo.&lt;/p&gt;
@@ -488,7 +488,7 @@ mensagens de erro.&lt;/p&gt;
 &lt;p&gt;O atributo &lt;code&gt;fields&lt;/code&gt; determina quais campos do model devem estar presentes no
 formulário. É obrigatório especificar o atributo &lt;code&gt;fields&lt;/code&gt; ou então o atributo
 &lt;code&gt;form_class&lt;/code&gt;, nunca os dois ao mesmo tempo, pois isso geraria uma exceção
-&lt;a href="https://docs.djangoproject.com/en/1.8/ref/exceptions/#django.core.exceptions.ImproperlyConfigured"&gt;&lt;code&gt;ImproperlyConfigured&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;a href="https://docs.djangoproject.com/en/1.8/ref/exceptions/#django.core.exceptions.ImproperlyConfigured"&gt;&lt;code&gt;ImproperlyConfigured&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;É importante notar também que a &lt;code&gt;DeleteView&lt;/code&gt; exibe as informações do objeto que
 será deletado quando é acessada usando o verbo &lt;code&gt;GET&lt;/code&gt;, quando usado o verbo
 &lt;code&gt;POST&lt;/code&gt; o objeto é efetivamente apagado.&lt;/p&gt;
@@ -502,7 +502,7 @@ será deletado quando é acessada usando o verbo &lt;code&gt;GET&lt;/code&gt;, q
 filtrados por datas, por exemplo: posts em um blog, notícias, consultas ao médico, etc.&lt;/p&gt;
 &lt;h3&gt;&lt;a name="archive_view"&gt;&lt;/a&gt;ArchiveIndexView&lt;/h3&gt;
 &lt;p&gt;Uma página que exibe os "últimas" objetos inseridos, desconsiderando aqueles com uma
-data futura a não ser que o atributo &lt;code&gt;allow_future&lt;/code&gt; seja definido como &lt;code&gt;True&lt;/code&gt;&lt;/p&gt;
+data futura a não ser que o atributo &lt;code&gt;allow_future&lt;/code&gt; seja definido como &lt;code&gt;True&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;É importante notar que:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;O nome default do &lt;code&gt;context_object_name&lt;/code&gt; é &lt;code&gt;latest&lt;/code&gt;.&lt;/li&gt;
@@ -510,7 +510,7 @@ data futura a não ser que o atributo &lt;code&gt;allow_future&lt;/code&gt; seja
 &lt;li&gt;Além da lista de objetos o contexto também contem a variável &lt;code&gt;date_list&lt;/code&gt;
   contendo todos os anos que tem objetos em ordem decrescente.
   Isso pode ser alterado para mês ou dia usando o atributo
-  &lt;code&gt;date_list_period&lt;/code&gt;. Isso se aplica a todas as &lt;em&gt;Data-based generic views&lt;/em&gt;&lt;/li&gt;
+  &lt;code&gt;date_list_period&lt;/code&gt;. Isso se aplica a todas as &lt;em&gt;Data-based generic views&lt;/em&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Implementação simples:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt;&lt;/p&gt;
@@ -797,6 +797,7 @@ começar pela &lt;a href="https://docs.djangoproject.com/en/1.8/topics/class-bas
 &lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/1.8/topics/class-based-views/"&gt;https://docs.djangoproject.com/en/1.8/topics/class-based-views/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/1.8/ref/class-based-views/"&gt;https://docs.djangoproject.com/en/1.8/ref/class-based-views/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/django/django/blob/master/django/views/generic/"&gt;https://github.com/django/django/blob/master/django/views/generic/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://ccbv.co.uk/"&gt;http://ccbv.co.uk/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</summary><category term="python"></category><category term="blog"></category><category term="tutorial"></category><category term="django"></category><category term="cbv"></category></entry><entry><title>Django na prática - Hello World</title><link href="http://pythonclub.com.br/django-na-pratica-aula-01.html" rel="alternate"></link><updated>2015-10-26T09:25:00-02:00</updated><author><name>Lucas Magnum</name></author><id>tag:pythonclub.com.br,2015-10-26:django-na-pratica-aula-01.html</id><summary type="html">&lt;p&gt;Esse é o primeiro post do Curso &lt;strong&gt;django na prática&lt;/strong&gt; onde você aprenderá tudo que precisa para criar um sistema web :D&lt;/p&gt;
 &lt;p&gt;Utilizaremos a versão 1.8 do Django com Python 3!&lt;/p&gt;
 &lt;div class="section" id="requisitos"&gt;
@@ -858,7 +859,7 @@ começar pela &lt;a href="https://docs.djangoproject.com/en/1.8/topics/class-bas
 &lt;p&gt;Abra o arquivo &lt;tt class="docutils literal"&gt;helloworld.py&lt;/tt&gt; e insira uma SECRET_KEY qualquer:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SECRET_KEY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;helloworld&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Para ambiente de teste não existe nenhum problema em deixar nossa SECRET_KEY com esse valor, porém para o ambiente de produção é necessário que seja um valor randômico. A SECRET_KEY é utilizada em diversas partes do Django para criar hashes e encriptar chaves. Por esse fato, você NUNCA DEVE deixar pública o valor de SECRET_KEY utizado em ambientes de produção.
+&lt;p&gt;Para ambiente de teste não existe nenhum problema em deixar nossa SECRET_KEY com esse valor, porém para o ambiente de produção é necessário que seja um valor randômico. A SECRET_KEY é utilizada em diversas partes do Django para criar hashes e encriptar chaves. Por esse fato, você NUNCA DEVE deixar pública o valor de SECRET_KEY utilizado em ambientes de produção.
 Mais informações &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.8/ref/settings/#secret-key"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Executando novamente nosso ambiente, teremos o seguinte erro:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;django-admin.py runserver --pythonpath&lt;span class="o"&gt;=&lt;/span&gt;. --settings&lt;span class="o"&gt;=&lt;/span&gt;helloworld
@@ -895,10 +896,10 @@ Quit the server with CONTROL-C.
 &lt;p&gt;Se você visualizar no terminal onde o ambiente está sendo executado, verá a seguinte mensagem:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;AttributeError: &lt;span class="s1"&gt;&amp;#39;Settings&amp;#39;&lt;/span&gt; object has no attribute &lt;span class="s1"&gt;&amp;#39;ROOT_URLCONF&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Para encontrar as views* que serão renderizadas no projeto, o Django procura primeiro as configurações no
+&lt;p&gt;Para encontrar as &lt;em&gt;views&lt;/em&gt; que serão renderizadas no projeto, o Django procura primeiro as configurações no
 arquivo apontado pelo &lt;tt class="docutils literal"&gt;ROOT_URLCONF&lt;/tt&gt;.&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;uma view é uma função responsável por retornar algo para ser renderizado no browser, pode ser um html, um arquivo, um json e etc. *&lt;/li&gt;
+&lt;li&gt;uma view é uma função responsável por retornar algo para ser renderizado no browser, pode ser um html, um arquivo, um json e etc.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Como toda nossa aplicação ficará por enquanto no arquivo &lt;tt class="docutils literal"&gt;helloworld.py&lt;/tt&gt;, vamos apontar nosso &lt;tt class="docutils literal"&gt;ROOT_URLCONF&lt;/tt&gt; para ele.&lt;/p&gt;
 &lt;p&gt;Abra o arquivo &lt;tt class="docutils literal"&gt;helloworld.py&lt;/tt&gt; e insira o seguinte código:&lt;/p&gt;
