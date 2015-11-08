@@ -323,8 +323,9 @@ Ele faz isso através de um <tt class="docutils literal">JOIN</tt> na instruçã
     <span class="k">print</span> <span class="n">cadastro</span><span class="o">.</span><span class="n">enderecos</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 
 <span class="o">&gt;&gt;</span> <span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">queries</span><span class="p">)</span>
-<span class="mi">1</span>
+<span class="mi">2</span>
 </pre></div>
+<p>Hum, 2 queries? Por quê? Porque o Django precisa realizar a primeira query para retornar todos os cadastros e uma query para retornar todos os endereços e então realizar o JOIN através do Python =)</p>
 <p>Legal, aprendemos a como diminuir o número de consultas que realizamos quando desejamos retirar alguma informação do banco de dados, mas e quando desejamos inserir, atualizar e deletar?</p>
 </div>
 <div class="section" id="inserir-dados">

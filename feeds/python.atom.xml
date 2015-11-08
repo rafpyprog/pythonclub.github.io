@@ -534,8 +534,9 @@ Ele faz isso através de um &lt;tt class="docutils literal"&gt;JOIN&lt;/tt&gt; n
     &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;cadastro&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;enderecos&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;queries&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Hum, 2 queries? Por quê? Porque o Django precisa realizar a primeira query para retornar todos os cadastros e uma query para retornar todos os endereços e então realizar o JOIN através do Python =)&lt;/p&gt;
 &lt;p&gt;Legal, aprendemos a como diminuir o número de consultas que realizamos quando desejamos retirar alguma informação do banco de dados, mas e quando desejamos inserir, atualizar e deletar?&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="inserir-dados"&gt;
