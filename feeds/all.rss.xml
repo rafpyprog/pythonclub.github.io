@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 13 Nov 2015 10:04:00 -0200</lastBuildDate><item><title>Material do Tutorial: Web Scraping na Nuvem</title><link>http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html</link><description>&lt;h2&gt;Roteiro&lt;/h2&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 13 Nov 2015 10:04:00 -0200</lastBuildDate><item><title>Web Scraping na Nuvem com Scrapy</title><link>http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html</link><description>&lt;p&gt;Este tutorial foi apresentado na Python Brasil 2015 em São José dos Campos.&lt;/p&gt;
+&lt;h2&gt;Roteiro&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Introdução a web scraping com &lt;a href="http://scrapy.org/"&gt;Scrapy&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Conceitos do Scrapy&lt;/li&gt;
@@ -861,7 +862,7 @@ scrapy&lt;/a&gt; ou pergunte em inglês no
 &lt;a href="http://stackoverflow.com/tags/scrapy"&gt;Stackoverflow em inglês&lt;/a&gt; ou na &lt;a href="https://groups.google.com/forum/#!forum/scrapy-users"&gt;lista de
 e-mail scrapy-users&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Obrigado Valdir pela ajuda com a montagem desse tutorial, tanto no desenvolvimento
-do app &lt;code&gt;spidyquotes&lt;/code&gt; quanto na escrita do material. &lt;em&gt;You rock, dude!&lt;/em&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">elias</dc:creator><pubDate>Fri, 13 Nov 2015 10:04:00 -0200</pubDate><guid>tag:pythonclub.com.br,2015-11-13:material-do-tutorial-web-scraping-na-nuvem.html</guid></item><item><title>Class Based Views no Django</title><link>http://pythonclub.com.br/class-based-views-django.html</link><description>&lt;p&gt;Esse tutorial tem como objetivo explicar o básico sobre Class Based Views
+do app &lt;code&gt;spidyquotes&lt;/code&gt; quanto na escrita do material. &lt;em&gt;You rock, dude!&lt;/em&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Elias Dorneles</dc:creator><pubDate>Fri, 13 Nov 2015 10:04:00 -0200</pubDate><guid>tag:pythonclub.com.br,2015-11-13:material-do-tutorial-web-scraping-na-nuvem.html</guid><category>scrapy</category><category>spider</category><category>web-scraping</category><category>scraping</category><category>crawling</category><category>js2xml</category><category>extruct</category><category>web</category><category>scrapy-cloud</category><category>scrapinghub</category></item><item><title>Class Based Views no Django</title><link>http://pythonclub.com.br/class-based-views-django.html</link><description>&lt;p&gt;Esse tutorial tem como objetivo explicar o básico sobre Class Based Views
 no Django. Por motivos de agilidade vou usar &lt;code&gt;CBV&lt;/code&gt; para me referir as
 &lt;code&gt;Class Based Views&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Segundo a documentação do Django sobre CBV:&lt;/p&gt;
