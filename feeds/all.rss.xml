@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 16 Nov 2015 12:00:00 -0200</lastBuildDate><item><title>Django Rest Framework Quickstart</title><link>http://pythonclub.com.br/django-rest-framework-quickstart.html</link><description>&lt;p&gt;Veremos aqui uma forma rápida de criar uma API REST com &lt;a href="http://www.django-rest-framework.org/"&gt;Django Rest Framework&lt;/a&gt;.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 17 Nov 2015 14:00:00 -0200</lastBuildDate><item><title>Django Rest Framework Quickstart</title><link>http://pythonclub.com.br/django-rest-framework-quickstart.html</link><description>&lt;p&gt;Veremos aqui uma forma rápida de criar uma API REST com &lt;a href="http://www.django-rest-framework.org/"&gt;Django Rest Framework&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Este tutorial é a parte 0/6 de uma série de posts sobre DRF.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Obs&lt;/strong&gt;: &lt;em&gt;Tem coisas que é melhor nem traduzir. ;)&lt;/em&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -141,7 +141,7 @@ wsgiref==0.1.2
 &lt;p&gt;Veja o código no &lt;a href="https://github.com/rg3915/drf-quickstart.git"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Haverá continuação ...&lt;/p&gt;
-&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Regis da Silva</dc:creator><pubDate>Mon, 16 Nov 2015 12:00:00 -0200</pubDate><guid>tag:pythonclub.com.br,2015-11-16:django-rest-framework-quickstart.html</guid><category>Python</category><category>Django</category><category>REST</category></item><item><title>Web Scraping na Nuvem com Scrapy</title><link>http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html</link><description>&lt;p&gt;Este tutorial foi apresentado na Python Brasil 2015 em São José dos Campos.&lt;/p&gt;
+&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Regis da Silva</dc:creator><pubDate>Tue, 17 Nov 2015 14:00:00 -0200</pubDate><guid>tag:pythonclub.com.br,2015-11-17:django-rest-framework-quickstart.html</guid><category>Python</category><category>Django</category><category>REST</category></item><item><title>Web Scraping na Nuvem com Scrapy</title><link>http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html</link><description>&lt;p&gt;Este tutorial foi apresentado na Python Brasil 2015 em São José dos Campos.&lt;/p&gt;
 &lt;h2&gt;Roteiro&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Introdução a web scraping com &lt;a href="http://scrapy.org/"&gt;Scrapy&lt;/a&gt;&lt;/li&gt;
