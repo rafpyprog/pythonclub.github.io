@@ -1,5 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/regis-da-silva.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2015-02-19T14:10:00-02:00</updated><entry><title>PostgreSql e Django - parte 3</title><link href="http://pythonclub.com.br/postgresql-e-django.html" rel="alternate"></link><updated>2015-02-19T14:10:00-02:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2015-02-19:postgresql-e-django.html</id><summary type="html">&lt;p&gt;Se você já leu o &lt;a class="reference external" href="http://pythonclub.com.br/tutorial-postgresql.html"&gt;Tutorial Postgresql - parte 1&lt;/a&gt; e &lt;a class="reference external" href="http://pythonclub.com.br/postgresql-e-python3.html"&gt;PostgreSql e Python3 - parte 2&lt;/a&gt; , este post é uma continuação. Aqui nós veremos como usar &lt;a class="reference external" href="http://www.postgresql.org/"&gt;PostgreSQL&lt;/a&gt; no &lt;a class="reference external" href="http://pythonclub.com.br/tutorial-django-17.html"&gt;Django&lt;/a&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/regis-da-silva.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2015-11-16T12:00:00-02:00</updated><entry><title>Django Rest Framework Quickstart</title><link href="http://pythonclub.com.br/django-rest-framework-quickstart.html" rel="alternate"></link><updated>2015-11-16T12:00:00-02:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2015-11-16:django-rest-framework-quickstart.html</id><summary type="html">&lt;p&gt;Veremos aqui uma forma rápida de criar uma API REST com &lt;a href="http://www.django-rest-framework.org/"&gt;Django Rest Framework&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Este tutorial é a parte 0/6 de uma série de posts sobre DRF.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Obs&lt;/strong&gt;: &lt;em&gt;Tem coisas que é melhor nem traduzir. ;)&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;0 - Quickstart&lt;/li&gt;
+&lt;li&gt;1 - Serialization&lt;/li&gt;
+&lt;li&gt;2 - Requests &amp;amp; Responses&lt;/li&gt;
+&lt;li&gt;3 - Class based views&lt;/li&gt;
+&lt;li&gt;4 - Authentication &amp;amp; permissions&lt;/li&gt;
+&lt;li&gt;5 - Relationships &amp;amp; hyperlinked APIs&lt;/li&gt;
+&lt;li&gt;6 - Viewsets &amp;amp; routers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Obs&lt;/strong&gt;: se você não sabe &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; sugiro que leia este &lt;a href="http://pythonclub.com.br/tutorial-django-17.html"&gt;tutorial&lt;/a&gt; antes.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Começando&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;virtualenv -p python3 env
+&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;source &lt;/span&gt;env/bin/activate
+&lt;span class="nv"&gt;$ &lt;/span&gt;mkdir drf-quickstart
+&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;drf-quickstart
+&lt;span class="nv"&gt;$ &lt;/span&gt;pip install django djangorestframework
+&lt;span class="nv"&gt;$ &lt;/span&gt;pip freeze &amp;gt; requirements.txt
+&lt;span class="nv"&gt;$ &lt;/span&gt;django-admin.py startproject myproject . &lt;span class="c"&gt;# tem um ponto &amp;#39;.&amp;#39; aqui&lt;/span&gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py startapp core
+&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py migrate
+&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py createsuperuser  --username&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;admin&amp;#39;&lt;/span&gt; --email&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Veja o meu requirements.txt&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Django==1.8.6
+argparse==1.2.1
+djangorestframework==3.3.1
+wsgiref==0.1.2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Editando &lt;code&gt;settings.py&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Abra o arquivo &lt;code&gt;settings.py&lt;/code&gt; e em &lt;code&gt;INSTALLED_APPS&lt;/code&gt; acrescente&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;rest_framework&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;REST_FRAMEWORK&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;DEFAULT_PERMISSION_CLASSES&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;rest_framework.permissions.IsAdminUser&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,),&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;PAGE_SIZE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Editando &lt;code&gt;serializers.py&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Crie o arquivo &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;core/
+&lt;span class="nv"&gt;$ &lt;/span&gt;touch serializers.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Edite&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Group&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;rest_framework&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;serializers&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;UserSerializer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;serializers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;HyperlinkedModelSerializer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;
+        &lt;span class="n"&gt;fields&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;url&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;username&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;email&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;groups&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;GroupSerializer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;serializers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;HyperlinkedModelSerializer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Group&lt;/span&gt;
+        &lt;span class="n"&gt;fields&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;url&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Editando &lt;code&gt;views.py&lt;/code&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Group&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;rest_framework&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;viewsets&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;core.serializers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;UserSerializer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;GroupSerializer&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;UserViewSet&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;viewsets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ModelViewSet&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    API endpoint that allows users to be viewed or edited.&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;queryset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;-date_joined&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;serializer_class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;UserSerializer&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;GroupViewSet&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;viewsets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ModelViewSet&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    API endpoint that allows groups to be viewed or edited.&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;queryset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Group&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;serializer_class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;GroupSerializer&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Editando &lt;code&gt;urls.py&lt;/code&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;rest_framework&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;routers&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;core&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;
+
+&lt;span class="n"&gt;router&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;routers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DefaultRouter&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;users&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UserViewSet&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;groups&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GroupViewSet&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^api-auth/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;rest_framework.urls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;namespace&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;rest_framework&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Rodando a API&lt;/h2&gt;
+&lt;p&gt;Abra duas abas no terminal, numa rode a aplicação.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py runserver
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="drf02" src="images/regisdasilva/drf02.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Na outra teste a API.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;curl -H &lt;span class="s1"&gt;&amp;#39;Accept: application/json; indent=4&amp;#39;&lt;/span&gt; -u admin:admin http://127.0.0.1:8000/users/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;onde &lt;code&gt;admin:admin&lt;/code&gt; equivale a &lt;code&gt;username:password&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Experimente com &lt;a href="https://github.com/jakubroztocil/httpie#installation"&gt;httpie&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;http -a admin:admin http://127.0.0.1:8000/users/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Atenção&lt;/strong&gt;: se você receber erro 301, muito provavelmente é porque você esqueceu da barra &lt;code&gt;/&lt;/code&gt; no final da url.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img alt="drf01" src="images/regisdasilva/drf01.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Veja o código no &lt;a href="https://github.com/rg3915/drf-quickstart.git"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Haverá continuação ...&lt;/p&gt;
+&lt;/blockquote&gt;</summary><category term="Python"></category><category term="Django"></category><category term="REST"></category></entry><entry><title>PostgreSql e Django - parte 3</title><link href="http://pythonclub.com.br/postgresql-e-django.html" rel="alternate"></link><updated>2015-02-19T14:10:00-02:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2015-02-19:postgresql-e-django.html</id><summary type="html">&lt;p&gt;Se você já leu o &lt;a class="reference external" href="http://pythonclub.com.br/tutorial-postgresql.html"&gt;Tutorial Postgresql - parte 1&lt;/a&gt; e &lt;a class="reference external" href="http://pythonclub.com.br/postgresql-e-python3.html"&gt;PostgreSql e Python3 - parte 2&lt;/a&gt; , este post é uma continuação. Aqui nós veremos como usar &lt;a class="reference external" href="http://www.postgresql.org/"&gt;PostgreSQL&lt;/a&gt; no &lt;a class="reference external" href="http://pythonclub.com.br/tutorial-django-17.html"&gt;Django&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Para quem já leu &lt;a class="reference external" href="http://twoscoopspress.com/products/two-scoops-of-django-1-6"&gt;Two Scoops of Django&lt;/a&gt; sabe que o &lt;a class="reference external" href="http://www.pydanny.com/"&gt;PyDanny&lt;/a&gt; recomenda fortemente o uso do mesmo SGBD tanto em &lt;strong&gt;produção&lt;/strong&gt; como em &lt;strong&gt;testes&lt;/strong&gt;. Então esqueça &lt;a class="reference external" href="http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html"&gt;sqlite&lt;/a&gt; para testes, use &lt;a class="reference external" href="http://www.mysql.com/"&gt;MySql&lt;/a&gt; ou &lt;a class="reference external" href="http://www.oracle.com/br/products/database/overview/index.html"&gt;Oracle&lt;/a&gt; ou &lt;a class="reference external" href="http://www.postgresql.org/"&gt;PostgreSQL&lt;/a&gt; tanto em produção como em testes, e é sobre este último que vamos falar agora.&lt;/p&gt;
 &lt;div class="figure"&gt;
 &lt;img alt="postgresql_django.png" src="/images/regisdasilva/postgresql_django.png" /&gt;
@@ -649,7 +791,7 @@ Se você quiser aqui tem o &lt;a class="reference external" href="https://gist.g
 &lt;p&gt;&lt;a class="reference external" href="http://www.postgresql.org/docs/9.1/static/functions-datetime.html#FUNCTIONS-DATETIME-CURRENT"&gt;http://www.postgresql.org/docs/9.1/static/functions-datetime.html#FUNCTIONS-DATETIME-CURRENT&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 </summary><category term="python"></category><category term="postresql"></category><category term="banco de dados"></category></entry><entry><title>Tutorial Django 1.7</title><link href="http://pythonclub.com.br/tutorial-django-17.html" rel="alternate"></link><updated>2015-01-07T06:00:00-02:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2015-01-07:tutorial-django-17.html</id><summary type="html">&lt;p&gt;Fiz um video com um tutorial do Django 1.7 seguindo o modelo que tem no site oficial &lt;a class="reference external" href="https://www.djangoproject.com/"&gt;Django project&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="youtube" align="left"&gt;&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/OayIF9Pz7rE" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Mas... apesar de já existir os posts &lt;a class="reference external" href="http://pythonclub.com.br/criar-site-com-form-lista-30-min.html"&gt;Como criar um site com formulário e lista em 30 minutos?&lt;/a&gt; e &lt;a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html"&gt;Seu primeiro projeto Django com Sublime Text no Linux&lt;/a&gt; eu resolvi dar uma &lt;em&gt;atualizada&lt;/em&gt;. E para acrescentar algumas novidades, neste post, eu falo também sobre &lt;strong&gt;shell&lt;/strong&gt; e &lt;strong&gt;json&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/OayIF9Pz7rE" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Mas... apesar de já existir os posts &lt;a class="reference external" href="http://pythonclub.com.br/criar-site-com-form-lista-30-min.html"&gt;Como criar um site com formulário e lista em 30 minutos?&lt;/a&gt; e &lt;a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html"&gt;Seu primeiro projeto Django com Sublime Text no Linux&lt;/a&gt; eu resolvi dar uma &lt;em&gt;atualizada&lt;/em&gt;. E para acrescentar algumas novidades, neste post, eu falo também sobre &lt;strong&gt;shell&lt;/strong&gt; e &lt;strong&gt;json&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Git Hub: &lt;a class="reference external" href="https://github.com/rg3915/django1.7"&gt;https://github.com/rg3915/django1.7&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#o-que-voce-precisa"&gt;O que você precisa?&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#criando-o-ambiente"&gt;Criando o ambiente&lt;/a&gt;&lt;/p&gt;
@@ -1129,7 +1271,7 @@ Vou comentar apenas os comandos que se destacam.&lt;/blockquote&gt;
 &lt;blockquote&gt;
 Também fiz uma série de videos, assista a primeira aula abaixo ou acesse todas as aulas no &lt;a class="reference external" href="https://www.youtube.com/watch?v=Qe3N7jiGZAc&amp;amp;list=PLsGCdfxkV9upVUtH0zsJ2f4WhQvJrZsVb"&gt;YouTube&lt;/a&gt;.&lt;/blockquote&gt;
 &lt;a class="reference external image-reference" href="https://www.youtube.com/watch?v=Qe3N7jiGZAc&amp;amp;list=PLsGCdfxkV9upVUtH0zsJ2f4WhQvJrZsVb"&gt;&lt;img alt="youtube_logo.png" src="images/regisdasilva/youtube_logo.png" /&gt;&lt;/a&gt;
-&lt;div class="youtube" align="left"&gt;&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/Qe3N7jiGZAc" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Vou repetir a tabela &lt;tt class="docutils literal"&gt;clientes&lt;/tt&gt; apenas por comodidade:&lt;/p&gt;
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/Qe3N7jiGZAc" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Vou repetir a tabela &lt;tt class="docutils literal"&gt;clientes&lt;/tt&gt; apenas por comodidade:&lt;/p&gt;
 &lt;table border="1" class="docutils"&gt;
 &lt;colgroup&gt;
 &lt;col width="28%" /&gt;

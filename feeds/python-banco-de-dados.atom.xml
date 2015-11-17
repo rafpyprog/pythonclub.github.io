@@ -652,7 +652,7 @@ Se você quiser aqui tem o &lt;a class="reference external" href="https://gist.g
 &lt;blockquote&gt;
 Também fiz uma série de videos, assista a primeira aula abaixo ou acesse todas as aulas no &lt;a class="reference external" href="https://www.youtube.com/watch?v=Qe3N7jiGZAc&amp;amp;list=PLsGCdfxkV9upVUtH0zsJ2f4WhQvJrZsVb"&gt;YouTube&lt;/a&gt;.&lt;/blockquote&gt;
 &lt;a class="reference external image-reference" href="https://www.youtube.com/watch?v=Qe3N7jiGZAc&amp;amp;list=PLsGCdfxkV9upVUtH0zsJ2f4WhQvJrZsVb"&gt;&lt;img alt="youtube_logo.png" src="images/regisdasilva/youtube_logo.png" /&gt;&lt;/a&gt;
-&lt;div class="youtube" align="left"&gt;&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/Qe3N7jiGZAc" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Vou repetir a tabela &lt;tt class="docutils literal"&gt;clientes&lt;/tt&gt; apenas por comodidade:&lt;/p&gt;
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/Qe3N7jiGZAc" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Vou repetir a tabela &lt;tt class="docutils literal"&gt;clientes&lt;/tt&gt; apenas por comodidade:&lt;/p&gt;
 &lt;table border="1" class="docutils"&gt;
 &lt;colgroup&gt;
 &lt;col width="28%" /&gt;

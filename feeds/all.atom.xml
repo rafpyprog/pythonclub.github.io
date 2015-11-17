@@ -1,5 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2015-11-13T10:04:00-02:00</updated><entry><title>Web Scraping na Nuvem com Scrapy</title><link href="http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html" rel="alternate"></link><updated>2015-11-13T10:04:00-02:00</updated><author><name>Elias Dorneles</name></author><id>tag:pythonclub.com.br,2015-11-13:material-do-tutorial-web-scraping-na-nuvem.html</id><summary type="html">&lt;p&gt;Este tutorial foi apresentado na Python Brasil 2015 em São José dos Campos.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2015-11-16T12:00:00-02:00</updated><entry><title>Django Rest Framework Quickstart</title><link href="http://pythonclub.com.br/django-rest-framework-quickstart.html" rel="alternate"></link><updated>2015-11-16T12:00:00-02:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2015-11-16:django-rest-framework-quickstart.html</id><summary type="html">&lt;p&gt;Veremos aqui uma forma rápida de criar uma API REST com &lt;a href="http://www.django-rest-framework.org/"&gt;Django Rest Framework&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Este tutorial é a parte 0/6 de uma série de posts sobre DRF.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Obs&lt;/strong&gt;: &lt;em&gt;Tem coisas que é melhor nem traduzir. ;)&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;0 - Quickstart&lt;/li&gt;
+&lt;li&gt;1 - Serialization&lt;/li&gt;
+&lt;li&gt;2 - Requests &amp;amp; Responses&lt;/li&gt;
+&lt;li&gt;3 - Class based views&lt;/li&gt;
+&lt;li&gt;4 - Authentication &amp;amp; permissions&lt;/li&gt;
+&lt;li&gt;5 - Relationships &amp;amp; hyperlinked APIs&lt;/li&gt;
+&lt;li&gt;6 - Viewsets &amp;amp; routers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Obs&lt;/strong&gt;: se você não sabe &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; sugiro que leia este &lt;a href="http://pythonclub.com.br/tutorial-django-17.html"&gt;tutorial&lt;/a&gt; antes.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Começando&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;virtualenv -p python3 env
+&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;source &lt;/span&gt;env/bin/activate
+&lt;span class="nv"&gt;$ &lt;/span&gt;mkdir drf-quickstart
+&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;drf-quickstart
+&lt;span class="nv"&gt;$ &lt;/span&gt;pip install django djangorestframework
+&lt;span class="nv"&gt;$ &lt;/span&gt;pip freeze &amp;gt; requirements.txt
+&lt;span class="nv"&gt;$ &lt;/span&gt;django-admin.py startproject myproject . &lt;span class="c"&gt;# tem um ponto &amp;#39;.&amp;#39; aqui&lt;/span&gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py startapp core
+&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py migrate
+&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py createsuperuser  --username&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;admin&amp;#39;&lt;/span&gt; --email&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Veja o meu requirements.txt&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Django==1.8.6
+argparse==1.2.1
+djangorestframework==3.3.1
+wsgiref==0.1.2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Editando &lt;code&gt;settings.py&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Abra o arquivo &lt;code&gt;settings.py&lt;/code&gt; e em &lt;code&gt;INSTALLED_APPS&lt;/code&gt; acrescente&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;rest_framework&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;REST_FRAMEWORK&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;DEFAULT_PERMISSION_CLASSES&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;rest_framework.permissions.IsAdminUser&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,),&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;PAGE_SIZE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Editando &lt;code&gt;serializers.py&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Crie o arquivo &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;core/
+&lt;span class="nv"&gt;$ &lt;/span&gt;touch serializers.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Edite&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Group&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;rest_framework&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;serializers&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;UserSerializer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;serializers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;HyperlinkedModelSerializer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;
+        &lt;span class="n"&gt;fields&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;url&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;username&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;email&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;groups&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;GroupSerializer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;serializers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;HyperlinkedModelSerializer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Group&lt;/span&gt;
+        &lt;span class="n"&gt;fields&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;url&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Editando &lt;code&gt;views.py&lt;/code&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Group&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;rest_framework&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;viewsets&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;core.serializers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;UserSerializer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;GroupSerializer&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;UserViewSet&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;viewsets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ModelViewSet&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    API endpoint that allows users to be viewed or edited.&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;queryset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;-date_joined&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;serializer_class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;UserSerializer&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;GroupViewSet&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;viewsets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ModelViewSet&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    API endpoint that allows groups to be viewed or edited.&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;queryset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Group&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;serializer_class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;GroupSerializer&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Editando &lt;code&gt;urls.py&lt;/code&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;rest_framework&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;routers&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;core&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;
+
+&lt;span class="n"&gt;router&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;routers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DefaultRouter&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;users&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UserViewSet&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;groups&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GroupViewSet&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^api-auth/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;rest_framework.urls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;namespace&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;rest_framework&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Rodando a API&lt;/h2&gt;
+&lt;p&gt;Abra duas abas no terminal, numa rode a aplicação.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py runserver
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="drf02" src="images/regisdasilva/drf02.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Na outra teste a API.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;curl -H &lt;span class="s1"&gt;&amp;#39;Accept: application/json; indent=4&amp;#39;&lt;/span&gt; -u admin:admin http://127.0.0.1:8000/users/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;onde &lt;code&gt;admin:admin&lt;/code&gt; equivale a &lt;code&gt;username:password&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Experimente com &lt;a href="https://github.com/jakubroztocil/httpie#installation"&gt;httpie&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;http -a admin:admin http://127.0.0.1:8000/users/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Atenção&lt;/strong&gt;: se você receber erro 301, muito provavelmente é porque você esqueceu da barra &lt;code&gt;/&lt;/code&gt; no final da url.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img alt="drf01" src="images/regisdasilva/drf01.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Veja o código no &lt;a href="https://github.com/rg3915/drf-quickstart.git"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Haverá continuação ...&lt;/p&gt;
+&lt;/blockquote&gt;</summary><category term="Python"></category><category term="Django"></category><category term="REST"></category></entry><entry><title>Web Scraping na Nuvem com Scrapy</title><link href="http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html" rel="alternate"></link><updated>2015-11-13T10:04:00-02:00</updated><author><name>Elias Dorneles</name></author><id>tag:pythonclub.com.br,2015-11-13:material-do-tutorial-web-scraping-na-nuvem.html</id><summary type="html">&lt;p&gt;Este tutorial foi apresentado na Python Brasil 2015 em São José dos Campos.&lt;/p&gt;
 &lt;h2&gt;Roteiro&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Introdução a web scraping com &lt;a href="http://scrapy.org/"&gt;Scrapy&lt;/a&gt;&lt;/li&gt;
@@ -5508,7 +5650,7 @@ Note que os resultados são apresentados por cada &lt;em&gt;Task&lt;/em&gt; e s�
 &lt;p&gt;&lt;strong&gt;Referências&lt;/strong&gt;&lt;br&gt;
 &lt;a href="http://locust.io/"&gt;Site Oficial&lt;/a&gt;&lt;br&gt;
 &lt;a href="http://docs.locust.io/en/latest/index.html"&gt;Documentação&lt;/a&gt;&lt;/p&gt;</summary><category term="locust"></category><category term="web"></category><category term="tutorial"></category><category term="test"></category><category term="load-testing"></category></entry><entry><title>Tutorial Django 1.7</title><link href="http://pythonclub.com.br/tutorial-django-17.html" rel="alternate"></link><updated>2015-01-07T06:00:00-02:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2015-01-07:tutorial-django-17.html</id><summary type="html">&lt;p&gt;Fiz um video com um tutorial do Django 1.7 seguindo o modelo que tem no site oficial &lt;a class="reference external" href="https://www.djangoproject.com/"&gt;Django project&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="youtube" align="left"&gt;&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/OayIF9Pz7rE" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Mas... apesar de já existir os posts &lt;a class="reference external" href="http://pythonclub.com.br/criar-site-com-form-lista-30-min.html"&gt;Como criar um site com formulário e lista em 30 minutos?&lt;/a&gt; e &lt;a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html"&gt;Seu primeiro projeto Django com Sublime Text no Linux&lt;/a&gt; eu resolvi dar uma &lt;em&gt;atualizada&lt;/em&gt;. E para acrescentar algumas novidades, neste post, eu falo também sobre &lt;strong&gt;shell&lt;/strong&gt; e &lt;strong&gt;json&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/OayIF9Pz7rE" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Mas... apesar de já existir os posts &lt;a class="reference external" href="http://pythonclub.com.br/criar-site-com-form-lista-30-min.html"&gt;Como criar um site com formulário e lista em 30 minutos?&lt;/a&gt; e &lt;a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html"&gt;Seu primeiro projeto Django com Sublime Text no Linux&lt;/a&gt; eu resolvi dar uma &lt;em&gt;atualizada&lt;/em&gt;. E para acrescentar algumas novidades, neste post, eu falo também sobre &lt;strong&gt;shell&lt;/strong&gt; e &lt;strong&gt;json&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Git Hub: &lt;a class="reference external" href="https://github.com/rg3915/django1.7"&gt;https://github.com/rg3915/django1.7&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#o-que-voce-precisa"&gt;O que você precisa?&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#criando-o-ambiente"&gt;Criando o ambiente&lt;/a&gt;&lt;/p&gt;
@@ -6421,7 +6563,7 @@ Mude &lt;code&gt;abc&lt;/code&gt; para seu nome. Dê refresh no navegador.&lt;/p
 &lt;blockquote&gt;
 Também fiz uma série de videos, assista a primeira aula abaixo ou acesse todas as aulas no &lt;a class="reference external" href="https://www.youtube.com/watch?v=Qe3N7jiGZAc&amp;amp;list=PLsGCdfxkV9upVUtH0zsJ2f4WhQvJrZsVb"&gt;YouTube&lt;/a&gt;.&lt;/blockquote&gt;
 &lt;a class="reference external image-reference" href="https://www.youtube.com/watch?v=Qe3N7jiGZAc&amp;amp;list=PLsGCdfxkV9upVUtH0zsJ2f4WhQvJrZsVb"&gt;&lt;img alt="youtube_logo.png" src="images/regisdasilva/youtube_logo.png" /&gt;&lt;/a&gt;
-&lt;div class="youtube" align="left"&gt;&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/Qe3N7jiGZAc" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Vou repetir a tabela &lt;tt class="docutils literal"&gt;clientes&lt;/tt&gt; apenas por comodidade:&lt;/p&gt;
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/Qe3N7jiGZAc" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Vou repetir a tabela &lt;tt class="docutils literal"&gt;clientes&lt;/tt&gt; apenas por comodidade:&lt;/p&gt;
 &lt;table border="1" class="docutils"&gt;
 &lt;colgroup&gt;
 &lt;col width="28%" /&gt;
@@ -13070,7 +13212,7 @@ fagungis simpleproject deploy
 &lt;p&gt;O Django-Fagungis não cria automaticamente seu servidor de banco de dados, então ainda te resta esssa tarefa, caso ele fique no mesmo servidor do seu projeto. Mas isso fica para um próximo artigo do PythonClub.&lt;/p&gt;</summary><category term="Django"></category><category term="Fabric"></category><category term="Gunicorn"></category><category term="Nginx"></category><category term="Supervisor"></category><category term="Deploy"></category><category term="django-fagungis"></category></entry><entry><title>Como fazer fork, clone, push pull-request no Github</title><link href="http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html" rel="alternate"></link><updated>2014-05-13T01:40:00-03:00</updated><author><name>Fábio C. Barrionuevo da Luz</name></author><id>tag:pythonclub.com.br,2014-05-13:como-fazer-fork-clone-push-pull-request-no-github.html</id><summary type="html">&lt;p&gt;Neste video, ensino o básico que vai lhe ajudar a dar seus primeiros passos no git, github e talvez lhe dar a habilidade necessaria para contribuir com postagens neste blog ou em qualquer outro projeto que você quiser.&lt;/p&gt;
 &lt;div class="section" id="como-fazer-fork-clone-push-pull-request-no-github-ou-como-contribuir-com-projetos-open-source"&gt;
 &lt;h2&gt;Como fazer fork, clone, push pull-request no Github, ou como contribuir com projetos open-source&lt;/h2&gt;
-&lt;div class="youtube" align="left"&gt;&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/am1XMMKk0UI" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;div class="section" id="referencias-uteis"&gt;
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/am1XMMKk0UI" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;div class="section" id="referencias-uteis"&gt;
 &lt;h3&gt;Referências uteis:&lt;/h3&gt;
 &lt;p&gt;O que é URL Limpa: &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Clean_URL"&gt;http://en.wikipedia.org/wiki/Clean_URL&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Livro oficial do Git em Portugues: &lt;a class="reference external" href="http://git-scm.com/book/pt-br/"&gt;http://git-scm.com/book/pt-br/&lt;/a&gt;&lt;/p&gt;

@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PythonClub, ">
+    <meta name="theme-color" content="#101212">
+
+        <link rel="alternate"  href="http://pythonclub.com.br/feeds/all.atom.xml" type="application/atom+xml" title="PythonClub Full Atom Feed"/>
+        <link rel="alternate" href="http://pythonclub.com.br/feeds/all.rss.xml" type="application/rss+xml" title="PythonClub Full RSS Feed"/>
+
+    <link rel="shortcut icon" href="http://pythonclub.com.br/theme/images/favicon.ico" >
+
+            <title>Django Rest Framework Quickstart por Regis da Silva // #PythonClub // </title>
+
+    <meta property="fb:app_id" content="1487080281503641" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Django Rest Framework Quickstart" />
+    <meta property="og:site_name" content="PythonClub" />
+    <meta property="og:url" content="http://pythonclub.com.br/django-rest-framework-quickstart.html" />
+    <meta property="og:description" content="Veremos aqui uma forma rápida de criar uma API REST com Django Rest Framework. Este tutorial é a parte 0/6 de uma série de posts sobre DRF. Obs: Tem coisas que é melhor nem traduzir. ;) 0 - Quickstart 1 - Serialization 2 - Requests & Responses 3 - Class based views 4 - Authentication & permissions ..." />
+    <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/custom.css">
+
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pygments.css">
+
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50935105-1', 'pythonclub.com.br');
+      ga('require', 'linkid', 'linkid.js');
+      ga('send', 'pageview');
+
+    </script>
+    <!-- transifex -->
+    <!-- <script type="text/javascript">  -->
+    <!-- window.liveSettings = {  -->
+    <!--     api_key: "f8fd260a9bdc4e9195c80e31416bb254",  -->
+    <!--     picker: "bottom-right",  -->
+    <!--     detectlang: true,  -->
+    <!--     autocollect: true  -->
+    <!-- };  -->
+    <!-- </script>  -->
+    <!-- <script type="text/javascript" src="//cdn.transifex.com/live.js"></script>  -->
+    <!-- end transifex -->
+    <meta name="google-site-verification" content="XQc_QtnTecI9nxAfplXGtECCpZQDwbDRcn7pyDVa1LE" />
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://pythonclub.com.br/author/regis-da-silva.html" title="See posts by Regis da Silva">
+                        <img class="article-avatar" alt="Regis da Silva" src="https://www.gravatar.com/avatar/2a2df360031bb022af11138a2a4a8db9">
+                </a>
+                <h2 class="article-info">Regis da Silva</h2>
+    			<ul class="author-social">
+                    <li>
+                        <a target="_blank" href="https://github.com/rg3915">
+                            <i class="fa fa-lg fa-fw fa-github"></i>
+                            <strong>Github</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://twitter.com/rg3915">
+                            <i class="fa fa-lg fa-fw fa-twitter"></i>
+                            <strong>Twitter</strong>
+                        </a>
+                    </li>
+                </ul>
+                <h5>Publicado em:</h5>
+                <p>Mon 16 November 2015</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Django Rest Framework Quickstart</h1>
+                        <p class="post-meta">
+                            // Tags                                 <a class="post-category" href="http://pythonclub.com.br/tag/python.html">Python</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/django.html">Django</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/rest.html">REST</a>
+                        </p>
+                </header>
+            </section>
+            <p>Veremos aqui uma forma rápida de criar uma API REST com <a href="http://www.django-rest-framework.org/">Django Rest Framework</a>.</p>
+<p>Este tutorial é a parte 0/6 de uma série de posts sobre DRF.</p>
+<p><strong>Obs</strong>: <em>Tem coisas que é melhor nem traduzir. ;)</em></p>
+<ul>
+<li>0 - Quickstart</li>
+<li>1 - Serialization</li>
+<li>2 - Requests &amp; Responses</li>
+<li>3 - Class based views</li>
+<li>4 - Authentication &amp; permissions</li>
+<li>5 - Relationships &amp; hyperlinked APIs</li>
+<li>6 - Viewsets &amp; routers</li>
+</ul>
+<blockquote>
+<p><strong>Obs</strong>: se você não sabe <a href="https://www.djangoproject.com/">Django</a> sugiro que leia este <a href="http://pythonclub.com.br/tutorial-django-17.html">tutorial</a> antes.</p>
+</blockquote>
+<h2>Começando</h2>
+<div class="highlight"><pre><span class="nv">$ </span>virtualenv -p python3 env
+<span class="nv">$ </span><span class="nb">source </span>env/bin/activate
+<span class="nv">$ </span>mkdir drf-quickstart
+<span class="nv">$ </span><span class="nb">cd </span>drf-quickstart
+<span class="nv">$ </span>pip install django djangorestframework
+<span class="nv">$ </span>pip freeze &gt; requirements.txt
+<span class="nv">$ </span>django-admin.py startproject myproject . <span class="c"># tem um ponto &#39;.&#39; aqui</span>
+<span class="nv">$ </span>python manage.py startapp core
+<span class="nv">$ </span>python manage.py migrate
+<span class="nv">$ </span>python manage.py createsuperuser  --username<span class="o">=</span><span class="s1">&#39;admin&#39;</span> --email<span class="o">=</span><span class="s1">&#39;&#39;</span>
+</pre></div>
+
+
+<p>Veja o meu requirements.txt</p>
+<div class="highlight"><pre>Django==1.8.6
+argparse==1.2.1
+djangorestframework==3.3.1
+wsgiref==0.1.2
+</pre></div>
+
+
+<h2>Editando <code>settings.py</code></h2>
+<p>Abra o arquivo <code>settings.py</code> e em <code>INSTALLED_APPS</code> acrescente</p>
+<div class="highlight"><pre><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="o">...</span>
+    <span class="s">&#39;rest_framework&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;DEFAULT_PERMISSION_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;rest_framework.permissions.IsAdminUser&#39;</span><span class="p">,),</span>
+    <span class="s">&#39;PAGE_SIZE&#39;</span><span class="p">:</span> <span class="mi">10</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>Editando <code>serializers.py</code></h2>
+<p>Crie o arquivo </p>
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>core/
+<span class="nv">$ </span>touch serializers.py
+</pre></div>
+
+
+<p>Edite</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span><span class="p">,</span> <span class="n">Group</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
+
+
+<span class="k">class</span> <span class="nc">UserSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">HyperlinkedModelSerializer</span><span class="p">):</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;url&#39;</span><span class="p">,</span> <span class="s">&#39;username&#39;</span><span class="p">,</span> <span class="s">&#39;email&#39;</span><span class="p">,</span> <span class="s">&#39;groups&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">GroupSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">HyperlinkedModelSerializer</span><span class="p">):</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Group</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;url&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>Editando <code>views.py</code></h2>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span><span class="p">,</span> <span class="n">Group</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">viewsets</span>
+<span class="kn">from</span> <span class="nn">core.serializers</span> <span class="kn">import</span> <span class="n">UserSerializer</span><span class="p">,</span> <span class="n">GroupSerializer</span>
+
+
+<span class="k">class</span> <span class="nc">UserViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    API endpoint that allows users to be viewed or edited.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;-date_joined&#39;</span><span class="p">)</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">UserSerializer</span>
+
+
+<span class="k">class</span> <span class="nc">GroupViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    API endpoint that allows groups to be viewed or edited.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">GroupSerializer</span>
+</pre></div>
+
+
+<h2>Editando <code>urls.py</code></h2>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">routers</span>
+<span class="kn">from</span> <span class="nn">core</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">router</span> <span class="o">=</span> <span class="n">routers</span><span class="o">.</span><span class="n">DefaultRouter</span><span class="p">()</span>
+<span class="n">router</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s">r&#39;users&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">UserViewSet</span><span class="p">)</span>
+<span class="n">router</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s">r&#39;groups&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">GroupViewSet</span><span class="p">)</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">router</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^api-auth/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;rest_framework.urls&#39;</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="s">&#39;rest_framework&#39;</span><span class="p">))</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<h2>Rodando a API</h2>
+<p>Abra duas abas no terminal, numa rode a aplicação.</p>
+<div class="highlight"><pre><span class="nv">$ </span>python manage.py runserver
+</pre></div>
+
+
+<p><img alt="drf02" src="images/regisdasilva/drf02.png" /></p>
+<p>Na outra teste a API.</p>
+<div class="highlight"><pre>curl -H <span class="s1">&#39;Accept: application/json; indent=4&#39;</span> -u admin:admin http://127.0.0.1:8000/users/
+</pre></div>
+
+
+<p>onde <code>admin:admin</code> equivale a <code>username:password</code>.</p>
+<p>Experimente com <a href="https://github.com/jakubroztocil/httpie#installation">httpie</a></p>
+<div class="highlight"><pre>http -a admin:admin http://127.0.0.1:8000/users/
+</pre></div>
+
+
+<blockquote>
+<p><strong>Atenção</strong>: se você receber erro 301, muito provavelmente é porque você esqueceu da barra <code>/</code> no final da url.</p>
+</blockquote>
+<p><img alt="drf01" src="images/regisdasilva/drf01.png" /></p>
+<p>Veja o código no <a href="https://github.com/rg3915/drf-quickstart.git">GitHub</a>.</p>
+<blockquote>
+<p>Haverá continuação ...</p>
+</blockquote>
+
+            <div class="licence">
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licença Creative Commons"
+                                                                                               style="border-width:0"
+                                                                                               src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"/></a><br/><a
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title"
+                    href="http://pythonclub.com.br/django-rest-framework-quickstart.html">"Django Rest Framework Quickstart"</a> de <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="http://pythonclub.com.br/author/regis-da-silva.html"
+                    property="cc:attributionName" rel="cc:attributionURL">"Regis da Silva"</a> está licenciado com uma Licença
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons -
+                    Atribuição-NãoComercial-SemDerivações 4.0 Internacional</a>.
+            </div>
+
+            <div class="sharing">
+                <!-- Facebook sharing -->
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=1487080281503641&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-share-button" data-href="http://pythonclub.com.br/django-rest-framework-quickstart.html" data-type="button_count"></div>
+
+                <!-- Google+ sharing -->
+                <div class="g-plus alinhar" data-action="share" data-annotation="bubble" data-href="http://pythonclub.com.br/django-rest-framework-quickstart.html"></div>
+
+                <!-- Twitter sharing -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="pt" style="margin-bottom: -4px !important;">Tweetar</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Topo</a>
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES: THIS CODE IS ONLY AN EXAMPLE * * */
+                        var disqus_shortname = 'pythonclub'; // Required - Replace example with your forum shortname
+                        var disqus_identifier = 'django-rest-framework-quickstart.html';
+                        var disqus_title = 'Django Rest Framework Quickstart';
+                        var disqus_url = 'http://pythonclub.com.br/django-rest-framework-quickstart.html';
+                    
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </div>
+<footer class="footer">
+    <p>&copy; PythonClub &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://pythonclub.com.br/theme/js/dynamic_random_articles.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+        $(window).load(function(){
+          $("iframe").css("margin-bottom", "-6px")
+          $("#twitter-widget-0").css("margin-bottom", "-5px");
+          $("#twitter-widget-0").css("margin-left", "-1px");
+        });
+    </script>
+    <script type="text/javascript" src="https://apis.google.com/js/platform.js">
+      {lang: 'pt-BR'}
+    </script>
+
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+
+        $(function(){
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+        });
+        
+    </script>
+        <!-- spot_im -->
+        <!--    <div id="spot-im-root"></div> -->
+        <!--    <script type="text/javascript">!function(t,o,p){function e(){var t=o.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"==o.location.protocol?"https":"http")+":"+p,o.body.appendChild(t)}t.spotId="3de816246c80a51757bb01c5b8c95cda",t.spotName="",t.allowDesktop=!0,t.allowMobile=!1,t.containerId="spot-im-root",e()}(window.SPOTIM={},document,"//www.spot.im/embed/scripts/launcher.js");</script> -->
+        <!-- end spot_im -->
+   
+            <script>
+              ((window.gitter = {}).chat = {}).options = {
+                    room: 'pythonclub/pythonclub.github.io'
+              };
+            </script>
+            <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+   
+</body>
+</html>
