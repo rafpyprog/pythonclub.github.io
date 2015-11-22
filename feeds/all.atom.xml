@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2015-11-22T17:00:00-02:00</updated><entry><title>Extraindo Texto de Imagens Com Python</title><link href="http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html" rel="alternate"></link><updated>2015-11-22T17:00:00-02:00</updated><author><name>André Ramos</name></author><id>tag:pythonclub.com.br,2015-11-22:extraindo-texto-de-imagens-com-python.html</id><summary type="html">&lt;h2&gt;Introdução&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2015-11-22T17:00:00-02:00</updated><entry><title>Extraindo Texto de Imagens com Python</title><link href="http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html" rel="alternate"></link><updated>2015-11-22T17:00:00-02:00</updated><author><name>André Ramos</name></author><id>tag:pythonclub.com.br,2015-11-22:extraindo-texto-de-imagens-com-python.html</id><summary type="html">&lt;h2&gt;Introdução&lt;/h2&gt;
 &lt;p&gt;Já precisou extrair texto de imagens mas não sabia como? aprenda como fazer isso com apenas 3 linhas de código (Por isso amo python!). Antes de começarmos, vamos ver um pouco de teoria.&lt;/p&gt;
 &lt;h3&gt;O que é OCR?&lt;/h3&gt;
-&lt;p&gt;Segundo o Wikipedia, OCR é um acrónimo para o inglês Optical Character Recognition, é uma tecnologia para reconhecer caracteres a partir de um arquivo de imagem ou mapa de bits sejam eles escaneados, escritos a mão, datilografados ou impressos. Dessa forma, através do OCR é possível obter um arquivo de texto editável por um computador. A engine OCR que vamos utilizar é a &lt;strong&gt;Tesseract&lt;/strong&gt;, a mesma foi inicialmente desenvolvida nos laboratórios da HP e tem seu projeto hospedado em: [https://github.com/tesseract-ocr/tesseract]. Texto adaptado de: [https://pt.wikipedia.org/wiki/Reconhecimento_%C3%B3tico_de_caracteres]&lt;/p&gt;
+&lt;p&gt;Segundo o Wikipedia, OCR é um acrónimo para o inglês Optical Character Recognition, é uma tecnologia para reconhecer caracteres a partir de um arquivo de imagem ou mapa de bits sejam eles escaneados, escritos a mão, datilografados ou impressos. Dessa forma, através do OCR é possível obter um arquivo de texto editável por um computador. A engine OCR que vamos utilizar é a &lt;strong&gt;Tesseract&lt;/strong&gt;, a mesma foi inicialmente desenvolvida nos laboratórios da HP e tem seu projeto hospedado em: &lt;a href="https://github.com/tesseract-ocr/tesseract"&gt;https://github.com/tesseract-ocr/tesseract&lt;/a&gt;. Texto adaptado de: &lt;a href="https://pt.wikipedia.org/wiki/Reconhecimento_%C3%B3tico_de_caracteres"&gt;https://pt.wikipedia.org/wiki/Reconhecimento_ótico_de_caracteres&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Como descrito acima, já existe uma tecnologia para realizar essa função, então apenas precisamos utilizá-la em nosso script python e assim desenvolvermos o que a imaginação permitir.&lt;/p&gt;
 &lt;h3&gt;Instalando Dependências (Ubuntu)&lt;/h3&gt;
 &lt;p&gt;Primeiro vamos começar pela instalação do Tesseract OCR. Abra o terminal e digite o seguinte comando:&lt;/p&gt;
@@ -11,14 +11,15 @@
 
 
 &lt;p&gt;Também precisamos instalar a biblioteca Pillow e suas dependências. Ela será necessária para carregar a imagem para nosso script:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;Ubuntu 12.04/14.04:
+&lt;p&gt;Ubuntu 12.04/14.04:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install python-dev python3-dev build-essential liblcms1-dev zlib1g-dev libtiff4-dev libjpeg8-dev libfreetype6-dev libwebp-dev
+&lt;span class="nv"&gt;$ &lt;/span&gt;sudo -H pip install Pillow
+&lt;/pre&gt;&lt;/div&gt;
 
-$ sudo apt-get install python-dev python3-dev build-essential liblcms1-dev zlib1g-dev libtiff4-dev libjpeg8-dev libfreetype6-dev libwebp-dev
-$ sudo -H pip install Pillow
 
-Ubuntu 15.04/15.10
-$ sudo apt-get install python-dev python3-dev build-essential liblcms2-dev zlib1g-dev libtiff4-dev libjpeg8-dev libfreetype6-dev libwebp-dev
-$ sudo -H pip install Pillow
+&lt;p&gt;Ubuntu 15.04/15.10:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install python-dev python3-dev build-essential liblcms2-dev zlib1g-dev libtiff4-dev libjpeg8-dev libfreetype6-dev libwebp-dev
+&lt;span class="nv"&gt;$ &lt;/span&gt;sudo -H pip install Pillow
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -40,9 +41,15 @@ $ sudo -H pip install Pillow
 
 
 &lt;p&gt;Simples né? Mas nem sempre o texto sai 100% correto, depende muito da qualidade da imagem e da quantidade de detalhes que a mesma possui, porem existe algumas técnicas usadas para fazer melhorias na imagem diminuindo a chance de erros na hora da extração.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Alguns links que podem te ajudar a aproveitar ao maximo da tecnologia OCR:&lt;/strong&gt;
-&lt;em&gt;[http://pt.scribd.com/doc/88203318/Como-escanear-livros-com-qualidade-e-produzir-textos-por-OCR#scribd]
-&lt;/em&gt;[http://profs.if.uff.br/tjpp/blog/entradas/ocr-de-qualidade-no-linux]&lt;/p&gt;</summary><category term="imagens"></category><category term="ocr"></category><category term="pytesseract"></category><category term="extrair texto"></category></entry><entry><title>Django Rest Framework Quickstart</title><link href="http://pythonclub.com.br/django-rest-framework-quickstart.html" rel="alternate"></link><updated>2015-11-17T14:00:00-02:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2015-11-17:django-rest-framework-quickstart.html</id><summary type="html">&lt;p&gt;Veremos aqui uma forma rápida de criar uma API REST com &lt;a href="http://www.django-rest-framework.org/"&gt;Django Rest Framework&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Alguns links que podem te ajudar a aproveitar ao maximo da tecnologia OCR:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://pt.scribd.com/doc/88203318/Como-escanear-livros-com-qualidade-e-produzir-textos-por-OCR#scribd"&gt;http://pt.scribd.com/doc/88203318/Como-escanear-livros-com-qualidade-e-produzir-textos-por-OCR#scribd&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://profs.if.uff.br/tjpp/blog/entradas/ocr-de-qualidade-no-linux"&gt;http://profs.if.uff.br/tjpp/blog/entradas/ocr-de-qualidade-no-linux&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="imagens"></category><category term="ocr"></category><category term="pytesseract"></category><category term="extrair texto"></category></entry><entry><title>Django Rest Framework Quickstart</title><link href="http://pythonclub.com.br/django-rest-framework-quickstart.html" rel="alternate"></link><updated>2015-11-17T14:00:00-02:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2015-11-17:django-rest-framework-quickstart.html</id><summary type="html">&lt;p&gt;Veremos aqui uma forma rápida de criar uma API REST com &lt;a href="http://www.django-rest-framework.org/"&gt;Django Rest Framework&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Este tutorial é a parte 0/6 de uma série de posts sobre DRF.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Obs&lt;/strong&gt;: &lt;em&gt;Tem coisas que é melhor nem traduzir. ;)&lt;/em&gt;&lt;/p&gt;
 &lt;ul&gt;
