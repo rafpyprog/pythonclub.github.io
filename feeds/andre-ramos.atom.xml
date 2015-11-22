@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/andre-ramos.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2015-11-20T23:00:00-02:00</updated><entry><title>Extraindo Texto de Imagens Com Python</title><link href="http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html" rel="alternate"></link><updated>2015-11-20T23:00:00-02:00</updated><author><name>André Ramos</name></author><id>tag:pythonclub.com.br,2015-11-20:extraindo-texto-de-imagens-com-python.html</id><summary type="html">&lt;h2&gt;Introdução&lt;/h2&gt;
+&lt;p&gt;Já precisou extrair texto de imagens mas não sabia como? aprenda como fazer isso com apenas 3 linhas de código (Por isso amo python!). Antes de começarmos, vamos ver um pouco de teoria.&lt;/p&gt;
+&lt;h3&gt;O que é OCR?&lt;/h3&gt;
+&lt;p&gt;Segundo o Wikipedia, OCR é um acrónimo para o inglês Optical Character Recognition, é uma tecnologia para reconhecer caracteres a partir de um arquivo de imagem ou mapa de bits sejam eles escaneados, escritos a mão, datilografados ou impressos. Dessa forma, através do OCR é possível obter um arquivo de texto editável por um computador. A engine OCR que vamos utilizar é a &lt;strong&gt;Tesseract&lt;/strong&gt;, a mesma foi inicialmente desenvolvida nos laboratórios da HP e tem seu projeto hospedado em: [https://github.com/tesseract-ocr/tesseract]. Texto adaptado de: [https://pt.wikipedia.org/wiki/Reconhecimento_%C3%B3tico_de_caracteres]&lt;/p&gt;
+&lt;p&gt;Como descrito acima, já existe uma tecnologia para realizar essa função, então apenas precisamos utilizá-la em nosso script python e assim desenvolvermos o que a imaginação permitir.&lt;/p&gt;
+&lt;h3&gt;Instalando Dependências (Ubuntu)&lt;/h3&gt;
+&lt;p&gt;Primeiro vamos começar pela instalação do Tesseract OCR. Abra o terminal e digite o seguinte comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install tesseract-ocr tesseract-ocr-por
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Também precisamos instalar a biblioteca Pillow e suas dependências. Ela será necessária para carregar a imagem para nosso script:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Ubuntu 12.04/14.04:
+
+$ sudo apt-get install python-dev python3-dev build-essential liblcms1-dev zlib1g-dev libtiff4-dev libjpeg8-dev libfreetype6-dev libwebp-dev
+$ sudo -H pip install Pillow
+
+Ubuntu 15.04/15.10
+$ sudo apt-get install python-dev python3-dev build-essential liblcms2-dev zlib1g-dev libtiff4-dev libjpeg8-dev libfreetype6-dev libwebp-dev
+$ sudo -H pip install Pillow
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora partiremos para a instalação do wrapper que irá permitir a utilização do Tesseract através do python:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo -H pip install pytesseract
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Mão Na Massa!&lt;/h3&gt;
+&lt;p&gt;Finalmente chegamos a parte prática desse artigo. Como dito anteriormente, são apenas 3 linhas de código, mas antes de começar baixe a seguinte imagem para realizar seus testes:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="imagem para teste" src="images/andrelramos/ocr2.png" title="Imagem Para Teste" /&gt;&lt;/p&gt;
+&lt;p&gt;Agora vamos ao código:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;PIL&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt; &lt;span class="c"&gt;# Importando o módulo Pillow para abrir a imagem no script&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pytesseract&lt;/span&gt; &lt;span class="c"&gt;# Módulo para a utilização da tecnologia OCR&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;pytesseract&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;image_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;nome_da_imagem.jpg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# Extraindo o texto da imagem&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Simples né? Mas nem sempre o texto sai 100% correto, depende muito da qualidade da imagem e da quantidade de detalhes que a mesma possui, porem existe algumas técnicas usadas para fazer melhorias na imagem diminuindo a chance de erros na hora da extração.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Alguns links que podem te ajudar a aproveitar ao maximo da tecnologia OCR:&lt;/strong&gt;
+&lt;em&gt;[http://pt.scribd.com/doc/88203318/Como-escanear-livros-com-qualidade-e-produzir-textos-por-OCR#scribd]
+&lt;/em&gt;[http://profs.if.uff.br/tjpp/blog/entradas/ocr-de-qualidade-no-linux]&lt;/p&gt;</summary><category term="imagens"></category><category term="ocr"></category><category term="pytesseract"></category><category term="extrair texto"></category></entry></feed>
