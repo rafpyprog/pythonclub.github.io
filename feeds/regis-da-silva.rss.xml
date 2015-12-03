@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/regis-da-silva.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 01 Dec 2015 22:00:00 -0200</lastBuildDate><item><title>Criando novos comandos no django-admin</title><link>http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html</link><description>&lt;p&gt;Veja aqui como criar o seu próprio comando para ser usado com o django-admin ou manage.py do Django.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/regis-da-silva.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 03 Dec 2015 22:00:00 -0200</lastBuildDate><item><title>Criando novos comandos no django-admin</title><link>http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html</link><description>&lt;p&gt;Veja aqui como criar o seu próprio comando para ser usado com o django-admin ou manage.py do Django.&lt;/p&gt;
 &lt;p&gt;O &lt;a href="https://docs.djangoproject.com/en/1.8/ref/django-admin/"&gt;django-admin ou manage.py&lt;/a&gt; já tem um bocado de comandos interessantes, os mais utilizados são:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/1.8/ref/django-admin/#startproject-projectname-destination"&gt;startproject&lt;/a&gt; - cria novos projetos.&lt;/li&gt;
@@ -10,7 +10,7 @@
 &lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/1.8/ref/django-admin/#test-app-or-test-identifier"&gt;test&lt;/a&gt; - roda os testes da aplicação.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/1.8/ref/django-admin/#loaddata-fixture-fixture"&gt;loaddata&lt;/a&gt; - carrega dados iniciais a partir de um json, por exemplo, &lt;code&gt;python manage.py loaddata fixtures.json&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/1.8/ref/django-admin/#shell"&gt;shell&lt;/a&gt; - inicializa um interpretador Python interativo.&lt;/li&gt;
-&lt;li&gt;[dbshell][18] - acessa o banco de dados através da linha de comando, ou seja, você pode executar comandos sql do banco, por exemplo, diretamente no terminal.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/1.8/ref/django-admin/#dbshell"&gt;dbshell&lt;/a&gt; - acessa o banco de dados através da linha de comando, ou seja, você pode executar comandos sql do banco, por exemplo, diretamente no terminal.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/1.8/ref/django-admin/#inspectdb"&gt;inspectdb&lt;/a&gt; - retorna todos os modelos Django que geraram as tabelas do banco de dados.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/1.8/ref/django-admin/#runserver-port-or-address-port"&gt;runserver&lt;/a&gt; - roda o servidor local do projeto Django.&lt;/li&gt;
 &lt;/ul&gt;
@@ -56,7 +56,7 @@ touch core/management/commands/&lt;span class="o"&gt;{&lt;/span&gt;__init__.py,h
 &lt;blockquote&gt;
 &lt;p&gt;Importante: estamos usando Django 1.8 e Python 3.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;O Django 1.8 usa o &lt;code&gt;argparse&lt;/code&gt; como parser de argumentos do &lt;code&gt;command&lt;/code&gt;, mais informações em [module-argparse][19].&lt;/p&gt;
+&lt;p&gt;O Django 1.8 usa o &lt;code&gt;argparse&lt;/code&gt; como parser de argumentos do &lt;code&gt;command&lt;/code&gt;, mais informações em &lt;a href="https://docs.python.org/2/library/argparse.html#module-argparse"&gt;module-argparse&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.management.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BaseCommand&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CommandError&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;optparse&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;make_option&lt;/span&gt;
 
@@ -175,7 +175,7 @@ python manage.py migrate
 &lt;p&gt;O código a seguir é longo, mas basicamente temos&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;print_red(name)&lt;/code&gt; função que imprime um texto em vermelho (opcional)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;get_html(year)&lt;/code&gt; função que lê os dados da api usando [requests][20], e depois escolhe um filme randomicamente a partir de 2 letras&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_html(year)&lt;/code&gt; função que lê os dados da api usando &lt;a href="http://docs.python-requests.org/en/latest/"&gt;requests&lt;/a&gt;, e depois escolhe um filme randomicamente a partir de 2 letras&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;get_movie(year)&lt;/code&gt; se o dicionário conter &lt;code&gt;{'Response': 'True', ...}&lt;/code&gt; então retorna um dicionário do filme localizado&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;save()&lt;/code&gt; salva os dados no banco&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;handle(movies, year)&lt;/code&gt; este é o comando principal. Busca os filmes várias vezes, conforme definido pela variável &lt;code&gt;movies&lt;/code&gt;, e salva os n filmes.&lt;/li&gt;
@@ -219,7 +219,7 @@ python manage.py migrate
 &lt;span class="sd"&gt;        &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
 
         &lt;span class="c"&gt;# Escolhe duas letras aleatoriamente&lt;/span&gt;
-                &lt;span class="n"&gt;letters&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ascii_lowercase&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="n"&gt;letters&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ascii_lowercase&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 
         &lt;span class="c"&gt;# Se não for definido o ano, então escolhe um randomicamente&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;year&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -354,7 +354,7 @@ Localiza um filme pelo título ou ano de lançamento.
 &lt;p&gt;Mais algumas referências:&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.djangoproject.com/en/1.8/howto/custom-management-commands/"&gt;Writing custom django-admin commands&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://zacharyvoase.com/2009/12/09/django-boss/"&gt;Zachary Voase: Fixing Django Management Commands&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://thingsilearned.com/2009/03/13/adding-custom-commands-to-managepy-and-django-adminpy/"&gt;Adding Custom Commands to manage.py and django-admin.py by dave&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Regis da Silva</dc:creator><pubDate>Tue, 01 Dec 2015 22:00:00 -0200</pubDate><guid>tag:pythonclub.com.br,2015-12-01:criando-novos-comandos-no-django-admin.html</guid><category>Python</category><category>Django</category></item><item><title>Django Rest Framework Quickstart</title><link>http://pythonclub.com.br/django-rest-framework-quickstart.html</link><description>&lt;p&gt;Veremos aqui uma forma rápida de criar uma API REST com &lt;a href="http://www.django-rest-framework.org/"&gt;Django Rest Framework&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://thingsilearned.com/2009/03/13/adding-custom-commands-to-managepy-and-django-adminpy/"&gt;Adding Custom Commands to manage.py and django-admin.py by dave&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Regis da Silva</dc:creator><pubDate>Thu, 03 Dec 2015 22:00:00 -0200</pubDate><guid>tag:pythonclub.com.br,2015-12-03:criando-novos-comandos-no-django-admin.html</guid><category>Python</category><category>Django</category></item><item><title>Django Rest Framework Quickstart</title><link>http://pythonclub.com.br/django-rest-framework-quickstart.html</link><description>&lt;p&gt;Veremos aqui uma forma rápida de criar uma API REST com &lt;a href="http://www.django-rest-framework.org/"&gt;Django Rest Framework&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Este tutorial é a parte 0/6 de uma série de posts sobre DRF.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Obs&lt;/strong&gt;: &lt;em&gt;Tem coisas que é melhor nem traduzir. ;)&lt;/em&gt;&lt;/p&gt;
 &lt;ul&gt;

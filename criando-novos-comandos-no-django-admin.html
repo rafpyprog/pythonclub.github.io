@@ -79,7 +79,7 @@
                     </li>
                 </ul>
                 <h5>Publicado em:</h5>
-                <p>Tue 01 December 2015</p>
+                <p>Thu 03 December 2015</p>
                 <a href="/">&larr;Home</a>
             </hgroup>
         </header>
@@ -106,7 +106,7 @@
 <li><a href="https://docs.djangoproject.com/en/1.8/ref/django-admin/#test-app-or-test-identifier">test</a> - roda os testes da aplicação.</li>
 <li><a href="https://docs.djangoproject.com/en/1.8/ref/django-admin/#loaddata-fixture-fixture">loaddata</a> - carrega dados iniciais a partir de um json, por exemplo, <code>python manage.py loaddata fixtures.json</code></li>
 <li><a href="https://docs.djangoproject.com/en/1.8/ref/django-admin/#shell">shell</a> - inicializa um interpretador Python interativo.</li>
-<li>[dbshell][18] - acessa o banco de dados através da linha de comando, ou seja, você pode executar comandos sql do banco, por exemplo, diretamente no terminal.</li>
+<li><a href="https://docs.djangoproject.com/en/1.8/ref/django-admin/#dbshell">dbshell</a> - acessa o banco de dados através da linha de comando, ou seja, você pode executar comandos sql do banco, por exemplo, diretamente no terminal.</li>
 <li><a href="https://docs.djangoproject.com/en/1.8/ref/django-admin/#inspectdb">inspectdb</a> - retorna todos os modelos Django que geraram as tabelas do banco de dados.</li>
 <li><a href="https://docs.djangoproject.com/en/1.8/ref/django-admin/#runserver-port-or-address-port">runserver</a> - roda o servidor local do projeto Django.</li>
 </ul>
@@ -152,7 +152,7 @@ touch core/management/commands/<span class="o">{</span>__init__.py,hello.py,init
 <blockquote>
 <p>Importante: estamos usando Django 1.8 e Python 3.</p>
 </blockquote>
-<p>O Django 1.8 usa o <code>argparse</code> como parser de argumentos do <code>command</code>, mais informações em [module-argparse][19].</p>
+<p>O Django 1.8 usa o <code>argparse</code> como parser de argumentos do <code>command</code>, mais informações em <a href="https://docs.python.org/2/library/argparse.html#module-argparse">module-argparse</a>.</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.core.management.base</span> <span class="kn">import</span> <span class="n">BaseCommand</span><span class="p">,</span> <span class="n">CommandError</span>
 <span class="kn">from</span> <span class="nn">optparse</span> <span class="kn">import</span> <span class="n">make_option</span>
 
@@ -271,7 +271,7 @@ python manage.py migrate
 <p>O código a seguir é longo, mas basicamente temos</p>
 <ul>
 <li><code>print_red(name)</code> função que imprime um texto em vermelho (opcional)</li>
-<li><code>get_html(year)</code> função que lê os dados da api usando [requests][20], e depois escolhe um filme randomicamente a partir de 2 letras</li>
+<li><code>get_html(year)</code> função que lê os dados da api usando <a href="http://docs.python-requests.org/en/latest/">requests</a>, e depois escolhe um filme randomicamente a partir de 2 letras</li>
 <li><code>get_movie(year)</code> se o dicionário conter <code>{'Response': 'True', ...}</code> então retorna um dicionário do filme localizado</li>
 <li><code>save()</code> salva os dados no banco</li>
 <li><code>handle(movies, year)</code> este é o comando principal. Busca os filmes várias vezes, conforme definido pela variável <code>movies</code>, e salva os n filmes.</li>
@@ -315,7 +315,7 @@ python manage.py migrate
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c"># Escolhe duas letras aleatoriamente</span>
-                <span class="n">letters</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">letters</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 
         <span class="c"># Se não for definido o ano, então escolhe um randomicamente</span>
         <span class="k">if</span> <span class="n">year</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
