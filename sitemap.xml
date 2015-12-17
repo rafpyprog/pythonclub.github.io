@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/</loc>
-<lastmod>2015-12-03T18:13:10-00:00</lastmod>
+<lastmod>2015-12-17T21:23:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2015-12-03T18:13:10-00:00</lastmod>
+<lastmod>2015-12-17T21:23:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2015-12-03T18:13:10-00:00</lastmod>
+<lastmod>2015-12-17T21:23:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2015-12-03T18:13:10-00:00</lastmod>
+<lastmod>2015-12-17T21:23:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2015-12-03T18:13:10-00:00</lastmod>
+<lastmod>2015-12-17T21:23:02-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
@@ -67,6 +67,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/workflow-com-git-flow.html</loc>
+<lastmod>2015-10-27T02:02:00-02:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/class-based-views-django.html</loc>
 <lastmod>2015-10-26T14:50:00-02:00</lastmod>
 <changefreq>daily</changefreq>
@@ -83,6 +90,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html</loc>
 <lastmod>2015-10-21T09:00:00-02:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/usando-virtualenv-com-virtualenvwrapper.html</loc>
+<lastmod>2015-09-09T17:49:00-03:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
@@ -599,6 +613,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/category/workflow.html</loc>
+<lastmod>2015-10-27T02:02:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/tag/wsgi.html</loc>
 <lastmod>2014-07-24T14:42:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -860,6 +881,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/tag/tuplas.html</loc>
 <lastmod>2015-02-24T10:17:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/desenvolvimento.html</loc>
+<lastmod>2015-10-27T02:02:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1238,6 +1266,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/tag/docker.html</loc>
 <lastmod>2015-01-25T13:00:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/author/andre-luiz.html</loc>
+<lastmod>2015-10-27T02:02:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
