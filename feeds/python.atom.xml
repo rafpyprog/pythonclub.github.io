@@ -164,59 +164,7 @@ Fazemos isso usando utilizado uma expressão regular associada à uma função, 
 &lt;p&gt;Até a próxima =)&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="python"></category><category term="django"></category><category term="django-na-pratica"></category></entry><entry><title>Usando virtualenv com virtualenvwrapper</title><link href="http://pythonclub.com.br/usando-virtualenv-com-virtualenvwrapper.html" rel="alternate"></link><updated>2015-09-09T17:49:00-03:00</updated><author><name>André Luiz</name></author><id>tag:pythonclub.com.br,2015-09-09:usando-virtualenv-com-virtualenvwrapper.html</id><summary type="html">&lt;p&gt;O uso do &lt;code&gt;virtualenv&lt;/code&gt; é um item quase que obrigatório em qualquer ambiente de desenvolvimento Python, é usado para manter pacotes (biblioteca Python) de diferentes projetos independentes e isolados dos pacotes do sistema.&lt;/p&gt;
-&lt;p&gt;O que vejo poucas pessoas usando é o &lt;code&gt;virtualenvwrapper&lt;/code&gt; que visa a resolver vários problemas criados pelo &lt;code&gt;virtualenv&lt;/code&gt; como a necessidade de se usar sempre &lt;code&gt;source bin/activate&lt;/code&gt; e os arquivos do &lt;code&gt;virtualenv&lt;/code&gt; sendo colocados lado-a-lado com os arquivos do seu projeto.&lt;/p&gt;
-&lt;h2&gt;Instalação&lt;/h2&gt;
-&lt;p&gt;Primeiro vamos a instalação dos pacotes necessários (essa possivelmente deverá ser a ultima vez que você instala algo globalmente no seu sistema):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo pip install -H virtualenv virtualenvwrapper
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;E adicione a seguinte linha ao final do seu arquivo &lt;code&gt;.bashrc&lt;/code&gt; (ou equivalente):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;source /usr/local/bin/virtualenvwrapper.sh
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Reinicie seu shell e você possuirá entre outros os seguintes novos comandos.&lt;/p&gt;
-&lt;h2&gt;Uso&lt;/h2&gt;
-&lt;p&gt;Para criar um novo ambiente use:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt; mkvirtualenv meu_projeto
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Para criar um novo ambiente com Python 3:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt; mkvirtualenv meu_projeto2 --python=`which python3`
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Para listar todos seus ambientes:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;lsvirtualenv
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Para executar um comando em todos os ambientes:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;allvirtualenv pip install -U django
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;E para remover um ambiente:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;rmvirtualenv meu_projeto
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;E para ativar/trocar de ambiente:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;workon meu_projeto2
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Para desativar é igual, sem qualquer novidade:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;deactivate
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Para lista completa de comandos visite a &lt;a href="https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html"&gt;documentação oficial do virtualenvwrapper&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;Dicas&lt;/h2&gt;
-&lt;p&gt;Caso você esteja usando o &lt;code&gt;zsh&lt;/code&gt; como shell juntamente com o &lt;code&gt;oh-my-zsh&lt;/code&gt; é possivel ativar automaticamente um ambiente ao entrar em determinadas pastas (&lt;code&gt;cd meu_projeto&lt;/code&gt;) para isso adicione o plugin &lt;code&gt;virtualenvwrapper&lt;/code&gt; a lista de plugins no seu arquivo &lt;code&gt;.zshrc&lt;/code&gt; e sempre que você entrar em alguma pasta o plugin irá procurar um ambiente com o nome daquela pasta e ativa-lo, também é possivel criar um arquivo chamado &lt;code&gt;.venv&lt;/code&gt; dentro da pasta do projeto contendo o nome do ambiente a ser ativado (ex.: &lt;code&gt;echo meu_projeto &amp;gt; .venv&lt;/code&gt;).&lt;/p&gt;</summary><category term="python"></category><category term="desenvolvimento"></category></entry><entry><title>Raspando a Web com Python: Introdução</title><link href="http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html" rel="alternate"></link><updated>2015-07-08T12:40:00-03:00</updated><author><name>Capi Etheriel</name></author><id>tag:pythonclub.com.br,2015-07-08:raspando-a-web-com-python-parte-1.html</id><summary type="html">&lt;p&gt;Todo projeto que deseja raspar dados da web se resume ao seguinte &lt;em&gt;loop&lt;/em&gt;:&lt;/p&gt;
+</summary><category term="python"></category><category term="django"></category><category term="django-na-pratica"></category></entry><entry><title>Raspando a Web com Python: Introdução</title><link href="http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html" rel="alternate"></link><updated>2015-07-08T12:40:00-03:00</updated><author><name>Capi Etheriel</name></author><id>tag:pythonclub.com.br,2015-07-08:raspando-a-web-com-python-parte-1.html</id><summary type="html">&lt;p&gt;Todo projeto que deseja raspar dados da web se resume ao seguinte &lt;em&gt;loop&lt;/em&gt;:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Fazer uma requisição para uma URL;&lt;/li&gt;
 &lt;li&gt;Processar a resposta (HTML, XML ou JSON);&lt;/li&gt;
