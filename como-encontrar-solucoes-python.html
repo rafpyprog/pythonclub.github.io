@@ -133,10 +133,10 @@
 
 
 <h3>O que aconteceu?</h3>
-<p>Na variável <strong>a</strong> criamos uma <em>lista</em> com os nomes <em>Eric, Python e JavaScript</em>, e depois criamos uma <em>tupla</em> com os nomes <em>Django e Flask</em>. </p>
-<p>Ao tentarmos juntar <strong>a + b</strong>, o interpretador Python nos retorna um erro: <em>TypeError: unsupported operand type(s) for +: 'set' and 'tuple'</em>. Ou seja, o que ele diz é que não podemos somar uma lista a uma tupla.</p>
+<p>Na variável <strong>a</strong> criamos um <em>set</em> com os nomes <em>Eric, Python e JavaScript</em>, e depois criamos uma <em>tupla</em> com os nomes <em>Django e Flask</em>. </p>
+<p>Ao tentarmos juntar <strong>a + b</strong>, o interpretador Python nos retorna um erro: <em>TypeError: unsupported operand type(s) for +: 'set' and 'tuple'</em>. Ou seja, o que ele diz é que não podemos somar um set a uma tupla.</p>
 <p>O interpretador Python realiza as operações em tempo real, e se caso o que você deseja fazer não estiver correto, o interpretador irá informar o erro. Se o erro não for explícito para você, basta copiar e colar o erro no Google e encontrará os motivos do erro.</p>
-<p>Para resolver esse problema, uma das soluções apresentada é transformar nossa lista em uma tupla, onde fazemos a conversão em tempo de execução com o comando <strong>tuple(a) + b</strong>. </p>
+<p>Para resolver esse problema, uma das soluções apresentada é transformar nosso set em uma tupla, onde fazemos a conversão em tempo de execução com o comando <strong>tuple(a) + b</strong>. </p>
 <h2><a href="http://ipython.org/">Ipython</a></h2>
 <p>Que tal termos um interpretador Python mais poderoso e com mais funcionalidades que o tradicional? O <a href="http://ipython.org/">Ipython</a> foi criado especificamente esse objetivo.</p>
 <p>Vamos explorá-lo um pouco:</p>
@@ -252,6 +252,15 @@
 <iframe width="800" height="500" frameborder="0" src="http://www.pythontutor.com/visualize.html#code=prefix+%3D+%22Hello+%22%0A%0An1+%3D+raw_input(%22Enter+your+name%22%29%0A%0An2+%3D+raw_input(%22Enter+another+name%22%29%0A%0Ares+%3D+prefix+%2B+n1+%2B+%22+and+%22+%2B+n2%0Aprint(res%29&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0"> </iframe>
 
 <p>Clique em <strong>Forward</strong> e veja o que acontece.</p>
+<h1>Outras opções</h1>
+<p>Também existem outras ferramentas que podem auxiliar e melhorar seu código:</p>
+<ul>
+<li><strong>Anaconda para Sublime Text</strong> - <a href="http://damnwidget.github.io/anaconda/">http://damnwidget.github.io/anaconda/</a></li>
+<li><strong>Autopep8</strong> - <a href="https://pypi.python.org/pypi/autopep8">https://pypi.python.org/pypi/autopep8</a></li>
+<li><strong>Jedi</strong> - <a href="https://github.com/davidhalter/jedi">https://github.com/davidhalter/jedi</a></li>
+<li><strong>Pyflakes</strong> - <a href="https://pypi.python.org/pypi/pyflakes">https://pypi.python.org/pypi/pyflakes</a></li>
+<li><strong>PDB</strong> - <a href="https://docs.python.org/2/library/pdb.html">https://docs.python.org/2/library/pdb.html</a></li>
+</ul>
 <h2>Locais onde podemos postar nossas dúvidas</h2>
 <p>Vale sempre lembrar que é muito importante consultar a documentação oficial do Python, seja a <a href="https://docs.python.org/2/">versão 2</a> ou a <a href="https://docs.python.org/3/">versão 3</a>.</p>
 <p>Também existem outro lugar muito legal, o <strong><a href="http://pt.stackoverflow.com/">Stackoverflow</a></strong>. Se ainda o problema persistir, acesse as listas de discussões da comunidade Python no Brasil. </p>

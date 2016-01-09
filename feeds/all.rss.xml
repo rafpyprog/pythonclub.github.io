@@ -23,10 +23,10 @@
 
 
 &lt;h3&gt;O que aconteceu?&lt;/h3&gt;
-&lt;p&gt;Na variável &lt;strong&gt;a&lt;/strong&gt; criamos uma &lt;em&gt;lista&lt;/em&gt; com os nomes &lt;em&gt;Eric, Python e JavaScript&lt;/em&gt;, e depois criamos uma &lt;em&gt;tupla&lt;/em&gt; com os nomes &lt;em&gt;Django e Flask&lt;/em&gt;. &lt;/p&gt;
-&lt;p&gt;Ao tentarmos juntar &lt;strong&gt;a + b&lt;/strong&gt;, o interpretador Python nos retorna um erro: &lt;em&gt;TypeError: unsupported operand type(s) for +: 'set' and 'tuple'&lt;/em&gt;. Ou seja, o que ele diz é que não podemos somar uma lista a uma tupla.&lt;/p&gt;
+&lt;p&gt;Na variável &lt;strong&gt;a&lt;/strong&gt; criamos um &lt;em&gt;set&lt;/em&gt; com os nomes &lt;em&gt;Eric, Python e JavaScript&lt;/em&gt;, e depois criamos uma &lt;em&gt;tupla&lt;/em&gt; com os nomes &lt;em&gt;Django e Flask&lt;/em&gt;. &lt;/p&gt;
+&lt;p&gt;Ao tentarmos juntar &lt;strong&gt;a + b&lt;/strong&gt;, o interpretador Python nos retorna um erro: &lt;em&gt;TypeError: unsupported operand type(s) for +: 'set' and 'tuple'&lt;/em&gt;. Ou seja, o que ele diz é que não podemos somar um set a uma tupla.&lt;/p&gt;
 &lt;p&gt;O interpretador Python realiza as operações em tempo real, e se caso o que você deseja fazer não estiver correto, o interpretador irá informar o erro. Se o erro não for explícito para você, basta copiar e colar o erro no Google e encontrará os motivos do erro.&lt;/p&gt;
-&lt;p&gt;Para resolver esse problema, uma das soluções apresentada é transformar nossa lista em uma tupla, onde fazemos a conversão em tempo de execução com o comando &lt;strong&gt;tuple(a) + b&lt;/strong&gt;. &lt;/p&gt;
+&lt;p&gt;Para resolver esse problema, uma das soluções apresentada é transformar nosso set em uma tupla, onde fazemos a conversão em tempo de execução com o comando &lt;strong&gt;tuple(a) + b&lt;/strong&gt;. &lt;/p&gt;
 &lt;h2&gt;&lt;a href="http://ipython.org/"&gt;Ipython&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Que tal termos um interpretador Python mais poderoso e com mais funcionalidades que o tradicional? O &lt;a href="http://ipython.org/"&gt;Ipython&lt;/a&gt; foi criado especificamente esse objetivo.&lt;/p&gt;
 &lt;p&gt;Vamos explorá-lo um pouco:&lt;/p&gt;
@@ -142,6 +142,15 @@
 &lt;iframe width="800" height="500" frameborder="0" src="http://www.pythontutor.com/visualize.html#code=prefix+%3D+%22Hello+%22%0A%0An1+%3D+raw_input(%22Enter+your+name%22%29%0A%0An2+%3D+raw_input(%22Enter+another+name%22%29%0A%0Ares+%3D+prefix+%2B+n1+%2B+%22+and+%22+%2B+n2%0Aprint(res%29&amp;mode=display&amp;origin=opt-frontend.js&amp;cumulative=false&amp;heapPrimitives=false&amp;textReferences=false&amp;py=2&amp;rawInputLstJSON=%5B%5D&amp;curInstr=0"&gt; &lt;/iframe&gt;
 
 &lt;p&gt;Clique em &lt;strong&gt;Forward&lt;/strong&gt; e veja o que acontece.&lt;/p&gt;
+&lt;h1&gt;Outras opções&lt;/h1&gt;
+&lt;p&gt;Também existem outras ferramentas que podem auxiliar e melhorar seu código:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Anaconda para Sublime Text&lt;/strong&gt; - &lt;a href="http://damnwidget.github.io/anaconda/"&gt;http://damnwidget.github.io/anaconda/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Autopep8&lt;/strong&gt; - &lt;a href="https://pypi.python.org/pypi/autopep8"&gt;https://pypi.python.org/pypi/autopep8&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Jedi&lt;/strong&gt; - &lt;a href="https://github.com/davidhalter/jedi"&gt;https://github.com/davidhalter/jedi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pyflakes&lt;/strong&gt; - &lt;a href="https://pypi.python.org/pypi/pyflakes"&gt;https://pypi.python.org/pypi/pyflakes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PDB&lt;/strong&gt; - &lt;a href="https://docs.python.org/2/library/pdb.html"&gt;https://docs.python.org/2/library/pdb.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2&gt;Locais onde podemos postar nossas dúvidas&lt;/h2&gt;
 &lt;p&gt;Vale sempre lembrar que é muito importante consultar a documentação oficial do Python, seja a &lt;a href="https://docs.python.org/2/"&gt;versão 2&lt;/a&gt; ou a &lt;a href="https://docs.python.org/3/"&gt;versão 3&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Também existem outro lugar muito legal, o &lt;strong&gt;&lt;a href="http://pt.stackoverflow.com/"&gt;Stackoverflow&lt;/a&gt;&lt;/strong&gt;. Se ainda o problema persistir, acesse as listas de discussões da comunidade Python no Brasil. &lt;/p&gt;
