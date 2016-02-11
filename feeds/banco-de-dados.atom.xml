@@ -10,7 +10,7 @@
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;Criando um banco de dados.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 Clientes.db
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sqlite3 Clientes.db
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ol class="arabic simple" start="2"&gt;
 &lt;li&gt;A Ajuda.&lt;/li&gt;
@@ -53,7 +53,7 @@
 &lt;div class="section" id="crud"&gt;
 &lt;h2&gt;CRUD&lt;/h2&gt;
 &lt;p&gt;Abra um editor de texto e salve um arquivo com o nome &lt;em&gt;inserirdados.sql&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gedit inserirdados.sql
+&lt;div class="highlight"&gt;&lt;pre&gt;$ gedit inserirdados.sql
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;E digite a inserção de alguns dados.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;clientes&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;00000000000&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;rg@email.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1100000000&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
@@ -67,7 +67,7 @@
 &lt;ol class="arabic simple" start="7"&gt;
 &lt;li&gt;Importe estes comandos no sqlite.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 Clientes.db &amp;lt; inserirdados.sql
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sqlite3 Clientes.db &amp;lt; inserirdados.sql
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ol class="arabic simple" start="8"&gt;
 &lt;li&gt;Abra o SQLite3 novamente, e visualize os dados.&lt;/li&gt;
@@ -121,8 +121,8 @@
 &lt;/div&gt;
 &lt;div class="section" id="backup"&gt;
 &lt;h2&gt;Backup&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 Clientes.db .dump &amp;gt; clientes.sql
-&lt;span class="nv"&gt;$ &lt;/span&gt;cat clientes.sql
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sqlite3 Clientes.db .dump &amp;gt; clientes.sql
+$ cat clientes.sql
 PRAGMA &lt;span class="nv"&gt;foreign_keys&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;OFF&lt;span class="p"&gt;;&lt;/span&gt;
 BEGIN TRANSACTION&lt;span class="p"&gt;;&lt;/span&gt;
 CREATE TABLE clientes&lt;span class="o"&gt;(&lt;/span&gt;
@@ -140,9 +140,9 @@ INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VAL
 COMMIT&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Pronto, se corromper o seu banco de dados, você pode recuperá-lo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;mv Clientes.db Clientes.db.old
-&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 Clientes_recuperado.db &amp;lt; clientes.sql
-&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 Clientes_recuperado.db &lt;span class="s1"&gt;&amp;#39;SELECT * FROM clientes;&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ mv Clientes.db Clientes.db.old
+$ sqlite3 Clientes_recuperado.db &amp;lt; clientes.sql
+$ sqlite3 Clientes_recuperado.db &lt;span class="s1"&gt;&amp;#39;SELECT * FROM clientes;&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Faça um SELECT novamente para ver o resultado do novo banco de dados.&lt;/p&gt;
 &lt;/div&gt;
@@ -150,10 +150,10 @@ COMMIT&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;h2&gt;Relacionando tabelas&lt;/h2&gt;
 &lt;p&gt;Todos devem saber que num banco de dados relacional a &lt;strong&gt;chave estrangeira&lt;/strong&gt; ou &lt;tt class="docutils literal"&gt;FOREIGN KEY&lt;/tt&gt; tem um papel importante no relacionamento entre duas tabelas. Veremos aqui como relacionar duas tabelas.&lt;/p&gt;
 &lt;p&gt;Primeiros façamos um backup do nosso bd.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 Clientes.db .dump &amp;gt; clientes.sql
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sqlite3 Clientes.db .dump &amp;gt; clientes.sql
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Apenas para relembrar, vamos ver qual é a nossa tabela...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 Clientes.db
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sqlite3 Clientes.db
 sqlite&amp;gt; .tables
 clientes
 sqlite&amp;gt; .header on

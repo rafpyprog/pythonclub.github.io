@@ -200,7 +200,7 @@ O Jinja2 já vem com a implementação da maioria das coisas necessárias na con
 <div class="highlight"><pre>mkdir wtf
 touch wtf/__init__.py
 touch wtf/app.py
-<span class="nb">cd </span>wtf
+<span class="nb">cd</span> wtf
 </pre></div>
 
 
@@ -214,12 +214,12 @@ mkvirtualenv wtf_env
 <p>Ou usando apenas virtualenv</p>
 <div class="highlight"><pre>sudo apt-get install python-virtualenv
 virtualenv wtf_env
-<span class="nb">source </span>wtf_env/bin/activate
+<span class="nb">source</span> wtf_env/bin/activate
 </pre></div>
 
 
 <p>Com uma das opções acima o seu console agora deverá exibir algo como:</p>
-<div class="highlight"><pre><span class="o">(</span>wtf_env<span class="o">)</span>seuuser@suamaquina/path/to/wtf<span class="err">$</span>
+<div class="highlight"><pre><span class="o">(</span>wtf_env<span class="o">)</span>seuuser@suamaquina/path/to/wtf$
 </pre></div>
 
 
@@ -235,16 +235,16 @@ pip install ipython
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s">&quot;Hello World! &lt;strong&gt;I am learning Flask&lt;/strong&gt;&quot;</span><span class="p">,</span> <span class="mi">200</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello World! &lt;strong&gt;I am learning Flask&lt;/strong&gt;&quot;</span><span class="p">,</span> <span class="mi">200</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 
 
 <p>Agora salve o arquivo e vá para o terminal e execute:</p>
-<div class="highlight"><pre><span class="o">(</span>wtf_env<span class="o">)</span>seuuser@suamaquina/path/to/wtf<span class="nv">$ </span>python app.py
+<div class="highlight"><pre><span class="o">(</span>wtf_env<span class="o">)</span>seuuser@suamaquina/path/to/wtf$ python app.py
 </pre></div>
 
 
@@ -275,14 +275,14 @@ pip install ipython
 <p>O Flask utiliza o <strong>import_name</strong> para definir o que pertence ao seu projeto e este nome é usado como base path para inferir os recursos como por exemplo descobrir onde fica a sua pasta de templates e sua pasta de arquivos estáticos.</p>
 <p>Além disso a ferramenta de debug do Werkzeug te mostrará mensagens mais explicitas se você definir o nome do pacote de seu app.</p>
 <p>Supondo que você criará a instancia no caminho <code>yourapplication/app.py</code> você tem essas 2 opções.</p>
-<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s">&#39;yourapplication&#39;</span><span class="p">)</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s1">&#39;yourapplication&#39;</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 
 
 <p>No ultimo caso o <code>__name__</code> seria <strong>yourapplication.app</strong> e por isso fazemos o split para se tornar <code>["yourapplication", "app"]</code> e então pegamos o primeiro elemento.</p>
 <p>Eu recomendo usar o primeiro padrão pois é mais bonito :)</p>
-<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s">&quot;wtf&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -299,13 +299,13 @@ pip install ipython
 <p>Você pode ter mais de um app Flask em seu projeto e isto te garante reusabilidade e organização, vou dar um exemplo:</p>
 </li>
 </ol>
-<div class="highlight"><pre><span class="c"># um arquivo projeto.py</span>
+<div class="highlight"><pre><span class="c1"># um arquivo projeto.py</span>
 
 <span class="n">web_app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
-<span class="n">rest_api</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">,</span> <span class="n">static_folder</span><span class="o">=</span><span class="s">&quot;path/to/different/folder&quot;</span><span class="p">)</span>
+<span class="n">rest_api</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">,</span> <span class="n">static_folder</span><span class="o">=</span><span class="s2">&quot;path/to/different/folder&quot;</span><span class="p">)</span>
 
-<span class="n">celery_app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">,</span> <span class="n">instance_path</span><span class="o">=</span><span class="s">&quot;blablabla&quot;</span><span class="p">)</span>
+<span class="n">celery_app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">,</span> <span class="n">instance_path</span><span class="o">=</span><span class="s2">&quot;blablabla&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">FlaskCustomizedForSoap</span><span class="p">(</span><span class="n">Flask</span><span class="p">):</span>
@@ -337,14 +337,14 @@ pip install ipython
 <p>1 Roteamento via decorator</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">render_template</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s">&quot;wtf&quot;</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">)</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/noticias/&lt;pais&gt;&quot;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticias/&lt;pais&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">lista_de_noticias</span><span class="p">(</span><span class="n">pais</span><span class="p">):</span>
-    <span class="n">cat</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;categoria&quot;</span><span class="p">)</span>
-    <span class="n">qtd</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;quantidade&quot;</span><span class="p">)</span>
+    <span class="n">cat</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;categoria&quot;</span><span class="p">)</span>
+    <span class="n">qtd</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;quantidade&quot;</span><span class="p">)</span>
     <span class="n">noticias</span> <span class="o">=</span> <span class="n">BD</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">pais</span><span class="o">=</span><span class="n">pais</span><span class="p">,</span> <span class="n">categoria</span><span class="o">=</span><span class="n">cat</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">qtd</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&quot;lista_de_noticias.html&quot;</span><span class="p">,</span> <span class="n">noticias</span><span class="o">=</span><span class="n">noticias</span><span class="p">),</span> <span class="mi">200</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;lista_de_noticias.html&quot;</span><span class="p">,</span> <span class="n">noticias</span><span class="o">=</span><span class="n">noticias</span><span class="p">),</span> <span class="mi">200</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">use_reloader</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
@@ -360,9 +360,9 @@ pip install ipython
 </blockquote>
 <p>Você pode inclusive utilizar multiplos decorators em uma mesma função para mapear várias urls, isto é útil para abranger uma mesma view com ou sem parametros.</p>
 <p>exemplo:</p>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/noticias&quot;</span><span class="p">)</span>
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/noticias/&lt;pais&gt;&quot;</span><span class="p">)</span>
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/noticias/&lt;pais&gt;/&lt;estado&gt;&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticias&quot;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticias/&lt;pais&gt;&quot;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticias/&lt;pais&gt;/&lt;estado&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">lista_de_noticias</span><span class="p">(</span><span class="n">pais</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">estado</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 </pre></div>
 
@@ -372,8 +372,8 @@ pip install ipython
 <p><strong>WARNING:</strong> Cuidado com o uso de multiplos decorators, a ordem em que são definidos é importante e caso esteja usando algum decorator customizado como por exemplo <code>@seu_app.requires_login</code>, se este for o primeiro decorator o Flask irá usar o nome da função wrapper do decorator ao invés do nome da view para o endpoint da url. A indicação é ao criar decorators utilizar sempre o <code>functools.wraps</code> para resolver este problema.</p>
 </blockquote>
 <p>2 Roteamento explicito</p>
-<div class="highlight"><pre><span class="n">app</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="s">&quot;/noticias/&lt;pais&gt;&quot;</span><span class="p">,</span>
-                 <span class="n">endpoint</span><span class="o">=</span><span class="s">&quot;lista_noticias&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span class="n">app</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="s2">&quot;/noticias/&lt;pais&gt;&quot;</span><span class="p">,</span>
+                 <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;lista_noticias&quot;</span><span class="p">,</span>
                  <span class="n">view_func</span><span class="o">=</span><span class="n">lista_de_noticias</span><span class="p">)</span>
 </pre></div>
 
@@ -402,12 +402,12 @@ pip install ipython
 </blockquote>
 <p>Views precisam retornar um objeto do tipo <strong>Response</strong> ou uma tupla formada por até 3 elementos, um <strong>body</strong> que pode ser um objeto serializável como por exemplo um texto, um inteiro representando o código de <strong>status HTTP</strong> e um dicionário de <strong>headers</strong>, sendo que os dois ultimos elementos são opcionais.</p>
 <p>Exemplo:</p>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/&lt;name&gt;&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&lt;name&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;bruno&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">&quot;Olá {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="mi">200</span>
+    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;bruno&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Olá {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="mi">200</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">&quot;Not Found&quot;</span><span class="p">,</span> <span class="mi">404</span>
+        <span class="k">return</span> <span class="s2">&quot;Not Found&quot;</span><span class="p">,</span> <span class="mi">404</span>
 </pre></div>
 
 
@@ -415,9 +415,9 @@ pip install ipython
 <blockquote>
 <p><strong>RELAX:</strong> Se você não informar o código de status o Flask irá tentar resolver para você. Por padrão qualquer retorno no formato string é convertido para um objeto Response com código de status 200 e no header vai o Content-Type "text/html" automaticamente. Flask is full of magic :)</p>
 </blockquote>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/&lt;name&gt;&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&lt;name&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="k">return</span> <span class="s">&quot;Olá {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;Olá {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 
 
@@ -428,16 +428,16 @@ pip install ipython
 <p>Além disso o Flask oferece alguns <strong>helpers</strong> para facilitar o tratamento de excessões http, por exemplo o <strong>404</strong> ou <strong>503</strong> podem ser definidos através do helper <strong>abort</strong> e o <strong>301/302</strong> com o uso do helper <strong>redirect</strong>.</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">abort</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/shortener/&lt;tiny_url&gt;&quot;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/shortener/&lt;tiny_url&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">url_shortener</span><span class="p">(</span><span class="n">tiny_url</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">url</span> <span class="o">=</span> <span class="n">banco_de_dados</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">shortened</span><span class="o">=</span><span class="n">tiny_url</span><span class="p">)</span><span class="o">.</span><span class="n">url</span>
     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-        <span class="c"># objeto NoneType não tem o atributo url, ou seja, não existe</span>
+        <span class="c1"># objeto NoneType não tem o atributo url, ou seja, não existe</span>
         <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">ConnectionError</span><span class="p">:</span>
-        <span class="c"># não conseguiu conectar no MySQL # TODO: Use o PostGres :)</span>
-        <span class="n">abort</span><span class="p">(</span><span class="mi">503</span><span class="p">)</span>  <span class="c"># ServiceUnavailable</span>
+        <span class="c1"># não conseguiu conectar no MySQL # TODO: Use o PostGres :)</span>
+        <span class="n">abort</span><span class="p">(</span><span class="mi">503</span><span class="p">)</span>  <span class="c1"># ServiceUnavailable</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">redirect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
@@ -447,21 +447,21 @@ pip install ipython
 <h4>HTML, JSON, XML etc</h4>
 <p>HTML</p>
 <p>Obviamente que você pode retornar conteúdo formatado e não apenas texto puro, isso poderá ser <strike style="color:red">feito direto na view</strike> ou em um <span style="color:green">template</span>.</p>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/html_page/&lt;nome&gt;&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/html_page/&lt;nome&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">html_page</span><span class="p">(</span><span class="n">nome</span><span class="p">):</span>
-    <span class="k">return</span> <span class="s">u&quot;&quot;&quot;</span>
-<span class="s">    &lt;html&gt;</span>
-<span class="s">       &lt;head&gt;&lt;title&gt;Ainda não sei usar o Jinja2 :)&lt;/title&gt;&lt;/head&gt;</span>
-<span class="s">       &lt;body&gt;</span>
-<span class="s">          &lt;h1&gt;Olá </span><span class="si">%s</span><span class="s"> Coisas que você não deve fazer.&lt;/h1&gt;</span>
-<span class="s">          &lt;ul&gt;</span>
-<span class="s">            &lt;li&gt; Escrever html direto na view &lt;/li&gt;</span>
-<span class="s">            &lt;li&gt; Tentar automatizar a escrita de html via Python&lt;/li&gt;</span>
-<span class="s">            &lt;li&gt; deixar de usar o Jinja2 &lt;/li&gt;</span>
-<span class="s">          &lt;/ul&gt;</span>
-<span class="s">       &lt;/body&gt;</span>
-<span class="s">    &lt;/html&gt;</span>
-<span class="s">    &quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">nome</span>
+    <span class="k">return</span> <span class="s2">u&quot;&quot;&quot;</span>
+<span class="s2">    &lt;html&gt;</span>
+<span class="s2">       &lt;head&gt;&lt;title&gt;Ainda não sei usar o Jinja2 :)&lt;/title&gt;&lt;/head&gt;</span>
+<span class="s2">       &lt;body&gt;</span>
+<span class="s2">          &lt;h1&gt;Olá </span><span class="si">%s</span><span class="s2"> Coisas que você não deve fazer.&lt;/h1&gt;</span>
+<span class="s2">          &lt;ul&gt;</span>
+<span class="s2">            &lt;li&gt; Escrever html direto na view &lt;/li&gt;</span>
+<span class="s2">            &lt;li&gt; Tentar automatizar a escrita de html via Python&lt;/li&gt;</span>
+<span class="s2">            &lt;li&gt; deixar de usar o Jinja2 &lt;/li&gt;</span>
+<span class="s2">          &lt;/ul&gt;</span>
+<span class="s2">       &lt;/body&gt;</span>
+<span class="s2">    &lt;/html&gt;</span>
+<span class="s2">    &quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">nome</span>
 </pre></div>
 
 
@@ -469,9 +469,9 @@ pip install ipython
 <p>assumindo que o trecho html acima está em um arquivo <code>templates/html_page.html</code> podemos fazer o seguinte.</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/html_page/&lt;nome&gt;&quot;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/html_page/&lt;nome&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">html_page</span><span class="p">(</span><span class="n">nome</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&quot;html_page.html&quot;</span><span class="p">,</span> <span class="n">nome</span><span class="o">=</span><span class="n">nome</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;html_page.html&quot;</span><span class="p">,</span> <span class="n">nome</span><span class="o">=</span><span class="n">nome</span><span class="p">)</span>
 </pre></div>
 
 
@@ -488,25 +488,25 @@ pip install ipython
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">make_response</span>
 
 <span class="k">def</span> <span class="nf">json_api</span><span class="p">():</span>
-    <span class="n">pessoas</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&quot;nome&quot;</span><span class="p">:</span> <span class="s">&quot;Bruno Rocha&quot;</span><span class="p">},</span>
-               <span class="p">{</span><span class="s">&quot;nome&quot;</span><span class="p">:</span> <span class="s">&quot;Arjen Lucassen&quot;</span><span class="p">},</span>
-               <span class="p">{</span><span class="s">&quot;nome&quot;</span><span class="p">:</span> <span class="s">&quot;Anneke van Giersbergen&quot;</span><span class="p">},</span>
-               <span class="p">{</span><span class="s">&quot;nome&quot;</span><span class="p">:</span> <span class="s">&quot;Steven Wilson&quot;</span><span class="p">}]</span>
+    <span class="n">pessoas</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Bruno Rocha&quot;</span><span class="p">},</span>
+               <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Arjen Lucassen&quot;</span><span class="p">},</span>
+               <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Anneke van Giersbergen&quot;</span><span class="p">},</span>
+               <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Steven Wilson&quot;</span><span class="p">}]</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">pessoas</span><span class="p">))</span>
-    <span class="n">response</span><span class="o">.</span><span class="n">content_type</span> <span class="o">=</span> <span class="s">&quot;application/json&quot;</span>
-    <span class="c"># ou</span>
-    <span class="c"># response.headers[&#39;Content-Type&#39;] = &quot;application/json&quot;</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">content_type</span> <span class="o">=</span> <span class="s2">&quot;application/json&quot;</span>
+    <span class="c1"># ou</span>
+    <span class="c1"># response.headers[&#39;Content-Type&#39;] = &quot;application/json&quot;</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 
 
 <p>Retornar uma tupla de 3 elementos, no formato <code>(string, status_code, headers_dict)</code></p>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">json_api</span><span class="p">():</span>
-    <span class="n">pessoas</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&quot;nome&quot;</span><span class="p">:</span> <span class="s">&quot;Bruno Rocha&quot;</span><span class="p">},</span>
-               <span class="p">{</span><span class="s">&quot;nome&quot;</span><span class="p">:</span> <span class="s">&quot;Arjen Lucassen&quot;</span><span class="p">},</span>
-               <span class="p">{</span><span class="s">&quot;nome&quot;</span><span class="p">:</span> <span class="s">&quot;Anneke van Giersbergen&quot;</span><span class="p">},</span>
-               <span class="p">{</span><span class="s">&quot;nome&quot;</span><span class="p">:</span> <span class="s">&quot;Steven Wilson&quot;</span><span class="p">}]</span>
-    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">pessoas</span><span class="p">),</span> <span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s">&quot;application/json&quot;</span><span class="p">}</span>
+    <span class="n">pessoas</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Bruno Rocha&quot;</span><span class="p">},</span>
+               <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Arjen Lucassen&quot;</span><span class="p">},</span>
+               <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Anneke van Giersbergen&quot;</span><span class="p">},</span>
+               <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Steven Wilson&quot;</span><span class="p">}]</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">pessoas</span><span class="p">),</span> <span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
 </pre></div>
 
 
@@ -514,10 +514,10 @@ pip install ipython
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">jsonify</span>
 
 <span class="k">def</span> <span class="nf">json_api</span><span class="p">():</span>
-    <span class="n">pessoas</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&quot;nome&quot;</span><span class="p">:</span> <span class="s">&quot;Bruno Rocha&quot;</span><span class="p">},</span>
-               <span class="p">{</span><span class="s">&quot;nome&quot;</span><span class="p">:</span> <span class="s">&quot;Arjen Lucassen&quot;</span><span class="p">},</span>
-               <span class="p">{</span><span class="s">&quot;nome&quot;</span><span class="p">:</span> <span class="s">&quot;Anneke van Giersbergen&quot;</span><span class="p">},</span>
-               <span class="p">{</span><span class="s">&quot;nome&quot;</span><span class="p">:</span> <span class="s">&quot;Steven Wilson&quot;</span><span class="p">}]</span>
+    <span class="n">pessoas</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Bruno Rocha&quot;</span><span class="p">},</span>
+               <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Arjen Lucassen&quot;</span><span class="p">},</span>
+               <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Anneke van Giersbergen&quot;</span><span class="p">},</span>
+               <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Steven Wilson&quot;</span><span class="p">}]</span>
     <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">pessoas</span><span class="o">=</span><span class="n">pessoas</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">pessoas</span><span class="p">))</span>
 </pre></div>
 
@@ -532,10 +532,10 @@ pip install ipython
 <p>É quando a app é instanciada, e nenhum request ocorreu ainda, é o momento em que você pode seguramente modificar as configurações e carregar módulos, extensões etc.</p>
 <p>Este estado ocorre antes do <strong>dispatch</strong>, ou seja, no nosso caso é antes do <strong>app.run()</strong> ser executado, mas no caso de servir seu app com outro app server como gunicorn ou uwsgi este estado é antes do servidor WSGI registrar o objeto <strong>application</strong>.</p>
 <p>Exemplo:</p>
-<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s">&quot;wtf&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">)</span>
 
-<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&quot;SECRET_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;schblaums&quot;</span>
-<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&quot;DEBUG&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;SECRET_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;schblaums&quot;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
 
 <span class="kn">from</span> <span class="nn">flask.ext.magic</span> <span class="kn">import</span> <span class="n">MakeMagic</span>
 <span class="n">MakeMagic</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
@@ -549,12 +549,12 @@ pip install ipython
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/show_config&quot;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/show_config&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">show_config</span><span class="p">():</span>
     <span class="n">querystring_args</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
     <span class="n">post_args</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span>
-        <span class="n">debug</span><span class="o">=</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;DEBUG&#39;</span><span class="p">),</span>
+        <span class="n">debug</span><span class="o">=</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">),</span>
         <span class="n">args</span><span class="o">=</span><span class="n">querystring_args</span><span class="p">,</span>
         <span class="nb">vars</span><span class="o">=</span><span class="n">post_args</span>
     <span class="p">)</span>
@@ -569,8 +569,8 @@ pip install ipython
 <div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 <span class="n">outra_app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/url_na_app&quot;</span><span class="p">)</span>
-<span class="nd">@outra_app.route</span><span class="p">(</span><span class="s">&quot;/url_na_outra_app&quot;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/url_na_app&quot;</span><span class="p">)</span>
+<span class="nd">@outra_app.route</span><span class="p">(</span><span class="s2">&quot;/url_na_outra_app&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">view</span><span class="p">():</span>
     <span class="o">....</span>
 
@@ -595,12 +595,12 @@ pip install ipython
 <p>Nesta hora você pensa <strong>WTF</strong> terei que fazer um request cada vez que precisar testar esse código? não, calma, o Flask oferece uma solução.</p>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">current_app</span><span class="p">,</span> <span class="n">request</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">(</span><span class="s">&quot;/teste&quot;</span><span class="p">,</span> <span class="s">&quot;x.com&quot;</span><span class="p">,</span> <span class="s">&quot;aaa=1&amp;bb=2&quot;</span><span class="p">):</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">(</span><span class="s2">&quot;/teste&quot;</span><span class="p">,</span> <span class="s2">&quot;x.com&quot;</span><span class="p">,</span> <span class="s2">&quot;aaa=1&amp;bb=2&quot;</span><span class="p">):</span>
 <span class="o">...</span>     <span class="k">print</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
 <span class="o">...</span>     <span class="k">print</span> <span class="n">request</span><span class="o">.</span><span class="n">path</span>
 
-<span class="p">{</span><span class="s">&#39;aaa&#39;</span><span class="p">:</span> <span class="s">u&#39;1&#39;</span><span class="p">,</span> <span class="s">&#39;bb&#39;</span><span class="p">:</span> <span class="s">u&#39;2&#39;</span><span class="p">}</span>
-<span class="s">u&quot;/teste&quot;</span>
+<span class="p">{</span><span class="s1">&#39;aaa&#39;</span><span class="p">:</span> <span class="s1">u&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;bb&#39;</span><span class="p">:</span> <span class="s1">u&#39;2&#39;</span><span class="p">}</span>
+<span class="s2">u&quot;/teste&quot;</span>
 </pre></div>
 
 
@@ -611,30 +611,30 @@ pip install ipython
 <p>É muito útil checar qual o método HTTP que foi requisitado, isto é o que possibilita a criação de uma API REST, o exemplo a seguir é auto explicativo:</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span><span class="p">,</span> <span class="n">jsonify</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/noticia&quot;</span><span class="p">)</span>
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/noticia/&lt;int:noticia_id&gt;&quot;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticia&quot;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticia/&lt;int:noticia_id&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">noticia_api</span><span class="p">(</span><span class="n">noticia_id</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;GET&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;GET&quot;</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">noticia_id</span><span class="p">:</span>
-            <span class="c"># retorna uma noticia especifica</span>
+            <span class="c1"># retorna uma noticia especifica</span>
             <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">noticia</span><span class="o">=</span><span class="n">noticias</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">noticia_id</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="c"># retorna todas as noticias</span>
+            <span class="c1"># retorna todas as noticias</span>
             <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">noticias</span><span class="o">=</span><span class="n">noticias</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
-    <span class="k">elif</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">is_json</span><span class="p">:</span>
-            <span class="c"># se o request veio com o mimetype &quot;json&quot; usa os dados para</span>
-            <span class="c"># inserir novas noticias</span>
+            <span class="c1"># se o request veio com o mimetype &quot;json&quot; usa os dados para</span>
+            <span class="c1"># inserir novas noticias</span>
             <span class="n">noticias</span><span class="o">.</span><span class="n">bulk_insert</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">json</span><span class="p">)</span>
-            <span class="k">return</span> <span class="s">&quot;Noticias inseridas com sucesso&quot;</span><span class="p">,</span> <span class="mi">201</span>
+            <span class="k">return</span> <span class="s2">&quot;Noticias inseridas com sucesso&quot;</span><span class="p">,</span> <span class="mi">201</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="c"># assumimos que os dados vieram via Ajax/POST/Formulário</span>
+            <span class="c1"># assumimos que os dados vieram via Ajax/POST/Formulário</span>
             <span class="n">noticias</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">)</span>
-            <span class="k">return</span> <span class="s">&quot;Noticia criada com sucesso&quot;</span><span class="p">,</span> <span class="mi">201</span>
-    <span class="k">elif</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;DELETE&quot;</span> <span class="ow">and</span> <span class="n">noticia_id</span><span class="p">:</span>
-        <span class="c"># apaga uma noticia especifica</span>
+            <span class="k">return</span> <span class="s2">&quot;Noticia criada com sucesso&quot;</span><span class="p">,</span> <span class="mi">201</span>
+    <span class="k">elif</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;DELETE&quot;</span> <span class="ow">and</span> <span class="n">noticia_id</span><span class="p">:</span>
+        <span class="c1"># apaga uma noticia especifica</span>
         <span class="n">noticias</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">noticia_id</span><span class="p">)</span>
-        <span class="k">return</span> <span class="s">&quot;Noticia apagada com sucesso!&quot;</span><span class="p">,</span> <span class="mi">204</span>
+        <span class="k">return</span> <span class="s2">&quot;Noticia apagada com sucesso!&quot;</span><span class="p">,</span> <span class="mi">204</span>
     <span class="o">...</span>
 </pre></div>
 
@@ -656,22 +656,22 @@ pip install ipython
 <p>Um dicionário com os valores passados via GET (na url após o ?).</p>
 <p>url requisitada: <code>/noticias?categoria=esportes&amp;limit=10</code></p>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span>
-<span class="n">ImmutableMultiDict</span><span class="p">([(</span><span class="s">&#39;categoria&#39;</span><span class="p">,</span> <span class="s">u&#39;esportes&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;limit&#39;</span><span class="p">,</span> <span class="s">u&#39;10&#39;</span><span class="p">)])</span>
+<span class="n">ImmutableMultiDict</span><span class="p">([(</span><span class="s1">&#39;categoria&#39;</span><span class="p">,</span> <span class="s1">u&#39;esportes&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;limit&#39;</span><span class="p">,</span> <span class="s1">u&#39;10&#39;</span><span class="p">)])</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
-<span class="p">{</span><span class="s">u&quot;categoria&quot;</span><span class="p">:</span> <span class="s">u&quot;esportes&quot;</span><span class="p">,</span> <span class="s">u&quot;limit&quot;</span><span class="p">:</span> <span class="s">u&quot;10&quot;</span><span class="p">}</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;categoria&quot;</span><span class="p">)</span>
-<span class="s">u&quot;esportes&quot;</span>
+<span class="p">{</span><span class="s2">u&quot;categoria&quot;</span><span class="p">:</span> <span class="s2">u&quot;esportes&quot;</span><span class="p">,</span> <span class="s2">u&quot;limit&quot;</span><span class="p">:</span> <span class="s2">u&quot;10&quot;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;categoria&quot;</span><span class="p">)</span>
+<span class="s2">u&quot;esportes&quot;</span>
 </pre></div>
 
 
 <p>Não é muito comum mas em alguns casos as chaves podem se repetir, neste caso devemos usar o <code>getlist</code>.</p>
 <p>url requisitada: <code>/noticias?categoria=esportes&amp;categoria=musica</code></p>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span>
-<span class="n">ImmutableMultiDict</span><span class="p">([(</span><span class="s">&#39;categoria&#39;</span><span class="p">,</span> <span class="s">u&#39;esportes&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;categoria&#39;</span><span class="p">,</span> <span class="s">u&#39;musica&#39;</span><span class="p">)])</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>  <span class="c"># mantém só os primeiros</span>
-<span class="p">{</span><span class="s">u&quot;categoria&quot;</span><span class="p">:</span> <span class="s">u&quot;esportes&quot;</span><span class="p">}</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s">&quot;categoria&quot;</span><span class="p">)</span>
-<span class="p">[</span><span class="s">u&quot;esportes&quot;</span><span class="p">,</span> <span class="s">u&quot;musica&quot;</span><span class="p">]</span>
+<span class="n">ImmutableMultiDict</span><span class="p">([(</span><span class="s1">&#39;categoria&#39;</span><span class="p">,</span> <span class="s1">u&#39;esportes&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;categoria&#39;</span><span class="p">,</span> <span class="s1">u&#39;musica&#39;</span><span class="p">)])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>  <span class="c1"># mantém só os primeiros</span>
+<span class="p">{</span><span class="s2">u&quot;categoria&quot;</span><span class="p">:</span> <span class="s2">u&quot;esportes&quot;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s2">&quot;categoria&quot;</span><span class="p">)</span>
+<span class="p">[</span><span class="s2">u&quot;esportes&quot;</span><span class="p">,</span> <span class="s2">u&quot;musica&quot;</span><span class="p">]</span>
 </pre></div>
 
 
@@ -684,11 +684,11 @@ pip install ipython
 
 <p>A requisição acima corresponde ao submit de um formulário contento os campos "categoria" e "limit".</p>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span>
-<span class="n">ImmutableMultiDict</span><span class="p">([(</span><span class="s">&#39;categoria&#39;</span><span class="p">,</span> <span class="s">u&#39;esportes&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;limit&#39;</span><span class="p">,</span> <span class="s">u&#39;10&#39;</span><span class="p">)])</span>
+<span class="n">ImmutableMultiDict</span><span class="p">([(</span><span class="s1">&#39;categoria&#39;</span><span class="p">,</span> <span class="s1">u&#39;esportes&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;limit&#39;</span><span class="p">,</span> <span class="s1">u&#39;10&#39;</span><span class="p">)])</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
-<span class="p">{</span><span class="s">u&quot;categoria&quot;</span><span class="p">:</span> <span class="s">u&quot;esportes&quot;</span><span class="p">,</span> <span class="s">u&quot;limit&quot;</span><span class="p">:</span> <span class="s">u&quot;10&quot;</span><span class="p">}</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;categoria&quot;</span><span class="p">)</span>
-<span class="s">u&quot;esportes&quot;</span>
+<span class="p">{</span><span class="s2">u&quot;categoria&quot;</span><span class="p">:</span> <span class="s2">u&quot;esportes&quot;</span><span class="p">,</span> <span class="s2">u&quot;limit&quot;</span><span class="p">:</span> <span class="s2">u&quot;10&quot;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;categoria&quot;</span><span class="p">)</span>
+<span class="s2">u&quot;esportes&quot;</span>
 </pre></div>
 
 
@@ -713,16 +713,16 @@ pip install ipython
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">current_app</span>
 <span class="kn">from</span> <span class="nn">werkzeug</span> <span class="kn">import</span> <span class="n">secure_filename</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/change_photo&quot;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/change_photo&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">perfil</span><span class="p">():</span>
-    <span class="n">item_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;item_id&#39;</span><span class="p">)</span>
-    <span class="n">photo</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;photo&#39;</span><span class="p">)</span>
+    <span class="n">item_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item_id&#39;</span><span class="p">)</span>
+    <span class="n">photo</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;photo&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">item_id</span> <span class="ow">and</span> <span class="n">photo</span><span class="p">:</span>
         <span class="n">filename</span> <span class="o">=</span> <span class="n">secure_filename</span><span class="p">(</span><span class="n">photo</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
-        <span class="n">file_path</span> <span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;UPLOAD_FOLDER&#39;</span><span class="p">],</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="n">file_path</span> <span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;UPLOAD_FOLDER&#39;</span><span class="p">],</span> <span class="n">filename</span><span class="p">)</span>
         <span class="n">photo</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
         <span class="n">banco_de_dados</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item_id</span><span class="o">=</span><span class="n">item_id</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">photo_path</span><span class="o">=</span><span class="n">file_path</span><span class="p">)</span>
-    <span class="k">return</span> <span class="s">&quot;Imagem atualizada&quot;</span><span class="p">,</span> <span class="mi">201</span>
+    <span class="k">return</span> <span class="s2">&quot;Imagem atualizada&quot;</span><span class="p">,</span> <span class="mi">201</span>
 </pre></div>
 
 
@@ -737,14 +737,14 @@ pip install ipython
 <p>Para escrever dados em um cookie usamos o objeto <strong>Response</strong>, portanto sempre que precisar escrever um cookie será necessário criar explicitamente um objeto <strong>Response</strong> para este fim.</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">abort</span><span class="p">,</span> <span class="n">make_response</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/login&#39;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">login</span><span class="p">():</span>
-    <span class="n">username</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;username&#39;</span><span class="p">)</span>
-    <span class="n">password</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;password&#39;</span><span class="p">)</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">)</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">valid_login</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="s">&quot;Hello! Welcome back!&quot;</span><span class="p">)</span>
-        <span class="n">response</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="s">&#39;username&#39;</span><span class="p">,</span> <span class="n">username</span><span class="p">)</span>
-        <span class="n">response</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="s">&#39;user_hash&#39;</span><span class="p">,</span> <span class="n">get_hash</span><span class="p">(</span><span class="n">username</span><span class="p">))</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="s2">&quot;Hello! Welcome back!&quot;</span><span class="p">)</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="n">username</span><span class="p">)</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="s1">&#39;user_hash&#39;</span><span class="p">,</span> <span class="n">get_hash</span><span class="p">(</span><span class="n">username</span><span class="p">))</span>
         <span class="o">...</span>
         <span class="k">return</span> <span class="n">response</span>
     <span class="k">else</span><span class="p">:</span>
@@ -760,15 +760,15 @@ pip install ipython
 <p>Bom, assumindo que temos as informações <strong>username</strong> e <strong>user_hash</strong> gravadas no browser do cliente, e que este enviará este cookie no HEADER a cada requisição que fizer, podemos facilmente ler os dados contidos no cookie através do objeto <strong>request</strong>.</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
-    <span class="n">username</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;username&#39;</span><span class="p">)</span>
-    <span class="n">user_hash</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;user_hash&#39;</span><span class="p">)</span>
-    <span class="c"># request.cookies é um dict, portanto use o .get para evitar KeyError</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">)</span>
+    <span class="n">user_hash</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user_hash&#39;</span><span class="p">)</span>
+    <span class="c1"># request.cookies é um dict, portanto use o .get para evitar KeyError</span>
     <span class="k">if</span> <span class="n">is_logged</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">user_hash</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&quot;Welcome!&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;Welcome!&quot;</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;login&#39;</span><span class="p">))</span>
+        <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">))</span>
 </pre></div>
 
 
@@ -779,32 +779,32 @@ pip install ipython
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">escape</span><span class="p">,</span> <span class="n">request</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
-<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;SECRET_KEY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;A0Zr98j/3yX R~XHH!jmN]LWX/,?RT&quot;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SECRET_KEY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;A0Zr98j/3yX R~XHH!jmN]LWX/,?RT&quot;</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
-    <span class="k">if</span> <span class="s">&#39;username&#39;</span> <span class="ow">in</span> <span class="n">session</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">&#39;OLá, você está logado como </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">escape</span><span class="p">(</span><span class="n">session</span><span class="p">[</span><span class="s">&#39;username&#39;</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;login&#39;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="s1">&#39;username&#39;</span> <span class="ow">in</span> <span class="n">session</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;OLá, você está logado como </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">escape</span><span class="p">(</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">))</span>
 
-<span class="c"># O escape() precisa ser usado apenas se você não estiver usando um template.</span>
+<span class="c1"># O escape() precisa ser usado apenas se você não estiver usando um template.</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/login&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">,</span> <span class="s">&#39;POST&#39;</span><span class="p">])</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">login</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;POST&#39;</span><span class="p">:</span>
-        <span class="n">session</span><span class="p">[</span><span class="s">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s">&#39;username&#39;</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;index&#39;</span><span class="p">))</span>
-    <span class="k">return</span> <span class="s">&#39;&#39;&#39;</span>
-<span class="s">        &lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
-<span class="s">            &lt;p&gt;&lt;input type=text name=username&gt;</span>
-<span class="s">            &lt;p&gt;&lt;input type=submit value=Login&gt;</span>
-<span class="s">        &lt;/form&gt;</span>
-<span class="s">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        &lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="s1">            &lt;p&gt;&lt;input type=text name=username&gt;</span>
+<span class="s1">            &lt;p&gt;&lt;input type=submit value=Login&gt;</span>
+<span class="s1">        &lt;/form&gt;</span>
+<span class="s1">    &#39;&#39;&#39;</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/logout&#39;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/logout&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">logout</span><span class="p">():</span>
-    <span class="n">session</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;username&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span> <span class="c"># Apaga os dados de login lá da session</span>
-    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;index&#39;</span><span class="p">))</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span> <span class="c1"># Apaga os dados de login lá da session</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">))</span>
 </pre></div>
 
 
@@ -816,7 +816,7 @@ pip install ipython
 <p>Em outro capítulo desta série mostrarei exemplos com o MongoEngine, mas nesta parte introdutória vamos usar o módulo <a href="https://github.com/pudo/dataset">dataset</a> que é uma camada de abstração para ler e escrever dados nos bancos SQLite, MySQL ou Postgres.</p>
 <p>A vantagem do dataset é que ele é incrivelmente simples, não exige especificação de <strong>schema</strong> e é puro Python.</p>
 <p>Para começar instale o <strong>dataset</strong> na sua virtualenv.</p>
-<div class="highlight"><pre><span class="o">(</span>wtf_env<span class="o">)</span>seuuser@suamaquina/path/to/wtf<span class="nv">$ </span>pip install dataset
+<div class="highlight"><pre><span class="o">(</span>wtf_env<span class="o">)</span>seuuser@suamaquina/path/to/wtf$ pip install dataset
 </pre></div>
 
 
@@ -825,12 +825,12 @@ pip install ipython
 </blockquote>
 <h3>Escrevendo no banco de dados</h3>
 <p>agora na raiz do projeto vamos criar um arquivo novo chamado <code>db.py</code>.</p>
-<div class="highlight"><pre><span class="c"># coding: utf-8</span>
+<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
 
 <span class="kn">import</span> <span class="nn">dataset</span>
 
-<span class="n">db</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">&#39;sqlite:///noticias.db&#39;</span><span class="p">)</span>
-<span class="n">noticias</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s">&#39;noticias&#39;</span><span class="p">]</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;sqlite:///noticias.db&#39;</span><span class="p">)</span>
+<span class="n">noticias</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;noticias&#39;</span><span class="p">]</span>
 </pre></div>
 
 
@@ -838,55 +838,55 @@ pip install ipython
 <blockquote>
 <p><strong>NOTE:</strong> Inicialmente não vamos nos preocupar com segurança, csrf ou login, mas nos próximos capítulos desta série iremos evoluir este pequeno app.</p>
 </blockquote>
-<div class="highlight"><pre><span class="c"># coding: utf-8</span>
+<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
 
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">url_for</span>
 
 <span class="kn">from</span> <span class="nn">db</span> <span class="kn">import</span> <span class="n">noticias</span>
 
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s">&quot;wtf&quot;</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">)</span>
 
-<span class="c"># por enquanto vamos usar um template html hardcoded</span>
-<span class="c"># mas calma! em breve falaremos  sobre os templates com Jinja2</span>
-<span class="n">base_html</span> <span class="o">=</span> <span class="s">u&quot;&quot;&quot;</span>
-<span class="s">  &lt;html&gt;</span>
-<span class="s">  &lt;head&gt;</span>
-<span class="s">      &lt;title&gt;{title}&lt;/title&gt;</span>
-<span class="s">  &lt;/head&gt;</span>
-<span class="s">  &lt;body&gt;</span>
-<span class="s">     {body}</span>
-<span class="s">  &lt;/body&gt;</span>
-<span class="s">  &lt;/html&gt;</span>
-<span class="s">&quot;&quot;&quot;</span>
+<span class="c1"># por enquanto vamos usar um template html hardcoded</span>
+<span class="c1"># mas calma! em breve falaremos  sobre os templates com Jinja2</span>
+<span class="n">base_html</span> <span class="o">=</span> <span class="s2">u&quot;&quot;&quot;</span>
+<span class="s2">  &lt;html&gt;</span>
+<span class="s2">  &lt;head&gt;</span>
+<span class="s2">      &lt;title&gt;{title}&lt;/title&gt;</span>
+<span class="s2">  &lt;/head&gt;</span>
+<span class="s2">  &lt;body&gt;</span>
+<span class="s2">     {body}</span>
+<span class="s2">  &lt;/body&gt;</span>
+<span class="s2">  &lt;/html&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
 
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/noticias/cadastro&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="s">&quot;POST&quot;</span><span class="p">])</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticias/cadastro&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">cadastro</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
         <span class="n">dados_do_formulario</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
         <span class="n">nova_noticia</span> <span class="o">=</span> <span class="n">noticias</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">dados_do_formulario</span><span class="p">)</span>
-        <span class="k">return</span> <span class="s">u&quot;&quot;&quot;</span>
-<span class="s">            &lt;h1&gt;Noticia id </span><span class="si">%s</span><span class="s"> inserida com sucesso!&lt;/h1&gt;</span>
-<span class="s">            &lt;a href=&quot;</span><span class="si">%s</span><span class="s">&quot;&gt; Inserir nova notícia &lt;/a&gt;</span>
-<span class="s">        &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">nova_noticia</span><span class="p">,</span> <span class="n">url_for</span><span class="p">(</span><span class="s">&#39;cadastro&#39;</span><span class="p">))</span>
-    <span class="k">else</span><span class="p">:</span>  <span class="c"># GET</span>
-        <span class="n">formulario</span> <span class="o">=</span> <span class="s">u&quot;&quot;&quot;</span>
-<span class="s">           &lt;form method=&quot;post&quot; action=&quot;/noticias/cadastro&quot;&gt;</span>
-<span class="s">               &lt;label&gt;Titulo:&lt;br /&gt;</span>
-<span class="s">                    &lt;input type=&quot;text&quot; name=&quot;titulo&quot; id=&quot;titulo&quot; /&gt;</span>
-<span class="s">               &lt;/label&gt;</span>
-<span class="s">               &lt;br /&gt;</span>
-<span class="s">               &lt;label&gt;Texto:&lt;br /&gt;</span>
-<span class="s">                    &lt;textarea name=&quot;texto&quot; id=&quot;texto&quot;&gt;&lt;/textarea&gt;</span>
-<span class="s">               &lt;/label&gt;</span>
-<span class="s">               &lt;input type=&quot;submit&quot; value=&quot;Postar&quot; /&gt;</span>
-<span class="s">           &lt;/form&gt;</span>
-<span class="s">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">base_html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">u&quot;Inserir nova noticia&quot;</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">formulario</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">u&quot;&quot;&quot;</span>
+<span class="s2">            &lt;h1&gt;Noticia id </span><span class="si">%s</span><span class="s2"> inserida com sucesso!&lt;/h1&gt;</span>
+<span class="s2">            &lt;a href=&quot;</span><span class="si">%s</span><span class="s2">&quot;&gt; Inserir nova notícia &lt;/a&gt;</span>
+<span class="s2">        &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">nova_noticia</span><span class="p">,</span> <span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;cadastro&#39;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># GET</span>
+        <span class="n">formulario</span> <span class="o">=</span> <span class="s2">u&quot;&quot;&quot;</span>
+<span class="s2">           &lt;form method=&quot;post&quot; action=&quot;/noticias/cadastro&quot;&gt;</span>
+<span class="s2">               &lt;label&gt;Titulo:&lt;br /&gt;</span>
+<span class="s2">                    &lt;input type=&quot;text&quot; name=&quot;titulo&quot; id=&quot;titulo&quot; /&gt;</span>
+<span class="s2">               &lt;/label&gt;</span>
+<span class="s2">               &lt;br /&gt;</span>
+<span class="s2">               &lt;label&gt;Texto:&lt;br /&gt;</span>
+<span class="s2">                    &lt;textarea name=&quot;texto&quot; id=&quot;texto&quot;&gt;&lt;/textarea&gt;</span>
+<span class="s2">               &lt;/label&gt;</span>
+<span class="s2">               &lt;input type=&quot;submit&quot; value=&quot;Postar&quot; /&gt;</span>
+<span class="s2">           &lt;/form&gt;</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">base_html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Inserir nova noticia&quot;</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">formulario</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">use_reloader</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 
@@ -895,37 +895,37 @@ pip install ipython
 <p>Você verá um formulário com os campos <strong>titulo</strong> e <strong>texto</strong>, insira uma notícia nova e repita o processo algumas vezes. Note que na raiz de seu projeto agora terá um banco de dados SQLite <strong>noticias.db</strong>.</p>
 <h3>Lendo do banco de dados</h3>
 <p>Abra o arquivo <code>news_app.py</code> e após a linha 39 vamos incluir uma view para listar todas as notícias na home do site.</p>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
 
-    <span class="n">noticia_template</span> <span class="o">=</span> <span class="s">u&quot;&quot;&quot;</span>
-<span class="s">        &lt;a href=&quot;/noticia/{noticia[id]}&quot;&gt;{noticia[titulo]}&lt;/a&gt;</span>
-<span class="s">    &quot;&quot;&quot;</span>
+    <span class="n">noticia_template</span> <span class="o">=</span> <span class="s2">u&quot;&quot;&quot;</span>
+<span class="s2">        &lt;a href=&quot;/noticia/{noticia[id]}&quot;&gt;{noticia[titulo]}&lt;/a&gt;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
 
-    <span class="c"># it&#39;s a kind of magic :)</span>
+    <span class="c1"># it&#39;s a kind of magic :)</span>
     <span class="n">todas_as_noticias</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">noticia_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">noticia</span><span class="o">=</span><span class="n">noticia</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">noticia</span> <span class="ow">in</span> <span class="n">noticias</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
     <span class="p">]</span>
 
     <span class="k">return</span> <span class="n">base_html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-        <span class="n">title</span><span class="o">=</span><span class="s">u&quot;Todas as notícias&quot;</span><span class="p">,</span>
-        <span class="n">body</span><span class="o">=</span><span class="s">u&quot;&lt;br /&gt;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">todas_as_noticias</span><span class="p">)</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Todas as notícias&quot;</span><span class="p">,</span>
+        <span class="n">body</span><span class="o">=</span><span class="s2">u&quot;&lt;br /&gt;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">todas_as_noticias</span><span class="p">)</span>
     <span class="p">)</span>
 </pre></div>
 
 
 <p>Agora ao acessar <a href="http://localhost:5000">localhost:5000</a> Você verá uma lista de links com os títulos das notícias que cadastrou!</p>
 <p>Só falta agora uma última view que será a utilizada para exibir a notícia quando você clicar no link.</p>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/noticia/&lt;int:noticia_id&gt;&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticia/&lt;int:noticia_id&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">noticia</span><span class="p">(</span><span class="n">noticia_id</span><span class="p">):</span>
-    <span class="n">noticia</span> <span class="o">=</span> <span class="n">noticias</span><span class="o">.</span><span class="n">find_one</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">noticia_id</span><span class="p">)</span>  <span class="c"># query no banco de dados</span>
-    <span class="n">noticia_html</span> <span class="o">=</span> <span class="s">u&quot;&quot;&quot;</span>
-<span class="s">        &lt;h1&gt;{titulo}&lt;/h1&gt;</span>
-<span class="s">        &lt;p&gt;{texto}&lt;/p&gt;</span>
-<span class="s">    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">noticia</span><span class="p">)</span>  <span class="c"># remember, Python is full of magic!</span>
+    <span class="n">noticia</span> <span class="o">=</span> <span class="n">noticias</span><span class="o">.</span><span class="n">find_one</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">noticia_id</span><span class="p">)</span>  <span class="c1"># query no banco de dados</span>
+    <span class="n">noticia_html</span> <span class="o">=</span> <span class="s2">u&quot;&quot;&quot;</span>
+<span class="s2">        &lt;h1&gt;{titulo}&lt;/h1&gt;</span>
+<span class="s2">        &lt;p&gt;{texto}&lt;/p&gt;</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">noticia</span><span class="p">)</span>  <span class="c1"># remember, Python is full of magic!</span>
 
-    <span class="k">return</span> <span class="n">base_html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">noticia</span><span class="p">[</span><span class="s">&#39;titulo&#39;</span><span class="p">],</span> <span class="n">body</span><span class="o">=</span><span class="n">noticia_html</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">base_html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">noticia</span><span class="p">[</span><span class="s1">&#39;titulo&#39;</span><span class="p">],</span> <span class="n">body</span><span class="o">=</span><span class="n">noticia_html</span><span class="p">)</span>
 </pre></div>
 
 
@@ -944,7 +944,7 @@ pip install ipython
 <h4>Definindo a pasta e o endpoint dos arquivos estáticos</h4>
 <p>No arquivo <code>wtf/news_app.py</code> da nossa app de notícias criarmos uma instância a app com <code>Flask('wtf')</code> sem passar nenhum parâmetro adicional, neste caso o Flask irá assumir o comportamento default que é ter uma pasta de estáticos localizada em <code>wtf/static</code> e o endpoint de estáticos mapeado para <code>/static/</code> e na maioria dos casos esta convenção irá atender perfeitamente.</p>
 <p>Caso você precise especificar um caminho diferente para os arquivos físicos ou um mapeamento de url diferente poderá informar ao Flask através dos seguintes parâmetros:</p>
-<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s">&quot;wtf&quot;</span><span class="p">,</span> <span class="n">static_folder</span><span class="o">=</span><span class="s">&#39;assets&#39;</span><span class="p">,</span> <span class="n">static_url_path</span><span class="o">=</span><span class="s">&quot;assets_v1&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">,</span> <span class="n">static_folder</span><span class="o">=</span><span class="s1">&#39;assets&#39;</span><span class="p">,</span> <span class="n">static_url_path</span><span class="o">=</span><span class="s2">&quot;assets_v1&quot;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -954,26 +954,26 @@ pip install ipython
 <p>Clique com o botão direito do mouse e escolha "salvar imagem..."</p>
 <p><img alt="https://jobs.github.com/images/modules/company/generic_logo.gif" src="https://jobs.github.com/images/modules/company/generic_logo.gif" /></p>
 <p>Agora modifique o <code>news_app.py</code> e vamos exibir este logotipo na página inicial, para isso primeiro altere o <code>base_html</code> incluindo o placeholder <code>{{logo_url}}</code>.</p>
-<div class="highlight"><pre><span class="n">base_html</span> <span class="o">=</span> <span class="s">u&quot;&quot;&quot;</span>
-<span class="s">  &lt;html&gt;</span>
-<span class="s">  &lt;head&gt;</span>
-<span class="s">      &lt;title&gt;{title}&lt;/title&gt;</span>
-<span class="s">  &lt;/head&gt;</span>
-<span class="s">  &lt;body&gt;</span>
-<span class="s">     &lt;img src=&quot;{logo_url}&quot; /&gt;</span>
-<span class="s">     &lt;hr /&gt;</span>
-<span class="s">     {body}</span>
-<span class="s">  &lt;/body&gt;</span>
-<span class="s">  &lt;/html&gt;</span>
-<span class="s">&quot;&quot;&quot;</span>
+<div class="highlight"><pre><span class="n">base_html</span> <span class="o">=</span> <span class="s2">u&quot;&quot;&quot;</span>
+<span class="s2">  &lt;html&gt;</span>
+<span class="s2">  &lt;head&gt;</span>
+<span class="s2">      &lt;title&gt;{title}&lt;/title&gt;</span>
+<span class="s2">  &lt;/head&gt;</span>
+<span class="s2">  &lt;body&gt;</span>
+<span class="s2">     &lt;img src=&quot;{logo_url}&quot; /&gt;</span>
+<span class="s2">     &lt;hr /&gt;</span>
+<span class="s2">     {body}</span>
+<span class="s2">  &lt;/body&gt;</span>
+<span class="s2">  &lt;/html&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 
 
 <p>Agora altere o retorno das views incluindo a variavel <strong>logo_url</strong>, por exemplo na view <code>cadastro</code> altere para:</p>
 <div class="highlight"><pre>        <span class="k">return</span> <span class="n">base_html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">title</span><span class="o">=</span><span class="s">u&quot;Inserir nova noticia&quot;</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Inserir nova noticia&quot;</span><span class="p">,</span>
             <span class="n">body</span><span class="o">=</span><span class="n">formulario</span><span class="p">,</span>
-            <span class="n">logo_url</span><span class="o">=</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;static&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s">&#39;generic_logo.gif&#39;</span><span class="p">)</span>
+            <span class="n">logo_url</span><span class="o">=</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;generic_logo.gif&#39;</span><span class="p">)</span>
         <span class="p">)</span>
 </pre></div>
 
@@ -989,7 +989,7 @@ pip install ipython
 <h4>Upload de arquivos</h4>
 <p>Agora para cada notícia o usuário também poderá incluir uma imagem, vamos implementar o upload desta imagem.</p>
 <p>Inicialmente crie uma nova pasta <code>wtf/media_files</code> e edite as primeiras linhas do <code>news_app.py</code> incluindo a configuração do local onde os arquivos de media serão armazenados.</p>
-<div class="highlight"><pre><span class="c"># coding: utf-8</span>
+<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 
@@ -997,10 +997,10 @@ pip install ipython
 
 <span class="kn">from</span> <span class="nn">db</span> <span class="kn">import</span> <span class="n">noticias</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s">&quot;wtf&quot;</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">)</span>
 
 <span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
-<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;MEDIA_ROOT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROJECT_ROOT</span><span class="p">,</span> <span class="s">&#39;media_files&#39;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;MEDIA_ROOT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROJECT_ROOT</span><span class="p">,</span> <span class="s1">&#39;media_files&#39;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -1020,43 +1020,43 @@ pip install ipython
 
 <span class="o">...</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/noticias/cadastro&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="s">&quot;POST&quot;</span><span class="p">])</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticias/cadastro&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">cadastro</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
         <span class="n">dados_do_formulario</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
-        <span class="n">imagem</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;imagem&#39;</span><span class="p">)</span>
+        <span class="n">imagem</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;imagem&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">imagem</span><span class="p">:</span>
             <span class="n">filename</span> <span class="o">=</span> <span class="n">secure_filename</span><span class="p">(</span><span class="n">imagem</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
-            <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;MEDIA_ROOT&#39;</span><span class="p">],</span> <span class="n">filename</span><span class="p">)</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;MEDIA_ROOT&#39;</span><span class="p">],</span> <span class="n">filename</span><span class="p">)</span>
             <span class="n">imagem</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-            <span class="n">dados_do_formulario</span><span class="p">[</span><span class="s">&#39;imagem&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
+            <span class="n">dados_do_formulario</span><span class="p">[</span><span class="s1">&#39;imagem&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
         <span class="n">nova_noticia</span> <span class="o">=</span> <span class="n">noticias</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">dados_do_formulario</span><span class="p">)</span>
-        <span class="k">return</span> <span class="s">u&quot;&quot;&quot;</span>
-<span class="s">            &lt;h1&gt;Noticia id </span><span class="si">%s</span><span class="s"> inserida com sucesso!&lt;/h1&gt;</span>
-<span class="s">            &lt;a href=&quot;</span><span class="si">%s</span><span class="s">&quot;&gt; Inserir nova notícia &lt;/a&gt;</span>
-<span class="s">        &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">nova_noticia</span><span class="p">,</span> <span class="n">url_for</span><span class="p">(</span><span class="s">&#39;cadastro&#39;</span><span class="p">))</span>
-    <span class="k">else</span><span class="p">:</span>  <span class="c"># GET</span>
-        <span class="n">formulario</span> <span class="o">=</span> <span class="s">u&quot;&quot;&quot;</span>
-<span class="s">           &lt;form method=&quot;post&quot; action=&quot;/noticias/cadastro&quot;</span>
-<span class="s">             enctype=&quot;multipart/form-data&quot;&gt;</span>
-<span class="s">               &lt;label&gt;Titulo:&lt;br /&gt;</span>
-<span class="s">                    &lt;input type=&quot;text&quot; name=&quot;titulo&quot; id=&quot;titulo&quot; /&gt;</span>
-<span class="s">               &lt;/label&gt;</span>
-<span class="s">               &lt;br /&gt;</span>
-<span class="s">               &lt;label&gt;Texto:&lt;br /&gt;</span>
-<span class="s">                    &lt;textarea name=&quot;texto&quot; id=&quot;texto&quot;&gt;&lt;/textarea&gt;</span>
-<span class="s">               &lt;/label&gt;</span>
-<span class="s">               &lt;br /&gt;</span>
-<span class="s">               &lt;label&gt; Imagem:&lt;br /&gt;</span>
-<span class="s">                  &lt;input type=&quot;file&quot; name=&quot;imagem&quot; id=&quot;imagem&quot; /&gt;</span>
-<span class="s">               &lt;/label&gt;</span>
-<span class="s">               &lt;input type=&quot;submit&quot; value=&quot;Postar&quot; /&gt;</span>
-<span class="s">           &lt;/form&gt;</span>
-<span class="s">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">u&quot;&quot;&quot;</span>
+<span class="s2">            &lt;h1&gt;Noticia id </span><span class="si">%s</span><span class="s2"> inserida com sucesso!&lt;/h1&gt;</span>
+<span class="s2">            &lt;a href=&quot;</span><span class="si">%s</span><span class="s2">&quot;&gt; Inserir nova notícia &lt;/a&gt;</span>
+<span class="s2">        &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">nova_noticia</span><span class="p">,</span> <span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;cadastro&#39;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># GET</span>
+        <span class="n">formulario</span> <span class="o">=</span> <span class="s2">u&quot;&quot;&quot;</span>
+<span class="s2">           &lt;form method=&quot;post&quot; action=&quot;/noticias/cadastro&quot;</span>
+<span class="s2">             enctype=&quot;multipart/form-data&quot;&gt;</span>
+<span class="s2">               &lt;label&gt;Titulo:&lt;br /&gt;</span>
+<span class="s2">                    &lt;input type=&quot;text&quot; name=&quot;titulo&quot; id=&quot;titulo&quot; /&gt;</span>
+<span class="s2">               &lt;/label&gt;</span>
+<span class="s2">               &lt;br /&gt;</span>
+<span class="s2">               &lt;label&gt;Texto:&lt;br /&gt;</span>
+<span class="s2">                    &lt;textarea name=&quot;texto&quot; id=&quot;texto&quot;&gt;&lt;/textarea&gt;</span>
+<span class="s2">               &lt;/label&gt;</span>
+<span class="s2">               &lt;br /&gt;</span>
+<span class="s2">               &lt;label&gt; Imagem:&lt;br /&gt;</span>
+<span class="s2">                  &lt;input type=&quot;file&quot; name=&quot;imagem&quot; id=&quot;imagem&quot; /&gt;</span>
+<span class="s2">               &lt;/label&gt;</span>
+<span class="s2">               &lt;input type=&quot;submit&quot; value=&quot;Postar&quot; /&gt;</span>
+<span class="s2">           &lt;/form&gt;</span>
+<span class="s2">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">base_html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">title</span><span class="o">=</span><span class="s">u&quot;Inserir nova noticia&quot;</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Inserir nova noticia&quot;</span><span class="p">,</span>
             <span class="n">body</span><span class="o">=</span><span class="n">formulario</span><span class="p">,</span>
-            <span class="n">logo_url</span><span class="o">=</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;static&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s">&#39;generic_logo.gif&#39;</span><span class="p">)</span>
+            <span class="n">logo_url</span><span class="o">=</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;generic_logo.gif&#39;</span><span class="p">)</span>
         <span class="p">)</span>
 </pre></div>
 
@@ -1071,36 +1071,36 @@ pip install ipython
 
 
 <p>Agora vamos incluir uma nova view após a linha 104:</p>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/media/&lt;path:filename&gt;&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/media/&lt;path:filename&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">media</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">send_from_directory</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;MEDIA_ROOT&#39;</span><span class="p">),</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">send_from_directory</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MEDIA_ROOT&#39;</span><span class="p">),</span> <span class="n">filename</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Esta view será responsável por pegar o arquivo do diretório e fazer stream para o cliente. O próximo passo e construir a url usando o endpoint <strong>media</strong> que é o nome da view.</p>
 <p>Altere a view <strong>noticia</strong> incluindo a imagem no html e resolvendo a url para a imagem correspondente com o url_for, caso a notícia não possua imagem usaremos uma imagem padrão.</p>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/noticia/&lt;int:noticia_id&gt;&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticia/&lt;int:noticia_id&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">noticia</span><span class="p">(</span><span class="n">noticia_id</span><span class="p">):</span>
-    <span class="n">noticia</span> <span class="o">=</span> <span class="n">noticias</span><span class="o">.</span><span class="n">find_one</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">noticia_id</span><span class="p">)</span>  <span class="c"># query no banco de dados</span>
-    <span class="k">if</span> <span class="n">noticia</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;imagem&#39;</span><span class="p">):</span>
-        <span class="n">imagem_url</span> <span class="o">=</span> <span class="n">url_for</span><span class="p">(</span><span class="s">&#39;media&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">noticia</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;imagem&#39;</span><span class="p">))</span>
+    <span class="n">noticia</span> <span class="o">=</span> <span class="n">noticias</span><span class="o">.</span><span class="n">find_one</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">noticia_id</span><span class="p">)</span>  <span class="c1"># query no banco de dados</span>
+    <span class="k">if</span> <span class="n">noticia</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;imagem&#39;</span><span class="p">):</span>
+        <span class="n">imagem_url</span> <span class="o">=</span> <span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;media&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">noticia</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;imagem&#39;</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">imagem_url</span> <span class="o">=</span> <span class="s">&quot;http://placehold.it/100x100&quot;</span>
+        <span class="n">imagem_url</span> <span class="o">=</span> <span class="s2">&quot;http://placehold.it/100x100&quot;</span>
 
-    <span class="n">noticia_html</span> <span class="o">=</span> <span class="s">u&quot;&quot;&quot;</span>
-<span class="s">        &lt;h1&gt;{titulo}&lt;/h1&gt;</span>
-<span class="s">        &lt;img src=&quot;{imagem_url}&quot;&gt;</span>
-<span class="s">        &lt;hr /&gt;</span>
-<span class="s">        &lt;p&gt;{texto}&lt;/p&gt;</span>
-<span class="s">    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">noticia_html</span> <span class="o">=</span> <span class="s2">u&quot;&quot;&quot;</span>
+<span class="s2">        &lt;h1&gt;{titulo}&lt;/h1&gt;</span>
+<span class="s2">        &lt;img src=&quot;{imagem_url}&quot;&gt;</span>
+<span class="s2">        &lt;hr /&gt;</span>
+<span class="s2">        &lt;p&gt;{texto}&lt;/p&gt;</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">imagem_url</span><span class="o">=</span><span class="n">imagem_url</span><span class="p">,</span>
         <span class="o">**</span><span class="n">noticia</span>
-    <span class="p">)</span>  <span class="c"># remember, Python is full of magic!</span>
+    <span class="p">)</span>  <span class="c1"># remember, Python is full of magic!</span>
 
     <span class="k">return</span> <span class="n">base_html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-        <span class="n">title</span><span class="o">=</span><span class="n">noticia</span><span class="p">[</span><span class="s">&#39;titulo&#39;</span><span class="p">],</span>
+        <span class="n">title</span><span class="o">=</span><span class="n">noticia</span><span class="p">[</span><span class="s1">&#39;titulo&#39;</span><span class="p">],</span>
         <span class="n">body</span><span class="o">=</span><span class="n">noticia_html</span><span class="p">,</span>
-        <span class="n">logo_url</span><span class="o">=</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;static&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s">&#39;generic_logo.gif&#39;</span><span class="p">)</span>
+        <span class="n">logo_url</span><span class="o">=</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;generic_logo.gif&#39;</span><span class="p">)</span>
     <span class="p">)</span>
 </pre></div>
 
@@ -1115,16 +1115,16 @@ pip install ipython
 <p>Todo site tem um layout comum que se repete em todas as páginas, geralmente onde fica a barra superior, os menus, o logotipo e o rodapé. Para não precisar ficar repetindo essa parte do código no template de todas as páginas é comum criarmos um base template e depois ir estendendo ele nos outros templates.</p>
 <p>Exemplo:</p>
 <p>base.html</p>
-<div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;body&gt;</span>
+<div class="highlight"><pre><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
     {% block topo %}
-    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;logo.png&quot;</span><span class="nt">&gt;&lt;br</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;menu&gt;&lt;ul&gt;&lt;li&gt;</span>HOME<span class="nt">&lt;/li&gt;&lt;li&gt;</span>CADASTRO<span class="nt">&lt;/li&gt;&lt;/ul&gt;&lt;/menu&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;logo.png&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">menu</span><span class="p">&gt;&lt;</span><span class="nt">ul</span><span class="p">&gt;&lt;</span><span class="nt">li</span><span class="p">&gt;</span>HOME<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">li</span><span class="p">&gt;</span>CADASTRO<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;&lt;/</span><span class="nt">ul</span><span class="p">&gt;&lt;/</span><span class="nt">menu</span><span class="p">&gt;</span>
     {% endblock %}
-    <span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">hr</span> <span class="p">/&gt;</span>
     {% block content%}<span class="c">&lt;!-- page content --&gt;</span>{% endblock%}
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 
 
@@ -1133,11 +1133,11 @@ pip install ipython
 <p>Agora imagine que vamos criar o template que vai exibir a lista de notícias.</p>
 <div class="highlight"><pre>{% extends &quot;base.html&quot; %}
 {% block content %}
-    <span class="nt">&lt;ul&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
        {% for noticia in noticias %}
-           <span class="nt">&lt;li&gt;</span>{{noticia[&#39;titulo&#39;]}}<span class="nt">&lt;/li&gt;</span>
+           <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{noticia[&#39;titulo&#39;]}}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
        {% endfor %}
-    <span class="nt">&lt;/ul&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 {% endblock %}
 </pre></div>
 
@@ -1148,25 +1148,25 @@ pip install ipython
 <p>Uma outra caracteristica interessante é que nos templates chaves de dicionários podem ser acessadas via <strong>.</strong> ou via <strong>[ ]</strong> os dois casos funcionam. exemplo: <code>{{ noticia['titulo'] }}</code> ou <code>{{ noticia.titulo }}</code></p>
 <h4>definindo a pasta de templates</h4>
 <p>Assim como no caso dos estáticos o Flask já tem um padrão que é sempre procurar os templates em uma pasta chamada <code>templates</code> mas você pode alterar este caminho se preferir.</p>
-<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s">&#39;wtf&#39;</span><span class="p">,</span> <span class="n">templates_folder</span><span class="o">=</span><span class="s">&#39;outra_pasta_de_templates&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s1">&#39;wtf&#39;</span><span class="p">,</span> <span class="n">templates_folder</span><span class="o">=</span><span class="s1">&#39;outra_pasta_de_templates&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>No nosso caso vamos utilizar o padrão e criar uma nova pasta <code>wtf/templates</code> e dentro desta pasta crie um novo arquivo chamado <code>wtf/templates/base.html</code> e vamos usa-lo para substituir a variavel <code>base_html</code> no <code>news_app.py</code>.</p>
 <p>Crie orquivo <code>templates/base.html</code> e apague a variavel <code>base_html</code> do <code>news_app.py</code></p>
-<div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;title&gt;</span>{% block title %} {{title or &quot;Notícias&quot;}} {% endblock %}<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-   <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;{{url_for(&#39;static&#39;, filename=&#39;generic_logo.gif&#39;)}}&quot;</span><span class="nt">&gt;</span>
-   <span class="nt">&lt;nav&gt;</span>
-       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{url_for(&#39;index&#39;)}}&quot;</span><span class="nt">&gt;</span>HOME<span class="nt">&lt;/a&gt;</span> | <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{url_for(&#39;cadastro&#39;)}}&quot;</span><span class="nt">&gt;</span>CADASTRO<span class="nt">&lt;/a&gt;</span>
-   <span class="nt">&lt;/nav&gt;</span>
-   <span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+<div class="highlight"><pre><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{% block title %} {{title or &quot;Notícias&quot;}} {% endblock %}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{url_for(&#39;static&#39;, filename=&#39;generic_logo.gif&#39;)}}&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+       <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{url_for(&#39;index&#39;)}}&quot;</span><span class="p">&gt;</span>HOME<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> | <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{url_for(&#39;cadastro&#39;)}}&quot;</span><span class="p">&gt;</span>CADASTRO<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">hr</span> <span class="p">/&gt;</span>
    {% block content %} {% endblock %}
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 
 
@@ -1175,15 +1175,15 @@ pip install ipython
 <p>Crie o arquivo <code>templates/index.html</code></p>
 <div class="highlight"><pre>{% extends &quot;base.html&quot; %}
 {% block content %}
-<span class="nt">&lt;ul&gt;</span>
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
     {% for noticia in noticias %}
-    <span class="nt">&lt;li&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{url_for(&#39;noticia&#39;, noticia_id=noticia.id)}}&quot;</span><span class="nt">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{url_for(&#39;noticia&#39;, noticia_id=noticia.id)}}&quot;</span><span class="p">&gt;</span>
          {{noticia.titulo}}
-        <span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
     {% endfor %}
-<span class="nt">&lt;/ul&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 {% endblock %}
 </pre></div>
 
@@ -1196,14 +1196,14 @@ pip install ipython
 {% endblock%}
 
 {% block content %}
-    <span class="nt">&lt;h1&gt;</span>{{noticia.titulo}}<span class="nt">&lt;/h1&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{noticia.titulo}}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
     {% if noticia.imagem %}
-        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;{{ url_for(&#39;media&#39;, filename=noticia.imagem) }}&quot;</span> <span class="na">width=</span><span class="s">&quot;300&quot;</span> <span class="nt">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{ url_for(&#39;media&#39;, filename=noticia.imagem) }}&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;300&quot;</span> <span class="p">/&gt;</span>
     {% endif %}
-    <span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;p&gt;</span>
+    <span class="p">&lt;</span><span class="nt">hr</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
         {{noticia.texto}}
-    <span class="nt">&lt;/p&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 {% endblock %}
 </pre></div>
 
@@ -1211,20 +1211,20 @@ pip install ipython
 <p>Agora falta apenas o template para o formulário de cadastro de nova notícia e basta copiar e colar o html da variavel formulário para um template chamado <code>templates/cadstro.html</code> e fazer pequenas alterações.</p>
 <div class="highlight"><pre>{% extends &quot;base.html&quot; %}
 {% block content %}
-<span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">action=</span><span class="s">&quot;{{ url_for(&#39;cadastro&#39;) }}&quot;</span> <span class="na">enctype=</span><span class="s">&quot;multipart/form-data&quot;</span><span class="nt">&gt;</span>
-   <span class="nt">&lt;label&gt;</span>Titulo:<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;titulo&quot;</span> <span class="na">id=</span><span class="s">&quot;titulo&quot;</span> <span class="nt">/&gt;</span>
-   <span class="nt">&lt;/label&gt;</span>
-   <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
-   <span class="nt">&lt;label&gt;</span>Texto:<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;textarea</span> <span class="na">name=</span><span class="s">&quot;texto&quot;</span> <span class="na">id=</span><span class="s">&quot;texto&quot;</span><span class="nt">&gt;&lt;/textarea&gt;</span>
-   <span class="nt">&lt;/label&gt;</span>
-   <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
-   <span class="nt">&lt;label&gt;</span> Imagem:<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
-      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;file&quot;</span> <span class="na">name=</span><span class="s">&quot;imagem&quot;</span> <span class="na">id=</span><span class="s">&quot;imagem&quot;</span> <span class="nt">/&gt;</span>
-   <span class="nt">&lt;/label&gt;</span>
-   <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Postar&quot;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;{{ url_for(&#39;cadastro&#39;) }}&quot;</span> <span class="na">enctype</span><span class="o">=</span><span class="s">&quot;multipart/form-data&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Titulo:<span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;titulo&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;titulo&quot;</span> <span class="p">/&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+   <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Texto:<span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;texto&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;texto&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+   <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span> Imagem:<span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;file&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;imagem&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;imagem&quot;</span> <span class="p">/&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Postar&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 {% endblock %}
 </pre></div>
 
@@ -1236,15 +1236,15 @@ pip install ipython
 {% endblock %}
 
 {% block content %}
-    <span class="nt">&lt;h1&gt;</span>Notícia {{id_nova_noticia}} inserida com sucesso!<span class="nt">&lt;/h1&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{url_for(&#39;noticia&#39;, noticia_id=id_nova_noticia)}}&quot;</span><span class="nt">&gt;</span> Ler Notícia <span class="nt">&lt;/a&gt;&lt;br</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{url_for(&#39;cadastro&#39;)}}&quot;</span><span class="nt">&gt;</span> Cadastrar nova notícia <span class="nt">&lt;/a&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Notícia {{id_nova_noticia}} inserida com sucesso!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{url_for(&#39;noticia&#39;, noticia_id=id_nova_noticia)}}&quot;</span><span class="p">&gt;</span> Ler Notícia <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{url_for(&#39;cadastro&#39;)}}&quot;</span><span class="p">&gt;</span> Cadastrar nova notícia <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 {% endblock %}
 </pre></div>
 
 
 <p>Após salvar os 5 arquivos de template base.html, index.html, noticia.html, cadastro.html e cadastro_sucesso.html dentro da pasta templates, altere o <code>news_app.py</code> para usar a função <strong>render_template</strong> que recebe como parâmetros o nome do template e as variaveis que estarão disponíveis no escopo do template.</p>
-<div class="highlight"><pre><span class="c"># coding: utf-8</span>
+<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">werkzeug</span> <span class="kn">import</span> <span class="n">secure_filename</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="p">(</span>
@@ -1253,52 +1253,52 @@ pip install ipython
 
 <span class="kn">from</span> <span class="nn">db</span> <span class="kn">import</span> <span class="n">noticias</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s">&quot;wtf&quot;</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">)</span>
 
 <span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
-<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;MEDIA_ROOT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROJECT_ROOT</span><span class="p">,</span> <span class="s">&#39;media_files&#39;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;MEDIA_ROOT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROJECT_ROOT</span><span class="p">,</span> <span class="s1">&#39;media_files&#39;</span><span class="p">)</span>
 
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/noticias/cadastro&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="s">&quot;POST&quot;</span><span class="p">])</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticias/cadastro&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">cadastro</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
 
         <span class="n">dados_do_formulario</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
-        <span class="n">imagem</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;imagem&#39;</span><span class="p">)</span>
+        <span class="n">imagem</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;imagem&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">imagem</span><span class="p">:</span>
             <span class="n">filename</span> <span class="o">=</span> <span class="n">secure_filename</span><span class="p">(</span><span class="n">imagem</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
-            <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;MEDIA_ROOT&#39;</span><span class="p">],</span> <span class="n">filename</span><span class="p">)</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;MEDIA_ROOT&#39;</span><span class="p">],</span> <span class="n">filename</span><span class="p">)</span>
             <span class="n">imagem</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-            <span class="n">dados_do_formulario</span><span class="p">[</span><span class="s">&#39;imagem&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
+            <span class="n">dados_do_formulario</span><span class="p">[</span><span class="s1">&#39;imagem&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
 
         <span class="n">id_nova_noticia</span> <span class="o">=</span> <span class="n">noticias</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">dados_do_formulario</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;cadastro_sucesso.html&#39;</span><span class="p">,</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;cadastro_sucesso.html&#39;</span><span class="p">,</span>
                                 <span class="n">id_nova_noticia</span><span class="o">=</span><span class="n">id_nova_noticia</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;cadastro.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">u&quot;Inserir nova noticia&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;cadastro.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Inserir nova noticia&quot;</span><span class="p">)</span>
 
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
     <span class="n">todas_as_noticias</span> <span class="o">=</span> <span class="n">noticias</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;index.html&#39;</span><span class="p">,</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span>
                            <span class="n">noticias</span><span class="o">=</span><span class="n">todas_as_noticias</span><span class="p">,</span>
-                           <span class="n">title</span><span class="o">=</span><span class="s">u&quot;Todas as notícias&quot;</span><span class="p">)</span>
+                           <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Todas as notícias&quot;</span><span class="p">)</span>
 
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/noticia/&lt;int:noticia_id&gt;&quot;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticia/&lt;int:noticia_id&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">noticia</span><span class="p">(</span><span class="n">noticia_id</span><span class="p">):</span>
     <span class="n">noticia</span> <span class="o">=</span> <span class="n">noticias</span><span class="o">.</span><span class="n">find_one</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">noticia_id</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;noticia.html&#39;</span><span class="p">,</span> <span class="n">noticia</span><span class="o">=</span><span class="n">noticia</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;noticia.html&#39;</span><span class="p">,</span> <span class="n">noticia</span><span class="o">=</span><span class="n">noticia</span><span class="p">)</span>
 
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/media/&lt;path:filename&gt;&#39;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/media/&lt;path:filename&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">media</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">send_from_directory</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;MEDIA_ROOT&#39;</span><span class="p">),</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">send_from_directory</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MEDIA_ROOT&#39;</span><span class="p">),</span> <span class="n">filename</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">use_reloader</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 
@@ -1428,7 +1428,7 @@ pip install ipython
         });
 
         $(function(){
-            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
         });
         
     </script>

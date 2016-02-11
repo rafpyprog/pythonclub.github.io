@@ -9,9 +9,9 @@
 &lt;h2&gt;Como iniciar&lt;/h2&gt;
 &lt;p&gt;O primeiro passo é baixar  o &lt;a href="https://cloud.google.com/appengine/downloads"&gt;SDK do Google App Engine&lt;/a&gt;, com isso pronto podemos começar a conhecer o Tekton.&lt;/p&gt;
 &lt;p&gt;Em seguida, vamos baixar a aplicação template.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;wget https://github.com/renzon/tekton/archive/master.zip
-&lt;span class="nv"&gt;$ &lt;/span&gt;unzip master &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; rm master.zip
-&lt;span class="nv"&gt;$ &lt;/span&gt;mv tekton-master projeto_appengine &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;projeto_appengine     
+&lt;div class="highlight"&gt;&lt;pre&gt;$ wget https://github.com/renzon/tekton/archive/master.zip
+$ unzip master &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; rm master.zip
+$ mv tekton-master projeto_appengine &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; projeto_appengine     
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -25,8 +25,8 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;backend/venv/ &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; ./venv.sh
-&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt; ./bin/activate         
+&lt;div class="highlight"&gt;&lt;pre&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; backend/venv/ &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; ./venv.sh
+$ &lt;span class="nb"&gt;source&lt;/span&gt; ./bin/activate         
 &lt;/pre&gt;&lt;/div&gt;
 
 

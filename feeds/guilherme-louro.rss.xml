@@ -13,46 +13,46 @@
 &lt;p&gt;Existem várias maneiras de se fazer o Django trabalhar com apache, uma delas é a combinação Apache + &lt;a href="http://code.google.com/p/modwsgi/"&gt;mod_wsgi&lt;/a&gt; e será dessa forma que faremos. Com mod_wsgi podemos implementar qualquer aplicação Python que suporte a interface &lt;strong&gt;Python WSGI&lt;/strong&gt;.&lt;/p&gt;
 &lt;h5&gt;Instalando alguns pacotes necessários&lt;/h5&gt;
 &lt;p&gt;Antes de mais nada, atualize a lista de pacotes&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get update
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo apt-get update
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;em&gt;Apache + mod_wsgi&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install apache2 libapache2-mod-wsgi
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo apt-get install apache2 libapache2-mod-wsgi
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;em&gt;Python setup tools + pip&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install python-setuptools
-&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install python-pip
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo apt-get install python-setuptools
+$ sudo apt-get install python-pip
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;Vamos testar o WSGI?&lt;/h3&gt;
 &lt;p&gt;Vamos fazer um teste com uma aplicação simples em python.&lt;/p&gt;
 &lt;p&gt;Começe criando um diretório na raiz do apache &lt;em&gt;(DocumentRoot)&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo mkdir /var/www/wsgi_test
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo mkdir /var/www/wsgi_test
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Em seguida vamos criar nossa app de teste ...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo vim /var/www/app.wsgi
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo vim /var/www/app.wsgi
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;... e escrever nossa app python compatível com WSGI&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;application&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;start_response&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;status&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;200 OK&amp;#39;&lt;/span&gt;
-    &lt;span class="n"&gt;output&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Hello World!&amp;#39;&lt;/span&gt;
-    &lt;span class="n"&gt;response_headers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Content-type&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;text/plain&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-                        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Content-Length&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="p"&gt;)))]&lt;/span&gt;
+    &lt;span class="n"&gt;status&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;200 OK&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;output&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Hello World!&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;response_headers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Content-type&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;text/plain&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Content-Length&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="p"&gt;)))]&lt;/span&gt;
     &lt;span class="n"&gt;start_response&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;response_headers&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Vamos criar agora um host para usar como nosso domínio da aplicação teste&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo vim /etc/hosts
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo vim /etc/hosts
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -62,7 +62,7 @@
 
 
 &lt;p&gt;E vamos configurar nosso VirtualHost no Apache.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo vim /etc/apache2/sites-available/wsgi_test
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo vim /etc/apache2/sites-available/wsgi_test
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -79,13 +79,13 @@
 
 
 &lt;p&gt;Ative-o&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo a2ensite wsgi_test
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo a2ensite wsgi_test
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;em&gt;Obs: esse comando cria um link simbólico do wsgi_test para a pasta sites-enabled. Você pode fazer isso manualmente.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Reinicie o apache:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo service apache2 reload
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo service apache2 reload
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -96,16 +96,16 @@
 &lt;p&gt;É sempre bom trabalharmos com ambientes virtuais em nossas aplicações python, para isso temos o &lt;a href="https://virtualenv.pypa.io/en/latest/"&gt;virtualenv&lt;/a&gt;. Eu, particularmente, prefiro usar o &lt;a href="https://virtualenvwrapper.readthedocs.org/en/latest/"&gt;VirtualenvWrapper&lt;/a&gt;, que separa os ambientes virtuais das aplicações. Caso você não conheça, indico o post do &lt;a href="https://github.com/arruda/"&gt;Arruda&lt;/a&gt; que foi o que me guiou quando comecei a usar. &lt;a href="http://www.arruda.blog.br/programacao/python/usando-virtualenvwrapper/"&gt;Usando VirtualEnvWrapper&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;No meu caso usei o virtualenvwrapper e meu filesystem é o seguinte:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;+-- /home/guilouro
-&lt;span class="p"&gt;|&lt;/span&gt;   +-- .virtualenvs  &lt;span class="c"&gt;#[Ambientes]&lt;/span&gt;
-&lt;span class="p"&gt;|&lt;/span&gt;   +-- www           &lt;span class="c"&gt;#[Projetos]&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;   +-- .virtualenvs  &lt;span class="c1"&gt;#[Ambientes]&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;   +-- www           &lt;span class="c1"&gt;#[Projetos]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;O Virtualenvwrapper criará meus projetos dentro de &lt;strong&gt;www&lt;/strong&gt; e os ambientes em &lt;strong&gt;.virtualenvs&lt;/strong&gt;. Mas para que isso aconteça temos que adicionar algumas linhas em nosso &lt;code&gt;~/.bashrc&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# adicione no final do arquivo ~/.bashrc&lt;/span&gt;
-&lt;span class="c"&gt;# ...&lt;/span&gt;
-&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PROJECT_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;~/www
-&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;WORKON_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;~/.virtualenvs
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# adicione no final do arquivo ~/.bashrc&lt;/span&gt;
+&lt;span class="c1"&gt;# ...&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PROJECT_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;~/www
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;WORKON_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;~/.virtualenvs
 &lt;span class="nb"&gt;source&lt;/span&gt; /usr/local/bin/virtualenvwrapper.sh
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -116,41 +116,41 @@
 
 
 &lt;h5&gt;Criando nosso projeto&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;mkproject wsgi
+&lt;div class="highlight"&gt;&lt;pre&gt;$ mkproject wsgi
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Com as configurações anteriores o virtualenvwrapper já irá ativar o ambiente e levar você para a pasta do projeto. Mas para ativar é muito simples, basta usar:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;workon wsgi
+&lt;div class="highlight"&gt;&lt;pre&gt;$ workon wsgi
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Com o nosso ambiente virtual criado partiremos então para a criação do nosso projeto django. Utilizarei a versão mais atual até o momento, nesse caso 1.7&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;pip install django
+&lt;div class="highlight"&gt;&lt;pre&gt;$ pip install django
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Não entrarei em detalhes para a configuração inicial do django, portanto irei usar um template que eu criei para a inicialização dos meus projeto. Criamos então o projeto dessa forma:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# startproject pelo template&lt;/span&gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;django-admin.py startproject --template https://github.com/guilouro/django-boilerplate/archive/master.zip wsgitest .
-&lt;span class="c"&gt;# instala os pacotes&lt;/span&gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;pip install -r requirements.txt
-&lt;span class="c"&gt;# faz a migração&lt;/span&gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py migrate
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# startproject pelo template&lt;/span&gt;
+$ django-admin.py startproject --template https://github.com/guilouro/django-boilerplate/archive/master.zip wsgitest .
+&lt;span class="c1"&gt;# instala os pacotes&lt;/span&gt;
+$ pip install -r requirements.txt
+&lt;span class="c1"&gt;# faz a migração&lt;/span&gt;
+$ python manage.py migrate
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Você encontra esse template aqui -&amp;gt; &lt;a href="https://github.com/guilouro/django-boilerplate"&gt;django-boilerplate&lt;/a&gt;&lt;/p&gt;
 &lt;h5&gt;Criando um site no apache para o projeto&lt;/h5&gt;
 &lt;p&gt;Primeiramente, vamos criar um domínio fictício para responder com o nosso projeto ao ser acessado.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo vim /etc/hosts
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo vim /etc/hosts
 
 127.0.0.1   djangowsgi.com
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Agora vamos configurar o apache:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo vim /etc/apache2/sites-available/djangowsgi
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo vim /etc/apache2/sites-available/djangowsgi
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -186,7 +186,7 @@
 
 
 &lt;p&gt;Reinicie novamente o apache:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo service apache2 reload
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo service apache2 reload
 &lt;/pre&gt;&lt;/div&gt;
 
 
