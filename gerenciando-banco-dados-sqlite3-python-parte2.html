@@ -187,34 +187,34 @@ PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 t
 <h2>Configurando um VirtualEnv para Python 3</h2>
 <p>Não é obrigatório, mas como eu tenho no meu SO o Python 3.4, tive que criar um virtualenv, que se configura da seguinte forma:</p>
 <p>Faça um clone deste repositório</p>
-<div class="highlight"><pre>$ git clone https://github.com/rg3915/python-sqlite.git
+<div class="highlight"><pre><span></span>$ git clone https://github.com/rg3915/python-sqlite.git
 </pre></div>
 <p>Crie o virtualenv com o nome <strong>python-sqlite</strong></p>
-<div class="highlight"><pre>$ virtualenv python-sqlite
+<div class="highlight"><pre><span></span>$ virtualenv python-sqlite
 </pre></div>
 <p>Habilite o python3</p>
-<div class="highlight"><pre>$ virtualenv -p /usr/bin/python3 python-sqlite
+<div class="highlight"><pre><span></span>$ virtualenv -p /usr/bin/python3 python-sqlite
 </pre></div>
 <p>Vá para a pasta</p>
-<div class="highlight"><pre>$ <span class="nb">cd</span> python-sqlite
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> python-sqlite
 </pre></div>
 <p>Ative o ambiente</p>
-<div class="highlight"><pre>$ <span class="nb">source</span> bin/activate
+<div class="highlight"><pre><span></span>$ <span class="nb">source</span> bin/activate
 </pre></div>
 <p>Seu prompt ficará assim (ou parecido)</p>
-<div class="highlight"><pre><span class="o">(</span>python-sqlite<span class="o">)</span>~/git/python-sqlite$
+<div class="highlight"><pre><span></span><span class="o">(</span>python-sqlite<span class="o">)</span>~/git/python-sqlite$
 </pre></div>
 <p>Instale as dependências</p>
-<div class="highlight"><pre>$ pip install -r requirements.txt
+<div class="highlight"><pre><span></span>$ pip install -r requirements.txt
 </pre></div>
 <p>Entre na pasta</p>
-<div class="highlight"><pre>$ <span class="nb">cd</span> intermediario
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> intermediario
 </pre></div>
 <p>Agora vamos diminuir o caminho do prompt</p>
-<div class="highlight"><pre><span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;(`basename \&quot;</span>$<span class="s2">VIRTUAL_ENV\&quot;`):/\W</span>$<span class="s2"> &quot;</span>
+<div class="highlight"><pre><span></span><span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;(`basename \&quot;</span>$<span class="s2">VIRTUAL_ENV\&quot;`):/\W</span>$<span class="s2"> &quot;</span>
 </pre></div>
 <p>O prompt vai ficar assim:</p>
-<div class="highlight"><pre><span class="o">(</span>python-sqlite<span class="o">)</span>:/intermediario$
+<div class="highlight"><pre><span></span><span class="o">(</span>python-sqlite<span class="o">)</span>:/intermediario$
 </pre></div>
 <p>Pronto! Agora vai começar a brincadeira.</p>
 </div>
@@ -222,21 +222,21 @@ PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 t
 <h2>Criando valores randômicos</h2>
 <p>Antes de mexer no banco de fato vamos criar uns valores randômicos para popular o banco futuramente.</p>
 <p>O arquivo <a class="reference external" href="https://github.com/rg3915/python-sqlite/blob/master/intermediario/gen_random_values_.py">gen_random_values.py</a>  gera idade, cpf, telefone, data e cidade aleatoriamente. Para isso vamos importar algumas bibliotecas.</p>
-<div class="highlight"><pre><span class="c1"># gen_random_values.py</span>
+<div class="highlight"><pre><span></span><span class="c1"># gen_random_values.py</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">rstr</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 </pre></div>
 <p>Vamos criar uma função <tt class="docutils literal">gen_age()</tt> para gerar um número inteiro entre 15 e 99 usando o comando <a class="reference external" href="https://docs.python.org/2/library/random.html#random.randint">random.randint(a,b)</a> .</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">gen_age</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen_age</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
 </pre></div>
 <p>A função <tt class="docutils literal">gen_cpf()</tt> gera uma string com 11 caracteres numéricos. No caso, o primeiro parâmetro são os caracteres que serão sorteados e o segundo é o tamanho da string.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">gen_cpf</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen_cpf</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">rstr</span><span class="o">.</span><span class="n">rstr</span><span class="p">(</span><span class="s1">&#39;1234567890&#39;</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
 </pre></div>
 <p>Agora vamos gerar um telefone com a função <tt class="docutils literal">gen_phone()</tt> no formato (xx) xxxx-xxxx</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">gen_phone</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen_phone</span><span class="p">():</span>
     <span class="k">return</span> <span class="s1">&#39;({0}) {1}-{2}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">rstr</span><span class="o">.</span><span class="n">rstr</span><span class="p">(</span><span class="s1">&#39;1234567890&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
         <span class="n">rstr</span><span class="o">.</span><span class="n">rstr</span><span class="p">(</span><span class="s1">&#39;1234567890&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
@@ -244,7 +244,7 @@ PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 t
 </pre></div>
 <p>A função <tt class="docutils literal">gen_timestamp()</tt> gera um <em>datetime</em> no formato <tt class="docutils literal"><span class="pre">yyyy-mm-dd</span> hh:mm:ss.000000</tt>. Repare no uso do <tt class="docutils literal">random.randint(a,b)</tt> com um intervalo definido para cada parâmetro.</p>
 <p>Quando usamos o comando <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime.isoformat">datetime.datetime.now().isoformat()</a>  ele retorna a data e hora atual no formato <tt class="docutils literal"><span class="pre">yyyy-mm-ddThh:mm:ss.000000</span></tt>. Para suprimir a letra T usamos o comando <tt class="docutils literal">.isoformat(&quot; &quot;)</tt> que insere um espaço no lugar da letra T.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">gen_timestamp</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen_timestamp</span><span class="p">():</span>
     <span class="n">year</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1980</span><span class="p">,</span> <span class="mi">2015</span><span class="p">)</span>
     <span class="n">month</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
     <span class="n">day</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
@@ -257,7 +257,7 @@ PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 t
     <span class="k">return</span> <span class="n">date</span>
 </pre></div>
 <p>A função <tt class="docutils literal">gen_city()</tt> escolhe uma cidade numa lista com o comando <a class="reference external" href="https://docs.python.org/2/library/random.html#random.choice">random.choice(seq)</a>  (suprimi alguns valores).</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">gen_city</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen_city</span><span class="p">():</span>
     <span class="n">list_city</span> <span class="o">=</span> <span class="p">[</span>
         <span class="p">[</span><span class="s1">u&#39;São Paulo&#39;</span><span class="p">,</span> <span class="s1">&#39;SP&#39;</span><span class="p">],</span>
         <span class="p">[</span><span class="s1">u&#39;Rio de Janeiro&#39;</span><span class="p">,</span> <span class="s1">&#39;RJ&#39;</span><span class="p">],</span>
@@ -269,7 +269,7 @@ PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 t
 <div class="section" id="conectando-e-desconectando-do-banco">
 <h2>Conectando e desconectando do banco</h2>
 <p>Como mencionado antes, a intenção é criar um único arquivo. Mas, inicialmente, vamos usar um arquivo exclusivo para conexão o qual chamaremos de <a class="reference external" href="https://github.com/rg3915/python-sqlite/blob/master/intermediario/connect_db.py">connect_db.py</a> , assim teremos um arquivo que pode ser usado para vários testes de conexão com o banco de dados.</p>
-<div class="highlight"><pre><span class="c1"># connect_db.py</span>
+<div class="highlight"><pre><span></span><span class="c1"># connect_db.py</span>
 <span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="k">class</span> <span class="nc">Connect</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -292,14 +292,14 @@ PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 t
 </pre></div>
 <p>Aqui usamos o básico já visto na <a class="reference external" href="http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html">parte 1</a> que são os comandos <tt class="docutils literal">sqlite3.connect()</tt> e <tt class="docutils literal">cursor()</tt>. Criamos uma classe &quot;genérica&quot; chamada <tt class="docutils literal">Connect()</tt> que representa o banco de dados. E no inicializador da classe <tt class="docutils literal">__init__</tt> fazemos a conexão com o banco e imprimimos a versão do SQLite, definido em <tt class="docutils literal"><span class="pre">self.cursor.execute('SELECT</span> <span class="pre">SQLITE_VERSION()')</span></tt>.</p>
 <p>O próximo passo é fechar a conexão com o banco:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">close_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">close_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Conexão fechada.&quot;</span><span class="p">)</span>
 </pre></div>
 <p>Este método está dentro da classe <tt class="docutils literal">Connect()</tt>, portanto atente-se a <strong>identação</strong>.</p>
 <p>Agora, criamos uma instância da classe acima e chamamos de <tt class="docutils literal">ClientesDb()</tt>, representando um banco chamado <em>clientes.db</em>.</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">ClientesDb</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ClientesDb</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">Connect</span><span class="p">(</span><span class="s1">&#39;clientes.db&#39;</span><span class="p">)</span>
@@ -309,12 +309,12 @@ PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 t
 </pre></div>
 <p>Fazendo desta forma é possível instanciar outras classes, uma para cada banco, como <tt class="docutils literal">PessoasDb()</tt> que veremos mais pra frente.</p>
 <p>Finalmente, para rodar o programa podemos escrever o código abaixo...</p>
-<div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">cliente</span> <span class="o">=</span> <span class="n">ClientesDb</span><span class="p">()</span>
     <span class="n">cliente</span><span class="o">.</span><span class="n">close_connection</span><span class="p">()</span>
 </pre></div>
 <p>salvar... e no terminal digitar:</p>
-<div class="highlight"><pre>$ python3 connect_db.py
+<div class="highlight"><pre><span></span>$ python3 connect_db.py
 $ ls *.db
 </pre></div>
 <p>Pronto, o banco <em>clientes.db</em> está criado.</p>
@@ -322,14 +322,14 @@ $ ls *.db
 <div class="section" id="modo-interativo">
 <h2>Modo interativo</h2>
 <p>Legal mesmo é quando usamos o modo interativo para rodar os comandos do python, para isso podemos usar o python3 ou <a class="reference external" href="http://ipython.org/install.html">ipython3</a>. No terminal basta digitar python3 <tt class="docutils literal">ENTER</tt> que vai aparecer o prompt abaixo (<em>na mesma pasta do projeto, tá?</em>)</p>
-<div class="highlight"><pre>$ python3
+<div class="highlight"><pre><span></span>$ python3
 Python 3.4.0 <span class="o">(</span>default, Apr <span class="m">11</span> 2014, 13:05:18<span class="o">)</span>
 <span class="o">[</span>GCC 4.8.2<span class="o">]</span> on linux
 Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
 &gt;&gt;&gt;
 </pre></div>
 <p>Agora vamos digitar os seguintes comandos, e depois eu explico tudo.</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">connect_db</span> <span class="kn">import</span> <span class="n">Connect</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">connect_db</span> <span class="kn">import</span> <span class="n">Connect</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">Connect</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">db</span> <span class="o">=</span> <span class="n">Connect</span><span class="p">(</span><span class="s1">&#39;clientes.db&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
@@ -346,7 +346,7 @@ Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&
 <h2>Criando um banco de dados</h2>
 <p>Nosso arquivo principal se chamará <a class="reference external" href="https://github.com/rg3915/python-sqlite/blob/master/intermediario/manager_db_.py">manager_db.py</a>  e iremos incrementá-lo aos poucos. Na verdade quando usamos o comando <tt class="docutils literal">c = ClientesDb()</tt> já criamos o banco de dados com o nome especificado, e instanciamos uma classe chamada <tt class="docutils literal">ClientesDb</tt>. Portanto esta fase já está concluida.</p>
 <p>Mas vou repetir o código inicial para criar e conectar o banco de dados:</p>
-<div class="highlight"><pre><span class="c1"># manager_db.py</span>
+<div class="highlight"><pre><span></span><span class="c1"># manager_db.py</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sqlite3</span>
 <span class="kn">import</span> <span class="nn">io</span>
@@ -396,12 +396,12 @@ Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&
     <span class="n">c</span> <span class="o">=</span> <span class="n">ClientesDb</span><span class="p">()</span>
 </pre></div>
 <p>Rodando no <strong>terminal</strong>...</p>
-<div class="highlight"><pre>$ python3 manager_db.py
+<div class="highlight"><pre><span></span>$ python3 manager_db.py
 $ ls *.db
 </pre></div>
 <p>O banco <tt class="docutils literal">clientes.db</tt> está criado.</p>
 <p>Ou no <strong>modo interativo</strong>...</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">python3</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">manager_db</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">ClientesDb</span><span class="p">()</span>
 <span class="n">Banco</span><span class="p">:</span> <span class="n">clientes</span><span class="o">.</span><span class="n">db</span>
@@ -412,7 +412,7 @@ $ ls *.db
 <div class="section" id="criando-uma-tabela">
 <h2>Criando uma tabela</h2>
 <p>Agora é tudo continuação do arquivo <a class="reference external" href="https://github.com/rg3915/python-sqlite/blob/master/intermediario/manager_db_.py">manager_db.py</a> ...</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">criar_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema_name</span><span class="o">=</span><span class="s1">&#39;sql/clientes_schema.sql&#39;</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">criar_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema_name</span><span class="o">=</span><span class="s1">&#39;sql/clientes_schema.sql&#39;</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Criando tabela </span><span class="si">%s</span><span class="s2"> ...&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
@@ -436,7 +436,7 @@ $ ls *.db
 <p>Com <tt class="docutils literal">f.read()</tt> lemos as linhas do arquivo.</p>
 <p>E com <a class="reference external" href="https://docs.python.org/2/library/sqlite3.html#sqlite3.Connection.executescript">cursor.executescript()</a>  executamos a instrução sql que está dentro do arquivo.</p>
 <p><strong>Modo interativo</strong>...</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">python3</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">manager_db</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">ClientesDb</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">criar_schema</span><span class="p">()</span>
@@ -444,14 +444,14 @@ $ ls *.db
 <span class="n">Tabela</span> <span class="n">clientes</span> <span class="n">criada</span> <span class="n">com</span> <span class="n">sucesso</span><span class="o">.</span>
 </pre></div>
 <p>Se você digitar no terminal...</p>
-<div class="highlight"><pre>$ sqlite3 clientes.db .tables
+<div class="highlight"><pre><span></span>$ sqlite3 clientes.db .tables
 </pre></div>
 <p>Você verá que a tabela foi criada com sucesso.</p>
 </div>
 <div class="section" id="create-inserindo-um-registro-com-comando-sql">
 <h2>Create - Inserindo um registro com comando SQL</h2>
 <p>A função a seguir insere um registro na tabela. Repare no uso do comando <tt class="docutils literal">self.db.commit_db()</tt> que grava de fato os dados.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">inserir_um_registro</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">inserir_um_registro</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        INSERT INTO clientes (nome, idade, cpf, email, fone, cidade, uf, criado_em)</span>
@@ -476,10 +476,10 @@ $ ls *.db
 <div class="section" id="inserindo-n-registros-com-uma-lista-de-dados">
 <h2>Inserindo n registros com uma lista de dados</h2>
 <p>A função a seguir insere vários registros a partir de uma lista. Repare no uso do comando <a class="reference external" href="https://docs.python.org/2/library/sqlite3.html#sqlite3.Connection.executemany">executemany(sql, [parâmetros])</a></p>
-<div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO tabela (campos) VALUES (?)&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">lista</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO tabela (campos) VALUES (?)&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">lista</span><span class="p">)</span>
 </pre></div>
 <p>que executa a instrução sql várias vezes. Note também, pela sintaxe, que a quantidade de <tt class="docutils literal">?</tt> deve ser igual a quantidade de campos, e o parâmetro, no caso está sendo a lista criada.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">inserir_com_lista</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">inserir_com_lista</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="c1"># criando uma lista de dados</span>
     <span class="n">lista</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Agenor de Sousa&#39;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s1">&#39;12345678901&#39;</span><span class="p">,</span> <span class="s1">&#39;agenor@email.com&#39;</span><span class="p">,</span>
               <span class="s1">&#39;(10) 8300-0000&#39;</span><span class="p">,</span> <span class="s1">&#39;Salvador&#39;</span><span class="p">,</span> <span class="s1">&#39;BA&#39;</span><span class="p">,</span> <span class="s1">&#39;2014-07-29 11:23:01.199001&#39;</span><span class="p">),</span>
@@ -507,7 +507,7 @@ $ ls *.db
 <div class="section" id="inserindo-registros-de-um-arquivo-externo">
 <h2>Inserindo registros de um arquivo externo</h2>
 <p>Também podemos escrever as instruções sql num arquivo externo (<a class="reference external" href="https://raw.githubusercontent.com/rg3915/python-sqlite/master/intermediario/sql/clientes_dados.sql">clientes_dados.sql</a>) e executá-lo com o comando <tt class="docutils literal">executescript(sql_script)</tt>. Note que as instruções a seguir já foram vistas anteriormente.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">inserir_de_arquivo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">inserir_de_arquivo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sql/clientes_dados.sql&#39;</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">dados</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
@@ -523,7 +523,7 @@ $ ls *.db
 <div class="section" id="importando-dados-de-um-arquivo-csv">
 <h2>Importando dados de um arquivo csv</h2>
 <p>Agora vamos importar os dados de <a class="reference external" href="https://github.com/rg3915/python-sqlite/blob/master/intermediario/csv/clientes.csv">clientes.csv</a> . A única novidade é o comando <a class="reference external" href="https://docs.python.org/2/library/csv.html#csv.reader">csv.reader()</a> .</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">csv</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
 <span class="o">...</span>
 
 <span class="k">def</span> <span class="nf">inserir_de_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;csv/clientes.csv&#39;</span><span class="p">):</span>
@@ -548,7 +548,7 @@ $ ls *.db
 <div class="section" id="inserindo-um-registro-com-parametros-de-entrada-definido-pelo-usuario">
 <h2>Inserindo um registro com parâmetros de entrada definido pelo usuário</h2>
 <p>Agora está começando a ficar mais interessante. Quando falamos <em>parâmetros de entrada</em> significa interação direta do usuário na aplicação. Ou seja, vamos inserir os dados diretamente pelo terminal em tempo de execução. Para isso nós usamos o comando <tt class="docutils literal">input()</tt> para Python 3 ou <tt class="docutils literal">raw_input()</tt> para Python 2.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">inserir_com_parametros</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">inserir_com_parametros</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="c1"># solicitando os dados ao usuário</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">nome</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Nome: &#39;</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">idade</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Idade: &#39;</span><span class="p">)</span>
@@ -575,7 +575,7 @@ $ ls *.db
 </pre></div>
 <p>Note que, em <tt class="docutils literal">criado_em</tt> se você não informar uma data ele insere a data atual. E os parâmetros informados são passados no final do comando <tt class="docutils literal">execute()</tt>.</p>
 <p>Veja a interação:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">python3</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">manager_db</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">ClientesDb</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">criar_schema</span><span class="p">()</span>
@@ -599,7 +599,7 @@ $ ls *.db
 <p>Para o <em>email</em> pegamos a primeira letra do nome e o sobrenome + <tt class="docutils literal">&#64;email.com</tt>, ou seja, o formato <a class="reference external" href="mailto:r.silva&#64;email.com">r.silva&#64;email.com</a>, por exemplo.</p>
 <p>Para a <em>cidade</em> e <em>uf</em> usamos a função <tt class="docutils literal">gen_city()</tt> retornando os dois elementos de <tt class="docutils literal">list_city</tt>.</p>
 <p>O <tt class="docutils literal">repeat</tt> é 10 por padrão, mas você pode mudar, exemplo <tt class="docutils literal">inserir_randomico(15)</tt> na chamada da função.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">inserir_randomico</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">inserir_randomico</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Inserir registros com valores randomicos names &#39;&#39;&#39;</span>
     <span class="n">lista</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">repeat</span><span class="p">):</span>
@@ -630,7 +630,7 @@ $ ls *.db
 <div class="section" id="read-lendo-os-dados">
 <h2>Read - Lendo os dados</h2>
 <p>Eu preferi fazer duas funções <tt class="docutils literal">ler_todos_clientes()</tt> e <tt class="docutils literal">imprimir_todos_clientes()</tt>. A primeira apenas retorna os valores com o comando <tt class="docutils literal">fetchall()</tt>, pois eu irei usá-lo mais vezes. E a segunda imprime os valores na tela. No caso, eu usei uma tabulação mais bonitinha...</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">ler_todos_clientes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ler_todos_clientes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM clientes ORDER BY nome&#39;</span>
     <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
@@ -646,7 +646,7 @@ $ ls *.db
             <span class="n">c</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">8</span><span class="p">]))</span>
 </pre></div>
 <p>mas se quiser você pode usar simplesmente</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">imprimir_todos_clientes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">imprimir_todos_clientes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">lista</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ler_todos_clientes</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
@@ -655,7 +655,7 @@ $ ls *.db
 <div class="section" id="mais-select">
 <h2>Mais SELECT</h2>
 <p><strong>Exemplo</strong>: Vamos explorar um pouco mais o <tt class="docutils literal">SELECT</tt>. Veja a seguir como localizar um cliente pelo <tt class="docutils literal">id</tt>. Uma <em>sutileza</em> é a vírgula logo depois do <tt class="docutils literal">id</tt>, isto é necessário porque quando usamos a <tt class="docutils literal">?</tt> é esperado que os parâmetros sejam uma tupla.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">localizar_cliente</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">localizar_cliente</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
         <span class="s1">&#39;SELECT * FROM clientes WHERE id = ?&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nb">id</span><span class="p">,))</span>
     <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
@@ -668,22 +668,22 @@ $ ls *.db
 </pre></div>
 <p>O <tt class="docutils literal">fetchone()</tt> retorna apenas uma linha de registro.</p>
 <p><strong>Exemplo</strong>: Veja um exemplo de como contar os registros.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">contar_cliente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">contar_cliente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
         <span class="s1">&#39;SELECT COUNT(*) FROM clientes&#39;</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Total de clientes:&quot;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 <p><strong>Exemplo</strong>: Contar os clientes maiores que 50 anos de idade. Veja novamente a necessidade da vírgula em <tt class="docutils literal">(t,)</tt>.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">contar_cliente_por_idade</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">contar_cliente_por_idade</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
         <span class="s1">&#39;SELECT COUNT(*) FROM clientes WHERE idade &gt; ?&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="p">,))</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Clientes maiores que&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;anos:&quot;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 <p>Caso queira outra idade mude o valor ao chamar a função:</p>
-<div class="highlight"><pre><span class="n">c</span><span class="o">.</span><span class="n">contar_cliente_por_idade</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">contar_cliente_por_idade</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
 </pre></div>
 <p><strong>Exemplo</strong>: Localizar clientes por idade.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">localizar_cliente_por_idade</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">localizar_cliente_por_idade</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="n">resultado</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
         <span class="s1">&#39;SELECT * FROM clientes WHERE idade &gt; ?&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="p">,))</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Clientes maiores que&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;anos:&quot;</span><span class="p">)</span>
@@ -691,7 +691,7 @@ $ ls *.db
         <span class="k">print</span><span class="p">(</span><span class="n">cliente</span><span class="p">)</span>
 </pre></div>
 <p><strong>Exemplo</strong>: Localizar clientes por uf.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">localizar_cliente_por_uf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="s1">&#39;SP&#39;</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">localizar_cliente_por_uf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="s1">&#39;SP&#39;</span><span class="p">):</span>
     <span class="n">resultado</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
         <span class="s1">&#39;SELECT * FROM clientes WHERE uf = ?&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="p">,))</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Clientes do estado de&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span>
@@ -702,7 +702,7 @@ $ ls *.db
 <div class="section" id="select-personalizado">
 <h2>SELECT personalizado</h2>
 <p><strong>Exemplo</strong>: Vejamos agora como fazer nosso próprio <tt class="docutils literal">SELECT</tt>.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">meu_select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sql</span><span class="o">=</span><span class="s2">&quot;SELECT * FROM clientes WHERE uf=&#39;RJ&#39;;&quot;</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">meu_select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sql</span><span class="o">=</span><span class="s2">&quot;SELECT * FROM clientes WHERE uf=&#39;RJ&#39;;&quot;</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
     <span class="c1"># gravando no bd</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
@@ -710,18 +710,18 @@ $ ls *.db
         <span class="k">print</span><span class="p">(</span><span class="n">cliente</span><span class="p">)</span>
 </pre></div>
 <p>Assim, podemos escrever qualquer <tt class="docutils literal">SELECT</tt> direto na chamada da função:</p>
-<div class="highlight"><pre><span class="n">c</span><span class="o">.</span><span class="n">meu_select</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM clientes WHERE uf=&#39;MG&#39; ORDER BY nome;&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">meu_select</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM clientes WHERE uf=&#39;MG&#39; ORDER BY nome;&quot;</span><span class="p">)</span>
 </pre></div>
 <p>Acabamos de mudar a função original. Eu coloquei o <tt class="docutils literal">commit_db()</tt> porque se quiser você pode escrever uma instrução SQL com <tt class="docutils literal">INSERT</tt> ou <tt class="docutils literal">UPDATE</tt>, por exemplo.</p>
 <p><strong>Exemplo</strong>: Lendo instruções de arquivos externos</p>
 <p>No arquivo <a class="reference external" href="https://raw.githubusercontent.com/rg3915/python-sqlite/master/intermediario/sql/clientes_sp.sql">clientes_sp.sql</a> eu escrevi várias instruções SQL.</p>
-<div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span> <span class="k">WHERE</span> <span class="n">uf</span><span class="o">=</span><span class="s1">&#39;SP&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span> <span class="k">WHERE</span> <span class="n">uf</span><span class="o">=</span><span class="s1">&#39;SP&#39;</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">clientes</span> <span class="k">WHERE</span> <span class="n">uf</span><span class="o">=</span><span class="s1">&#39;SP&#39;</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span> <span class="k">WHERE</span> <span class="n">uf</span><span class="o">=</span><span class="s1">&#39;RJ&#39;</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">clientes</span> <span class="k">WHERE</span> <span class="n">uf</span><span class="o">=</span><span class="s1">&#39;RJ&#39;</span><span class="p">;</span>
 </pre></div>
 <p>Para que todas as instruções sejam lidas e retorne valores é necessário que usemos os comandos <tt class="docutils literal"><span class="pre">split(';')</span></tt> para informar ao interpretador qual é o final de cada linha. E o comando <tt class="docutils literal">execute()</tt> dentro de um <tt class="docutils literal">for</tt>, assim ele lê e executa todas as instruções SQL do arquivo.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">ler_arquivo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;sql/clientes_sp.sql&#39;</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ler_arquivo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;sql/clientes_sp.sql&#39;</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">dados</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
         <span class="n">sqlcomandos</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
@@ -734,13 +734,13 @@ $ ls *.db
     <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
 </pre></div>
 <p>Novamente você pode usar qualquer instrução SQL porque o <tt class="docutils literal">commit_db()</tt> já está ai.</p>
-<div class="highlight"><pre><span class="n">c</span><span class="o">.</span><span class="n">ler_arquivo</span><span class="p">(</span><span class="s1">&#39;sql/clientes_maior60.sql&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">ler_arquivo</span><span class="p">(</span><span class="s1">&#39;sql/clientes_maior60.sql&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="update-alterando-os-dados">
 <h2>Update - Alterando os dados</h2>
 <p>Nenhuma novidade, todos os comandos já foram vistos antes. No caso, informamos o <tt class="docutils literal">id</tt> do cliente. Veja que aqui usamos novamente a função <tt class="docutils literal">localizar_cliente(id)</tt> para localizar o cliente.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">atualizar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">atualizar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">localizar_cliente</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">c</span><span class="p">:</span>
@@ -761,13 +761,13 @@ $ ls *.db
         <span class="k">raise</span> <span class="n">e</span>
 </pre></div>
 <p>Chamando a função:</p>
-<div class="highlight"><pre><span class="n">c</span><span class="o">.</span><span class="n">atualizar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">atualizar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="delete-deletando-os-dados">
 <h2>Delete - Deletando os dados</h2>
 <p>Novamente vamos localizar o cliente para depois deletá-lo.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">deletar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">deletar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">localizar_cliente</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
         <span class="c1"># verificando se existe cliente com o ID passado, caso exista</span>
@@ -784,13 +784,13 @@ $ ls *.db
         <span class="k">raise</span> <span class="n">e</span>
 </pre></div>
 <p>Chamando a função:</p>
-<div class="highlight"><pre><span class="n">c</span><span class="o">.</span><span class="n">deletar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">deletar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="adicionando-uma-nova-coluna">
 <h2>Adicionando uma nova coluna</h2>
 <p>Para adicionar uma nova coluna é bem simples.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">alterar_tabela</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">alterar_tabela</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        ALTER TABLE clientes</span>
@@ -807,18 +807,18 @@ $ ls *.db
 <div class="section" id="lendo-as-informacoes-do-banco-de-dados">
 <h2>Lendo as informações do banco de dados</h2>
 <p>Obtendo informações da tabela</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">table_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">table_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
         <span class="s1">&#39;PRAGMA table_info({})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">))</span>
     <span class="n">colunas</span> <span class="o">=</span> <span class="p">[</span><span class="n">tupla</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">tupla</span> <span class="ow">in</span> <span class="n">t</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()]</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Colunas:&#39;</span><span class="p">,</span> <span class="n">colunas</span><span class="p">)</span>
 </pre></div>
 <p>Chamando e vendo o resultado:</p>
-<div class="highlight"><pre>&gt;&gt;&gt; c.table_info<span class="o">()</span>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; c.table_info<span class="o">()</span>
 Colunas: <span class="o">[</span><span class="s1">&#39;id&#39;</span>, <span class="s1">&#39;nome&#39;</span>, <span class="s1">&#39;idade&#39;</span>, <span class="s1">&#39;cpf&#39;</span>, <span class="s1">&#39;email&#39;</span>, <span class="s1">&#39;fone&#39;</span>, <span class="s1">&#39;cidade&#39;</span>, <span class="s1">&#39;uf&#39;</span>, <span class="s1">&#39;criado_em&#39;</span><span class="o">]</span>
 </pre></div>
 <p>Listando as tabelas do bd</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">table_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">table_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    SELECT name FROM sqlite_master WHERE type=&#39;table&#39; ORDER BY name</span>
 <span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
@@ -827,13 +827,13 @@ Colunas: <span class="o">[</span><span class="s1">&#39;id&#39;</span>, <span cla
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">tabela</span><span class="p">))</span>
 </pre></div>
 <p>Chamando e vendo o resultado:</p>
-<div class="highlight"><pre>&gt;&gt;&gt; c.table_list<span class="o">()</span>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; c.table_list<span class="o">()</span>
 Tabelas:
 clientes
 sqlite_sequence
 </pre></div>
 <p>Obtendo o schema da tabela</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">table_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">table_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    SELECT sql FROM sqlite_master WHERE type=&#39;table&#39; AND name=?</span>
 <span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">,))</span>
@@ -843,7 +843,7 @@ sqlite_sequence
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">schema</span><span class="p">))</span>
 </pre></div>
 <p>Chamando e vendo o resultado:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">c</span><span class="p">.</span><span class="n">table_schema</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">c</span><span class="p">.</span><span class="n">table_schema</span><span class="p">()</span>
 <span class="k">Schema</span><span class="p">:</span>
 <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">clientes</span> <span class="p">(</span>
     <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTOINCREMENT</span><span class="p">,</span>
@@ -860,7 +860,7 @@ sqlite_sequence
 </div>
 <div class="section" id="fazendo-backup-do-banco-de-dados-exportando-dados">
 <h2>Fazendo backup do banco de dados (exportando dados)</h2>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">io</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">io</span>
 <span class="o">...</span>
 <span class="k">def</span> <span class="nf">backup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;sql/clientes_bkp.sql&#39;</span><span class="p">):</span>
     <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -871,13 +871,13 @@ sqlite_sequence
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Salvo como </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span>
 </pre></div>
 <p>Se quiser pode salvar com outro nome.</p>
-<div class="highlight"><pre><span class="n">c</span><span class="o">.</span><span class="n">backup</span><span class="p">(</span><span class="s1">&#39;sql/clientes_backup.sql&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">backup</span><span class="p">(</span><span class="s1">&#39;sql/clientes_backup.sql&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="recuperando-o-banco-de-dados-importando-dados">
 <h2>Recuperando o banco de dados (importando dados)</h2>
 <p>Aqui nós usamos dois parâmetros: <tt class="docutils literal">db_name</tt> para o banco de dados recuperado (no caso, um banco novo) e <tt class="docutils literal">file_name</tt> para o nome do arquivo de backup com as instruções SQL salvas.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">importar_dados</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_name</span><span class="o">=</span><span class="s1">&#39;clientes_recovery.db&#39;</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;sql/clientes_bkp.sql&#39;</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">importar_dados</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_name</span><span class="o">=</span><span class="s1">&#39;clientes_recovery.db&#39;</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;sql/clientes_bkp.sql&#39;</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">Connect</span><span class="p">(</span><span class="n">db_name</span><span class="p">)</span>
         <span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -892,7 +892,7 @@ sqlite_sequence
         <span class="k">return</span> <span class="bp">False</span>
 </pre></div>
 <p>Fechando conexão:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">fechar_conexao</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fechar_conexao</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close_db</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -902,7 +902,7 @@ sqlite_sequence
 <p>Veja na figura a seguir como as tabelas se relacionam.</p>
 <img alt="tabelas.png" src="images/regisdasilva/tabelas.png" />
 <p>Agora os códigos:</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">PessoasDb</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PessoasDb</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="n">tb_name</span> <span class="o">=</span> <span class="s1">&#39;pessoas&#39;</span>
 
@@ -911,7 +911,7 @@ sqlite_sequence
         <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span>
 </pre></div>
 <p>Criando o <em>schema</em> a partir de <a class="reference external" href="https://raw.githubusercontent.com/rg3915/python-sqlite/master/intermediario/sql/pessoas_schema_.sql">pessoas_schema.sql</a>.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">criar_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema_name</span><span class="o">=</span><span class="s1">&#39;sql/pessoas_schema.sql&#39;</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">criar_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema_name</span><span class="o">=</span><span class="s1">&#39;sql/pessoas_schema.sql&#39;</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Criando tabela </span><span class="si">%s</span><span class="s2"> ...&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
@@ -925,7 +925,7 @@ sqlite_sequence
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Tabela </span><span class="si">%s</span><span class="s2"> criada com sucesso.&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">)</span>
 </pre></div>
 <p>Inserindo as cidades a partir de <a class="reference external" href="https://github.com/rg3915/python-sqlite/blob/master/intermediario/csv/cidades.csv">cidades.csv</a>.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">inserir_de_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;csv/cidades.csv&#39;</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">inserir_de_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;csv/cidades.csv&#39;</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">c</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span>
             <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
@@ -943,14 +943,14 @@ sqlite_sequence
         <span class="k">return</span> <span class="bp">False</span>
 </pre></div>
 <p>Agora vamos contar quantas cidades temos na tabela...</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">gen_cidade</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen_cidade</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; conta quantas cidades estão cadastradas e escolhe uma delas pelo id. &#39;&#39;&#39;</span>
     <span class="n">sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT COUNT(*) FROM cidades&#39;</span>
     <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">q</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 <p>para a partir dai gerar valores randômicos apenas com as cidades existentes.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">inserir_randomico</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">inserir_randomico</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">lista</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">repeat</span><span class="p">):</span>
         <span class="n">fname</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">get_first_name</span><span class="p">()</span>
@@ -971,7 +971,7 @@ sqlite_sequence
         <span class="k">return</span> <span class="bp">False</span>
 </pre></div>
 <p>Agora é só alegria!</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">ler_todas_pessoas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ler_todas_pessoas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM pessoas INNER JOIN cidades ON pessoas.cidade_id = cidades.id&#39;</span>
     <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
@@ -1002,7 +1002,7 @@ sqlite_sequence
     <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close_db</span><span class="p">()</span>
 </pre></div>
 <p>Chamando tudo no <strong>modo interativo</strong></p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">manager_db</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">manager_db</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">PessoasDb</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">criar_schema</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">inserir_de_csv</span><span class="p">()</span>
@@ -1135,7 +1135,7 @@ sqlite_sequence
         });
 
         $(function(){
-            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
         });
         
     </script>

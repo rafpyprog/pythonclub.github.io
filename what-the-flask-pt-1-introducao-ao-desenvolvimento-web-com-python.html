@@ -197,7 +197,7 @@ O Jinja2 já vem com a implementação da maioria das coisas necessárias na con
 <h4>Ambiente</h4>
 <p>Inicie criando uma pasta para o projeto no local de sua preferencia</p>
 <p>(se preferir pode fazer via File Browser ou IDE)</p>
-<div class="highlight"><pre>mkdir wtf
+<div class="highlight"><pre><span></span>mkdir wtf
 touch wtf/__init__.py
 touch wtf/app.py
 <span class="nb">cd</span> wtf
@@ -206,32 +206,32 @@ touch wtf/app.py
 
 <p>Agora crie uma <a href="http://virtualenv.readthedocs.org/en/latest/">virtualenv</a> para o projeto</p>
 <p>Usando virtualenvwrapper <strong>(recommended)</strong></p>
-<div class="highlight"><pre>sudo apt-get install virtualenvwrapper
+<div class="highlight"><pre><span></span>sudo apt-get install virtualenvwrapper
 mkvirtualenv wtf_env
 </pre></div>
 
 
 <p>Ou usando apenas virtualenv</p>
-<div class="highlight"><pre>sudo apt-get install python-virtualenv
+<div class="highlight"><pre><span></span>sudo apt-get install python-virtualenv
 virtualenv wtf_env
 <span class="nb">source</span> wtf_env/bin/activate
 </pre></div>
 
 
 <p>Com uma das opções acima o seu console agora deverá exibir algo como:</p>
-<div class="highlight"><pre><span class="o">(</span>wtf_env<span class="o">)</span>seuuser@suamaquina/path/to/wtf$
+<div class="highlight"><pre><span></span><span class="o">(</span>wtf_env<span class="o">)</span>seuuser@suamaquina/path/to/wtf$
 </pre></div>
 
 
 <p>Instale o Flask e o Ipython</p>
-<div class="highlight"><pre>pip install flask
+<div class="highlight"><pre><span></span>pip install flask
 pip install ipython
 </pre></div>
 
 
 <h3><a name="hello_world" href="#hello_world">Level 1.1 - Hello world</a></h3>
 <p>Agora que o ambiente está pronto abra o arquivo <code>app.py</code> em seu editor favorito e vamos fazer o <strong>Hello World</strong> para começarmos bem o tutorial.</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
@@ -244,7 +244,7 @@ pip install ipython
 
 
 <p>Agora salve o arquivo e vá para o terminal e execute:</p>
-<div class="highlight"><pre><span class="o">(</span>wtf_env<span class="o">)</span>seuuser@suamaquina/path/to/wtf$ python app.py
+<div class="highlight"><pre><span></span><span class="o">(</span>wtf_env<span class="o">)</span>seuuser@suamaquina/path/to/wtf$ python app.py
 </pre></div>
 
 
@@ -261,7 +261,7 @@ pip install ipython
 <h3><a name="o_objeto_flask" href="#o_objeto_flask">O objeto Flask</a></h3>
 <p>Conforme mencionado no início deste artigo, o Flask utiliza como base o <strong>WerkZeug</strong> que é uma biblioteca WSGI. Para lidar com os recursos do WerkZeug precisamos de uma aplicação WSGI que é uma instância de um objeto Python que implemente o protocolo WSGI e possa ser servida pelos web servers que implementam este protocolo como o Gunicorn, Uwsgi, Apache mod_wsgi etc.</p>
 <p>No Flask criamos a aplicação WSGI instanciando a classe <strong>Flask</strong>. O que essa classe faz é basicamente abstrair em métodos simples o fluxo de trabalho do padrão WSGI e do WerkZeug. Você pode ver como isto está implementado dando uma olhada no <a href="https://github.com/mitsuhiko/flask/blob/master/flask/app.py#L67">código fonte</a>.</p>
-<div class="highlight"><pre>    <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 
     <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 </pre></div>
@@ -275,14 +275,14 @@ pip install ipython
 <p>O Flask utiliza o <strong>import_name</strong> para definir o que pertence ao seu projeto e este nome é usado como base path para inferir os recursos como por exemplo descobrir onde fica a sua pasta de templates e sua pasta de arquivos estáticos.</p>
 <p>Além disso a ferramenta de debug do Werkzeug te mostrará mensagens mais explicitas se você definir o nome do pacote de seu app.</p>
 <p>Supondo que você criará a instancia no caminho <code>yourapplication/app.py</code> você tem essas 2 opções.</p>
-<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s1">&#39;yourapplication&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s1">&#39;yourapplication&#39;</span><span class="p">)</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 
 
 <p>No ultimo caso o <code>__name__</code> seria <strong>yourapplication.app</strong> e por isso fazemos o split para se tornar <code>["yourapplication", "app"]</code> e então pegamos o primeiro elemento.</p>
 <p>Eu recomendo usar o primeiro padrão pois é mais bonito :)</p>
-<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -299,7 +299,7 @@ pip install ipython
 <p>Você pode ter mais de um app Flask em seu projeto e isto te garante reusabilidade e organização, vou dar um exemplo:</p>
 </li>
 </ol>
-<div class="highlight"><pre><span class="c1"># um arquivo projeto.py</span>
+<div class="highlight"><pre><span></span><span class="c1"># um arquivo projeto.py</span>
 
 <span class="n">web_app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
@@ -335,7 +335,7 @@ pip install ipython
 </blockquote>
 <p>O Flask oferece 2 formas para o roteamento de views:</p>
 <p>1 Roteamento via decorator</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">render_template</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">render_template</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">)</span>
 
@@ -360,7 +360,7 @@ pip install ipython
 </blockquote>
 <p>Você pode inclusive utilizar multiplos decorators em uma mesma função para mapear várias urls, isto é útil para abranger uma mesma view com ou sem parametros.</p>
 <p>exemplo:</p>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticias&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticias&quot;</span><span class="p">)</span>
 <span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticias/&lt;pais&gt;&quot;</span><span class="p">)</span>
 <span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticias/&lt;pais&gt;/&lt;estado&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">lista_de_noticias</span><span class="p">(</span><span class="n">pais</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">estado</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
@@ -372,7 +372,7 @@ pip install ipython
 <p><strong>WARNING:</strong> Cuidado com o uso de multiplos decorators, a ordem em que são definidos é importante e caso esteja usando algum decorator customizado como por exemplo <code>@seu_app.requires_login</code>, se este for o primeiro decorator o Flask irá usar o nome da função wrapper do decorator ao invés do nome da view para o endpoint da url. A indicação é ao criar decorators utilizar sempre o <code>functools.wraps</code> para resolver este problema.</p>
 </blockquote>
 <p>2 Roteamento explicito</p>
-<div class="highlight"><pre><span class="n">app</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="s2">&quot;/noticias/&lt;pais&gt;&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="s2">&quot;/noticias/&lt;pais&gt;&quot;</span><span class="p">,</span>
                  <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;lista_noticias&quot;</span><span class="p">,</span>
                  <span class="n">view_func</span><span class="o">=</span><span class="n">lista_de_noticias</span><span class="p">)</span>
 </pre></div>
@@ -402,7 +402,7 @@ pip install ipython
 </blockquote>
 <p>Views precisam retornar um objeto do tipo <strong>Response</strong> ou uma tupla formada por até 3 elementos, um <strong>body</strong> que pode ser um objeto serializável como por exemplo um texto, um inteiro representando o código de <strong>status HTTP</strong> e um dicionário de <strong>headers</strong>, sendo que os dois ultimos elementos são opcionais.</p>
 <p>Exemplo:</p>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&lt;name&gt;&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&lt;name&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;bruno&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;Olá {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="mi">200</span>
@@ -415,7 +415,7 @@ pip install ipython
 <blockquote>
 <p><strong>RELAX:</strong> Se você não informar o código de status o Flask irá tentar resolver para você. Por padrão qualquer retorno no formato string é convertido para um objeto Response com código de status 200 e no header vai o Content-Type "text/html" automaticamente. Flask is full of magic :)</p>
 </blockquote>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&lt;name&gt;&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&lt;name&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="k">return</span> <span class="s2">&quot;Olá {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
@@ -426,7 +426,7 @@ pip install ipython
 <p><strong>NOTE:</strong> Ao desenvolver uma API REST ou formulários que serão consumidos via Ajax é recomendado informar explicitamente os códigos HTTP e tratar adequadamente as excessões HTTP, pois do lado do cliente o comportamento pode depender desses códigos de status.</p>
 </blockquote>
 <p>Além disso o Flask oferece alguns <strong>helpers</strong> para facilitar o tratamento de excessões http, por exemplo o <strong>404</strong> ou <strong>503</strong> podem ser definidos através do helper <strong>abort</strong> e o <strong>301/302</strong> com o uso do helper <strong>redirect</strong>.</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">abort</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">abort</span>
 
 <span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/shortener/&lt;tiny_url&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">url_shortener</span><span class="p">(</span><span class="n">tiny_url</span><span class="p">):</span>
@@ -447,7 +447,7 @@ pip install ipython
 <h4>HTML, JSON, XML etc</h4>
 <p>HTML</p>
 <p>Obviamente que você pode retornar conteúdo formatado e não apenas texto puro, isso poderá ser <strike style="color:red">feito direto na view</strike> ou em um <span style="color:green">template</span>.</p>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/html_page/&lt;nome&gt;&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/html_page/&lt;nome&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">html_page</span><span class="p">(</span><span class="n">nome</span><span class="p">):</span>
     <span class="k">return</span> <span class="s2">u&quot;&quot;&quot;</span>
 <span class="s2">    &lt;html&gt;</span>
@@ -467,7 +467,7 @@ pip install ipython
 
 <p>O exemplo acima apesar de em alguns raros casos ser útil, não é recomendado, o ideal é usar templates para deixar a camada de apresentação desacoplada da lógica do nosso app.</p>
 <p>assumindo que o trecho html acima está em um arquivo <code>templates/html_page.html</code> podemos fazer o seguinte.</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span>
 
 <span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/html_page/&lt;nome&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">html_page</span><span class="p">(</span><span class="n">nome</span><span class="p">):</span>
@@ -484,7 +484,7 @@ pip install ipython
 <p>Você pode simplesmente retornar uma string jsonificada porém também é preciso dizer ao cliente que o <strong>content_type</strong> ou <strong>mimetype</strong> em questão é <strong>application/json</strong>, <strike>m$/application:xml</strike> ou qualquer outro formato.</p>
 <p>Existem 3 possibilidades:</p>
 <p>Criar um objeto Response explicitamente</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">json</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">make_response</span>
 
 <span class="k">def</span> <span class="nf">json_api</span><span class="p">():</span>
@@ -501,7 +501,7 @@ pip install ipython
 
 
 <p>Retornar uma tupla de 3 elementos, no formato <code>(string, status_code, headers_dict)</code></p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">json_api</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">json_api</span><span class="p">():</span>
     <span class="n">pessoas</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Bruno Rocha&quot;</span><span class="p">},</span>
                <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Arjen Lucassen&quot;</span><span class="p">},</span>
                <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Anneke van Giersbergen&quot;</span><span class="p">},</span>
@@ -511,7 +511,7 @@ pip install ipython
 
 
 <p>Os exemplos acima são válidos e poderão ser seguidos para outros tipos de dados, porém como JSON é um tipo de retorno muito comum o Flask já vem com um helper para ajuda-lo a economizar umas linhas de código.</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">jsonify</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">jsonify</span>
 
 <span class="k">def</span> <span class="nf">json_api</span><span class="p">():</span>
     <span class="n">pessoas</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Bruno Rocha&quot;</span><span class="p">},</span>
@@ -532,7 +532,7 @@ pip install ipython
 <p>É quando a app é instanciada, e nenhum request ocorreu ainda, é o momento em que você pode seguramente modificar as configurações e carregar módulos, extensões etc.</p>
 <p>Este estado ocorre antes do <strong>dispatch</strong>, ou seja, no nosso caso é antes do <strong>app.run()</strong> ser executado, mas no caso de servir seu app com outro app server como gunicorn ou uwsgi este estado é antes do servidor WSGI registrar o objeto <strong>application</strong>.</p>
 <p>Exemplo:</p>
-<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">)</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;SECRET_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;schblaums&quot;</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
@@ -545,7 +545,7 @@ pip install ipython
 <p>As linhas acima "ocorrem" geralmente no estado de configuração e portanto assumimos que <strong>não</strong> existe um <strong>request</strong> em andamento. Um detalhe importante é o fato de que este estado é válido apenas para o <strong>top level</strong> module, ou seja, dentro do escopo de funções, views, classes etc o estado será outro.</p>
 <h4>2 Estado de request</h4>
 <p>É quando seu app já foi iniciado e está <strong>registrado</strong> no servidor WSGI e então acontece uma requisição (algum cliente acessa uma url), neste momento o Flask irá popular o objeto request com os dados desta requisição e você poderá acessar o objeto request.</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span><span class="p">,</span> <span class="n">current_app</span><span class="p">,</span> <span class="n">jsonify</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span><span class="p">,</span> <span class="n">current_app</span><span class="p">,</span> <span class="n">jsonify</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
@@ -566,7 +566,7 @@ pip install ipython
 <blockquote>
 <p><strong>It's weird</strong></p>
 </blockquote>
-<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 <span class="n">outra_app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 <span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/url_na_app&quot;</span><span class="p">)</span>
@@ -584,7 +584,7 @@ pip install ipython
 <p>O exemplo acima é meio non-sense mas é possível, além disso para fazer este tipo de coisa é recomendado usar o dispatcher middleware.</p>
 <h4>3 Estado interativo ou estado de testes</h4>
 <p>As vezes para efetuar pequenos testes ou até mesmo escrever testes unitários é necessário acessar o objeto <strong>request</strong> ou o <strong>current_app</strong> em um script standalone ou em um terminal interativo.</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">current_app</span><span class="p">,</span> <span class="n">request</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">current_app</span><span class="p">,</span> <span class="n">request</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span>
 <span class="o">...</span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
@@ -593,7 +593,7 @@ pip install ipython
 
 
 <p>Nesta hora você pensa <strong>WTF</strong> terei que fazer um request cada vez que precisar testar esse código? não, calma, o Flask oferece uma solução.</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">current_app</span><span class="p">,</span> <span class="n">request</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">current_app</span><span class="p">,</span> <span class="n">request</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">(</span><span class="s2">&quot;/teste&quot;</span><span class="p">,</span> <span class="s2">&quot;x.com&quot;</span><span class="p">,</span> <span class="s2">&quot;aaa=1&amp;bb=2&quot;</span><span class="p">):</span>
 <span class="o">...</span>     <span class="k">print</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
@@ -609,7 +609,7 @@ pip install ipython
 <p>O objeto <strong>request</strong> é um <strong>proxy</strong> global que internamente garante você acesse a requisição atual ou *thread-local atual. Ele carrega dados referentes a cada requisição HTTP, nele podemos acessar as variáveis enviadas atráves da url ou de um formulário, podemos também verificar o método HTTP entre outros dados importantes que podem ser conferidos na <a href="http://flask.pocoo.org/docs/api/#incoming-request-data">doc</a>.</p>
 <p>Os itens mais importantes são: (method, args, form, path, is_json)</p>
 <p>É muito útil checar qual o método HTTP que foi requisitado, isto é o que possibilita a criação de uma API REST, o exemplo a seguir é auto explicativo:</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span><span class="p">,</span> <span class="n">jsonify</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span><span class="p">,</span> <span class="n">jsonify</span>
 
 <span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticia&quot;</span><span class="p">)</span>
 <span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticia/&lt;int:noticia_id&gt;&quot;</span><span class="p">)</span>
@@ -655,7 +655,7 @@ pip install ipython
 <h4>request.args</h4>
 <p>Um dicionário com os valores passados via GET (na url após o ?).</p>
 <p>url requisitada: <code>/noticias?categoria=esportes&amp;limit=10</code></p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span>
 <span class="n">ImmutableMultiDict</span><span class="p">([(</span><span class="s1">&#39;categoria&#39;</span><span class="p">,</span> <span class="s1">u&#39;esportes&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;limit&#39;</span><span class="p">,</span> <span class="s1">u&#39;10&#39;</span><span class="p">)])</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
 <span class="p">{</span><span class="s2">u&quot;categoria&quot;</span><span class="p">:</span> <span class="s2">u&quot;esportes&quot;</span><span class="p">,</span> <span class="s2">u&quot;limit&quot;</span><span class="p">:</span> <span class="s2">u&quot;10&quot;</span><span class="p">}</span>
@@ -666,7 +666,7 @@ pip install ipython
 
 <p>Não é muito comum mas em alguns casos as chaves podem se repetir, neste caso devemos usar o <code>getlist</code>.</p>
 <p>url requisitada: <code>/noticias?categoria=esportes&amp;categoria=musica</code></p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span>
 <span class="n">ImmutableMultiDict</span><span class="p">([(</span><span class="s1">&#39;categoria&#39;</span><span class="p">,</span> <span class="s1">u&#39;esportes&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;categoria&#39;</span><span class="p">,</span> <span class="s1">u&#39;musica&#39;</span><span class="p">)])</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>  <span class="c1"># mantém só os primeiros</span>
 <span class="p">{</span><span class="s2">u&quot;categoria&quot;</span><span class="p">:</span> <span class="s2">u&quot;esportes&quot;</span><span class="p">}</span>
@@ -678,12 +678,12 @@ pip install ipython
 <h4>request.form</h4>
 <p>O request.form funciona da mesma forma que o .args porém ele intercepta apenas os argumentos passados via POST, PUT ou PATCH, ou seja, via formulário ou payload.</p>
 <p>exemplo de requisição POST via console</p>
-<div class="highlight"><pre>curl --data <span class="s2">&quot;categoria=esportes&amp;limit=10&quot;</span> http://localhost:5000/noticias
+<div class="highlight"><pre><span></span>curl --data <span class="s2">&quot;categoria=esportes&amp;limit=10&quot;</span> http://localhost:5000/noticias
 </pre></div>
 
 
 <p>A requisição acima corresponde ao submit de um formulário contento os campos "categoria" e "limit".</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span>
 <span class="n">ImmutableMultiDict</span><span class="p">([(</span><span class="s1">&#39;categoria&#39;</span><span class="p">,</span> <span class="s1">u&#39;esportes&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;limit&#39;</span><span class="p">,</span> <span class="s1">u&#39;10&#39;</span><span class="p">)])</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
 <span class="p">{</span><span class="s2">u&quot;categoria&quot;</span><span class="p">:</span> <span class="s2">u&quot;esportes&quot;</span><span class="p">,</span> <span class="s2">u&quot;limit&quot;</span><span class="p">:</span> <span class="s2">u&quot;10&quot;</span><span class="p">}</span>
@@ -696,7 +696,7 @@ pip install ipython
 <h4>request.json</h4>
 <p>É exatamente a mesma coisa do .args e do .form, porém ele será populado quando o request trouxer o mimetype "application/json", então os dados do JSON no payload serão colocados neste atributo.</p>
 <p>Requisição</p>
-<div class="highlight"><pre>curl -X POST -d <span class="o">{</span><span class="s2">&quot;categoria&quot;</span>: <span class="s2">&quot;esporte&quot;</span><span class="o">}</span> http://localhost:5000/noticias --header <span class="s2">&quot;Content-Type:application/json&quot;</span>
+<div class="highlight"><pre><span></span>curl -X POST -d <span class="o">{</span><span class="s2">&quot;categoria&quot;</span>: <span class="s2">&quot;esporte&quot;</span><span class="o">}</span> http://localhost:5000/noticias --header <span class="s2">&quot;Content-Type:application/json&quot;</span>
 </pre></div>
 
 
@@ -704,12 +704,12 @@ pip install ipython
 <h4>request.files / file uploads</h4>
 <p>Caso seu formulário ou API permitam o envio de arquivos esses dados serão colocados no <code>request.files</code>. Isto ocorre pois internamente o Flask transforma os dados recebidos em um objeto <strong>FileStorage</strong> para permitir que você manipule os com mais facilidade.</p>
 <p>Requisição: (equivale a um formulário com file upload)</p>
-<div class="highlight"><pre>curl --form <span class="s2">&quot;photo=@picture.jpg&amp;item_id=12345&quot;</span> http://localhost:5000/change_photo
+<div class="highlight"><pre><span></span>curl --form <span class="s2">&quot;photo=@picture.jpg&amp;item_id=12345&quot;</span> http://localhost:5000/change_photo
 </pre></div>
 
 
 <p>para salvar a imagem:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">current_app</span>
 <span class="kn">from</span> <span class="nn">werkzeug</span> <span class="kn">import</span> <span class="n">secure_filename</span>
 
@@ -735,7 +735,7 @@ pip install ipython
 <p>Existe uma série de <a href="http://en.wikipedia.org/wiki/HTTP_cookie">especificações</a> a respeito, mas não entrarei nos detalhes, vamos apenas ver como manipula-los no Flask.</p>
 <h4>Escrevendo em um biscoito! (estranho isso né?)</h4>
 <p>Para escrever dados em um cookie usamos o objeto <strong>Response</strong>, portanto sempre que precisar escrever um cookie será necessário criar explicitamente um objeto <strong>Response</strong> para este fim.</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">abort</span><span class="p">,</span> <span class="n">make_response</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">abort</span><span class="p">,</span> <span class="n">make_response</span>
 
 <span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">login</span><span class="p">():</span>
@@ -758,7 +758,7 @@ pip install ipython
 </blockquote>
 <h4>Lendo o biscoito (da sorte?)</h4>
 <p>Bom, assumindo que temos as informações <strong>username</strong> e <strong>user_hash</strong> gravadas no browser do cliente, e que este enviará este cookie no HEADER a cada requisição que fizer, podemos facilmente ler os dados contidos no cookie através do objeto <strong>request</strong>.</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span>
 
 <span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
@@ -776,7 +776,7 @@ pip install ipython
 <h4>Sessions</h4>
 <p>No Flask existe o objeto <strong>session</strong> que é também uma forma de armazenar informação que será persistida entre requests, na <strong>session</strong> você pode armazenar informações de controle de acesso e até mesmo preferencias do usuário.</p>
 <p>As sessions dependem dos cookies, pois são indexadas atráves de um <strong>SESSION_ID</strong> que por padrão é sempre gravado em um cookie. Além disso o Flask por padrão guarda tembém os dados da <strong>session</strong> nos cookies, ou seja, os dados ficam lá do lado cliente, porém ele utiliza criptografia nesses dados, é possível visualizar o conteúdo deste cookie mas para alterar é sempre preciso assina-lo com a chave de criptografia correta e é para isso que serve a configuração <strong>SECRET_KEY</strong> lá nos config de seu app Flask.</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">escape</span><span class="p">,</span> <span class="n">request</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">escape</span><span class="p">,</span> <span class="n">request</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SECRET_KEY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;A0Zr98j/3yX R~XHH!jmN]LWX/,?RT&quot;</span>
@@ -816,7 +816,7 @@ pip install ipython
 <p>Em outro capítulo desta série mostrarei exemplos com o MongoEngine, mas nesta parte introdutória vamos usar o módulo <a href="https://github.com/pudo/dataset">dataset</a> que é uma camada de abstração para ler e escrever dados nos bancos SQLite, MySQL ou Postgres.</p>
 <p>A vantagem do dataset é que ele é incrivelmente simples, não exige especificação de <strong>schema</strong> e é puro Python.</p>
 <p>Para começar instale o <strong>dataset</strong> na sua virtualenv.</p>
-<div class="highlight"><pre><span class="o">(</span>wtf_env<span class="o">)</span>seuuser@suamaquina/path/to/wtf$ pip install dataset
+<div class="highlight"><pre><span></span><span class="o">(</span>wtf_env<span class="o">)</span>seuuser@suamaquina/path/to/wtf$ pip install dataset
 </pre></div>
 
 
@@ -825,7 +825,7 @@ pip install ipython
 </blockquote>
 <h3>Escrevendo no banco de dados</h3>
 <p>agora na raiz do projeto vamos criar um arquivo novo chamado <code>db.py</code>.</p>
-<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 
 <span class="kn">import</span> <span class="nn">dataset</span>
 
@@ -838,7 +838,7 @@ pip install ipython
 <blockquote>
 <p><strong>NOTE:</strong> Inicialmente não vamos nos preocupar com segurança, csrf ou login, mas nos próximos capítulos desta série iremos evoluir este pequeno app.</p>
 </blockquote>
-<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">url_for</span>
 
@@ -895,7 +895,7 @@ pip install ipython
 <p>Você verá um formulário com os campos <strong>titulo</strong> e <strong>texto</strong>, insira uma notícia nova e repita o processo algumas vezes. Note que na raiz de seu projeto agora terá um banco de dados SQLite <strong>noticias.db</strong>.</p>
 <h3>Lendo do banco de dados</h3>
 <p>Abra o arquivo <code>news_app.py</code> e após a linha 39 vamos incluir uma view para listar todas as notícias na home do site.</p>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
 
     <span class="n">noticia_template</span> <span class="o">=</span> <span class="s2">u&quot;&quot;&quot;</span>
@@ -917,7 +917,7 @@ pip install ipython
 
 <p>Agora ao acessar <a href="http://localhost:5000">localhost:5000</a> Você verá uma lista de links com os títulos das notícias que cadastrou!</p>
 <p>Só falta agora uma última view que será a utilizada para exibir a notícia quando você clicar no link.</p>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticia/&lt;int:noticia_id&gt;&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticia/&lt;int:noticia_id&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">noticia</span><span class="p">(</span><span class="n">noticia_id</span><span class="p">):</span>
     <span class="n">noticia</span> <span class="o">=</span> <span class="n">noticias</span><span class="o">.</span><span class="n">find_one</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">noticia_id</span><span class="p">)</span>  <span class="c1"># query no banco de dados</span>
     <span class="n">noticia_html</span> <span class="o">=</span> <span class="s2">u&quot;&quot;&quot;</span>
@@ -944,7 +944,7 @@ pip install ipython
 <h4>Definindo a pasta e o endpoint dos arquivos estáticos</h4>
 <p>No arquivo <code>wtf/news_app.py</code> da nossa app de notícias criarmos uma instância a app com <code>Flask('wtf')</code> sem passar nenhum parâmetro adicional, neste caso o Flask irá assumir o comportamento default que é ter uma pasta de estáticos localizada em <code>wtf/static</code> e o endpoint de estáticos mapeado para <code>/static/</code> e na maioria dos casos esta convenção irá atender perfeitamente.</p>
 <p>Caso você precise especificar um caminho diferente para os arquivos físicos ou um mapeamento de url diferente poderá informar ao Flask através dos seguintes parâmetros:</p>
-<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">,</span> <span class="n">static_folder</span><span class="o">=</span><span class="s1">&#39;assets&#39;</span><span class="p">,</span> <span class="n">static_url_path</span><span class="o">=</span><span class="s2">&quot;assets_v1&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">,</span> <span class="n">static_folder</span><span class="o">=</span><span class="s1">&#39;assets&#39;</span><span class="p">,</span> <span class="n">static_url_path</span><span class="o">=</span><span class="s2">&quot;assets_v1&quot;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -954,7 +954,7 @@ pip install ipython
 <p>Clique com o botão direito do mouse e escolha "salvar imagem..."</p>
 <p><img alt="https://jobs.github.com/images/modules/company/generic_logo.gif" src="https://jobs.github.com/images/modules/company/generic_logo.gif" /></p>
 <p>Agora modifique o <code>news_app.py</code> e vamos exibir este logotipo na página inicial, para isso primeiro altere o <code>base_html</code> incluindo o placeholder <code>{{logo_url}}</code>.</p>
-<div class="highlight"><pre><span class="n">base_html</span> <span class="o">=</span> <span class="s2">u&quot;&quot;&quot;</span>
+<div class="highlight"><pre><span></span><span class="n">base_html</span> <span class="o">=</span> <span class="s2">u&quot;&quot;&quot;</span>
 <span class="s2">  &lt;html&gt;</span>
 <span class="s2">  &lt;head&gt;</span>
 <span class="s2">      &lt;title&gt;{title}&lt;/title&gt;</span>
@@ -970,7 +970,7 @@ pip install ipython
 
 
 <p>Agora altere o retorno das views incluindo a variavel <strong>logo_url</strong>, por exemplo na view <code>cadastro</code> altere para:</p>
-<div class="highlight"><pre>        <span class="k">return</span> <span class="n">base_html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<div class="highlight"><pre><span></span>        <span class="k">return</span> <span class="n">base_html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Inserir nova noticia&quot;</span><span class="p">,</span>
             <span class="n">body</span><span class="o">=</span><span class="n">formulario</span><span class="p">,</span>
             <span class="n">logo_url</span><span class="o">=</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;generic_logo.gif&#39;</span><span class="p">)</span>
@@ -989,7 +989,7 @@ pip install ipython
 <h4>Upload de arquivos</h4>
 <p>Agora para cada notícia o usuário também poderá incluir uma imagem, vamos implementar o upload desta imagem.</p>
 <p>Inicialmente crie uma nova pasta <code>wtf/media_files</code> e edite as primeiras linhas do <code>news_app.py</code> incluindo a configuração do local onde os arquivos de media serão armazenados.</p>
-<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 
@@ -1012,7 +1012,7 @@ pip install ipython
 <li>importe o <code>current_app</code> para poder acessar os configs da app em execução e o `secure_filename`` para garantir um nome válido para o upload</li>
 <li>implemente o upload da imagem utilizando o <code>request.files</code> e salve o caminho da imagem junto com a notícia</li>
 </ol>
-<div class="highlight"><pre><span class="o">...</span>
+<div class="highlight"><pre><span></span><span class="o">...</span>
 
 <span class="kn">from</span> <span class="nn">werkzeug</span> <span class="kn">import</span> <span class="n">secure_filename</span>
 
@@ -1066,12 +1066,12 @@ pip install ipython
 <h4>Servindo os arquivos de media</h4>
 <p>Agora vamos fazer com que a imagem inserida na notícia seja mostrada na página dela junto com o seu texto. Nós já vimos que o Flask tem um endpoint <strong>static</strong> para servir os arquivos estáticos da pasta padrão, porém no nosso caso os arquivos estão localizados em outra pasta, a <strong>media_files</strong>, teremos que criar uma view para servir estes arquivos.</p>
 <p>Comece importando a fuinção <code>send_from_directory</code> lá no inicio do <code>news_app.py</code></p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">current_app</span><span class="p">,</span> <span class="n">send_from_directory</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">current_app</span><span class="p">,</span> <span class="n">send_from_directory</span>
 </pre></div>
 
 
 <p>Agora vamos incluir uma nova view após a linha 104:</p>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/media/&lt;path:filename&gt;&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/media/&lt;path:filename&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">media</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">send_from_directory</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MEDIA_ROOT&#39;</span><span class="p">),</span> <span class="n">filename</span><span class="p">)</span>
 </pre></div>
@@ -1079,7 +1079,7 @@ pip install ipython
 
 <p>Esta view será responsável por pegar o arquivo do diretório e fazer stream para o cliente. O próximo passo e construir a url usando o endpoint <strong>media</strong> que é o nome da view.</p>
 <p>Altere a view <strong>noticia</strong> incluindo a imagem no html e resolvendo a url para a imagem correspondente com o url_for, caso a notícia não possua imagem usaremos uma imagem padrão.</p>
-<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticia/&lt;int:noticia_id&gt;&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticia/&lt;int:noticia_id&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">noticia</span><span class="p">(</span><span class="n">noticia_id</span><span class="p">):</span>
     <span class="n">noticia</span> <span class="o">=</span> <span class="n">noticias</span><span class="o">.</span><span class="n">find_one</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">noticia_id</span><span class="p">)</span>  <span class="c1"># query no banco de dados</span>
     <span class="k">if</span> <span class="n">noticia</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;imagem&#39;</span><span class="p">):</span>
@@ -1115,7 +1115,7 @@ pip install ipython
 <p>Todo site tem um layout comum que se repete em todas as páginas, geralmente onde fica a barra superior, os menus, o logotipo e o rodapé. Para não precisar ficar repetindo essa parte do código no template de todas as páginas é comum criarmos um base template e depois ir estendendo ele nos outros templates.</p>
 <p>Exemplo:</p>
 <p>base.html</p>
-<div class="highlight"><pre><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
     {% block topo %}
     <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;logo.png&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
@@ -1131,7 +1131,7 @@ pip install ipython
 <p>Repare que no exemplo acima usamos a tag <code>{% block &lt;block_name&gt; %}</code> para definir uma area no template que poderá ser sobrescrita pelos templates que estenderem o template base.</p>
 <h4>Estendendo o template base</h4>
 <p>Agora imagine que vamos criar o template que vai exibir a lista de notícias.</p>
-<div class="highlight"><pre>{% extends &quot;base.html&quot; %}
+<div class="highlight"><pre><span></span>{% extends &quot;base.html&quot; %}
 {% block content %}
     <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
        {% for noticia in noticias %}
@@ -1148,13 +1148,13 @@ pip install ipython
 <p>Uma outra caracteristica interessante é que nos templates chaves de dicionários podem ser acessadas via <strong>.</strong> ou via <strong>[ ]</strong> os dois casos funcionam. exemplo: <code>{{ noticia['titulo'] }}</code> ou <code>{{ noticia.titulo }}</code></p>
 <h4>definindo a pasta de templates</h4>
 <p>Assim como no caso dos estáticos o Flask já tem um padrão que é sempre procurar os templates em uma pasta chamada <code>templates</code> mas você pode alterar este caminho se preferir.</p>
-<div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s1">&#39;wtf&#39;</span><span class="p">,</span> <span class="n">templates_folder</span><span class="o">=</span><span class="s1">&#39;outra_pasta_de_templates&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s1">&#39;wtf&#39;</span><span class="p">,</span> <span class="n">templates_folder</span><span class="o">=</span><span class="s1">&#39;outra_pasta_de_templates&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>No nosso caso vamos utilizar o padrão e criar uma nova pasta <code>wtf/templates</code> e dentro desta pasta crie um novo arquivo chamado <code>wtf/templates/base.html</code> e vamos usa-lo para substituir a variavel <code>base_html</code> no <code>news_app.py</code>.</p>
 <p>Crie orquivo <code>templates/base.html</code> e apague a variavel <code>base_html</code> do <code>news_app.py</code></p>
-<div class="highlight"><pre><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{% block title %} {{title or &quot;Notícias&quot;}} {% endblock %}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
@@ -1173,7 +1173,7 @@ pip install ipython
 <p>Desta maneira podemos utilizar o helper <strong>url_for</strong> direto no template para acessar os arquivos estáticos. Repare também que fizemos uma impressão condicional em <code>{{ title or "Notícias"}}</code> isso é possível pois no Jinja2 qualquer variável não existente é avaliada como <strong>None</strong>, este mesmo trecho poderia ser escrito da seguinte maneira <code>{{ title|default("Notícias") }}</code></p>
 <p>Agora vamos criar um template para a home do site, onde a lista de notícias é exibida.</p>
 <p>Crie o arquivo <code>templates/index.html</code></p>
-<div class="highlight"><pre>{% extends &quot;base.html&quot; %}
+<div class="highlight"><pre><span></span>{% extends &quot;base.html&quot; %}
 {% block content %}
 <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
     {% for noticia in noticias %}
@@ -1190,7 +1190,7 @@ pip install ipython
 
 <p>Neste exemplo utilizamos um loop <code>for</code> para iterar sobre a lista de noticias que será passada pela view, também usamos o url_for para criar a url que levará para a página de leitura da notícia.</p>
 <p>Agora crie agora o template da página da notícia em <code>templates/noticia.html</code></p>
-<div class="highlight"><pre>{% extends &quot;base.html&quot; %}
+<div class="highlight"><pre><span></span>{% extends &quot;base.html&quot; %}
 {% block title%}
     {{noticia.titulo}}
 {% endblock%}
@@ -1209,7 +1209,7 @@ pip install ipython
 
 
 <p>Agora falta apenas o template para o formulário de cadastro de nova notícia e basta copiar e colar o html da variavel formulário para um template chamado <code>templates/cadstro.html</code> e fazer pequenas alterações.</p>
-<div class="highlight"><pre>{% extends &quot;base.html&quot; %}
+<div class="highlight"><pre><span></span>{% extends &quot;base.html&quot; %}
 {% block content %}
 <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;{{ url_for(&#39;cadastro&#39;) }}&quot;</span> <span class="na">enctype</span><span class="o">=</span><span class="s">&quot;multipart/form-data&quot;</span><span class="p">&gt;</span>
    <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Titulo:<span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
@@ -1230,7 +1230,7 @@ pip install ipython
 
 
 <p>Vamos criar também um template para exibir uma mensagem de sucesso ao inserir nova notícia em <code>templates/cadastro_sucesso.html</code></p>
-<div class="highlight"><pre>{% extends &quot;base.html&quot; %}
+<div class="highlight"><pre><span></span>{% extends &quot;base.html&quot; %}
 {% block title %}
     Notícia {{id_nova_noticia}} inserida com sucesso
 {% endblock %}
@@ -1244,7 +1244,7 @@ pip install ipython
 
 
 <p>Após salvar os 5 arquivos de template base.html, index.html, noticia.html, cadastro.html e cadastro_sucesso.html dentro da pasta templates, altere o <code>news_app.py</code> para usar a função <strong>render_template</strong> que recebe como parâmetros o nome do template e as variaveis que estarão disponíveis no escopo do template.</p>
-<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">werkzeug</span> <span class="kn">import</span> <span class="n">secure_filename</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="p">(</span>
@@ -1428,7 +1428,7 @@ pip install ipython
         });
 
         $(function(){
-            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
         });
         
     </script>

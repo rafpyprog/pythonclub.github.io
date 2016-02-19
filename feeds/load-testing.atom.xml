@@ -15,25 +15,25 @@ Quanto de carga sua aplicação web aguenta? Se conseguiu responder essa pergunt
 &lt;h3&gt;Instalação&lt;/h3&gt;
 &lt;p&gt;Para quem já usa python a facilidade de uso já começa na instalação, basta utilizar o comando &lt;code&gt;pip install locustio&lt;/code&gt; e a instalação está feita.
 Para instalar o Locust em um ambiente unix com &lt;em&gt;virtualenv&lt;/em&gt;, basta criar o virtualenv:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;user@machine:~/locust$ virtualenv venv
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;user@machine:~/locust$ virtualenv venv
 New python executable in venv/bin/python
 Installing setuptools, pip...done.
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Ativar o virtualenv&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;user@machine:~/locust$ &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;user@machine:~/locust$ &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
 &lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;user@machine:~/locust$
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E instalar o Locust&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;user@machine:~/locust$ pip install locustio
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;user@machine:~/locust$ pip install locustio
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Para confirmar se o Locust está instalado, use o comando &lt;code&gt;locust&lt;/code&gt; com a opção &lt;code&gt;-V&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;user@machine:~/locust$ locust -V
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;user@machine:~/locust$ locust -V
 &lt;span class="o"&gt;[&lt;/span&gt;2015-01-08 22:59:28,251&lt;span class="o"&gt;]&lt;/span&gt; machine/INFO/stdout: Locust 0.7.2
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -48,7 +48,7 @@ Installing setuptools, pip...done.
 &lt;p&gt;Como o foco do post não é falar do &lt;em&gt;Flask&lt;/em&gt;, não entrarei em detalhes do framework, se você não está familiarizado com ele, recomendo a leitura deste &lt;a href="/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python"&gt;excelente artigo&lt;/a&gt; do Bruno Rocha.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Crie um arquivo chamado &lt;strong&gt;converter.py&lt;/strong&gt; com o seguinte código:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 
 
 &lt;span class="n"&gt;converter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;DH&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;     &lt;span class="c1"&gt;# day to hours&lt;/span&gt;
@@ -74,13 +74,13 @@ Installing setuptools, pip...done.
 
 
 &lt;p&gt;Para testar essa aplicação basta inicia-la:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;user@machine:~/locust$ python converter.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;user@machine:~/locust$ python converter.py
  * Running on http://127.0.0.1:5000/
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E realizar uma requisição:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;curl http://127.0.0.1:5000/hm/3&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;curl http://127.0.0.1:5000/hm/3&lt;/span&gt;
 &lt;span class="err"&gt;180&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -91,7 +91,7 @@ Installing setuptools, pip...done.
 &lt;p&gt;O Locust trabalha com o conceito de requests baseados em clientes com caracteristicas especificas. O principal atributo das classes de cliente &lt;em&gt;Locust&lt;/em&gt; é o atributo &lt;code&gt;task_set&lt;/code&gt;, que recebe a classe onde as tasks de teste estão especificadas. Como o foco é o teste de aplicações web, o protocolo em questão é o protocolo &lt;strong&gt;HTTP&lt;/strong&gt;, sendo assim, a classe base para criação desses &lt;em&gt;clientes&lt;/em&gt; é a classe &lt;code&gt;HttpLocust&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Não se assuste, como estamos falando de &lt;strong&gt;Python&lt;/strong&gt;, a explicação é praticamente maior que o código :). &lt;/p&gt;
 &lt;p&gt;Para testar alguns métodos de nosso webservice, crie um arquivo chamado &lt;strong&gt;locust_script.py&lt;/strong&gt; com o código a seguir.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;locust&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpLocust&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;locust&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpLocust&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ConverterTasks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="nd"&gt;@task&lt;/span&gt;
@@ -115,7 +115,7 @@ Installing setuptools, pip...done.
 &lt;p&gt;Os atributos &lt;code&gt;min_wait&lt;/code&gt; e &lt;code&gt;max_wait&lt;/code&gt; especificam o tempo mínimo e máximo em milisegundos que o teste deve aguardar entre a execução de uma task e outra. O valor padrão desses atributos é &lt;em&gt;1000&lt;/em&gt; (1 segundo).&lt;/p&gt;
 &lt;h3&gt;Executando os testes&lt;/h3&gt;
 &lt;p&gt;Com o script locust escrito, é chegada a hora da mágica, vamos finalmente ver o Locust em ação. Se certifique que seu webservice está no ar e inicie seu script Locust com o seguinte comando:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;user@machine:~/locust$ locust -f locust_script.py –H http://127.0.0.1:5000
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;user@machine:~/locust$ locust -f locust_script.py –H http://127.0.0.1:5000
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -129,7 +129,7 @@ Ao executar esse comando, o Locust será iniciado na porta &lt;strong&gt;8089&lt
 Note que os resultados são apresentados por cada &lt;em&gt;Task&lt;/em&gt; e são totalizados no final da listagem.&lt;/p&gt;
 &lt;h3&gt;Definindo &lt;em&gt;peso&lt;/em&gt; para os teste&lt;/h3&gt;
 &lt;p&gt;É possível determinar o &lt;em&gt;peso&lt;/em&gt; de uma &lt;em&gt;task&lt;/em&gt; através do parâmetro opcional &lt;strong&gt;weight&lt;/strong&gt; do decarator &lt;code&gt;@task&lt;/code&gt;. Por exemplo, imagine que no cenário real são mais requisições para conversão de &lt;em&gt;dias para minutos&lt;/em&gt; do que de &lt;em&gt;dias para horas&lt;/em&gt;, sendo assim nossos testes devem seguir essa mesma lógica.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;locust&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpLocust&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;locust&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpLocust&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ConverterTasks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="nd"&gt;@task&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -151,7 +151,7 @@ Note que os resultados são apresentados por cada &lt;em&gt;Task&lt;/em&gt; e s�
 &lt;p&gt;Da forma como foi especificado, para cada requisição de conversão de &lt;em&gt;dia para horas&lt;/em&gt;, serão executadas duas de &lt;em&gt;dia para minutos&lt;/em&gt;.&lt;/p&gt;
 &lt;h3&gt;Utilizando outros Verbos HTTP&lt;/h3&gt;
 &lt;p&gt;Nesse nosso exemplo só utilizamos o método http &lt;em&gt;GET&lt;/em&gt;, até mesmo porque nosso webservice só possui métodos GET, porém, é possível utilizar os outros verbos HTTP, por exemplo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;locust&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpLocust&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;locust&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpLocust&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;RegistersTasks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="nd"&gt;@task&lt;/span&gt;
@@ -172,12 +172,12 @@ Note que os resultados são apresentados por cada &lt;em&gt;Task&lt;/em&gt; e s�
 &lt;p&gt;O cliente HTTP presente no objeto &lt;code&gt;self.client&lt;/code&gt; é baseado na biblioteca &lt;a href="http://docs.python-requests.org/en/latest/"&gt;Requests&lt;/a&gt;, sendo assim, os métodos http (GET, POST, PUT, DELETE, OPTIONS) estão disponiveis.&lt;/p&gt;
 &lt;h3&gt;Testando com valores dinámicos&lt;/h3&gt;
 &lt;p&gt;No teste do conversor de tempo, utilizamos valores fixos, porém, para se apróximar mais da realidade, o ideal seria testar com valores aleatórios. Como estamos falando de código Python, isso é muito simples, bastar alterar de:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/dh/5&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/dh/5&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;para:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;random&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;randint&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;random&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;randint&lt;/span&gt;
 
 
 &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/dh/&lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;randint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
@@ -187,7 +187,7 @@ Note que os resultados são apresentados por cada &lt;em&gt;Task&lt;/em&gt; e s�
 &lt;p&gt;Mas isso geraria um problema, pois o Locust agrupa o relatório de testes por url, como estamos realizando até 10 chamadas diferentes para o mesmo recurso, teriamos até 10 chamadas diferentes sendo listas e contabilizadas separadamente.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="locust" src="/images/drgarcia1986/locust_random.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Para resolver esse problema, podemos nomear os requests independente da url, atráves do parâmetro &lt;code&gt;name&lt;/code&gt; dos métodos do client HTTP. Sendo assim nosso código poderia ficar da seguinte forma:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;locust&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpLocust&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;locust&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpLocust&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;random&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;randint&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ConverterTasks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -212,7 +212,7 @@ Note que os resultados são apresentados por cada &lt;em&gt;Task&lt;/em&gt; e s�
 &lt;h3&gt;Sessão de usuário&lt;/h3&gt;
 &lt;p&gt;O cliente http da classe &lt;code&gt;HttpLocust&lt;/code&gt; preserva os cookies entre os requests, possibilitando realizar logins e consumir métodos remotos que dependem de uma sessão de usuário ativa.&lt;/p&gt;
 &lt;p&gt;Para validar esse conceito, criaremos uma aplicação simples que possui login de usuário e um recurso protegido pela sessão. Somente o necessário para ver o Locust em ação.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;redirect&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url_for&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;abort&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;redirect&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url_for&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;abort&lt;/span&gt;
 
 
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -273,7 +273,7 @@ Note que os resultados são apresentados por cada &lt;em&gt;Task&lt;/em&gt; e s�
 &lt;p&gt;Se criarmos um script Locust para testar essa aplicação e nele não realizarmos o login do usuário, teriamos uma série de falhas para consumir o método remoto &lt;code&gt;/home&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="locust" src="/images/drgarcia1986/locust_session_fail.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Porém a classe &lt;code&gt;TaskSet&lt;/code&gt; do Locust possui o método &lt;code&gt;on_start&lt;/code&gt; que consiste no método que será executado (apenas uma vez) antes do cliente Locust iniciar as tasks. Será nele que iremos realizar o &lt;em&gt;login&lt;/em&gt; do usuário.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;locust&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpLocust&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;locust&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpLocust&lt;/span&gt;
 
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;SessionTasks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TaskSet&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -305,13 +305,13 @@ Note que os resultados são apresentados por cada &lt;em&gt;Task&lt;/em&gt; e s�
 &lt;p&gt;Segundo a documentação do Locust, recomenda-se instalar a biblioteca &lt;a href="http://zeromq.github.io/pyzmq/index.html"&gt;ZeroMQ&lt;/a&gt; para melhorar o desempenho dos testes distribuidos. Essa á razão do &lt;em&gt;warning&lt;/em&gt; no momento da execução.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Para iniciar uma instância &lt;em&gt;master&lt;/em&gt; do Locust, basta utilizar o parâmetro &lt;code&gt;--master&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;user@machine:~/locust$ locust -f locust_script.py -H http://127.0.0.1:5000 --master
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;user@machine:~/locust$ locust -f locust_script.py -H http://127.0.0.1:5000 --master
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Essa instancia do Locust não irá simular nenhum cliente para teste, apenas irá disponibilizar a interface web com as estatisticas dos testes realizados e irá aguardar a conexão dos &lt;em&gt;slaves&lt;/em&gt;, poís esses serão os responsáveis pela realização dos testes.&lt;/p&gt;
 &lt;p&gt;Agora, para iniciar uma instância &lt;em&gt;slave&lt;/em&gt; do Locust, são utilizados dois parâmetros, o &lt;code&gt;--slave&lt;/code&gt; que determina que essa instância é um slave e o parâmetro &lt;code&gt;--master-host&lt;/code&gt; com a localização do &lt;em&gt;master&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;user@machine:~/locust$ locust -f locust_script.py --slave --master-host&lt;span class="o"&gt;=&lt;/span&gt;192.168.0.15
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;user@machine:~/locust$ locust -f locust_script.py --slave --master-host&lt;span class="o"&gt;=&lt;/span&gt;192.168.0.15
 &lt;/pre&gt;&lt;/div&gt;
 
 

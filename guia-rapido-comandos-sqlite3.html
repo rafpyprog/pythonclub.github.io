@@ -99,17 +99,17 @@
 <ol class="arabic simple">
 <li>Criando um banco de dados.</li>
 </ol>
-<div class="highlight"><pre>$ sqlite3 Clientes.db
+<div class="highlight"><pre><span></span>$ sqlite3 Clientes.db
 </pre></div>
 <ol class="arabic simple" start="2">
 <li>A Ajuda.</li>
 </ol>
-<div class="highlight"><pre>sqlite&gt; .help
+<div class="highlight"><pre><span></span>sqlite&gt; .help
 </pre></div>
 <ol class="arabic simple" start="3">
 <li>Criando a tabela <em>clientes</em>.</li>
 </ol>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">clientes</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">clientes</span><span class="p">(</span>
    <span class="p">...</span><span class="o">&gt;</span> <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTOINCREMENT</span><span class="p">,</span>
    <span class="p">...</span><span class="o">&gt;</span> <span class="n">Nome</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
    <span class="p">...</span><span class="o">&gt;</span> <span class="n">CPF</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
@@ -119,60 +119,60 @@
    <span class="p">...</span><span class="o">&gt;</span> <span class="p">);</span>
 </pre></div>
 <p><strong>Nota</strong>: Se usamos <tt class="docutils literal">AUTOINCREMENT</tt> não precisamos do <tt class="docutils literal">NOT NULL</tt>.</p>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">clientes</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">clientes</span><span class="p">(</span>
    <span class="p">...</span><span class="o">&gt;</span> <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTOINCREMENT</span><span class="p">,</span>
    <span class="p">...</span><span class="o">&gt;</span> <span class="p">...</span>
 </pre></div>
 <ol class="arabic simple" start="4">
 <li>Visualizando o código SQL que criou a tabela.</li>
 </ol>
-<div class="highlight"><pre>sqlite&gt; .schema clientes
+<div class="highlight"><pre><span></span>sqlite&gt; .schema clientes
 </pre></div>
 <ol class="arabic simple" start="5">
 <li>Visualizando todas as tabelas existentes.</li>
 </ol>
-<div class="highlight"><pre>sqlite&gt; .table
+<div class="highlight"><pre><span></span>sqlite&gt; .table
 </pre></div>
 <ol class="arabic simple" start="6">
 <li>Saindo do SQLite3.</li>
 </ol>
-<div class="highlight"><pre>sqlite&gt; .exit
+<div class="highlight"><pre><span></span>sqlite&gt; .exit
 </pre></div>
 </div>
 <div class="section" id="crud">
 <h2>CRUD</h2>
 <p>Abra um editor de texto e salve um arquivo com o nome <em>inserirdados.sql</em>.</p>
-<div class="highlight"><pre>$ gedit inserirdados.sql
+<div class="highlight"><pre><span></span>$ gedit inserirdados.sql
 </pre></div>
 <p>E digite a inserção de alguns dados.</p>
-<div class="highlight"><pre><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">clientes</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Regis&#39;</span><span class="p">,</span> <span class="s1">&#39;00000000000&#39;</span><span class="p">,</span> <span class="s1">&#39;rg@email.com&#39;</span><span class="p">,</span> <span class="s1">&#39;1100000000&#39;</span><span class="p">,</span> <span class="s1">&#39;SP&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">clientes</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Regis&#39;</span><span class="p">,</span> <span class="s1">&#39;00000000000&#39;</span><span class="p">,</span> <span class="s1">&#39;rg@email.com&#39;</span><span class="p">,</span> <span class="s1">&#39;1100000000&#39;</span><span class="p">,</span> <span class="s1">&#39;SP&#39;</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">clientes</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Abigail&#39;</span><span class="p">,</span> <span class="s1">&#39;11111111111&#39;</span><span class="p">,</span> <span class="s1">&#39;abigail@email.com&#39;</span><span class="p">,</span> <span class="s1">&#39;1112345678&#39;</span><span class="p">,</span> <span class="s1">&#39;RJ&#39;</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">clientes</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Benedito&#39;</span><span class="p">,</span> <span class="s1">&#39;22222222222&#39;</span><span class="p">,</span> <span class="s1">&#39;benedito@email.com&#39;</span><span class="p">,</span> <span class="s1">&#39;1187654321&#39;</span><span class="p">,</span> <span class="s1">&#39;SP&#39;</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">clientes</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Zacarias&#39;</span><span class="p">,</span> <span class="s1">&#39;33333333333&#39;</span><span class="p">,</span> <span class="s1">&#39;zacarias@email.com&#39;</span><span class="p">,</span> <span class="s1">&#39;1199999999&#39;</span><span class="p">,</span> <span class="s1">&#39;RJ&#39;</span><span class="p">);</span>
 </pre></div>
 <p><strong>Nota</strong>: No caso do <tt class="docutils literal">INSERT INTO</tt> não precisamos numerar, basta trocar o número do <tt class="docutils literal">id</tt> por <tt class="docutils literal">NULL</tt>, exemplo:</p>
-<div class="highlight"><pre><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">clientes</span> <span class="k">VALUES</span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;Carlos&#39;</span><span class="p">,</span> <span class="s1">&#39;99999999999&#39;</span><span class="p">,</span> <span class="s1">&#39;carlos@email.com&#39;</span><span class="p">,</span> <span class="s1">&#39;118888-8888&#39;</span><span class="p">,</span> <span class="s1">&#39;SP&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">clientes</span> <span class="k">VALUES</span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;Carlos&#39;</span><span class="p">,</span> <span class="s1">&#39;99999999999&#39;</span><span class="p">,</span> <span class="s1">&#39;carlos@email.com&#39;</span><span class="p">,</span> <span class="s1">&#39;118888-8888&#39;</span><span class="p">,</span> <span class="s1">&#39;SP&#39;</span><span class="p">);</span>
 </pre></div>
 <ol class="arabic simple" start="7">
 <li>Importe estes comandos no sqlite.</li>
 </ol>
-<div class="highlight"><pre>$ sqlite3 Clientes.db &lt; inserirdados.sql
+<div class="highlight"><pre><span></span>$ sqlite3 Clientes.db &lt; inserirdados.sql
 </pre></div>
 <ol class="arabic simple" start="8">
 <li>Abra o SQLite3 novamente, e visualize os dados.</li>
 </ol>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">sqlite3</span> <span class="n">Clientes</span><span class="p">.</span><span class="n">db</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">sqlite3</span> <span class="n">Clientes</span><span class="p">.</span><span class="n">db</span>
 <span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span><span class="p">;</span>
 </pre></div>
 <ol class="arabic simple" start="9">
 <li>Você pode exibir o nome das colunas digitando</li>
 </ol>
-<div class="highlight"><pre>sqlite&gt; .header on
+<div class="highlight"><pre><span></span>sqlite&gt; .header on
 </pre></div>
 <ol class="arabic simple" start="10">
 <li>Para escrever o resultado num arquivo externo digite</li>
 </ol>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="p">.</span><span class="k">output</span> <span class="n">resultado</span><span class="p">.</span><span class="n">txt</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="p">.</span><span class="k">output</span> <span class="n">resultado</span><span class="p">.</span><span class="n">txt</span>
 <span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span><span class="p">;</span>
 <span class="n">sqlite</span><span class="o">&gt;</span> <span class="p">.</span><span class="n">exit</span>
 <span class="err">$</span> <span class="n">cat</span> <span class="n">resultado</span><span class="p">.</span><span class="n">txt</span>
@@ -180,18 +180,18 @@
 <ol class="arabic simple" start="11">
 <li>Adicionando uma nova coluna na tabela clientes.</li>
 </ol>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">clientes</span> <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">bloqueado</span> <span class="nb">BOOLEAN</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">clientes</span> <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">bloqueado</span> <span class="nb">BOOLEAN</span><span class="p">;</span>
 </pre></div>
 <p>No SQLite3 os valores para boolean são 0 (falso) e 1 (verdadeiro).</p>
 <ol class="arabic simple" start="12">
 <li>Visualizando as colunas da tabela clientes.</li>
 </ol>
-<div class="highlight"><pre>sqlite&gt; PRAGMA table_info<span class="o">(</span>clientes<span class="o">)</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>sqlite&gt; PRAGMA table_info<span class="o">(</span>clientes<span class="o">)</span><span class="p">;</span>
 </pre></div>
 <ol class="arabic simple" start="13">
 <li>Alterando os valores do campo bloqueado.</li>
 </ol>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">UPDATE</span> <span class="n">clientes</span> <span class="k">SET</span> <span class="n">bloqueado</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="c1">-- comentario: Atualiza todos os registros para Falso.</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">UPDATE</span> <span class="n">clientes</span> <span class="k">SET</span> <span class="n">bloqueado</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="c1">-- comentario: Atualiza todos os registros para Falso.</span>
 <span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">UPDATE</span> <span class="n">clientes</span> <span class="k">SET</span> <span class="n">bloqueado</span><span class="o">=</span><span class="mi">1</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="c1">-- Atualiza apenas o registro com id=1 para Verdadeiro.</span>
 <span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">UPDATE</span> <span class="n">clientes</span> <span class="k">SET</span> <span class="n">bloqueado</span><span class="o">=</span><span class="mi">1</span> <span class="k">WHERE</span> <span class="n">UF</span><span class="o">=</span><span class="s1">&#39;RJ&#39;</span><span class="p">;</span> <span class="c1">-- Atualiza para Verdadeiro todos os registros com UF=&#39;RJ&#39;.</span>
 </pre></div>
@@ -199,18 +199,18 @@
 <ol class="arabic simple" start="14">
 <li>Deletando registros.</li>
 </ol>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">clientes</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">clientes</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
 </pre></div>
 <p><strong>Cuidado</strong>: se você não usar o <tt class="docutils literal">WHERE</tt> e escolher um <tt class="docutils literal">id</tt> você pode deletar todos os registros da tabela.</p>
 <ol class="arabic simple" start="15">
 <li>Você pode exibir os dados na forma de coluna.</li>
 </ol>
-<div class="highlight"><pre>sqlite&gt; .mode column
+<div class="highlight"><pre><span></span>sqlite&gt; .mode column
 </pre></div>
 </div>
 <div class="section" id="backup">
 <h2>Backup</h2>
-<div class="highlight"><pre>$ sqlite3 Clientes.db .dump &gt; clientes.sql
+<div class="highlight"><pre><span></span>$ sqlite3 Clientes.db .dump &gt; clientes.sql
 $ cat clientes.sql
 PRAGMA <span class="nv">foreign_keys</span><span class="o">=</span>OFF<span class="p">;</span>
 BEGIN TRANSACTION<span class="p">;</span>
@@ -229,7 +229,7 @@ INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(
 COMMIT<span class="p">;</span>
 </pre></div>
 <p>Pronto, se corromper o seu banco de dados, você pode recuperá-lo:</p>
-<div class="highlight"><pre>$ mv Clientes.db Clientes.db.old
+<div class="highlight"><pre><span></span>$ mv Clientes.db Clientes.db.old
 $ sqlite3 Clientes_recuperado.db &lt; clientes.sql
 $ sqlite3 Clientes_recuperado.db <span class="s1">&#39;SELECT * FROM clientes;&#39;</span>
 </pre></div>
@@ -239,26 +239,26 @@ $ sqlite3 Clientes_recuperado.db <span class="s1">&#39;SELECT * FROM clientes;&#
 <h2>Relacionando tabelas</h2>
 <p>Todos devem saber que num banco de dados relacional a <strong>chave estrangeira</strong> ou <tt class="docutils literal">FOREIGN KEY</tt> tem um papel importante no relacionamento entre duas tabelas. Veremos aqui como relacionar duas tabelas.</p>
 <p>Primeiros façamos um backup do nosso bd.</p>
-<div class="highlight"><pre>$ sqlite3 Clientes.db .dump &gt; clientes.sql
+<div class="highlight"><pre><span></span>$ sqlite3 Clientes.db .dump &gt; clientes.sql
 </pre></div>
 <p>Apenas para relembrar, vamos ver qual é a nossa tabela...</p>
-<div class="highlight"><pre>$ sqlite3 Clientes.db
+<div class="highlight"><pre><span></span>$ sqlite3 Clientes.db
 sqlite&gt; .tables
 clientes
 sqlite&gt; .header on
 sqlite&gt; .mode column
 </pre></div>
 <p>E quais são seus registros.</p>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span><span class="p">;</span>
 </pre></div>
-<div class="highlight"><pre>id          Nome        CPF          Email         Fone        UF          bloqueado
+<div class="highlight"><pre><span></span>id          Nome        CPF          Email         Fone        UF          bloqueado
 ----------  ----------  -----------  ------------  ----------  ----------  ----------
 <span class="m">1</span>           Regis       <span class="m">00000000000</span>  rg@email.com  <span class="m">1100000000</span>  SP          1
 <span class="m">2</span>           Abigail     <span class="m">11111111111</span>  abigail@emai  <span class="m">1112345678</span>  RJ          1
 <span class="m">3</span>           Benedito    <span class="m">22222222222</span>  benedito@ema  <span class="m">1187654321</span>  SP          0
 </pre></div>
 <p>Então vamos criar duas novas tabelas: <em>cidades</em> e <em>clientes_novo</em>.</p>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">cidades</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">cidades</span><span class="p">(</span>
    <span class="p">...</span><span class="o">&gt;</span> <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTOINCREMENT</span><span class="p">,</span>
    <span class="p">...</span><span class="o">&gt;</span> <span class="n">cidade</span> <span class="nb">TEXT</span><span class="p">,</span>
    <span class="p">...</span><span class="o">&gt;</span> <span class="n">uf</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -275,57 +275,57 @@ sqlite&gt; .mode column
    <span class="p">...</span><span class="o">&gt;</span> <span class="p">);</span>
 </pre></div>
 <p>Segundo <a class="reference external" href="http://grasswiki.osgeo.org/wiki/Sqlite_Drop_Column">Sqlite Drop Column</a>, não tem como &quot;<em>deletar</em>&quot; uma coluna, então precisamos criar uma nova tabela <em>clientes_novo</em> com os campos que precisamos e copiar os dados da primeira tabela para esta.</p>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">clientes_novo</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">Nome</span><span class="p">,</span> <span class="n">CPF</span><span class="p">,</span> <span class="n">Email</span><span class="p">,</span> <span class="n">Fone</span><span class="p">,</span> <span class="n">bloqueado</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">clientes_novo</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">Nome</span><span class="p">,</span> <span class="n">CPF</span><span class="p">,</span> <span class="n">Email</span><span class="p">,</span> <span class="n">Fone</span><span class="p">,</span> <span class="n">bloqueado</span><span class="p">)</span>
    <span class="p">...</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">Nome</span><span class="p">,</span> <span class="n">CPF</span><span class="p">,</span> <span class="n">Email</span><span class="p">,</span> <span class="n">Fone</span><span class="p">,</span> <span class="n">bloqueado</span> <span class="k">FROM</span> <span class="n">clientes</span><span class="p">;</span>
 </pre></div>
 <p>Veja que selecionamos os campos da tabela <em>clientes</em> e a inserimos em <em>clientes_novo</em>. Note que não copiamos o campo <em>UF</em> porque agora ele é da tabela <em>cidades</em>.</p>
 <p>Agora podemos <em>deletar</em> a tabela &quot;antiga&quot;.</p>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">clientes</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">clientes</span><span class="p">;</span>
 </pre></div>
 <p>E <strong>renomear</strong> a nova tabela.</p>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">clientes_novo</span> <span class="k">RENAME</span> <span class="k">TO</span> <span class="n">clientes</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">clientes_novo</span> <span class="k">RENAME</span> <span class="k">TO</span> <span class="n">clientes</span><span class="p">;</span>
 </pre></div>
 <p>Veja o resultado da nova tabela.</p>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span><span class="p">;</span>
 </pre></div>
-<div class="highlight"><pre>id          Nome        CPF          Email         Fone        bloqueado   cidade_id
+<div class="highlight"><pre><span></span>id          Nome        CPF          Email         Fone        bloqueado   cidade_id
 ----------  ----------  -----------  ------------  ----------  ----------  ----------
 <span class="m">1</span>           Regis       <span class="m">00000000000</span>  rg@email.com  <span class="m">1100000000</span>  1
 <span class="m">2</span>           Abigail     <span class="m">11111111111</span>  abigail@emai  <span class="m">1112345678</span>  1
 <span class="m">3</span>           Benedito    <span class="m">22222222222</span>  benedito@ema  <span class="m">1187654321</span>  0
 </pre></div>
 <p>Agora você terá que popular as cidades e definir a <tt class="docutils literal">cidade_id</tt> em cada cliente. Lembrando que a chave é <tt class="docutils literal">AUTOINCREMENT</tt>, então use <tt class="docutils literal">NULL</tt>.</p>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">cidades</span> <span class="k">VALUES</span> <span class="p">(</span><span class="k">NULL</span><span class="p">,</span><span class="s1">&#39;Campinas&#39;</span><span class="p">,</span><span class="s1">&#39;SP&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">cidades</span> <span class="k">VALUES</span> <span class="p">(</span><span class="k">NULL</span><span class="p">,</span><span class="s1">&#39;Campinas&#39;</span><span class="p">,</span><span class="s1">&#39;SP&#39;</span><span class="p">);</span>
 <span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">cidades</span> <span class="k">VALUES</span> <span class="p">(</span><span class="k">NULL</span><span class="p">,</span><span class="s1">&#39;Sao Paulo&#39;</span><span class="p">,</span><span class="s1">&#39;SP&#39;</span><span class="p">);</span>
 <span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">cidades</span> <span class="k">VALUES</span> <span class="p">(</span><span class="k">NULL</span><span class="p">,</span><span class="s1">&#39;Rio de Janeiro&#39;</span><span class="p">,</span><span class="s1">&#39;RJ&#39;</span><span class="p">);</span>
 </pre></div>
 <p>Veja os registros da tabela <em>cidades</em>.</p>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">cidades</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">cidades</span><span class="p">;</span>
 </pre></div>
-<div class="highlight"><pre>id          cidade      uf
+<div class="highlight"><pre><span></span>id          cidade      uf
 ----------  ----------  ----------
 <span class="m">1</span>           Campinas    SP
 <span class="m">2</span>           Sao Paulo   SP
 <span class="m">3</span>           Rio de Jan  RJ
 </pre></div>
 <p>Agora precisamos atualizar a <tt class="docutils literal">cidade_id</tt> de cada cliente.</p>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">UPDATE</span> <span class="n">clientes</span> <span class="k">SET</span> <span class="n">cidade_id</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">UPDATE</span> <span class="n">clientes</span> <span class="k">SET</span> <span class="n">cidade_id</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">UPDATE</span> <span class="n">clientes</span> <span class="k">SET</span> <span class="n">cidade_id</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">UPDATE</span> <span class="n">clientes</span> <span class="k">SET</span> <span class="n">cidade_id</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
 </pre></div>
 <p>Resultado.</p>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span><span class="p">;</span>
 </pre></div>
-<div class="highlight"><pre>id          Nome        CPF          Email         Fone        bloqueado   cidade_id
+<div class="highlight"><pre><span></span>id          Nome        CPF          Email         Fone        bloqueado   cidade_id
 ----------  ----------  -----------  ------------  ----------  ----------  ----------
 <span class="m">1</span>           Regis       <span class="m">00000000000</span>  rg@email.com  <span class="m">1100000000</span>  <span class="m">1</span>           3
 <span class="m">2</span>           Abigail     <span class="m">11111111111</span>  abigail@emai  <span class="m">1112345678</span>  <span class="m">1</span>           1
 <span class="m">3</span>           Benedito    <span class="m">22222222222</span>  benedito@ema  <span class="m">1187654321</span>  <span class="m">0</span>           2
 </pre></div>
 <p>Façamos um <tt class="docutils literal">INNER JOIN</tt> para visualizar todos os dados, inclusive a <em>cidade</em> e o <em>uf</em>.</p>
-<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">cidades</span> <span class="k">ON</span> <span class="n">clientes</span><span class="p">.</span><span class="n">cidade_id</span> <span class="o">=</span> <span class="n">cidades</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">cidades</span> <span class="k">ON</span> <span class="n">clientes</span><span class="p">.</span><span class="n">cidade_id</span> <span class="o">=</span> <span class="n">cidades</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
 </pre></div>
-<div class="highlight"><pre>id          Nome        CPF          Email         Fone        bloqueado   cidade_id   cidade          uf
+<div class="highlight"><pre><span></span>id          Nome        CPF          Email         Fone        bloqueado   cidade_id   cidade          uf
 ----------  ----------  -----------  ------------  ----------  ----------  ----------  --------------  --
 <span class="m">1</span>           Regis       <span class="m">00000000000</span>  rg@email.com  <span class="m">1100000000</span>  <span class="m">1</span>           <span class="m">3</span>           Rio de Janeiro  RJ
 <span class="m">2</span>           Abigail     <span class="m">11111111111</span>  abigail@emai  <span class="m">1112345678</span>  <span class="m">1</span>           <span class="m">1</span>           Campinas        SP
@@ -448,7 +448,7 @@ sqlite&gt; .mode column
         });
 
         $(function(){
-            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
         });
         
     </script>

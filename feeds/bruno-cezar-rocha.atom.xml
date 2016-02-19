@@ -54,7 +54,7 @@
 &lt;p&gt;Usaremos a extensão Flask-Bootstrap que traz alguns templates de base e utilidades para uso do Bootstrap no Flask.&lt;/p&gt;
 &lt;p&gt;Comece editando o arquivo de requirements adicionando &lt;strong&gt;Flask-Bootstrap&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Arquivo &lt;strong&gt;requirements.txt&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;https://github.com/mitsuhiko/flask/tarball/master
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;https://github.com/mitsuhiko/flask/tarball/master
 dataset
 nose
 Flask-Bootstrap
@@ -62,13 +62,13 @@ Flask-Bootstrap
 
 
 &lt;p&gt;Agora instale as dependencias em sua virtualenv.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pip install -r requirements.txt --upgrade
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install -r requirements.txt --upgrade
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Agora com o Flask-Bootstrap instalado basta iniciarmos a extensão durante a criação de nosso app.&lt;/p&gt;
 &lt;p&gt;Editando o arquivo &lt;strong&gt;news_app.py&lt;/strong&gt; incluiremos:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_bootstrap&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Bootstrap&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -80,7 +80,7 @@ Flask-Bootstrap
 
 
 &lt;p&gt;Sendo que o arquivo completo ficaria:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.blueprints.noticias&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;noticias_blueprint&lt;/span&gt;
@@ -114,7 +114,7 @@ Flask-Bootstrap
 
 &lt;p&gt;As extensões Flask seguem dois padrões de inicialização: Imediato e Lazy, é recomendado que toda extensão siga este protocolo.&lt;/p&gt;
 &lt;p&gt;Inicialização imediata:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_nome_da_extensao&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Extensao&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_nome_da_extensao&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Extensao&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;Extensao&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -122,7 +122,7 @@ Flask-Bootstrap
 
 &lt;p&gt;Da forma acima sempre importamos uma classe com o nome da extensao e então passamos o nosso &lt;strong&gt;app&lt;/strong&gt; como parametro na inicialiação da extensão. Assim durante o init da extensão ela poderá injetar templates, modificar rotas e adicionar configs no app que foi passado como parametro.&lt;/p&gt;
 &lt;p&gt;Inicialização Lazy:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_nome_da_extensao&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Extensao&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_nome_da_extensao&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Extensao&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;extensao&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Extensao&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# note que não é passado nada como parametro!&lt;/span&gt;
 
@@ -143,7 +143,7 @@ Flask-Bootstrap
 &lt;p&gt;Não entrarei em detalhes a respeito da estensão Flask-Bootstrap pois temos mais uma série de extensões para instalar, mas você pode consultar a &lt;a href="https://pythonhosted.org/Flask-Bootstrap/basic-usage.html"&gt;documentação oficial&lt;/a&gt; para saber mais a respeito dos blocos de template e utilidades disponíveis.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;Comece alterando o template &lt;strong&gt;base.html&lt;/strong&gt; para:&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{%- extends &amp;quot;bootstrap/base.html&amp;quot; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{%- extends &amp;quot;bootstrap/base.html&amp;quot; %}
 {% import &amp;quot;bootstrap/utils.html&amp;quot; as utils %}
 {% block title %} {{title or &amp;quot;Notícias&amp;quot;}} {% endblock %}
 {% block navbar -%}
@@ -168,7 +168,7 @@ Flask-Bootstrap
 
 &lt;p&gt;Algumas coisas continuaram iguais ao template antigo, porém agora estamos utilizando blocos &lt;strong&gt;navbar&lt;/strong&gt; e &lt;strong&gt;content&lt;/strong&gt; definidos pelo Flask-Bootstrap e criamos um novo bloco &lt;strong&gt;news&lt;/strong&gt; que usaremos para mostras as nossas notícias.&lt;/p&gt;
 &lt;h3&gt;Altere o template index.html&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;quot;base.html&amp;quot; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% extends &amp;quot;base.html&amp;quot; %}
 {% block news %}
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Todas as notícias&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -186,7 +186,7 @@ Flask-Bootstrap
 
 &lt;p&gt;apenas mudamos o nome do bloco utilizado de &lt;strong&gt;content&lt;/strong&gt; para &lt;strong&gt;news&lt;/strong&gt; e adicionamos um título.&lt;/p&gt;
 &lt;h3&gt;Altere o template noticia.html&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;quot;base.html&amp;quot; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% extends &amp;quot;base.html&amp;quot; %}
 {% block title%}
     {{noticia.titulo}}
 {% endblock%}
@@ -207,7 +207,7 @@ Flask-Bootstrap
 &lt;p&gt;Novamente mudamos o bloco principal de &lt;strong&gt;content&lt;/strong&gt; para &lt;strong&gt;news&lt;/strong&gt;&lt;/p&gt;
 &lt;h3&gt;Altere os templates cadastro.html e cadastro_sucesso.html&lt;/h3&gt;
 &lt;p&gt;Altere o bloco utilizado de &lt;strong&gt;content&lt;/strong&gt; para &lt;strong&gt;news&lt;/strong&gt; e o restante deixe como está por enquanto.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;quot;base.html&amp;quot; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% extends &amp;quot;base.html&amp;quot; %}
 {% block news %}
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;form&lt;/span&gt; &lt;span class="na"&gt;method&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;action&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ url_for(&amp;#39;noticias.cadastro&amp;#39;) }}&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;enctype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;multipart/form-data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;label&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Titulo:&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
@@ -254,14 +254,14 @@ Flask-Bootstrap
 &lt;p&gt;Vou mostrar os preocedimentos para instalação e execução no Linux/Debian, mas você pode tranquilamente utilizar outro S.O bastando seguir as instruções encontradas no site do docker.&lt;/p&gt;
 &lt;h4&gt;Instalando o docker&lt;/h4&gt;
 &lt;p&gt;No linux a maneira mais fácil de instalar o Docker é rodando o seguinte comando&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;wget -qO- https://get.docker.com/ | sh
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget -qO- https://get.docker.com/ | sh
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Se você precisar de ajuda ou estiver usando um sistema operacional alternativo pode seguir as &lt;a href="http://docs.docker.com/linux/started/"&gt;instruções do site oficial&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Executando um container MongoDB&lt;/h4&gt;
 &lt;p&gt;No DockerHub está disponível a imagem oficial do Mongo, basta executar o comando abaixo para ter o Mongo rodando em um container.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;docker run -d -v &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;PWD&lt;/span&gt;&lt;span class="x"&gt;/mongodata:/data/db -p 27017:27017 mongo&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;docker run -d -v &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;PWD&lt;/span&gt;&lt;span class="x"&gt;/mongodata:/data/db -p 27017:27017 mongo&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -277,7 +277,7 @@ Flask-Bootstrap
 &lt;/blockquote&gt;
 &lt;h2&gt;Flask-Mongoengine&lt;/h2&gt;
 &lt;p&gt;Adicione a extensão Flask-Mongoengine ao seu arquivo requirements.txt&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;https://github.com/mitsuhiko/flask/tarball/master
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;https://github.com/mitsuhiko/flask/tarball/master
 flask-mongoengine
 nose
 Flask-Bootstrap
@@ -288,7 +288,7 @@ Flask-Bootstrap
 &lt;h3&gt;Substituindo o Dataset pelo MongoEngine&lt;/h3&gt;
 &lt;p&gt;Agora vamos substituir o &lt;strong&gt;dataset&lt;/strong&gt; pelo &lt;strong&gt;MongoEngine&lt;/strong&gt;, por padrão o MongoEngine tentará conectar no &lt;strong&gt;localhost&lt;/strong&gt; na porta &lt;strong&gt;27017&lt;/strong&gt; e utilizar o banco de dados &lt;strong&gt;test&lt;/strong&gt;. Mas no nosso caso é essencial informarmos exatamente as configurações desejadas.&lt;/p&gt;
 &lt;p&gt;No arquivo de configuração em &lt;code&gt;development_instance/config.cfg&lt;/code&gt; adicione as seguintes linhas:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;MONGODB_DB&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;noticias&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;MONGODB_DB&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;noticias&amp;quot;&lt;/span&gt;
 &lt;span class="n"&gt;MONGODB_HOST&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# substitua se utilizar um server remoto&lt;/span&gt;
 &lt;span class="n"&gt;MONGODB_PORT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;27017&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -296,7 +296,7 @@ Flask-Bootstrap
 
 &lt;p&gt;Agora vamos ao arquivo &lt;code&gt;db.py&lt;/code&gt; vamos definir a conexão com o banco de dados Mongo, apague todo o conteúdo do arquivo e substitua por:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;db.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_mongoengine&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MongoEngine&lt;/span&gt;
 &lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MongoEngine&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -304,7 +304,7 @@ Flask-Bootstrap
 
 &lt;p&gt;Crie um novo arquivo chamado &lt;strong&gt;models.py&lt;/strong&gt;, é nesse arquivo que definiremos o esquema de dados nas nossas notícias. Note que o Mongo é um banco schemaless, poderiamos apenas criar um objeto &lt;strong&gt;Noticia(db.DynamicDocument)&lt;/strong&gt; usando herança do DynamicDocument e isso tiraria a necessidade da definição do schema, porém, na maioria dos casos definir um schema básico ajuda a construir formulários e validar os dados.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;models.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;
 
 
@@ -318,22 +318,22 @@ Flask-Bootstrap
 &lt;p&gt;Nosso próximo passo é alterar as views para que o armazenamento seja feito no MongoDB ao invés do SQLite.&lt;/p&gt;
 &lt;p&gt;No MongoEngine algumas operações serão um pouco diferente, alguns exemplos:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Criar um novo registro de Noticia&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Noticia&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;titulo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Hello&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;texto&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;World&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;imagem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;caminho/imagem.png&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Noticia&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;titulo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Hello&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;texto&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;World&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;imagem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;caminho/imagem.png&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Buscar todas as Noticias&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Noticia&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Noticia&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Buscar uma noticia pelo id&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Noticia&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;xyz&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Noticia&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;xyz&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Altere &lt;code&gt;blueprints/noticias.py&lt;/code&gt; para:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;secure_filename&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
@@ -382,7 +382,7 @@ Flask-Bootstrap
 
 &lt;p&gt;Lembre-se que nós ainda não conectamos ao Mongo Server apenas definimos como será a conexão, então precisaremos agora usar o método lazy de inicialização de extensões chamando o &lt;code&gt;init_app()&lt;/code&gt; do MongoEngine.&lt;/p&gt;
 &lt;p&gt;No arquivo &lt;code&gt;news_app.py&lt;/code&gt; adicione as seguintes linhas.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -393,7 +393,7 @@ Flask-Bootstrap
 
 
 &lt;p&gt;Sendo que o arquivo final será:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.blueprints.noticias&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;noticias_blueprint&lt;/span&gt;
@@ -428,7 +428,7 @@ Flask-Bootstrap
 
 
 &lt;p&gt;Execute o programa&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -451,7 +451,7 @@ Flask-Bootstrap
 &lt;p&gt;A vantagem de usar o Flask-Security é que ele já se integra com o MongoEngine e oferece templates prontos para login, alterar senha, envio de email de confirmação etc...&lt;/p&gt;
 &lt;p&gt;Começaremos adicionando a dependencia ao arquivo de requirements.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;requirements.txt&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;https://github.com/mitsuhiko/flask/tarball/master
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;https://github.com/mitsuhiko/flask/tarball/master
 flask-mongoengine
 nose
 Flask-Bootstrap
@@ -465,7 +465,7 @@ Flask-Security
 &lt;p&gt;Para testes e desenvolvimento você pode utilizar texto puro. &lt;strong&gt;mas em produção escolha uma chave segura!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Além disso o Flask-Security precisa que seja especificado qual tipo de hash usar nos passwords.&lt;/p&gt;
 &lt;p&gt;Adicione ao &lt;code&gt;development_instance/config.cfg&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SECRET_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;super-secret&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;SECRET_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;super-secret&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;SECURITY_PASSWORD_HASH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pbkdf2_sha512&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;SECURITY_PASSWORD_SALT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;SECRET_KEY&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -478,7 +478,7 @@ Flask-Security
 &lt;p&gt;O Flask-Security permite o controle de acesso utilizando RBAC (Role Based Access Control), ou seja, usuários pertencem a grupos e os acessos são concedidos aos grupos.&lt;/p&gt;
 &lt;p&gt;Para isso precisamos armazenar (no nosso caso no MongoDB) os usuários e seus grupos.&lt;/p&gt;
 &lt;p&gt;Crie um novo arquivo &lt;strong&gt;security_models.py&lt;/strong&gt; e criaremos duas classes &lt;strong&gt;User&lt;/strong&gt; e &lt;strong&gt;Role&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_security&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;UserMixin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;RoleMixin&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_security.utils&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;encrypt_password&lt;/span&gt;
@@ -533,7 +533,7 @@ Flask-Security
 &lt;h3&gt;Inicializando o Flask Security em seu projeto&lt;/h3&gt;
 &lt;p&gt;Da mesma forma que fizemos com as outras extensões iremos fazer como security, alterando o arquivo &lt;strong&gt;news_app.py&lt;/strong&gt; e inicializando a extensão utilizando o método default.&lt;/p&gt;
 &lt;p&gt;Importaremos o &lt;strong&gt;Security&lt;/strong&gt; e o &lt;strong&gt;MongoEngineUserDatastore&lt;/strong&gt; e inicializaremos a extensão passando nossos models de User e Role.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_security&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Security&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MongoEngineUserDatastore&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.security_models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Role&lt;/span&gt;
@@ -546,7 +546,7 @@ Flask-Security
 
 
 &lt;p&gt;&lt;strong&gt;news_app.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_bootstrap&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Bootstrap&lt;/span&gt;
@@ -587,7 +587,7 @@ Flask-Security
 &lt;p&gt;Pronto, agora temos nossa base de usuários e grupos definida e o Security irá iniciar em nosso app todo o restante necessário para o controle de login (session, cookies, formulários etc..)&lt;/p&gt;
 &lt;h4&gt;Exigindo login para cadastro de notícia&lt;/h4&gt;
 &lt;p&gt;Altere a view de cadastro em &lt;code&gt;blueprints/noticias.py&lt;/code&gt; e utilize o decorator &lt;code&gt;login_required&lt;/code&gt; que é disponibilizado pelo Flask-Security, sendo que o inicio do arquivo ficará assim:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;secure_filename&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
@@ -617,7 +617,7 @@ Flask-Security
 
 &lt;p&gt;O único problema é que você ainda não possui um usuário para efetuar o login. Em nosso model de User definimos um método &lt;strong&gt;create_user&lt;/strong&gt; que pode ser utilizado diretamente em um terminal iPython. Porém o Flask-Security facilita bastante fornecendo também um formulário de registro de usuários.&lt;/p&gt;
 &lt;p&gt;Adicione as seguintes configurações no arquivo &lt;code&gt;development_instance/config.cfg&lt;/code&gt; para habilitar o formulário de registro de usuários.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SECURITY_REGISTERABLE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;SECURITY_REGISTERABLE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
 &lt;span class="n"&gt;SECURITY_TRACKABLE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;  &lt;span class="c1"&gt;# para armazenar data, IP, ultimo login dos users.&lt;/span&gt;
 
 &lt;span class="c1"&gt;# as opções abaixo devem ser removidas em ambiente de produção&lt;/span&gt;
@@ -637,7 +637,7 @@ Flask-Security
 &lt;/blockquote&gt;
 &lt;p&gt;Todas as opções de configuração do Flsk-Security estão disponíveis em &lt;a href="https://pythonhosted.org/Flask-Security/configuration.html"&gt;https://pythonhosted.org/Flask-Security/configuration.html&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Agora será interessante mostrar opções de Login, Logout, Alterar senha na barra de navegação. Para isso altere o template &lt;code&gt;base.html&lt;/code&gt; adicionando o bloco de access control.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{%- extends &amp;quot;bootstrap/base.html&amp;quot; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{%- extends &amp;quot;bootstrap/base.html&amp;quot; %}
 {% import &amp;quot;bootstrap/utils.html&amp;quot; as utils %}
 {% block title %} {{title or &amp;quot;Notícias&amp;quot;}} {% endblock %}
 {% block navbar -%}
@@ -703,7 +703,7 @@ Flask-Security
 &lt;p&gt;E o &lt;a href="http://www.quokkaproject.org"&gt;QuokkaCMS&lt;/a&gt;, principal CMS desenvolvido com Flask e MongoDB é baseado também no Flask-Admin.&lt;/p&gt;
 &lt;p&gt;Para começar vamos colocar os requisitos no arquivo de requirements!!&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;requirements.txt&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;https://github.com/mitsuhiko/flask/tarball/master
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;https://github.com/mitsuhiko/flask/tarball/master
 flask-mongoengine
 nose
 Flask-Bootstrap
@@ -719,7 +719,7 @@ Flask-Admin
 &lt;p&gt;O Flask Admin utiliza o Bootstrap por padrão para a camada visual do admin, mas é possivel customizar com o uso de temas.&lt;/p&gt;
 &lt;p&gt;A primeira coisa a ser feita depois de ter o Flask-Admin instalado é inicializar o admin da mesma maneira que fizemos com as outras extensões.&lt;/p&gt;
 &lt;p&gt;Vamos adicionar as seguintes linhas ao arquivo &lt;strong&gt;news_app.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_admin&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Admin&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_admin&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Admin&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -730,7 +730,7 @@ Flask-Admin
 
 
 &lt;p&gt;Ficando o arquivo completo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_bootstrap&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Bootstrap&lt;/span&gt;
@@ -780,7 +780,7 @@ Flask-Admin
 &lt;h4&gt;Menu de controle de acesso&lt;/h4&gt;
 &lt;p&gt;Em nosso front-end incluimos na barra de menus os links de controle de acesso &lt;strong&gt;login&lt;/strong&gt;, &lt;strong&gt;alterar senha&lt;/strong&gt; e &lt;strong&gt;logout&lt;/strong&gt;, precisamos agora incluir os mesmos itens na barra de menus do Flask-Admin.&lt;/p&gt;
 &lt;p&gt;Para começar crie um template novo em &lt;strong&gt;templates/admin_base.html&lt;/strong&gt; com o seguinte conteúdo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;#39;admin/base.html&amp;#39; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% extends &amp;#39;admin/base.html&amp;#39; %}
 
 {% block access_control %}
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;navbar-text btn-group pull-right&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -809,7 +809,7 @@ Flask-Admin
 
 
 &lt;p&gt;Agora altere o template base do Flask-Admin incluindo o parametro &lt;code&gt;base_template='admin_base.html'&lt;/code&gt; no &lt;strong&gt;news_app.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;def create_app(mode):
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def create_app(mode):
     ...
     admin = Admin(app, name=&amp;#39;Noticias&amp;#39;, template_mode=&amp;#39;bootstrap3&amp;#39;,
                   base_template=&amp;#39;admin_base.html&amp;#39;)
@@ -828,7 +828,7 @@ Flask-Admin
 &lt;p&gt;NOTE: Se desejar que apenas usuários que pertençam ao grupo &lt;strong&gt;admin&lt;/strong&gt; tenham acesso descomente as linhas do método &lt;strong&gt;is_acessible&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;wtf/admin.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;abort&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;redirect&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url_for&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_security&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;current_user&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_admin.contrib.mongoengine&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ModelView&lt;/span&gt;
@@ -873,7 +873,7 @@ Flask-Admin
 
 &lt;p&gt;Agora só precisamos substituir a maneira como inicializamos o admin pela chamada a função &lt;strong&gt;configure_admin&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;No arquivo &lt;strong&gt;news_app.py&lt;/strong&gt; troque a parte&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_admin&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Admin&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_admin&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Admin&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -885,7 +885,7 @@ Flask-Admin
 
 
 &lt;p&gt;Pelo uso da função &lt;strong&gt;configure_admin&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.admin&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;configure_admin&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.admin&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;configure_admin&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -909,7 +909,7 @@ Flask-Admin
 
 &lt;p&gt;Altere nosso arquivo &lt;strong&gt;admin.py&lt;/strong&gt; e crie uma nova classe &lt;strong&gt;UserModelView&lt;/strong&gt; onde limitaremos os campos que serão listados no admin.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;wtf/admin.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;UserModelView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SafeModelView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;column_list&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;email&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;active&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;last_login_at&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;login_count&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -919,7 +919,7 @@ Flask-Admin
 
 
 &lt;p&gt;E agora no final do arquivo utilize esta classe ao adicionar a view.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
 &lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;UserModelView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;accounts&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -937,7 +937,7 @@ Flask-Admin
 &lt;/blockquote&gt;
 &lt;h2&gt;&lt;a href="#flask_cache" name="flask_cache"&gt;Flask Cache - Deixando o MongoDB "de boas"&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;A cada vez que acessamos a home do nosso site uma consulta é feita ao MongoDB, e isso está definido em &lt;strong&gt;blueprints/noticias.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@noticias_blueprint.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@noticias_blueprint.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="n"&gt;todas_as_noticias&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Noticia&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;index.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -959,7 +959,7 @@ Flask-Admin
 &lt;h3&gt;Debug Toolbar&lt;/h3&gt;
 &lt;p&gt;Antes de mais nada precisamos de uma ajuda para enxergarmos o problema, vamos utilizar a Flask-DebugToolbar para nos mostrar o custo de nossas idas ao banco de dados e outras coisas uteis para o desenvolvimento em Flask.&lt;/p&gt;
 &lt;p&gt;Adicione ao arquivo &lt;strong&gt;requirements.txt&lt;/strong&gt; a &lt;strong&gt;flask-debugtoolbar&lt;/strong&gt; e utilize o flask-mongoengine diretamente do github.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;https://github.com/mitsuhiko/flask/tarball/master
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;https://github.com/mitsuhiko/flask/tarball/master
 https://github.com/MongoEngine/flask-mongoengine/tarball/master
 nose
 Flask-Bootstrap
@@ -977,7 +977,7 @@ flask-cache
 &lt;p&gt;E atualize sua &lt;strong&gt;env&lt;/strong&gt; &lt;code&gt;pip install -r requirements.txt --upgrade&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Agora edite o arquivo &lt;strong&gt;development_instance/config.cfg&lt;/strong&gt; adicionando as seguintes entradas.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;development_instance/config.cfg&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
 &lt;span class="n"&gt;DEBUG_TOOLBAR_ENABLED&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
 &lt;span class="n"&gt;DEBUG_TB_INTERCEPT_REDIRECTS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
 &lt;span class="n"&gt;DEBUG_TB_PROFILER_ENABLED&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
@@ -997,7 +997,7 @@ flask-cache
 
 
 &lt;p&gt;Inicialize a extensão no arquivo &lt;strong&gt;news_app.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_debugtoolbar&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DebugToolbarExtension&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;
 
@@ -1036,13 +1036,13 @@ flask-cache
 &lt;p&gt;NOTE: O mais recomendado é o uso de &lt;strong&gt;Redis&lt;/strong&gt; ou &lt;strong&gt;memcached&lt;/strong&gt; mas como isso exige a instalação de libs adicionais utilizaremos o &lt;strong&gt;FileSystemCache&lt;/strong&gt; em nosso exemplo, porém o uso de cache em file system pode ser até mais lento que o acesso direto ao banco, portanto vamos utiliza-lo somente como exemplo.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Crie um arquivo &lt;strong&gt;cache.py&lt;/strong&gt; na raiz do projeto:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_cache&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Cache&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_cache&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Cache&lt;/span&gt;
 &lt;span class="n"&gt;cache&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Cache&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;CACHE_TYPE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;filesystem&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;CACHE_DIR&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/tmp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Vamos inicializar a extensão da mesma forma que fizemos com as outras e neste ponto nosso arquivo &lt;strong&gt;news_app.py&lt;/strong&gt; deverá estar assim:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_bootstrap&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Bootstrap&lt;/span&gt;
@@ -1092,14 +1092,14 @@ flask-cache
 &lt;/blockquote&gt;
 &lt;p&gt;Vamos colocar cache nas views de acesso ao MongoDB importaremos o cache que criamos no arquivo &lt;strong&gt;cache.py&lt;/strong&gt; e utilizaremos diretamente ou como forma de decorator.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;blueprints/noticias.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;..cache&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;cache&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Agora vamos utilizar o cache como decorator para cachear a view &lt;strong&gt;index&lt;/strong&gt; durante 5 minutos utilizando &lt;code&gt;@cache.cached(timeout=300)&lt;/code&gt; para decorar a view.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@noticias_blueprint.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@noticias_blueprint.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nd"&gt;@cache.cached&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;timeout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;300&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="n"&gt;todas_as_noticias&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Noticia&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1115,7 +1115,7 @@ flask-cache
 &lt;/figure&gt;
 
 &lt;p&gt;Uma outra maneira de cachear é chamando o cache diretamente, vamos fazer isso na view &lt;strong&gt;noticia&lt;/strong&gt; usando &lt;strong&gt;cache.get&lt;/strong&gt; e &lt;strong&gt;cache.set&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@noticias_blueprint.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/noticia/&amp;lt;noticia_id&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@noticias_blueprint.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/noticia/&amp;lt;noticia_id&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;noticia&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noticia_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;noticia_cacheada&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cache&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noticia_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;noticia_cacheada&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -1205,7 +1205,7 @@ flask-cache
 &lt;h3&gt;HANDS ON&lt;/h3&gt;
 &lt;p&gt;Vamos começar a explorar o nosso app de exemplo que está no github, O app principal (com excessão do db) está em um único &lt;a href="https://github.com/rochacbruno/wtf/blob/pt-1/news_app.py"&gt;arquivo&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Algumas linhas foram suprimidas para melhorar a legibilidade&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;secure_filename&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
@@ -1250,7 +1250,7 @@ flask-cache
 
 &lt;p&gt;O ideal neste caso será separar em alguns arquivos com responsabilidades específicas, &lt;strong&gt;configurações&lt;/strong&gt; vão para um arquivo de settings, a &lt;strong&gt;criação e setup do app&lt;/strong&gt; ficaria em um arquivo e as &lt;strong&gt;views&lt;/strong&gt; ficariam em um outro, no nosso caso o db já está separado. Um outro detalhe é que agora precisaremos de um arquivo &lt;strong&gt;run.py&lt;/strong&gt; que será o responsável por iniciar o servidor do Flask.&lt;/p&gt;
 &lt;h4&gt;a estrutura seria essa:&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;/wtf
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/wtf
     /news_app.py
     /views.py
     /db.py
@@ -1268,14 +1268,14 @@ flask-cache
 &lt;p&gt;Quem nasceu primeiro a &lt;strong&gt;app&lt;/strong&gt; ou as &lt;strong&gt;views&lt;/strong&gt;?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h5&gt;settings.py&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="n"&gt;PROJECT_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;abspath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dirname&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;span class="n"&gt;MEDIA_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PROJECT_ROOT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;media_files&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h5&gt;news_app.py&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_object&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;settings&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1285,7 +1285,7 @@ flask-cache
 
 
 &lt;h5&gt;views.py&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;secure_filename&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;send_from_directory&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;
@@ -1319,13 +1319,13 @@ flask-cache
 
 
 &lt;h5&gt;run.py&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use_reloader&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;LINDO! agora temos nossa estrutura toda separada, porém acabamos de inserir o &lt;strong&gt;Problema do Ovo e da Galinha&lt;/strong&gt; formalmente conhecido como &lt;strong&gt;circular imports&lt;/strong&gt; ou &lt;strong&gt;cyclic reference&lt;/strong&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;news_app.py                           views.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;news_app.py                           views.py
 
 +--------------------------+          +--------------------------+
 &lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;
@@ -1348,7 +1348,7 @@ flask-cache
 &lt;p&gt;Esta versão está no &lt;a href="https://github.com/rochacbruno/wtf/tree/circular_imports"&gt;github&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;E outro detalhe é que fica meio feio e fora das regras de estilo &lt;a href="http://legacy.python.org/dev/peps/pep-0008/#imports"&gt;Pythonica&lt;/a&gt;, experimente alterar o &lt;strong&gt;news_app.py&lt;/strong&gt; colocando os imports na ordem correta e fazendo import explicito:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;wtf.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;cadastro&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;noticia&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;media&lt;/span&gt;
 
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1389,7 +1389,7 @@ flask-cache
 &lt;p&gt;&lt;strong&gt;ZEN DO BLUEPRINT:&lt;/strong&gt; If the Blueprint is hard to explain, it's a bad idea. If the Blueprint is easy to explain, it may be a good idea. Blueprints are one honking great idea -- let's do more of those!&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Vamos agora resolver o nosso antigo problema de singular imports utilizando blueprint, termos que alterar um pouco a estrutura de nosso app que agora será.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;/wtf
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/wtf
     /news_app.py
     /db.py
     /run.py
@@ -1409,7 +1409,7 @@ flask-cache
 &lt;/blockquote&gt;
 &lt;p&gt;O restante da nossa app continuará praticamente igual, apagaremos apenas o &lt;strong&gt;views.py&lt;/strong&gt; e incluiremos o seguinte arquivo com o nosso blueprint.&lt;/p&gt;
 &lt;h5&gt;/wtf/blueprints/noticias.py&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;secure_filename&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
@@ -1463,7 +1463,7 @@ flask-cache
 &lt;p&gt;Repare que agora a única diferença é que ao invés de &lt;strong&gt;app.route&lt;/strong&gt; usaremos &lt;strong&gt;nome_do_blueprint.route&lt;/strong&gt; e você pode inclusive se preferir colocar este blueprint em qualquer outro diretório desde que esteja no Python PATH.&lt;/p&gt;
 &lt;p&gt;Como já falei antes o Blueprint acima é apenas um projeto de como esta parte da app deve funcionar, portanto agora precisamos entregar este projeto ao Flask e pedir que ele contrua. Para isso basta alterar o &lt;strong&gt;news_app.py&lt;/strong&gt; removendo o circular import e registrando o blueprint.&lt;/p&gt;
 &lt;h5&gt;news_app.py&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;blueprints.noticias&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;noticias_blueprint&lt;/span&gt;
@@ -1477,14 +1477,14 @@ flask-cache
 &lt;p&gt;Como existe a possibilidade de termos vários Blueprints uma coisa que pode acontecer é termos views com o mesmo nome, por exemplo, é bem comum ter uma view chamada &lt;strong&gt;index&lt;/strong&gt; em todos os Blueprints, isso levaria a conflitos na hora de resolver o endpoint da url e para evitar isso o Flask exige que sejamos explicitos na hora de criar as urls com o &lt;strong&gt;url_for&lt;/strong&gt; portanto será necessário alterar todos os templates incluindo o nome do blueprint, exemplo:&lt;/p&gt;
 &lt;h5&gt;templates/index.html&lt;/h5&gt;
 &lt;p&gt;Alterar de:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;...
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{url_for(&amp;#39;noticia&amp;#39;, noticia_id=noticia.id)}}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 ...
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;para:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;...
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{url_for(&amp;#39;noticias.noticia&amp;#39;, noticia_id=noticia.id)}}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 ...
 &lt;/pre&gt;&lt;/div&gt;
@@ -1492,7 +1492,7 @@ flask-cache
 
 &lt;p&gt;Agora precisamos usar &lt;strong&gt;noticias.noticia&lt;/strong&gt;, onde &lt;strong&gt;noticias&lt;/strong&gt; é o nome do blueprint e &lt;strong&gt;noticia&lt;/strong&gt; o endpoint da view.&lt;/p&gt;
 &lt;p&gt;Blueprints também podem ser &lt;strong&gt;montados&lt;/strong&gt; em uma url base diferente:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register_blueprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;objeto_do_blueprint&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url_prefix&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/portal&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register_blueprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;objeto_do_blueprint&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url_prefix&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/portal&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1527,7 +1527,7 @@ flask-cache
 &lt;h3&gt;Chega de teoria!&lt;/h3&gt;
 &lt;p&gt;No Flask é recomendado o uso de &lt;strong&gt;Application Factories&lt;/strong&gt; que é simplesmente o uso de funções para criar instancia da &lt;strong&gt;app&lt;/strong&gt; Flask ao invés de cria-la diretamente no &lt;strong&gt;top level&lt;/strong&gt; do seu arquivo de app. Com isso é possível reutilizar essa função com diferentes parâmetros. vamos ver um exemplo.&lt;/p&gt;
 &lt;p&gt;No arquivo &lt;code&gt;news_app.py&lt;/code&gt; ao invés disso:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;blueprints.noticias&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;noticias_blueprint&lt;/span&gt;
@@ -1538,7 +1538,7 @@ flask-cache
 
 
 &lt;p&gt;teremos isso:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;blueprints.noticias&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;noticias_blueprint&lt;/span&gt;
 
@@ -1554,13 +1554,13 @@ flask-cache
 
 
 &lt;p&gt;e no &lt;code&gt;run.py&lt;/code&gt; mudaremos de:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use_reloader&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;para:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config_filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/server/wtf/settings.py&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use_reloader&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1573,7 +1573,7 @@ flask-cache
 &lt;h3&gt;1. Testes&lt;/h3&gt;
 &lt;p&gt;Você poderá criar uma suite de testes facilmente e manipular as configurações desta instancia.&lt;/p&gt;
 &lt;h5&gt;/wtf/tests/test_app.py&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;unittest&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;unittest&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;
 
@@ -1590,7 +1590,7 @@ flask-cache
 
 &lt;h3&gt;&lt;a href="#multiple_apps" name="multiple_apps"&gt;2. Instanciar multiplos apps em um mesmo projeto &lt;/a&gt;&lt;/h3&gt;
 &lt;h5&gt;/wtf/multiple_run.py&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug.wsgi&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DispatcherMiddleware&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug.wsgi&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DispatcherMiddleware&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;create_news_app&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;quokka.core&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;create_quokka_app&lt;/span&gt;
@@ -1627,7 +1627,7 @@ flask-cache
 &lt;p&gt;Por padrão o Flask já oferece todas as ferramentas necessárias para gerenciar questões de configurações, tudo o que &lt;strong&gt;no outro framework&lt;/strong&gt; :) acabamos precisando de módulos de terceiros para fazer as coisas de maneira &lt;strong&gt;decoupled&lt;/strong&gt;, no Flask já esta built-in. Então vamos conhecer as abordagens de configuração.&lt;/p&gt;
 &lt;h4&gt;O objeto "config"&lt;/h4&gt;
 &lt;p&gt;Independente da abordagem de configuração que você escolher, no final as variáveis vão para no mesmo atributo que é o &lt;strong&gt;app.config&lt;/strong&gt;, este atributo é uma subclasse de &lt;strong&gt;dict&lt;/strong&gt; e se comporta exatamente como um dicionário, sendo assim podemos alterar seus valores livremente. (mas lembre-se que isso deve ocorrer quando a app estiver em estado de configuração).&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;DEBUG&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;DATABASE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;mysql://user:password@localhost/database&amp;quot;&lt;/span&gt;
 
@@ -1638,14 +1638,14 @@ flask-cache
 
 &lt;p&gt;Por padrão no momento em que o objeto &lt;strong&gt;app&lt;/strong&gt; for instanciado o Flask já irá colocar uma série de valores default no &lt;strong&gt;app.config&lt;/strong&gt;, este valores podem ser conferidos no seguinte &lt;a href="http://flask.pocoo.org/docs/config/#builtin-configuration-values"&gt;link&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Existem alguns valores de configuração que podem ser setados de diferentes formas, o "DEBUG" é um deles, e pode ser feito de uma dessas 3 formas.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;DEBUG&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;DEBUG&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Como o objeto &lt;strong&gt;config&lt;/strong&gt; é um dicionário a maneira mais fácil e prática de atualiza-lo é usando o método update presente nos dicionários Python.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;my_app_config&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;my_app_config&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="s2"&gt;&amp;quot;DEBUG&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="s2"&gt;&amp;quot;DATABASE&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;mysql://user:password@localhost/database&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="o"&gt;...&lt;/span&gt;
@@ -1666,19 +1666,19 @@ flask-cache
 &lt;p&gt;O tipo de arquivo &lt;strong&gt;cfg&lt;/strong&gt; é um arquivo Python normal e aceita a sintaxe normal do Python, porém utiliza a extensão &lt;strong&gt;cfg&lt;/strong&gt; para que possa ser diferenciado do restante do seu código e isto é muito útil pois certamente você não vai querer mandar esses arquivos sensiveis para o github por exemplo, basta colocar &lt;code&gt;*.cfg&lt;/code&gt; no .gitignore e esses arquivos ficarão fora do controle de versões.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h6&gt;production.cfg&lt;/h6&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
 &lt;span class="n"&gt;DATABASE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;mysql://user:password@mysqlserver.company.com/database&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h6&gt;development.cfg&lt;/h6&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
 &lt;span class="n"&gt;DATABASE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;mysql://user:password@localhost/development_database&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E agora no app&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1688,7 +1688,7 @@ flask-cache
 
 
 &lt;p&gt;E então em seu &lt;strong&gt;run.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;
 &lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;development&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1698,12 +1698,12 @@ flask-cache
 
 &lt;p&gt;No exemplo acima usamos o &lt;strong&gt;sys.argv&lt;/strong&gt; para capturar os argumentos passados para o &lt;strong&gt;run.py&lt;/strong&gt; mas em outro capítulo veremos como usar o &lt;strong&gt;click&lt;/strong&gt; ou o &lt;strong&gt;Flask-Script&lt;/strong&gt; para fazer isso de maneira mais elegante.&lt;/p&gt;
 &lt;p&gt;Bom, agora para executar o seu app em ambiente de desenvolvimento você usará:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;python run.py development
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python run.py development
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;e em produção você irá utilizar&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;python run.py production
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python run.py production
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1714,7 +1714,7 @@ flask-cache
 &lt;p&gt;Seguinte a idéia do tópico anterior: configurar a partir de um arquivo &lt;strong&gt;cfg&lt;/strong&gt;, vamos agora melhorar essa abordagem fazendo com que o arquivo seja decidido com o uso de uma variável de ambiente. Esta é a maneira mais recomendada para gerir as configurações.&lt;/p&gt;
 &lt;p&gt;Vamos alterar apenas o arquivo &lt;strong&gt;app.py&lt;/strong&gt; e o &lt;strong&gt;run.py&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;app.py&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config_env_var&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;FLASK_CONFIG&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1724,7 +1724,7 @@ flask-cache
 
 
 &lt;p&gt;run.py&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;
 &lt;span class="n"&gt;config_env_var&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;FLASK_CONFIG&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config_env_var&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1735,13 +1735,13 @@ flask-cache
 &lt;p&gt;Está bem parecido com a versão anterior, porém agora quem decide qual configuração será carregada será uma variável de embiente, usamos o &lt;strong&gt;silent=False&lt;/strong&gt; para que ocorra um erro nos informando caso a variável &lt;strong&gt;FLASK_CONFIG&lt;/strong&gt; não exista no ambiente, por isso no nosso processo de &lt;strong&gt;deploy&lt;/strong&gt; teremos que garantir a existencia dessa variável, assim como teremos que garantir que ela exista em nosso ambiente de desenvolvimento.&lt;/p&gt;
 &lt;p&gt;A vantagem dessa abordagem é que você pode setar esse valor no arquivo "~/.bashrc" tanto na máquina servidor quanto na de desenvolvimento e então não se preocupar mais em ficar mudando o &lt;strong&gt;modo&lt;/strong&gt; de configuração. Além disso lenbre-se que o arquivo pode estar localizado em qualquer diretório.&lt;/p&gt;
 &lt;p&gt;Na máquina de desenvolvimento&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;FLASK_CONFIG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/development.cfg
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;FLASK_CONFIG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/development.cfg
 &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;FLASK_CONFIG_TEST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/test.cfg
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Na máquina de produção&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;FLASK_CONFIG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/server/configurations/production.cfg
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;FLASK_CONFIG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/server/configurations/production.cfg
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1752,7 +1752,7 @@ flask-cache
 &lt;h4&gt;Usando um arquivo de configurações *.json&lt;/h4&gt;
 &lt;p&gt;Da mesma forma como usamos o &lt;strong&gt;cfg&lt;/strong&gt; também é possivel utilizar &lt;strong&gt;json&lt;/strong&gt;, exemplo:&lt;/p&gt;
 &lt;h5&gt;production.json&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="nt"&gt;&amp;quot;DEBUG&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
   &lt;span class="nt"&gt;&amp;quot;DATABASE&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;mysql://user:password@localhost/database&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="err"&gt;...&lt;/span&gt;
@@ -1761,7 +1761,7 @@ flask-cache
 
 
 &lt;h5&gt;app.py&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_json&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;production.json&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1776,13 +1776,13 @@ flask-cache
 &lt;/blockquote&gt;
 &lt;h5&gt;usando um arquivo Python&lt;/h5&gt;
 &lt;p&gt;default_settings.py&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SECRET_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;mskcjdnfksdbflsjhgnaslkgnsfkjg&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;SECRET_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;mskcjdnfksdbflsjhgnaslkgnsfkjg&amp;quot;&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;app.py&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 
 &lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
 &lt;span class="n"&gt;USE_CACHE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
@@ -1803,7 +1803,7 @@ flask-cache
 &lt;h5&gt;Agora com um pouco de classe&lt;/h5&gt;
 &lt;p&gt;Uma forma bem interessante de fazer a mesma coisa é utilizar classes Python ao invés de apenas arquivos, pois dessa forma podemos ter herança e polimorfismo. veja este exemplo:&lt;/p&gt;
 &lt;p&gt;default_settings.py&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BaseConfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BaseConfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
 
 
@@ -1818,7 +1818,7 @@ flask-cache
 
 
 &lt;p&gt;Agora na hora de configurar podemos variar entre Development e Production&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Production&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Production&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_object&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;default_settings.&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;Config&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="o"&gt;...&lt;/span&gt;
@@ -1834,7 +1834,7 @@ flask-cache
 &lt;p&gt;Uma outra abordagem interessante é o uso de "diretórios de instancia" é bastante útil para gerenciar não apenas configurações mas também serve para termos outros recursos como arquivos de bancos de dados, arquivos de media/upload, caches etc em pastas separadas de acordo com o ambiente em que a app está sendo executada.&lt;/p&gt;
 &lt;p&gt;Por padrão a pasta de instancia é chamada &lt;strong&gt;instance&lt;/strong&gt; e fica na raiz do projeto, mas você pode alterar este caminho utilizando o parâmetro &lt;strong&gt;intance_path&lt;/strong&gt;. O ideal é que esta pasta fique fora de seu controle de versões, ou que seja gerenciada em um repositório privado separado de seu codebase principal.&lt;/p&gt;
 &lt;p&gt;Imagine a seguinte estrutura&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;/seuprojeto
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/seuprojeto
     /app.py
     /run.py
     /...
@@ -1850,7 +1850,7 @@ flask-cache
 
 
 &lt;p&gt;Agora na hora de criar o app iremos alternar entre essas duas pastas de instancia&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;production&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;instance_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
@@ -1873,7 +1873,7 @@ flask-cache
 &lt;h4&gt;Config namespaces&lt;/h4&gt;
 &lt;p&gt;Uma outra utilizade que o objeto &lt;strong&gt;config&lt;/strong&gt; possui é o &lt;strong&gt;get_namespace&lt;/strong&gt; e ele serve para agrupar variáveis de configuração que pertencem a um dominio especifico, por exemplo bancos de dados.&lt;/p&gt;
 &lt;p&gt;config.cfg&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;MONGO_HOST&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;MONGO_HOST&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
 &lt;span class="n"&gt;MONGO_PORT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;27017&lt;/span&gt;
 &lt;span class="n"&gt;MONGO_DB&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;myapp_db&amp;quot;&lt;/span&gt;
 &lt;span class="n"&gt;MONGO_PASSWORD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;schbalums123&amp;quot;&lt;/span&gt;
@@ -1884,7 +1884,7 @@ flask-cache
 
 
 &lt;p&gt;Agora imagine que queremos pegar todas as configurações referents ao MONGO e ao REDIS em dicionários separados:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_pyfile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;config.cfg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_namespace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;MONGO_&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1904,7 +1904,7 @@ flask-cache
 
 &lt;p&gt;O &lt;strong&gt;get_namespace&lt;/strong&gt; irá pegar todas as váriaveis definidas no namespace especificado, por padrão retorna as chaves em minusculo, mas caso queira manter em maiusculo basta usar &lt;strong&gt;lowercase=False&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Esta ferramenta é útil para efetuar conexões a banco de dados, exemplo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pymongo&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MongoClient&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pymongo&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MongoClient&lt;/span&gt;
 
 &lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MongoClient&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_namespace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;MONGO_&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1914,7 +1914,7 @@ flask-cache
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ATENÇÃO:&lt;/strong&gt; O método &lt;strong&gt;get_namespace&lt;/strong&gt; está disponível somente a partir da versão 1.0 do Flask, por enquanto você deverá usar o seguinte comando para instalar esta versão:&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pip install https://github.com/mitsuhiko/flask/tarball/master
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install https://github.com/mitsuhiko/flask/tarball/master
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1924,7 +1924,7 @@ flask-cache
 &lt;p&gt;Vamos juntar tudo o que vimos até agora em nossa app de notícias.&lt;/p&gt;
 &lt;h3&gt;O pacote Python e os imports relativos&lt;/h3&gt;
 &lt;p&gt;Preferencialmente, e para permitir o uso de import relativo é ideal que nossa app esteja contida em um pacote Python, isso significa que todos os nossos arquivos, exceto os arquivos de execução "run.py", os arquivos de deploy "requirements.txt" e "setup.py" e os tests devem ficar contidos em uma pasta que tenha um &lt;code&gt;__init__.py&lt;/code&gt;. No nosso caso para fazer isso é bem simples, basta incluir um nível a mais de diretório, vamos aproveitar e implementar a ideia de &lt;strong&gt;instance folder&lt;/strong&gt; para conter o banco de dados, a paste de uploads e as configurações alterando nossa estrutura atual para:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;wtf/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wtf/
 ├── multiple_run.py
 ├── requirements.txt
 ├── run.py
@@ -1960,7 +1960,7 @@ flask-cache
 
 &lt;p&gt;Algumas mudanças serão necessárias, primeiro teremos que alterar todos os imports para usar relative imports, dessa forma fora do módulo &lt;strong&gt;wtf&lt;/strong&gt; ao invés de &lt;code&gt;from news_app import create_app&lt;/code&gt; usaremos o caminho completo &lt;code&gt;from wtf.news_app import create_app&lt;/code&gt; e dentro do módulo &lt;strong&gt;wtf&lt;/strong&gt; podemos fazer imports relativos, ao invés de &lt;code&gt;from blueprints import noticias&lt;/code&gt; usaremos &lt;code&gt;from .blueprints.noticias import noticias_blueprint&lt;/code&gt;, repare no uso do &lt;strong&gt;.&lt;/strong&gt;, dentro do blueprint ao invés de &lt;code&gt;from db import noticias&lt;/code&gt; usaremos &lt;code&gt;from ..db import noticias&lt;/code&gt; repare que dessa vez usamos &lt;strong&gt;..&lt;/strong&gt;, indicando que o objeto está a dois niveis acima relativo ao módulo atual.&lt;/p&gt;
 &lt;h5&gt;run.py&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;wtf.news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;
 &lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;development&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1969,7 +1969,7 @@ flask-cache
 
 
 &lt;h5&gt;wtf/development_instance/config.cfg&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;RUN_DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;RUN_DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
 &lt;span class="n"&gt;RUN_USE_RELOADER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
 &lt;span class="n"&gt;RUN_HOST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;RUN_PORT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5000&lt;/span&gt;
@@ -1979,7 +1979,7 @@ flask-cache
 
 
 &lt;h5&gt;wtf/news_app.py&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.blueprints.noticias&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;noticias_blueprint&lt;/span&gt;
 
@@ -2009,7 +2009,7 @@ flask-cache
 
 
 &lt;h5&gt;wtf/db.py&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;dataset&lt;/span&gt;
 
@@ -2023,7 +2023,7 @@ flask-cache
 
 &lt;p&gt;Agora nossa versão do &lt;strong&gt;db&lt;/strong&gt; é uma função que retorna a tabela de acordo com o banco especifico dentro da nossa &lt;strong&gt;instance_path&lt;/strong&gt;&lt;/p&gt;
 &lt;h5&gt;wtf/blueprints/noticias.py&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;secure_filename&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
@@ -2177,7 +2177,7 @@ O Jinja2 já vem com a implementação da maioria das coisas necessárias na con
 &lt;h4&gt;Ambiente&lt;/h4&gt;
 &lt;p&gt;Inicie criando uma pasta para o projeto no local de sua preferencia&lt;/p&gt;
 &lt;p&gt;(se preferir pode fazer via File Browser ou IDE)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;mkdir wtf
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir wtf
 touch wtf/__init__.py
 touch wtf/app.py
 &lt;span class="nb"&gt;cd&lt;/span&gt; wtf
@@ -2186,32 +2186,32 @@ touch wtf/app.py
 
 &lt;p&gt;Agora crie uma &lt;a href="http://virtualenv.readthedocs.org/en/latest/"&gt;virtualenv&lt;/a&gt; para o projeto&lt;/p&gt;
 &lt;p&gt;Usando virtualenvwrapper &lt;strong&gt;(recommended)&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install virtualenvwrapper
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install virtualenvwrapper
 mkvirtualenv wtf_env
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Ou usando apenas virtualenv&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install python-virtualenv
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install python-virtualenv
 virtualenv wtf_env
 &lt;span class="nb"&gt;source&lt;/span&gt; wtf_env/bin/activate
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Com uma das opções acima o seu console agora deverá exibir algo como:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;wtf_env&lt;span class="o"&gt;)&lt;/span&gt;seuuser@suamaquina/path/to/wtf$
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;wtf_env&lt;span class="o"&gt;)&lt;/span&gt;seuuser@suamaquina/path/to/wtf$
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Instale o Flask e o Ipython&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pip install flask
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install flask
 pip install ipython
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;&lt;a name="hello_world" href="#hello_world"&gt;Level 1.1 - Hello world&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Agora que o ambiente está pronto abra o arquivo &lt;code&gt;app.py&lt;/code&gt; em seu editor favorito e vamos fazer o &lt;strong&gt;Hello World&lt;/strong&gt; para começarmos bem o tutorial.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
@@ -2224,7 +2224,7 @@ pip install ipython
 
 
 &lt;p&gt;Agora salve o arquivo e vá para o terminal e execute:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;wtf_env&lt;span class="o"&gt;)&lt;/span&gt;seuuser@suamaquina/path/to/wtf$ python app.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;wtf_env&lt;span class="o"&gt;)&lt;/span&gt;seuuser@suamaquina/path/to/wtf$ python app.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2241,7 +2241,7 @@ pip install ipython
 &lt;h3&gt;&lt;a name="o_objeto_flask" href="#o_objeto_flask"&gt;O objeto Flask&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Conforme mencionado no início deste artigo, o Flask utiliza como base o &lt;strong&gt;WerkZeug&lt;/strong&gt; que é uma biblioteca WSGI. Para lidar com os recursos do WerkZeug precisamos de uma aplicação WSGI que é uma instância de um objeto Python que implemente o protocolo WSGI e possa ser servida pelos web servers que implementam este protocolo como o Gunicorn, Uwsgi, Apache mod_wsgi etc.&lt;/p&gt;
 &lt;p&gt;No Flask criamos a aplicação WSGI instanciando a classe &lt;strong&gt;Flask&lt;/strong&gt;. O que essa classe faz é basicamente abstrair em métodos simples o fluxo de trabalho do padrão WSGI e do WerkZeug. Você pode ver como isto está implementado dando uma olhada no &lt;a href="https://github.com/mitsuhiko/flask/blob/master/flask/app.py#L67"&gt;código fonte&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 
     &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -2255,14 +2255,14 @@ pip install ipython
 &lt;p&gt;O Flask utiliza o &lt;strong&gt;import_name&lt;/strong&gt; para definir o que pertence ao seu projeto e este nome é usado como base path para inferir os recursos como por exemplo descobrir onde fica a sua pasta de templates e sua pasta de arquivos estáticos.&lt;/p&gt;
 &lt;p&gt;Além disso a ferramenta de debug do Werkzeug te mostrará mensagens mais explicitas se você definir o nome do pacote de seu app.&lt;/p&gt;
 &lt;p&gt;Supondo que você criará a instancia no caminho &lt;code&gt;yourapplication/app.py&lt;/code&gt; você tem essas 2 opções.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;yourapplication&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;yourapplication&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;No ultimo caso o &lt;code&gt;__name__&lt;/code&gt; seria &lt;strong&gt;yourapplication.app&lt;/strong&gt; e por isso fazemos o split para se tornar &lt;code&gt;["yourapplication", "app"]&lt;/code&gt; e então pegamos o primeiro elemento.&lt;/p&gt;
 &lt;p&gt;Eu recomendo usar o primeiro padrão pois é mais bonito :)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2279,7 +2279,7 @@ pip install ipython
 &lt;p&gt;Você pode ter mais de um app Flask em seu projeto e isto te garante reusabilidade e organização, vou dar um exemplo:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# um arquivo projeto.py&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# um arquivo projeto.py&lt;/span&gt;
 
 &lt;span class="n"&gt;web_app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
@@ -2315,7 +2315,7 @@ pip install ipython
 &lt;/blockquote&gt;
 &lt;p&gt;O Flask oferece 2 formas para o roteamento de views:&lt;/p&gt;
 &lt;p&gt;1 Roteamento via decorator&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;
 
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
@@ -2340,7 +2340,7 @@ pip install ipython
 &lt;/blockquote&gt;
 &lt;p&gt;Você pode inclusive utilizar multiplos decorators em uma mesma função para mapear várias urls, isto é útil para abranger uma mesma view com ou sem parametros.&lt;/p&gt;
 &lt;p&gt;exemplo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/noticias&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/noticias&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/noticias/&amp;lt;pais&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/noticias/&amp;lt;pais&amp;gt;/&amp;lt;estado&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;lista_de_noticias&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pais&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;estado&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -2352,7 +2352,7 @@ pip install ipython
 &lt;p&gt;&lt;strong&gt;WARNING:&lt;/strong&gt; Cuidado com o uso de multiplos decorators, a ordem em que são definidos é importante e caso esteja usando algum decorator customizado como por exemplo &lt;code&gt;@seu_app.requires_login&lt;/code&gt;, se este for o primeiro decorator o Flask irá usar o nome da função wrapper do decorator ao invés do nome da view para o endpoint da url. A indicação é ao criar decorators utilizar sempre o &lt;code&gt;functools.wraps&lt;/code&gt; para resolver este problema.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;2 Roteamento explicito&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_url_rule&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/noticias/&amp;lt;pais&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_url_rule&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/noticias/&amp;lt;pais&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                  &lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;lista_noticias&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                  &lt;span class="n"&gt;view_func&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;lista_de_noticias&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -2382,7 +2382,7 @@ pip install ipython
 &lt;/blockquote&gt;
 &lt;p&gt;Views precisam retornar um objeto do tipo &lt;strong&gt;Response&lt;/strong&gt; ou uma tupla formada por até 3 elementos, um &lt;strong&gt;body&lt;/strong&gt; que pode ser um objeto serializável como por exemplo um texto, um inteiro representando o código de &lt;strong&gt;status HTTP&lt;/strong&gt; e um dicionário de &lt;strong&gt;headers&lt;/strong&gt;, sendo que os dois ultimos elementos são opcionais.&lt;/p&gt;
 &lt;p&gt;Exemplo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;lt;name&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;lt;name&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lower&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;bruno&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Olá {}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;
@@ -2395,7 +2395,7 @@ pip install ipython
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;RELAX:&lt;/strong&gt; Se você não informar o código de status o Flask irá tentar resolver para você. Por padrão qualquer retorno no formato string é convertido para um objeto Response com código de status 200 e no header vai o Content-Type "text/html" automaticamente. Flask is full of magic :)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;lt;name&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;lt;name&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Olá {}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -2406,7 +2406,7 @@ pip install ipython
 &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Ao desenvolver uma API REST ou formulários que serão consumidos via Ajax é recomendado informar explicitamente os códigos HTTP e tratar adequadamente as excessões HTTP, pois do lado do cliente o comportamento pode depender desses códigos de status.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Além disso o Flask oferece alguns &lt;strong&gt;helpers&lt;/strong&gt; para facilitar o tratamento de excessões http, por exemplo o &lt;strong&gt;404&lt;/strong&gt; ou &lt;strong&gt;503&lt;/strong&gt; podem ser definidos através do helper &lt;strong&gt;abort&lt;/strong&gt; e o &lt;strong&gt;301/302&lt;/strong&gt; com o uso do helper &lt;strong&gt;redirect&lt;/strong&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;redirect&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;abort&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;redirect&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;abort&lt;/span&gt;
 
 &lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/shortener/&amp;lt;tiny_url&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;url_shortener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tiny_url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -2427,7 +2427,7 @@ pip install ipython
 &lt;h4&gt;HTML, JSON, XML etc&lt;/h4&gt;
 &lt;p&gt;HTML&lt;/p&gt;
 &lt;p&gt;Obviamente que você pode retornar conteúdo formatado e não apenas texto puro, isso poderá ser &lt;strike style="color:red"&gt;feito direto na view&lt;/strike&gt; ou em um &lt;span style="color:green"&gt;template&lt;/span&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/html_page/&amp;lt;nome&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/html_page/&amp;lt;nome&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;html_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;u&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
 &lt;span class="s2"&gt;    &amp;lt;html&amp;gt;&lt;/span&gt;
@@ -2447,7 +2447,7 @@ pip install ipython
 
 &lt;p&gt;O exemplo acima apesar de em alguns raros casos ser útil, não é recomendado, o ideal é usar templates para deixar a camada de apresentação desacoplada da lógica do nosso app.&lt;/p&gt;
 &lt;p&gt;assumindo que o trecho html acima está em um arquivo &lt;code&gt;templates/html_page.html&lt;/code&gt; podemos fazer o seguinte.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;
 
 &lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/html_page/&amp;lt;nome&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;html_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -2464,7 +2464,7 @@ pip install ipython
 &lt;p&gt;Você pode simplesmente retornar uma string jsonificada porém também é preciso dizer ao cliente que o &lt;strong&gt;content_type&lt;/strong&gt; ou &lt;strong&gt;mimetype&lt;/strong&gt; em questão é &lt;strong&gt;application/json&lt;/strong&gt;, &lt;strike&gt;m$/application:xml&lt;/strike&gt; ou qualquer outro formato.&lt;/p&gt;
 &lt;p&gt;Existem 3 possibilidades:&lt;/p&gt;
 &lt;p&gt;Criar um objeto Response explicitamente&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;make_response&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;json_api&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
@@ -2481,7 +2481,7 @@ pip install ipython
 
 
 &lt;p&gt;Retornar uma tupla de 3 elementos, no formato &lt;code&gt;(string, status_code, headers_dict)&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;json_api&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;json_api&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="n"&gt;pessoas&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;nome&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Bruno Rocha&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
                &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;nome&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Arjen Lucassen&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
                &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;nome&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Anneke van Giersbergen&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
@@ -2491,7 +2491,7 @@ pip install ipython
 
 
 &lt;p&gt;Os exemplos acima são válidos e poderão ser seguidos para outros tipos de dados, porém como JSON é um tipo de retorno muito comum o Flask já vem com um helper para ajuda-lo a economizar umas linhas de código.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;jsonify&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;jsonify&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;json_api&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="n"&gt;pessoas&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;nome&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Bruno Rocha&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
@@ -2512,7 +2512,7 @@ pip install ipython
 &lt;p&gt;É quando a app é instanciada, e nenhum request ocorreu ainda, é o momento em que você pode seguramente modificar as configurações e carregar módulos, extensões etc.&lt;/p&gt;
 &lt;p&gt;Este estado ocorre antes do &lt;strong&gt;dispatch&lt;/strong&gt;, ou seja, no nosso caso é antes do &lt;strong&gt;app.run()&lt;/strong&gt; ser executado, mas no caso de servir seu app com outro app server como gunicorn ou uwsgi este estado é antes do servidor WSGI registrar o objeto &lt;strong&gt;application&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Exemplo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;SECRET_KEY&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;schblaums&amp;quot;&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;DEBUG&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
@@ -2525,7 +2525,7 @@ pip install ipython
 &lt;p&gt;As linhas acima "ocorrem" geralmente no estado de configuração e portanto assumimos que &lt;strong&gt;não&lt;/strong&gt; existe um &lt;strong&gt;request&lt;/strong&gt; em andamento. Um detalhe importante é o fato de que este estado é válido apenas para o &lt;strong&gt;top level&lt;/strong&gt; module, ou seja, dentro do escopo de funções, views, classes etc o estado será outro.&lt;/p&gt;
 &lt;h4&gt;2 Estado de request&lt;/h4&gt;
 &lt;p&gt;É quando seu app já foi iniciado e está &lt;strong&gt;registrado&lt;/strong&gt; no servidor WSGI e então acontece uma requisição (algum cliente acessa uma url), neste momento o Flask irá popular o objeto request com os dados desta requisição e você poderá acessar o objeto request.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;jsonify&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;jsonify&lt;/span&gt;
 
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
@@ -2546,7 +2546,7 @@ pip install ipython
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;It's weird&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;outra_app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/url_na_app&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2564,7 +2564,7 @@ pip install ipython
 &lt;p&gt;O exemplo acima é meio non-sense mas é possível, além disso para fazer este tipo de coisa é recomendado usar o dispatcher middleware.&lt;/p&gt;
 &lt;h4&gt;3 Estado interativo ou estado de testes&lt;/h4&gt;
 &lt;p&gt;As vezes para efetuar pequenos testes ou até mesmo escrever testes unitários é necessário acessar o objeto &lt;strong&gt;request&lt;/strong&gt; ou o &lt;strong&gt;current_app&lt;/strong&gt; em um script standalone ou em um terminal interativo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;form&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2573,7 +2573,7 @@ pip install ipython
 
 
 &lt;p&gt;Nesta hora você pensa &lt;strong&gt;WTF&lt;/strong&gt; terei que fazer um request cada vez que precisar testar esse código? não, calma, o Flask oferece uma solução.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;test_request_context&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/teste&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;x.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;aaa=1&amp;amp;bb=2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_dict&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -2589,7 +2589,7 @@ pip install ipython
 &lt;p&gt;O objeto &lt;strong&gt;request&lt;/strong&gt; é um &lt;strong&gt;proxy&lt;/strong&gt; global que internamente garante você acesse a requisição atual ou *thread-local atual. Ele carrega dados referentes a cada requisição HTTP, nele podemos acessar as variáveis enviadas atráves da url ou de um formulário, podemos também verificar o método HTTP entre outros dados importantes que podem ser conferidos na &lt;a href="http://flask.pocoo.org/docs/api/#incoming-request-data"&gt;doc&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Os itens mais importantes são: (method, args, form, path, is_json)&lt;/p&gt;
 &lt;p&gt;É muito útil checar qual o método HTTP que foi requisitado, isto é o que possibilita a criação de uma API REST, o exemplo a seguir é auto explicativo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;jsonify&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;jsonify&lt;/span&gt;
 
 &lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/noticia&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/noticia/&amp;lt;int:noticia_id&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2635,7 +2635,7 @@ pip install ipython
 &lt;h4&gt;request.args&lt;/h4&gt;
 &lt;p&gt;Um dicionário com os valores passados via GET (na url após o ?).&lt;/p&gt;
 &lt;p&gt;url requisitada: &lt;code&gt;/noticias?categoria=esportes&amp;amp;limit=10&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;
 &lt;span class="n"&gt;ImmutableMultiDict&lt;/span&gt;&lt;span class="p"&gt;([(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;categoria&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;u&amp;#39;esportes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;limit&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;u&amp;#39;10&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_dict&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;u&amp;quot;categoria&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;u&amp;quot;esportes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;u&amp;quot;limit&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;u&amp;quot;10&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
@@ -2646,7 +2646,7 @@ pip install ipython
 
 &lt;p&gt;Não é muito comum mas em alguns casos as chaves podem se repetir, neste caso devemos usar o &lt;code&gt;getlist&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;url requisitada: &lt;code&gt;/noticias?categoria=esportes&amp;amp;categoria=musica&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;
 &lt;span class="n"&gt;ImmutableMultiDict&lt;/span&gt;&lt;span class="p"&gt;([(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;categoria&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;u&amp;#39;esportes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;categoria&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;u&amp;#39;musica&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_dict&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# mantém só os primeiros&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;u&amp;quot;categoria&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;u&amp;quot;esportes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
@@ -2658,12 +2658,12 @@ pip install ipython
 &lt;h4&gt;request.form&lt;/h4&gt;
 &lt;p&gt;O request.form funciona da mesma forma que o .args porém ele intercepta apenas os argumentos passados via POST, PUT ou PATCH, ou seja, via formulário ou payload.&lt;/p&gt;
 &lt;p&gt;exemplo de requisição POST via console&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;curl --data &lt;span class="s2"&gt;&amp;quot;categoria=esportes&amp;amp;limit=10&amp;quot;&lt;/span&gt; http://localhost:5000/noticias
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl --data &lt;span class="s2"&gt;&amp;quot;categoria=esportes&amp;amp;limit=10&amp;quot;&lt;/span&gt; http://localhost:5000/noticias
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;A requisição acima corresponde ao submit de um formulário contento os campos "categoria" e "limit".&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;form&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;form&lt;/span&gt;
 &lt;span class="n"&gt;ImmutableMultiDict&lt;/span&gt;&lt;span class="p"&gt;([(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;categoria&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;u&amp;#39;esportes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;limit&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;u&amp;#39;10&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_dict&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;u&amp;quot;categoria&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;u&amp;quot;esportes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;u&amp;quot;limit&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;u&amp;quot;10&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
@@ -2676,7 +2676,7 @@ pip install ipython
 &lt;h4&gt;request.json&lt;/h4&gt;
 &lt;p&gt;É exatamente a mesma coisa do .args e do .form, porém ele será populado quando o request trouxer o mimetype "application/json", então os dados do JSON no payload serão colocados neste atributo.&lt;/p&gt;
 &lt;p&gt;Requisição&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;curl -X POST -d &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;categoria&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;esporte&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt; http://localhost:5000/noticias --header &lt;span class="s2"&gt;&amp;quot;Content-Type:application/json&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl -X POST -d &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;categoria&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;esporte&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt; http://localhost:5000/noticias --header &lt;span class="s2"&gt;&amp;quot;Content-Type:application/json&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2684,12 +2684,12 @@ pip install ipython
 &lt;h4&gt;request.files / file uploads&lt;/h4&gt;
 &lt;p&gt;Caso seu formulário ou API permitam o envio de arquivos esses dados serão colocados no &lt;code&gt;request.files&lt;/code&gt;. Isto ocorre pois internamente o Flask transforma os dados recebidos em um objeto &lt;strong&gt;FileStorage&lt;/strong&gt; para permitir que você manipule os com mais facilidade.&lt;/p&gt;
 &lt;p&gt;Requisição: (equivale a um formulário com file upload)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;curl --form &lt;span class="s2"&gt;&amp;quot;photo=@picture.jpg&amp;amp;item_id=12345&amp;quot;&lt;/span&gt; http://localhost:5000/change_photo
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl --form &lt;span class="s2"&gt;&amp;quot;photo=@picture.jpg&amp;amp;item_id=12345&amp;quot;&lt;/span&gt; http://localhost:5000/change_photo
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;para salvar a imagem:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;secure_filename&lt;/span&gt;
 
@@ -2715,7 +2715,7 @@ pip install ipython
 &lt;p&gt;Existe uma série de &lt;a href="http://en.wikipedia.org/wiki/HTTP_cookie"&gt;especificações&lt;/a&gt; a respeito, mas não entrarei nos detalhes, vamos apenas ver como manipula-los no Flask.&lt;/p&gt;
 &lt;h4&gt;Escrevendo em um biscoito! (estranho isso né?)&lt;/h4&gt;
 &lt;p&gt;Para escrever dados em um cookie usamos o objeto &lt;strong&gt;Response&lt;/strong&gt;, portanto sempre que precisar escrever um cookie será necessário criar explicitamente um objeto &lt;strong&gt;Response&lt;/strong&gt; para este fim.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;abort&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;make_response&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;abort&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;make_response&lt;/span&gt;
 
 &lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/login&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;login&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
@@ -2738,7 +2738,7 @@ pip install ipython
 &lt;/blockquote&gt;
 &lt;h4&gt;Lendo o biscoito (da sorte?)&lt;/h4&gt;
 &lt;p&gt;Bom, assumindo que temos as informações &lt;strong&gt;username&lt;/strong&gt; e &lt;strong&gt;user_hash&lt;/strong&gt; gravadas no browser do cliente, e que este enviará este cookie no HEADER a cada requisição que fizer, podemos facilmente ler os dados contidos no cookie através do objeto &lt;strong&gt;request&lt;/strong&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;redirect&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url_for&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;redirect&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url_for&lt;/span&gt;
 
 &lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
@@ -2756,7 +2756,7 @@ pip install ipython
 &lt;h4&gt;Sessions&lt;/h4&gt;
 &lt;p&gt;No Flask existe o objeto &lt;strong&gt;session&lt;/strong&gt; que é também uma forma de armazenar informação que será persistida entre requests, na &lt;strong&gt;session&lt;/strong&gt; você pode armazenar informações de controle de acesso e até mesmo preferencias do usuário.&lt;/p&gt;
 &lt;p&gt;As sessions dependem dos cookies, pois são indexadas atráves de um &lt;strong&gt;SESSION_ID&lt;/strong&gt; que por padrão é sempre gravado em um cookie. Além disso o Flask por padrão guarda tembém os dados da &lt;strong&gt;session&lt;/strong&gt; nos cookies, ou seja, os dados ficam lá do lado cliente, porém ele utiliza criptografia nesses dados, é possível visualizar o conteúdo deste cookie mas para alterar é sempre preciso assina-lo com a chave de criptografia correta e é para isso que serve a configuração &lt;strong&gt;SECRET_KEY&lt;/strong&gt; lá nos config de seu app Flask.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;redirect&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url_for&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;escape&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;redirect&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url_for&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;escape&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;
 
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;SECRET_KEY&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;A0Zr98j/3yX R~XHH!jmN]LWX/,?RT&amp;quot;&lt;/span&gt;
@@ -2796,7 +2796,7 @@ pip install ipython
 &lt;p&gt;Em outro capítulo desta série mostrarei exemplos com o MongoEngine, mas nesta parte introdutória vamos usar o módulo &lt;a href="https://github.com/pudo/dataset"&gt;dataset&lt;/a&gt; que é uma camada de abstração para ler e escrever dados nos bancos SQLite, MySQL ou Postgres.&lt;/p&gt;
 &lt;p&gt;A vantagem do dataset é que ele é incrivelmente simples, não exige especificação de &lt;strong&gt;schema&lt;/strong&gt; e é puro Python.&lt;/p&gt;
 &lt;p&gt;Para começar instale o &lt;strong&gt;dataset&lt;/strong&gt; na sua virtualenv.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;wtf_env&lt;span class="o"&gt;)&lt;/span&gt;seuuser@suamaquina/path/to/wtf$ pip install dataset
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;wtf_env&lt;span class="o"&gt;)&lt;/span&gt;seuuser@suamaquina/path/to/wtf$ pip install dataset
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2805,7 +2805,7 @@ pip install ipython
 &lt;/blockquote&gt;
 &lt;h3&gt;Escrevendo no banco de dados&lt;/h3&gt;
 &lt;p&gt;agora na raiz do projeto vamos criar um arquivo novo chamado &lt;code&gt;db.py&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;dataset&lt;/span&gt;
 
@@ -2818,7 +2818,7 @@ pip install ipython
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Inicialmente não vamos nos preocupar com segurança, csrf ou login, mas nos próximos capítulos desta série iremos evoluir este pequeno app.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url_for&lt;/span&gt;
 
@@ -2875,7 +2875,7 @@ pip install ipython
 &lt;p&gt;Você verá um formulário com os campos &lt;strong&gt;titulo&lt;/strong&gt; e &lt;strong&gt;texto&lt;/strong&gt;, insira uma notícia nova e repita o processo algumas vezes. Note que na raiz de seu projeto agora terá um banco de dados SQLite &lt;strong&gt;noticias.db&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3&gt;Lendo do banco de dados&lt;/h3&gt;
 &lt;p&gt;Abra o arquivo &lt;code&gt;news_app.py&lt;/code&gt; e após a linha 39 vamos incluir uma view para listar todas as notícias na home do site.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
 
     &lt;span class="n"&gt;noticia_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;u&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
@@ -2897,7 +2897,7 @@ pip install ipython
 
 &lt;p&gt;Agora ao acessar &lt;a href="http://localhost:5000"&gt;localhost:5000&lt;/a&gt; Você verá uma lista de links com os títulos das notícias que cadastrou!&lt;/p&gt;
 &lt;p&gt;Só falta agora uma última view que será a utilizada para exibir a notícia quando você clicar no link.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/noticia/&amp;lt;int:noticia_id&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/noticia/&amp;lt;int:noticia_id&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;noticia&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noticia_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;noticia&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;noticias&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_one&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;noticia_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# query no banco de dados&lt;/span&gt;
     &lt;span class="n"&gt;noticia_html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;u&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
@@ -2924,7 +2924,7 @@ pip install ipython
 &lt;h4&gt;Definindo a pasta e o endpoint dos arquivos estáticos&lt;/h4&gt;
 &lt;p&gt;No arquivo &lt;code&gt;wtf/news_app.py&lt;/code&gt; da nossa app de notícias criarmos uma instância a app com &lt;code&gt;Flask('wtf')&lt;/code&gt; sem passar nenhum parâmetro adicional, neste caso o Flask irá assumir o comportamento default que é ter uma pasta de estáticos localizada em &lt;code&gt;wtf/static&lt;/code&gt; e o endpoint de estáticos mapeado para &lt;code&gt;/static/&lt;/code&gt; e na maioria dos casos esta convenção irá atender perfeitamente.&lt;/p&gt;
 &lt;p&gt;Caso você precise especificar um caminho diferente para os arquivos físicos ou um mapeamento de url diferente poderá informar ao Flask através dos seguintes parâmetros:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;static_folder&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;assets&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;static_url_path&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;assets_v1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;static_folder&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;assets&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;static_url_path&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;assets_v1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2934,7 +2934,7 @@ pip install ipython
 &lt;p&gt;Clique com o botão direito do mouse e escolha "salvar imagem..."&lt;/p&gt;
 &lt;p&gt;&lt;img alt="https://jobs.github.com/images/modules/company/generic_logo.gif" src="https://jobs.github.com/images/modules/company/generic_logo.gif" /&gt;&lt;/p&gt;
 &lt;p&gt;Agora modifique o &lt;code&gt;news_app.py&lt;/code&gt; e vamos exibir este logotipo na página inicial, para isso primeiro altere o &lt;code&gt;base_html&lt;/code&gt; incluindo o placeholder &lt;code&gt;{{logo_url}}&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;base_html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;u&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;base_html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;u&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
 &lt;span class="s2"&gt;  &amp;lt;html&amp;gt;&lt;/span&gt;
 &lt;span class="s2"&gt;  &amp;lt;head&amp;gt;&lt;/span&gt;
 &lt;span class="s2"&gt;      &amp;lt;title&amp;gt;{title}&amp;lt;/title&amp;gt;&lt;/span&gt;
@@ -2950,7 +2950,7 @@ pip install ipython
 
 
 &lt;p&gt;Agora altere o retorno das views incluindo a variavel &lt;strong&gt;logo_url&lt;/strong&gt;, por exemplo na view &lt;code&gt;cadastro&lt;/code&gt; altere para:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;base_html&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;base_html&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
             &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;u&amp;quot;Inserir nova noticia&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
             &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;formulario&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
             &lt;span class="n"&gt;logo_url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;url_for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;static&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;generic_logo.gif&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2969,7 +2969,7 @@ pip install ipython
 &lt;h4&gt;Upload de arquivos&lt;/h4&gt;
 &lt;p&gt;Agora para cada notícia o usuário também poderá incluir uma imagem, vamos implementar o upload desta imagem.&lt;/p&gt;
 &lt;p&gt;Inicialmente crie uma nova pasta &lt;code&gt;wtf/media_files&lt;/code&gt; e edite as primeiras linhas do &lt;code&gt;news_app.py&lt;/code&gt; incluindo a configuração do local onde os arquivos de media serão armazenados.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 
@@ -2992,7 +2992,7 @@ pip install ipython
 &lt;li&gt;importe o &lt;code&gt;current_app&lt;/code&gt; para poder acessar os configs da app em execução e o `secure_filename`` para garantir um nome válido para o upload&lt;/li&gt;
 &lt;li&gt;implemente o upload da imagem utilizando o &lt;code&gt;request.files&lt;/code&gt; e salve o caminho da imagem junto com a notícia&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;secure_filename&lt;/span&gt;
 
@@ -3046,12 +3046,12 @@ pip install ipython
 &lt;h4&gt;Servindo os arquivos de media&lt;/h4&gt;
 &lt;p&gt;Agora vamos fazer com que a imagem inserida na notícia seja mostrada na página dela junto com o seu texto. Nós já vimos que o Flask tem um endpoint &lt;strong&gt;static&lt;/strong&gt; para servir os arquivos estáticos da pasta padrão, porém no nosso caso os arquivos estão localizados em outra pasta, a &lt;strong&gt;media_files&lt;/strong&gt;, teremos que criar uma view para servir estes arquivos.&lt;/p&gt;
 &lt;p&gt;Comece importando a fuinção &lt;code&gt;send_from_directory&lt;/code&gt; lá no inicio do &lt;code&gt;news_app.py&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url_for&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;send_from_directory&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url_for&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;send_from_directory&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Agora vamos incluir uma nova view após a linha 104:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/media/&amp;lt;path:filename&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/media/&amp;lt;path:filename&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;media&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;send_from_directory&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;MEDIA_ROOT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -3059,7 +3059,7 @@ pip install ipython
 
 &lt;p&gt;Esta view será responsável por pegar o arquivo do diretório e fazer stream para o cliente. O próximo passo e construir a url usando o endpoint &lt;strong&gt;media&lt;/strong&gt; que é o nome da view.&lt;/p&gt;
 &lt;p&gt;Altere a view &lt;strong&gt;noticia&lt;/strong&gt; incluindo a imagem no html e resolvendo a url para a imagem correspondente com o url_for, caso a notícia não possua imagem usaremos uma imagem padrão.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/noticia/&amp;lt;int:noticia_id&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/noticia/&amp;lt;int:noticia_id&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;noticia&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noticia_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;noticia&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;noticias&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_one&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;noticia_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# query no banco de dados&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;noticia&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;imagem&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -3095,7 +3095,7 @@ pip install ipython
 &lt;p&gt;Todo site tem um layout comum que se repete em todas as páginas, geralmente onde fica a barra superior, os menus, o logotipo e o rodapé. Para não precisar ficar repetindo essa parte do código no template de todas as páginas é comum criarmos um base template e depois ir estendendo ele nos outros templates.&lt;/p&gt;
 &lt;p&gt;Exemplo:&lt;/p&gt;
 &lt;p&gt;base.html&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     {% block topo %}
     &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;logo.png&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
@@ -3111,7 +3111,7 @@ pip install ipython
 &lt;p&gt;Repare que no exemplo acima usamos a tag &lt;code&gt;{% block &amp;lt;block_name&amp;gt; %}&lt;/code&gt; para definir uma area no template que poderá ser sobrescrita pelos templates que estenderem o template base.&lt;/p&gt;
 &lt;h4&gt;Estendendo o template base&lt;/h4&gt;
 &lt;p&gt;Agora imagine que vamos criar o template que vai exibir a lista de notícias.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;quot;base.html&amp;quot; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% extends &amp;quot;base.html&amp;quot; %}
 {% block content %}
     &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
        {% for noticia in noticias %}
@@ -3128,13 +3128,13 @@ pip install ipython
 &lt;p&gt;Uma outra caracteristica interessante é que nos templates chaves de dicionários podem ser acessadas via &lt;strong&gt;.&lt;/strong&gt; ou via &lt;strong&gt;[ ]&lt;/strong&gt; os dois casos funcionam. exemplo: &lt;code&gt;{{ noticia['titulo'] }}&lt;/code&gt; ou &lt;code&gt;{{ noticia.titulo }}&lt;/code&gt;&lt;/p&gt;
 &lt;h4&gt;definindo a pasta de templates&lt;/h4&gt;
 &lt;p&gt;Assim como no caso dos estáticos o Flask já tem um padrão que é sempre procurar os templates em uma pasta chamada &lt;code&gt;templates&lt;/code&gt; mas você pode alterar este caminho se preferir.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;wtf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;templates_folder&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;outra_pasta_de_templates&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;wtf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;templates_folder&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;outra_pasta_de_templates&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;No nosso caso vamos utilizar o padrão e criar uma nova pasta &lt;code&gt;wtf/templates&lt;/code&gt; e dentro desta pasta crie um novo arquivo chamado &lt;code&gt;wtf/templates/base.html&lt;/code&gt; e vamos usa-lo para substituir a variavel &lt;code&gt;base_html&lt;/code&gt; no &lt;code&gt;news_app.py&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Crie orquivo &lt;code&gt;templates/base.html&lt;/code&gt; e apague a variavel &lt;code&gt;base_html&lt;/code&gt; do &lt;code&gt;news_app.py&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{% block title %} {{title or &amp;quot;Notícias&amp;quot;}} {% endblock %}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -3153,7 +3153,7 @@ pip install ipython
 &lt;p&gt;Desta maneira podemos utilizar o helper &lt;strong&gt;url_for&lt;/strong&gt; direto no template para acessar os arquivos estáticos. Repare também que fizemos uma impressão condicional em &lt;code&gt;{{ title or "Notícias"}}&lt;/code&gt; isso é possível pois no Jinja2 qualquer variável não existente é avaliada como &lt;strong&gt;None&lt;/strong&gt;, este mesmo trecho poderia ser escrito da seguinte maneira &lt;code&gt;{{ title|default("Notícias") }}&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Agora vamos criar um template para a home do site, onde a lista de notícias é exibida.&lt;/p&gt;
 &lt;p&gt;Crie o arquivo &lt;code&gt;templates/index.html&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;quot;base.html&amp;quot; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% extends &amp;quot;base.html&amp;quot; %}
 {% block content %}
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     {% for noticia in noticias %}
@@ -3170,7 +3170,7 @@ pip install ipython
 
 &lt;p&gt;Neste exemplo utilizamos um loop &lt;code&gt;for&lt;/code&gt; para iterar sobre a lista de noticias que será passada pela view, também usamos o url_for para criar a url que levará para a página de leitura da notícia.&lt;/p&gt;
 &lt;p&gt;Agora crie agora o template da página da notícia em &lt;code&gt;templates/noticia.html&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;quot;base.html&amp;quot; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% extends &amp;quot;base.html&amp;quot; %}
 {% block title%}
     {{noticia.titulo}}
 {% endblock%}
@@ -3189,7 +3189,7 @@ pip install ipython
 
 
 &lt;p&gt;Agora falta apenas o template para o formulário de cadastro de nova notícia e basta copiar e colar o html da variavel formulário para um template chamado &lt;code&gt;templates/cadstro.html&lt;/code&gt; e fazer pequenas alterações.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;quot;base.html&amp;quot; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% extends &amp;quot;base.html&amp;quot; %}
 {% block content %}
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;form&lt;/span&gt; &lt;span class="na"&gt;method&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;action&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ url_for(&amp;#39;cadastro&amp;#39;) }}&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;enctype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;multipart/form-data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;label&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Titulo:&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
@@ -3210,7 +3210,7 @@ pip install ipython
 
 
 &lt;p&gt;Vamos criar também um template para exibir uma mensagem de sucesso ao inserir nova notícia em &lt;code&gt;templates/cadastro_sucesso.html&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;quot;base.html&amp;quot; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% extends &amp;quot;base.html&amp;quot; %}
 {% block title %}
     Notícia {{id_nova_noticia}} inserida com sucesso
 {% endblock %}
@@ -3224,7 +3224,7 @@ pip install ipython
 
 
 &lt;p&gt;Após salvar os 5 arquivos de template base.html, index.html, noticia.html, cadastro.html e cadastro_sucesso.html dentro da pasta templates, altere o &lt;code&gt;news_app.py&lt;/code&gt; para usar a função &lt;strong&gt;render_template&lt;/strong&gt; que recebe como parâmetros o nome do template e as variaveis que estarão disponíveis no escopo do template.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding: utf-8&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;secure_filename&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;

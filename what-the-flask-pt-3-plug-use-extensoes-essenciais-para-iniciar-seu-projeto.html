@@ -176,7 +176,7 @@
 <p>Usaremos a extensão Flask-Bootstrap que traz alguns templates de base e utilidades para uso do Bootstrap no Flask.</p>
 <p>Comece editando o arquivo de requirements adicionando <strong>Flask-Bootstrap</strong></p>
 <p>Arquivo <strong>requirements.txt</strong></p>
-<div class="highlight"><pre>https://github.com/mitsuhiko/flask/tarball/master
+<div class="highlight"><pre><span></span>https://github.com/mitsuhiko/flask/tarball/master
 dataset
 nose
 Flask-Bootstrap
@@ -184,13 +184,13 @@ Flask-Bootstrap
 
 
 <p>Agora instale as dependencias em sua virtualenv.</p>
-<div class="highlight"><pre>pip install -r requirements.txt --upgrade
+<div class="highlight"><pre><span></span>pip install -r requirements.txt --upgrade
 </pre></div>
 
 
 <p>Agora com o Flask-Bootstrap instalado basta iniciarmos a extensão durante a criação de nosso app.</p>
 <p>Editando o arquivo <strong>news_app.py</strong> incluiremos:</p>
-<div class="highlight"><pre><span class="o">...</span>
+<div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="kn">from</span> <span class="nn">flask_bootstrap</span> <span class="kn">import</span> <span class="n">Bootstrap</span>
 
 <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
@@ -202,7 +202,7 @@ Flask-Bootstrap
 
 
 <p>Sendo que o arquivo completo ficaria:</p>
-<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 <span class="kn">from</span> <span class="nn">.blueprints.noticias</span> <span class="kn">import</span> <span class="n">noticias_blueprint</span>
@@ -236,7 +236,7 @@ Flask-Bootstrap
 
 <p>As extensões Flask seguem dois padrões de inicialização: Imediato e Lazy, é recomendado que toda extensão siga este protocolo.</p>
 <p>Inicialização imediata:</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask_nome_da_extensao</span> <span class="kn">import</span> <span class="n">Extensao</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask_nome_da_extensao</span> <span class="kn">import</span> <span class="n">Extensao</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 <span class="n">Extensao</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 </pre></div>
@@ -244,7 +244,7 @@ Flask-Bootstrap
 
 <p>Da forma acima sempre importamos uma classe com o nome da extensao e então passamos o nosso <strong>app</strong> como parametro na inicialiação da extensão. Assim durante o init da extensão ela poderá injetar templates, modificar rotas e adicionar configs no app que foi passado como parametro.</p>
 <p>Inicialização Lazy:</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask_nome_da_extensao</span> <span class="kn">import</span> <span class="n">Extensao</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask_nome_da_extensao</span> <span class="kn">import</span> <span class="n">Extensao</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 <span class="n">extensao</span> <span class="o">=</span> <span class="n">Extensao</span><span class="p">()</span>  <span class="c1"># note que não é passado nada como parametro!</span>
 
@@ -265,7 +265,7 @@ Flask-Bootstrap
 <p>Não entrarei em detalhes a respeito da estensão Flask-Bootstrap pois temos mais uma série de extensões para instalar, mas você pode consultar a <a href="https://pythonhosted.org/Flask-Bootstrap/basic-usage.html">documentação oficial</a> para saber mais a respeito dos blocos de template e utilidades disponíveis.</p>
 </blockquote>
 <h3>Comece alterando o template <strong>base.html</strong> para:</h3>
-<div class="highlight"><pre>{%- extends &quot;bootstrap/base.html&quot; %}
+<div class="highlight"><pre><span></span>{%- extends &quot;bootstrap/base.html&quot; %}
 {% import &quot;bootstrap/utils.html&quot; as utils %}
 {% block title %} {{title or &quot;Notícias&quot;}} {% endblock %}
 {% block navbar -%}
@@ -290,7 +290,7 @@ Flask-Bootstrap
 
 <p>Algumas coisas continuaram iguais ao template antigo, porém agora estamos utilizando blocos <strong>navbar</strong> e <strong>content</strong> definidos pelo Flask-Bootstrap e criamos um novo bloco <strong>news</strong> que usaremos para mostras as nossas notícias.</p>
 <h3>Altere o template index.html</h3>
-<div class="highlight"><pre>{% extends &quot;base.html&quot; %}
+<div class="highlight"><pre><span></span>{% extends &quot;base.html&quot; %}
 {% block news %}
 <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Todas as notícias<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
@@ -308,7 +308,7 @@ Flask-Bootstrap
 
 <p>apenas mudamos o nome do bloco utilizado de <strong>content</strong> para <strong>news</strong> e adicionamos um título.</p>
 <h3>Altere o template noticia.html</h3>
-<div class="highlight"><pre>{% extends &quot;base.html&quot; %}
+<div class="highlight"><pre><span></span>{% extends &quot;base.html&quot; %}
 {% block title%}
     {{noticia.titulo}}
 {% endblock%}
@@ -329,7 +329,7 @@ Flask-Bootstrap
 <p>Novamente mudamos o bloco principal de <strong>content</strong> para <strong>news</strong></p>
 <h3>Altere os templates cadastro.html e cadastro_sucesso.html</h3>
 <p>Altere o bloco utilizado de <strong>content</strong> para <strong>news</strong> e o restante deixe como está por enquanto.</p>
-<div class="highlight"><pre>{% extends &quot;base.html&quot; %}
+<div class="highlight"><pre><span></span>{% extends &quot;base.html&quot; %}
 {% block news %}
 <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;{{ url_for(&#39;noticias.cadastro&#39;) }}&quot;</span> <span class="na">enctype</span><span class="o">=</span><span class="s">&quot;multipart/form-data&quot;</span><span class="p">&gt;</span>
    <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Titulo:<span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
@@ -376,14 +376,14 @@ Flask-Bootstrap
 <p>Vou mostrar os preocedimentos para instalação e execução no Linux/Debian, mas você pode tranquilamente utilizar outro S.O bastando seguir as instruções encontradas no site do docker.</p>
 <h4>Instalando o docker</h4>
 <p>No linux a maneira mais fácil de instalar o Docker é rodando o seguinte comando</p>
-<div class="highlight"><pre>wget -qO- https://get.docker.com/ | sh
+<div class="highlight"><pre><span></span>wget -qO- https://get.docker.com/ | sh
 </pre></div>
 
 
 <p>Se você precisar de ajuda ou estiver usando um sistema operacional alternativo pode seguir as <a href="http://docs.docker.com/linux/started/">instruções do site oficial</a></p>
 <h4>Executando um container MongoDB</h4>
 <p>No DockerHub está disponível a imagem oficial do Mongo, basta executar o comando abaixo para ter o Mongo rodando em um container.</p>
-<div class="highlight"><pre><span class="x">docker run -d -v </span><span class="p">$</span><span class="nv">PWD</span><span class="x">/mongodata:/data/db -p 27017:27017 mongo</span>
+<div class="highlight"><pre><span></span><span class="x">docker run -d -v </span><span class="p">$</span><span class="nv">PWD</span><span class="x">/mongodata:/data/db -p 27017:27017 mongo</span>
 </pre></div>
 
 
@@ -399,7 +399,7 @@ Flask-Bootstrap
 </blockquote>
 <h2>Flask-Mongoengine</h2>
 <p>Adicione a extensão Flask-Mongoengine ao seu arquivo requirements.txt</p>
-<div class="highlight"><pre>https://github.com/mitsuhiko/flask/tarball/master
+<div class="highlight"><pre><span></span>https://github.com/mitsuhiko/flask/tarball/master
 flask-mongoengine
 nose
 Flask-Bootstrap
@@ -410,7 +410,7 @@ Flask-Bootstrap
 <h3>Substituindo o Dataset pelo MongoEngine</h3>
 <p>Agora vamos substituir o <strong>dataset</strong> pelo <strong>MongoEngine</strong>, por padrão o MongoEngine tentará conectar no <strong>localhost</strong> na porta <strong>27017</strong> e utilizar o banco de dados <strong>test</strong>. Mas no nosso caso é essencial informarmos exatamente as configurações desejadas.</p>
 <p>No arquivo de configuração em <code>development_instance/config.cfg</code> adicione as seguintes linhas:</p>
-<div class="highlight"><pre><span class="n">MONGODB_DB</span> <span class="o">=</span> <span class="s2">&quot;noticias&quot;</span>
+<div class="highlight"><pre><span></span><span class="n">MONGODB_DB</span> <span class="o">=</span> <span class="s2">&quot;noticias&quot;</span>
 <span class="n">MONGODB_HOST</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>  <span class="c1"># substitua se utilizar um server remoto</span>
 <span class="n">MONGODB_PORT</span> <span class="o">=</span> <span class="mi">27017</span>
 </pre></div>
@@ -418,7 +418,7 @@ Flask-Bootstrap
 
 <p>Agora vamos ao arquivo <code>db.py</code> vamos definir a conexão com o banco de dados Mongo, apague todo o conteúdo do arquivo e substitua por:</p>
 <p><strong>db.py</strong></p>
-<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 <span class="kn">from</span> <span class="nn">flask_mongoengine</span> <span class="kn">import</span> <span class="n">MongoEngine</span>
 <span class="n">db</span> <span class="o">=</span> <span class="n">MongoEngine</span><span class="p">()</span>
 </pre></div>
@@ -426,7 +426,7 @@ Flask-Bootstrap
 
 <p>Crie um novo arquivo chamado <strong>models.py</strong>, é nesse arquivo que definiremos o esquema de dados nas nossas notícias. Note que o Mongo é um banco schemaless, poderiamos apenas criar um objeto <strong>Noticia(db.DynamicDocument)</strong> usando herança do DynamicDocument e isso tiraria a necessidade da definição do schema, porém, na maioria dos casos definir um schema básico ajuda a construir formulários e validar os dados.</p>
 <p><strong>models.py</strong></p>
-<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 <span class="kn">from</span> <span class="nn">.db</span> <span class="kn">import</span> <span class="n">db</span>
 
 
@@ -440,22 +440,22 @@ Flask-Bootstrap
 <p>Nosso próximo passo é alterar as views para que o armazenamento seja feito no MongoDB ao invés do SQLite.</p>
 <p>No MongoEngine algumas operações serão um pouco diferente, alguns exemplos:</p>
 <p><strong>Criar um novo registro de Noticia</strong></p>
-<div class="highlight"><pre><span class="n">Noticia</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">titulo</span><span class="o">=</span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span> <span class="n">texto</span><span class="o">=</span><span class="s1">&#39;World&#39;</span><span class="p">,</span> <span class="n">imagem</span><span class="o">=</span><span class="s1">&#39;caminho/imagem.png&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">Noticia</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">titulo</span><span class="o">=</span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span> <span class="n">texto</span><span class="o">=</span><span class="s1">&#39;World&#39;</span><span class="p">,</span> <span class="n">imagem</span><span class="o">=</span><span class="s1">&#39;caminho/imagem.png&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p><strong>Buscar todas as Noticias</strong></p>
-<div class="highlight"><pre><span class="n">Noticia</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="n">Noticia</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 </pre></div>
 
 
 <p><strong>Buscar uma noticia pelo id</strong></p>
-<div class="highlight"><pre><span class="n">Noticia</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;xyz&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">Noticia</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;xyz&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Altere <code>blueprints/noticias.py</code> para:</p>
-<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">werkzeug</span> <span class="kn">import</span> <span class="n">secure_filename</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="p">(</span>
@@ -504,7 +504,7 @@ Flask-Bootstrap
 
 <p>Lembre-se que nós ainda não conectamos ao Mongo Server apenas definimos como será a conexão, então precisaremos agora usar o método lazy de inicialização de extensões chamando o <code>init_app()</code> do MongoEngine.</p>
 <p>No arquivo <code>news_app.py</code> adicione as seguintes linhas.</p>
-<div class="highlight"><pre><span class="o">...</span>
+<div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="kn">from</span> <span class="nn">db</span> <span class="kn">import</span> <span class="n">db</span>
 
 <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
@@ -515,7 +515,7 @@ Flask-Bootstrap
 
 
 <p>Sendo que o arquivo final será:</p>
-<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 <span class="kn">from</span> <span class="nn">.blueprints.noticias</span> <span class="kn">import</span> <span class="n">noticias_blueprint</span>
@@ -550,7 +550,7 @@ Flask-Bootstrap
 
 
 <p>Execute o programa</p>
-<div class="highlight"><pre><span class="n">python</span> <span class="n">run</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">run</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 
 
@@ -573,7 +573,7 @@ Flask-Bootstrap
 <p>A vantagem de usar o Flask-Security é que ele já se integra com o MongoEngine e oferece templates prontos para login, alterar senha, envio de email de confirmação etc...</p>
 <p>Começaremos adicionando a dependencia ao arquivo de requirements.</p>
 <p><strong>requirements.txt</strong></p>
-<div class="highlight"><pre>https://github.com/mitsuhiko/flask/tarball/master
+<div class="highlight"><pre><span></span>https://github.com/mitsuhiko/flask/tarball/master
 flask-mongoengine
 nose
 Flask-Bootstrap
@@ -587,7 +587,7 @@ Flask-Security
 <p>Para testes e desenvolvimento você pode utilizar texto puro. <strong>mas em produção escolha uma chave segura!</strong></p>
 <p>Além disso o Flask-Security precisa que seja especificado qual tipo de hash usar nos passwords.</p>
 <p>Adicione ao <code>development_instance/config.cfg</code></p>
-<div class="highlight"><pre><span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="s1">&#39;super-secret&#39;</span>
+<div class="highlight"><pre><span></span><span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="s1">&#39;super-secret&#39;</span>
 <span class="n">SECURITY_PASSWORD_HASH</span> <span class="o">=</span> <span class="s1">&#39;pbkdf2_sha512&#39;</span>
 <span class="n">SECURITY_PASSWORD_SALT</span> <span class="o">=</span> <span class="n">SECRET_KEY</span>
 </pre></div>
@@ -600,7 +600,7 @@ Flask-Security
 <p>O Flask-Security permite o controle de acesso utilizando RBAC (Role Based Access Control), ou seja, usuários pertencem a grupos e os acessos são concedidos aos grupos.</p>
 <p>Para isso precisamos armazenar (no nosso caso no MongoDB) os usuários e seus grupos.</p>
 <p>Crie um novo arquivo <strong>security_models.py</strong> e criaremos duas classes <strong>User</strong> e <strong>Role</strong></p>
-<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 <span class="kn">from</span> <span class="nn">.db</span> <span class="kn">import</span> <span class="n">db</span>
 <span class="kn">from</span> <span class="nn">flask_security</span> <span class="kn">import</span> <span class="n">UserMixin</span><span class="p">,</span> <span class="n">RoleMixin</span>
 <span class="kn">from</span> <span class="nn">flask_security.utils</span> <span class="kn">import</span> <span class="n">encrypt_password</span>
@@ -655,7 +655,7 @@ Flask-Security
 <h3>Inicializando o Flask Security em seu projeto</h3>
 <p>Da mesma forma que fizemos com as outras extensões iremos fazer como security, alterando o arquivo <strong>news_app.py</strong> e inicializando a extensão utilizando o método default.</p>
 <p>Importaremos o <strong>Security</strong> e o <strong>MongoEngineUserDatastore</strong> e inicializaremos a extensão passando nossos models de User e Role.</p>
-<div class="highlight"><pre><span class="o">...</span>
+<div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="kn">from</span> <span class="nn">flask_security</span> <span class="kn">import</span> <span class="n">Security</span><span class="p">,</span> <span class="n">MongoEngineUserDatastore</span>
 <span class="kn">from</span> <span class="nn">.db</span> <span class="kn">import</span> <span class="n">db</span>
 <span class="kn">from</span> <span class="nn">.security_models</span> <span class="kn">import</span> <span class="n">User</span><span class="p">,</span> <span class="n">Role</span>
@@ -668,7 +668,7 @@ Flask-Security
 
 
 <p><strong>news_app.py</strong></p>
-<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 <span class="kn">from</span> <span class="nn">flask_bootstrap</span> <span class="kn">import</span> <span class="n">Bootstrap</span>
@@ -709,7 +709,7 @@ Flask-Security
 <p>Pronto, agora temos nossa base de usuários e grupos definida e o Security irá iniciar em nosso app todo o restante necessário para o controle de login (session, cookies, formulários etc..)</p>
 <h4>Exigindo login para cadastro de notícia</h4>
 <p>Altere a view de cadastro em <code>blueprints/noticias.py</code> e utilize o decorator <code>login_required</code> que é disponibilizado pelo Flask-Security, sendo que o inicio do arquivo ficará assim:</p>
-<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">werkzeug</span> <span class="kn">import</span> <span class="n">secure_filename</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="p">(</span>
@@ -739,7 +739,7 @@ Flask-Security
 
 <p>O único problema é que você ainda não possui um usuário para efetuar o login. Em nosso model de User definimos um método <strong>create_user</strong> que pode ser utilizado diretamente em um terminal iPython. Porém o Flask-Security facilita bastante fornecendo também um formulário de registro de usuários.</p>
 <p>Adicione as seguintes configurações no arquivo <code>development_instance/config.cfg</code> para habilitar o formulário de registro de usuários.</p>
-<div class="highlight"><pre><span class="n">SECURITY_REGISTERABLE</span> <span class="o">=</span> <span class="bp">True</span>
+<div class="highlight"><pre><span></span><span class="n">SECURITY_REGISTERABLE</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="n">SECURITY_TRACKABLE</span> <span class="o">=</span> <span class="bp">True</span>  <span class="c1"># para armazenar data, IP, ultimo login dos users.</span>
 
 <span class="c1"># as opções abaixo devem ser removidas em ambiente de produção</span>
@@ -759,7 +759,7 @@ Flask-Security
 </blockquote>
 <p>Todas as opções de configuração do Flsk-Security estão disponíveis em <a href="https://pythonhosted.org/Flask-Security/configuration.html">https://pythonhosted.org/Flask-Security/configuration.html</a></p>
 <p>Agora será interessante mostrar opções de Login, Logout, Alterar senha na barra de navegação. Para isso altere o template <code>base.html</code> adicionando o bloco de access control.</p>
-<div class="highlight"><pre>{%- extends &quot;bootstrap/base.html&quot; %}
+<div class="highlight"><pre><span></span>{%- extends &quot;bootstrap/base.html&quot; %}
 {% import &quot;bootstrap/utils.html&quot; as utils %}
 {% block title %} {{title or &quot;Notícias&quot;}} {% endblock %}
 {% block navbar -%}
@@ -825,7 +825,7 @@ Flask-Security
 <p>E o <a href="http://www.quokkaproject.org">QuokkaCMS</a>, principal CMS desenvolvido com Flask e MongoDB é baseado também no Flask-Admin.</p>
 <p>Para começar vamos colocar os requisitos no arquivo de requirements!!</p>
 <p><strong>requirements.txt</strong></p>
-<div class="highlight"><pre>https://github.com/mitsuhiko/flask/tarball/master
+<div class="highlight"><pre><span></span>https://github.com/mitsuhiko/flask/tarball/master
 flask-mongoengine
 nose
 Flask-Bootstrap
@@ -841,7 +841,7 @@ Flask-Admin
 <p>O Flask Admin utiliza o Bootstrap por padrão para a camada visual do admin, mas é possivel customizar com o uso de temas.</p>
 <p>A primeira coisa a ser feita depois de ter o Flask-Admin instalado é inicializar o admin da mesma maneira que fizemos com as outras extensões.</p>
 <p>Vamos adicionar as seguintes linhas ao arquivo <strong>news_app.py</strong></p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask_admin</span> <span class="kn">import</span> <span class="n">Admin</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask_admin</span> <span class="kn">import</span> <span class="n">Admin</span>
 <span class="o">...</span>
 
 <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
@@ -852,7 +852,7 @@ Flask-Admin
 
 
 <p>Ficando o arquivo completo.</p>
-<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 <span class="kn">from</span> <span class="nn">flask_bootstrap</span> <span class="kn">import</span> <span class="n">Bootstrap</span>
@@ -902,7 +902,7 @@ Flask-Admin
 <h4>Menu de controle de acesso</h4>
 <p>Em nosso front-end incluimos na barra de menus os links de controle de acesso <strong>login</strong>, <strong>alterar senha</strong> e <strong>logout</strong>, precisamos agora incluir os mesmos itens na barra de menus do Flask-Admin.</p>
 <p>Para começar crie um template novo em <strong>templates/admin_base.html</strong> com o seguinte conteúdo.</p>
-<div class="highlight"><pre>{% extends &#39;admin/base.html&#39; %}
+<div class="highlight"><pre><span></span>{% extends &#39;admin/base.html&#39; %}
 
 {% block access_control %}
 <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;navbar-text btn-group pull-right&quot;</span><span class="p">&gt;</span>
@@ -931,7 +931,7 @@ Flask-Admin
 
 
 <p>Agora altere o template base do Flask-Admin incluindo o parametro <code>base_template='admin_base.html'</code> no <strong>news_app.py</strong></p>
-<div class="highlight"><pre>def create_app(mode):
+<div class="highlight"><pre><span></span>def create_app(mode):
     ...
     admin = Admin(app, name=&#39;Noticias&#39;, template_mode=&#39;bootstrap3&#39;,
                   base_template=&#39;admin_base.html&#39;)
@@ -950,7 +950,7 @@ Flask-Admin
 <p>NOTE: Se desejar que apenas usuários que pertençam ao grupo <strong>admin</strong> tenham acesso descomente as linhas do método <strong>is_acessible</strong></p>
 </blockquote>
 <p><strong>wtf/admin.py</strong></p>
-<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">abort</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">url_for</span>
 <span class="kn">from</span> <span class="nn">flask_security</span> <span class="kn">import</span> <span class="n">current_user</span>
 <span class="kn">from</span> <span class="nn">flask_admin.contrib.mongoengine</span> <span class="kn">import</span> <span class="n">ModelView</span>
@@ -995,7 +995,7 @@ Flask-Admin
 
 <p>Agora só precisamos substituir a maneira como inicializamos o admin pela chamada a função <strong>configure_admin</strong>.</p>
 <p>No arquivo <strong>news_app.py</strong> troque a parte</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask_admin</span> <span class="kn">import</span> <span class="n">Admin</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask_admin</span> <span class="kn">import</span> <span class="n">Admin</span>
 <span class="o">...</span>
 
 <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
@@ -1007,7 +1007,7 @@ Flask-Admin
 
 
 <p>Pelo uso da função <strong>configure_admin</strong></p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">.admin</span> <span class="kn">import</span> <span class="n">configure_admin</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.admin</span> <span class="kn">import</span> <span class="n">configure_admin</span>
 <span class="o">...</span>
 
 <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
@@ -1031,7 +1031,7 @@ Flask-Admin
 
 <p>Altere nosso arquivo <strong>admin.py</strong> e crie uma nova classe <strong>UserModelView</strong> onde limitaremos os campos que serão listados no admin.</p>
 <p><strong>wtf/admin.py</strong></p>
-<div class="highlight"><pre><span class="o">...</span>
+<div class="highlight"><pre><span></span><span class="o">...</span>
 
 <span class="k">class</span> <span class="nc">UserModelView</span><span class="p">(</span><span class="n">SafeModelView</span><span class="p">):</span>
     <span class="n">column_list</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span> <span class="s2">&quot;last_login_at&quot;</span><span class="p">,</span> <span class="s2">&quot;login_count&quot;</span><span class="p">)</span>
@@ -1041,7 +1041,7 @@ Flask-Admin
 
 
 <p>E agora no final do arquivo utilize esta classe ao adicionar a view.</p>
-<div class="highlight"><pre><span class="o">...</span>
+<div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="n">admin</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="n">UserModelView</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s1">&#39;accounts&#39;</span><span class="p">))</span>
 <span class="o">...</span>
 </pre></div>
@@ -1059,7 +1059,7 @@ Flask-Admin
 </blockquote>
 <h2><a href="#flask_cache" name="flask_cache">Flask Cache - Deixando o MongoDB "de boas"</a></h2>
 <p>A cada vez que acessamos a home do nosso site uma consulta é feita ao MongoDB, e isso está definido em <strong>blueprints/noticias.py</strong></p>
-<div class="highlight"><pre><span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
     <span class="n">todas_as_noticias</span> <span class="o">=</span> <span class="n">Noticia</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span>
@@ -1081,7 +1081,7 @@ Flask-Admin
 <h3>Debug Toolbar</h3>
 <p>Antes de mais nada precisamos de uma ajuda para enxergarmos o problema, vamos utilizar a Flask-DebugToolbar para nos mostrar o custo de nossas idas ao banco de dados e outras coisas uteis para o desenvolvimento em Flask.</p>
 <p>Adicione ao arquivo <strong>requirements.txt</strong> a <strong>flask-debugtoolbar</strong> e utilize o flask-mongoengine diretamente do github.</p>
-<div class="highlight"><pre>https://github.com/mitsuhiko/flask/tarball/master
+<div class="highlight"><pre><span></span>https://github.com/mitsuhiko/flask/tarball/master
 https://github.com/MongoEngine/flask-mongoengine/tarball/master
 nose
 Flask-Bootstrap
@@ -1099,7 +1099,7 @@ flask-cache
 <p>E atualize sua <strong>env</strong> <code>pip install -r requirements.txt --upgrade</code></p>
 <p>Agora edite o arquivo <strong>development_instance/config.cfg</strong> adicionando as seguintes entradas.</p>
 <p><strong>development_instance/config.cfg</strong></p>
-<div class="highlight"><pre><span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">True</span>
+<div class="highlight"><pre><span></span><span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="n">DEBUG_TOOLBAR_ENABLED</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="n">DEBUG_TB_INTERCEPT_REDIRECTS</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="n">DEBUG_TB_PROFILER_ENABLED</span> <span class="o">=</span> <span class="bp">True</span>
@@ -1119,7 +1119,7 @@ flask-cache
 
 
 <p>Inicialize a extensão no arquivo <strong>news_app.py</strong></p>
-<div class="highlight"><pre><span class="o">...</span>
+<div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="kn">from</span> <span class="nn">flask_debugtoolbar</span> <span class="kn">import</span> <span class="n">DebugToolbarExtension</span>
 <span class="o">...</span>
 
@@ -1158,13 +1158,13 @@ flask-cache
 <p>NOTE: O mais recomendado é o uso de <strong>Redis</strong> ou <strong>memcached</strong> mas como isso exige a instalação de libs adicionais utilizaremos o <strong>FileSystemCache</strong> em nosso exemplo, porém o uso de cache em file system pode ser até mais lento que o acesso direto ao banco, portanto vamos utiliza-lo somente como exemplo.</p>
 </blockquote>
 <p>Crie um arquivo <strong>cache.py</strong> na raiz do projeto:</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask_cache</span> <span class="kn">import</span> <span class="n">Cache</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask_cache</span> <span class="kn">import</span> <span class="n">Cache</span>
 <span class="n">cache</span> <span class="o">=</span> <span class="n">Cache</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;CACHE_TYPE&#39;</span><span class="p">:</span> <span class="s1">&#39;filesystem&#39;</span><span class="p">,</span> <span class="s1">&#39;CACHE_DIR&#39;</span><span class="p">:</span> <span class="s1">&#39;/tmp&#39;</span><span class="p">})</span>
 </pre></div>
 
 
 <p>Vamos inicializar a extensão da mesma forma que fizemos com as outras e neste ponto nosso arquivo <strong>news_app.py</strong> deverá estar assim:</p>
-<div class="highlight"><pre><span class="c1"># coding: utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 <span class="kn">from</span> <span class="nn">flask_bootstrap</span> <span class="kn">import</span> <span class="n">Bootstrap</span>
@@ -1214,14 +1214,14 @@ flask-cache
 </blockquote>
 <p>Vamos colocar cache nas views de acesso ao MongoDB importaremos o cache que criamos no arquivo <strong>cache.py</strong> e utilizaremos diretamente ou como forma de decorator.</p>
 <p><strong>blueprints/noticias.py</strong></p>
-<div class="highlight"><pre><span class="o">...</span>
+<div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="kn">from</span> <span class="nn">..cache</span> <span class="kn">import</span> <span class="n">cache</span>
 <span class="o">...</span>
 </pre></div>
 
 
 <p>Agora vamos utilizar o cache como decorator para cachear a view <strong>index</strong> durante 5 minutos utilizando <code>@cache.cached(timeout=300)</code> para decorar a view.</p>
-<div class="highlight"><pre><span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="nd">@cache.cached</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
     <span class="n">todas_as_noticias</span> <span class="o">=</span> <span class="n">Noticia</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
@@ -1237,7 +1237,7 @@ flask-cache
 </figure>
 
 <p>Uma outra maneira de cachear é chamando o cache diretamente, vamos fazer isso na view <strong>noticia</strong> usando <strong>cache.get</strong> e <strong>cache.set</strong></p>
-<div class="highlight"><pre><span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/noticia/&lt;noticia_id&gt;&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/noticia/&lt;noticia_id&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">noticia</span><span class="p">(</span><span class="n">noticia_id</span><span class="p">):</span>
     <span class="n">noticia_cacheada</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">noticia_id</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">noticia_cacheada</span><span class="p">:</span>
@@ -1391,7 +1391,7 @@ flask-cache
         });
 
         $(function(){
-            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
         });
         
     </script>

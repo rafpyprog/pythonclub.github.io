@@ -64,17 +64,17 @@ de multiplas threads/processos.&lt;/li&gt;
 Você possui duas opções de como instalar.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Opção 1&lt;/strong&gt; - Instalar diretametente à partir do repositório do Ubuntu. :&lt;/p&gt;
 &lt;p&gt;Abra um terminal e execute:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install python-pyftpdlib
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install python-pyftpdlib
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Obs: O repositório do ubuntu possui uma versão muito desatualizada (1.2) do pyftpdlib, que atualmente está na versão 1.4.
 Recomendo usar a opção 2.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Opção 2&lt;/strong&gt; - Instalar utilizando o &lt;em&gt;pip&lt;/em&gt;:&lt;/p&gt;
 &lt;p&gt;Supondo que você já possua o &lt;em&gt;pip&lt;/em&gt; instalado.&lt;/p&gt;
 &lt;p&gt;Abra um terminal e execute:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo pip install pyftpdlib
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo pip install pyftpdlib
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Se não possuir o &lt;em&gt;pip&lt;/em&gt; instalado.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install python-setuptools
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install python-setuptools
 sudo easy_install pip
 sudo pip install pyftpdlib
 &lt;/pre&gt;&lt;/div&gt;
@@ -82,10 +82,10 @@ sudo pip install pyftpdlib
 &lt;div class="section" id="modo-standalone"&gt;
 &lt;h3&gt;Modo standalone&lt;/h3&gt;
 &lt;p&gt;Com o modo standalone, você pode criar rápidamente um servidor FTP anonimo somente leitura, disponibilizar os arquivos do diretorio atual simplesmente executando:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;python -m pyftpdlib
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python -m pyftpdlib
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Após executar o comando acima, você obterá uma saida similar a esta:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;fabio@luzfcb:~$ python -m pyftpdlib
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fabio@luzfcb:~$ python -m pyftpdlib
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt;&amp;gt;&amp;gt; starting FTP server on 0.0.0.0:2121, &lt;span class="nv"&gt;pid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;21884&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; poller: &amp;lt;class &lt;span class="s1"&gt;&amp;#39;pyftpdlib.ioloop.Epoll&amp;#39;&lt;/span&gt;&amp;gt;
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; masquerade &lt;span class="o"&gt;(&lt;/span&gt;NAT&lt;span class="o"&gt;)&lt;/span&gt; address: None
@@ -96,7 +96,7 @@ sudo pip install pyftpdlib
 &lt;p&gt;Você vai obter algo como:&lt;/p&gt;
 &lt;img alt="acessando o servidor FTP localmente pelo navegador" src="images/luzfcb/ftp_001.png" /&gt;
 &lt;p&gt;No terminal, você poderá visualizar o log:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;fabio@luzfcb:~$ python -m pyftpdlib
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fabio@luzfcb:~$ python -m pyftpdlib
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt;&amp;gt;&amp;gt; starting FTP server on 0.0.0.0:2121, &lt;span class="nv"&gt;pid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;21884&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; poller: &amp;lt;class &lt;span class="s1"&gt;&amp;#39;pyftpdlib.ioloop.Epoll&amp;#39;&lt;/span&gt;&amp;gt;
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; masquerade &lt;span class="o"&gt;(&lt;/span&gt;NAT&lt;span class="o"&gt;)&lt;/span&gt; address: None
@@ -109,9 +109,9 @@ sudo pip install pyftpdlib
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Você tambem pode usar algumas opções para modificar como o &lt;tt class="docutils literal"&gt;pyftpdlib&lt;/tt&gt; é iniciado.&lt;/p&gt;
 &lt;p&gt;Para ver estas opção, execute:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;fabio@luzfcb:~$ python -m pyftpdlib -h
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fabio@luzfcb:~$ python -m pyftpdlib -h
 &lt;/pre&gt;&lt;/div&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;Start a stand alone anonymous FTP server.
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Start a stand alone anonymous FTP server.
 
 Options:
   -h, --help
@@ -142,18 +142,18 @@ Options:
      activate a more verbose logging
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Por exemplo, poderiamos mudar a porta padrão&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;python -m pyftpdlib -p 8080
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python -m pyftpdlib -p 8080
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Se você quiser iniciar o servidor FTP de modo que quem for acessar não necessite informar a porta, ou seja
 ele poderá acessar o servidor em um endereço similar a &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;ftp://127.0.0.1&lt;/span&gt;&lt;/tt&gt; ou &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;ftp://endereço_ip_ou_hostname_atual_do_seu_servidor&lt;/span&gt;&lt;/tt&gt;,
 é necessario executá-lo como super-usuário, informando a porta 21, que é a padrão do protocolo, conforme exemplificado abaixo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo python -m pyftpdlib -p 21
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo python -m pyftpdlib -p 21
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="modo-customizado-por-voce"&gt;
 &lt;h3&gt;Modo customizado por você&lt;/h3&gt;
 &lt;p&gt;Em um exemplo um pouco mais complicado, pode-se programar um servidor FTP com autenticação, com multiplos processos, que usa os usuarios e senha já definidos no Linux/Unix.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;logging&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;logging&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pyftpdlib.handlers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;FTPHandler&lt;/span&gt;
@@ -216,20 +216,20 @@ e compatíveis e ser utilizada por mais desenvolvedores no mundo pythonico.&lt;/
 &lt;p&gt;Pronto! O Python 2.7 está instalado, agora instalaremos o Pip, baixaremos do site:&lt;/p&gt;
 &lt;p&gt;&amp;quot;&lt;a class="reference external" href="http://www.pip-installer.org/en/latest/installing.html#install-pip"&gt;http://www.pip-installer.org/en/latest/installing.html#install-pip&lt;/a&gt;&amp;quot;&lt;/p&gt;
 &lt;p&gt;Baixar o arquivo get-pip.py na pasta “C:\Python27\Scripts”, logo após no cmd digite as seguintes linhas:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="err"&gt;“&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;\&lt;span class="n"&gt;Python27&lt;/span&gt;\&lt;span class="n"&gt;Scripts&lt;/span&gt;\&lt;span class="err"&gt;”&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="err"&gt;“&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;\&lt;span class="n"&gt;Python27&lt;/span&gt;\&lt;span class="n"&gt;Scripts&lt;/span&gt;\&lt;span class="err"&gt;”&lt;/span&gt;
 
 &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Ele efetuará a instalação do pip, para testar digite pip no prompt de comando e execute, ele aparecerá a lista de comandos disponíveis para uso do PIP incluindo o Install que é uma bela mão na roda, onde ele instala pacotes sem precisar baixar arquivos e instalar manualmente.
 O próximo passo será a instalação do Virtualenv, como recomendação para um ambiente de desenvolvimento saudável, instalaremos para evitar problemas com o uso de muitas bibliotecas diferentes para cada projeto, ele separa os ambientes de produção por ambientes virtuais, então é possível usar distribuições e bibliotecas diferentes em diferentes projetos mas no mesmo sistema operacional(usando a instalação limpa), o que seria impossível sem o Virtualenv.
 Instalaremos digitando no prompt de comando:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;virtualenv&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;virtualenv&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora o passo mais difícil, instalar o Django depois do Pip instalado, digite o comando:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;1.6&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;1.6&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Pode ser digitado somente o nome do aplicativo. Ex.:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Mas é sempre interessante saber a versão do que estamos trabalhando para solução de eventuais problemas.&lt;/p&gt;
 &lt;p&gt;Muito difícil não?&lt;/p&gt;

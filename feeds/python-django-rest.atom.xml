@@ -15,7 +15,7 @@
 &lt;p&gt;&lt;strong&gt;Obs&lt;/strong&gt;: se você não sabe &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; sugiro que leia este &lt;a href="http://pythonclub.com.br/tutorial-django-17.html"&gt;tutorial&lt;/a&gt; antes.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;Começando&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ virtualenv -p python3 env
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ virtualenv -p python3 env
 $ &lt;span class="nb"&gt;source&lt;/span&gt; env/bin/activate
 $ mkdir drf-quickstart
 $ &lt;span class="nb"&gt;cd&lt;/span&gt; drf-quickstart
@@ -29,7 +29,7 @@ $ python manage.py createsuperuser  --username&lt;span class="o"&gt;=&lt;/span&g
 
 
 &lt;p&gt;Veja o meu requirements.txt&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;Django==1.8.6
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Django==1.8.6
 argparse==1.2.1
 djangorestframework==3.3.1
 wsgiref==0.1.2
@@ -38,7 +38,7 @@ wsgiref==0.1.2
 
 &lt;h2&gt;Editando &lt;code&gt;settings.py&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;Abra o arquivo &lt;code&gt;settings.py&lt;/code&gt; e em &lt;code&gt;INSTALLED_APPS&lt;/code&gt; acrescente&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="o"&gt;...&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;rest_framework&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
@@ -52,13 +52,13 @@ wsgiref==0.1.2
 
 &lt;h2&gt;Editando &lt;code&gt;serializers.py&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;Crie o arquivo &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; core/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; core/
 $ touch serializers.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Edite&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Group&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Group&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;rest_framework&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;serializers&lt;/span&gt;
 
 
@@ -78,7 +78,7 @@ $ touch serializers.py
 
 
 &lt;h2&gt;Editando &lt;code&gt;views.py&lt;/code&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Group&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Group&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;rest_framework&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;viewsets&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;core.serializers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;UserSerializer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;GroupSerializer&lt;/span&gt;
 
@@ -101,7 +101,7 @@ $ touch serializers.py
 
 
 &lt;h2&gt;Editando &lt;code&gt;urls.py&lt;/code&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;rest_framework&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;routers&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;core&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;
 
@@ -118,19 +118,19 @@ $ touch serializers.py
 
 &lt;h2&gt;Rodando a API&lt;/h2&gt;
 &lt;p&gt;Abra duas abas no terminal, numa rode a aplicação.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py runserver
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py runserver
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;img alt="drf02" src="images/regisdasilva/drf02.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Na outra teste a API.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;curl -H &lt;span class="s1"&gt;&amp;#39;Accept: application/json; indent=4&amp;#39;&lt;/span&gt; -u admin:admin http://127.0.0.1:8000/users/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl -H &lt;span class="s1"&gt;&amp;#39;Accept: application/json; indent=4&amp;#39;&lt;/span&gt; -u admin:admin http://127.0.0.1:8000/users/
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;onde &lt;code&gt;admin:admin&lt;/code&gt; equivale a &lt;code&gt;username:password&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Experimente com &lt;a href="https://github.com/jakubroztocil/httpie#installation"&gt;httpie&lt;/a&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;http -a admin:admin http://127.0.0.1:8000/users/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;http -a admin:admin http://127.0.0.1:8000/users/
 &lt;/pre&gt;&lt;/div&gt;
 
 

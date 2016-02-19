@@ -152,7 +152,7 @@ evita requisições duplicadas, etc.</p>
 componentes e crescer um projeto de maneira gerenciável.</p>
 <h3>Instalando o Scrapy</h3>
 <p>Recomendamos usar virtualenv, e instalar o Scrapy com:</p>
-<div class="highlight"><pre>pip install scrapy
+<div class="highlight"><pre><span></span>pip install scrapy
 </pre></div>
 
 
@@ -162,12 +162,12 @@ instruções específicas por
 plataforma</a>
 ou peça ajuda nos canais citados acima.</p>
 <p>Para verificar se o Scrapy está instalado corretamente, rode o comando:</p>
-<div class="highlight"><pre>scrapy version
+<div class="highlight"><pre><span></span>scrapy version
 </pre></div>
 
 
 <p>A saída que obtenho rodando este comando no meu computador é:</p>
-<div class="highlight"><pre>$ scrapy version
+<div class="highlight"><pre><span></span>$ scrapy version
 2015-11-14 19:58:56 <span class="o">[</span>scrapy<span class="o">]</span> INFO: Scrapy 1.0.3 started <span class="o">(</span>bot: scrapybot<span class="o">)</span>
 2015-11-14 19:58:56 <span class="o">[</span>scrapy<span class="o">]</span> INFO: Optional features available: ssl, http11
 2015-11-14 19:58:56 <span class="o">[</span>scrapy<span class="o">]</span> INFO: Overridden settings: <span class="o">{}</span>
@@ -179,7 +179,7 @@ Scrapy 1.0.3
 <p>Para ter uma noção inicial de como usar o Scrapy, vamos começar rodando um
 spider de exemplo.</p>
 <p>Crie um arquivo <strong>youtube_spider.py</strong> com o seguinte conteúdo:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">scrapy</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
 
 
 <span class="k">def</span> <span class="nf">first</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="n">xpath</span><span class="p">):</span>
@@ -202,7 +202,7 @@ spider de exemplo.</p>
 
 
 <p>Agora, rode o spider com o comando:</p>
-<div class="highlight"><pre>scrapy runspider youtube_spider.py -o portadosfundos.csv
+<div class="highlight"><pre><span></span>scrapy runspider youtube_spider.py -o portadosfundos.csv
 </pre></div>
 
 
@@ -210,7 +210,7 @@ spider de exemplo.</p>
 escrever os dados no arquivo CSV <strong>portadosfundos.csv</strong>.</p>
 <p>Caso tudo deu certo, você verá o log da página sendo baixada, os dados sendo
 extraídos, e umas estatísticas resumindo o processo no final, algo como:</p>
-<div class="highlight"><pre>...
+<div class="highlight"><pre><span></span>...
 2015-11-14 20:14:21 [scrapy] DEBUG: Crawled (200) &lt;GET https://www.youtube.com/user/portadosfundos/videos&gt; (referer: None)
 2015-11-14 20:14:22 [scrapy] DEBUG: Scraped from &lt;200 https://www.youtube.com/user/portadosfundos/videos&gt;
 {&#39;views&#39;: u&#39;323,218 views&#39;, &#39;link&#39;: u&#39;https://www.youtube.com/watch?v=qSqPkRi-UiE&#39;, &#39;title&#39;: u&#39;GAR\xc7ONS&#39;}
@@ -234,12 +234,12 @@ extraídos, e umas estatísticas resumindo o processo no final, algo como:</p>
 <p>Ao final, verifique os resultados abrindo o arquivo CSV no seu editor de
 planilhas favorito.</p>
 <p>Se você quiser os dados em JSON, basta mudar a extensão do arquivo de saída:</p>
-<div class="highlight"><pre>scrapy runspider youtube_spider.py -o portadosfundos.json
+<div class="highlight"><pre><span></span>scrapy runspider youtube_spider.py -o portadosfundos.json
 </pre></div>
 
 
 <p>Outro formato interessante que o Scrapy suporta é <a href="http://jsonlines.org">JSON lines</a>:</p>
-<div class="highlight"><pre>scrapy runspider youtube_spider.py -o portadosfundos.jl
+<div class="highlight"><pre><span></span>scrapy runspider youtube_spider.py -o portadosfundos.jl
 </pre></div>
 
 
@@ -255,7 +255,7 @@ herdam de
 definindo de alguma maneira as requisições iniciais do crawl e como proceder
 para tratar os resultados dessas requisições.</p>
 <p>Um exemplo simples de spider é:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">scrapy</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
 
 <span class="k">class</span> <span class="nc">SpiderSimples</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;meuspider&#39;</span>
@@ -270,7 +270,7 @@ para tratar os resultados dessas requisições.</p>
 
 <p>Se você rodar o spider acima com o comando <code>scrapy runspider</code>, deverá ver no
 log as mensagens:</p>
-<div class="highlight"><pre>2015-11-14 21:11:13 [scrapy] DEBUG: Crawled (200) &lt;GET http://example.com&gt; (referer: None)
+<div class="highlight"><pre><span></span>2015-11-14 21:11:13 [scrapy] DEBUG: Crawled (200) &lt;GET http://example.com&gt; (referer: None)
 2015-11-14 21:11:13 [meuspider] DEBUG: Visitei o site: http://example.com
 </pre></div>
 
@@ -278,7 +278,7 @@ log as mensagens:</p>
 <p>Como iniciar um crawl a partir de uma lista de URLs é uma tarefa comum,
 o Scrapy permite você usar o atribute de classe <code>start_urls</code> em vez de
 definir o método <code>start_requests()</code> a cada vez:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">scrapy</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
 
 <span class="k">class</span> <span class="nc">SpiderSimples</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;meuspider&#39;</span>
@@ -303,7 +303,7 @@ Scrapy são
 encaminha para o pipeline de dados ou para a fila de próximas requisições a
 serem feitas.</p>
 <p>Exemplo:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">scrapy</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
 
 <span class="k">class</span> <span class="nc">SpiderSimples</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;meuspider&#39;</span>
@@ -326,7 +326,7 @@ serem feitas.</p>
 o que ele vai fazer. Depois, rode e verifique se ele fez mesmo
 o que você esperava.</p>
 <p>Você deverá ver no log algo como:</p>
-<div class="highlight"><pre>2015-11-14 21:32:53 [scrapy] DEBUG: Crawled (200) &lt;GET http://example.com&gt; (referer: None)
+<div class="highlight"><pre><span></span>2015-11-14 21:32:53 [scrapy] DEBUG: Crawled (200) &lt;GET http://example.com&gt; (referer: None)
 2015-11-14 21:32:53 [meuspider] DEBUG: Visitei o site: http://example.com
 2015-11-14 21:32:53 [scrapy] DEBUG: Scraped from &lt;200 http://example.com&gt;
 {&#39;url&#39;: &#39;http://example.com&#39;, &#39;tamanho&#39;: 1270}
@@ -345,7 +345,7 @@ em um arquivo <strong>settings.py</strong> no caso de você estar usando um proj
 diretamente no spider definindo um atributo de classe <code>custom_settings</code>.</p>
 <p>Exemplo setando no código do spider um delay de 1.5 segundos entre cada
 requisição:</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="n">MeuSpider</span>(<span class="n">scrapy</span>.<span class="n">Spider</span>):
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">MeuSpider</span>(<span class="n">scrapy</span>.<span class="n">Spider</span>):
     <span class="nb">name</span> = <span class="s">&#39;meuspider&#39;</span>
 
     <span class="n">custom_settings</span> = {
@@ -356,7 +356,7 @@ requisição:</p>
 
 <p>Para setar uma setting diretamente na linha de comando com <code>scrapy runspider</code>,
 use opção <code>-s</code>:</p>
-<div class="highlight"><pre>scrapy runspider meuspider.py -s DOWNLOAD_DELAY=1.5
+<div class="highlight"><pre><span></span>scrapy runspider meuspider.py -s DOWNLOAD_DELAY=1.5
 </pre></div>
 
 
@@ -408,7 +408,7 @@ browsers em todas as tabelas, mesmo quando não declarado no markup.</p>
 <h3>Spider para a versão com HTML semântico</h3>
 <p>Para explorar a página (e a API de scraping do Scrapy), você pode usar
 o comando <code>scrapy shell URL</code>:</p>
-<div class="highlight"><pre>scrapy shell http://spidyquotes.herokuapp.com/
+<div class="highlight"><pre><span></span>scrapy shell http://spidyquotes.herokuapp.com/
 </pre></div>
 
 
@@ -417,7 +417,7 @@ tiver instalado no mesmo virtualenv) com o objeto <code>response</code>, o mesmo
 obteria num método <strong>callback</strong>. Recomendo usar o IPython porque fica mais fácil
 de explorar as APIs sem precisar ter que abrir a documentação a cada vez.</p>
 <p>Exemplo de exploração com o shell:</p>
-<div class="highlight"><pre>&gt;&gt;&gt; # olhando o fonte HTML, percebi que cada citação está num <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;quote&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; # olhando o fonte HTML, percebi que cada citação está num <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;quote&quot;</span><span class="nt">&gt;</span>
 &gt;&gt;&gt; # vamos pegar o primeiro dele, e ver como extrair o texto:
 &gt;&gt;&gt; quote = response.css(&#39;.quote&#39;)[0]
 &gt;&gt;&gt; quote
@@ -452,7 +452,7 @@ de explorar as APIs sem precisar ter que abrir a documentação a cada vez.</p>
 
 <p>Com o resultado da exploração inicial acima, podemos começar escrevendo um
 spider assim, num arquivo <code>quote_spider.py</code>:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">scrapy</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
 
 
 <span class="k">class</span> <span class="nc">QuotesSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
@@ -472,14 +472,14 @@ spider assim, num arquivo <code>quote_spider.py</code>:</p>
 
 
 <p>Se você rodar esse spider com:</p>
-<div class="highlight"><pre>scrapy runspider quote_spider.py -o quotes.csv
+<div class="highlight"><pre><span></span>scrapy runspider quote_spider.py -o quotes.csv
 </pre></div>
 
 
 <p>Você obterá os dados das citações da primeira página no arquivo <code>quotes.csv</code>.
 Só está faltando agora seguir o link para a próxima página, o que você também
 pode descobrir com mais alguma exploração no shell:</p>
-<div class="highlight"><pre>&gt;&gt;&gt; response.css(&#39;li.next&#39;)
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; response.css(&#39;li.next&#39;)
     [&lt;Selector xpath=u&quot;descendant-or-self::li[@class and contains(concat(&#39; &#39;, normalize-space(@class), &#39; &#39;), &#39; next &#39;)]&quot; data=u&#39;&lt;li class=&quot;next&quot;&gt;\n                &lt;a hre&#39;&gt;]
 &gt;&gt;&gt; response.css(&#39;li.next a&#39;)
     [&lt;Selector xpath=u&quot;descendant-or-self::li[@class and contains(concat(&#39; &#39;, normalize-space(@class), &#39; &#39;), &#39; next &#39;)]/descendant-or-self::*/a&quot; data=u&#39;&lt;a href=&quot;/page/2/&quot;&gt;Next &lt;span aria-hidde&#39;&gt;]
@@ -492,7 +492,7 @@ pode descobrir com mais alguma exploração no shell:</p>
 
 
 <p>Juntando isso com o spider, ficamos com:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">scrapy</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
 
 
 <span class="k">class</span> <span class="nc">QuotesSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
@@ -515,13 +515,13 @@ pode descobrir com mais alguma exploração no shell:</p>
 
 
 <p>Agora, se você rodar esse spider novamente com:</p>
-<div class="highlight"><pre>scrapy runspider quote_spider.py
+<div class="highlight"><pre><span></span>scrapy runspider quote_spider.py
 </pre></div>
 
 
 <p>Perceberá que ainda assim ele vai extrair apenas os items da primeira página, e a segunda página
 vai falhar com um código HTTP 429, com a seguinte mensagem no log:</p>
-<div class="highlight"><pre>2015-11-15 00:06:15 [scrapy] DEBUG: Crawled (429) &lt;GET http://spidyquotes.herokuapp.com/page/2/&gt; (referer: http://spidyquotes.herokuapp.com/)
+<div class="highlight"><pre><span></span>2015-11-15 00:06:15 [scrapy] DEBUG: Crawled (429) &lt;GET http://spidyquotes.herokuapp.com/page/2/&gt; (referer: http://spidyquotes.herokuapp.com/)
 2015-11-15 00:06:15 [scrapy] DEBUG: Ignoring response &lt;429 http://spidyquotes.herokuapp.com/page/2/&gt;: HTTP status code is not handled or not allowed
 2015-11-15 00:06:15 [scrapy] INFO: Closing spider (finished)
 </pre></div>
@@ -544,7 +544,7 @@ fazer crawling sabendo que estamos respeitando a política.</p>
 <p>Como esta é uma necessidade comum para alguns sites, o Scrapy também permite
 você configurar este comportamento diretamente no spider, setando o atributo de
 classe <code>download_delay</code>:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">scrapy</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
 
 
 <span class="k">class</span> <span class="nc">QuotesSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
@@ -580,12 +580,12 @@ Guardian</a>, <a href="http://lemonde.fr">LeMonde</a>, etc.</p>
 interessado, você pode usar o extrator de microdata da biblioteca
 <a href="https://pypi.python.org/pypi/extruct">extruct</a>.</p>
 <p>Instale a biblioteca extruct com:</p>
-<div class="highlight"><pre>pip install extruct
+<div class="highlight"><pre><span></span>pip install extruct
 </pre></div>
 
 
 <p>Veja como fica o código usando a lib:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">scrapy</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
 <span class="kn">from</span> <span class="nn">extruct.w3cmicrodata</span> <span class="kn">import</span> <span class="n">LxmlMicrodataExtractor</span>
 
 
@@ -626,7 +626,7 @@ na estrutura e nos padrões presentes no conteúdo.</p>
 retorna os os nós <code>tr</code> (linhas da tabela) que contém os textos das citações,
 usando uma condição para pegar apenas linhas que estão imediatamente antes de
 linhas cujo texto comece com <code>"Tags: "</code>:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="nt">response</span><span class="nc">.xpath</span><span class="o">(</span><span class="s1">&#39;//tr</span><span class="cp">[</span><span class="nx">.</span><span class="p">/</span><span class="nx">following</span><span class="na">-sibling</span><span class="nl">::tr</span><span class="err">[</span><span class="mi">1</span><span class="cp">]</span><span class="s1">/td</span><span class="cp">[</span><span class="nx">starts</span><span class="na">-with</span><span class="p">(</span><span class="nx">.</span><span class="p">,</span> <span class="s2">&quot;Tags:&quot;</span><span class="p">)</span><span class="cp">]</span><span class="s1">]&#39;</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nt">response</span><span class="nc">.xpath</span><span class="o">(</span><span class="s1">&#39;//tr</span><span class="cp">[</span><span class="nx">.</span><span class="p">/</span><span class="nx">following</span><span class="na">-sibling</span><span class="nl">::tr</span><span class="err">[</span><span class="mi">1</span><span class="cp">]</span><span class="s1">/td</span><span class="cp">[</span><span class="nx">starts</span><span class="na">-with</span><span class="p">(</span><span class="nx">.</span><span class="p">,</span> <span class="s2">&quot;Tags:&quot;</span><span class="p">)</span><span class="cp">]</span><span class="s1">]&#39;</span><span class="o">)</span>
 <span class="cp">[</span><span class="o">&lt;</span><span class="nx">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;</span> <span class="n">data</span><span class="o">=</span><span class="nx">u</span><span class="s1">&#39;&lt;tr style=&quot;border-bottom: 0px; &quot;&gt;</span><span class="se">\n</span><span class="s1">      &#39;</span><span class="o">&gt;</span><span class="p">,</span>
  <span class="o">&lt;</span><span class="nx">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;</span> <span class="n">data</span><span class="o">=</span><span class="nx">u</span><span class="s1">&#39;&lt;tr style=&quot;border-bottom: 0px; &quot;&gt;</span><span class="se">\n</span><span class="s1">      &#39;</span><span class="o">&gt;</span><span class="p">,</span>
  <span class="o">&lt;</span><span class="nx">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;</span> <span class="n">data</span><span class="o">=</span><span class="nx">u</span><span class="s1">&#39;&lt;tr style=&quot;border-bottom: 0px; &quot;&gt;</span><span class="se">\n</span><span class="s1">      &#39;</span><span class="o">&gt;</span><span class="p">,</span>
@@ -641,7 +641,7 @@ linhas cujo texto comece com <code>"Tags: "</code>:</p>
 
 
 <p>Para extrair os dados, precisamos de alguma exploração:</p>
-<div class="highlight"><pre>&gt;&gt;&gt; quote = response.xpath(&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;)[0]
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; quote = response.xpath(&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;)[0]
 &gt;&gt;&gt; print quote.extract()
 <span class="nt">&lt;tr</span> <span class="na">style=</span><span class="s">&quot;border-bottom: 0px; &quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">&quot;padding-top: 2em;&quot;</span><span class="nt">&gt;</span>“We accept the love we think we deserve.” Author: Stephen Chbosky<span class="nt">&lt;/td&gt;</span>
@@ -656,7 +656,7 @@ linhas cujo texto comece com <code>"Tags: "</code>:</p>
 <p>Note como não tem marcação separando o autor do conteúdo, apenas uma string
 "Author:".  Então podemos usar o método <code>.re()</code> da classe seletor, que nos
 permite usar uma expressão regular:</p>
-<div class="highlight"><pre>&gt;&gt;&gt; text, author = quote.xpath(&#39;normalize-space(.)&#39;).re(&#39;(.+) Author: (.+)&#39;)
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; text, author = quote.xpath(&#39;normalize-space(.)&#39;).re(&#39;(.+) Author: (.+)&#39;)
 &gt;&gt;&gt; text
     u&#39;\u201cWe accept the love we think we deserve.\u201d&#39;
 &gt;&gt;&gt; author
@@ -665,7 +665,7 @@ permite usar uma expressão regular:</p>
 
 
 <p>O código final do spider fica:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">scrapy</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
 
 
 <span class="k">class</span> <span class="nc">QuotesSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
@@ -697,12 +697,12 @@ dentro de um array estático. E agora?</p>
 converter o código Javascript em XML e então usar XPath ou CSS em cima do XML
 resultante para extrair os dados que a gente quer.</p>
 <p>Instale a biblioteca js2xml com:</p>
-<div class="highlight"><pre>pip install js2xml
+<div class="highlight"><pre><span></span>pip install js2xml
 </pre></div>
 
 
 <p>Exemplo no shell:</p>
-<div class="highlight"><pre><span class="n">scrapy</span> <span class="n">shell</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">spidyquotes</span><span class="o">.</span><span class="n">herokuapp</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">js</span><span class="o">/</span>
+<div class="highlight"><pre><span></span><span class="n">scrapy</span> <span class="n">shell</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">spidyquotes</span><span class="o">.</span><span class="n">herokuapp</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">js</span><span class="o">/</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">js2xml</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">script</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//script[contains(., &quot;var data =&quot;)]/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
@@ -729,7 +729,7 @@ resultante para extrair os dados que a gente quer.</p>
 
 
 <p>O código final fica:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">scrapy</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
 <span class="kn">import</span> <span class="nn">js2xml</span>
 
 
@@ -767,7 +767,7 @@ no Firefox é similar).</p>
 <p>Nesse caso, precisamos replicar essas requisições com o Scrapy, e tratar
 os resultados de acordo com a resposta.</p>
 <p>Explorando no shell, vemos que o conteúdo é JSON:</p>
-<div class="highlight"><pre>scrapy shell http://spidyquotes.herokuapp.com/api/quotes?page=1
+<div class="highlight"><pre><span></span>scrapy shell http://spidyquotes.herokuapp.com/api/quotes?page=1
 
 &gt;&gt;&gt; response.headers
 {&#39;Content-Type&#39;: &#39;application/json&#39;,
@@ -778,7 +778,7 @@ os resultados de acordo com a resposta.</p>
 
 
 <p>Portanto, podemos simplesmente usar o módulo JSON da biblioteca padrão e ser feliz:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">json</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">json</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 <span class="p">[</span><span class="s1">u&#39;has_next&#39;</span><span class="p">,</span> <span class="s1">u&#39;quotes&#39;</span><span class="p">,</span> <span class="s1">u&#39;tag&#39;</span><span class="p">,</span> <span class="s1">u&#39;page&#39;</span><span class="p">,</span> <span class="s1">u&#39;top_ten_tags&#39;</span><span class="p">]</span>
@@ -795,7 +795,7 @@ os resultados de acordo com a resposta.</p>
 
 
 <p>Código final do spider fica:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">scrapy</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
 
@@ -826,7 +826,7 @@ minreq</code>.</p>
 uma requisição do browser, e pode opcionalmente mostrar como montar
 um objeto <code>scrapy.Request</code> equivalente.</p>
 <p>Rode o minreq com:</p>
-<div class="highlight"><pre>minreq --action print_scrapy_request
+<div class="highlight"><pre><span></span>minreq --action print_scrapy_request
 </pre></div>
 
 
@@ -852,7 +852,7 @@ escalonamento dos spiders.</p>
 <p>Até aqui nossos exemplos foram simplesmente rodando spiders com <code>scrapy runspider</code>.
 Para fazer o deploy, chegou a hora de criar um projeto Scrapy propriamente dito.</p>
 <p>Para criar um projeto, basta rodar o comando <code>scrapy startproject</code> passando o nome do projeto:</p>
-<div class="highlight"><pre>scrapy startproject quotes_crawler
+<div class="highlight"><pre><span></span>scrapy startproject quotes_crawler
 </pre></div>
 
 
@@ -860,7 +860,7 @@ Para fazer o deploy, chegou a hora de criar um projeto Scrapy propriamente dito.
 arquivos com spiders para dentro do diretório <code>quotes_crawler/spiders</code>.
 Certifique-se de usar um nome único para cada spider.</p>
 <p>A partir desse momento, você deve ser capaz de rodar cada spider em separado usando o comando:</p>
-<div class="highlight"><pre>scrapy crawl NOME_DO_SPIDER
+<div class="highlight"><pre><span></span>scrapy crawl NOME_DO_SPIDER
 </pre></div>
 
 
@@ -906,12 +906,12 @@ hora fazer o deploy.</p>
 <a href="http://doc.scrapinghub.com/shub.html">shub</a>, cliente da linha de comando
 para o Scrapy Cloud e demais serviços da Scrapinghub.</p>
 <p>Instale-a com:</p>
-<div class="highlight"><pre>pip install shub --upgrade
+<div class="highlight"><pre><span></span>pip install shub --upgrade
 </pre></div>
 
 
 <p>Faça login com o shub, usando o comando:</p>
-<div class="highlight"><pre>shub login
+<div class="highlight"><pre><span></span>shub login
 </pre></div>
 
 
@@ -927,7 +927,7 @@ linha de comando.</p>
 <p>Antes de fazer deploy do projeto, precisamos fazer deploy das dependências no
 Scrapy Cloud.
 Crie um arquivo <code>requirements-deploy.txt</code> com o seguinte conteúdo:</p>
-<div class="highlight"><pre>extruct
+<div class="highlight"><pre><span></span>extruct
 js2xml
 slimit
 ply
@@ -935,20 +935,20 @@ ply
 
 
 <p>Rode o comando:</p>
-<div class="highlight"><pre>shub deploy-reqs PROJECT_ID requirements-deploy.txt
+<div class="highlight"><pre><span></span>shub deploy-reqs PROJECT_ID requirements-deploy.txt
 </pre></div>
 
 
 <p>Substitua <code>PROJECT_ID</code> pelo id do seu projeto (neste caso, 27199).</p>
 <h4>Deploy das dependências</h4>
 <p>Agora faça deploy do projeto com o comando:</p>
-<div class="highlight"><pre>shub deploy -p PROJECT_ID
+<div class="highlight"><pre><span></span>shub deploy -p PROJECT_ID
 </pre></div>
 
 
 <p>Novamente, substituindo <code>PROJECT_ID</code> pelo id do seu projeto (neste caso, 27199)</p>
 <p>Se tudo deu certo, você verá algo como</p>
-<div class="highlight"><pre>$ shub deploy -p 27199
+<div class="highlight"><pre><span></span>$ shub deploy -p 27199
 Packing version 1447628479
 Deploying to Scrapy Cloud project <span class="s2">&quot;27199&quot;</span>
 <span class="o">{</span><span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;ok&quot;</span>, <span class="s2">&quot;project&quot;</span>: 27199, <span class="s2">&quot;version&quot;</span>: <span class="s2">&quot;1447628479&quot;</span>, <span class="s2">&quot;spiders&quot;</span>: 5<span class="o">}</span>
@@ -1080,7 +1080,7 @@ do app <code>spidyquotes</code> quanto na escrita do material. <em>You rock, dud
         });
 
         $(function(){
-            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
         });
         
     </script>

@@ -3,13 +3,13 @@
 &lt;p&gt;Se você como eu é um desenvolvedor incansável quando o assunto é automatizar ao máximo seu workflow de trabalho,este post foi feito para você. O &lt;a href="http://www.fig.sh/"&gt;fig&lt;/a&gt; utilizando-se do docker, torna a criação de ambientes de desenvolvimento algo muito simples.&lt;/p&gt;
 &lt;h1&gt;Instalação&lt;/h1&gt;
 &lt;p&gt;A instalação do fig é bem simples, primeiro você terá que ter o docker instalado em sua máquina, caso não tenha, siga esse &lt;a href="http://hudsonbrendon.com/docker-introducao-e-aplicacao.html"&gt;tutorial&lt;/a&gt; onde exemplifico a instalação do mesmo de forma bem simples. Com o docker pronto, é hora de instalar o fig, essa ferramenta é um pacote python, e a forma mais simples de instalá-la é através do pip, que é o gerenciador de pacotes do python, caso não o tenha instalado em sua máquina, acesse o &lt;a href="https://pip.pypa.io/en/latest/installing.html"&gt;site oficial&lt;/a&gt; e veja a forma mais simples para você obtê-lo. Com tudo pronto, execute no terminal.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ pip install -U fig
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install -U fig
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h1&gt;Utilizando o fig com django&lt;/h1&gt;
 &lt;p&gt;Com o docker e o fig devidamente instalados em sua máquina, é hora de integrar o django com essa maravilhosa ferramenta, para tanto, criaremos um diretório com um nome qualquer, aqui chamado de "app", e dentro do mesmo criaremos um arquivo chamado "Dockerfile", com o seguinte conteúdo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;FROM python:2.7
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;FROM python:2.7
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
 WORKDIR /code
@@ -20,13 +20,13 @@ ADD . /code/
 
 
 &lt;p&gt;Em seguinda criaremos um arquivo chamado "requirements.txt", com os seguintes pacotes.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;Django
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Django
 psycopg2
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E por fim um arquivo, "fig.yml", com a configuração abaixo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;db:
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;db:
   image: postgres
 web:
   build: .
@@ -54,18 +54,18 @@ web:
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Com os arquivos finalizados, é hora de criar uma aplicação em django, para isso basta.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ fig run web django-admin.py startproject figexample .
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ fig run web django-admin.py startproject figexample .
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E o resultado será esse:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ ls
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls
 Dockerfile       fig.yml          figexample       manage.py        requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Com a aplicação em mãos, a primeira coisa que você deve fazer é abrir o arquivo settings.py de sua aplicação, e configurar o banco de dados da mesma. Para isso no arquivo figexample/settings.py basta especificar as configurações abaixo no banco de dados.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DATABASES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;DATABASES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 &lt;span class="s1"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 &lt;span class="s1"&gt;&amp;#39;ENGINE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;django.db.backends.postgresql_psycopg2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="s1"&gt;&amp;#39;NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;postgres&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -78,18 +78,18 @@ Dockerfile       fig.yml          figexample       manage.py        requirements
 
 
 &lt;p&gt;Com o banco configurado é hora de subir sua aplicação, na pasta raiz do projeto use.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ fig up
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ fig up
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;O fig se encarregará de criar todos os conteineres, linkalos, e startar sua aplicação na porta 8000, acesse seu &lt;a href="http://localhost:8000/"&gt;localhost:8000&lt;/a&gt; e você verá sua aplicação em execução.&lt;/p&gt;
 &lt;p&gt;Para rodar os comandos do django, você pode fazer da seguinte forma.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ fig run &amp;lt;bloco&amp;gt; &amp;lt;comando&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ fig run &amp;lt;bloco&amp;gt; &amp;lt;comando&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Por exemplo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ fig run web ./manage.py syncdb
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ fig run web ./manage.py syncdb
 &lt;/pre&gt;&lt;/div&gt;
 
 

@@ -119,17 +119,17 @@
 <p>Existem várias maneiras de se fazer o Django trabalhar com apache, uma delas é a combinação Apache + <a href="http://code.google.com/p/modwsgi/">mod_wsgi</a> e será dessa forma que faremos. Com mod_wsgi podemos implementar qualquer aplicação Python que suporte a interface <strong>Python WSGI</strong>.</p>
 <h5>Instalando alguns pacotes necessários</h5>
 <p>Antes de mais nada, atualize a lista de pacotes</p>
-<div class="highlight"><pre>$ sudo apt-get update
+<div class="highlight"><pre><span></span>$ sudo apt-get update
 </pre></div>
 
 
 <p><em>Apache + mod_wsgi</em></p>
-<div class="highlight"><pre>$ sudo apt-get install apache2 libapache2-mod-wsgi
+<div class="highlight"><pre><span></span>$ sudo apt-get install apache2 libapache2-mod-wsgi
 </pre></div>
 
 
 <p><em>Python setup tools + pip</em></p>
-<div class="highlight"><pre>$ sudo apt-get install python-setuptools
+<div class="highlight"><pre><span></span>$ sudo apt-get install python-setuptools
 $ sudo apt-get install python-pip
 </pre></div>
 
@@ -137,17 +137,17 @@ $ sudo apt-get install python-pip
 <h3>Vamos testar o WSGI?</h3>
 <p>Vamos fazer um teste com uma aplicação simples em python.</p>
 <p>Começe criando um diretório na raiz do apache <em>(DocumentRoot)</em></p>
-<div class="highlight"><pre>$ sudo mkdir /var/www/wsgi_test
+<div class="highlight"><pre><span></span>$ sudo mkdir /var/www/wsgi_test
 </pre></div>
 
 
 <p>Em seguida vamos criar nossa app de teste ...</p>
-<div class="highlight"><pre>$ sudo vim /var/www/app.wsgi
+<div class="highlight"><pre><span></span>$ sudo vim /var/www/app.wsgi
 </pre></div>
 
 
 <p>... e escrever nossa app python compatível com WSGI</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
     <span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;200 OK&#39;</span>
     <span class="n">output</span> <span class="o">=</span> <span class="s1">&#39;Hello World!&#39;</span>
     <span class="n">response_headers</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Content-type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">),</span>
@@ -158,21 +158,21 @@ $ sudo apt-get install python-pip
 
 
 <p>Vamos criar agora um host para usar como nosso domínio da aplicação teste</p>
-<div class="highlight"><pre>$ sudo vim /etc/hosts
+<div class="highlight"><pre><span></span>$ sudo vim /etc/hosts
 </pre></div>
 
 
 <p>Adicione esta linha ao seu arquivo hosts</p>
-<div class="highlight"><pre>127.0.0.1 wsgi_test
+<div class="highlight"><pre><span></span>127.0.0.1 wsgi_test
 </pre></div>
 
 
 <p>E vamos configurar nosso VirtualHost no Apache.</p>
-<div class="highlight"><pre>$ sudo vim /etc/apache2/sites-available/wsgi_test
+<div class="highlight"><pre><span></span>$ sudo vim /etc/apache2/sites-available/wsgi_test
 </pre></div>
 
 
-<div class="highlight"><pre><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
     <span class="nb">ServerName</span> wsgi_test
     <span class="nb">DocumentRoot</span> <span class="sx">/var/www/wsgi_test</span>
     <span class="nt">&lt;Directory</span> <span class="s">/var/www/wsgi_test</span><span class="nt">&gt;</span>
@@ -185,13 +185,13 @@ $ sudo apt-get install python-pip
 
 
 <p>Ative-o</p>
-<div class="highlight"><pre>$ sudo a2ensite wsgi_test
+<div class="highlight"><pre><span></span>$ sudo a2ensite wsgi_test
 </pre></div>
 
 
 <p><em>Obs: esse comando cria um link simbólico do wsgi_test para a pasta sites-enabled. Você pode fazer isso manualmente.</em></p>
 <p>Reinicie o apache:</p>
-<div class="highlight"><pre>$ sudo service apache2 reload
+<div class="highlight"><pre><span></span>$ sudo service apache2 reload
 </pre></div>
 
 
@@ -201,14 +201,14 @@ $ sudo apt-get install python-pip
 <h5>Criando o ambiente</h5>
 <p>É sempre bom trabalharmos com ambientes virtuais em nossas aplicações python, para isso temos o <a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a>. Eu, particularmente, prefiro usar o <a href="https://virtualenvwrapper.readthedocs.org/en/latest/">VirtualenvWrapper</a>, que separa os ambientes virtuais das aplicações. Caso você não conheça, indico o post do <a href="https://github.com/arruda/">Arruda</a> que foi o que me guiou quando comecei a usar. <a href="http://www.arruda.blog.br/programacao/python/usando-virtualenvwrapper/">Usando VirtualEnvWrapper</a></p>
 <p>No meu caso usei o virtualenvwrapper e meu filesystem é o seguinte:</p>
-<div class="highlight"><pre>+-- /home/guilouro
+<div class="highlight"><pre><span></span>+-- /home/guilouro
 <span class="p">|</span>   +-- .virtualenvs  <span class="c1">#[Ambientes]</span>
 <span class="p">|</span>   +-- www           <span class="c1">#[Projetos]</span>
 </pre></div>
 
 
 <p>O Virtualenvwrapper criará meus projetos dentro de <strong>www</strong> e os ambientes em <strong>.virtualenvs</strong>. Mas para que isso aconteça temos que adicionar algumas linhas em nosso <code>~/.bashrc</code></p>
-<div class="highlight"><pre><span class="c1"># adicione no final do arquivo ~/.bashrc</span>
+<div class="highlight"><pre><span></span><span class="c1"># adicione no final do arquivo ~/.bashrc</span>
 <span class="c1"># ...</span>
 <span class="nb">export</span> <span class="nv">PROJECT_HOME</span><span class="o">=</span>~/www
 <span class="nb">export</span> <span class="nv">WORKON_HOME</span><span class="o">=</span>~/.virtualenvs
@@ -217,27 +217,27 @@ $ sudo apt-get install python-pip
 
 
 <p>Atualize com o comando:</p>
-<div class="highlight"><pre><span class="nb">source</span> ~/.bashrc
+<div class="highlight"><pre><span></span><span class="nb">source</span> ~/.bashrc
 </pre></div>
 
 
 <h5>Criando nosso projeto</h5>
-<div class="highlight"><pre>$ mkproject wsgi
+<div class="highlight"><pre><span></span>$ mkproject wsgi
 </pre></div>
 
 
 <p>Com as configurações anteriores o virtualenvwrapper já irá ativar o ambiente e levar você para a pasta do projeto. Mas para ativar é muito simples, basta usar:</p>
-<div class="highlight"><pre>$ workon wsgi
+<div class="highlight"><pre><span></span>$ workon wsgi
 </pre></div>
 
 
 <p>Com o nosso ambiente virtual criado partiremos então para a criação do nosso projeto django. Utilizarei a versão mais atual até o momento, nesse caso 1.7</p>
-<div class="highlight"><pre>$ pip install django
+<div class="highlight"><pre><span></span>$ pip install django
 </pre></div>
 
 
 <p>Não entrarei em detalhes para a configuração inicial do django, portanto irei usar um template que eu criei para a inicialização dos meus projeto. Criamos então o projeto dessa forma:</p>
-<div class="highlight"><pre><span class="c1"># startproject pelo template</span>
+<div class="highlight"><pre><span></span><span class="c1"># startproject pelo template</span>
 $ django-admin.py startproject --template https://github.com/guilouro/django-boilerplate/archive/master.zip wsgitest .
 <span class="c1"># instala os pacotes</span>
 $ pip install -r requirements.txt
@@ -249,18 +249,18 @@ $ python manage.py migrate
 <p>Você encontra esse template aqui -&gt; <a href="https://github.com/guilouro/django-boilerplate">django-boilerplate</a></p>
 <h5>Criando um site no apache para o projeto</h5>
 <p>Primeiramente, vamos criar um domínio fictício para responder com o nosso projeto ao ser acessado.</p>
-<div class="highlight"><pre>$ sudo vim /etc/hosts
+<div class="highlight"><pre><span></span>$ sudo vim /etc/hosts
 
 127.0.0.1   djangowsgi.com
 </pre></div>
 
 
 <p>Agora vamos configurar o apache:</p>
-<div class="highlight"><pre>$ sudo vim /etc/apache2/sites-available/djangowsgi
+<div class="highlight"><pre><span></span>$ sudo vim /etc/apache2/sites-available/djangowsgi
 </pre></div>
 
 
-<div class="highlight"><pre><span class="nb">WSGIDaemonProcess</span> djangowsgi.com python-path=/home/guilouro/www/wsgi:/home/guilouro/.virtualenvs/wsgi/lib/python2.7/site-packages
+<div class="highlight"><pre><span></span><span class="nb">WSGIDaemonProcess</span> djangowsgi.com python-path=/home/guilouro/www/wsgi:/home/guilouro/.virtualenvs/wsgi/lib/python2.7/site-packages
 <span class="nb">WSGIProcessGroup</span> djangowsgi.com
 
 <span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
@@ -292,7 +292,7 @@ $ python manage.py migrate
 
 
 <p>Reinicie novamente o apache:</p>
-<div class="highlight"><pre>$ sudo service apache2 reload
+<div class="highlight"><pre><span></span>$ sudo service apache2 reload
 </pre></div>
 
 
@@ -420,7 +420,7 @@ $ python manage.py migrate
         });
 
         $(function(){
-            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
         });
         
     </script>

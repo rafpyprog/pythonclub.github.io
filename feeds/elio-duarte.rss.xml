@@ -18,26 +18,26 @@ Existem &lt;em&gt;cartridges&lt;/em&gt; que habilitam uma linguagem (Python, Rub
 &lt;p&gt;Você precisa ter uma conta no &lt;a href="https://www.openshift.com/products/online"&gt;Openshift Online&lt;/a&gt; e o programa &lt;strong&gt;rhc&lt;/strong&gt; instalado em sua máquina.&lt;/p&gt;
 &lt;p&gt;Crie uma conta gratuita clicando &lt;a href="https://www.openshift.com/app/account/new"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Depois instale o programa &lt;strong&gt;ruby&lt;/strong&gt; e o &lt;strong&gt;rhc&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install -y ruby
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install -y ruby
 sudo gem install rhc
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Clique &lt;a href="http://openshift.github.io/documentation/oo_client_tools_installation_guide.html"&gt;aqui&lt;/a&gt; para ver como instalar o &lt;strong&gt;rhc&lt;/strong&gt; em outras plataformas.&lt;/p&gt;
 &lt;p&gt;Faça o login:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;rhc setup
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rhc setup
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Por fim confirme que você consegue conectar em sua conta executando:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;rhc apps
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rhc apps
 No applications. Use &lt;span class="s1"&gt;&amp;#39;rhc create-app&amp;#39;&lt;/span&gt;.
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;Criando um app no Openshift&lt;/h3&gt;
 &lt;p&gt;Crie um app com nome de &lt;strong&gt;django&lt;/strong&gt; usando o &lt;em&gt;cartridge&lt;/em&gt; &lt;strong&gt;Python 2.7&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;rhc create-app -a django -t python-2.7
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rhc create-app -a django -t python-2.7
 Application Options
 -------------------
 Domain:     stvs
@@ -64,29 +64,29 @@ Cloned to:  /home/usuario/django
 Acesse o endereço e veja a página padrão que foi criada.&lt;/p&gt;
 &lt;h3&gt;Definindo dependências&lt;/h3&gt;
 &lt;p&gt;Acesse o repositório que foi criado ao executar &lt;code&gt;rhc app-create&lt;/code&gt;, ele terá o nome do seu app:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; django/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; django/
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Existem duas formas de definir as dependências do seu app Python no Openshift, pelo arquivo &lt;strong&gt;setup.py&lt;/strong&gt; ou pelo &lt;strong&gt;requirements.txt&lt;/strong&gt;.
 Durante o processo de &lt;strong&gt;deploy&lt;/strong&gt; o Openshift automaticamente executa &lt;code&gt;python setup.py install&lt;/code&gt; e &lt;code&gt;pip -r requirements.txt&lt;/code&gt; na raiz do repositório.&lt;/p&gt;
 &lt;p&gt;Usaremos somente o &lt;strong&gt;requirements.txt&lt;/strong&gt;, então exclua o &lt;strong&gt;setup.py&lt;/strong&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;rm setup.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rm setup.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Faça &lt;em&gt;commit&lt;/em&gt; mas não execute &lt;code&gt;git push&lt;/code&gt; ainda.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git commit -am &lt;span class="s1"&gt;&amp;#39;removido setup.py&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git commit -am &lt;span class="s1"&gt;&amp;#39;removido setup.py&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Adicione o Django no &lt;em&gt;requirements.txt&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Django==1.7&amp;#39;&lt;/span&gt; &amp;gt; requirements.txt
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Django==1.7&amp;#39;&lt;/span&gt; &amp;gt; requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Crie um virtualenv para testar se o &lt;strong&gt;requirements.txt&lt;/strong&gt; está correto:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pyenv virtualenv 2.7.8 openshift
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pyenv virtualenv 2.7.8 openshift
 pyenv activate openshift
 pip install -r requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
@@ -97,7 +97,7 @@ pip install -r requirements.txt
 &lt;p&gt;De agora em diante não direi mais para você fazer o &lt;em&gt;commit&lt;/em&gt; o tempo todo mas é uma boa prática que você o faça a cada etapa.&lt;/p&gt;
 &lt;p&gt;Execute o comando abaixo para criar o arquivo &lt;strong&gt;.gitignore&lt;/strong&gt; e adicionar algumas entradas nele.
 Esse arquivo irá impedir que alguns arquivos desnecessários sejam adicionados ao git.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;cat &amp;gt; .gitignore &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &amp;gt; .gitignore &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
 &lt;span class="s"&gt;*.pyc&lt;/span&gt;
 &lt;span class="s"&gt;*.sqlite3&lt;/span&gt;
 &lt;span class="s"&gt;EOF&lt;/span&gt;
@@ -105,18 +105,18 @@ Esse arquivo irá impedir que alguns arquivos desnecessários sejam adicionados 
 
 
 &lt;p&gt;Crie um projeto Django com o nome &lt;strong&gt;openshift&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;django-admin.py startproject openshift
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;django-admin.py startproject openshift
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Acesse o projeto e crie um &lt;em&gt;app&lt;/em&gt; com nome &lt;strong&gt;exemplo&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; openshift
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; openshift
 django-admin.py startapp exemplo
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Execute o &lt;em&gt;migrate&lt;/em&gt; inicial e depois inicie o servidor de teste:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;python manage.py migrate
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py migrate
 python manage.py runserver
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -128,7 +128,7 @@ Um desses arquivos é o &lt;strong&gt;wsgi.py&lt;/strong&gt; na raiz do reposit�
 O WSGI &lt;em&gt;entry-point&lt;/em&gt; nada mais é do que o &lt;em&gt;callable&lt;/em&gt; do servidor WSGI.
 No nosso caso usamos uma variável mas poderia ser um método ou uma função, o importante é que ele tenha o nome de &lt;strong&gt;application&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Execute o comando abaixo para criar o WSGI &lt;em&gt;entry-point&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;cat &amp;gt; wsgi.py &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &amp;gt; wsgi.py &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
 &lt;span class="s"&gt;#!/usr/bin/python&lt;/span&gt;
 
 &lt;span class="s"&gt;import os&lt;/span&gt;
@@ -144,12 +144,12 @@ No nosso caso usamos uma variável mas poderia ser um método ou uma função, o
 
 
 &lt;p&gt;Abra o arquivo de configuração padrão do seu projeto Django:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;vi openshift/openshift/settings.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vi openshift/openshift/settings.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Adicione o app &lt;strong&gt;exemplo&lt;/strong&gt; em &lt;strong&gt;INSTALLED_APPS&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
    &lt;span class="s1"&gt;&amp;#39;django.contrib.admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
    &lt;span class="o"&gt;...&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;exemplo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -158,17 +158,17 @@ No nosso caso usamos uma variável mas poderia ser um método ou uma função, o
 
 
 &lt;p&gt;Salve e depois abra o arquivo de configuração que usaremos em produção.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;vi openshift/openshift/production.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vi openshift/openshift/production.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Comece importando todas as configuração do arquivo de configuração padrão:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;settings&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;settings&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Desabilite o modo &lt;strong&gt;debug&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -181,7 +181,7 @@ No nosso caso usamos uma variável mas poderia ser um método ou uma função, o
 &lt;/ul&gt;
 &lt;p&gt;Você pode ver outras variáveis disponíveis &lt;a href="https://developers.openshift.com/en/managing-environment-variables.html"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Copie as configurações:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SECRET_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;OPENSHIFT_SECRET_TOKEN&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;SECRET_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;OPENSHIFT_SECRET_TOKEN&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
 &lt;span class="n"&gt;ALLOWED_HOSTS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;OPENSHIFT_APP_DNS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
 
@@ -196,27 +196,27 @@ No nosso caso usamos uma variável mas poderia ser um método ou uma função, o
 
 &lt;p&gt;Os &lt;em&gt;cartridges&lt;/em&gt; padrões de Python, utilizam o diretório &lt;em&gt;wsgi/static&lt;/em&gt; para servir arquivos estáticos pelo Apache.
 Ele ainda não existe, para criá-lo execute:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;mkdir -p wsgi/static
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p wsgi/static
 touch wsgi/static/.gitkeep
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Por fim adicione a linha abaixo em sua configuração:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;STATIC_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;OPENSHIFT_REPO_DIR&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;wsgi&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;static&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;STATIC_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;OPENSHIFT_REPO_DIR&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;wsgi&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;static&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Criando uma view simples&lt;/h2&gt;
 &lt;p&gt;Vamos criar uma &lt;em&gt;view&lt;/em&gt; básica somente para testar nosso projeto.&lt;/p&gt;
 &lt;p&gt;Adicione a url abaixo no arquivo &lt;em&gt;openshift/openshift/urls.py&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;exemplo.views.home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Depois crie a &lt;em&gt;view&lt;/em&gt; em &lt;em&gt;openshift/exemplo/views.py&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;home&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Hello World!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -227,7 +227,7 @@ touch wsgi/static/.gitkeep
 &lt;h2&gt;Fazendo deploy&lt;/h2&gt;
 &lt;p&gt;Na raiz do repositório, existe um diretório oculto chamado &lt;strong&gt;.openshift&lt;/strong&gt;.
 Vamos listar seu conteúdo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; .openshift
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; .openshift
 tree
 .
 ├── action_hooks
@@ -255,7 +255,7 @@ tree
 &lt;p&gt;Essa pasta serve para agendar a execução de scripts.
 Ela funciona igual aos diretórios &lt;strong&gt;cron&lt;/strong&gt; em qualquer distribuição Linux.
 Você precisa adicionar o &lt;em&gt;cartridge&lt;/em&gt; &lt;strong&gt;cron&lt;/strong&gt; ao seu app para que os agendamentos funcionem.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;rhc cartridge add -a django -c cron-1.4
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rhc cartridge add -a django -c cron-1.4
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -267,7 +267,7 @@ Outras &lt;strong&gt;markers&lt;/strong&gt; disponíveis estão detalhadas &lt;a
 &lt;p&gt;O funcionamento dessa pasta é bem parecido com o da pasta &lt;strong&gt;markers&lt;/strong&gt;.
 Em algumas ações o Openshift vai procurar determinados arquivos dentro dela e executá-los em uma determinada ordem.
 Para listar quais são as ações disponíveis execute o comando &lt;code&gt;rhc app --help&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;rhc app --help
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rhc app --help
 Usage: rhc app &amp;lt;action&amp;gt;
 
 Creates and controls an OpenShift application.  To see the list of all applications use the rhc domain show command.  Note that delete is not reversible
@@ -301,18 +301,18 @@ scale-up      Scale up the application&lt;span class="s1"&gt;&amp;#39;s web cart
 &lt;p&gt;Não é preciso que nenhum arquivo exista, essa é só uma forma de controlar o comportamento do seu app.
 Para saber mais sobre &lt;em&gt;action hooks&lt;/em&gt; clique &lt;a href="http://openshift.github.io/documentation/oo_user_guide.html#cartridge-control-action-hooks"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;No nosso caso, só vamos usar o arquivo &lt;strong&gt;deploy&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;touch .openshift/action_hooks/deploy
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;touch .openshift/action_hooks/deploy
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;É preciso que o arquivo seja executável, então:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;chmod +x .openshift/action_hooks/deploy
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;chmod +x .openshift/action_hooks/deploy
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Em nosso &lt;em&gt;deploy&lt;/em&gt;, apenas vamos atualizar o schema do banco e recolher os arquivos estáticos.
 Note que precisamos informar o arquivo de configuração que usaremos em produção, que é diferente daquele que está no arquivo &lt;strong&gt;manage.py&lt;/strong&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;cat &amp;gt; .openshift/action_hooks/deploy &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &amp;gt; .openshift/action_hooks/deploy &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
 &lt;span class="s"&gt;PYTHONPATH=\$OPENSHIFT_REPO_DIR/openshift&lt;/span&gt;
 &lt;span class="s"&gt;django-admin.py migrate --settings=&amp;#39;openshift.production&amp;#39; --pythonpath=\$PYTHONPATH&lt;/span&gt;
 &lt;span class="s"&gt;python \$PYTHONPATH/manage.py collectstatic -c --noinput --settings=&amp;#39;openshift.production&amp;#39; --pythonpath=\$PYTHONPATH&lt;/span&gt;
@@ -323,7 +323,7 @@ Note que precisamos informar o arquivo de configuração que usaremos em produç
 &lt;p&gt;Feito isso, faça &lt;em&gt;commit&lt;/em&gt; e depois execute &lt;code&gt;git push&lt;/code&gt;.
 O &lt;em&gt;push&lt;/em&gt; irá disparar o processo de &lt;strong&gt;build&lt;/strong&gt;.
 Você verá varias mensagens em seu terminal mas no final irá aparecer:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;...
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
 remote: Git Post-Receive Result: success
 remote: Activation status: success
 remote: Deployment completed with status: success

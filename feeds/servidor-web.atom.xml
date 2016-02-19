@@ -10,7 +10,7 @@
 &lt;li&gt;Ambientes Python isolados (&lt;a href="http://virtualenvwrapper.readthedocs.org/en/latest/"&gt;Virtualenwrapper&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Instalando o gerenciador de pacotes, o proxy e o controlador de processos.&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install python-pip nginx supervisor
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install python-pip nginx supervisor
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -24,12 +24,12 @@
 &lt;/blockquote&gt;
 &lt;h3&gt;Organizando meu ambiente com &lt;strong&gt;&lt;em&gt;Virtualenvwrapper&lt;/em&gt;&lt;/strong&gt;.&lt;/h3&gt;
 &lt;p&gt;Instalando o &lt;strong&gt;&lt;em&gt;Virtualenvwrapper&lt;/em&gt;&lt;/strong&gt; para ter ambientes isolados, prossibilitando diferentes projetos &lt;strong&gt;&lt;em&gt;Python&lt;/em&gt;&lt;/strong&gt;, no mesmo servidor.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pip install virtualenvwrapper
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install virtualenvwrapper
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Nosso filesystem será organizado da seguinte forma:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# -- /home/myusr&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -- /home/myusr&lt;/span&gt;
 &lt;span class="c1"&gt;#    -- /www             [Projetos]&lt;/span&gt;
 &lt;span class="c1"&gt;#    -- /env             [Ambientes]&lt;/span&gt;
 mkdir ~/www ~/env
@@ -38,7 +38,7 @@ mkdir ~/www ~/env
 
 &lt;p&gt;&lt;strong&gt;Como funciona?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;O &lt;strong&gt;&lt;em&gt;Virtualenvwrapper&lt;/em&gt;&lt;/strong&gt; irá criar os projetos dentro do &lt;code&gt;~/www&lt;/code&gt; e os ambientes dentro do &lt;code&gt;~/env&lt;/code&gt;, basta configurar algumas variáveis no seu &lt;code&gt;~/.bashrc&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# ~/.bashrc&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# ~/.bashrc&lt;/span&gt;
 ...
 &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PROJECT_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;~/www
 &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;WORKON_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;~/env
@@ -47,7 +47,7 @@ mkdir ~/www ~/env
 
 
 &lt;p&gt;Atualize o seu &lt;code&gt;~/.bashrc&lt;/code&gt; e crie um projeto.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;mkproject myproject
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkproject myproject
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -55,7 +55,7 @@ mkdir ~/www ~/env
 &lt;p&gt;&lt;strong&gt;O que fazer agora?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Vamos configurar o Nginx e o Supervisor para ele trabalhar na nossa estrutura de arquivos.&lt;/p&gt;
 &lt;p&gt;Edite o arquivo &lt;code&gt;/etc/nginx/nginx.conf&lt;/code&gt;,&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;##
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;##
 # Virtual Host Configs
 ##
 include /etc/nginx/conf.d/*.conf;
@@ -67,7 +67,7 @@ include /home/myusr/www/*/nginx.conf;
 
 
 &lt;p&gt;e edite o &lt;code&gt;/etc/supervisor/supervisord.conf&lt;/code&gt;,&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;[include]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[include]&lt;/span&gt;
 &lt;span class="c1"&gt;;files = /etc/supervisor/conf.d/*.conf&lt;/span&gt;
 
 &lt;span class="c1"&gt;# encontra a configuracao dos seus projetos&lt;/span&gt;
@@ -80,14 +80,14 @@ include /home/myusr/www/*/nginx.conf;
 &lt;p&gt;Agora que temos todos as ferramentas necessárias instaladas e nosso ambiente configurado e bem organizado, vamos colocar para funcionar o nosso projeto.&lt;/p&gt;
 &lt;h3&gt;Configurando meu ambiente &lt;strong&gt;&lt;em&gt;WSGI&lt;/em&gt;&lt;/strong&gt; com &lt;strong&gt;&lt;em&gt;Gunicorn&lt;/em&gt;&lt;/strong&gt;.&lt;/h3&gt;
 &lt;p&gt;Vamos ativar nosso ambiente virtual e instalar o &lt;strong&gt;&lt;em&gt;Gunicorn&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;workon myproject
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;workon myproject
 pip install gunicorn
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Qual próximo passo então?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Vamos criar nossos arquivos de configuração, e logs do nosso projeto.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; ~/www/myproject
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; ~/www/myproject
 mkdir static media logs project
 touch nginx.conf supervisor.conf start.sh
 touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
@@ -95,7 +95,7 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 
 
 &lt;p&gt;No momento nosso filesystem se parece com esse:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;-- home/myusr/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;-- home/myusr/
   -- www/                   &lt;span class="o"&gt;[&lt;/span&gt;Projetos&lt;span class="o"&gt;]&lt;/span&gt;
     -- myproject/
       -- nginx.conf         &lt;span class="o"&gt;[&lt;/span&gt;Config &lt;span class="k"&gt;do&lt;/span&gt; Nginx&lt;span class="o"&gt;]&lt;/span&gt;
@@ -113,7 +113,7 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 
 &lt;p&gt;&lt;strong&gt;Como configurar meu projeto?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Vamos começar pelo &lt;code&gt;start.sh&lt;/code&gt;, ele vai ser responsável por iniciar a sua aplicação &lt;strong&gt;&lt;em&gt;WSGI&lt;/em&gt;&lt;/strong&gt; usando o servidor &lt;strong&gt;&lt;em&gt;Gunicorn&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class="c1"&gt;# Diretorio e arquivo de log&lt;/span&gt;
 &lt;span class="nb"&gt;set&lt;/span&gt; -e
 &lt;span class="nv"&gt;LOGFILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/myusr/www/myproject/logs/gunicorn.log
@@ -135,7 +135,7 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 
 &lt;p&gt;Na linha 6, &lt;em&gt;ADDRESS&lt;/em&gt;, diz que o nosso projeto vai rodar localhost com a porta 8000, esse mesmo ip:porta será usado na configuração do &lt;code&gt;nginx.conf&lt;/code&gt;, as linhas abaixo fazem o processo de ativar o ambiente virtual e navegar para pasta do fonte do projeto, para que o &lt;strong&gt;&lt;em&gt;Gunicorn&lt;/em&gt;&lt;/strong&gt; possa encontrar o arquivo &lt;code&gt;wsgi.py&lt;/code&gt;, esse é o arquivo que configura o ambiente de produção no &lt;strong&gt;&lt;em&gt;Django&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Agora vamos configurar o &lt;code&gt;nginx.conf&lt;/code&gt;, para que ele possa escutar o nosso dominio na porta 80 e redirecionar a requisição para a nossa aplicação no &lt;em&gt;127.0.0.1:8000&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;upstream&lt;/span&gt; &lt;span class="nt"&gt;myproject&lt;/span&gt;&lt;span class="nc"&gt;.com.br&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;upstream&lt;/span&gt; &lt;span class="nt"&gt;myproject&lt;/span&gt;&lt;span class="nc"&gt;.com.br&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="m"&gt;127&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;8000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
@@ -170,7 +170,7 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 &lt;p&gt;Criamos um &lt;em&gt;upstream&lt;/em&gt; que representa a nossa aplicação, e configuramos o &lt;em&gt;server&lt;/em&gt; para escutar nosso dominio na porta 80 e redirecionar tudo com &lt;em&gt;location /&lt;/em&gt; para nosso &lt;em&gt;upstream&lt;/em&gt;, no &lt;em&gt;location /static/&lt;/em&gt; e &lt;em&gt;localtion /media/&lt;/em&gt; criamos um alias para nossa pasta de arquivos, assim o &lt;strong&gt;&lt;em&gt;Nginx&lt;/em&gt;&lt;/strong&gt; passa a servir os arquivos estáticos e de midia.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Falta pouco!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Precisamos só de configurar o &lt;strong&gt;&lt;em&gt;Supervisor&lt;/em&gt;&lt;/strong&gt; para iniciar nosso projeto automaticamente, veja o &lt;code&gt;supervisor.conf&lt;/code&gt; de exemplo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;[program:myproject]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[program:myproject]&lt;/span&gt;
 &lt;span class="na"&gt;command&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;/home/myusr/www/myproject/start.sh&lt;/span&gt;
 &lt;span class="na"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;myusr&lt;/span&gt;
 &lt;span class="na"&gt;stdout_logfile&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;/home/myusr/www/myproject/logs/supervisor.log&lt;/span&gt;
@@ -181,7 +181,7 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 
 
 &lt;p&gt;Ufa!, é um arquivo bem simples só precisamos informar o que queremos executar e com qual usuário ele fará isso, agora vamos iniciar nosso projeto.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo service nginx restart
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo service nginx restart
 sudo /etc/init.d/supervisor start myproject
 &lt;/pre&gt;&lt;/div&gt;
 

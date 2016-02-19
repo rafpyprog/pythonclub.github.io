@@ -21,13 +21,13 @@
 &lt;/blockquote&gt;
 &lt;h3&gt;Criando o projeto&lt;/h3&gt;
 &lt;p&gt;Eu usei este &lt;a href="https://gist.github.com/rg3915/a26a2daef369b729e2ed"&gt;Makefile&lt;/a&gt; para criar o projeto.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;wget --output-document&lt;span class="o"&gt;=&lt;/span&gt;Makefile https://goo.gl/UMTpZ1
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget --output-document&lt;span class="o"&gt;=&lt;/span&gt;Makefile https://goo.gl/UMTpZ1
 make setup
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Ele vai criar um virtualenv e pedir pra você executar os seguintes comandos:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
 &lt;span class="nb"&gt;cd&lt;/span&gt; djangoproject
 make install
 &lt;/pre&gt;&lt;/div&gt;
@@ -36,7 +36,7 @@ make install
 &lt;p&gt;Pronto! Agora nós já temos um projetinho Django funcionando. Note que o nome da app é &lt;strong&gt;core&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3&gt;Criando as pastas&lt;/h3&gt;
 &lt;p&gt;Para criarmos um novo comando precisamos das seguintes pastas:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;core
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;core
 ├── management
 │   ├── __init__.py
 │   ├── commands
@@ -46,7 +46,7 @@ make install
 
 
 &lt;p&gt;No nosso caso, teremos 3 novos comandos, então digite, estando na pasta &lt;code&gt;djangoproject&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;mkdir -p core/management/commands
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p core/management/commands
 touch core/management/__init__.py
 touch core/management/commands/&lt;span class="o"&gt;{&lt;/span&gt;__init__.py,hello.py,initdata.py,search.py&lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -57,7 +57,7 @@ touch core/management/commands/&lt;span class="o"&gt;{&lt;/span&gt;__init__.py,h
 &lt;p&gt;Importante: estamos usando Django 1.8 e Python 3.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;O Django 1.8 usa o &lt;code&gt;argparse&lt;/code&gt; como parser de argumentos do &lt;code&gt;command&lt;/code&gt;, mais informações em &lt;a href="https://docs.python.org/2/library/argparse.html#module-argparse"&gt;module-argparse&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.management.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BaseCommand&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CommandError&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.management.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BaseCommand&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CommandError&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;optparse&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;make_option&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Command&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BaseCommand&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -76,13 +76,13 @@ touch core/management/commands/&lt;span class="o"&gt;{&lt;/span&gt;__init__.py,h
 
 
 &lt;p&gt;Entendeu? Basicamente o &lt;code&gt;handle&lt;/code&gt; é a função que executa o comando principal, no caso o &lt;code&gt;self.stdout.write('Hello world.')&lt;/code&gt;, ou seja, se você digitar o comando a seguir ele imprime a mensagem na tela.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py hello
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py hello
 Hello World
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;code&gt;--awards&lt;/code&gt; é um argumento opcional, você também pode digitar &lt;code&gt;-a&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py hello -a
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py hello -a
 Hello World
 Awards
 &lt;/pre&gt;&lt;/div&gt;
@@ -91,7 +91,7 @@ Awards
 &lt;p&gt;&lt;code&gt;action="store_true"&lt;/code&gt; significa que ele armazena um valor verdadeiro.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Obs&lt;/strong&gt;: A partir do Django 1.8 os comandos de argumentos opcionais são baseados em &lt;code&gt;**options&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Veja uma outra forma de escrever&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.management.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BaseCommand&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CommandError&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.management.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BaseCommand&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CommandError&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Command&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BaseCommand&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
@@ -110,7 +110,7 @@ Awards
 
 &lt;p&gt;A diferença é que aqui usamos &lt;code&gt;parser.add_argument&lt;/code&gt; ao invés de &lt;code&gt;make_option&lt;/code&gt;.&lt;/p&gt;
 &lt;h3&gt;hello.py&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.management.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BaseCommand&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CommandError&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.management.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BaseCommand&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CommandError&lt;/span&gt;
 &lt;span class="c1"&gt;# minimalista&lt;/span&gt;
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Command&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BaseCommand&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;help&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Print hello world&amp;#39;&lt;/span&gt;
@@ -121,7 +121,7 @@ Awards
 
 
 &lt;p&gt;&lt;strong&gt;Uso&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py hello
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py hello
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -129,7 +129,7 @@ Awards
 &lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Obter alguns filmes de uma api e salvar os dados no banco.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;api&lt;/strong&gt;: &lt;a href="http://www.omdbapi.com/"&gt;omdbapi.com&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;models.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Movie&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;u&amp;#39;título&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -152,14 +152,14 @@ Awards
 
 
 &lt;p&gt;Não se esqueça de fazer&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;python manage.py makemigrations
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py makemigrations
 python manage.py migrate
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;admin.py&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Vamos visualizar pelo admin.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;admin&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;admin&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;core.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Movie&lt;/span&gt;
 
 &lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Movie&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -167,7 +167,7 @@ python manage.py migrate
 
 
 &lt;p&gt;Instale o &lt;code&gt;requests&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pip install requests
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install requests
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -180,7 +180,7 @@ python manage.py migrate
 &lt;li&gt;&lt;code&gt;save()&lt;/code&gt; salva os dados no banco&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;handle(movies, year)&lt;/code&gt; este é o comando principal. Busca os filmes várias vezes, conforme definido pela variável &lt;code&gt;movies&lt;/code&gt;, e salva os n filmes.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*- #&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*- #&lt;/span&gt;
 
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;random&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;string&lt;/span&gt;
@@ -288,7 +288,7 @@ python manage.py migrate
 
 
 &lt;p&gt;&lt;strong&gt;Uso&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;Usage: python manage.py initdata &lt;span class="o"&gt;[&lt;/span&gt;options&lt;span class="o"&gt;]&lt;/span&gt; 
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Usage: python manage.py initdata &lt;span class="o"&gt;[&lt;/span&gt;options&lt;span class="o"&gt;]&lt;/span&gt; 
 
 Faz o crawler numa api de filmes e retorna os dados.
      Uso: python manage.py initdata
@@ -299,7 +299,7 @@ Faz o crawler numa api de filmes e retorna os dados.
 
 &lt;h3&gt;search.py&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Localizar o filme pelo título ou ano de lançamento.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.management.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BaseCommand&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CommandError&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.management.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BaseCommand&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CommandError&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;optparse&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;make_option&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;core.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Movie&lt;/span&gt;
 
@@ -341,7 +341,7 @@ Faz o crawler numa api de filmes e retorna os dados.
 
 
 &lt;p&gt;&lt;strong&gt;Uso&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;Usage: python manage.py search &lt;span class="o"&gt;[&lt;/span&gt;options&lt;span class="o"&gt;]&lt;/span&gt; 
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Usage: python manage.py search &lt;span class="o"&gt;[&lt;/span&gt;options&lt;span class="o"&gt;]&lt;/span&gt; 
 
 Localiza um filme pelo título ou ano de lançamento.
      Uso: python manage.py search -t &lt;span class="s1"&gt;&amp;#39;Ted 2&amp;#39;&lt;/span&gt;
@@ -399,7 +399,7 @@ no Django atualmente:&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;Antes de começarmos a falar sobre as CBV's vamos ver como apontar uma rota
  do Django para uma CBV:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TemplateView&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;meuapp.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;AboutView&lt;/span&gt;
 
@@ -428,7 +428,7 @@ retornado.&lt;/p&gt;
 nesse caso uma lista com os verbos suportados. A não ser que o método
 &lt;code&gt;options()&lt;/code&gt; seja sobrescrito.&lt;/p&gt;
 &lt;p&gt;Um exemplo de implementação:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;View&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;View&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -453,7 +453,7 @@ uma requisição é:&lt;/p&gt;
 é a melhor CBV para o caso. Você pode editar o contexto que o template recebe
 sobrescrevendo a função &lt;code&gt;get_context_data()&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Um exemplo de implementação:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TemplateView&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TemplateView&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;articles.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
 
@@ -474,7 +474,7 @@ contexto uma variável chamada &lt;code&gt;lastest_articles&lt;/code&gt;.&lt;/p&
 &lt;a href="https://docs.djangoproject.com/en/1.8/ref/class-based-views/mixins-simple/#django.views.generic.base.ContextMixin"&gt;ContextMixin&lt;/a&gt;
 esse mixin pega automaticamente os argumentos da URL que serviu a View.&lt;/p&gt;
 &lt;p&gt;Considere por exemplo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HelloView&lt;/span&gt;
 
 &lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
@@ -499,7 +499,7 @@ uma requisição é:&lt;/p&gt;
 &lt;li&gt;&lt;code&gt;get_redirect_url()&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Considere a seguinte configuração de URL's para o exemplo de implementação:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;RedirectView&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;article.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArticleCounterRedirectView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ArticleDetail&lt;/span&gt;
@@ -512,7 +512,7 @@ uma requisição é:&lt;/p&gt;
 
 
 &lt;p&gt;Exemplo de implementação:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.shortcuts&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;get_object_or_404&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.shortcuts&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;get_object_or_404&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;RedirectView&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;articles.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
@@ -575,7 +575,7 @@ Django procura pelo campo &lt;code&gt;slug&lt;/code&gt;.&lt;/p&gt;
 um objeto. Aqui é um ótimo lugar para, por exemplo, aplicar um filtro para
 exibir somente o Artigo cujo autor é o usuário logado. Considere o exemplo
 abaixo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;ArtigoView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;DetailView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;ArtigoView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;DetailView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Artigo&lt;/span&gt;
 
     &lt;span class="n"&gt;get_queryset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -607,7 +607,7 @@ usuário for o autor dele e vamos pegar esse &lt;em&gt;Artigo&lt;/em&gt; pelo ca
 renderizar esse artigo no template &lt;code&gt;detalhe_artigo.html&lt;/code&gt; com o nome
 &lt;code&gt;meu_artigo&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;views.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.detail&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DetailView&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.detail&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DetailView&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.utils&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;timezone&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;articles.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
@@ -624,7 +624,7 @@ renderizar esse artigo no template &lt;code&gt;detalhe_artigo.html&lt;/code&gt; 
 
 
 &lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;article.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArticleDetailView&lt;/span&gt;
 
@@ -635,7 +635,7 @@ renderizar esse artigo no template &lt;code&gt;detalhe_artigo.html&lt;/code&gt; 
 
 
 &lt;p&gt;&lt;strong&gt;detalhe_artigo.html&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{ meu_artigo.titulo }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{ meu_artigo.titulo }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{ meu_artigo.conteudo }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Reporter: {{ meu_artigo.user.name }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Published: {{ meu_artigo.data_publicacao|date }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -661,7 +661,7 @@ uma requisição é:&lt;/p&gt;
 &lt;/ol&gt;
 &lt;p&gt;Nada de novo aqui certo? Podemos exibir apenas uma lista de Artigos que estão
 com &lt;code&gt;status='publicado'&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.list&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ListView&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.list&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ListView&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.utils&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;timezone&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;articles.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Artigo&lt;/span&gt;
@@ -676,7 +676,7 @@ com &lt;code&gt;status='publicado'&lt;/code&gt;&lt;/p&gt;
 
 
 &lt;p&gt;Outra opção seria:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.list&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ListView&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.list&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ListView&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.utils&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;timezone&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;articles.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Artigo&lt;/span&gt;
@@ -689,7 +689,7 @@ com &lt;code&gt;status='publicado'&lt;/code&gt;&lt;/p&gt;
 
 
 &lt;p&gt;&lt;strong&gt;artigo_list.html&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Articles&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Articles&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 {% for article in object_list %}
     &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{ article.pub_date|date }} - {{ article.headline }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -718,7 +718,7 @@ essa dependência.&lt;/p&gt;
 contendo os erros de validação. Em caso de sucesso redireciona o usuário para
 uma nova URL.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;forms.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ContactForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Form&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -731,7 +731,7 @@ uma nova URL.&lt;/p&gt;
 
 
 &lt;p&gt;&lt;strong&gt;views.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.forms&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ContactForm&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.forms&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ContactForm&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.edit&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;FormView&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ContactView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;FormView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -748,7 +748,7 @@ uma nova URL.&lt;/p&gt;
 
 
 &lt;p&gt;&lt;strong&gt;contact.html&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;form&lt;/span&gt; &lt;span class="na"&gt;action&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;method&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{% csrf_token %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;form&lt;/span&gt; &lt;span class="na"&gt;action&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;method&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{% csrf_token %}
     {{ form.as_p }}
     &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;input&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;submit&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Send message&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;form&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -781,7 +781,7 @@ se essa função existir.&lt;/p&gt;
 &lt;p&gt;Você também pode customizar o formulário usado na view se você precisar de algum
 tratamento adicional, para fazer isso basta definir a classe de formulários a ser
 usada no atributo &lt;code&gt;form_class&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.edit&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CreateView&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.edit&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CreateView&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.forms&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;AuthorForm&lt;/span&gt;
 
@@ -797,7 +797,7 @@ Caso existam erros no formulário, este é exibido novamente junto com as
 mensagens de erro.&lt;/p&gt;
 &lt;p&gt;Em caso de sucesso o objeto é salvo.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;models.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.urlresolvers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.urlresolvers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -809,7 +809,7 @@ mensagens de erro.&lt;/p&gt;
 
 
 &lt;p&gt;&lt;strong&gt;views.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.edit&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CreateView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;UpdateView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;DeleteView&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.edit&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CreateView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;UpdateView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;DeleteView&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.urlresolvers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;reverse_lazy&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;
 
@@ -828,7 +828,7 @@ mensagens de erro.&lt;/p&gt;
 
 
 &lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;AuthorCreate&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AuthorUpdate&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AuthorDelete&lt;/span&gt;
 
 &lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
@@ -869,7 +869,7 @@ data futura a não ser que o atributo &lt;code&gt;allow_future&lt;/code&gt; seja
 &lt;/ul&gt;
 &lt;p&gt;Implementação simples:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArchiveIndexView&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
@@ -895,7 +895,7 @@ determinado ano.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;Exemplo de implementação:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;views.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;YearArchiveView&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;YearArchiveView&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
 
@@ -908,7 +908,7 @@ determinado ano.&lt;/p&gt;
 
 
 &lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArticleYearArchiveView&lt;/span&gt;
 
@@ -921,7 +921,7 @@ determinado ano.&lt;/p&gt;
 
 
 &lt;p&gt;&lt;strong&gt;article_archive_year.html&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     {% for date in date_list %}
         &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{ date|date }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     {% endfor %}
@@ -942,7 +942,7 @@ determinado mês.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;Exemplo de implementação:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;views.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MonthArchiveView&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MonthArchiveView&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
 
@@ -954,7 +954,7 @@ determinado mês.&lt;/p&gt;
 
 
 &lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArticleMonthArchiveView&lt;/span&gt;
 
@@ -972,7 +972,7 @@ determinado mês.&lt;/p&gt;
 
 
 &lt;p&gt;&lt;strong&gt;article_archive_month.html&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     {% for article in object_list %}
         &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{ article.pub_date|date:&amp;quot;F j, Y&amp;quot; }}: {{ article.title }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     {% endfor %}
@@ -1000,7 +1000,7 @@ determinada semana.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;Implementação simples:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;views.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;WeekArchiveView&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;WeekArchiveView&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
 
@@ -1013,7 +1013,7 @@ determinada semana.&lt;/p&gt;
 
 
 &lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArticleWeekArchiveView&lt;/span&gt;
 
@@ -1027,7 +1027,7 @@ determinada semana.&lt;/p&gt;
 
 
 &lt;p&gt;&lt;strong&gt;article_archive_week.html&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Week {{ week|date:&amp;#39;W&amp;#39; }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Week {{ week|date:&amp;#39;W&amp;#39; }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     {% for article in object_list %}
@@ -1062,7 +1062,7 @@ determinado dia.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;Implementação simples:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;views.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DayArchiveView&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DayArchiveView&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Article&lt;/span&gt;
 
@@ -1074,7 +1074,7 @@ determinado dia.&lt;/p&gt;
 
 
 &lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArticleDayArchiveView&lt;/span&gt;
 
@@ -1088,7 +1088,7 @@ determinado dia.&lt;/p&gt;
 
 
 &lt;p&gt;&lt;strong&gt;article_archive_day.html&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{ day }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{ day }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     {% for article in object_list %}
@@ -1112,7 +1112,7 @@ determinado dia.&lt;/p&gt;
 &lt;p&gt;É a mesma coisa do &lt;code&gt;DayArchiveView&lt;/code&gt; mas não usa os parâmetros da URL para
 determinar o ano/mês/dia.&lt;/p&gt;
 &lt;p&gt;O que muda é o urls.py, veja o exemplo abaixo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapp.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArticleTodayArchiveView&lt;/span&gt;
 
@@ -1128,7 +1128,7 @@ determinar o ano/mês/dia.&lt;/p&gt;
 &lt;p&gt;É a mesma coisa que a &lt;code&gt;DetailView&lt;/code&gt; com a diferença que a data é utilizada
 junto com o pk/slug para determinar qual objeto deve ser obtido.&lt;/p&gt;
 &lt;p&gt;O que muda é o urls.py, veja o exemplo abaixo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic.dates&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DateDetailView&lt;/span&gt;
 
 &lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
@@ -1167,17 +1167,17 @@ começar pela &lt;a href="https://docs.djangoproject.com/en/1.8/topics/class-bas
 &lt;p&gt;Existem várias maneiras de se fazer o Django trabalhar com apache, uma delas é a combinação Apache + &lt;a href="http://code.google.com/p/modwsgi/"&gt;mod_wsgi&lt;/a&gt; e será dessa forma que faremos. Com mod_wsgi podemos implementar qualquer aplicação Python que suporte a interface &lt;strong&gt;Python WSGI&lt;/strong&gt;.&lt;/p&gt;
 &lt;h5&gt;Instalando alguns pacotes necessários&lt;/h5&gt;
 &lt;p&gt;Antes de mais nada, atualize a lista de pacotes&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo apt-get update
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;em&gt;Apache + mod_wsgi&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo apt-get install apache2 libapache2-mod-wsgi
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install apache2 libapache2-mod-wsgi
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;em&gt;Python setup tools + pip&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo apt-get install python-setuptools
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install python-setuptools
 $ sudo apt-get install python-pip
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1185,17 +1185,17 @@ $ sudo apt-get install python-pip
 &lt;h3&gt;Vamos testar o WSGI?&lt;/h3&gt;
 &lt;p&gt;Vamos fazer um teste com uma aplicação simples em python.&lt;/p&gt;
 &lt;p&gt;Começe criando um diretório na raiz do apache &lt;em&gt;(DocumentRoot)&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo mkdir /var/www/wsgi_test
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo mkdir /var/www/wsgi_test
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Em seguida vamos criar nossa app de teste ...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo vim /var/www/app.wsgi
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo vim /var/www/app.wsgi
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;... e escrever nossa app python compatível com WSGI&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;application&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;start_response&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;application&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;start_response&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;status&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;200 OK&amp;#39;&lt;/span&gt;
     &lt;span class="n"&gt;output&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Hello World!&amp;#39;&lt;/span&gt;
     &lt;span class="n"&gt;response_headers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Content-type&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;text/plain&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
@@ -1206,21 +1206,21 @@ $ sudo apt-get install python-pip
 
 
 &lt;p&gt;Vamos criar agora um host para usar como nosso domínio da aplicação teste&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo vim /etc/hosts
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo vim /etc/hosts
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Adicione esta linha ao seu arquivo hosts&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;127.0.0.1 wsgi_test
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;127.0.0.1 wsgi_test
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E vamos configurar nosso VirtualHost no Apache.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo vim /etc/apache2/sites-available/wsgi_test
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo vim /etc/apache2/sites-available/wsgi_test
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="s"&gt;*:80&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="s"&gt;*:80&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="nb"&gt;ServerName&lt;/span&gt; wsgi_test
     &lt;span class="nb"&gt;DocumentRoot&lt;/span&gt; &lt;span class="sx"&gt;/var/www/wsgi_test&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="s"&gt;/var/www/wsgi_test&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -1233,13 +1233,13 @@ $ sudo apt-get install python-pip
 
 
 &lt;p&gt;Ative-o&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo a2ensite wsgi_test
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo a2ensite wsgi_test
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;em&gt;Obs: esse comando cria um link simbólico do wsgi_test para a pasta sites-enabled. Você pode fazer isso manualmente.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Reinicie o apache:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo service apache2 reload
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo service apache2 reload
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1249,14 +1249,14 @@ $ sudo apt-get install python-pip
 &lt;h5&gt;Criando o ambiente&lt;/h5&gt;
 &lt;p&gt;É sempre bom trabalharmos com ambientes virtuais em nossas aplicações python, para isso temos o &lt;a href="https://virtualenv.pypa.io/en/latest/"&gt;virtualenv&lt;/a&gt;. Eu, particularmente, prefiro usar o &lt;a href="https://virtualenvwrapper.readthedocs.org/en/latest/"&gt;VirtualenvWrapper&lt;/a&gt;, que separa os ambientes virtuais das aplicações. Caso você não conheça, indico o post do &lt;a href="https://github.com/arruda/"&gt;Arruda&lt;/a&gt; que foi o que me guiou quando comecei a usar. &lt;a href="http://www.arruda.blog.br/programacao/python/usando-virtualenvwrapper/"&gt;Usando VirtualEnvWrapper&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;No meu caso usei o virtualenvwrapper e meu filesystem é o seguinte:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;+-- /home/guilouro
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;+-- /home/guilouro
 &lt;span class="p"&gt;|&lt;/span&gt;   +-- .virtualenvs  &lt;span class="c1"&gt;#[Ambientes]&lt;/span&gt;
 &lt;span class="p"&gt;|&lt;/span&gt;   +-- www           &lt;span class="c1"&gt;#[Projetos]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;O Virtualenvwrapper criará meus projetos dentro de &lt;strong&gt;www&lt;/strong&gt; e os ambientes em &lt;strong&gt;.virtualenvs&lt;/strong&gt;. Mas para que isso aconteça temos que adicionar algumas linhas em nosso &lt;code&gt;~/.bashrc&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# adicione no final do arquivo ~/.bashrc&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# adicione no final do arquivo ~/.bashrc&lt;/span&gt;
 &lt;span class="c1"&gt;# ...&lt;/span&gt;
 &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PROJECT_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;~/www
 &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;WORKON_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;~/.virtualenvs
@@ -1265,27 +1265,27 @@ $ sudo apt-get install python-pip
 
 
 &lt;p&gt;Atualize com o comando:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;source&lt;/span&gt; ~/.bashrc
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt; ~/.bashrc
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h5&gt;Criando nosso projeto&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ mkproject wsgi
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkproject wsgi
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Com as configurações anteriores o virtualenvwrapper já irá ativar o ambiente e levar você para a pasta do projeto. Mas para ativar é muito simples, basta usar:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ workon wsgi
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ workon wsgi
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Com o nosso ambiente virtual criado partiremos então para a criação do nosso projeto django. Utilizarei a versão mais atual até o momento, nesse caso 1.7&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ pip install django
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install django
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Não entrarei em detalhes para a configuração inicial do django, portanto irei usar um template que eu criei para a inicialização dos meus projeto. Criamos então o projeto dessa forma:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# startproject pelo template&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# startproject pelo template&lt;/span&gt;
 $ django-admin.py startproject --template https://github.com/guilouro/django-boilerplate/archive/master.zip wsgitest .
 &lt;span class="c1"&gt;# instala os pacotes&lt;/span&gt;
 $ pip install -r requirements.txt
@@ -1297,18 +1297,18 @@ $ python manage.py migrate
 &lt;p&gt;Você encontra esse template aqui -&amp;gt; &lt;a href="https://github.com/guilouro/django-boilerplate"&gt;django-boilerplate&lt;/a&gt;&lt;/p&gt;
 &lt;h5&gt;Criando um site no apache para o projeto&lt;/h5&gt;
 &lt;p&gt;Primeiramente, vamos criar um domínio fictício para responder com o nosso projeto ao ser acessado.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo vim /etc/hosts
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo vim /etc/hosts
 
 127.0.0.1   djangowsgi.com
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Agora vamos configurar o apache:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo vim /etc/apache2/sites-available/djangowsgi
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo vim /etc/apache2/sites-available/djangowsgi
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;WSGIDaemonProcess&lt;/span&gt; djangowsgi.com python-path=/home/guilouro/www/wsgi:/home/guilouro/.virtualenvs/wsgi/lib/python2.7/site-packages
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;WSGIDaemonProcess&lt;/span&gt; djangowsgi.com python-path=/home/guilouro/www/wsgi:/home/guilouro/.virtualenvs/wsgi/lib/python2.7/site-packages
 &lt;span class="nb"&gt;WSGIProcessGroup&lt;/span&gt; djangowsgi.com
 
 &lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="s"&gt;*:80&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -1340,7 +1340,7 @@ $ python manage.py migrate
 
 
 &lt;p&gt;Reinicie novamente o apache:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo service apache2 reload
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo service apache2 reload
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1364,13 +1364,13 @@ $ python manage.py migrate
 &lt;p&gt;Se você como eu é um desenvolvedor incansável quando o assunto é automatizar ao máximo seu workflow de trabalho,este post foi feito para você. O &lt;a href="http://www.fig.sh/"&gt;fig&lt;/a&gt; utilizando-se do docker, torna a criação de ambientes de desenvolvimento algo muito simples.&lt;/p&gt;
 &lt;h1&gt;Instalação&lt;/h1&gt;
 &lt;p&gt;A instalação do fig é bem simples, primeiro você terá que ter o docker instalado em sua máquina, caso não tenha, siga esse &lt;a href="http://hudsonbrendon.com/docker-introducao-e-aplicacao.html"&gt;tutorial&lt;/a&gt; onde exemplifico a instalação do mesmo de forma bem simples. Com o docker pronto, é hora de instalar o fig, essa ferramenta é um pacote python, e a forma mais simples de instalá-la é através do pip, que é o gerenciador de pacotes do python, caso não o tenha instalado em sua máquina, acesse o &lt;a href="https://pip.pypa.io/en/latest/installing.html"&gt;site oficial&lt;/a&gt; e veja a forma mais simples para você obtê-lo. Com tudo pronto, execute no terminal.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ pip install -U fig
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install -U fig
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h1&gt;Utilizando o fig com django&lt;/h1&gt;
 &lt;p&gt;Com o docker e o fig devidamente instalados em sua máquina, é hora de integrar o django com essa maravilhosa ferramenta, para tanto, criaremos um diretório com um nome qualquer, aqui chamado de "app", e dentro do mesmo criaremos um arquivo chamado "Dockerfile", com o seguinte conteúdo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;FROM python:2.7
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;FROM python:2.7
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
 WORKDIR /code
@@ -1381,13 +1381,13 @@ ADD . /code/
 
 
 &lt;p&gt;Em seguinda criaremos um arquivo chamado "requirements.txt", com os seguintes pacotes.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;Django
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Django
 psycopg2
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E por fim um arquivo, "fig.yml", com a configuração abaixo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;db:
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;db:
   image: postgres
 web:
   build: .
@@ -1415,18 +1415,18 @@ web:
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Com os arquivos finalizados, é hora de criar uma aplicação em django, para isso basta.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ fig run web django-admin.py startproject figexample .
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ fig run web django-admin.py startproject figexample .
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E o resultado será esse:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ ls
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls
 Dockerfile       fig.yml          figexample       manage.py        requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Com a aplicação em mãos, a primeira coisa que você deve fazer é abrir o arquivo settings.py de sua aplicação, e configurar o banco de dados da mesma. Para isso no arquivo figexample/settings.py basta especificar as configurações abaixo no banco de dados.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DATABASES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;DATABASES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 &lt;span class="s1"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 &lt;span class="s1"&gt;&amp;#39;ENGINE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;django.db.backends.postgresql_psycopg2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="s1"&gt;&amp;#39;NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;postgres&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -1439,18 +1439,18 @@ Dockerfile       fig.yml          figexample       manage.py        requirements
 
 
 &lt;p&gt;Com o banco configurado é hora de subir sua aplicação, na pasta raiz do projeto use.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ fig up
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ fig up
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;O fig se encarregará de criar todos os conteineres, linkalos, e startar sua aplicação na porta 8000, acesse seu &lt;a href="http://localhost:8000/"&gt;localhost:8000&lt;/a&gt; e você verá sua aplicação em execução.&lt;/p&gt;
 &lt;p&gt;Para rodar os comandos do django, você pode fazer da seguinte forma.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ fig run &amp;lt;bloco&amp;gt; &amp;lt;comando&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ fig run &amp;lt;bloco&amp;gt; &amp;lt;comando&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Por exemplo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ fig run web ./manage.py syncdb
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ fig run web ./manage.py syncdb
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1463,11 +1463,11 @@ Dockerfile       fig.yml          figexample       manage.py        requirements
 &lt;h2&gt;Qual a solução?&lt;/h2&gt;
 &lt;p&gt;Devido a ser um problema recorrente, publiquei um pacote no PyPI chamado &lt;a href="https://pypi.python.org/pypi/django-global-permissions/0.1.0"&gt;Django Global Permissions&lt;/a&gt;, que possibilita a criação de permissões genéricas, resolvendo o empecilho que mencionei anteriormente.&lt;/p&gt;
 &lt;p&gt;Para utilizar esse pacote, basta instalá-lo e adicioná-lo à tupla &lt;code&gt;INSTALLED_APPS&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pip install django-global-permissions
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install django-global-permissions
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;global_permissions&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;global_permissions&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1478,7 +1478,7 @@ Dockerfile       fig.yml          figexample       manage.py        requirements
 &lt;p&gt;A permissão pode ser associada também a um grupo de usuários, e para isso basta acessar a página de um grupo específico, e associar a permissão da mesma maneira que faz com qualquer outra permissão no Django.&lt;/p&gt;
 &lt;h2&gt;Limitando o acesso nas views&lt;/h2&gt;
 &lt;p&gt;Toda view recebe um &lt;code&gt;request&lt;/code&gt; como parâmetro contendo uma referência ao usuário logado. Dessa maneira é possível verificar se este usuário tem uma dada permissão usando o método &lt;code&gt;has_perm&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.exceptions&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;PermissionDenied&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.exceptions&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;PermissionDenied&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;config_view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;has_perm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;global_permissions.pode_acessar_pagina_config&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1491,7 +1491,7 @@ Dockerfile       fig.yml          figexample       manage.py        requirements
 &lt;p&gt;No exemplo acima, se o usuário tiver a permissão &lt;code&gt;pode_acessar_pagina_config&lt;/code&gt; ou pertencer a um grupo que tenha essa permissão, então passará pelo &lt;code&gt;if&lt;/code&gt; sem problemas, caso contrário receberá um erro de permissão negada.&lt;/p&gt;
 &lt;p&gt;Também é possível verificar se um usuário tem mais de uma permissão sem a necessidade de um &lt;code&gt;if&lt;/code&gt; com vários &lt;code&gt;and&lt;/code&gt;, através do método &lt;a href="https://docs.djangoproject.com/en/dev/ref/contrib/auth/#django.contrib.auth.models.User.has_perms"&gt;&lt;code&gt;has_perms&lt;/code&gt;&lt;/a&gt;. &lt;/p&gt;
 &lt;p&gt;Caso você prefira class based views (assim como eu), as alterações são pequenas em relação ao exemplo acima. Por padrão todas as class based views tem uma propriedade chamada &lt;code&gt;request&lt;/code&gt;, que podemos usar acessar o usuário logado e fazer as verificações de permissão.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.view.generic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TemplateView&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.view.generic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TemplateView&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.exceptions&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;PermissionDenied&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ConfigView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TemplateView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1506,7 +1506,7 @@ Dockerfile       fig.yml          figexample       manage.py        requirements
 
 
 &lt;p&gt;Ainda é possível deixar o código mais simples através do pacote &lt;a href="https://github.com/brack3t/django-braces"&gt;django-braces&lt;/a&gt;. Com ele temos acesso ao &lt;a href="http://django-braces.readthedocs.org/en/latest/access.html#permissionrequiredmixin"&gt;&lt;code&gt;PermissionRequiredMixin&lt;/code&gt;&lt;/a&gt;, que automaticamente faz a verificação de permissão para nós.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.view.generic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TemplateView&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.view.generic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TemplateView&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;brace.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;PermissionRequiredMixin&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ConfigView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PermissionRequiredMixin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;TemplateView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1518,7 +1518,7 @@ Dockerfile       fig.yml          figexample       manage.py        requirements
 &lt;p&gt;Para mais informações sobre o django-braces, acesse sua &lt;a href="http://django-braces.readthedocs.org/en/latest/index.html"&gt;documentação oficial&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Limitando o acesso nos templates&lt;/h2&gt;
 &lt;p&gt;Limitar o acesso nos templates é tão simples quanto implementar nas views, mas diferentemente do primeiro, os templates já recebem automaticamente um objeto de permissões do usuário logado (desde que você utilize o &lt;em&gt;context processor&lt;/em&gt; &lt;code&gt;django.contrib.auth.context_processors.auth&lt;/code&gt;). Supondo que queiramos saber se o usuário pode visualizar um dado item do menu, podemos fazer da seguinte forma:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;perms.global_permissions.pode_acessar_pagina_config&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;perms.global_permissions.pode_acessar_pagina_config&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
     &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/config/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Configuração&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endif&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1547,26 +1547,26 @@ Existem &lt;em&gt;cartridges&lt;/em&gt; que habilitam uma linguagem (Python, Rub
 &lt;p&gt;Você precisa ter uma conta no &lt;a href="https://www.openshift.com/products/online"&gt;Openshift Online&lt;/a&gt; e o programa &lt;strong&gt;rhc&lt;/strong&gt; instalado em sua máquina.&lt;/p&gt;
 &lt;p&gt;Crie uma conta gratuita clicando &lt;a href="https://www.openshift.com/app/account/new"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Depois instale o programa &lt;strong&gt;ruby&lt;/strong&gt; e o &lt;strong&gt;rhc&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install -y ruby
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install -y ruby
 sudo gem install rhc
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Clique &lt;a href="http://openshift.github.io/documentation/oo_client_tools_installation_guide.html"&gt;aqui&lt;/a&gt; para ver como instalar o &lt;strong&gt;rhc&lt;/strong&gt; em outras plataformas.&lt;/p&gt;
 &lt;p&gt;Faça o login:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;rhc setup
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rhc setup
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Por fim confirme que você consegue conectar em sua conta executando:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;rhc apps
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rhc apps
 No applications. Use &lt;span class="s1"&gt;&amp;#39;rhc create-app&amp;#39;&lt;/span&gt;.
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;Criando um app no Openshift&lt;/h3&gt;
 &lt;p&gt;Crie um app com nome de &lt;strong&gt;django&lt;/strong&gt; usando o &lt;em&gt;cartridge&lt;/em&gt; &lt;strong&gt;Python 2.7&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;rhc create-app -a django -t python-2.7
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rhc create-app -a django -t python-2.7
 Application Options
 -------------------
 Domain:     stvs
@@ -1593,29 +1593,29 @@ Cloned to:  /home/usuario/django
 Acesse o endereço e veja a página padrão que foi criada.&lt;/p&gt;
 &lt;h3&gt;Definindo dependências&lt;/h3&gt;
 &lt;p&gt;Acesse o repositório que foi criado ao executar &lt;code&gt;rhc app-create&lt;/code&gt;, ele terá o nome do seu app:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; django/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; django/
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Existem duas formas de definir as dependências do seu app Python no Openshift, pelo arquivo &lt;strong&gt;setup.py&lt;/strong&gt; ou pelo &lt;strong&gt;requirements.txt&lt;/strong&gt;.
 Durante o processo de &lt;strong&gt;deploy&lt;/strong&gt; o Openshift automaticamente executa &lt;code&gt;python setup.py install&lt;/code&gt; e &lt;code&gt;pip -r requirements.txt&lt;/code&gt; na raiz do repositório.&lt;/p&gt;
 &lt;p&gt;Usaremos somente o &lt;strong&gt;requirements.txt&lt;/strong&gt;, então exclua o &lt;strong&gt;setup.py&lt;/strong&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;rm setup.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rm setup.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Faça &lt;em&gt;commit&lt;/em&gt; mas não execute &lt;code&gt;git push&lt;/code&gt; ainda.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git commit -am &lt;span class="s1"&gt;&amp;#39;removido setup.py&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git commit -am &lt;span class="s1"&gt;&amp;#39;removido setup.py&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Adicione o Django no &lt;em&gt;requirements.txt&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Django==1.7&amp;#39;&lt;/span&gt; &amp;gt; requirements.txt
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Django==1.7&amp;#39;&lt;/span&gt; &amp;gt; requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Crie um virtualenv para testar se o &lt;strong&gt;requirements.txt&lt;/strong&gt; está correto:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pyenv virtualenv 2.7.8 openshift
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pyenv virtualenv 2.7.8 openshift
 pyenv activate openshift
 pip install -r requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
@@ -1626,7 +1626,7 @@ pip install -r requirements.txt
 &lt;p&gt;De agora em diante não direi mais para você fazer o &lt;em&gt;commit&lt;/em&gt; o tempo todo mas é uma boa prática que você o faça a cada etapa.&lt;/p&gt;
 &lt;p&gt;Execute o comando abaixo para criar o arquivo &lt;strong&gt;.gitignore&lt;/strong&gt; e adicionar algumas entradas nele.
 Esse arquivo irá impedir que alguns arquivos desnecessários sejam adicionados ao git.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;cat &amp;gt; .gitignore &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &amp;gt; .gitignore &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
 &lt;span class="s"&gt;*.pyc&lt;/span&gt;
 &lt;span class="s"&gt;*.sqlite3&lt;/span&gt;
 &lt;span class="s"&gt;EOF&lt;/span&gt;
@@ -1634,18 +1634,18 @@ Esse arquivo irá impedir que alguns arquivos desnecessários sejam adicionados 
 
 
 &lt;p&gt;Crie um projeto Django com o nome &lt;strong&gt;openshift&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;django-admin.py startproject openshift
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;django-admin.py startproject openshift
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Acesse o projeto e crie um &lt;em&gt;app&lt;/em&gt; com nome &lt;strong&gt;exemplo&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; openshift
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; openshift
 django-admin.py startapp exemplo
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Execute o &lt;em&gt;migrate&lt;/em&gt; inicial e depois inicie o servidor de teste:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;python manage.py migrate
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py migrate
 python manage.py runserver
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1657,7 +1657,7 @@ Um desses arquivos é o &lt;strong&gt;wsgi.py&lt;/strong&gt; na raiz do reposit�
 O WSGI &lt;em&gt;entry-point&lt;/em&gt; nada mais é do que o &lt;em&gt;callable&lt;/em&gt; do servidor WSGI.
 No nosso caso usamos uma variável mas poderia ser um método ou uma função, o importante é que ele tenha o nome de &lt;strong&gt;application&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Execute o comando abaixo para criar o WSGI &lt;em&gt;entry-point&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;cat &amp;gt; wsgi.py &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &amp;gt; wsgi.py &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
 &lt;span class="s"&gt;#!/usr/bin/python&lt;/span&gt;
 
 &lt;span class="s"&gt;import os&lt;/span&gt;
@@ -1673,12 +1673,12 @@ No nosso caso usamos uma variável mas poderia ser um método ou uma função, o
 
 
 &lt;p&gt;Abra o arquivo de configuração padrão do seu projeto Django:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;vi openshift/openshift/settings.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vi openshift/openshift/settings.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Adicione o app &lt;strong&gt;exemplo&lt;/strong&gt; em &lt;strong&gt;INSTALLED_APPS&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
    &lt;span class="s1"&gt;&amp;#39;django.contrib.admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
    &lt;span class="o"&gt;...&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;exemplo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -1687,17 +1687,17 @@ No nosso caso usamos uma variável mas poderia ser um método ou uma função, o
 
 
 &lt;p&gt;Salve e depois abra o arquivo de configuração que usaremos em produção.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;vi openshift/openshift/production.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vi openshift/openshift/production.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Comece importando todas as configuração do arquivo de configuração padrão:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;settings&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;settings&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Desabilite o modo &lt;strong&gt;debug&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1710,7 +1710,7 @@ No nosso caso usamos uma variável mas poderia ser um método ou uma função, o
 &lt;/ul&gt;
 &lt;p&gt;Você pode ver outras variáveis disponíveis &lt;a href="https://developers.openshift.com/en/managing-environment-variables.html"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Copie as configurações:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SECRET_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;OPENSHIFT_SECRET_TOKEN&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;SECRET_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;OPENSHIFT_SECRET_TOKEN&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
 &lt;span class="n"&gt;ALLOWED_HOSTS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;OPENSHIFT_APP_DNS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
 
@@ -1725,27 +1725,27 @@ No nosso caso usamos uma variável mas poderia ser um método ou uma função, o
 
 &lt;p&gt;Os &lt;em&gt;cartridges&lt;/em&gt; padrões de Python, utilizam o diretório &lt;em&gt;wsgi/static&lt;/em&gt; para servir arquivos estáticos pelo Apache.
 Ele ainda não existe, para criá-lo execute:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;mkdir -p wsgi/static
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p wsgi/static
 touch wsgi/static/.gitkeep
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Por fim adicione a linha abaixo em sua configuração:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;STATIC_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;OPENSHIFT_REPO_DIR&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;wsgi&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;static&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;STATIC_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;OPENSHIFT_REPO_DIR&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;wsgi&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;static&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Criando uma view simples&lt;/h2&gt;
 &lt;p&gt;Vamos criar uma &lt;em&gt;view&lt;/em&gt; básica somente para testar nosso projeto.&lt;/p&gt;
 &lt;p&gt;Adicione a url abaixo no arquivo &lt;em&gt;openshift/openshift/urls.py&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;exemplo.views.home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Depois crie a &lt;em&gt;view&lt;/em&gt; em &lt;em&gt;openshift/exemplo/views.py&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;home&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Hello World!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1756,7 +1756,7 @@ touch wsgi/static/.gitkeep
 &lt;h2&gt;Fazendo deploy&lt;/h2&gt;
 &lt;p&gt;Na raiz do repositório, existe um diretório oculto chamado &lt;strong&gt;.openshift&lt;/strong&gt;.
 Vamos listar seu conteúdo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; .openshift
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; .openshift
 tree
 .
 ├── action_hooks
@@ -1784,7 +1784,7 @@ tree
 &lt;p&gt;Essa pasta serve para agendar a execução de scripts.
 Ela funciona igual aos diretórios &lt;strong&gt;cron&lt;/strong&gt; em qualquer distribuição Linux.
 Você precisa adicionar o &lt;em&gt;cartridge&lt;/em&gt; &lt;strong&gt;cron&lt;/strong&gt; ao seu app para que os agendamentos funcionem.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;rhc cartridge add -a django -c cron-1.4
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rhc cartridge add -a django -c cron-1.4
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1796,7 +1796,7 @@ Outras &lt;strong&gt;markers&lt;/strong&gt; disponíveis estão detalhadas &lt;a
 &lt;p&gt;O funcionamento dessa pasta é bem parecido com o da pasta &lt;strong&gt;markers&lt;/strong&gt;.
 Em algumas ações o Openshift vai procurar determinados arquivos dentro dela e executá-los em uma determinada ordem.
 Para listar quais são as ações disponíveis execute o comando &lt;code&gt;rhc app --help&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;rhc app --help
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rhc app --help
 Usage: rhc app &amp;lt;action&amp;gt;
 
 Creates and controls an OpenShift application.  To see the list of all applications use the rhc domain show command.  Note that delete is not reversible
@@ -1830,18 +1830,18 @@ scale-up      Scale up the application&lt;span class="s1"&gt;&amp;#39;s web cart
 &lt;p&gt;Não é preciso que nenhum arquivo exista, essa é só uma forma de controlar o comportamento do seu app.
 Para saber mais sobre &lt;em&gt;action hooks&lt;/em&gt; clique &lt;a href="http://openshift.github.io/documentation/oo_user_guide.html#cartridge-control-action-hooks"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;No nosso caso, só vamos usar o arquivo &lt;strong&gt;deploy&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;touch .openshift/action_hooks/deploy
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;touch .openshift/action_hooks/deploy
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;É preciso que o arquivo seja executável, então:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;chmod +x .openshift/action_hooks/deploy
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;chmod +x .openshift/action_hooks/deploy
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Em nosso &lt;em&gt;deploy&lt;/em&gt;, apenas vamos atualizar o schema do banco e recolher os arquivos estáticos.
 Note que precisamos informar o arquivo de configuração que usaremos em produção, que é diferente daquele que está no arquivo &lt;strong&gt;manage.py&lt;/strong&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;cat &amp;gt; .openshift/action_hooks/deploy &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &amp;gt; .openshift/action_hooks/deploy &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
 &lt;span class="s"&gt;PYTHONPATH=\$OPENSHIFT_REPO_DIR/openshift&lt;/span&gt;
 &lt;span class="s"&gt;django-admin.py migrate --settings=&amp;#39;openshift.production&amp;#39; --pythonpath=\$PYTHONPATH&lt;/span&gt;
 &lt;span class="s"&gt;python \$PYTHONPATH/manage.py collectstatic -c --noinput --settings=&amp;#39;openshift.production&amp;#39; --pythonpath=\$PYTHONPATH&lt;/span&gt;
@@ -1852,7 +1852,7 @@ Note que precisamos informar o arquivo de configuração que usaremos em produç
 &lt;p&gt;Feito isso, faça &lt;em&gt;commit&lt;/em&gt; e depois execute &lt;code&gt;git push&lt;/code&gt;.
 O &lt;em&gt;push&lt;/em&gt; irá disparar o processo de &lt;strong&gt;build&lt;/strong&gt;.
 Você verá varias mensagens em seu terminal mas no final irá aparecer:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;...
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
 remote: Git Post-Receive Result: success
 remote: Activation status: success
 remote: Deployment completed with status: success
@@ -1879,7 +1879,7 @@ Pronto seu projeto Django está rodando no Openshift!&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;O que faremos aqui será exibir os últimos comentários ainda não liberados de um sistema de blog. Vale lembrar que aqui não discutiremos sobre os primeiros passos da aplicação. Para seguirmos adiante, vamos assumir que já temos um projeto básico com uma estrutura simples, abaixo a estrutura inicial do nosso projeto.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;../blog/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;../blog/
 ├── core
 │   ├── __init__.py
 │   ├── admin.py
@@ -1920,14 +1920,14 @@ Pronto seu projeto Django está rodando no Openshift!&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Vamos seguir adiante e alterar a página inicial do admin para listar os últimos comentários de um simples sistema de blog. Para comerçar a editar o admin, precisamos inicialmente copiar o template que desejamos para a pasta uma pasta &lt;cite&gt;admin&lt;/cite&gt; dentro ta pasta de templates do nosso projeto. Isto porque o Admin, não passa de uma app como outra qualquer, portanto o sistema de herança vai funcionar aqui, carregamento prioritariamente o seu template. Você pode conseguir o template que desejar (no nosso caso o index.html) dentro do projeto do Django mesmo, no meu caso &amp;quot;C:\Django-1.6.3\django\contrib\admin\templates\admin&amp;quot;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;../blog/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;../blog/
 ├── templates
 │   ├── admin
 │   │   └── index.html
 ├── core
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Tire um tempo e brinque um pouco com este template e veja o que acontece se você alterar algumas coisa. Para adicionarmos a nossa listagem, vamos adicionar um painel lateral, para tal vamos adicionar o código abaixo antes do fechamento da ultima tag div. Nele podemos ver uma chamada para uma template_tag, portanto precisamos carrega-la no topo do template.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% load comentarios_tag %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% load comentarios_tag %}
 ...
 ...
 ...
@@ -1939,7 +1939,7 @@ Pronto seu projeto Django está rodando no Openshift!&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Esta template trata-se da responsável por fazer a consulta na base de dados e renderizar a nossa lista, portanto ela é uma 'inclusion tag'. Se você não esta familiarizado com 'template tags', talvez queira dar uma olhada na &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/howto/custom-template-tags/"&gt;documentação do django&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Vamos então criar nossa template tag 'comentarios_n_liberados'. Primeiro devemos criar uma pasta chamada templatetags, dentro da nossa app core. Dentro ta pasta vamos inicializar um pacote python e criar o arquivo comentarios_tag.py. Nele precisamos declarar nosso metodo que deve se chamar 'comentarios_n_liberados' e nele fazer uma simples consulta ao banco buscando os comentários não liberados e por fim registrar a tag apontando para o template que será renderizado. Abaixo o código mais explicado.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;core&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
 
 &lt;span class="c1"&gt;#Carrega o registro de template tags&lt;/span&gt;
@@ -1952,7 +1952,7 @@ Pronto seu projeto Django está rodando no Openshift!&lt;/p&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;comentarios&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;comentarios&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Abaixo o html do nosso template a ser renderizado, este deve estar dentro da pasta templates da nossa app core.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% if not comentarios %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% if not comentarios %}
     &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Nenhum comentário novo&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 {% else %}
     &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -1967,7 +1967,7 @@ Pronto seu projeto Django está rodando no Openshift!&lt;/p&gt;
 &lt;p&gt;Com tudo isto feito, basta subir o seu servidor e ver o resultado final, que pode ser visto na imagem abaixo.&lt;/p&gt;
 &lt;img alt="Resultado final" src="images/sipmann/admin_modificado.png" /&gt;
 &lt;p&gt;Lembrando que aqui apenas mostrei como modificar o index do admin, para apenas listar dados do banco, mas você pode ir muito mais além. Abaixo fica a estrutura de diretórios final e um link para download do projeto funcionando.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;../blog/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;../blog/
 ├── core
 │   ├── templates
 │   │   └── comentarios_n_liberados.html
@@ -2013,45 +2013,45 @@ Atributos: nome, cpf, idade, email, telefone, criado_em&lt;/blockquote&gt;
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Criando um virtualenv&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ virtualenv env_crm
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ virtualenv env_crm
 $ &lt;span class="nb"&gt;cd&lt;/span&gt; env_crm
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Ativando o virtualenv no Windows&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ Scripts&lt;span class="se"&gt;\a&lt;/span&gt;ctivate
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ Scripts&lt;span class="se"&gt;\a&lt;/span&gt;ctivate
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Ativando o virtualenv no Linux ou Mac&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ &lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Instalando as bibliotecas do Requirements.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ pip install django
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install django
 $ pip install unipath
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Na verdade o prompt do terminal vai ficar assim:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;env_crm&lt;span class="o"&gt;)&lt;/span&gt;usuario@maq:~/env_crm$
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;env_crm&lt;span class="o"&gt;)&lt;/span&gt;usuario@maq:~/env_crm$
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Mas vou suprimir tudo isso, mas pelo mesmo você sabe que o virtualenv está ativado.&lt;/p&gt;
 &lt;p&gt;O &lt;a class="reference external" href="http://sluggo.scrapping.cc/python/unipath/"&gt;Unipath&lt;/a&gt; é um pacote que trabalha com caminhos relativos de forma orientada à objetos. Segundo &lt;a class="reference external" href="https://github.com/henriquebastos/slides-django-sem-trabalho/blob/master/settings.rst#n%C3%A3o-use-diret%C3%B3rios-hardcoded"&gt;Henrique Bastos&lt;/a&gt;, ele evita diretórios &lt;em&gt;hardcoded&lt;/em&gt;, ou seja, não usa caminho absoluto, e sim caminhos relativos. Em &lt;em&gt;settings.py&lt;/em&gt; veremos o uso deste pacote. Mas como ele mesmo diz, o uso de &lt;em&gt;os.path&lt;/em&gt; não é problema, mas o &lt;em&gt;Unipath&lt;/em&gt; ajuda bastante.&lt;/p&gt;
 &lt;p&gt;Obs: Se quiser você pode instalar uma lista de pacotes de um requirements.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ wget https://raw.githubusercontent.com/rg3915/wttd/master/requirements.txt
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ wget https://raw.githubusercontent.com/rg3915/wttd/master/requirements.txt
 $ pip install -r requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Criando o projeto &lt;strong&gt;crm&lt;/strong&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ django-admin.py startproject crm
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ django-admin.py startproject crm
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Criando uma app &lt;strong&gt;cadastro&lt;/strong&gt; em &lt;em&gt;env_crm/crm&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; crm
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; crm
 $ python manage.py startapp cadastro
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Rodando o projeto.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py runserver
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py runserver
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Abra o navegador e digite &lt;a class="reference external" href="http://127.0.0.1:8000/"&gt;http://127.0.0.1:8000/&lt;/a&gt;. Parabéns, seu projeto está funcionando.&lt;/p&gt;
 &lt;p&gt;Agora vamos criar todos os demais elementos. Considere que estamos na pasta &lt;em&gt;env_crm/crm&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Criando &lt;strong&gt;forms.py&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ touch cadastro/forms.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ touch cadastro/forms.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Criando os &lt;em&gt;templates&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ mkdir cadastro/templates
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir cadastro/templates
 $ touch cadastro/templates/&lt;span class="o"&gt;{&lt;/span&gt;base.html,index.html,cadastro.html,lista.html&lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Veja no diagrama abaixo a relação de dependência entre os arquivos.&lt;/p&gt;
@@ -2061,7 +2061,7 @@ $ touch cadastro/templates/&lt;span class="o"&gt;{&lt;/span&gt;base.html,index.h
 &lt;blockquote&gt;
 File &amp;gt; Open Folder...&lt;/blockquote&gt;
 &lt;p&gt;Primeiro vamos editar &lt;em&gt;crm/settings.py&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# import os&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# import os&lt;/span&gt;
 &lt;span class="c1"&gt;# BASE_DIR = os.path.dirname(os.path.dirname(__file__))&lt;/span&gt;
 &lt;span class="c1"&gt;# Unipath aqui&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;unipath&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;
@@ -2090,7 +2090,7 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
 &lt;span class="n"&gt;LANGUAGE_CODE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pt-br&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/models.py&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Inscricao&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -2110,10 +2110,10 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
                 &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Vamos criar o banco de dados através do comando &lt;strong&gt;syncdb&lt;/strong&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py syncdb
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py syncdb
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/views.py&lt;/em&gt;. Vamos usar &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.2/ref/generic-views/"&gt;Generic Views&lt;/a&gt;. Note o uso do &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.5/ref/urlresolvers/#reverse"&gt;reverse_lazy&lt;/a&gt;, que facilita no gerenciamento de urls nomeadas.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.shortcuts&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CreateView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ListView&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.urlresolvers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;reverse_lazy&lt;/span&gt;
@@ -2135,7 +2135,7 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
         &lt;span class="n"&gt;context_object&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora vamos editar &lt;em&gt;crm/urls.py&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;cadastro.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
 
@@ -2150,7 +2150,7 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/forms.py&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Inscricao&lt;/span&gt;
 
@@ -2160,7 +2160,7 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
                 &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Inscricao&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/templates/base.html&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
         {% block title %}
@@ -2183,7 +2183,7 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
 &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/templates/index.html&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;#39;base.html&amp;#39; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% extends &amp;#39;base.html&amp;#39; %}
 
 {% block content %}
         &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Cadastro de Clientes&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -2191,7 +2191,7 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;img alt="index.html" src="images/regisdasilva/index.png" /&gt;
 &lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/templates/cadastro.html&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;#39;base.html&amp;#39; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% extends &amp;#39;base.html&amp;#39; %}
 
 {% block content %}
         &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;form&lt;/span&gt; &lt;span class="na"&gt;action&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;method&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -2204,7 +2204,7 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
 &lt;img alt="cadastro.html" src="images/regisdasilva/cadastro.png" /&gt;
 &lt;p&gt;Leia sobre &lt;a class="reference external" href="http://docs.djangobrasil.org/topics/forms/#mostrando-um-formul-rio-usando-um-template"&gt;as_p&lt;/a&gt; que significa que os campos ficarão em parágrafos, e &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/csrf/"&gt;crsf_token (en)&lt;/a&gt; que é uma proteção usada durante a inserção de dados.&lt;/p&gt;
 &lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/templates/lista.html&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;#39;base.html&amp;#39; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% extends &amp;#39;base.html&amp;#39; %}
 
 {% block content %}
         &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Lista de Clientes&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -2279,23 +2279,23 @@ Procurei por vários materiais, inclusive a documentação oficial do &lt;a clas
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;strong&gt;Python 2.7&lt;/strong&gt; - Já vem instalado no Linux! :) Digite:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python --V
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python --V
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;strong&gt;Git&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo apt-get install -y git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install -y git
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;strong&gt;Curl&lt;/strong&gt; - Talvez precise.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo apt-get install -y curl
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install -y curl
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;strong&gt;Pip&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;em&gt;&amp;quot;Curl menos letra Ó&amp;quot;&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ curl -O http://python-distribute.org/distribute_setup.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl -O http://python-distribute.org/distribute_setup.py
 $ sudo python -y distribute_setup.py
 $ sudo easy_install pip
 &lt;/pre&gt;&lt;/div&gt;
@@ -2303,12 +2303,12 @@ $ sudo easy_install pip
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;strong&gt;Virtualenv&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo pip install virtualenv
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip install virtualenv
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;strong&gt;Django 1.6&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.6
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.6
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Obs: repare que instalamos o Django direto no sistema, mas na verdade ele deverá ser instalado dentro de cada virtualenv. Leia sobre &lt;a class="reference internal" href="#o-que-e-virtualenv-e-requirements"&gt;O que é Virtualenv e Requirements?&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -2332,7 +2332,7 @@ $ sudo easy_install pip
 &lt;p&gt;Como mencionado antes em &lt;a class="reference internal" href="#instalando-o-django"&gt;Instalando o Django&lt;/a&gt;, Virtualenv é um ambiente virtual que isola seu projeto junto com suas dependências.
 Então o que é &lt;em&gt;requirements&lt;/em&gt;?
 É um arquivo (&lt;em&gt;requirements.txt&lt;/em&gt;) que lista todas as bibliotecas que você precisa usar no seu projeto, por exemplo, eu gosto de usar:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;1.6&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;1.6&lt;/span&gt;
 &lt;span class="n"&gt;Unipath&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;
 &lt;span class="n"&gt;dj&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;database&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;0.2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
 &lt;span class="n"&gt;dj&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;static&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;0.0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;
@@ -2372,50 +2372,50 @@ Então o que é &lt;em&gt;requirements&lt;/em&gt;?
 &lt;/ul&gt;
 &lt;hr class="docutils" /&gt;
 &lt;p&gt;No Linux/Ubuntu não precisamos instalar Python, porque já é nativo em sistemas operacionais baseados em Unix, mas para termos certeza basta executar o comando no terminal:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python –version
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python –version
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;o resultado será:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;Python 2.7.3
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Python 2.7.3
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Vamos começar instalando os pacotes necessários no Sistema Operacional:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo apt-get update
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
 $ sudo apt-get install python-dev python-setuptools
 $ sudo easy_install pip
 $ sudo pip install virtualenv
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Para testarmos se o virtualenv está instalado corretamente executaremos no terminal:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ virtualenv --version
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ virtualenv --version
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Resultado:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;1.11.5
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1.11.5
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;O pacote &lt;strong&gt;python-setuptools&lt;/strong&gt; foi utilizado apenas para instalarmos o &lt;strong&gt;easy_install&lt;/strong&gt; que usamos para instalar o &lt;strong&gt;pip&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;A partir de agora, no ambiente virtual sempre usaremos o &lt;strong&gt;pip&lt;/strong&gt; para instalar os pacotes.&lt;/p&gt;
 &lt;p&gt;Muito bem, com o &lt;strong&gt;virtualenv&lt;/strong&gt; instalado, o próximo passo será criar nosso &lt;strong&gt;virtualenv&lt;/strong&gt; e instalarmos o &lt;strong&gt;Django&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Vamos criar nosso virtualenv chamado &lt;strong&gt;pythonclub&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ virtualenv pythonclub --no-site-packages
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ virtualenv pythonclub --no-site-packages
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;--no-site-packages&lt;/strong&gt; = esse parametro do virtualenv indica que o ambiente virtual será totalmente isolado do sistema operacional, que só enxergará os pacotes instalados dentro do virtualenv.&lt;/p&gt;
 &lt;p&gt;Agora vamos entrar dentro do ambiente virtual que criamos e vamos ativá-lo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; pythonclub/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; pythonclub/
 $ &lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Neste momento temos o ambiente virtual criado e ativado, pronto para instalar o &lt;strong&gt;django&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ pip install django
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install django
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Quando executamos o comando &lt;strong&gt;pip install django&lt;/strong&gt; sem especificarmos a versão desejada,
 o pip instala a ultima versão disponivel. Se quizermos instalar uma versão específica devemos executar assim:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.5.4
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.5.4
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Então podemos finalmente criar o projeto django executando o seguinte comando:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ django-admin.py startproject first_django_project
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ django-admin.py startproject first_django_project
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Com o projeto criado, devemos criar uma app chamada: &lt;strong&gt;core&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; first_django_project
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; first_django_project
 $ python manage.py startapp core
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Alterar o arquivo settings.py para adicionar a app &lt;strong&gt;core&lt;/strong&gt; em &lt;strong&gt;INSTALLED_APPS&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;django.contrib.admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;django.contrib.auth&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;django.contrib.contenttypes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -2427,7 +2427,7 @@ $ python manage.py startapp core
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;OBS:&lt;/strong&gt; perceba que ao usar o &lt;strong&gt;Django 1.6&lt;/strong&gt; a app admin já estará instalada.&lt;/p&gt;
 &lt;p&gt;Até aqui a estrutura de diretórios está assim:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;../first_django_project/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;../first_django_project/
 ├── core
 │   ├── admin.py
 │   ├── __init__.py
@@ -2445,7 +2445,7 @@ $ python manage.py startapp core
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;OBS: Os diretórios bin/, include/ e lib/ são diretórios do virtualenv. O restante são diretórios do projeto.&lt;/p&gt;
 &lt;p&gt;Para rodar o projeto, digite o comando:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py runserver
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py runserver
 Validating models...
 
 &lt;span class="m"&gt;0&lt;/span&gt; errors found
@@ -2457,7 +2457,7 @@ Quit the server with CONTROL-C.
 &lt;/pre&gt;&lt;/div&gt;
 &lt;img alt="comando runserver do django-admin.py" src="images/fabianogoes/django-runserver.png" /&gt;
 &lt;p&gt;Chegou o momento de instalarmos o editor. No caso deste tutorial usaremos o &lt;strong&gt;Sublime Text 3&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo add-apt-repository ppa:webupd8team/sublime-text-3
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo add-apt-repository ppa:webupd8team/sublime-text-3
 $ sudo apt-get update
 $ sudo apt-get install sublime-text-installer
 &lt;/pre&gt;&lt;/div&gt;
@@ -2474,11 +2474,11 @@ Project &amp;gt;&amp;gt; Add Forlder to Project...
 &lt;p&gt;O fluxo de um request em projetos django é o seguinte:
 URL --&amp;gt; VIEW --&amp;gt; TEMPLATE&lt;/p&gt;
 &lt;p&gt;Então vamos começar criando uma url &lt;em&gt;home&lt;/em&gt; para o projeto, no arquivo urls.py:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;core.views.home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;core.views.home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Com a url criada e apontando para view &lt;strong&gt;core.views.home&lt;/strong&gt; vamos criar a tal view &lt;strong&gt;home&lt;/strong&gt;,
 no arquivo core/views.py&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.shortcuts&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.shortcuts&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;home&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;texto&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Seu primeiro projeto Django no Linux/Ubuntu com Sublime Text 3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
@@ -2489,11 +2489,11 @@ Não me aprofundando muito, quero dizer que existe uma convenção no django que
 No caso ficará assim: &lt;strong&gt;first_django_project/core/templates&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;OK, vamos criar este diretório e o template &lt;strong&gt;index.html&lt;/strong&gt;,
 estando no diretório root do projeto: &lt;strong&gt;first_django_project&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ mkdir core/templates
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir core/templates
 $ touch core/templates/index.html
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;maravilha, o html do &lt;strong&gt;index.html&lt;/strong&gt; é bem básico:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt; &lt;span class="na"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
         &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
                 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Pythonclub&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -2506,7 +2506,7 @@ $ touch core/templates/index.html
 &lt;p&gt;Na view &lt;strong&gt;home&lt;/strong&gt; escrevemos no contexto uma variável chamada: &lt;strong&gt;texto&lt;/strong&gt;, e agora no template
 estou exibindo esta variável usando: &lt;strong&gt;{{ texto }}&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Executando o projeto novamente o resultado será:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py runserver
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py runserver
 Validating models...
 
 &lt;span class="m"&gt;0&lt;/span&gt; errors found
@@ -2519,7 +2519,7 @@ Quit the server with CONTROL-C.
 &lt;img alt="comando runserver do django-admin.py" src="images/fabianogoes/runserv-index.png" /&gt;
 &lt;p&gt;Para finalizarmos vamos criar uma classe model simples, apenas para ilustrar o uso do &lt;strong&gt;Admin&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;no arquivo core/models.py&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Pessoa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="n"&gt;nome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2530,10 +2530,10 @@ Quit the server with CONTROL-C.
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Vamos rodar o comando &lt;strong&gt;syncdb&lt;/strong&gt; para o dango criar as tabelas.
 Este comando vai perguntar se você deseja criar um super usuário, digite &lt;strong&gt;yes&lt;/strong&gt;, crie o usuário &lt;strong&gt;admin&lt;/strong&gt; e dê uma senha e um email.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py syncdb
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py syncdb
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora vamos registar esta classe no admin, editando o arquivo core/admin.py(se o arquivo não existir crie):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;admin&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;admin&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;core.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Pessoa&lt;/span&gt;
 
 &lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Pessoa&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2553,10 +2553,10 @@ digite o super usuário e senha criado ao rodar o comando &lt;strong&gt;syncdb&l
 &lt;p&gt;O &lt;a class="reference external" href="http://south.readthedocs.org/en/latest/"&gt;South&lt;/a&gt;, faz com que o Django suporte migrações de banco de dados de forma simples, estável e totalmente independente do backend de banco de dados utilizado, a partir da alteração dos models, você roda um comando e plin a &amp;quot;mágica&amp;quot; acontece, o base de dados está novamente igual aos seus modelos.&lt;/p&gt;
 &lt;p&gt;Essa app se tornou tão popular que na versão &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/topics/migrations/"&gt;Django 1.7&lt;/a&gt; passou a ser nativo do Django.&lt;/p&gt;
 &lt;p&gt;Para versão Django anterior 1.7, também é muito simples utilizar o South basta instala-lo, e adicionar no &lt;tt class="docutils literal"&gt;INSTALLED_APPS&lt;/tt&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pip install south
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install south
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Comandos utilizados:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;./manage.py schemamigration app_name --initial  &lt;span class="o"&gt;[&lt;/span&gt;cria a estrutura de migracao inicial&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;./manage.py schemamigration app_name --initial  &lt;span class="o"&gt;[&lt;/span&gt;cria a estrutura de migracao inicial&lt;span class="o"&gt;]&lt;/span&gt;
 ./manage.py migration app_name          &lt;span class="o"&gt;[&lt;/span&gt;realiza migracao na app especificada&lt;span class="o"&gt;]&lt;/span&gt;
 ./manage.py migration --all         &lt;span class="o"&gt;[&lt;/span&gt;realiza migracao em todas as apps instaladas&lt;span class="o"&gt;]&lt;/span&gt;
 ./manage.py schemamigration app_name --auto &lt;span class="o"&gt;[&lt;/span&gt;realiza migracao no modelo alterado&lt;span class="o"&gt;]&lt;/span&gt;
@@ -2567,11 +2567,11 @@ digite o super usuário e senha criado ao rodar o comando &lt;strong&gt;syncdb&l
 &lt;p&gt;O &lt;a class="reference external" href="https://github.com/django-nose/django-nose"&gt;django-nose&lt;/a&gt; é uma django app que utiliza o &lt;a class="reference external" href="https://nose.readthedocs.org/en/latest/"&gt;nose&lt;/a&gt; como TestRunner do Django, isso possibilita você adicionar qualquer plugin compatível com o Nose, além de outras muitas vantagens, que na verdade não conheço a fundo.&lt;/p&gt;
 &lt;p&gt;Um plugin do Nose que achei muito bacana é o &lt;a class="reference external" href="http://django-testing-docs.readthedocs.org/en/latest/coverage.html"&gt;coverage&lt;/a&gt;, ele informa a cobertura de testes em seu código, basicamente ele realiza uma analise linha a linha, e verifica se seus testes unitários passaram por essas linhas, e no final ele apresenta um relatório com a quantidade de código testado.&lt;/p&gt;
 &lt;p&gt;Testei ele até a versão Django 1.6 e funcionou muito bem, é muito simples de instalar e configurar.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pip install django-nose
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install django-nose
 pip install coverage
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Configurando o settings do projeto.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="c1"&gt;# ...&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;django_nose&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
@@ -2587,7 +2587,7 @@ pip install coverage
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; O recomendado é que essa configuração fique em um settings especifico para test, eu costumo separar meu settings em 4 arquivos diferentes, [common, prod, dev, test].&lt;/p&gt;
 &lt;p&gt;O coverage mostra a seguinte tabela:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;Name               Stmts   Miss  Cover   Missing
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Name               Stmts   Miss  Cover   Missing
 ------------------------------------------------
 foo.models            &lt;span class="m"&gt;30&lt;/span&gt;      &lt;span class="m"&gt;5&lt;/span&gt;    85%   10-12, 16, 19
 bar.models            &lt;span class="m"&gt;10&lt;/span&gt;      &lt;span class="m"&gt;1&lt;/span&gt;    90%   4
@@ -2605,7 +2605,7 @@ TOTAL                 &lt;span class="m"&gt;40&lt;/span&gt;      &lt;span class=
 &lt;h2&gt;3. model_mommy (Mock)&lt;/h2&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://github.com/vandersonmota/model_mommy"&gt;model_mommy&lt;/a&gt; oferece um jeito fácil e inteligente de criar fixtures para Django, é muito simples, e tem o objetivo de facilitar a escrita de testes, fazendo com que você consiga criar um objeto com apenas uma linha de código.&lt;/p&gt;
 &lt;p&gt;Esse é um simples exemplo, com coisas mais comuns no seu dia,&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;model_mommy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;mommy&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;model_mommy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;mommy&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyCaseTest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;setUp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -2626,14 +2626,14 @@ TOTAL                 &lt;span class="m"&gt;40&lt;/span&gt;      &lt;span class=
 &lt;h2&gt;4. Django Extensions (Extensions)&lt;/h2&gt;
 &lt;p&gt;O &lt;a class="reference external" href="http://django-extensions.readthedocs.org/en/latest/index.html"&gt;django extensions&lt;/a&gt; possui uma &lt;a class="reference external" href="http://django-extensions.readthedocs.org/en/latest/command_extensions.html"&gt;lista considerável&lt;/a&gt; de funcionalidades, a ideia é juntar diversas funcionalidades que agilizam o desenvolvimento, e adicioná-los a lista de comandos do &lt;strong&gt;manage.py&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Mas quero falar de uma funcionalidade especifica que uso muito, é o &lt;a class="reference external" href="http://django-extensions.readthedocs.org/en/latest/shell_plus.html"&gt;shell_plus&lt;/a&gt;, que carrega automaticamente models das apps instaladas no meu projeto, no shell interativo do python, além disso você possui diversas configurações bacanas, como escolher tipos diferentes de shell python, como por exemplo &lt;a class="reference external" href="https://github.com/ipython/ipython"&gt;ipython&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;./manage.py shell_plus --use-ipython
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;./manage.py shell_plus --use-ipython
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="django-debug-toolbar-debug"&gt;
 &lt;h2&gt;5. Django Debug Toolbar (Debug)&lt;/h2&gt;
 &lt;p&gt;O &lt;a class="reference external" href="https://github.com/django-debug-toolbar/django-debug-toolbar"&gt;django debug toolbar&lt;/a&gt;, é um panel que exibe diversas informações sobre o request e response atual, o debug toolbar possui diversas configurações o que faz que seja possível configurá-lo até em produção, apenas para o administrador do projeto, como &lt;em&gt;quase tudo&lt;/em&gt; em python simples, está tudo bem detalhado na &lt;a class="reference external" href="http://django-debug-toolbar.readthedocs.org/en/1.2/"&gt;documentação&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Basta instalar com pip e adicionar o projeto no &lt;tt class="docutils literal"&gt;INSTALLED_APPS&lt;/tt&gt;, e realizar uma configuração simples:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;MIDDLEWARE_CLASSES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;MIDDLEWARE_CLASSES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="c1"&gt;# ...&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;debug_toolbar.middleware.DebugToolbarMiddleware&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="c1"&gt;# ...&lt;/span&gt;
@@ -2660,7 +2660,7 @@ TOTAL                 &lt;span class="m"&gt;40&lt;/span&gt;      &lt;span class=
 &lt;span class="n"&gt;INTERNAL_IPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Configurando o &lt;tt class="docutils literal"&gt;views.py&lt;/tt&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;debug_toolbar&lt;/span&gt;

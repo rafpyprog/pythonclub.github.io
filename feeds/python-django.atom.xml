@@ -23,16 +23,16 @@
 &lt;li&gt;Instale primeiro o &lt;a class="reference external" href="http://pip.readthedocs.org/en/latest/"&gt;pip&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Primeira opção&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ wget https://bootstrap.pypa.io/get-pip.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ wget https://bootstrap.pypa.io/get-pip.py
 $ sudo python get-pip.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Segunda opção&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo apt-get install -y python-pip
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install -y python-pip
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://virtualenv.pypa.io/en/latest/"&gt;VirtualEnv&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo pip install virtualenv
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip install virtualenv
 $ &lt;span class="c1"&gt;# ou&lt;/span&gt;
 $ sudo apt-get install -y virtualenv
 &lt;/pre&gt;&lt;/div&gt;
@@ -40,39 +40,39 @@ $ sudo apt-get install -y virtualenv
 &lt;div class="section" id="criando-o-ambiente"&gt;
 &lt;h2&gt;Criando o ambiente&lt;/h2&gt;
 &lt;p&gt;Vamos criar um ambiente usando o &lt;strong&gt;Python 3&lt;/strong&gt;, então digite&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ virtualenv -p /usr/bin/python3 django1.7
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ virtualenv -p /usr/bin/python3 django1.7
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;onde &lt;tt class="docutils literal"&gt;django1.7&lt;/tt&gt; é o nome do ambiente.&lt;/p&gt;
 &lt;p&gt;Entre na pasta&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; django1.7
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; django1.7
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;e &lt;em&gt;ative o ambiente&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ &lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Para diminuir o caminho do prompt digite&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ &lt;span class="nv"&gt;PS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;(`basename \&amp;quot;&lt;/span&gt;$&lt;span class="s2"&gt;VIRTUAL_ENV\&amp;quot;`):/\W&lt;/span&gt;$&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nv"&gt;PS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;(`basename \&amp;quot;&lt;/span&gt;$&lt;span class="s2"&gt;VIRTUAL_ENV\&amp;quot;`):/\W&lt;/span&gt;$&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="instalando-django-1-7-django-bootstrap3"&gt;
 &lt;h2&gt;Instalando Django 1.7 + django-bootstrap3&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.7.2 django-bootstrap3
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.7.2 django-bootstrap3
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;em&gt;Dica&lt;/em&gt;: se você digitar &lt;tt class="docutils literal"&gt;pip freeze&lt;/tt&gt; você verá a versão dos programas instalados.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="criando-o-projeto-e-a-app"&gt;
 &lt;h2&gt;Criando o projeto e a App&lt;/h2&gt;
 &lt;p&gt;Para criar o projeto digite&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ django-admin.py startproject mysite .
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ django-admin.py startproject mysite .
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;repare no ponto no final do comando, isto permite que o arquivo &lt;tt class="docutils literal"&gt;manage.py&lt;/tt&gt; fique nesta mesma pasta &lt;em&gt;django1.7&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Agora vamos criar a &lt;em&gt;app&lt;/em&gt; &lt;strong&gt;bands&lt;/strong&gt;, mas vamos deixar esta &lt;em&gt;app&lt;/em&gt; dentro da pasta &lt;em&gt;mysite&lt;/em&gt;. Então entre na pasta&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; mysite
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; mysite
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;e digite&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python ../manage.py startapp bands
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python ../manage.py startapp bands
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;A intenção é que os arquivos tenham a seguinte hierarquia nas pastas:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;.
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
 ├── fixtures.json
 ├── manage.py
 ├── mysite
@@ -97,32 +97,32 @@ $ sudo apt-get install -y virtualenv
 │   ├── urls.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora permaneça sempre na pasta &lt;em&gt;django1.7&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ..
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ..
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;e digite&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py migrate
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py migrate
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;para criar a primeira &lt;em&gt;migração&lt;/em&gt; e&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py runserver
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py runserver
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;e veja que o projeto já está funcionando.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="editando-settings-py"&gt;
 &lt;h2&gt;Editando settings.py&lt;/h2&gt;
 &lt;p&gt;Em &lt;tt class="docutils literal"&gt;INSTALLED_APPS&lt;/tt&gt; acrescente as linhas abaixo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="o"&gt;...&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;mysite.bands&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;bootstrap3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;E mude também o idioma.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;LANGUAGE_CODE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pt-br&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;LANGUAGE_CODE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pt-br&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="editando-models-py"&gt;
 &lt;h2&gt;Editando models.py&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
 
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Band&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -176,7 +176,7 @@ $ sudo apt-get install -y virtualenv
 &lt;/div&gt;
 &lt;div class="section" id="editando-urls-py"&gt;
 &lt;h2&gt;Editando urls.py&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mysite.bands.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;admin&lt;/span&gt;
@@ -197,7 +197,7 @@ $ sudo apt-get install -y virtualenv
 &lt;/div&gt;
 &lt;div class="section" id="editando-views-py"&gt;
 &lt;h2&gt;Editando views.py&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.shortcuts&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.shortcuts&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.decorators&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;login_required&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CreateView&lt;/span&gt;
@@ -206,17 +206,17 @@ $ sudo apt-get install -y virtualenv
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.forms&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BandContactForm&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;A função a seguir retorna um &lt;em&gt;HttpResponse&lt;/em&gt;, ou seja, uma mensagem simples no navegador.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;home&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;home&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Welcome to the site!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;A próxima função (use uma ou outra) renderiza um &lt;em&gt;template&lt;/em&gt;, uma página html no navegador.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;home&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;home&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;home.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;A função &lt;tt class="docutils literal"&gt;band_listing&lt;/tt&gt; retorna todas as bandas.&lt;/p&gt;
 &lt;p&gt;Para fazer a &lt;em&gt;busca&lt;/em&gt; por nome de banda usamos o comando &lt;tt class="docutils literal"&gt;var_get_search = &lt;span class="pre"&gt;request.GET.get('search_box')&lt;/span&gt;&lt;/tt&gt;, onde &lt;tt class="docutils literal"&gt;search_box&lt;/tt&gt; é o nome do campo no template &lt;em&gt;band_listing.html&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;E os nomes são retornados a partir do comando &lt;tt class="docutils literal"&gt;bands = bands.filter(name__icontains=var_get_search)&lt;/tt&gt;. Onde &lt;tt class="docutils literal"&gt;icontains&lt;/tt&gt; procura um texto que contém a palavra, ou seja, você pode digitar o nome incompleto.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;band_listing&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;band_listing&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot; A view of all bands. &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
     &lt;span class="n"&gt;bands&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Band&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;var_get_search&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;search_box&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -225,7 +225,7 @@ $ sudo apt-get install -y virtualenv
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;bands/band_listing.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bands&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;bands&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;A função &lt;tt class="docutils literal"&gt;band_contact&lt;/tt&gt; mostra como tratar um formulário na &lt;em&gt;view&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;band_contact&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;band_contact&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot; A example of form &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;POST&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;BandContactForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;POST&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -234,7 +234,7 @@ $ sudo apt-get install -y virtualenv
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;bands/band_contact.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;form&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;A função &lt;tt class="docutils literal"&gt;band_detail&lt;/tt&gt; retorna todos os membros de cada banda, usando o &lt;tt class="docutils literal"&gt;pk&lt;/tt&gt; da banda junto com o comando &lt;tt class="docutils literal"&gt;filter&lt;/tt&gt; em members.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;band_detail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pk&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;band_detail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pk&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot; A view of all members by bands. &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
     &lt;span class="n"&gt;band&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Band&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pk&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;pk&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;members&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Member&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;band&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;band&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -242,7 +242,7 @@ $ sudo apt-get install -y virtualenv
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;bands/band_detail.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;BandForm&lt;/tt&gt; e &lt;tt class="docutils literal"&gt;MemberForm&lt;/tt&gt; usam o &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.7/topics/class-based-views/"&gt;Class Based View&lt;/a&gt; para tratar formulário de uma forma mais simplificada usando a classe &lt;tt class="docutils literal"&gt;CreateView&lt;/tt&gt;. O &lt;tt class="docutils literal"&gt;reverse_lazy&lt;/tt&gt; serve para tratar a url de retorno de página.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BandForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CreateView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BandForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CreateView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;template_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;bands/band_form.html&amp;#39;&lt;/span&gt;
     &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Band&lt;/span&gt;
     &lt;span class="n"&gt;success_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;reverse_lazy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bands&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -257,13 +257,13 @@ $ sudo apt-get install -y virtualenv
 &lt;p&gt;&lt;a class="reference external" href="https://docs.djangoproject.com/en/1.7/topics/auth/default/#django.contrib.auth.decorators.login_required"&gt;&amp;#64;login_required&lt;/a&gt; é um &lt;em&gt;decorator&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;login_url='/accounts/login/'&lt;/span&gt;&lt;/tt&gt; é página de erro, ou seja, quando o usuário não conseguiu logar.&lt;/p&gt;
 &lt;p&gt;E &lt;tt class="docutils literal"&gt;render(request, &lt;span class="pre"&gt;'bands/protected.html',...&lt;/span&gt;&lt;/tt&gt; é página de sucesso.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@login_required&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;login_url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/accounts/login/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@login_required&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;login_url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/accounts/login/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;protected_view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot; A view that can only be accessed by logged-in users &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;bands/protected.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;current_user&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;HttpResponse&lt;/tt&gt; retorna uma mensagem simples no navegador sem a necessidade de um template.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;message&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;message&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot; Message if is not authenticated. Simple view! &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Access denied!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -271,25 +271,25 @@ $ sudo apt-get install -y virtualenv
 &lt;div class="section" id="comandos-basicos-do-manage-py"&gt;
 &lt;h2&gt;Comandos básicos do manage.py&lt;/h2&gt;
 &lt;p&gt;Para criar novas migrações com base nas alterações feitas nos seus modelos&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py makemigrations bands
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py makemigrations bands
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Para aplicar as migrações, bem como anular e listar seu status&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py migrate
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py migrate
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Para criar um usuário e senha para o admin&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py createsuperuser
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py createsuperuser
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Para rodar a aplicação&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py runserver
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py runserver
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="shell"&gt;
 &lt;h2&gt;shell&lt;/h2&gt;
 &lt;p&gt;É o &lt;em&gt;interpretador interativo do python&lt;/em&gt; rodando &lt;em&gt;via terminal&lt;/em&gt; direto na aplicação do django.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ python manage.py shell
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py shell
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Veja a seguir como inserir dados direto pelo &lt;em&gt;shell&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mysite.bands.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Band&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Member&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mysite.bands.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Band&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Member&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="c1"&gt;# criando o objeto e salvando&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;band&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Band&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Metallica&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;band&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;
@@ -326,7 +326,7 @@ $ sudo apt-get install -y virtualenv
 &lt;/div&gt;
 &lt;div class="section" id="criando-os-templates"&gt;
 &lt;h2&gt;Criando os templates&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ mkdir mysite/bands/templates
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir mysite/bands/templates
 $ mkdir mysite/bands/templates/bands
 $ touch mysite/bands/templates/&lt;span class="o"&gt;{&lt;/span&gt;menu.html,base.html,home.html&lt;span class="o"&gt;}&lt;/span&gt;
 $ touch mysite/bands/templates/bands/&lt;span class="o"&gt;{&lt;/span&gt;band_listing.html,band_contact.html,protected.html&lt;span class="o"&gt;}&lt;/span&gt;
@@ -336,29 +336,29 @@ $ touch mysite/bands/templates/bands/&lt;span class="o"&gt;{&lt;/span&gt;band_li
 Vou comentar apenas os comandos que se destacam.&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;menu.html&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Repare que no &lt;strong&gt;menu&lt;/strong&gt; usamos &lt;em&gt;links nomeados&lt;/em&gt;, exemplo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;navbar-brand&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{% url &amp;#39;home&amp;#39; %}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Home&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;navbar-brand&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{% url &amp;#39;home&amp;#39; %}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Home&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;onde 'home' é o nome que foi dado ao link lá em urls.py.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;base.html&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Note que em &lt;strong&gt;base&lt;/strong&gt; carregamos o &lt;a class="reference external" href="http://django-bootstrap3.readthedocs.org/en/latest/"&gt;bootstrap3&lt;/a&gt; com o comando&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;load&lt;/span&gt; &lt;span class="n"&gt;bootstrap3&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;load&lt;/span&gt; &lt;span class="n"&gt;bootstrap3&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;bootstrap_css&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;bootstrap_javascript&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;E também o comando &lt;strong&gt;include&lt;/strong&gt; para inserir o &lt;em&gt;menu&lt;/em&gt; em &lt;em&gt;base&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;menu.html&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;menu.html&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;home.html&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Em &lt;strong&gt;home&lt;/strong&gt; usamos o comando &lt;strong&gt;extends&lt;/strong&gt; para usar a estrutura inicial do &lt;em&gt;base&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;quot;base.html&amp;quot; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% extends &amp;quot;base.html&amp;quot; %}
 &lt;/pre&gt;&lt;/div&gt;
 &lt;img alt="home.png" src="images/regisdasilva/home.png" /&gt;
 &lt;p&gt;&lt;strong&gt;band_listing.html&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Neste template usamos um campo de busca com o nome &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;name=&amp;quot;search_box&amp;quot;&lt;/span&gt;&lt;/tt&gt;. Este nome será usada na &lt;em&gt;views&lt;/em&gt; para localizar um nome de banda.&lt;/p&gt;
 &lt;p&gt;E para lista as bandas usamos o comando&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;...
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
 {% for band in bands %}
     &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
         &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -371,7 +371,7 @@ Vou comentar apenas os comandos que se destacam.&lt;/blockquote&gt;
 &lt;img alt="band_listing.png" src="images/regisdasilva/band_listing.png" /&gt;
 &lt;p&gt;&lt;strong&gt;band_contact&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Usando o &lt;em&gt;django-bootstrap3&lt;/em&gt; podemos digitar apenas&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{% load bootstrap3 %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% load bootstrap3 %}
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;form&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 ...
     {% bootstrap_form form %}
@@ -382,7 +382,7 @@ Vou comentar apenas os comandos que se destacam.&lt;/blockquote&gt;
 &lt;img alt="form.png" src="images/regisdasilva/form.png" /&gt;
 &lt;p&gt;&lt;strong&gt;band_detail.html&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Um destaque para o &lt;em&gt;if&lt;/em&gt; que &amp;quot;pinta&amp;quot; de azul os membros que são vocal.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;...
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
 {% if member.instrument == &amp;#39;v&amp;#39; %}
     &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list-group-item list-group-item-info&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 {% else %}
@@ -393,7 +393,7 @@ Vou comentar apenas os comandos que se destacam.&lt;/blockquote&gt;
 &lt;p&gt;E &lt;tt class="docutils literal"&gt;{{ member.get_instrument_display }}&lt;/tt&gt; que retorna o segundo elemento da lista &lt;tt class="docutils literal"&gt;choices&lt;/tt&gt; em &lt;em&gt;models.py&lt;/em&gt;. Ou seja, retorna 'vocal' ao invés de 'v'.&lt;/p&gt;
 &lt;img alt="band_detail.png" src="images/regisdasilva/band_detail.png" /&gt;
 &lt;p&gt;&lt;strong&gt;band_form.html&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;base.html&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;base.html&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;load&lt;/span&gt; &lt;span class="n"&gt;bootstrap3&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 
@@ -421,10 +421,10 @@ Vou comentar apenas os comandos que se destacam.&lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;div class="section" id="forms-py"&gt;
 &lt;h2&gt;forms.py&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ touch mysite/bands/forms.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ touch mysite/bands/forms.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Edite o forms.py.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Band&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Member&lt;/span&gt;
 
 
@@ -450,7 +450,7 @@ Vou comentar apenas os comandos que se destacam.&lt;/blockquote&gt;
 &lt;div class="section" id="admin-py"&gt;
 &lt;h2&gt;admin.py&lt;/h2&gt;
 &lt;p&gt;Criamos uma customização para o admin onde em &lt;em&gt;members&lt;/em&gt; aparece um &lt;strong&gt;filtro&lt;/strong&gt; por &lt;em&gt;bandas&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;admin&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;admin&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Band&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Member&lt;/span&gt;
 
 
@@ -468,7 +468,7 @@ Vou comentar apenas os comandos que se destacam.&lt;/blockquote&gt;
 &lt;div class="section" id="carregando-dados-de-um-json"&gt;
 &lt;h2&gt;Carregando dados de um json&lt;/h2&gt;
 &lt;p&gt;Baixe o arquivo &lt;em&gt;fixtures.json&lt;/em&gt; no github e no terminal digite&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;loaddata&lt;/span&gt; &lt;span class="n"&gt;fixtures&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;loaddata&lt;/span&gt; &lt;span class="n"&gt;fixtures&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="video-e-github"&gt;
@@ -492,18 +492,18 @@ Os dados são armazenados por padrão são em memória, porém você pode config
 &lt;h3&gt;Comandos básicos&lt;/h3&gt;
 &lt;p&gt;Quando o Redis é instalado, ele cria um atalho para seu cliente chamado &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;redis-cli&lt;/span&gt;&lt;/tt&gt; e com ele podemos executar os comandos abaixo:&lt;/p&gt;
 &lt;p&gt;Primeiro abra o cliente:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt;&amp;gt; redis-cli
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt; redis-cli
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Com o cliente aberto podemos escolher qual &lt;tt class="docutils literal"&gt;database&lt;/tt&gt; queremos trabalhar, utilizando o comando &lt;tt class="docutils literal"&gt;select&lt;/tt&gt;.
 Basta informar qual o índice da base que queremos utilizar.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;127.0.0.1:6379 &amp;gt; &lt;span class="k"&gt;select&lt;/span&gt; 1
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;127.0.0.1:6379 &amp;gt; &lt;span class="k"&gt;select&lt;/span&gt; 1
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Nesse caso selecionamos a base de índice 1 para realizar as consultas.&lt;/p&gt;
 &lt;p&gt;Se quisermos consultar todas as &lt;tt class="docutils literal"&gt;keys&lt;/tt&gt; que estão armazenadas, basta utilizarmos o comando &lt;tt class="docutils literal"&gt;keys&lt;/tt&gt; com um parâmetro &amp;quot;*&amp;quot;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;127.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;1&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt; keys *
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;127.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;1&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt; keys *
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Se nossas &lt;tt class="docutils literal"&gt;keys&lt;/tt&gt; fossem nomeadas com o prefixo &amp;quot;cache&amp;quot; ou &amp;quot;session&amp;quot;, poderíamos consultá-las assim:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;127.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;1&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt; keys cache:*
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;127.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;1&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt; keys cache:*
 127.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;1&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt; keys session:*
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Existe também a &lt;a class="reference external" href="http://redis.io/commands"&gt;lista completa de comandos&lt;/a&gt;.&lt;/p&gt;
@@ -512,7 +512,7 @@ Basta informar qual o índice da base que queremos utilizar.&lt;/p&gt;
 &lt;div class="section" id="django"&gt;
 &lt;h2&gt;Django&lt;/h2&gt;
 &lt;p&gt;Utilizarei nesse exemplo versão &amp;quot;1.6.4&amp;quot; do Django.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pip install &lt;span class="nv"&gt;Django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.6.4
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install &lt;span class="nv"&gt;Django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.6.4
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Para instalar e configurar um ambiente para o Django basta seguir um dos tutoriais abaixo:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -536,10 +536,10 @@ Basta informar qual o índice da base que queremos utilizar.&lt;/p&gt;
 &lt;p&gt;Toda a configuração de cache fica armazenado na variável &lt;tt class="docutils literal"&gt;CACHES&lt;/tt&gt; no nosso &lt;tt class="docutils literal"&gt;settings.py&lt;/tt&gt;.&lt;/p&gt;
 &lt;p&gt;Utilizarei a biblioteca &lt;a class="reference external" href="https://github.com/niwibe/django-redis"&gt;django-redis&lt;/a&gt; como nosso &lt;tt class="docutils literal"&gt;backend&lt;/tt&gt; de cache e session.&lt;/p&gt;
 &lt;p&gt;Vamos instalar o &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;django-redis&lt;/span&gt;&lt;/tt&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pip install django-redis
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install django-redis
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora abra seu arquivo &lt;tt class="docutils literal"&gt;settings.py&lt;/tt&gt; e adicione a variável &lt;tt class="docutils literal"&gt;CACHES&lt;/tt&gt; com os seguintes valores:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;CACHES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;CACHES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="s1"&gt;&amp;#39;BACKEND&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
         &lt;span class="s1"&gt;&amp;#39;LOCATION&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -554,7 +554,7 @@ Basta informar qual o índice da base que queremos utilizar.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;LOCATION&lt;/strong&gt;: Localização do cache para ser utilizado, no nosso caso é o &lt;tt class="docutils literal"&gt;IP&lt;/tt&gt;:&lt;tt class="docutils literal"&gt;porta&lt;/tt&gt;:&lt;tt class="docutils literal"&gt;Número do banco de dados&lt;/tt&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;CLIENT_CLASS&lt;/strong&gt;: Própria do &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;django-redis&lt;/span&gt;&lt;/tt&gt;, serve para determinar qual classe será utilizada como cliente.&lt;/p&gt;
 &lt;p&gt;Iremos utilizar as classes padrão do &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;django-redis&lt;/span&gt;&lt;/tt&gt; e sua configuração final ficará assim:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;CACHES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;CACHES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="s1"&gt;&amp;#39;BACKEND&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;redis_cache.cache.RedisCache&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
         &lt;span class="s1"&gt;&amp;#39;LOCATION&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;127.0.0.1:6379:1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -579,14 +579,14 @@ Basta informar qual o índice da base que queremos utilizar.&lt;/p&gt;
 &lt;p&gt;Para ativar a funcionalidade de sessão, é preciso editar a variável &lt;tt class="docutils literal"&gt;MIDDLEWARE_CLASSES&lt;/tt&gt; no arquivo &lt;tt class="docutils literal"&gt;settings.py&lt;/tt&gt;.
 Basta adicionar &lt;tt class="docutils literal"&gt;django.contrib.sessions.middleware.SessionMiddleware&lt;/tt&gt; dentro da listagem.&lt;/p&gt;
 &lt;p&gt;&lt;cite&gt;settings.py&lt;/cite&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;MIDDLEWARE_CLASSES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;MIDDLEWARE_CLASSES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
   &lt;span class="c1"&gt;# [...] outros middlewares&lt;/span&gt;
   &lt;span class="s1"&gt;&amp;#39;django.contrib.sessions.middleware.SessionMiddleware&amp;#39;&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Por padrão a sessão já vem ativada.&lt;/p&gt;
 &lt;p&gt;Vamos utilizar uma sessão baseada no cache, como já foi instalado o &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;django-redis&lt;/span&gt;&lt;/tt&gt; só é adicionar as seguintes linhas no arquivo &lt;cite&gt;settings.py&lt;/cite&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SESSION_ENGINE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;django.contrib.sessions.backends.cache&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;SESSION_ENGINE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;django.contrib.sessions.backends.cache&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;SESSION_CACHE_ALIAS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;SESSION_CACHE_ALIAS&lt;/strong&gt; se refere a chave que configuramos no cache, se configurássemos mais que um cache, poderíamos informar outro valor.&lt;/p&gt;
@@ -602,15 +602,15 @@ Basta adicionar &lt;tt class="docutils literal"&gt;django.contrib.sessions.middl
 &lt;div class="section" id="como-testar"&gt;
 &lt;h2&gt;Como testar&lt;/h2&gt;
 &lt;p&gt;Vá até a pasta do nosso projeto e execute o &lt;cite&gt;syncdb&lt;/cite&gt; para sincronizar a base de dados.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;python manage.py syncdb
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py syncdb
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Inicie também o servidor de desenvolvimento do Django.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;python manage.py runserver
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py runserver
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Abra seu navegador e entre na página de administração do Django &lt;a class="reference external" href="http://localhost:8000/admin"&gt;localhost:8000/admin&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Faça seu login para que seja gravado um registro de sessão na base.&lt;/p&gt;
 &lt;p&gt;Para visualizar se o registro foi gravado com sucesso, execute os seguintes comandos:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt;&amp;gt; redis-cli
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt; redis-cli
 
 127.0.0.1:6379&amp;gt; &lt;span class="k"&gt;select&lt;/span&gt; 1
 127.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;1&lt;span class="o"&gt;]&lt;/span&gt;&amp;gt; keys *
