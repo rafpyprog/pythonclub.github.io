@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/jose-cordeiro-de-oliveira-junior.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 19 Feb 2016 09:00:00 -0200</lastBuildDate><item><title>Paralelismo em Python usando concurrent.futures</title><link>http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html</link><description>&lt;p&gt;Esse post tem por objetivo abordar o uso da bliblioteca concurrent.futures para realizar operações paralelas em python, dito isto, gostaria de contextualizar de forma simples paralelismo e concorrência:&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/jose-cordeiro-de-oliveira-junior.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 19 Feb 2016 09:00:00 -0200</lastBuildDate><item><title>Paralelismo em Python usando concurrent.futures</title><link>http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html</link><description>&lt;p&gt;Esse post tem por objetivo abordar o uso da bliblioteca &lt;a href="https://docs.python.org/dev/library/concurrent.futures.html"&gt;concurrent.futures&lt;/a&gt; para realizar operações paralelas em Python. Dito isto, gostaria de contextualizar de forma simples &lt;em&gt;paralelismo&lt;/em&gt; e &lt;em&gt;concorrência&lt;/em&gt;:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Concorrência:&lt;/strong&gt; é quando um computador que possui apenas um core parece está realizando duas ou mais operações ao mesmo tempo, quando na verdade está alternando a execução destas operações de forma tão rápida que temos a ilusão de que tudo é executado simultaneamente.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Paralelismo:&lt;/strong&gt; é quando um computador que possui dois ou mais cores executa operações realmente de forma paralela, utilizando para isso, os cores disponíveis, ou seja, se um determinado computador tem 2 cores posso ter duas operações sendo executadas paralelamente cada uma em um core diferente.&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Concorrência:&lt;/strong&gt; é quando um computador que possui apenas um core parece estar realizando duas ou mais operações ao mesmo tempo, quando na verdade está alternando a execução destas operações de forma tão rápida que temos a ilusão de que tudo é executado simultaneamente.
+e&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Paralelismo:&lt;/strong&gt; é quando um computador que possui dois ou mais cores executa operações realmente de forma paralela, utilizando para isso os cores disponíveis, ou seja, se um determinado computador tem 2 cores posso ter duas operações sendo executadas paralelamente cada uma em um core diferente.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Infelizmente o GIL (Python's global interpreter lock) é restritivo quanto ao uso de threads paralelas  em python , porém, o módulo cuncurrent.futures permite que possámos utilizar múltiplos cores. Para isso, este módulo 'engana' o GIL criando novos interpretadores como subprocessos do interpretador principal, desta maneira, cada subprocesso tem seu próprio GIL e por fim, cada subprocesso tem um ligação com o processo principal de forma que recebem instruções para realizar operações e retornar resultados.&lt;/p&gt;
-&lt;p&gt;Agora que já vimos um pouco de teoria vamos colocar em prática o uso do concurrent.futures. Vamos supor que tenhámos um lista de preços e queira aumentar em 10% o valor de cada item.&lt;/p&gt;
-&lt;p&gt;Vamos então criar uma função que gere uma lista de preços.&lt;/p&gt;
+&lt;p&gt;Infelizmente o GIL (Global Interpreter Lock do Python) é restritivo quanto ao uso de threads paralelas em Python, porém o módulo &lt;code&gt;cuncurrent.futures&lt;/code&gt; permite que possámos utilizar múltiplos cores. Para isso, este módulo "engana" o GIL criando novos interpretadores como subprocessos do interpretador principal. Desta maneira, cada subprocesso tem seu próprio GIL e, por fim, cada subprocesso tem um ligação com o processo principal, de forma que recebem instruções para realizar operações e retornar resultados.&lt;/p&gt;
+&lt;p&gt;Agora que já vimos um pouco de teoria vamos colocar em prática o uso do &lt;code&gt;concurrent.futures&lt;/code&gt;. Vamos supor que tenhámos um lista de preços e que queremos aumentar em 10% o valor de cada item.&lt;/p&gt;
+&lt;p&gt;Vamos então criar uma função que gere uma lista de preços:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;generate_list&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -32,20 +29,16 @@
     &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;increase_function&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;price_list&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
     &lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Took {} to increase the values&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total_seconds&lt;/span&gt;&lt;span class="p"&gt;()))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Took {}s to increase the values&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total_seconds&lt;/span&gt;&lt;span class="p"&gt;()))&lt;/span&gt;
 
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;increase_price_with_threads&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;price_list&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;increase_function&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;increase_price_with_threads&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;price_list&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;increase_function&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;pool&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_workers&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pool&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;increase_function&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;price_list&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
     &lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Took {} to increase the prices with python Threads&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total_seconds&lt;/span&gt;&lt;span class="p"&gt;()))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Took {}s to increase the prices with python Threads&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total_seconds&lt;/span&gt;&lt;span class="p"&gt;()))&lt;/span&gt;
 
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;increase_price_with_subprocess&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;price_list&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;increase_function&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;increase_price_with_subprocess&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;price_list&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;increase_function&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;pool&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ProcessPoolExecutor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_workers&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pool&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;increase_function&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;price_list&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
@@ -54,27 +47,29 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Note que as funções &lt;code&gt;increase_price_serial&lt;/code&gt;, &lt;code&gt;increase_price_with_threads&lt;/code&gt; e &lt;code&gt;increase_price_with_subprocess&lt;/code&gt; são bem semelhantes, todas tem dois parâmetros: o &lt;code&gt;price_list&lt;/code&gt; que é a lista de preços onde iremos fazer as operações e o &lt;code&gt;increase_function&lt;/code&gt; que é função que realizará as operações de acréscimo em cada item da lista.
-A diferença entre estas funções está na forma em que as operações de acréscimo serão executadas conforme explicarei a seguir:&lt;/p&gt;
+&lt;p&gt;Note que as funções &lt;code&gt;increase_price_serial&lt;/code&gt;, &lt;code&gt;increase_price_with_threads&lt;/code&gt; e &lt;code&gt;increase_price_with_subprocess&lt;/code&gt; são bem semelhantes, todas tem dois parâmetros:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;increase_price_serial&lt;/code&gt; aqui a função passada pelo parâmetro &lt;code&gt;increase_function&lt;/code&gt; será executada  para cada item da &lt;code&gt;price_list&lt;/code&gt; de forma sequencial.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;increase_price_with_threads&lt;/code&gt; aqui já começamos a fazer uso da classe &lt;code&gt;ThreadPoolExecutor&lt;/code&gt; pertencente a lib concurrent.futures  que vai nos permitir executar a &lt;code&gt;increase_function&lt;/code&gt; de forma concorrente. Note que ao instanciar &lt;code&gt;ThreadPoolExecutor&lt;/code&gt; estamos passando o parâmetro &lt;code&gt;max_workers=2&lt;/code&gt;, isto está indicando o numero máximo de threads que será usado para executar as operações.&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;increase_price_with_subprocess&lt;/code&gt; nesta função estamos fazendo uso da classe &lt;code&gt;ProcessPoolExecutor&lt;/code&gt; que tem a funionalidade bastante semelhante à classe &lt;code&gt;ThreadPoolExecutor&lt;/code&gt; exceto pelo fato de que esta classe permite a função &lt;code&gt;increase_function&lt;/code&gt; seja executada realmente de forma paralela. Essa 'mágica' é conseguida da seguinte forma:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;1 - &lt;/strong&gt; Cada item da lista de preços é serializado através do &lt;code&gt;pickle&lt;/code&gt;;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;2 - &lt;/strong&gt; Os dados serializados são copiados do processo principal para os processos filhos por meio de um socket local;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;3 - &lt;/strong&gt; Aqui o &lt;code&gt;pickle&lt;/code&gt; entra em cena novamente para deserializar os dados para os subprocessos;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;4 - &lt;/strong&gt; Os subprocessos importa o módulo Python que contém a função que será utilizada, no nosso caso, será importado o módulo onde a '''increase_function''' está localizada;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;5 - &lt;/strong&gt; As funções são executadas de forma paralela em cada subprocesso;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;6 - &lt;/strong&gt; O resultado destas funções é serializado e copiado de volta para o processo principal via socket;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;7 - &lt;/strong&gt; Os resultados são desserializados e mesclados em uma lista para que possam ser retornados;&lt;/li&gt;
+&lt;li&gt;o &lt;code&gt;price_list&lt;/code&gt;, que é a lista de preços onde iremos fazer as operações ;&lt;/li&gt;
+&lt;li&gt;e o &lt;code&gt;increase_function&lt;/code&gt; que é função que realizará as operações de acréscimo em cada item da lista.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Nota-se que a classe &lt;code&gt;ProcessPoolExecutor&lt;/code&gt; faz muitos 'malabarismos' para que o paralelismo seja realmente possível.&lt;/p&gt;
-&lt;h3&gt;Os resultados&lt;/h3&gt;
-&lt;p&gt;Na minha máquina, que tem mais de um core, executei o seguinte código:&lt;/p&gt;
+&lt;p&gt;A diferença entre estas funções está na forma em que as operações de acréscimo serão executadas conforme explicarei a seguir:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;increase_price_serial&lt;/code&gt;: aqui a função passada pelo parâmetro &lt;code&gt;increase_function&lt;/code&gt; será executada  para cada item da &lt;code&gt;price_list&lt;/code&gt; de forma sequencial.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;increase_price_with_threads&lt;/code&gt;: aqui já começamos a fazer uso da classe &lt;code&gt;ThreadPoolExecutor&lt;/code&gt;, que pertencente a lib &lt;code&gt;concurrent.futures&lt;/code&gt;, e que vai nos permitir executar a &lt;code&gt;increase_function&lt;/code&gt; de forma concorrente. Note que ao instanciar &lt;code&gt;ThreadPoolExecutor&lt;/code&gt; estamos passando o parâmetro &lt;code&gt;max_workers=2&lt;/code&gt;, isto está indicando o numero máximo de threads que será usado para executar as operações.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;increase_price_with_subprocess&lt;/code&gt;: nesta função estamos fazendo uso da classe &lt;code&gt;ProcessPoolExecutor&lt;/code&gt; que tem a funionalidade bastante semelhante à classe &lt;code&gt;ThreadPoolExecutor&lt;/code&gt; exceto pelo fato de que esta classe permite que a função &lt;code&gt;increase_function()&lt;/code&gt; seja executada realmente de forma paralela. Essa "mágica" é conseguida da seguinte forma:&lt;ol&gt;
+&lt;li&gt;Cada item da lista de preços é serializado através do &lt;code&gt;pickle&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;Os dados serializados são copiados do processo principal para os processos filhos por meio de um socket local;&lt;/li&gt;
+&lt;li&gt;Aqui o &lt;code&gt;pickle&lt;/code&gt; entra em cena novamente para deserializar os dados para os subprocessos;&lt;/li&gt;
+&lt;li&gt;Os subprocessos importam o módulo Python que contém a função que será utilizada; no nosso caso, será importado o módulo onde &lt;code&gt;increase_function&lt;/code&gt; está localizada;&lt;/li&gt;
+&lt;li&gt;As funções são executadas de forma paralela em cada subprocesso;&lt;/li&gt;
+&lt;li&gt;O resultado destas funções é serializado e copiado de volta para o processo principal via socket;&lt;/li&gt;
+&lt;li&gt;Os resultados são desserializados e mesclados em uma lista para que possam ser retornados;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Nota-se que a classe &lt;code&gt;ProcessPoolExecutor&lt;/code&gt; faz muitos "malabarismos" para que o paralelismo seja realmente possível.&lt;/p&gt;
+&lt;h3&gt;Os resultados&lt;/h3&gt;
+&lt;p&gt;Na minha máquina, que tem mais de um core, executei o seguinte código:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;prices&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;generate_list&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;increase_price_serial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prices&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;increase_price_by_10_percent&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;increase_price_with_threads&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prices&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;increase_price_by_10_percent&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -82,7 +77,7 @@ A diferença entre estas funções está na forma em que as operações de acré
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;O que me trouxe os seguintes resultados:&lt;/p&gt;
+&lt;p&gt;Trazendo os seguintes resultados:&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -95,21 +90,21 @@ A diferença entre estas funções está na forma em que as operações de acré
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td align="left"&gt;increase_price_serial&lt;/td&gt;
+&lt;td align="left"&gt;&lt;code&gt;increase_price_serial&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;#&lt;/td&gt;
 &lt;td align="center"&gt;Sequencial&lt;/td&gt;
 &lt;td&gt;#&lt;/td&gt;
 &lt;td align="right"&gt;2.2e-05 secs&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align="left"&gt;increase_price_with_threads&lt;/td&gt;
+&lt;td align="left"&gt;&lt;code&gt;increase_price_with_threads&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;#&lt;/td&gt;
 &lt;td align="center"&gt;Concorrente&lt;/td&gt;
 &lt;td&gt;#&lt;/td&gt;
 &lt;td align="right"&gt;0.001646 secs&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align="left"&gt;increase_price_with_subprocess&lt;/td&gt;
+&lt;td align="left"&gt;&lt;code&gt;increase_price_with_subprocess&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;#&lt;/td&gt;
 &lt;td align="center"&gt;Paralela&lt;/td&gt;
 &lt;td&gt;#&lt;/td&gt;
@@ -117,9 +112,8 @@ A diferença entre estas funções está na forma em que as operações de acré
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;Veja que &lt;code&gt;increase_price_with_subproces&lt;/code&gt;, mesmo sendo executada paralelamente, levou mais tempo
-que &lt;code&gt;increase_price_serial&lt;/code&gt;. Isto ocorreu pois a função &lt;code&gt;increase_price_by_10_percent&lt;/code&gt;, que é utilizada para fazer operações  nos itens da lista, é uma função que não exige muito trabalho do processador. Desta forma, o  &lt;code&gt;ProcessPoolExecutor&lt;/code&gt; leva mais tempo fazendo o processo de paralelização propriamente dito do que realmente executando as operações de cáalculo.&lt;/p&gt;
-&lt;p&gt;Vamos criar neste momento uma função que realize operações mais complexas.&lt;/p&gt;
+&lt;p&gt;Veja que &lt;code&gt;increase_price_with_subproces&lt;/code&gt;, mesmo sendo executada paralelamente, levou mais tempo que &lt;code&gt;increase_price_serial&lt;/code&gt;. Isso ocorreu pois a função &lt;code&gt;increase_price_by_10_percent&lt;/code&gt;, que é utilizada para fazer operações  nos itens da lista, é uma função que não exige muito trabalho do processador. Desta forma, o  &lt;code&gt;ProcessPoolExecutor&lt;/code&gt; leva mais tempo fazendo o processo de paralelização propriamente dito do que realmente executando as operações de cálculo.&lt;/p&gt;
+&lt;p&gt;Vamos criar neste momento uma função que realize operações mais complexas:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;increase_price_crazy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;price&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;price&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;price&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;
     &lt;span class="n"&gt;new_prices&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
@@ -133,16 +127,16 @@ que &lt;code&gt;increase_price_serial&lt;/code&gt;. Isto ocorreu pois a função
 
 
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Está função  foi criada apenas para  efeitos didáticos &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Está função  foi criada apenas para  efeitos didáticos. &lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Vamos agora ulilizar esta função no lugar da função &lt;code&gt;increase_price_by_10_percent&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Vamos agora ulilizar esta função no lugar da função &lt;code&gt;increase_price_by_10_percent&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;increase_price_serial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prices&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;increase_price_crazy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;increase_price_with_threads&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prices&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;increase_price_crazy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;increase_price_with_subprocess&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prices&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;increase_price_crazy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Obtendo o reultado abaixo.&lt;/p&gt;
+&lt;p&gt;Obtendo o reultado abaixo:&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -155,21 +149,21 @@ que &lt;code&gt;increase_price_serial&lt;/code&gt;. Isto ocorreu pois a função
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td align="left"&gt;increase_price_serial&lt;/td&gt;
+&lt;td align="left"&gt;&lt;code&gt;increase_price_serial&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;#&lt;/td&gt;
 &lt;td align="center"&gt;Sequencial&lt;/td&gt;
 &lt;td&gt;#&lt;/td&gt;
 &lt;td align="right"&gt;4.10181 secs&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align="left"&gt;increase_price_with_threads&lt;/td&gt;
+&lt;td align="left"&gt;&lt;code&gt;increase_price_with_threads&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;#&lt;/td&gt;
 &lt;td align="center"&gt;Concorrente&lt;/td&gt;
 &lt;td&gt;#&lt;/td&gt;
 &lt;td align="right"&gt;4.566346 secs&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align="left"&gt;increase_price_with_subprocess&lt;/td&gt;
+&lt;td align="left"&gt;&lt;code&gt;increase_price_with_subprocess&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;#&lt;/td&gt;
 &lt;td align="center"&gt;Paralela&lt;/td&gt;
 &lt;td&gt;#&lt;/td&gt;
@@ -178,13 +172,13 @@ que &lt;code&gt;increase_price_serial&lt;/code&gt;. Isto ocorreu pois a função
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; os valores de tempo gasto vão variar de acordo com o hardware disponível&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; os valores de tempo gasto vão variar de acordo com o hardware disponível.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Veja que agora função &lt;code&gt;increase_price_with_subprocess&lt;/code&gt; foi a mais rápida. Isto se deve o fato de que a nossa nova função ne cálculo &lt;code&gt;increase_price_crazy&lt;/code&gt; demanda muito mais processamento , assim, o overhead para que se paralelize as operações tem um custo inferior ao custo de processamento das operações de cálculo.&lt;/p&gt;
 &lt;h2&gt;Conclusão&lt;/h2&gt;
-&lt;p&gt;Podemos concluir que é possível executar operações paralelas em python utilizando &lt;code&gt;ProcessPoolExecutor&lt;/code&gt; porém, paralelizar nem sempre vai garantir que determinada operação vai ser  mais performática. Temos sempre que avaliar a situação que temos em mãos.&lt;/p&gt;
+&lt;p&gt;Podemos concluir que é possível executar operações paralelas em python utilizando &lt;code&gt;ProcessPoolExecutor&lt;/code&gt;, porém paralelizar nem sempre vai garantir que determinada operação vai ser  mais performática. Temos sempre que avaliar a situação que temos em mãos.&lt;/p&gt;
 &lt;p&gt;Espero que este post tenha contribuído de alguma forma com conhecimento de vocês, sugestões e criticas serão bem vindas, obrigado!.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; Existem varios conceitos  como, locks, deadlocks, futures, data races e etc que não foram abordados aqui para que o post não ficasse muito longo e complexo.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; Existem varios conceitos  como, locks, deadlocks, futures, data races e etc. que não foram abordados aqui para que o post não ficasse muito longo e complexo.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;O código completo pode ser encontrado  &lt;a href="https://github.com/cordjr/concurrent.futtures.sample/blob/master/main.py"&gt;aqui&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">José Cordeiro de Oliveira Junior</dc:creator><pubDate>Fri, 19 Feb 2016 09:00:00 -0200</pubDate><guid>tag:pythonclub.com.br,2016-02-19:paralelismo-em-python-usando-concurrent.futures.html</guid><category>python</category><category>concorrencia</category><category>paralelismo</category></item></channel></rss>
+&lt;p&gt;O código completo pode ser encontrado &lt;a href="https://github.com/cordjr/concurrent.futtures.sample/blob/master/main.py"&gt;aqui&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">José Cordeiro de Oliveira Junior</dc:creator><pubDate>Fri, 19 Feb 2016 09:00:00 -0200</pubDate><guid>tag:pythonclub.com.br,2016-02-19:paralelismo-em-python-usando-concurrent.futures.html</guid><category>python</category><category>concorrencia</category><category>paralelismo</category></item></channel></rss>
