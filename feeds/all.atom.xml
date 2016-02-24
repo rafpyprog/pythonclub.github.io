@@ -246,7 +246,7 @@ e&lt;/li&gt;
 
 
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Está função  foi criada apenas para  efeitos didáticos. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Esta função  foi criada apenas para  efeitos didáticos. &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Vamos agora ulilizar esta função no lugar da função &lt;code&gt;increase_price_by_10_percent&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;increase_price_serial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prices&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;increase_price_crazy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
