@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/eduardo-cuducos.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2016-02-26T18:39:00-03:00</updated><entry><title>Upload de arquivos no Django: entendo os modos de leitura</title><link href="http://pythonclub.com.br/upload-de-arquivos-no-django-entendo-os-modos-de-leitura.html" rel="alternate"></link><updated>2016-02-26T18:39:00-03:00</updated><author><name>Eduardo Cuducos</name></author><id>tag:pythonclub.com.br,2016-02-26:upload-de-arquivos-no-django-entendo-os-modos-de-leitura.html</id><summary type="html">&lt;h1&gt;Upload de arquivos no Django: entendo os modos de leitura&lt;/h1&gt;
+&lt;p&gt;Em uma conversa com a galera do [Welcome to the Django] acabei experimentando a aprendendo – na prática — sobre &lt;em&gt;csv&lt;/em&gt;, &lt;em&gt;strings&lt;/em&gt;, &lt;em&gt;bytes&lt;/em&gt;, &lt;em&gt;file object&lt;/em&gt; e a maneira como uploads funcionam. Resgistrei minha exploração e espero que mais gente possa encontrar uma ou outra coisa nova aqui!&lt;/p&gt;
+&lt;h2&gt;O problema&lt;/h2&gt;
+&lt;p&gt;Fui alterar um projeto feito com &lt;a href="http://djangoproject.com"&gt;Django&lt;/a&gt;, atualizando do Python 2 para o Python 3, e me deparei com um pedaço de uma &lt;em&gt;view&lt;/em&gt; que, como o &lt;a href="http://henriquebastos.net"&gt;Henrique Bastos&lt;/a&gt; falou, funcionava “por acaso” no Python 2:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foobar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="err"&gt;…&lt;/span&gt;    
+    &lt;span class="n"&gt;lines&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;csv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reader&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;file.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;lines&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="err"&gt;…&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Essa &lt;em&gt;view&lt;/em&gt; recebe um arquivo &lt;code&gt;CSV&lt;/code&gt; (upload do usuáio) e só processa as linhas do arquivo, sem salvá-lo em disco. No Python 3, esse trecho da &lt;em&gt;view&lt;/em&gt; passou a dar erro:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;_csv.Error: iterator should return strings, not bytes (did you open the file in text mode?)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O Henrique, além de falar que o código funcionava “por acaso”, me lembrou que o &lt;code&gt;csv.reader(…)&lt;/code&gt; já recebe um arquivo aberto. Assim fui explorar a maneira que o Django estava me entregando os arquivos no &lt;code&gt;HttpRequest&lt;/code&gt; (no caso da minha &lt;em&gt;view&lt;/em&gt;, o que eu tinha em mãos no &lt;code&gt;request.FILES['file.csv']&lt;/code&gt;).&lt;/p&gt;
+&lt;h2&gt;Simulando o ambiente da &lt;em&gt;view&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;Para explorar isso, eu precisava simular o ambiente da minha &lt;em&gt;view&lt;/em&gt;. Comecei criando um arquivo simples, &lt;code&gt;teste.txt&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Linha 1, foo
+Linha 2, bar
+Linha 3, acentação
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Depois fui ler a &lt;a href="https://docs.djangoproject.com/en/1.9/ref/request-response/#django.http.HttpRequest.FILES"&gt;documentação do &lt;code&gt;HttpRequest.FILES&lt;/code&gt;&lt;/a&gt; e descobri que os arquivos ali disponíveis são instâncias de &lt;a href="https://docs.djangoproject.com/en/1.9/ref/files/uploads/#django.core.files.uploadedfile.UploadedFile"&gt;&lt;code&gt;UploadedFile&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Logo, se eu criar uma instância da classe &lt;code&gt;UploadedFile&lt;/code&gt;, posso acessar um objeto do mesmo tipo que eu acessava na &lt;em&gt;view&lt;/em&gt; pelo &lt;code&gt;resques.FILES['file.csv']&lt;/code&gt;. Para criar essa instância, preciso de um arquivo aberto, algo como &lt;code&gt;open(file_path, modo)&lt;/code&gt;. Para continuar a simulação, eu precisava saber de que forma o Django abre o arquivo do upload quando instancia ele no &lt;code&gt;HttpRequest.FILES&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Eu desconfiava que não era em texto (&lt;code&gt;r&lt;/code&gt;), que era em binário (&lt;code&gt;rb&lt;/code&gt;). A documentação do &lt;a href="https://curl.haxx.se/docs/manpage.html#-F"&gt;curl&lt;/a&gt;, por exemplo, indicava que os arquivos eram enviados como binários. A documentação da &lt;a href="http://docs.python-requests.org/en/master/user/advanced/#streaming-uploads"&gt;Requests&lt;/a&gt; tem um aviso grande, em vermelho, desencorajando qualquer um usar outro modo que não o binário.&lt;/p&gt;
+&lt;p&gt;Lendo mais sobre o &lt;code&gt;UploadedFile&lt;/code&gt; descobri que esse objeto tem um atributo &lt;code&gt;file&lt;/code&gt; que, é uma referência ao &lt;code&gt;file object&lt;/code&gt; nativo do Python que a classe &lt;code&gt;UploadFile&lt;/code&gt; envolve. E esse atributo &lt;code&gt;file&lt;/code&gt;, por sua vez, tem o atributo &lt;code&gt;mode&lt;/code&gt; que me diz qual o modo foi utilizado na abertura do arquivo. Fui lá na minha &lt;em&gt;view&lt;/em&gt; e dei um &lt;code&gt;print(request.FILES['file.csv'].file.mode)&lt;/code&gt; e obtive &lt;code&gt;rb&lt;/code&gt; como resposta.&lt;/p&gt;
+&lt;p&gt;Pronto! Finalmente eu tinha tudo para simular o ambiente da &lt;em&gt;view&lt;/em&gt; no meu &lt;a href="http://ipython.org"&gt;IPython&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;csv&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.files.uploadedfile&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;UploadedFile&lt;/span&gt;
+&lt;span class="n"&gt;uploaded&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;UploadedFile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;teste.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;rb&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;teste.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Assim testei o trecho que dava problema…&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;csv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reader&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;uploaded&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;… e obtive o mesmo erro.&lt;/p&gt;
+&lt;h2&gt;Solução&lt;/h2&gt;
+&lt;p&gt;Como já tinha ficado claro, o arquivo estava aberto como binário. Isso dá erro na hora de usar o &lt;code&gt;csv.reader(…)&lt;/code&gt;, pois o &lt;code&gt;csv.reader(…)&lt;/code&gt; espera um texto, &lt;em&gt;string&lt;/em&gt; como argumento. Aqui nem precisei ler a documentação, só lembrei da mensagem de erro: &lt;em&gt;did you open the file in text mode?&lt;/em&gt; – ou seja, &lt;em&gt;você abriu o arquivo no modo texto?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Lendo a documentação do &lt;code&gt;UploadedFile&lt;/code&gt; e do &lt;code&gt;File&lt;/code&gt; do Django (já que a primeira herda da segunda), achei dois métodos úteis: o &lt;code&gt;close()&lt;/code&gt; e o &lt;code&gt;open()&lt;/code&gt;. Com eles fechei o arquivo que estava aberto no modo &lt;code&gt;rb&lt;/code&gt; e (re)abri o mesmo arquivo como &lt;code&gt;r&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;uploaded&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;uploaded&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora sim o arquivo está pronto para o &lt;code&gt;csv.reader(…)&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;csv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reader&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;uploaded&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[&amp;#39;Linha 1&amp;#39;, &amp;#39; foo&amp;#39;]&lt;/span&gt;
+&lt;span class="k"&gt;[&amp;#39;Linha 2&amp;#39;, &amp;#39; bar&amp;#39;]&lt;/span&gt;
+&lt;span class="k"&gt;[&amp;#39;Linha 3&amp;#39;, &amp;#39; acentação&amp;#39;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Enfim, esse métodos &lt;code&gt;UploadedFile.close()&lt;/code&gt; e &lt;code&gt;UploadedFile.open(mode=mode)&lt;/code&gt; podem ser muito úteis quando queremos fazer algo diferente de gravar os arquivos recebidos em disco.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Quem aprendeu alguma coisa nova?&lt;/p&gt;
+&lt;p&gt;— Raymond Hettinger&lt;/p&gt;
+&lt;/blockquote&gt;</summary><category term="django"></category><category term="csv"></category><category term="upload"></category><category term="HttpRequest"></category><category term="UploadedFile"></category></entry></feed>

@@ -5,37 +5,44 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/</loc>
-<lastmod>2016-02-24T01:11:16-00:00</lastmod>
+<lastmod>2016-02-27T16:04:30-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2016-02-24T01:11:16-00:00</lastmod>
+<lastmod>2016-02-27T16:04:30-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2016-02-24T01:11:16-00:00</lastmod>
+<lastmod>2016-02-27T16:04:30-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2016-02-24T01:11:16-00:00</lastmod>
+<lastmod>2016-02-27T16:04:30-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2016-02-24T01:11:16-00:00</lastmod>
+<lastmod>2016-02-27T16:04:30-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/upload-de-arquivos-no-django-entendo-os-modos-de-leitura.html</loc>
+<lastmod>2016-02-26T18:39:00-03:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -509,7 +516,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/category/django.html</loc>
-<lastmod>2015-12-03T22:00:00-03:06</lastmod>
+<lastmod>2016-02-26T18:39:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -741,6 +748,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/tag/framework.html</loc>
 <lastmod>2014-08-28T00:30:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/uploadedfile.html</loc>
+<lastmod>2016-02-26T18:39:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/upload.html</loc>
+<lastmod>2016-02-26T18:39:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1061,8 +1082,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/github.html</loc>
-<lastmod>2016-02-11T11:47:44-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/django-fagungis.html</loc>
+<lastmod>2014-05-13T16:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1145,6 +1166,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/tag/httprequest.html</loc>
+<lastmod>2016-02-26T18:39:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/tag/permissoes.html</loc>
 <lastmod>2014-11-22T11:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -1194,6 +1222,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/tag/csv.html</loc>
+<lastmod>2016-02-26T18:39:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/tag/openshift.html</loc>
 <lastmod>2014-09-05T18:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -1229,8 +1264,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/django-fagungis.html</loc>
-<lastmod>2014-05-13T16:00:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/github.html</loc>
+<lastmod>2016-02-11T11:47:44-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1265,7 +1300,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/django.html</loc>
-<lastmod>2015-12-03T22:00:00-03:06</lastmod>
+<lastmod>2016-02-26T18:39:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1350,6 +1385,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/author/dyesten-paulon.html</loc>
 <lastmod>2014-12-09T23:08:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/author/eduardo-cuducos.html</loc>
+<lastmod>2016-02-26T18:39:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
