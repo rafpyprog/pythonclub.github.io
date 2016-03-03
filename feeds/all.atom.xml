@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2016-02-26T18:39:00-03:00</updated><entry><title>Upload de arquivos no Django: entendo os modos de leitura</title><link href="http://pythonclub.com.br/upload-de-arquivos-no-django-entendo-os-modos-de-leitura.html" rel="alternate"></link><updated>2016-02-26T18:39:00-03:00</updated><author><name>Eduardo Cuducos</name></author><id>tag:pythonclub.com.br,2016-02-26:upload-de-arquivos-no-django-entendo-os-modos-de-leitura.html</id><summary type="html">&lt;h1&gt;Upload de arquivos no Django: entendo os modos de leitura&lt;/h1&gt;
-&lt;p&gt;Em uma conversa com a galera do &lt;a href="http://welcometothedjango.com.br"&gt;Welcome to the Django&lt;/a&gt; acabei experimentando e aprendendo – na prática — sobre &lt;em&gt;csv&lt;/em&gt;, &lt;em&gt;strings&lt;/em&gt;, &lt;em&gt;bytes&lt;/em&gt;, &lt;em&gt;file object&lt;/em&gt; e a maneira como uploads funcionam. Resgistrei minha exploração e espero que mais gente possa encontrar uma ou outra coisa nova aqui!&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2016-02-26T18:39:00-03:00</updated><entry><title>Upload de arquivos no Django: entendo os modos de leitura</title><link href="http://pythonclub.com.br/upload-de-arquivos-no-django-entendo-os-modos-de-leitura.html" rel="alternate"></link><updated>2016-02-26T18:39:00-03:00</updated><author><name>Eduardo Cuducos</name></author><id>tag:pythonclub.com.br,2016-02-26:upload-de-arquivos-no-django-entendo-os-modos-de-leitura.html</id><summary type="html">&lt;p&gt;Em uma conversa com a galera do &lt;a href="http://welcometothedjango.com.br"&gt;Welcome to the Django&lt;/a&gt; acabei experimentando e aprendendo – na prática — sobre &lt;em&gt;csv&lt;/em&gt;, &lt;em&gt;strings&lt;/em&gt;, &lt;em&gt;bytes&lt;/em&gt;, &lt;em&gt;file object&lt;/em&gt; e a maneira como uploads funcionam. Registrei minha exploração e espero que mais gente possa encontrar uma ou outra coisa nova aqui!&lt;/p&gt;
 &lt;h2&gt;O problema&lt;/h2&gt;
 &lt;p&gt;Fui alterar um projeto feito com &lt;a href="http://djangoproject.com"&gt;Django&lt;/a&gt;, atualizando do Python 2 para o Python 3, e me deparei com um pedaço de uma &lt;em&gt;view&lt;/em&gt; que, como o &lt;a href="http://henriquebastos.net"&gt;Henrique Bastos&lt;/a&gt; falou, funcionava “por acaso” no Python 2:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foobar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -21,12 +20,12 @@
 &lt;p&gt;Para explorar isso, eu precisava simular o ambiente da minha &lt;em&gt;view&lt;/em&gt;. Comecei criando um arquivo simples, &lt;code&gt;teste.txt&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Linha 1, foo
 Linha 2, bar
-Linha 3, acentação
+Linha 3, acentuação
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Depois fui ler a &lt;a href="https://docs.djangoproject.com/en/1.9/ref/request-response/#django.http.HttpRequest.FILES"&gt;documentação do &lt;code&gt;HttpRequest.FILES&lt;/code&gt;&lt;/a&gt; e descobri que os arquivos ali disponíveis são instâncias de &lt;a href="https://docs.djangoproject.com/en/1.9/ref/files/uploads/#django.core.files.uploadedfile.UploadedFile"&gt;&lt;code&gt;UploadedFile&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Logo, se eu criar uma instância da classe &lt;code&gt;UploadedFile&lt;/code&gt;, posso acessar um objeto do mesmo tipo que eu acessava na &lt;em&gt;view&lt;/em&gt; pelo &lt;code&gt;resques.FILES['file.csv']&lt;/code&gt;. Para criar essa instância, preciso de um arquivo aberto, algo como &lt;code&gt;open(file_path, modo)&lt;/code&gt;. Para continuar a simulação, eu precisava saber de que forma o Django abre o arquivo do upload quando instancia ele no &lt;code&gt;HttpRequest.FILES&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Logo, se eu criar uma instância da classe &lt;code&gt;UploadedFile&lt;/code&gt;, posso acessar um objeto do mesmo tipo que eu acessava na &lt;em&gt;view&lt;/em&gt; pelo &lt;code&gt;request.FILES['file.csv']&lt;/code&gt;. Para criar essa instância, preciso de um arquivo aberto, algo como &lt;code&gt;open(file_path, modo)&lt;/code&gt;. Para continuar a simulação, eu precisava saber de que forma o Django abre o arquivo do upload quando instancia ele no &lt;code&gt;HttpRequest.FILES&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Eu desconfiava que não era em texto (&lt;code&gt;r&lt;/code&gt;), que era em binário (&lt;code&gt;rb&lt;/code&gt;). A documentação do &lt;a href="https://curl.haxx.se/docs/manpage.html#-F"&gt;curl&lt;/a&gt;, por exemplo, indicava que os arquivos eram enviados como binários. A documentação da &lt;a href="http://docs.python-requests.org/en/master/user/advanced/#streaming-uploads"&gt;Requests&lt;/a&gt; tem um aviso grande, em vermelho, desencorajando qualquer um usar outro modo que não o binário.&lt;/p&gt;
 &lt;p&gt;Lendo mais sobre o &lt;code&gt;UploadedFile&lt;/code&gt; descobri que esse objeto tem um atributo &lt;code&gt;file&lt;/code&gt; que, é uma referência ao &lt;code&gt;file object&lt;/code&gt; nativo do Python que a classe &lt;code&gt;UploadFile&lt;/code&gt; envolve. E esse atributo &lt;code&gt;file&lt;/code&gt;, por sua vez, tem o atributo &lt;code&gt;mode&lt;/code&gt; que me diz qual o modo foi utilizado na abertura do arquivo. Fui lá na minha &lt;em&gt;view&lt;/em&gt; e dei um &lt;code&gt;print(request.FILES['file.csv'].file.mode)&lt;/code&gt; e obtive &lt;code&gt;rb&lt;/code&gt; como resposta.&lt;/p&gt;
 &lt;p&gt;Pronto! Finalmente eu tinha tudo para simular o ambiente da &lt;em&gt;view&lt;/em&gt; no meu &lt;a href="http://ipython.org"&gt;IPython&lt;/a&gt;:&lt;/p&gt;
@@ -59,7 +58,7 @@ Linha 3, acentação
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[&amp;#39;Linha 1&amp;#39;, &amp;#39; foo&amp;#39;]&lt;/span&gt;
 &lt;span class="k"&gt;[&amp;#39;Linha 2&amp;#39;, &amp;#39; bar&amp;#39;]&lt;/span&gt;
-&lt;span class="k"&gt;[&amp;#39;Linha 3&amp;#39;, &amp;#39; acentação&amp;#39;]&lt;/span&gt;
+&lt;span class="k"&gt;[&amp;#39;Linha 3&amp;#39;, &amp;#39; acentuação&amp;#39;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -5293,7 +5292,7 @@ pip freeze
 pip freeze &amp;gt; requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Dica&lt;/strong&gt;: Para diminuir o caminho do prompt digite&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nv"&gt;PS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;(`basename \&amp;quot;&lt;/span&gt;$&lt;span class="s2"&gt;VIRTUAL_ENV\&amp;quot;`):/\W&lt;/span&gt;$&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nv"&gt;PS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;(`basename \&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$VIRTUAL_ENV&lt;/span&gt;&lt;span class="s2"&gt;\&amp;quot;`):/\W&lt;/span&gt;$&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Dica&lt;/strong&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vim ~/.bashrc +
@@ -6766,7 +6765,7 @@ $ sudo apt-get install -y virtualenv
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Para diminuir o caminho do prompt digite&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nv"&gt;PS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;(`basename \&amp;quot;&lt;/span&gt;$&lt;span class="s2"&gt;VIRTUAL_ENV\&amp;quot;`):/\W&lt;/span&gt;$&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nv"&gt;PS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;(`basename \&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$VIRTUAL_ENV&lt;/span&gt;&lt;span class="s2"&gt;\&amp;quot;`):/\W&lt;/span&gt;$&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="instalando-django-1-7-django-bootstrap3"&gt;
@@ -7747,7 +7746,7 @@ PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;. Mas o programa roda 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; intermediario
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora vamos diminuir o caminho do prompt&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;PS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;(`basename \&amp;quot;&lt;/span&gt;$&lt;span class="s2"&gt;VIRTUAL_ENV\&amp;quot;`):/\W&lt;/span&gt;$&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;PS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;(`basename \&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$VIRTUAL_ENV&lt;/span&gt;&lt;span class="s2"&gt;\&amp;quot;`):/\W&lt;/span&gt;$&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;O prompt vai ficar assim:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;python-sqlite&lt;span class="o"&gt;)&lt;/span&gt;:/intermediario$
@@ -9669,7 +9668,7 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 &lt;span class="c1"&gt;# Diretorio e arquivo de log&lt;/span&gt;
 &lt;span class="nb"&gt;set&lt;/span&gt; -e
 &lt;span class="nv"&gt;LOGFILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/myusr/www/myproject/logs/gunicorn.log
-&lt;span class="nv"&gt;LOGDIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;dirname $LOGFILE&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="nv"&gt;LOGDIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;dirname &lt;span class="nv"&gt;$LOGFILE&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
 &lt;span class="c1"&gt;# Numero de processo simultaneo, modifique de acordo com seu processador&lt;/span&gt;
 &lt;span class="nv"&gt;NUM_WORKERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;3
 &lt;span class="c1"&gt;# Usuario/Grupo que vai rodar o gunicorn&lt;/span&gt;
@@ -9680,8 +9679,8 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 &lt;span class="c1"&gt;# Ativando ambiente virtual e executando o gunicorn para este projeto&lt;/span&gt;
 &lt;span class="nb"&gt;source&lt;/span&gt; /home/myusr/envs/myproject/bin/activate
 &lt;span class="nb"&gt;cd&lt;/span&gt; /home/myusr/www/myproject/project/
-&lt;span class="nb"&gt;test&lt;/span&gt; -d $LOGDIR &lt;span class="o"&gt;||&lt;/span&gt; mkdir -p $LOGDIR
-&lt;span class="nb"&gt;exec&lt;/span&gt; gunicorn -w $NUM_WORKERS --bind&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$ADD&lt;/span&gt;RESS --user&lt;span class="o"&gt;=&lt;/span&gt;$USER --log-level&lt;span class="o"&gt;=&lt;/span&gt;debug --log-file&lt;span class="o"&gt;=&lt;/span&gt;$LOGFILE 2&amp;gt;&amp;gt;$LOGFILE myproject.wsgi:application
+&lt;span class="nb"&gt;test&lt;/span&gt; -d &lt;span class="nv"&gt;$LOGDIR&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; mkdir -p &lt;span class="nv"&gt;$LOGDIR&lt;/span&gt;
+&lt;span class="nb"&gt;exec&lt;/span&gt; gunicorn -w &lt;span class="nv"&gt;$NUM_WORKERS&lt;/span&gt; --bind&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$ADDRESS&lt;/span&gt; --user&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$USER&lt;/span&gt; --log-level&lt;span class="o"&gt;=&lt;/span&gt;debug --log-file&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$LOGFILE&lt;/span&gt; 2&amp;gt;&amp;gt;&lt;span class="nv"&gt;$LOGFILE&lt;/span&gt; myproject.wsgi:application
 &lt;/pre&gt;&lt;/div&gt;
 
 

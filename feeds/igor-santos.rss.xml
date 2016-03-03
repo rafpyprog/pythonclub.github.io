@@ -117,7 +117,7 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 &lt;span class="c1"&gt;# Diretorio e arquivo de log&lt;/span&gt;
 &lt;span class="nb"&gt;set&lt;/span&gt; -e
 &lt;span class="nv"&gt;LOGFILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/myusr/www/myproject/logs/gunicorn.log
-&lt;span class="nv"&gt;LOGDIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;dirname $LOGFILE&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="nv"&gt;LOGDIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;dirname &lt;span class="nv"&gt;$LOGFILE&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
 &lt;span class="c1"&gt;# Numero de processo simultaneo, modifique de acordo com seu processador&lt;/span&gt;
 &lt;span class="nv"&gt;NUM_WORKERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;3
 &lt;span class="c1"&gt;# Usuario/Grupo que vai rodar o gunicorn&lt;/span&gt;
@@ -128,8 +128,8 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 &lt;span class="c1"&gt;# Ativando ambiente virtual e executando o gunicorn para este projeto&lt;/span&gt;
 &lt;span class="nb"&gt;source&lt;/span&gt; /home/myusr/envs/myproject/bin/activate
 &lt;span class="nb"&gt;cd&lt;/span&gt; /home/myusr/www/myproject/project/
-&lt;span class="nb"&gt;test&lt;/span&gt; -d $LOGDIR &lt;span class="o"&gt;||&lt;/span&gt; mkdir -p $LOGDIR
-&lt;span class="nb"&gt;exec&lt;/span&gt; gunicorn -w $NUM_WORKERS --bind&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$ADD&lt;/span&gt;RESS --user&lt;span class="o"&gt;=&lt;/span&gt;$USER --log-level&lt;span class="o"&gt;=&lt;/span&gt;debug --log-file&lt;span class="o"&gt;=&lt;/span&gt;$LOGFILE 2&amp;gt;&amp;gt;$LOGFILE myproject.wsgi:application
+&lt;span class="nb"&gt;test&lt;/span&gt; -d &lt;span class="nv"&gt;$LOGDIR&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; mkdir -p &lt;span class="nv"&gt;$LOGDIR&lt;/span&gt;
+&lt;span class="nb"&gt;exec&lt;/span&gt; gunicorn -w &lt;span class="nv"&gt;$NUM_WORKERS&lt;/span&gt; --bind&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$ADDRESS&lt;/span&gt; --user&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$USER&lt;/span&gt; --log-level&lt;span class="o"&gt;=&lt;/span&gt;debug --log-file&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$LOGFILE&lt;/span&gt; 2&amp;gt;&amp;gt;&lt;span class="nv"&gt;$LOGFILE&lt;/span&gt; myproject.wsgi:application
 &lt;/pre&gt;&lt;/div&gt;
 
 

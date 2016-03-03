@@ -211,7 +211,7 @@ PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 t
 <div class="highlight"><pre><span></span>$ <span class="nb">cd</span> intermediario
 </pre></div>
 <p>Agora vamos diminuir o caminho do prompt</p>
-<div class="highlight"><pre><span></span><span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;(`basename \&quot;</span>$<span class="s2">VIRTUAL_ENV\&quot;`):/\W</span>$<span class="s2"> &quot;</span>
+<div class="highlight"><pre><span></span><span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;(`basename \&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">\&quot;`):/\W</span>$<span class="s2"> &quot;</span>
 </pre></div>
 <p>O prompt vai ficar assim:</p>
 <div class="highlight"><pre><span></span><span class="o">(</span>python-sqlite<span class="o">)</span>:/intermediario$

@@ -18,7 +18,7 @@
     <meta property="og:title" content="Upload de arquivos no Django: entendo os modos de leitura" />
     <meta property="og:site_name" content="PythonClub" />
     <meta property="og:url" content="http://pythonclub.com.br/upload-de-arquivos-no-django-entendo-os-modos-de-leitura.html" />
-    <meta property="og:description" content="Upload de arquivos no Django: entendo os modos de leitura Em uma conversa com a galera do Welcome to the Django acabei experimentando e aprendendo – na prática — sobre csv, strings, bytes, file object e a maneira como uploads funcionam. Resgistrei minha exploração e espero que mais gente possa encontrar uma ..." />
+    <meta property="og:description" content="Em uma conversa com a galera do Welcome to the Django acabei experimentando e aprendendo – na prática — sobre csv, strings, bytes, file object e a maneira como uploads funcionam. Registrei minha exploração e espero que mais gente possa encontrar uma ou outra coisa nova aqui! O problema Fui alterar um ..." />
     <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
@@ -111,8 +111,7 @@
                         </p>
                 </header>
             </section>
-            <h1>Upload de arquivos no Django: entendo os modos de leitura</h1>
-<p>Em uma conversa com a galera do <a href="http://welcometothedjango.com.br">Welcome to the Django</a> acabei experimentando e aprendendo – na prática — sobre <em>csv</em>, <em>strings</em>, <em>bytes</em>, <em>file object</em> e a maneira como uploads funcionam. Resgistrei minha exploração e espero que mais gente possa encontrar uma ou outra coisa nova aqui!</p>
+            <p>Em uma conversa com a galera do <a href="http://welcometothedjango.com.br">Welcome to the Django</a> acabei experimentando e aprendendo – na prática — sobre <em>csv</em>, <em>strings</em>, <em>bytes</em>, <em>file object</em> e a maneira como uploads funcionam. Registrei minha exploração e espero que mais gente possa encontrar uma ou outra coisa nova aqui!</p>
 <h2>O problema</h2>
 <p>Fui alterar um projeto feito com <a href="http://djangoproject.com">Django</a>, atualizando do Python 2 para o Python 3, e me deparei com um pedaço de uma <em>view</em> que, como o <a href="http://henriquebastos.net">Henrique Bastos</a> falou, funcionava “por acaso” no Python 2:</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">foobar</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -133,12 +132,12 @@
 <p>Para explorar isso, eu precisava simular o ambiente da minha <em>view</em>. Comecei criando um arquivo simples, <code>teste.txt</code>:</p>
 <div class="highlight"><pre><span></span>Linha 1, foo
 Linha 2, bar
-Linha 3, acentação
+Linha 3, acentuação
 </pre></div>
 
 
 <p>Depois fui ler a <a href="https://docs.djangoproject.com/en/1.9/ref/request-response/#django.http.HttpRequest.FILES">documentação do <code>HttpRequest.FILES</code></a> e descobri que os arquivos ali disponíveis são instâncias de <a href="https://docs.djangoproject.com/en/1.9/ref/files/uploads/#django.core.files.uploadedfile.UploadedFile"><code>UploadedFile</code></a>.</p>
-<p>Logo, se eu criar uma instância da classe <code>UploadedFile</code>, posso acessar um objeto do mesmo tipo que eu acessava na <em>view</em> pelo <code>resques.FILES['file.csv']</code>. Para criar essa instância, preciso de um arquivo aberto, algo como <code>open(file_path, modo)</code>. Para continuar a simulação, eu precisava saber de que forma o Django abre o arquivo do upload quando instancia ele no <code>HttpRequest.FILES</code>.</p>
+<p>Logo, se eu criar uma instância da classe <code>UploadedFile</code>, posso acessar um objeto do mesmo tipo que eu acessava na <em>view</em> pelo <code>request.FILES['file.csv']</code>. Para criar essa instância, preciso de um arquivo aberto, algo como <code>open(file_path, modo)</code>. Para continuar a simulação, eu precisava saber de que forma o Django abre o arquivo do upload quando instancia ele no <code>HttpRequest.FILES</code>.</p>
 <p>Eu desconfiava que não era em texto (<code>r</code>), que era em binário (<code>rb</code>). A documentação do <a href="https://curl.haxx.se/docs/manpage.html#-F">curl</a>, por exemplo, indicava que os arquivos eram enviados como binários. A documentação da <a href="http://docs.python-requests.org/en/master/user/advanced/#streaming-uploads">Requests</a> tem um aviso grande, em vermelho, desencorajando qualquer um usar outro modo que não o binário.</p>
 <p>Lendo mais sobre o <code>UploadedFile</code> descobri que esse objeto tem um atributo <code>file</code> que, é uma referência ao <code>file object</code> nativo do Python que a classe <code>UploadFile</code> envolve. E esse atributo <code>file</code>, por sua vez, tem o atributo <code>mode</code> que me diz qual o modo foi utilizado na abertura do arquivo. Fui lá na minha <em>view</em> e dei um <code>print(request.FILES['file.csv'].file.mode)</code> e obtive <code>rb</code> como resposta.</p>
 <p>Pronto! Finalmente eu tinha tudo para simular o ambiente da <em>view</em> no meu <a href="http://ipython.org">IPython</a>:</p>
@@ -171,7 +170,7 @@ Linha 3, acentação
 
 <div class="highlight"><pre><span></span><span class="k">[&#39;Linha 1&#39;, &#39; foo&#39;]</span>
 <span class="k">[&#39;Linha 2&#39;, &#39; bar&#39;]</span>
-<span class="k">[&#39;Linha 3&#39;, &#39; acentação&#39;]</span>
+<span class="k">[&#39;Linha 3&#39;, &#39; acentuação&#39;]</span>
 </pre></div>
 
 

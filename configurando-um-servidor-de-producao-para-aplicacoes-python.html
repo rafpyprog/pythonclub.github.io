@@ -232,7 +232,7 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 <span class="c1"># Diretorio e arquivo de log</span>
 <span class="nb">set</span> -e
 <span class="nv">LOGFILE</span><span class="o">=</span>/home/myusr/www/myproject/logs/gunicorn.log
-<span class="nv">LOGDIR</span><span class="o">=</span><span class="k">$(</span>dirname $LOGFILE<span class="k">)</span>
+<span class="nv">LOGDIR</span><span class="o">=</span><span class="k">$(</span>dirname <span class="nv">$LOGFILE</span><span class="k">)</span>
 <span class="c1"># Numero de processo simultaneo, modifique de acordo com seu processador</span>
 <span class="nv">NUM_WORKERS</span><span class="o">=</span>3
 <span class="c1"># Usuario/Grupo que vai rodar o gunicorn</span>
@@ -243,8 +243,8 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 <span class="c1"># Ativando ambiente virtual e executando o gunicorn para este projeto</span>
 <span class="nb">source</span> /home/myusr/envs/myproject/bin/activate
 <span class="nb">cd</span> /home/myusr/www/myproject/project/
-<span class="nb">test</span> -d $LOGDIR <span class="o">||</span> mkdir -p $LOGDIR
-<span class="nb">exec</span> gunicorn -w $NUM_WORKERS --bind<span class="o">=</span><span class="nv">$ADD</span>RESS --user<span class="o">=</span>$USER --log-level<span class="o">=</span>debug --log-file<span class="o">=</span>$LOGFILE 2&gt;&gt;$LOGFILE myproject.wsgi:application
+<span class="nb">test</span> -d <span class="nv">$LOGDIR</span> <span class="o">||</span> mkdir -p <span class="nv">$LOGDIR</span>
+<span class="nb">exec</span> gunicorn -w <span class="nv">$NUM_WORKERS</span> --bind<span class="o">=</span><span class="nv">$ADDRESS</span> --user<span class="o">=</span><span class="nv">$USER</span> --log-level<span class="o">=</span>debug --log-file<span class="o">=</span><span class="nv">$LOGFILE</span> 2&gt;&gt;<span class="nv">$LOGFILE</span> myproject.wsgi:application
 </pre></div>
 
 
