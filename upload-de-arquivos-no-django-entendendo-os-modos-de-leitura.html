@@ -11,14 +11,14 @@
 
     <link rel="shortcut icon" href="http://pythonclub.com.br/theme/images/favicon.ico" >
 
-            <title>Upload de arquivos no Django: entendendo os modos de leitura por PythonClub // #PythonClub // </title>
+            <title>Upload de arquivos no Django: entendendo os modos de leitura por Eduardo Cuducos // #PythonClub // </title>
 
     <meta property="fb:app_id" content="1487080281503641" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Upload de arquivos no Django: entendendo os modos de leitura" />
     <meta property="og:site_name" content="PythonClub" />
     <meta property="og:url" content="http://pythonclub.com.br/upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html" />
-    <meta property="og:description" content="Author: Eduardo Cuducos About_author: Sociólogo, geek, cozinheiro e fã de esportes. Email: cuducos@gmail.com Github: cuducos Site: http://cuducos.me Twitter: cuducos Linkedin: cuducos Em uma conversa com a galera do Welcome to the Django acabei experimentando e aprendendo – na prática — sobre csv, strings, bytes, file object e a ..." />
+    <meta property="og:description" content="Em uma conversa com a galera do Welcome to the Django acabei experimentando e aprendendo – na prática — sobre csv, strings, bytes, file object e a maneira como uploads funcionam. Registrei minha exploração e espero que mais gente possa encontrar uma ou outra coisa nova aqui! O problema Fui alterar um ..." />
     <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
@@ -60,12 +60,37 @@
     <div class="sidebar sidebar-article pure-u">
         <header class="header-article">
             <hgroup>
-                <a href="http://pythonclub.com.br/author/pythonclub.html" title="See posts by PythonClub">
-                        <img class="article-avatar" alt="PythonClub" src="https://www.gravatar.com/avatar/254e3463a97f1044ccffdcc83eff472f">
+                <a href="http://pythonclub.com.br/author/eduardo-cuducos.html" title="See posts by Eduardo Cuducos">
+                        <img class="article-avatar" alt="Eduardo Cuducos" src="https://www.gravatar.com/avatar/35f0a285fbf11a7155bb23695c5a270e">
                 </a>
-                <h2 class="article-info">PythonClub</h2>
+                <h2 class="article-info">Eduardo Cuducos</h2>
     			<ul class="author-social">
+                    <li>
+                        <a target="_blank" href="https://github.com/cuducos">
+                            <i class="fa fa-lg fa-fw fa-github"></i>
+                            <strong>Github</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://twitter.com/cuducos">
+                            <i class="fa fa-lg fa-fw fa-twitter"></i>
+                            <strong>Twitter</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://www.linkedin.com/in/cuducos">
+                            <i class="fa fa-lg fa-fw fa-linkedin"></i>
+                            <strong>Linkedin</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://cuducos.me">
+                            <i class="fa fa-lg fa-fw fa-globe"></i>
+                            <strong>Site</strong>
+                        </a>
+                    </li>
                 </ul>
+                    <small class="about-author">Sociólogo, geek, cozinheiro e fã de esportes.</small>
                 <h5>Publicado em:</h5>
                 <p>Fri 26 February 2016</p>
                 <a href="/">&larr;Home</a>
@@ -86,14 +111,7 @@
                         </p>
                 </header>
             </section>
-            <p>Author: Eduardo Cuducos
-About_author: Sociólogo, geek, cozinheiro e fã de esportes.
-Email:  cuducos@gmail.com
-Github: cuducos
-Site: http://cuducos.me
-Twitter: cuducos
-Linkedin: cuducos</p>
-<p>Em uma conversa com a galera do <a href="http://welcometothedjango.com.br">Welcome to the Django</a> acabei experimentando e aprendendo – na prática — sobre <em>csv</em>, <em>strings</em>, <em>bytes</em>, <em>file object</em> e a maneira como uploads funcionam. Registrei minha exploração e espero que mais gente possa encontrar uma ou outra coisa nova aqui!</p>
+            <p>Em uma conversa com a galera do <a href="http://welcometothedjango.com.br">Welcome to the Django</a> acabei experimentando e aprendendo – na prática — sobre <em>csv</em>, <em>strings</em>, <em>bytes</em>, <em>file object</em> e a maneira como uploads funcionam. Registrei minha exploração e espero que mais gente possa encontrar uma ou outra coisa nova aqui!</p>
 <h2>O problema</h2>
 <p>Fui alterar um projeto feito com <a href="http://djangoproject.com">Django</a>, atualizando do Python 2 para o Python 3, e me deparei com um pedaço de uma <em>view</em> que, como o <a href="http://henriquebastos.net">Henrique Bastos</a> falou, funcionava “por acaso” no Python 2:</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">foobar</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -168,8 +186,8 @@ Linha 3, acentuação
                                                                                                src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"/></a><br/><a
                     xmlns:dct="http://purl.org/dc/terms/" property="dct:title"
                     href="http://pythonclub.com.br/upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html">"Upload de arquivos no Django: entendendo os modos de leitura"</a> de <a
-                    xmlns:cc="http://creativecommons.org/ns#" href="http://pythonclub.com.br/author/pythonclub.html"
-                    property="cc:attributionName" rel="cc:attributionURL">"PythonClub"</a> está licenciado com uma Licença
+                    xmlns:cc="http://creativecommons.org/ns#" href="http://pythonclub.com.br/author/eduardo-cuducos.html"
+                    property="cc:attributionName" rel="cc:attributionURL">"Eduardo Cuducos"</a> está licenciado com uma Licença
                 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons -
                     Atribuição-NãoComercial-SemDerivações 4.0 Internacional</a>.
             </div>

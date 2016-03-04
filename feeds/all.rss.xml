@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 26 Feb 2016 18:39:00 -0300</lastBuildDate><item><title>Upload de arquivos no Django: entendendo os modos de leitura</title><link>http://pythonclub.com.br/upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html</link><description>&lt;p&gt;Author: Eduardo Cuducos
-About_author: Sociólogo, geek, cozinheiro e fã de esportes.
-Email:  cuducos@gmail.com
-Github: cuducos
-Site: http://cuducos.me
-Twitter: cuducos
-Linkedin: cuducos&lt;/p&gt;
-&lt;p&gt;Em uma conversa com a galera do &lt;a href="http://welcometothedjango.com.br"&gt;Welcome to the Django&lt;/a&gt; acabei experimentando e aprendendo – na prática — sobre &lt;em&gt;csv&lt;/em&gt;, &lt;em&gt;strings&lt;/em&gt;, &lt;em&gt;bytes&lt;/em&gt;, &lt;em&gt;file object&lt;/em&gt; e a maneira como uploads funcionam. Registrei minha exploração e espero que mais gente possa encontrar uma ou outra coisa nova aqui!&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 26 Feb 2016 18:39:00 -0300</lastBuildDate><item><title>Upload de arquivos no Django: entendendo os modos de leitura</title><link>http://pythonclub.com.br/upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html</link><description>&lt;p&gt;Em uma conversa com a galera do &lt;a href="http://welcometothedjango.com.br"&gt;Welcome to the Django&lt;/a&gt; acabei experimentando e aprendendo – na prática — sobre &lt;em&gt;csv&lt;/em&gt;, &lt;em&gt;strings&lt;/em&gt;, &lt;em&gt;bytes&lt;/em&gt;, &lt;em&gt;file object&lt;/em&gt; e a maneira como uploads funcionam. Registrei minha exploração e espero que mais gente possa encontrar uma ou outra coisa nova aqui!&lt;/p&gt;
 &lt;h2&gt;O problema&lt;/h2&gt;
 &lt;p&gt;Fui alterar um projeto feito com &lt;a href="http://djangoproject.com"&gt;Django&lt;/a&gt;, atualizando do Python 2 para o Python 3, e me deparei com um pedaço de uma &lt;em&gt;view&lt;/em&gt; que, como o &lt;a href="http://henriquebastos.net"&gt;Henrique Bastos&lt;/a&gt; falou, funcionava “por acaso” no Python 2:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foobar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -73,7 +66,7 @@ Linha 3, acentuação
 &lt;blockquote&gt;
 &lt;p&gt;Quem aprendeu alguma coisa nova?&lt;/p&gt;
 &lt;p&gt;— Raymond Hettinger&lt;/p&gt;
-&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PythonClub</dc:creator><pubDate>Fri, 26 Feb 2016 18:39:00 -0300</pubDate><guid>tag:pythonclub.com.br,2016-02-26:upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html</guid><category>django</category><category>csv</category><category>upload</category><category>HttpRequest</category><category>UploadedFile</category></item><item><title>Python Generators</title><link>http://pythonclub.com.br/python-generators.html</link><description>&lt;p&gt;&lt;code&gt;Publicado originalmente em:&lt;/code&gt; &lt;a href="http://andrealmar.com/2016/02/generators"&gt;http://andrealmar.com/2016/02/generators&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Eduardo Cuducos</dc:creator><pubDate>Fri, 26 Feb 2016 18:39:00 -0300</pubDate><guid>tag:pythonclub.com.br,2016-02-26:upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html</guid><category>django</category><category>csv</category><category>upload</category><category>HttpRequest</category><category>UploadedFile</category></item><item><title>Python Generators</title><link>http://pythonclub.com.br/python-generators.html</link><description>&lt;p&gt;&lt;code&gt;Publicado originalmente em:&lt;/code&gt; &lt;a href="http://andrealmar.com/2016/02/generators"&gt;http://andrealmar.com/2016/02/generators&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I'm the Generator, firing whenever you quit  Yeah whatever it is, you go out and it's on&lt;br /&gt;
 Yeah can't you hear my motored heart  You're the one that started it&lt;/p&gt;

@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/</loc>
-<lastmod>2016-03-03T20:08:18-00:00</lastmod>
+<lastmod>2016-03-04T01:48:21-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2016-03-03T20:08:18-00:00</lastmod>
+<lastmod>2016-03-04T01:48:21-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2016-03-03T20:08:18-00:00</lastmod>
+<lastmod>2016-03-04T01:48:21-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2016-03-03T20:08:18-00:00</lastmod>
+<lastmod>2016-03-04T01:48:21-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2016-03-03T20:08:18-00:00</lastmod>
+<lastmod>2016-03-04T01:48:21-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
@@ -1390,6 +1390,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/author/eduardo-cuducos.html</loc>
+<lastmod>2016-02-26T18:39:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/author/eduardo-klosowski.html</loc>
 <lastmod>2015-02-17T12:35:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -1532,13 +1539,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/author/othon-alberto.html</loc>
 <lastmod>2016-02-11T11:47:44-03:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://pythonclub.com.br/author/pythonclub.html</loc>
-<lastmod>2016-02-26T18:39:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
