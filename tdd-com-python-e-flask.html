@@ -18,7 +18,7 @@
     <meta property="og:title" content="TDD com Python e Flask" />
     <meta property="og:site_name" content="PythonClub" />
     <meta property="og:url" content="http://pythonclub.com.br/tdd-com-python-e-flask.html" />
-    <meta property="og:description" content="TDD com Python e Flask Baseado na palestra que ofereci no encontro do Grupy-SP, em 12 de março de 2016. O código dessa atividade está disponível no meu GitHub. A ideia desse exercício é introduzir a ideia de test driven development (TDD) usando Python e Flask — digo isso pois a ..." />
+    <meta property="og:description" content="Baseado na palestra que ofereci no encontro do Grupy-SP, em 12 de março de 2016. O código dessa atividade está disponível no meu GitHub. A ideia desse exercício é introduzir a ideia de test driven development (TDD) usando Python e Flask — digo isso pois a aplicação final desse “tutorial” não ..." />
     <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
@@ -109,8 +109,7 @@
                         </p>
                 </header>
             </section>
-            <h1>TDD com Python e Flask</h1>
-<blockquote>
+            <blockquote>
 <p>Baseado na palestra que ofereci no <a href="http://www.meetup.com/Grupy-SP/events/228437612/">encontro</a> do <a href="https://groups.google.com/forum/#!forum/grupy-sp">Grupy-SP</a>, em 12 de março de 2016. O código dessa atividade está disponível no <a href="https://github.com/cuducos/grupy-python-tdd-flask">meu GitHub</a>.</p>
 </blockquote>
 <p>A ideia desse exercício é introduzir a ideia de <em>test driven development</em> (TDD) usando <a href="http://http://python.org">Python</a> e <a href="http://flask.pocoo.org/">Flask</a> — digo isso pois a aplicação final desse “tutorial” não é nada avançada, tampouco funcional. E isso se explica por dois motivos: primeiro, o foco é sentir o que é o <em>driven</em> do TDD, ou seja, como uma estrutura de <em>tests first</em> (sempre começar escrevendo os testes, e não a aplicação) pode guiar o processo de desenvolvimento; e, segundo, ser uma atividade rápida, de mais ou menos 1h.</p>
@@ -159,7 +158,7 @@
 <p>No arquivo <code>tests.py</code> vamos usar o módulo <a href="https://docs.python.org/3.5/library/unittest.html">unittest</a>, que já vem instalado por padrão no Python.</p>
 <p>Criaremos uma estrutura básica para que, toda vez que esse arquivo seja executado, o <code>unittest</code> se encarregue de encontrar todos os nossos testes e rodá-los.</p>
 <p>Vamos começar escrevendo com uma exemplo fictício: testes para um método que ainda não criamos, um método que calcule números fatoriais. A ideia é só entender como escreveremos testes em um arquivo (<code>tests.py</code>) para testar o que escreveremos no outro arquivo (<code>app.py</code>).</p>
-<p>A estrutura básica a seguir cria um caso de teste da <code>unittest</code> e, quado executada, teste nosso método <code>fatorial(numero)</code> para todos os números de 0 até 6:</p>
+<p>A estrutura básica a seguir cria um caso de teste da <code>unittest</code> e, quando executada, teste nosso método <code>fatorial(numero)</code> para todos os números de 0 até 6:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
 
 
