@@ -3,7 +3,7 @@
 &lt;p&gt;Baseado na palestra que ofereci no &lt;a href="http://www.meetup.com/Grupy-SP/events/228437612/"&gt;encontro&lt;/a&gt; do &lt;a href="https://groups.google.com/forum/#!forum/grupy-sp"&gt;Grupy-SP&lt;/a&gt;, em 12 de março de 2016. O código dessa atividade está disponível no &lt;a href="https://github.com/cuducos/grupy-python-tdd-flask"&gt;meu GitHub&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;A ideia desse exercício é introduzir a ideia de &lt;em&gt;test driven development&lt;/em&gt; (TDD) usando &lt;a href="http://http://python.org"&gt;Python&lt;/a&gt; e &lt;a href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt; — digo isso pois a aplicação final desse “tutorial” não é nada avançada, tampouco funcional. E isso se explica por dois motivos: primeiro, o foco é sentir o que é o &lt;em&gt;driven&lt;/em&gt; do TDD, ou seja, como uma estrutura de &lt;em&gt;tests first&lt;/em&gt; (sempre começar escrevendo os testes, e não a aplicação) pode guiar o processo de desenvolvimento; e, segundo, ser uma atividade rápida, de mais ou menos 1h.&lt;/p&gt;
-&lt;p&gt;Em outras palavras, não espere aprender muito de Python ou Flask. Aqui se concentre em sentir a diferença de utilizar uma método de programar. Todo o resto é secundário.&lt;/p&gt;
+&lt;p&gt;Em outras palavras, não espere aprender muito de Python ou Flask. Aqui se concentre em sentir a diferença de utilizar um método de programar. Todo o resto é secundário.&lt;/p&gt;
 &lt;h2&gt;1. Preparando o ambiente&lt;/h2&gt;
 &lt;h3&gt;Requisitos&lt;/h3&gt;
 &lt;p&gt;Para esse exercício usaremos o Python versão 3.5.1 com o framework Flask versão 0.10.1. É recomendado, mas não necessário, usar um &lt;a href="http://virtualenv.readthedocs.org"&gt;virtualenv&lt;/a&gt;.&lt;/p&gt;
@@ -41,13 +41,13 @@
 &lt;h3&gt;Arquivos&lt;/h3&gt;
 &lt;p&gt;Vamos usar, nesse exercício, basicamente 2 arquivos:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;app.py&lt;/code&gt;: onde criamos nossa aplicação web;;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;app.py&lt;/code&gt;: onde criamos nossa aplicação web;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;tests.py&lt;/code&gt;: onde escrevemos os testes que guiarão o desenvolvimento da aplicação, e que, também, garantirão que ela funcione.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;2. Criando a base dos testes&lt;/h2&gt;
 &lt;p&gt;No arquivo &lt;code&gt;tests.py&lt;/code&gt; vamos usar o módulo &lt;a href="https://docs.python.org/3.5/library/unittest.html"&gt;unittest&lt;/a&gt;, que já vem instalado por padrão no Python.&lt;/p&gt;
 &lt;p&gt;Criaremos uma estrutura básica para que, toda vez que esse arquivo seja executado, o &lt;code&gt;unittest&lt;/code&gt; se encarregue de encontrar todos os nossos testes e rodá-los.&lt;/p&gt;
-&lt;p&gt;Vamos começar escrevendo com uma exemplo fictício: testes para um método que ainda não criamos, um método que calcule números fatoriais. A ideia é só entender como escreveremos testes em um arquivo (&lt;code&gt;tests.py&lt;/code&gt;) para testar o que escreveremos no outro arquivo (&lt;code&gt;app.py&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Vamos começar escrevendo com um exemplo fictício: testes para um método que ainda não criamos, um método que calcule números fatoriais. A ideia é só entender como escreveremos testes em um arquivo (&lt;code&gt;tests.py&lt;/code&gt;) para testar o que escreveremos no outro arquivo (&lt;code&gt;app.py&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;A estrutura básica a seguir cria um caso de teste da &lt;code&gt;unittest&lt;/code&gt; e, quando executada, teste nosso método &lt;code&gt;fatorial(numero)&lt;/code&gt; para todos os números de 0 até 6:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;unittest&lt;/span&gt;
 
@@ -142,7 +142,7 @@ OK
 &lt;li&gt;Tenta acessar a “raíz” da nossa aplicação — ou seja, se essa aplicação web estivesse no servidor &lt;code&gt;pythonclub.com.br&lt;/code&gt; estaríamos acessando &lt;a href="http://pythonclub.com.br/"&gt;http://pythonclub.com.br/&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Verifica se, ao acessar esse endereço, ou seja, se ao fazer a requisição HTTP para essa URL, temos como resposta o código 200, que representa sucesso.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Os códigos de status de requisição HTTP mais comuns são o &lt;code&gt;200&lt;/code&gt; (sucesso), &lt;code&gt;404&lt;/code&gt; (página não encontrada) e &lt;code&gt;302&lt;/code&gt; (redirecionamento) — mas a &lt;a href="https://pt.wikipedia.org/wiki/Lista_de_códigos_de_status_HTTP"&gt;lista de completa&lt;/a&gt; é muito maior que isso. &lt;/p&gt;
+&lt;p&gt;Os códigos de status de requisição HTTP mais comuns são o &lt;code&gt;200&lt;/code&gt; (sucesso), &lt;code&gt;404&lt;/code&gt; (página não encontrada) e &lt;code&gt;302&lt;/code&gt; (redirecionamento) — mas a &lt;a href="https://pt.wikipedia.org/wiki/Lista_de_códigos_de_status_HTTP"&gt;lista completa&lt;/a&gt; é muito maior que isso. &lt;/p&gt;
 &lt;p&gt;De qualquer forma não conseguiremos rodar esses testes. O interpretador do Python vai nos retornar um erro:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ne"&gt;ImportError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;cannot&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;name&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;meu_web_app&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -227,7 +227,7 @@ OK
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Podemos usar um método especial da classe &lt;code&gt;unittest.TestCase&lt;/code&gt; para reaporiveitar essas linhas. O método &lt;code&gt;TestCase.setUp()&lt;/code&gt; é executado ao iniciar cada teste, e através do &lt;code&gt;self&lt;/code&gt; podemos acessar objetos de um método a partir de outro método:&lt;/p&gt;
+&lt;p&gt;Podemos usar um método especial da classe &lt;code&gt;unittest.TestCase&lt;/code&gt; para reaproveitar essas linhas. O método &lt;code&gt;TestCase.setUp()&lt;/code&gt; é executado ao iniciar cada teste, e através do &lt;code&gt;self&lt;/code&gt; podemos acessar objetos de um método a partir de outro método:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;TestHome&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unittest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;setUp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -323,7 +323,7 @@ OK
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Se a gente abrir essa página no navegador já podemos ver que ela é um pouco menos do que o que a gente tinha antes. Então vamos alterar nosso &lt;code&gt;test_content()&lt;/code&gt; para garantir que ao invés de termos somente a &lt;em&gt;string&lt;/em&gt; com nosso nome na aplicação, tempos esse templete renderizado:&lt;/p&gt;
+&lt;p&gt;Se a gente abrir essa página no navegador já podemos ver que ela é um pouco menos do que o que a gente tinha antes. Então vamos alterar nosso &lt;code&gt;test_content()&lt;/code&gt; para garantir que ao invés de termos somente a &lt;em&gt;string&lt;/em&gt; com nosso nome na aplicação, tempos esse template renderizado:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_content&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;response_str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;utf-8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertIn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;lt;title&amp;gt;Eduardo Cuducos&amp;lt;/title&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response_str&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
@@ -411,7 +411,7 @@ OK
 
 &lt;h2&gt;5. Conteúdos dinâmicos&lt;/h2&gt;
 &lt;h3&gt;Passando variáveis para o contexto do template&lt;/h3&gt;
-&lt;p&gt;O problema da nossa página é que ela é estática. Vamos usar o Python e o Flask para que quando a gente acesse &lt;code&gt;/cuducos&lt;/code&gt; a gente veja a minha página, com meus dados. Mas caso a gente acesse &lt;code&gt;/z4r4tu5tr4&lt;/code&gt;, a gente o conteúdo referente ao outro Eduardo que palestrou no Grupy comigo.&lt;/p&gt;
+&lt;p&gt;O problema da nossa página é que ela é estática. Vamos usar o Python e o Flask para que quando a gente acesse &lt;code&gt;/cuducos&lt;/code&gt; a gente veja a minha página, com meus dados. Mas caso a gente acesse &lt;code&gt;/z4r4tu5tr4&lt;/code&gt;, a gente veja o conteúdo referente ao outro Eduardo que palestrou comigo no Grupy.&lt;/p&gt;
 &lt;p&gt;Antes de mudar nossas URLS, vamos refatorar nossa aplicação e — importantíssimo! — os testes tem que continuar passando. A ideia é evitar que o conteúdo esteja “fixo” no template. Vamos fazer o conteúdo ser passado do método &lt;code&gt;pagina_principal()&lt;/code&gt; para o template.&lt;/p&gt;
 &lt;p&gt;A ideia é extrair todo o conteúdo do nosso HTML criando um dicionário no &lt;code&gt;app.py&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;CUDUCOS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Eduardo Cuducos&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -451,7 +451,7 @@ OK
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Feito isso, temos todas as informações disponíveis no nosso ambinete Python, e não mais no HTML. E os testes nos garantem que no final das contas, para o usuário, a página não mudou — ou seja, estamos mostrando as informações corretamente.&lt;/p&gt;
+&lt;p&gt;Feito isso, temos todas as informações disponíveis no nosso ambiente Python, e não mais no HTML. E os testes nos garantem que no final das contas, para o usuário, a página não mudou — ou seja, estamos mostrando as informações corretamente.&lt;/p&gt;
 &lt;h3&gt;Criando conteúdo dinâmico&lt;/h3&gt;
 &lt;p&gt;Vamos agora criar um outro dicionário para termos informações de outras pessoas. E vamos juntar todos os perfis em uma variável chamada &lt;code&gt;PERFIS&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;MENDES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Eduardo Mendes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -567,7 +567,7 @@ def pagina_inicial(perfil):
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Agora o Flask recebe uma variável &lt;code&gt;perfil&lt;/code&gt; depois da &lt;code&gt;/&lt;/code&gt; (e sabemos que é uma variável pois envolvemos o nome &lt;code&gt;perfil&lt;/code&gt; entre os sinais de &lt;code&gt;&amp;lt;&lt;/code&gt; e &lt;code&gt;&amp;gt;&lt;/code&gt;). E utilizamos essa variável para escolhar qual perfil passar para nosso tempate.&lt;/p&gt;
+&lt;p&gt;Agora o Flask recebe uma variável &lt;code&gt;perfil&lt;/code&gt; depois da &lt;code&gt;/&lt;/code&gt; (e sabemos que é uma variável pois envolvemos o nome &lt;code&gt;perfil&lt;/code&gt; entre os sinais de &lt;code&gt;&amp;lt;&lt;/code&gt; e &lt;code&gt;&amp;gt;&lt;/code&gt;). E utilizamos essa variável para escolher qual perfil passar para nosso tempate.&lt;/p&gt;
 &lt;h2&gt;Considerações finais&lt;/h2&gt;
 &lt;p&gt;Se chegou até aqui, vale a pena ressaltar que esse post tem apenas o objetivo de introduzir a ideia básica do TDD. Ou seja: ver como o hábito, o método de programar pouco a pouco (&lt;em&gt;baby steps&lt;/em&gt;) e sempre começando com os testes te dão dois benefícios sensacionais: eles não só garantem que a aplicação funcionará como esperado, mas eles guiam o próprio processo de desenvolvimento. As mensagens de erro te dizer – muitas vezes literalmente — o qual é a próxima linha de código que você vai escrever.&lt;/p&gt;
 &lt;p&gt;E, se chegou até aqui, talvez você queira se aprofundar nos assuntos dos quais falamos. Além de inúmeros posts aqui do blog, ressalto mais algumas referências.&lt;/p&gt;
