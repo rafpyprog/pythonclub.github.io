@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/lucas-magnum.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 26 Oct 2015 09:25:00 -0200</lastBuildDate><item><title>Django na prática - Hello World</title><link>http://pythonclub.com.br/django-na-pratica-aula-01.html</link><description>&lt;p&gt;Esse é o primeiro post do Curso &lt;strong&gt;django na prática&lt;/strong&gt; onde você aprenderá tudo que precisa para criar um sistema web :D&lt;/p&gt;
+<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Mon, 26 Oct 2015 09:25:00 -0200</lastBuildDate><item><title>Django na prática - Hello World</title><link>http://pythonclub.com.br/django-na-pratica-aula-01.html</link><description>&lt;p&gt;Esse é o primeiro post do Curso &lt;strong&gt;django na prática&lt;/strong&gt; onde você aprenderá tudo que precisa para criar um sistema web :D&lt;/p&gt;
 &lt;p&gt;Utilizaremos a versão 1.8 do Django com Python 3!&lt;/p&gt;
 &lt;div class="section" id="requisitos"&gt;
 &lt;h2&gt;Requisitos&lt;/h2&gt;
@@ -164,7 +164,7 @@ Fazemos isso usando utilizado uma expressão regular associada à uma função, 
 &lt;p&gt;Até a próxima =)&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Mon, 26 Oct 2015 09:25:00 -0200</pubDate><guid>tag:pythonclub.com.br,2015-10-26:django-na-pratica-aula-01.html</guid><category>python</category><category>django</category><category>django-na-pratica</category></item><item><title>Como otimizar suas consultas no Django - De N a 1 em 20 minutos</title><link>http://pythonclub.com.br/django-introducao-queries.html</link><description>&lt;p&gt;Essa semana fiz uma palestra em um BEV no &lt;a class="reference external" href="http://luizalabs.com/"&gt;Luizalabs&lt;/a&gt;.
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Mon, 26 Oct 2015 09:25:00 -0200</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2015-10-26:django-na-pratica-aula-01.html</guid><category>python</category><category>django</category><category>django-na-pratica</category></item><item><title>Como otimizar suas consultas no Django - De N a 1 em 20 minutos</title><link>http://pythonclub.com.br/django-introducao-queries.html</link><description>&lt;p&gt;Essa semana fiz uma palestra em um BEV no &lt;a class="reference external" href="http://luizalabs.com/"&gt;Luizalabs&lt;/a&gt;.
 Resolvi falar sobre Django, pois é um framework que utilizamos na empresa para diversos projetos.&lt;/p&gt;
 &lt;p&gt;O objetivo é ensinar algumas técnicas simples e que auxiliam a diminuir o número de consultas que realizamos
 no banco de dados.de&lt;/p&gt;
@@ -498,7 +498,7 @@ Se fosse preciso apagar todos os dados, seria comum se alguém escrevesse assim:
 &lt;p&gt;Deve-se lembrar, que assim como o &lt;strong&gt;update&lt;/strong&gt; e o &lt;strong&gt;bulk_create&lt;/strong&gt; os signals do Django não serão chamados, no caso do &lt;strong&gt;delete&lt;/strong&gt; os signals são &lt;tt class="docutils literal"&gt;pre_delete&lt;/tt&gt; e &lt;tt class="docutils literal"&gt;pos_delete&lt;/tt&gt;.&lt;/p&gt;
 &lt;p&gt;Espero que tenha ajudado, até a próxima!&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Sun, 10 May 2015 13:55:00 -0300</pubDate><guid>tag:pythonclub.com.br,2015-05-10:django-introducao-queries.html</guid><category>python</category><category>django</category></item><item><title>Django - 3 anos em 10 minutos</title><link>http://pythonclub.com.br/django-overview-10-minutos.html</link><description>&lt;p&gt;Em março de 2012 foi lançada a versão 1.4 e por aqui que nossa jornada começa, o objetivo não é entrar em detalhes em todas as features que foram implementadas e sim um &lt;cite&gt;overview&lt;/cite&gt; sobre as que considero mais importantes para nosso dia a dia.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Sun, 10 May 2015 13:55:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2015-05-10:django-introducao-queries.html</guid><category>python</category><category>django</category></item><item><title>Django - 3 anos em 10 minutos</title><link>http://pythonclub.com.br/django-overview-10-minutos.html</link><description>&lt;p&gt;Em março de 2012 foi lançada a versão 1.4 e por aqui que nossa jornada começa, o objetivo não é entrar em detalhes em todas as features que foram implementadas e sim um &lt;cite&gt;overview&lt;/cite&gt; sobre as que considero mais importantes para nosso dia a dia.&lt;/p&gt;
 &lt;div class="section" id="versao-1-4-ha-3-anos"&gt;
 &lt;h2&gt;Versão &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.4/releases/1.4/"&gt;1.4&lt;/a&gt; (Há 3 anos)&lt;/h2&gt;
 &lt;p&gt;Lançada em Março de 2012, suporta Python 2.5 &amp;gt;= 2.7.&lt;/p&gt;
@@ -574,7 +574,7 @@ Se fosse preciso apagar todos os dados, seria comum se alguém escrevesse assim:
 &lt;p&gt;Veja o &lt;a class="reference external" href="https://code.djangoproject.com/wiki/Version1.9Roadmap"&gt;Roadmap&lt;/a&gt; do que vem por ai no Django 1.9&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Mon, 06 Apr 2015 11:55:00 -0300</pubDate><guid>tag:pythonclub.com.br,2015-04-06:django-overview-10-minutos.html</guid><category>python</category><category>django</category></item><item><title>Selenium - O que você deveria saber - Parte 4</title><link>http://pythonclub.com.br/selenium-parte-4.html</link><description>&lt;p&gt;Esse é o quarto post da série sobre Selenium, hoje você irá aprender a fazer algumas coisas mais interessantes!&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Mon, 06 Apr 2015 11:55:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2015-04-06:django-overview-10-minutos.html</guid><category>python</category><category>django</category></item><item><title>Selenium - O que você deveria saber - Parte 4</title><link>http://pythonclub.com.br/selenium-parte-4.html</link><description>&lt;p&gt;Esse é o quarto post da série sobre Selenium, hoje você irá aprender a fazer algumas coisas mais interessantes!&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Veja a &lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-1.html"&gt;primeira parte&lt;/a&gt;.&lt;/li&gt;
@@ -896,7 +896,7 @@ Depois de fechar a pagina
 &lt;p&gt;Acredito que esse seja o último post sobre Selenium, espero que tenham gostado!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Mon, 28 Jul 2014 11:55:00 -0300</pubDate><guid>tag:pythonclub.com.br,2014-07-28:selenium-parte-4.html</guid><category>selenium</category><category>python</category><category>selenium-serie</category></item><item><title>Usando Redis para cache e sessão do Django</title><link>http://pythonclub.com.br/usando-redis-cache-django.html</link><description>&lt;p&gt;Nesse post irei explicar como substituir o sistema de cache e sessão do Django para funcionar com o Redis.
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Mon, 28 Jul 2014 11:55:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2014-07-28:selenium-parte-4.html</guid><category>selenium</category><category>python</category><category>selenium-serie</category></item><item><title>Usando Redis para cache e sessão do Django</title><link>http://pythonclub.com.br/usando-redis-cache-django.html</link><description>&lt;p&gt;Nesse post irei explicar como substituir o sistema de cache e sessão do Django para funcionar com o Redis.
 Vou explicar como &lt;a class="reference external" href="#instalacao"&gt;instalar&lt;/a&gt; e alguns &lt;a class="reference external" href="#comandos-basicos"&gt;comandos&lt;/a&gt; do Redis.
 Depois como Django trabalha como o &lt;a class="reference internal" href="#cache"&gt;cache&lt;/a&gt; e &lt;a class="reference external" href="#sessao"&gt;sessão&lt;/a&gt; e logo em seguida vamos aprender a alterar o Django para utilizar o Redis como forma de armazenamento.&lt;/p&gt;
 &lt;div class="section" id="redis"&gt;
@@ -1040,7 +1040,7 @@ Basta adicionar &lt;tt class="docutils literal"&gt;django.contrib.sessions.middl
 &lt;p&gt;Se tudo ocorreu como planejado, nesse momento temos as sessões e o cache sendo armazenados no Redis.&lt;/p&gt;
 &lt;p&gt;Espero que tenha gostado, até o próximo!&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Fri, 06 Jun 2014 15:50:00 -0300</pubDate><guid>tag:pythonclub.com.br,2014-06-06:usando-redis-cache-django.html</guid><category>python</category><category>django</category><category>redis</category></item><item><title>Selenium - O que você deveria saber - Parte 3</title><link>http://pythonclub.com.br/selenium-parte-3.html</link><description>&lt;p&gt;Esse é o terceiro post da série sobre Selenium, hoje vamos aprender a executar código javascript e usar diferentes navegadores.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Fri, 06 Jun 2014 15:50:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2014-06-06:usando-redis-cache-django.html</guid><category>python</category><category>django</category><category>redis</category></item><item><title>Selenium - O que você deveria saber - Parte 3</title><link>http://pythonclub.com.br/selenium-parte-3.html</link><description>&lt;p&gt;Esse é o terceiro post da série sobre Selenium, hoje vamos aprender a executar código javascript e usar diferentes navegadores.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Veja a &lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-1.html"&gt;primeira parte&lt;/a&gt;.&lt;/li&gt;
@@ -1113,7 +1113,7 @@ ou até mesmo para manipular um elemento.&lt;/p&gt;
 &lt;p&gt;Por hoje é só!
 Nos vemos na próxima, espero que tenha aprendido algo hoje :)&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Mon, 02 Jun 2014 10:49:00 -0300</pubDate><guid>tag:pythonclub.com.br,2014-06-02:selenium-parte-3.html</guid><category>selenium</category><category>python</category><category>selenium-serie</category></item><item><title>Selenium - O que você deveria saber - Parte 2</title><link>http://pythonclub.com.br/selenium-parte-2.html</link><description>&lt;p&gt;Esse é o segundo post da série sobre Selenium, hoje vamos aprender a manipular formulários, frames e múltiplas janelas.
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Mon, 02 Jun 2014 10:49:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2014-06-02:selenium-parte-3.html</guid><category>selenium</category><category>python</category><category>selenium-serie</category></item><item><title>Selenium - O que você deveria saber - Parte 2</title><link>http://pythonclub.com.br/selenium-parte-2.html</link><description>&lt;p&gt;Esse é o segundo post da série sobre Selenium, hoje vamos aprender a manipular formulários, frames e múltiplas janelas.
 Vamos também vai descobrir que é possível esperar para tentar encontrar um elemento na página.&lt;/p&gt;
 &lt;p&gt;Se você não leu a primeira parte, clique &lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-1.html"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="section" id="parte-2"&gt;
@@ -1295,7 +1295,7 @@ contendo um ID para cada janela aberta.&lt;/p&gt;
 Nos vemos na próxima, espero que tenha aprendido algo hoje :)&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Fri, 23 May 2014 14:49:00 -0300</pubDate><guid>tag:pythonclub.com.br,2014-05-23:selenium-parte-2.html</guid><category>selenium</category><category>python</category><category>selenium-serie</category></item><item><title>Selenium - O que você deveria saber - Parte 1</title><link>http://pythonclub.com.br/selenium-parte-1.html</link><description>&lt;p&gt;Esse é o primeiro post da série sobre Selenium, pretendo cobrir desde o básico até algumas coisas mais legais :)&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Fri, 23 May 2014 14:49:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2014-05-23:selenium-parte-2.html</guid><category>selenium</category><category>python</category><category>selenium-serie</category></item><item><title>Selenium - O que você deveria saber - Parte 1</title><link>http://pythonclub.com.br/selenium-parte-1.html</link><description>&lt;p&gt;Esse é o primeiro post da série sobre Selenium, pretendo cobrir desde o básico até algumas coisas mais legais :)&lt;/p&gt;
 &lt;div class="section" id="introducao"&gt;
 &lt;h2&gt;Introdução&lt;/h2&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://docs.seleniumhq.org/"&gt;Selenium&lt;/a&gt; é um ótimo framework para realizar diversos tipos de tarefas com o browser.&lt;/p&gt;
@@ -1477,4 +1477,4 @@ para isso você precisa saber como encontrá-lo.&lt;/p&gt;
 &lt;p&gt;Qualquer dúvida pode enviar um e-mail &lt;a class="reference external" href="mailto:contato&amp;#64;lucasmagnum.com.br"&gt;contato&amp;#64;lucasmagnum.com.br&lt;/a&gt; ficarei feliz em ajudar =)&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Thu, 08 May 2014 12:09:00 -0300</pubDate><guid>tag:pythonclub.com.br,2014-05-08:selenium-parte-1.html</guid><category>selenium</category><category>python</category><category>selenium-serie</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Thu, 08 May 2014 12:09:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2014-05-08:selenium-parte-1.html</guid><category>selenium</category><category>python</category><category>selenium-serie</category></item></channel></rss>

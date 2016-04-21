@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/arthur-alves.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 28 Aug 2014 00:30:00 -0300</lastBuildDate><item><title>Criando sites estáticos com Pelican Framework</title><link>http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html</link><description>&lt;figure style="float:right;"&gt;
+<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Thu, 28 Aug 2014 00:30:00 -0300</lastBuildDate><item><title>Criando sites estáticos com Pelican Framework</title><link>http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html</link><description>&lt;figure style="float:right;"&gt;
 &lt;img style="border-radius: 50%;" src="/images/arthur-alves/captaoboing.png"&gt;
 &lt;/figure&gt;
 
@@ -191,4 +191,4 @@ Feito isso ele vai gerar os "htmls" na pasta output do projeto. E você pode ver
 
 
 &lt;p&gt;Pois é, funciona. Mas prefira instalar a versão mais nova, já com o patch.  &lt;/p&gt;
-&lt;p&gt;Bem pessoal, é simples, mas espero que ajude o pessoal a ficar mais íntimo do Pelican e ajudar com o &lt;a href="http://pythonclub.com.br/"&gt;pythonclub&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Arthur Alves</dc:creator><pubDate>Thu, 28 Aug 2014 00:30:00 -0300</pubDate><guid>tag:pythonclub.com.br,2014-08-28:criando-sites-estaticos-com-pelican.html</guid><category>tutorial</category><category>pelican</category><category>blog</category><category>framework</category></item></channel></rss>
+&lt;p&gt;Bem pessoal, é simples, mas espero que ajude o pessoal a ficar mais íntimo do Pelican e ajudar com o &lt;a href="http://pythonclub.com.br/"&gt;pythonclub&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Arthur Alves</dc:creator><pubDate>Thu, 28 Aug 2014 00:30:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2014-08-28:criando-sites-estaticos-com-pelican.html</guid><category>tutorial</category><category>pelican</category><category>blog</category><category>framework</category></item></channel></rss>

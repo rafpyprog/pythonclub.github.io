@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/gilmar-soares.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 13 May 2014 22:00:00 -0300</lastBuildDate><item><title>Exemplo de como "Parsear" Sites com BeautifulSoup</title><link>http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html</link><description>&lt;div class="section" id="parseando-sites-com-beautifulsoup"&gt;
+<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Tue, 13 May 2014 22:00:00 -0300</lastBuildDate><item><title>Exemplo de como "Parsear" Sites com BeautifulSoup</title><link>http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html</link><description>&lt;div class="section" id="parseando-sites-com-beautifulsoup"&gt;
 &lt;h2&gt;Parseando Sites com BeautifulSoup&lt;/h2&gt;
 &lt;div class="section" id="como-pegar-informacoes-de-sites-com-beautifulsoup"&gt;
 &lt;h3&gt;Como &amp;quot;pegar&amp;quot; informações de Sites com BeautifulSoup?&lt;/h3&gt;
@@ -83,4 +83,4 @@ nesse Script implementei bastante coisa do Beautifulsoup e algumas outras coisas
 &lt;/dl&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Gilmar Soares</dc:creator><pubDate>Tue, 13 May 2014 22:00:00 -0300</pubDate><guid>tag:pythonclub.com.br,2014-05-13:parseando-sites-com-beautifulsoup.html</guid><category>beautifulsoup</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Gilmar Soares</dc:creator><pubDate>Tue, 13 May 2014 22:00:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2014-05-13:parseando-sites-com-beautifulsoup.html</guid><category>beautifulsoup</category></item></channel></rss>

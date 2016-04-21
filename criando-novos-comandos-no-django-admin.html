@@ -113,19 +113,36 @@
 <p>Mas de repente você precisa criar um comando personalizado conforme a sua necessidade. A palavra chave é <code>BaseCommand</code> ou <a href="https://docs.djangoproject.com/en/1.8/howto/custom-management-commands/">Writing custom django-admin commands</a>.</p>
 <h2>Começando do começo</h2>
 <blockquote>
-<p>Importante: estamos usando Django 1.8 e Python 3.</p>
+<p>Importante: estamos usando Django 1.8.12 e Python 3.</p>
 </blockquote>
 <h3>Criando o projeto</h3>
-<p>Eu usei este <a href="https://gist.github.com/rg3915/a26a2daef369b729e2ed">Makefile</a> para criar o projeto.</p>
-<div class="highlight"><pre><span></span>wget --output-document<span class="o">=</span>Makefile https://goo.gl/UMTpZ1
-make setup
-</pre></div>
-
-
-<p>Ele vai criar um virtualenv e pedir pra você executar os seguintes comandos:</p>
-<div class="highlight"><pre><span></span><span class="nb">source</span> venv/bin/activate
+<p>Eu usei esta sequência de comandos para criar o projeto.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Criando djangoproject.</span>
+mkdir djangoproject
 <span class="nb">cd</span> djangoproject
-make install
+
+<span class="c1"># Criando virtualenv</span>
+virtualenv -p python3 .venv
+
+<span class="c1"># Ativando o .venv.</span>
+<span class="nb">source</span> .venv/bin/activate
+<span class="c1"># Diminuindo o caminho do prompt (opcional)</span>
+<span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;(`basename \&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">\&quot;`)\e[1;34m:/\W\033[00m</span>$<span class="s2"> &quot;</span>
+
+<span class="c1"># Instalando o Django</span>
+pip install <span class="nv">django</span><span class="o">==</span>1.8.12
+pip freeze &gt; requirements.txt
+
+<span class="c1"># Criando o projeto myproject ...</span>
+django-admin.py startproject myproject .
+<span class="nb">cd</span> myproject
+
+<span class="c1"># Criando a app &#39;core&#39; ...</span>
+python ../manage.py startapp core
+<span class="nb">cd</span> ..
+
+<span class="c1"># Editando settings.py&quot;</span>
+sed -i <span class="s2">&quot;/django.contrib.staticfiles/a\    &#39;myproject.core&#39;,&quot;</span> myproject/settings.py
 </pre></div>
 
 
@@ -150,7 +167,7 @@ touch core/management/commands/<span class="o">{</span>__init__.py,hello.py,init
 
 <h2>Sintaxe do novo comando</h2>
 <blockquote>
-<p>Importante: estamos usando Django 1.8 e Python 3.</p>
+<p>Importante: estamos usando Django 1.8.12 e Python 3.</p>
 </blockquote>
 <p>O Django 1.8 usa o <code>argparse</code> como parser de argumentos do <code>command</code>, mais informações em <a href="https://docs.python.org/2/library/argparse.html#module-argparse">module-argparse</a>.</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.core.management.base</span> <span class="kn">import</span> <span class="n">BaseCommand</span><span class="p">,</span> <span class="n">CommandError</span>

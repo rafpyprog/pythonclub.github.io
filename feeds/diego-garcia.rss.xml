@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/diego-garcia.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 07 Jun 2015 11:00:00 -0300</lastBuildDate><item><title>A armadilha dos argumentos com valores padrão</title><link>http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html</link><description>&lt;figure style="float:left;"&gt;
+<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Sun, 07 Jun 2015 11:00:00 -0300</lastBuildDate><item><title>A armadilha dos argumentos com valores padrão</title><link>http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html</link><description>&lt;figure style="float:left;"&gt;
 &lt;img src="/images/drgarcia1986/is_a_trap.png"&gt;
 &lt;/figure&gt;
 
@@ -177,7 +177,7 @@ Ou seja, por questões de optimização, seguindo nosso exemplo, o python não c
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://shop.oreilly.com/product/0636920032519.do"&gt;Fluent Python (Mutable types as parameter defaults: bad idea)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://docs.quantifiedcode.com/python-anti-patterns/correctness/mutable_default_value_as_argument.html"&gt;Python Anti-Patterns (Using a mutable default value as an argument)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Diego Garcia</dc:creator><pubDate>Sun, 07 Jun 2015 11:00:00 -0300</pubDate><guid>tag:pythonclub.com.br,2015-06-07:a-armadilha-dos-argumentos-com-valores-padrao.html</guid><category>python</category><category>mutable</category><category>function</category><category>class</category><category>anti-pattern</category></item><item><title>Debugging em python (sem IDE)</title><link>http://pythonclub.com.br/debugging-em-python-sem-ide.html</link><description>&lt;figure style="float:right;"&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Diego Garcia</dc:creator><pubDate>Sun, 07 Jun 2015 11:00:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2015-06-07:a-armadilha-dos-argumentos-com-valores-padrao.html</guid><category>python</category><category>mutable</category><category>function</category><category>class</category><category>anti-pattern</category></item><item><title>Debugging em python (sem IDE)</title><link>http://pythonclub.com.br/debugging-em-python-sem-ide.html</link><description>&lt;figure style="float:right;"&gt;
 &lt;img src="/images/drgarcia1986/debugging.png"&gt;
 &lt;/figure&gt;
 
@@ -392,7 +392,7 @@ A maneira de uso se assemelha bastante ao pdb, bastando trocar o pacote &lt;code
 &lt;p&gt;Com certeza recomendo o uso do &lt;code&gt;ipdb&lt;/code&gt; principalmente por ser mais intuitivo.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Referências&lt;/strong&gt;&lt;br \&gt;
 &lt;a href="https://docs.python.org/2/library/pdb.html"&gt;Documentação Oficial&lt;/a&gt;&lt;br /&gt;
-&lt;a href="https://github.com/gotcha/ipdb"&gt;ipdb&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Diego Garcia</dc:creator><pubDate>Sun, 15 Feb 2015 22:30:00 -0200</pubDate><guid>tag:pythonclub.com.br,2015-02-15:debugging-em-python-sem-ide.html</guid><category>python</category><category>pdb</category><category>ipython</category><category>ipdb</category><category>debugging</category></item><item><title>Publicando seu Hello World no Heroku</title><link>http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html</link><description>&lt;figure style="float:left;"&gt;
+&lt;a href="https://github.com/gotcha/ipdb"&gt;ipdb&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Diego Garcia</dc:creator><pubDate>Sun, 15 Feb 2015 22:30:00 -0200</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2015-02-15:debugging-em-python-sem-ide.html</guid><category>python</category><category>pdb</category><category>ipython</category><category>ipdb</category><category>debugging</category></item><item><title>Publicando seu Hello World no Heroku</title><link>http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html</link><description>&lt;figure style="float:left;"&gt;
 &lt;img src="/images/drgarcia1986/heroku.png"&gt;
 &lt;/figure&gt;
 
@@ -532,7 +532,7 @@ Git remote heroku added
 &lt;p&gt;E pronto, basta agora acessar a url do seu app (no caso desse exemplo foi &lt;a href="https://dg-hello-world.herokuapp.com/"&gt;https://dg-hello-world.herokuapp.com/&lt;/a&gt;) e compartilhar com seus amigos =].&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Referências&lt;/strong&gt;&lt;br \&gt;
 &lt;a href="https://devcenter.heroku.com/articles/getting-started-with-python"&gt;(Heroku) Getting Started With Python&lt;/a&gt;&lt;br /&gt;
-&lt;a href="http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xviii-deployment-on-the-heroku-cloud"&gt;Deployment on the Heroku Cloud&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Diego Garcia</dc:creator><pubDate>Sun, 25 Jan 2015 11:30:00 -0200</pubDate><guid>tag:pythonclub.com.br,2015-01-25:publicando-seu-hello-world-no-heroku.html</guid><category>web</category><category>tutorial</category><category>heroku</category><category>flask</category><category>git</category><category>deploy</category></item><item><title>Testes de carga com o Locust</title><link>http://pythonclub.com.br/testes-de-carga-com-o-locust.html</link><description>&lt;figure style="float:right;"&gt;
+&lt;a href="http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xviii-deployment-on-the-heroku-cloud"&gt;Deployment on the Heroku Cloud&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Diego Garcia</dc:creator><pubDate>Sun, 25 Jan 2015 11:30:00 -0200</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2015-01-25:publicando-seu-hello-world-no-heroku.html</guid><category>web</category><category>tutorial</category><category>heroku</category><category>flask</category><category>git</category><category>deploy</category></item><item><title>Testes de carga com o Locust</title><link>http://pythonclub.com.br/testes-de-carga-com-o-locust.html</link><description>&lt;figure style="float:right;"&gt;
 &lt;img style="border-radius: 50%;" src="/images/drgarcia1986/the_locust.jpg"&gt;
 &lt;/figure&gt;
 
@@ -855,4 +855,4 @@ Note que os resultados são apresentados por cada &lt;em&gt;Task&lt;/em&gt; e s�
 &lt;p&gt;&lt;img alt="locust" src="/images/drgarcia1986/locust_distributed.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Referências&lt;/strong&gt;&lt;br&gt;
 &lt;a href="http://locust.io/"&gt;Site Oficial&lt;/a&gt;&lt;br&gt;
-&lt;a href="http://docs.locust.io/en/latest/index.html"&gt;Documentação&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Diego Garcia</dc:creator><pubDate>Sun, 11 Jan 2015 18:00:00 -0200</pubDate><guid>tag:pythonclub.com.br,2015-01-11:testes-de-carga-com-o-locust.html</guid><category>locust</category><category>web</category><category>tutorial</category><category>test</category><category>load-testing</category></item></channel></rss>
+&lt;a href="http://docs.locust.io/en/latest/index.html"&gt;Documentação&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Diego Garcia</dc:creator><pubDate>Sun, 11 Jan 2015 18:00:00 -0200</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2015-01-11:testes-de-carga-com-o-locust.html</guid><category>locust</category><category>web</category><category>tutorial</category><category>test</category><category>load-testing</category></item></channel></rss>

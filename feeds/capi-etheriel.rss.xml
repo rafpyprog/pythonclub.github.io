@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/capi-etheriel.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 08 Jul 2015 12:40:00 -0300</lastBuildDate><item><title>Raspando a Web com Python: Introdução</title><link>http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html</link><description>&lt;p&gt;Todo projeto que deseja raspar dados da web se resume ao seguinte &lt;em&gt;loop&lt;/em&gt;:&lt;/p&gt;
+<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Wed, 08 Jul 2015 12:40:00 -0300</lastBuildDate><item><title>Raspando a Web com Python: Introdução</title><link>http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html</link><description>&lt;p&gt;Todo projeto que deseja raspar dados da web se resume ao seguinte &lt;em&gt;loop&lt;/em&gt;:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Fazer uma requisição para uma URL;&lt;/li&gt;
 &lt;li&gt;Processar a resposta (HTML, XML ou JSON);&lt;/li&gt;
@@ -83,4 +83,4 @@ poderoso método &lt;code&gt;format&lt;/code&gt; do Python
 &lt;a href="https://gist.github.com/barraponto/21c705006635a1a72407"&gt;Gist&lt;/a&gt;. Fique à vontade
 para contribuir, comentar, melhorar, etc :)&lt;/p&gt;
 &lt;p&gt;Agradecimentos ao Fernando Masanori que &lt;a href="https://gist.github.com/fmasanori/c648d753e7d0176ff172"&gt;começou a brincadeira com esses
-dados&lt;/a&gt;!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Capi Etheriel</dc:creator><pubDate>Wed, 08 Jul 2015 12:40:00 -0300</pubDate><guid>tag:pythonclub.com.br,2015-07-08:raspando-a-web-com-python-parte-1.html</guid><category>python</category><category>blog</category><category>scraping</category></item></channel></rss>
+dados&lt;/a&gt;!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Capi Etheriel</dc:creator><pubDate>Wed, 08 Jul 2015 12:40:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2015-07-08:raspando-a-web-com-python-parte-1.html</guid><category>python</category><category>blog</category><category>scraping</category></item></channel></rss>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/mauricio-camargo-sipmann.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 15 May 2014 18:00:00 -0300</lastBuildDate><item><title>Editando o Admin do Django</title><link>http://pythonclub.com.br/editando-o-admin-do-django.html</link><description>&lt;p&gt;Vamos falar um pouco sobre como customizar o admin do Django. Primeiramente porque? A resposta é bem simples, quero mostrar algo para o usuário sem que ele precise entrar nas apps e fazer alguma consulta para então tomar alguma ação. Alguns exêmplos para isto seriam:&lt;/p&gt;
+<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Thu, 15 May 2014 18:00:00 -0300</lastBuildDate><item><title>Editando o Admin do Django</title><link>http://pythonclub.com.br/editando-o-admin-do-django.html</link><description>&lt;p&gt;Vamos falar um pouco sobre como customizar o admin do Django. Primeiramente porque? A resposta é bem simples, quero mostrar algo para o usuário sem que ele precise entrar nas apps e fazer alguma consulta para então tomar alguma ação. Alguns exêmplos para isto seriam:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Exibir as vendas do mês em forma de gráfico por região do país&lt;/li&gt;
@@ -118,4 +118,4 @@
 └── manage.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Espero que tenham gostado, criticas/sugestões são bem-vindas. &lt;a class="reference external" href="https://github.com/sipmann/editando-django-admin"&gt;Fontes do Projeto&lt;/a&gt;&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maurício Camargo Sipmann</dc:creator><pubDate>Thu, 15 May 2014 18:00:00 -0300</pubDate><guid>tag:pythonclub.com.br,2014-05-15:editando-o-admin-do-django.html</guid><category>django</category><category>django-admin</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maurício Camargo Sipmann</dc:creator><pubDate>Thu, 15 May 2014 18:00:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2014-05-15:editando-o-admin-do-django.html</guid><category>django</category><category>django-admin</category></item></channel></rss>

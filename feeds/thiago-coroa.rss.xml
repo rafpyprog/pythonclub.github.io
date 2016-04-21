@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/thiago-coroa.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 14 May 2014 10:30:00 -0300</lastBuildDate><item><title>Instalando e Configurando o Python e Django no Windows</title><link>http://pythonclub.com.br/instalacao-python-django-windows.html</link><description>&lt;div class="section" id="instalacao-do-python-2-7"&gt;
+<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Wed, 14 May 2014 10:30:00 -0300</lastBuildDate><item><title>Instalando e Configurando o Python e Django no Windows</title><link>http://pythonclub.com.br/instalacao-python-django-windows.html</link><description>&lt;div class="section" id="instalacao-do-python-2-7"&gt;
 &lt;h2&gt;Instalação do Python 2.7&lt;/h2&gt;
 &lt;p&gt;Para começar a desenvolver algo em Python, devemos baixar o Python(Nossa, que descoberta!),
 sendo a versão mais indicada o 2.7, por ser mais estável, possuir mais bibliotecas disponíveis
@@ -41,4 +41,4 @@ Instalaremos digitando no prompt de comando:&lt;/p&gt;
 &lt;p&gt;Muito difícil não?&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Thiago Corôa</dc:creator><pubDate>Wed, 14 May 2014 10:30:00 -0300</pubDate><guid>tag:pythonclub.com.br,2014-05-14:instalacao-python-django-windows.html</guid><category>python</category><category>django</category><category>windows</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Thiago Corôa</dc:creator><pubDate>Wed, 14 May 2014 10:30:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2014-05-14:instalacao-python-django-windows.html</guid><category>python</category><category>django</category><category>windows</category></item></channel></rss>
