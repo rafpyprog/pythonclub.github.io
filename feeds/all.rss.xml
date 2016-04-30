@@ -1,5 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Sun, 24 Apr 2016 18:00:00 -0300</lastBuildDate><item><title>Django Rest Framework Serialization</title><link>http://pythonclub.com.br/django-rest-framework-serialization.html</link><description>&lt;p&gt;Eu resolvi estudar um pouco mais de &lt;a href="http://www.django-rest-framework.org/"&gt;DRF&lt;/a&gt; depois do tutorial do &lt;a href="https://github.com/hugobrilhante/drf-tutorial-pybr11"&gt;Hugo Brilhante&lt;/a&gt; na &lt;a href="http://pythonbrasil.github.io/pythonbrasil11-site/"&gt;Python Brasil 11&lt;/a&gt;.&lt;/p&gt;
+<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Sat, 30 Apr 2016 12:00:00 -0300</lastBuildDate><item><title>Sites Estáticos com Lektor</title><link>http://pythonclub.com.br/sites-estaticos-com-lektor.html</link><description>&lt;p&gt;&lt;strong&gt;Publicado originalmente em:&lt;/strong&gt; &lt;a href="http://humberto.io/2016/4/sites-estaticos-com-lektor/"&gt;humberto.io/2016/4/sites-estaticos-com-lektor&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Faz pelo menos 4 anos que eu ensaio para montar um blog, e nessa brincadeira já montei alguns,  mas quando chegava na hora de criar o meu eu nunca conseguia publicar.&lt;/p&gt;
+&lt;p&gt;Inicialmente com ferramentas de publicação como wordpress o problema era a dificuldade de customizar e o tanto de coisa que vinha junto que eu não ia usar mas ficava me tirando a atenção. Em seguida com o &lt;a href="https://pages.github.com"&gt;GitHub Pages&lt;/a&gt; eu descobri o &lt;a href="http://blog.getpelican.com"&gt;Pelican&lt;/a&gt; por indicação do &lt;a href="http://mindbending.org/pt"&gt;Magnun Leno&lt;/a&gt; e comecei a fazer muita coisa com ele, mas da mesma forma que eu ganhei em liberdade de customização, o processo autoral é o mesmo de desenvolvimento, e como descrito no subtitulo do blog, meu lado cientista, pythonista e curioso ficava ali me cutucando para melhorar o site ao invés de escrever conteúdo.&lt;/p&gt;
+&lt;p&gt;Eis que em uma conversa no &lt;a href="https://telegram.me/pythonbr"&gt;grupo de telegram da comunidade python&lt;/a&gt; me citam o Lektor e aí começou a aventura.&lt;/p&gt;
+&lt;h2&gt;Lektor?&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.getlektor.com"&gt;Lektor&lt;/a&gt; é um gerenciador de conteúdo estático criado por &lt;a href="http://lucumr.pocoo.org"&gt;Armin Ronacher&lt;/a&gt; (sim, o criador do &lt;a href="http://flask.pocoo.org"&gt;flask&lt;/a&gt;) que permite a criação de websites a partir de arquivos de texto.&lt;/p&gt;
+&lt;h2&gt;Porque usar?&lt;/h2&gt;
+&lt;p&gt;Como descrito no próprio &lt;a href="https://www.getlektor.com/docs/what"&gt;site&lt;/a&gt; ele bebeu das fontes dos CMS`s, dos frameworks e dos geradores de site estático e chegou em algo que eu considero um ponto de equilíbrio entre eles, e que nos leva as seguintes vantagens:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Estático:&lt;/strong&gt; O site final é totalmente estático, o que permite sua hospedagem em qualquer lugar;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CMS:&lt;/strong&gt; Uma interface de produção de conteúdo que roda localmente e tira a necessidade de entender programação para poder produzir conteúdo. (no meu caso me tira do mundo do código e me deixa focar no conteúdo);&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Framework:&lt;/strong&gt; Ele possuí um sistema de models em arquivos de texto e um sistema de templates que usa Jinja2 que cria um ambiente familiar para quem já desenvolveu algo em django, flask e similares;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deploy:&lt;/strong&gt; O sistema de deploy dele é reduzido á uma configuração em um arquivo, o que permite a rápida publicação sem ficar dias aprendendo técnicas de deploy quando tudo que você quer no começo é colocar seu site no ar.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Instalação&lt;/h2&gt;
+&lt;p&gt;A instalação do Lektor é bem direta:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl -sf https://www.getlektor.com/install.sh &lt;span class="p"&gt;|&lt;/span&gt; sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Este comando instala diretamente no sistema, se você prefere instalar em sua virtualenv:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ virtualenv venv
+$ . venv/bin/activate
+$ pip install Lektor
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Esta forma é desencorajada pelos desenvolvedores pois o lektor gerencia virtualenvs internamente para instalação de seus plugins, portanto caso seja desenvolvedor e quer ter mais controle sobre o lektor instale a versão de desenvolvimento e esteja pronto para sujar as mãos quando for preciso, e quem sabe até contribuir com o desenvolvimento do lektor:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone https://github.com/lektor/lektor
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; lektor
+$ make build-js
+$ virtualenv venv
+$ . venv/bin/activate
+$ pip install --editable .
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Obs.:&lt;/strong&gt; requer &lt;code&gt;npm&lt;/code&gt; instalado para montar a interface de administração.&lt;/p&gt;
+&lt;h2&gt;Criando o Site&lt;/h2&gt;
+&lt;p&gt;Após a instalação para criar o seu site basta utilizar o comando de criação de projeto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lektor quickstart
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ele irá te fazer algumas perguntas e criar um projeto com o nome que você informou.&lt;/p&gt;
+&lt;h3&gt;Estrutura&lt;/h3&gt;
+&lt;p&gt;Esta é a estrutura básica de um site gerado pelo lektor:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;meusite
+├── assets/
+├── content/
+├── templates/
+├── models/
+└── meusite.lektorproject
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;assets:&lt;/strong&gt; Pasta onde ficam os arquivos  .css, .js, .ico entre outros recursos estáticos;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;content:&lt;/strong&gt; Pasta onde ficam os arquivos que iram gerar as páginas do site, cada subpasta corresponde a uma página no site gerado;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;templates:&lt;/strong&gt; Pasta onde ficam os arquivos de template que definem a sua estrutura visual;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;models:&lt;/strong&gt; Pasta onde ficam os arquivos que definem a modelagem de dados;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;meusite.lektorproject:&lt;/strong&gt; Arquivo com as configurações gerais do site.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Executando localmente&lt;/h3&gt;
+&lt;p&gt;Para rodar o site em sua máquina basta entrar no diretório criado e iniciar o servidor local:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; meusite
+$ lektor server
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Com o servidor rodando acesse &lt;a href="http://localhost:5000"&gt;localhost:5000&lt;/a&gt; para ver o resultado:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="meusite" src="images/humrochagf/meusite.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;Acessando o Admin&lt;/h3&gt;
+&lt;p&gt;Para acessar o admin clique na imagem de lápis no canto superior direito da página que você criou ou acesse &lt;a href="http://localhost:5000/admin"&gt;localhost:5000&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="meusite-admin" src="images/humrochagf/meusite-admin.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;Publicando o Site&lt;/h2&gt;
+&lt;p&gt;Exitem duas maneiras de se fazer o deploy do site construído com o lektor, a manual, que é basicamente rodar o comando &lt;code&gt;build&lt;/code&gt; e copiar manualmente os arquivos para o servidor:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lektor build --output-path destino
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;E a forma automática, que pode ser feita (neste caso para o GitHub Pages) adicionando a seguinte configuração no arquivo &lt;code&gt;meusite.lektorproject&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[servers.production]&lt;/span&gt;
+&lt;span class="na"&gt;target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;ghpages://usuario/repositorio&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;E rodando em seguida o comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lektor deploy
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Obs.:&lt;/strong&gt;  O deploy faz um force push na branch &lt;code&gt;master&lt;/code&gt; ou &lt;code&gt;gh-pages&lt;/code&gt; dependendo do tipo de repositório, portanto, cuidado para não sobrescrever os dados de seu repositório. Mantenha o código fonte em uma branch separada, você pode dar uma conferida no &lt;a href="https://github.com/humrochagf/humrochagf.github.io"&gt;meu repositório&lt;/a&gt; para ter uma idéia.&lt;/p&gt;
+&lt;p&gt;Para informações mais detalhadas você pode acessar a &lt;a href="https://www.getlektor.com/docs"&gt;documentação do lektor&lt;/a&gt; e também ficar de olho nas próximas postagens.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Humberto Rocha</dc:creator><pubDate>Sat, 30 Apr 2016 12:00:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2016-04-30:sites-estaticos-com-lektor.html</guid><category>tutorial</category><category>lektor</category><category>blog</category><category>framework</category></item><item><title>Django Rest Framework Serialization</title><link>http://pythonclub.com.br/django-rest-framework-serialization.html</link><description>&lt;p&gt;Eu resolvi estudar um pouco mais de &lt;a href="http://www.django-rest-framework.org/"&gt;DRF&lt;/a&gt; depois do tutorial do &lt;a href="https://github.com/hugobrilhante/drf-tutorial-pybr11"&gt;Hugo Brilhante&lt;/a&gt; na &lt;a href="http://pythonbrasil.github.io/pythonbrasil11-site/"&gt;Python Brasil 11&lt;/a&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Obs&lt;/strong&gt;: se você não sabe Django sugiro que leia este &lt;a href="http://pythonclub.com.br/tutorial-django-17.html"&gt;tutorial&lt;/a&gt; antes.&lt;/p&gt;
 &lt;/blockquote&gt;
