@@ -31,7 +31,7 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ virtualenv -p python3 .venv
 $ &lt;span class="nb"&gt;source&lt;/span&gt; .venv/bin/activate
 $ mkdir drf&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; drf
-$ pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.8.6 &lt;span class="nv"&gt;djangorestframework&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;3.3.1
+$ pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.9.5 &lt;span class="nv"&gt;djangorestframework&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;3.3.3
 $ pip install django-filter drf-nested-routers
 $ pip freeze &amp;gt; requirements.txt
 $ django-admin.py startproject myproject .
@@ -40,9 +40,9 @@ $ python manage.py startapp core
 
 
 &lt;p&gt;Veja o meu requirements.txt&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;Django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.8.6
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;Django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.9.5
 django-filter&lt;span class="o"&gt;==&lt;/span&gt;0.11.0
-&lt;span class="nv"&gt;djangorestframework&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;3.3.1
+&lt;span class="nv"&gt;djangorestframework&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;3.3.3
 drf-nested-routers&lt;span class="o"&gt;==&lt;/span&gt;0.10.0
 &lt;/pre&gt;&lt;/div&gt;
 
