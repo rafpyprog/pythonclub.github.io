@@ -5,44 +5,51 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/</loc>
-<lastmod>2016-05-02T02:24:15-00:00</lastmod>
+<lastmod>2016-05-05T01:10:12-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2016-05-02T02:24:15-00:00</lastmod>
+<lastmod>2016-05-05T01:10:12-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2016-05-02T02:24:15-00:00</lastmod>
+<lastmod>2016-05-05T01:10:12-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2016-05-02T02:24:15-00:00</lastmod>
+<lastmod>2016-05-05T01:10:12-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br//home/travis/build/pythonclub/pythonclub.github.io/output/pages/search.html</loc>
-<lastmod>2016-05-02T02:24:15-00:00</lastmod>
+<lastmod>2016-05-05T01:10:12-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2016-05-02T02:24:15-00:00</lastmod>
+<lastmod>2016-05-05T01:10:12-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html</loc>
+<lastmod>2016-05-04T21:46:00-03:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -621,7 +628,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/category/pelican.html</loc>
-<lastmod>2014-08-28T00:30:00-03:06</lastmod>
+<lastmod>2016-05-04T21:46:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -887,7 +894,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/tutorial.html</loc>
-<lastmod>2016-04-30T12:00:00-03:06</lastmod>
+<lastmod>2016-05-04T21:46:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -984,8 +991,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/extrair-texto.html</loc>
-<lastmod>2015-11-22T17:00:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/scrapinghub.html</loc>
+<lastmod>2015-11-13T10:04:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1007,6 +1014,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/tag/tuplas.html</loc>
 <lastmod>2015-02-24T10:17:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/travis-ci.html</loc>
+<lastmod>2016-05-04T21:46:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1047,15 +1061,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/scrapinghub.html</loc>
-<lastmod>2015-11-13T10:04:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/extrair-texto.html</loc>
+<lastmod>2015-11-22T17:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/pelican.html</loc>
-<lastmod>2014-08-28T00:30:00-03:06</lastmod>
+<lastmod>2016-05-04T21:46:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/gh-pages.html</loc>
+<lastmod>2016-05-04T21:46:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1587,7 +1608,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/author/humberto-rocha.html</loc>
-<lastmod>2016-04-30T12:00:00-03:06</lastmod>
+<lastmod>2016-05-04T21:46:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
