@@ -1,5 +1,339 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Wed, 04 May 2016 21:46:00 -0300</lastBuildDate><item><title>GitHub Pages com Pelican e Travis-CI</title><link>http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html</link><description>&lt;p&gt;&lt;strong&gt;Publicado originalmente em:&lt;/strong&gt; &lt;a class="reference external" href="http://df.python.org.br/blog/github-pages-com-pelican-e-travis-ci"&gt;df.python.org.br/blog/github-pages-com-pelican-e-travis-ci&lt;/a&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Fri, 06 May 2016 01:42:18 -0300</lastBuildDate><item><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)</title><link>http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html</link><description>&lt;p&gt;Fala pessoal, tudo certo?&lt;/p&gt;
+&lt;p&gt;Durante o desenvolvimento de um software, tão importante quanto escrever um código organizado e que siga as melhores práticas, é garantir que o mesmo cumpra os requisitos a que ele se propõe. Em outras palavras, garantir que o software funcione de maneira adequada.&lt;/p&gt;
+&lt;p&gt;O processo de testes de um software faz parte do seu desenvolvimento, porém muitas vezes ele é encarado como algo tedioso e desnecessário. Entretanto, todo bom desenvolvedor sabe que investir tempo escrevendo testes para seu software está longe de ser "desperdício de tempo". O processo de teste, quando feito por uma pessoa, além de sujeitos a falhas é tedioso e demorado. Tendo isso em mente, podemos lançar mão de ferramentas que realizarão o processo de teste por nós. Em Python, umas das ferramentes da bibloteca padrão destinada a teste é a &lt;code&gt;Unittest&lt;/code&gt;, que usaremos nesse tutorial.&lt;/p&gt;
+&lt;p&gt;Nesta série de postagem, irei mostrar o passo-a-passo na criação de testes unitários para um pequeno projeto que vamos criar no github. Vou explicar como configurar a ferramenta &lt;a href="https://travis-ci.org/"&gt;Travis&lt;/a&gt;, que será responsável por executar os nossos testes no github. A ferramenta &lt;a href="https://coveralls.io/"&gt;Coveralls&lt;/a&gt;, que mapeia nosso código, e nos indica o quanto dele está coberto por testes. E como bônus, adicionar ao nosso projeto o &lt;a href="https://landscape.io"&gt;Landscape&lt;/a&gt;, ferramenta que monitora a "saúde" do nosso código.&lt;/p&gt;
+&lt;h3&gt;Iniciando nosso projeto&lt;/h3&gt;
+&lt;p&gt;Inicialmente, criei no &lt;a href="https://github.com/"&gt;github&lt;/a&gt; um repositório que vai receber meu código e que posteriormente será configurado para rodar nossos testes. No meu caso, o repositório foi esse &lt;a href="https://github.com/mstuttgart/codigo-avulso-test-tutorial"&gt;codigo-avulso-test-tutorial&lt;/a&gt;. Após realizar o clone, criei a seguite estrutura de diretorios:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
+├── codigo_avulso_test_tutorial
+│   └── __init__.py
+├── LICENSE
+├── README.md
+└── test
+    └── __init__.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O diretório &lt;code&gt;codigo_avulso_test_tutorial&lt;/code&gt; receberá o código da nossa aplicação e o diretório &lt;code&gt;test&lt;/code&gt; receberá o código de teste.
+O nosso projeto consiste de um grupo de classes representando figuras geométricas (quadrados, círculos e etc). Teremos uma classe base chamada &lt;code&gt;FiguraGeometrica&lt;/code&gt; que possui dois métodos, a saber: &lt;code&gt;get_area&lt;/code&gt; e &lt;code&gt;get_perimetro&lt;/code&gt;, sendo ambos metódos abstratos. Cada uma dessas classes filhas de &lt;code&gt;FiguraGeometrica&lt;/code&gt; irá possuir sua própria implementação desses métodos.&lt;/p&gt;
+&lt;p&gt;Dentro do diretório &lt;code&gt;codigo_avulso_test_tutorial&lt;/code&gt;, irei criar os fontes do nosso código:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;touch figura_geometrica.py circulo.py quadrado.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Dentro do diretório &lt;code&gt;test&lt;/code&gt;, irei criar os fontes do nosso código de teste:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;touch figura_geometrica_test.py circulo_test.py quadrado_test.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Uma observação importante é que os arquivos de teste devem ter o nome terminado em &lt;code&gt;test&lt;/code&gt;, para que o módulo de Unittest encontre os nossos arquivos de teste automaticamente. Após a criação dos arquivos, teremos a seguinte estrutura de diretório:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
+├── codigo_avulso_test_tutorial
+│   ├── circulo.py
+│   ├── figura_geometrica.py
+│   ├── __init__.py
+│   └── quadrado.py
+├── LICENSE
+├── README.md
+└── test
+    ├── circulo_test.py
+    ├── figura_geometrica_test.py
+    ├── __init__.py
+    └── quadrado_test.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Iniciemos agora a implementação do nosso projeto. Mas antes vamos dar uma olhada em alguns conceitos.&lt;/p&gt;
+&lt;h3&gt;Test Driven Development (TDD)&lt;/h3&gt;
+&lt;p&gt;Neste momento, leitor, você deve estar se perguntando: "Não deveríamos escrever primeiro o nosso código e depois escrever os testes?".&lt;/p&gt;
+&lt;p&gt;Não necessariamente. O processo de escrever os testes antes do código é chamado de &lt;code&gt;TDD -  Test Driven Development&lt;/code&gt;. Segundo a &lt;a href="https://pt.wikipedia.org/wiki/Test_Driven_Development"&gt;wikipedia&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;"Test Driven Development (TDD) ou em português Desenvolvimento guiado por testes é uma técnica de desenvolvimento de software que baseia em um ciclo curto de repetições: Primeiramente o desenvolvedor escreve um caso de teste automatizado que define uma melhoria desejada ou uma nova funcionalidade. Então, é produzido código que possa ser validado pelo teste para posteriormente o código ser refatorado para um código sob padrões aceitáveis. Kent Beck, considerado o criador ou o 'descobridor' da técnica, declarou em 2003 que TDD encoraja designs de código simples e inspira confiança[1] . Desenvolvimento dirigido por testes é relacionado a conceitos de programação de Extreme Programming, iniciado em 1999,[2] mas recentemente tem-se criado maior interesse pela mesma em função de seus próprios ideais.[3] Através de TDD, programadores podem aplicar o conceito de melhorar e depurar código legado desenvolvido a partir de técnicas antigas.[4]"&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Criando o setup.py&lt;/h3&gt;
+&lt;p&gt;Antes de começar a implementar o códigos de teste, vamos criar o arquivo &lt;code&gt;setup.py&lt;/code&gt;. Esse arquivo contém informações sobr e o nosso módulo python e facilita em muito a utilização dos testes. Então, vamos criar o arquivo &lt;code&gt;setup.py&lt;/code&gt; na pasta raiz do nosso projeto.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;touch setup.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A estrutura do nosso projeto agora está assim:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
+├── codigo_avulso_test_tutorial
+│   ├── circulo.py
+│   ├── figura_geometrica.py
+│   ├── __init__.py
+│   └── quadrado.py
+├── LICENSE
+├── README.md
+├── setup.py
+└── test
+    ├── circulo_test.py
+    ├── figura_geometrica_test.py
+    ├── __init__.py
+    └── quadrado_test.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Abra o &lt;code&gt;setup.py&lt;/code&gt; em um editor e adicione as informações conforme exemplo abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;setuptools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;
+&lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;codigo-avulso-test-tutorial&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;packages&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;test&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+    &lt;span class="n"&gt;test_suite&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;test&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;No código acima, &lt;code&gt;name&lt;/code&gt; representa o nome do seu projeto, &lt;code&gt;packages&lt;/code&gt; são os diretórios do seu projeto que possuem código fonte e &lt;code&gt;test_suite&lt;/code&gt; indica o diretório onde estão os fontes de teste. É importante declarar esse diretório pois o Unittest irá procurar dentro dele os arquivos de teste que iremos escrever.&lt;/p&gt;
+&lt;h3&gt;Criando testes para a classe FiguraGeometrica&lt;/h3&gt;
+&lt;p&gt;Agora, vamos usar a lógica do TDD. Primeiro criamos o código de teste de uma classe para em seguida criamos o código da mesma. Das classes que criamos, o arquivo &lt;code&gt;figura_geometrica.py&lt;/code&gt; servirá como uma classe base para as outras classes. Então vamos começar por elá.&lt;/p&gt;
+&lt;p&gt;Abra o arquivo &lt;code&gt;figura_geometrica_test.py&lt;/code&gt; e seu editor preferido e adicione o código abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;unittest&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TestCase&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;codigo_avulso_test_tutorial.figura_geometrica&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;FiguraGeometrica&lt;/span&gt;
+
+&lt;span class="c1"&gt;# O nome da classe deve iniciar com a palavra Test&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;TestFiguraGeometrico&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Serve para incializar variavei que usaremos&lt;/span&gt;
+    &lt;span class="c1"&gt;# globalmente nos testes&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;setUp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setUp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;FiguraGeometrica&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Retorna uma NotImplementedError&lt;/span&gt;
+    &lt;span class="c1"&gt;# O nome do metodo deve comecar com test&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_get_area&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertRaises&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ne"&gt;NotImplementedError&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_area&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Retorna uma NotImplementedError&lt;/span&gt;
+    &lt;span class="c1"&gt;# O nome do metodo deve comecar com test&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_get_perimetro&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertRaises&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ne"&gt;NotImplementedError&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_perimetro&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Como podemos observar no código acima, a seguinte linha:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_get_area&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertRaise&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;test_get_area&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="ne"&gt;NotImplementedError&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Realiza o seguinte teste. Com o objeto &lt;code&gt;self.fig&lt;/code&gt; criado no método &lt;code&gt;setUp()&lt;/code&gt;, tentamos chamar o método &lt;code&gt;test_get_perimetro&lt;/code&gt; da classe &lt;code&gt;FiguraGeometrica&lt;/code&gt;, porém ele verifica se ocorreu a exceção &lt;code&gt;NotImplementedError&lt;/code&gt;. Isso é feito porque a classe &lt;code&gt;FiguraGeometrica&lt;/code&gt; é uma classe abstrata e possui ambos os métodos &lt;code&gt;get_area&lt;/code&gt; e &lt;code&gt;get_perimetro&lt;/code&gt; vazios. Isso irá ficar mais claro quando adicionarmos o código da classe &lt;code&gt;FiguraGeometrica&lt;/code&gt;. Então, abra o arquivo &lt;code&gt;figura_geometrica.py&lt;/code&gt; em seu editor e vamos adicionar o seguinte código:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;FiguraGeometrica&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Retorna a area da figura&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_area&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;NotImplementedError&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Retorna o perimetro da figura&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_perimetro&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;NotImplementedError&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A class acima é bem simples. Ela possui um método que retorna a área e outro que retorna o perímetro da figura. Ambos são métodos &lt;em&gt;abstratos&lt;/em&gt;, ou seja, devem ser implementados nas classes filhas da classe &lt;code&gt;FiguraGeometrica&lt;/code&gt;. Se criarmos um objeto dessa classe e chamarmos um dos dois métodos, uma exceção do tipo &lt;code&gt;NotImplementedError&lt;/code&gt; será lançada, pois ambos os métodos possuem escopo vazio.&lt;/p&gt;
+&lt;p&gt;Finalmente podemos executar o teste da nossa classe. Usando o terminal, no diretorio em que o arquivo &lt;code&gt;setup.py&lt;/code&gt; está, execute o seguinte comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python setup.py &lt;span class="nb"&gt;test&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Esse nosso comando vai executar a nossa classe &lt;code&gt;TestFiguraGeometrica&lt;/code&gt;. Se tudo estiver correto, teremos a seguinte saída:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;running test
+running egg_info
+writing codigo_avulso_test_tutorial.egg-info/PKG-INFO
+writing top-level names to codigo_avulso_test_tutorial.egg-info/top_level.txt
+writing dependency_links to codigo_avulso_test_tutorial.egg-info/dependency_links.txt
+reading manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
+writing manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
+running build_ext
+test_get_area (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+test_get_perimetro (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Caso apareça uma resposta diferente, dê uma olhada na própria saída do teste. Ele indica onde está o erro. Provavelmente, pode ter sido algum erro de digitação, pois os exemplos deste tutorial foram todos testados.&lt;/p&gt;
+&lt;h3&gt;Criando testes para a classe Quadrado&lt;/h3&gt;
+&lt;p&gt;Vamos criar agora outras classes que realmente fazem algo de útil e seus respectivos testes. Começando pela classe Quadrado, vamos escrever um teste para a mesma no arquivo &lt;code&gt;quadrado_test.py&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;unittest&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TestCase&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;codigo_avulso_test_tutorial.quadrado&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Quadrado&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;TestQuadrado&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;setUp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setUp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Quadrado&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_get_area&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="c1"&gt;# Verificamos se o resultado é o esperado&lt;/span&gt;
+        &lt;span class="c1"&gt;# de acordo com a formula de area do quadrado&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lado&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_area&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lado&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;7.0&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_area&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="mf"&gt;49.0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_get_perimetro&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lado&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_perimetro&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lado&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;7.0&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_perimetro&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="mf"&gt;28.0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Em seguida, adicionamos o código da classe &lt;code&gt;Quadrado&lt;/code&gt; no arquivo &lt;code&gt;quadrado.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;figura_geometrica&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;FiguraGeometrica&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Quadrado&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;FiguraGeometrica&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+      &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lado&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Retorna a area do quadrado&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_area&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lado&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Retorna o perimetro do quadrado&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_perimetro&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lado&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Assim como fizemos no exemplo anterior, executamos os testes:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python setup.py &lt;span class="nb"&gt;test&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Se tudo estiver certo, teremos a seguinte saída.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;running test
+running egg_info
+writing codigo_avulso_test_tutorial.egg-info/PKG-INFO
+writing top-level names to codigo_avulso_test_tutorial.egg-info/top_level.txt
+writing dependency_links to codigo_avulso_test_tutorial.egg-info/dependency_links.txt
+reading manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
+writing manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
+running build_ext
+test_get_area (test.quadrado_test.TestQuadrado) ... ok
+test_get_perimetro (test.quadrado_test.TestQuadrado) ... ok
+test_get_area (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+test_get_perimetro (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Uma detalhe interessante a ser observado é que agora os testes da classe &lt;code&gt;Quadrado&lt;/code&gt; estão sendo executados junto com os testes da classe &lt;code&gt;FiguraGeometrica&lt;/code&gt; sem que fosse necessário alterar nenhuma configuração do projeto, ou adicionar algum novo diretório no arquivo &lt;code&gt;setup.py&lt;/code&gt;. Isso acontece por que usamos a sufixo &lt;code&gt;_test&lt;/code&gt; no nome dos nossos código fonte de teste e também adicionamos o diretório &lt;code&gt;test&lt;/code&gt; na tag &lt;code&gt;test_suite&lt;/code&gt; no arquivo &lt;code&gt;setup.py&lt;/code&gt;. Desse modo, quando executamos os testes, o módulo python &lt;code&gt;Unittest&lt;/code&gt; percorre o diretório &lt;code&gt;test&lt;/code&gt;, carrega automaticamente todos os arquivos com sufixo &lt;code&gt;_test&lt;/code&gt; e executa os testes dentro deles. Bacana não é?&lt;/p&gt;
+&lt;h3&gt;Criando testes para a classe Circulo&lt;/h3&gt;
+&lt;p&gt;Para encerrarmos o tutorial, vamos agora implementar os testes da classe Círculo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;math&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;unittest&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TestCase&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;codigo_avulso_test_tutorial.circulo&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Circulo&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;TestCirculo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;setUp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setUp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Circulo&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_get_area&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="c1"&gt;# Utilizamos a formula diretamente por conveniencia&lt;/span&gt;
+        &lt;span class="c1"&gt;# já que math.pi e double e sendo assim, possui&lt;/span&gt;
+        &lt;span class="c1"&gt;# muitas casas decimais&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raio&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+        &lt;span class="n"&gt;area&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raio&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_area&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;area&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raio&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;7.0&lt;/span&gt;
+        &lt;span class="n"&gt;area&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raio&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_area&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;area&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_get_perimetro&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raio&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+        &lt;span class="n"&gt;perimetro&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raio&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_perimetro&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;perimetro&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raio&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;7.0&lt;/span&gt;
+        &lt;span class="n"&gt;perimetro&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raio&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_perimetro&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;perimetro&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;E agora a classe Circulo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;math&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;figura_geometrica&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;FiguraGeometrica&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Circulo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;FiguraGeometrica&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+      &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raio&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Retorna a area do circulo&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_area&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raio&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Retorna o perimetro do circulo&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_perimetro&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raio&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finalmente, rodamos os testes agora com a presença da classe circúlo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python setup.py &lt;span class="nb"&gt;test&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Se tudo estiver certo, teremos a seguinte saída.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;running test
+running egg_info
+writing codigo_avulso_test_tutorial.egg-info/PKG-INFO
+writing top-level names to codigo_avulso_test_tutorial.egg-info/top_level.txt
+writing dependency_links to codigo_avulso_test_tutorial.egg-info/dependency_links.txt
+reading manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
+writing manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
+running build_ext
+test_get_area (test.quadrado_test.TestQuadrado) ... ok
+test_get_perimetro (test.quadrado_test.TestQuadrado) ... ok
+test_get_area (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+test_get_perimetro (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+test_get_area (test.circulo_test.TestCirculo) ... ok
+test_get_perimetro (test.circulo_test.TestCirculo) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Conclusão&lt;/h3&gt;
+&lt;p&gt;Com os testes ok, só nos resta subir o código para o github:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git add --all
+git commit -m &amp;quot;[NEW] Adicionado classes e testes&amp;quot;
+git push origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Esse tutorial ficou bem extenso, mas espero que tenha sido útil pra vocês. No próxima parte do tutorial, vamos ver como configurar o Travis, para que ele execute nossos testes quando realizarmos um &lt;code&gt;push&lt;/code&gt; ou um &lt;code&gt;pull request&lt;/code&gt; para o github. Também veremos o Coveralls que emite relatórios do quando do seu código está coberto por testes, algo muito interessante para ver se um &lt;em&gt;software&lt;/em&gt; é bem testado.&lt;/p&gt;
+&lt;p&gt;Os testes que escrevemos foram bem simples, apenas para fim de exemplo. Porém em uma aplicação séria, deve-se ter cuidado na hora de escrever os testes, de maneira a garantir que todas as possibilidades de erros sejam cobertas. A filosofia do TDD de escrever os testes antes do código da nossa aplicação, é algo que exige prática. Eu mesmo ainda não me sinto completamente a vontade seguindo esse fluxo de trabalho. Mas, escrever os testes primeiro te ajuda a manter seu código coerente e funcional, pois vocẽ vai precisar fazê-lo passar pelos testes.&lt;/p&gt;
+&lt;p&gt;É isso pessoal. Obrigado por ler até aqui. Até a próxima postagem!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://codigoavulso.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michell Stuttgart</dc:creator><pubDate>Fri, 06 May 2016 01:42:18 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2016-05-06:python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html</guid><category>git</category><category>travis-ci</category><category>python</category><category>coveralls</category><category>landscape</category><category>test</category><category>tutorial</category></item><item><title>GitHub Pages com Pelican e Travis-CI</title><link>http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html</link><description>&lt;p&gt;&lt;strong&gt;Publicado originalmente em:&lt;/strong&gt; &lt;a class="reference external" href="http://df.python.org.br/blog/github-pages-com-pelican-e-travis-ci"&gt;df.python.org.br/blog/github-pages-com-pelican-e-travis-ci&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Olá pessoal!&lt;/p&gt;
 &lt;p&gt;Estou fazendo esta postagem para ajudar quem quer criar seu site no &lt;a class="reference external" href="http://pages.github.com"&gt;GitHub Pages&lt;/a&gt; usando &lt;a class="reference external" href="http://blog.getpelican.com"&gt;Pelican&lt;/a&gt; para a criação das páginas e o &lt;a class="reference external" href="https://travis-ci.org"&gt;Travis-CI&lt;/a&gt; para automatizar a tarefa de geração e publicação.&lt;/p&gt;
 &lt;p&gt;Este guia assume que o leitor possua conta no &lt;a class="reference external" href="http://github.com"&gt;GitHub&lt;/a&gt; e no &lt;a class="reference external" href="https://travis-ci.org"&gt;Travis-CI&lt;/a&gt; e tenha familiaridade com o ambiente python. A versão do pelican utilizada ao elaborar esta publicação foi a 3.6.&lt;/p&gt;

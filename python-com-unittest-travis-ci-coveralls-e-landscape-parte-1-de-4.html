@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PythonClub, ">
+    <meta name="theme-color" content="#101212">
+
+        <link rel="alternate"  href="http://pythonclub.com.br/feeds/all.atom.xml" type="application/atom+xml" title="PythonClub Full Atom Feed"/>
+        <link rel="alternate" href="http://pythonclub.com.br/feeds/all.rss.xml" type="application/rss+xml" title="PythonClub Full RSS Feed"/>
+
+    <link rel="shortcut icon" href="http://pythonclub.com.br/theme/images/favicon.ico" >
+
+            <title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4) por Michell Stuttgart // #PythonClub // </title>
+
+    <meta property="fb:app_id" content="1487080281503641" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)" />
+    <meta property="og:site_name" content="PythonClub" />
+    <meta property="og:url" content="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html" />
+    <meta property="og:description" content="Fala pessoal, tudo certo? Durante o desenvolvimento de um software, tão importante quanto escrever um código organizado e que siga as melhores práticas, é garantir que o mesmo cumpra os requisitos a que ele se propõe. Em outras palavras, garantir que o software funcione de maneira adequada. O processo de ..." />
+    <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/custom.css">
+
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pygments.css">
+
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50935105-1', 'pythonclub.com.br');
+      ga('require', 'linkid', 'linkid.js');
+      ga('send', 'pageview');
+
+    </script>
+    <!-- transifex -->
+    <!-- <script type="text/javascript">  -->
+    <!-- window.liveSettings = {  -->
+    <!--     api_key: "f8fd260a9bdc4e9195c80e31416bb254",  -->
+    <!--     picker: "bottom-right",  -->
+    <!--     detectlang: true,  -->
+    <!--     autocollect: true  -->
+    <!-- };  -->
+    <!-- </script>  -->
+    <!-- <script type="text/javascript" src="//cdn.transifex.com/live.js"></script>  -->
+    <!-- end transifex -->
+    <meta name="google-site-verification" content="XQc_QtnTecI9nxAfplXGtECCpZQDwbDRcn7pyDVa1LE" />
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://pythonclub.com.br/author/michell-stuttgart.html" title="See posts by Michell Stuttgart">
+                        <img class="article-avatar" alt="Michell Stuttgart" src="https://www.gravatar.com/avatar/5e8ca4e23c3c82db47bfae30e7254d8d">
+                </a>
+                <h2 class="article-info">Michell Stuttgart</h2>
+    			<ul class="author-social">
+                    <li>
+                        <a target="_blank" href="https://github.com/mstuttgart">
+                            <i class="fa fa-lg fa-fw fa-github"></i>
+                            <strong>Github</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://www.linkedin.com/in/michellstut">
+                            <i class="fa fa-lg fa-fw fa-linkedin"></i>
+                            <strong>Linkedin</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/michell.stuttgart">
+                            <i class="fa fa-lg fa-fw fa-facebook"></i>
+                            <strong>Facebook</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://codigoavulso.com.br">
+                            <i class="fa fa-lg fa-fw fa-globe"></i>
+                            <strong>Site</strong>
+                        </a>
+                    </li>
+                </ul>
+                <h5>Publicado em:</h5>
+                <p>Fri 06 May 2016</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)</h1>
+                        <p class="post-meta">
+                            // Tags                                 <a class="post-category" href="http://pythonclub.com.br/tag/git.html">git</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/travis-ci.html">travis-ci</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/python.html">python</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/coveralls.html">coveralls</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/landscape.html">landscape</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/test.html">test</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/tutorial.html">tutorial</a>
+                        </p>
+                </header>
+            </section>
+            <p>Fala pessoal, tudo certo?</p>
+<p>Durante o desenvolvimento de um software, tão importante quanto escrever um código organizado e que siga as melhores práticas, é garantir que o mesmo cumpra os requisitos a que ele se propõe. Em outras palavras, garantir que o software funcione de maneira adequada.</p>
+<p>O processo de testes de um software faz parte do seu desenvolvimento, porém muitas vezes ele é encarado como algo tedioso e desnecessário. Entretanto, todo bom desenvolvedor sabe que investir tempo escrevendo testes para seu software está longe de ser "desperdício de tempo". O processo de teste, quando feito por uma pessoa, além de sujeitos a falhas é tedioso e demorado. Tendo isso em mente, podemos lançar mão de ferramentas que realizarão o processo de teste por nós. Em Python, umas das ferramentes da bibloteca padrão destinada a teste é a <code>Unittest</code>, que usaremos nesse tutorial.</p>
+<p>Nesta série de postagem, irei mostrar o passo-a-passo na criação de testes unitários para um pequeno projeto que vamos criar no github. Vou explicar como configurar a ferramenta <a href="https://travis-ci.org/">Travis</a>, que será responsável por executar os nossos testes no github. A ferramenta <a href="https://coveralls.io/">Coveralls</a>, que mapeia nosso código, e nos indica o quanto dele está coberto por testes. E como bônus, adicionar ao nosso projeto o <a href="https://landscape.io">Landscape</a>, ferramenta que monitora a "saúde" do nosso código.</p>
+<h3>Iniciando nosso projeto</h3>
+<p>Inicialmente, criei no <a href="https://github.com/">github</a> um repositório que vai receber meu código e que posteriormente será configurado para rodar nossos testes. No meu caso, o repositório foi esse <a href="https://github.com/mstuttgart/codigo-avulso-test-tutorial">codigo-avulso-test-tutorial</a>. Após realizar o clone, criei a seguite estrutura de diretorios:</p>
+<div class="highlight"><pre><span></span>.
+├── codigo_avulso_test_tutorial
+│   └── __init__.py
+├── LICENSE
+├── README.md
+└── test
+    └── __init__.py
+</pre></div>
+
+
+<p>O diretório <code>codigo_avulso_test_tutorial</code> receberá o código da nossa aplicação e o diretório <code>test</code> receberá o código de teste.
+O nosso projeto consiste de um grupo de classes representando figuras geométricas (quadrados, círculos e etc). Teremos uma classe base chamada <code>FiguraGeometrica</code> que possui dois métodos, a saber: <code>get_area</code> e <code>get_perimetro</code>, sendo ambos metódos abstratos. Cada uma dessas classes filhas de <code>FiguraGeometrica</code> irá possuir sua própria implementação desses métodos.</p>
+<p>Dentro do diretório <code>codigo_avulso_test_tutorial</code>, irei criar os fontes do nosso código:</p>
+<div class="highlight"><pre><span></span>touch figura_geometrica.py circulo.py quadrado.py
+</pre></div>
+
+
+<p>Dentro do diretório <code>test</code>, irei criar os fontes do nosso código de teste:</p>
+<div class="highlight"><pre><span></span>touch figura_geometrica_test.py circulo_test.py quadrado_test.py
+</pre></div>
+
+
+<p>Uma observação importante é que os arquivos de teste devem ter o nome terminado em <code>test</code>, para que o módulo de Unittest encontre os nossos arquivos de teste automaticamente. Após a criação dos arquivos, teremos a seguinte estrutura de diretório:</p>
+<div class="highlight"><pre><span></span>.
+├── codigo_avulso_test_tutorial
+│   ├── circulo.py
+│   ├── figura_geometrica.py
+│   ├── __init__.py
+│   └── quadrado.py
+├── LICENSE
+├── README.md
+└── test
+    ├── circulo_test.py
+    ├── figura_geometrica_test.py
+    ├── __init__.py
+    └── quadrado_test.py
+</pre></div>
+
+
+<p>Iniciemos agora a implementação do nosso projeto. Mas antes vamos dar uma olhada em alguns conceitos.</p>
+<h3>Test Driven Development (TDD)</h3>
+<p>Neste momento, leitor, você deve estar se perguntando: "Não deveríamos escrever primeiro o nosso código e depois escrever os testes?".</p>
+<p>Não necessariamente. O processo de escrever os testes antes do código é chamado de <code>TDD -  Test Driven Development</code>. Segundo a <a href="https://pt.wikipedia.org/wiki/Test_Driven_Development">wikipedia</a>:</p>
+<blockquote>
+<p>"Test Driven Development (TDD) ou em português Desenvolvimento guiado por testes é uma técnica de desenvolvimento de software que baseia em um ciclo curto de repetições: Primeiramente o desenvolvedor escreve um caso de teste automatizado que define uma melhoria desejada ou uma nova funcionalidade. Então, é produzido código que possa ser validado pelo teste para posteriormente o código ser refatorado para um código sob padrões aceitáveis. Kent Beck, considerado o criador ou o 'descobridor' da técnica, declarou em 2003 que TDD encoraja designs de código simples e inspira confiança[1] . Desenvolvimento dirigido por testes é relacionado a conceitos de programação de Extreme Programming, iniciado em 1999,[2] mas recentemente tem-se criado maior interesse pela mesma em função de seus próprios ideais.[3] Através de TDD, programadores podem aplicar o conceito de melhorar e depurar código legado desenvolvido a partir de técnicas antigas.[4]"</p>
+</blockquote>
+<h3>Criando o setup.py</h3>
+<p>Antes de começar a implementar o códigos de teste, vamos criar o arquivo <code>setup.py</code>. Esse arquivo contém informações sobr e o nosso módulo python e facilita em muito a utilização dos testes. Então, vamos criar o arquivo <code>setup.py</code> na pasta raiz do nosso projeto.</p>
+<div class="highlight"><pre><span></span>touch setup.py
+</pre></div>
+
+
+<p>A estrutura do nosso projeto agora está assim:</p>
+<div class="highlight"><pre><span></span>.
+├── codigo_avulso_test_tutorial
+│   ├── circulo.py
+│   ├── figura_geometrica.py
+│   ├── __init__.py
+│   └── quadrado.py
+├── LICENSE
+├── README.md
+├── setup.py
+└── test
+    ├── circulo_test.py
+    ├── figura_geometrica_test.py
+    ├── __init__.py
+    └── quadrado_test.py
+</pre></div>
+
+
+<p>Abra o <code>setup.py</code> em um editor e adicione as informações conforme exemplo abaixo:</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;codigo-avulso-test-tutorial&#39;</span><span class="p">,</span>
+    <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;codigo_avulso_test_tutorial&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">],</span>
+    <span class="n">test_suite</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>No código acima, <code>name</code> representa o nome do seu projeto, <code>packages</code> são os diretórios do seu projeto que possuem código fonte e <code>test_suite</code> indica o diretório onde estão os fontes de teste. É importante declarar esse diretório pois o Unittest irá procurar dentro dele os arquivos de teste que iremos escrever.</p>
+<h3>Criando testes para a classe FiguraGeometrica</h3>
+<p>Agora, vamos usar a lógica do TDD. Primeiro criamos o código de teste de uma classe para em seguida criamos o código da mesma. Das classes que criamos, o arquivo <code>figura_geometrica.py</code> servirá como uma classe base para as outras classes. Então vamos começar por elá.</p>
+<p>Abra o arquivo <code>figura_geometrica_test.py</code> e seu editor preferido e adicione o código abaixo:</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span>
+<span class="kn">from</span> <span class="nn">codigo_avulso_test_tutorial.figura_geometrica</span> <span class="kn">import</span> <span class="n">FiguraGeometrica</span>
+
+<span class="c1"># O nome da classe deve iniciar com a palavra Test</span>
+<span class="k">class</span> <span class="nc">TestFiguraGeometrico</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="c1"># Serve para incializar variavei que usaremos</span>
+    <span class="c1"># globalmente nos testes</span>
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">TestCase</span><span class="o">.</span><span class="n">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="n">FiguraGeometrica</span><span class="p">()</span>
+
+    <span class="c1"># Retorna uma NotImplementedError</span>
+    <span class="c1"># O nome do metodo deve comecar com test</span>
+    <span class="k">def</span> <span class="nf">test_get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">NotImplementedError</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">get_area</span><span class="p">)</span>
+
+    <span class="c1"># Retorna uma NotImplementedError</span>
+    <span class="c1"># O nome do metodo deve comecar com test</span>
+    <span class="k">def</span> <span class="nf">test_get_perimetro</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">NotImplementedError</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">get_perimetro</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Como podemos observar no código acima, a seguinte linha:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertRaise</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">test_get_area</span><span class="p">(),</span> <span class="ne">NotImplementedError</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Realiza o seguinte teste. Com o objeto <code>self.fig</code> criado no método <code>setUp()</code>, tentamos chamar o método <code>test_get_perimetro</code> da classe <code>FiguraGeometrica</code>, porém ele verifica se ocorreu a exceção <code>NotImplementedError</code>. Isso é feito porque a classe <code>FiguraGeometrica</code> é uma classe abstrata e possui ambos os métodos <code>get_area</code> e <code>get_perimetro</code> vazios. Isso irá ficar mais claro quando adicionarmos o código da classe <code>FiguraGeometrica</code>. Então, abra o arquivo <code>figura_geometrica.py</code> em seu editor e vamos adicionar o seguinte código:</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="k">class</span> <span class="nc">FiguraGeometrica</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="c1"># Retorna a area da figura</span>
+    <span class="k">def</span> <span class="nf">get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="c1"># Retorna o perimetro da figura</span>
+    <span class="k">def</span> <span class="nf">get_perimetro</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</pre></div>
+
+
+<p>A class acima é bem simples. Ela possui um método que retorna a área e outro que retorna o perímetro da figura. Ambos são métodos <em>abstratos</em>, ou seja, devem ser implementados nas classes filhas da classe <code>FiguraGeometrica</code>. Se criarmos um objeto dessa classe e chamarmos um dos dois métodos, uma exceção do tipo <code>NotImplementedError</code> será lançada, pois ambos os métodos possuem escopo vazio.</p>
+<p>Finalmente podemos executar o teste da nossa classe. Usando o terminal, no diretorio em que o arquivo <code>setup.py</code> está, execute o seguinte comando:</p>
+<div class="highlight"><pre><span></span>python setup.py <span class="nb">test</span>
+</pre></div>
+
+
+<p>Esse nosso comando vai executar a nossa classe <code>TestFiguraGeometrica</code>. Se tudo estiver correto, teremos a seguinte saída:</p>
+<div class="highlight"><pre><span></span>running test
+running egg_info
+writing codigo_avulso_test_tutorial.egg-info/PKG-INFO
+writing top-level names to codigo_avulso_test_tutorial.egg-info/top_level.txt
+writing dependency_links to codigo_avulso_test_tutorial.egg-info/dependency_links.txt
+reading manifest file &#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&#39;
+writing manifest file &#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&#39;
+running build_ext
+test_get_area (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+test_get_perimetro (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
+</pre></div>
+
+
+<p>Caso apareça uma resposta diferente, dê uma olhada na própria saída do teste. Ele indica onde está o erro. Provavelmente, pode ter sido algum erro de digitação, pois os exemplos deste tutorial foram todos testados.</p>
+<h3>Criando testes para a classe Quadrado</h3>
+<p>Vamos criar agora outras classes que realmente fazem algo de útil e seus respectivos testes. Começando pela classe Quadrado, vamos escrever um teste para a mesma no arquivo <code>quadrado_test.py</code>.</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span>
+<span class="kn">from</span> <span class="nn">codigo_avulso_test_tutorial.quadrado</span> <span class="kn">import</span> <span class="n">Quadrado</span>
+
+<span class="k">class</span> <span class="nc">TestQuadrado</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">TestCase</span><span class="o">.</span><span class="n">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="n">Quadrado</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">test_get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Verificamos se o resultado é o esperado</span>
+        <span class="c1"># de acordo com a formula de area do quadrado</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">lado</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">get_area</span><span class="p">(),</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">lado</span> <span class="o">=</span> <span class="mf">7.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">get_area</span><span class="p">(),</span> <span class="mf">49.0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_get_perimetro</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">lado</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">get_perimetro</span><span class="p">(),</span> <span class="mi">8</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">lado</span> <span class="o">=</span> <span class="mf">7.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">get_perimetro</span><span class="p">(),</span> <span class="mf">28.0</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Em seguida, adicionamos o código da classe <code>Quadrado</code> no arquivo <code>quadrado.py</code>:</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">figura_geometrica</span> <span class="kn">import</span> <span class="n">FiguraGeometrica</span>
+
+<span class="k">class</span> <span class="nc">Quadrado</span><span class="p">(</span><span class="n">FiguraGeometrica</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">lado</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Retorna a area do quadrado</span>
+    <span class="k">def</span> <span class="nf">get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lado</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="c1"># Retorna o perimetro do quadrado</span>
+    <span class="k">def</span> <span class="nf">get_perimetro</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">4</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">lado</span>
+</pre></div>
+
+
+<p>Assim como fizemos no exemplo anterior, executamos os testes:</p>
+<div class="highlight"><pre><span></span>python setup.py <span class="nb">test</span>
+</pre></div>
+
+
+<p>Se tudo estiver certo, teremos a seguinte saída.</p>
+<div class="highlight"><pre><span></span>running test
+running egg_info
+writing codigo_avulso_test_tutorial.egg-info/PKG-INFO
+writing top-level names to codigo_avulso_test_tutorial.egg-info/top_level.txt
+writing dependency_links to codigo_avulso_test_tutorial.egg-info/dependency_links.txt
+reading manifest file &#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&#39;
+writing manifest file &#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&#39;
+running build_ext
+test_get_area (test.quadrado_test.TestQuadrado) ... ok
+test_get_perimetro (test.quadrado_test.TestQuadrado) ... ok
+test_get_area (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+test_get_perimetro (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+</pre></div>
+
+
+<p>Uma detalhe interessante a ser observado é que agora os testes da classe <code>Quadrado</code> estão sendo executados junto com os testes da classe <code>FiguraGeometrica</code> sem que fosse necessário alterar nenhuma configuração do projeto, ou adicionar algum novo diretório no arquivo <code>setup.py</code>. Isso acontece por que usamos a sufixo <code>_test</code> no nome dos nossos código fonte de teste e também adicionamos o diretório <code>test</code> na tag <code>test_suite</code> no arquivo <code>setup.py</code>. Desse modo, quando executamos os testes, o módulo python <code>Unittest</code> percorre o diretório <code>test</code>, carrega automaticamente todos os arquivos com sufixo <code>_test</code> e executa os testes dentro deles. Bacana não é?</p>
+<h3>Criando testes para a classe Circulo</h3>
+<p>Para encerrarmos o tutorial, vamos agora implementar os testes da classe Círculo.</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span>
+<span class="kn">from</span> <span class="nn">codigo_avulso_test_tutorial.circulo</span> <span class="kn">import</span> <span class="n">Circulo</span>
+
+<span class="k">class</span> <span class="nc">TestCirculo</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">TestCase</span><span class="o">.</span><span class="n">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="n">Circulo</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">test_get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Utilizamos a formula diretamente por conveniencia</span>
+        <span class="c1"># já que math.pi e double e sendo assim, possui</span>
+        <span class="c1"># muitas casas decimais</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">raio</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">area</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">raio</span><span class="o">**</span><span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">get_area</span><span class="p">(),</span> <span class="n">area</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">raio</span> <span class="o">=</span> <span class="mf">7.0</span>
+        <span class="n">area</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">raio</span><span class="o">**</span><span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">get_area</span><span class="p">(),</span> <span class="n">area</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_get_perimetro</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">raio</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">perimetro</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">raio</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">get_perimetro</span><span class="p">(),</span> <span class="n">perimetro</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">raio</span> <span class="o">=</span> <span class="mf">7.0</span>
+        <span class="n">perimetro</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">raio</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">get_perimetro</span><span class="p">(),</span> <span class="n">perimetro</span><span class="p">)</span>
+</pre></div>
+
+
+<p>E agora a classe Circulo:</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">figura_geometrica</span> <span class="kn">import</span> <span class="n">FiguraGeometrica</span>
+
+<span class="k">class</span> <span class="nc">Circulo</span><span class="p">(</span><span class="n">FiguraGeometrica</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">raio</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Retorna a area do circulo</span>
+    <span class="k">def</span> <span class="nf">get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">raio</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="c1"># Retorna o perimetro do circulo</span>
+    <span class="k">def</span> <span class="nf">get_perimetro</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">raio</span>
+</pre></div>
+
+
+<p>Finalmente, rodamos os testes agora com a presença da classe circúlo:</p>
+<div class="highlight"><pre><span></span>python setup.py <span class="nb">test</span>
+</pre></div>
+
+
+<p>Se tudo estiver certo, teremos a seguinte saída.</p>
+<div class="highlight"><pre><span></span>running test
+running egg_info
+writing codigo_avulso_test_tutorial.egg-info/PKG-INFO
+writing top-level names to codigo_avulso_test_tutorial.egg-info/top_level.txt
+writing dependency_links to codigo_avulso_test_tutorial.egg-info/dependency_links.txt
+reading manifest file &#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&#39;
+writing manifest file &#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&#39;
+running build_ext
+test_get_area (test.quadrado_test.TestQuadrado) ... ok
+test_get_perimetro (test.quadrado_test.TestQuadrado) ... ok
+test_get_area (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+test_get_perimetro (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+test_get_area (test.circulo_test.TestCirculo) ... ok
+test_get_perimetro (test.circulo_test.TestCirculo) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK
+</pre></div>
+
+
+<h3>Conclusão</h3>
+<p>Com os testes ok, só nos resta subir o código para o github:</p>
+<div class="highlight"><pre><span></span>git add --all
+git commit -m &quot;[NEW] Adicionado classes e testes&quot;
+git push origin master
+</pre></div>
+
+
+<p>Esse tutorial ficou bem extenso, mas espero que tenha sido útil pra vocês. No próxima parte do tutorial, vamos ver como configurar o Travis, para que ele execute nossos testes quando realizarmos um <code>push</code> ou um <code>pull request</code> para o github. Também veremos o Coveralls que emite relatórios do quando do seu código está coberto por testes, algo muito interessante para ver se um <em>software</em> é bem testado.</p>
+<p>Os testes que escrevemos foram bem simples, apenas para fim de exemplo. Porém em uma aplicação séria, deve-se ter cuidado na hora de escrever os testes, de maneira a garantir que todas as possibilidades de erros sejam cobertas. A filosofia do TDD de escrever os testes antes do código da nossa aplicação, é algo que exige prática. Eu mesmo ainda não me sinto completamente a vontade seguindo esse fluxo de trabalho. Mas, escrever os testes primeiro te ajuda a manter seu código coerente e funcional, pois vocẽ vai precisar fazê-lo passar pelos testes.</p>
+<p>É isso pessoal. Obrigado por ler até aqui. Até a próxima postagem!</p>
+<p><strong>Publicado originalmente:</strong> <a href="http://codigoavulso.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html">python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4</a></p>
+
+            <div class="licence">
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licença Creative Commons"
+                                                                                               style="border-width:0"
+                                                                                               src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"/></a><br/><a
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title"
+                    href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html">"Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)"</a> de <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="http://pythonclub.com.br/author/michell-stuttgart.html"
+                    property="cc:attributionName" rel="cc:attributionURL">"Michell Stuttgart"</a> está licenciado com uma Licença
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons -
+                    Atribuição-NãoComercial-SemDerivações 4.0 Internacional</a>.
+            </div>
+
+            <div class="sharing">
+                <!-- Facebook sharing -->
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=1487080281503641&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-share-button" data-href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html" data-type="button_count"></div>
+
+                <!-- Google+ sharing -->
+                <div class="g-plus alinhar" data-action="share" data-annotation="bubble" data-href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html"></div>
+
+                <!-- Twitter sharing -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="pt" style="margin-bottom: -4px !important;">Tweetar</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Topo</a>
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES: THIS CODE IS ONLY AN EXAMPLE * * */
+                        var disqus_shortname = 'pythonclub'; // Required - Replace example with your forum shortname
+                        var disqus_identifier = 'python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html';
+                        var disqus_title = 'Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)';
+                        var disqus_url = 'http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html';
+                    
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </div>
+<footer class="footer">
+    <p>&copy; PythonClub &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://pythonclub.com.br/theme/js/dynamic_random_articles.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+        $(window).load(function(){
+          $("iframe").css("margin-bottom", "-6px")
+          $("#twitter-widget-0").css("margin-bottom", "-5px");
+          $("#twitter-widget-0").css("margin-left", "-1px");
+        });
+    </script>
+    <script type="text/javascript" src="https://apis.google.com/js/platform.js">
+      {lang: 'pt-BR'}
+    </script>
+
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+
+        $(function(){
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)"}, {"url": "http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html", "title": "GitHub Pages com Pelican e Travis-CI"}, {"url": "http://pythonclub.com.br/sites-estaticos-com-lektor.html", "title": "Sites Est\u00e1ticos com Lektor"}, {"url": "http://pythonclub.com.br/django-rest-framework-serialization.html", "title": "Django Rest Framework Serialization"}, {"url": "http://pythonclub.com.br/explicit-is-better-than-implicit.html", "title": "Explicit is better than implicit"}, {"url": "http://pythonclub.com.br/tdd-com-python-e-flask.html", "title": "TDD com Python e Flask"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html", "title": "Upload de arquivos no Django: entendendo os modos de leitura"}, {"url": "http://pythonclub.com.br/python-generators.html", "title": "Python Generators"}, {"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+        });
+        
+    </script>
+        <!-- spot_im -->
+        <!--    <div id="spot-im-root"></div> -->
+        <!--    <script type="text/javascript">!function(t,o,p){function e(){var t=o.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"==o.location.protocol?"https":"http")+":"+p,o.body.appendChild(t)}t.spotId="3de816246c80a51757bb01c5b8c95cda",t.spotName="",t.allowDesktop=!0,t.allowMobile=!1,t.containerId="spot-im-root",e()}(window.SPOTIM={},document,"//www.spot.im/embed/scripts/launcher.js");</script> -->
+        <!-- end spot_im -->
+   
+            <script>
+              ((window.gitter = {}).chat = {}).options = {
+                    room: 'pythonclub/pythonclub.github.io'
+              };
+            </script>
+            <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+   
+</body>
+</html>
