@@ -5,44 +5,51 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/</loc>
-<lastmod>2016-05-06T03:16:51-00:00</lastmod>
+<lastmod>2016-05-08T17:39:45-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2016-05-06T03:16:51-00:00</lastmod>
+<lastmod>2016-05-08T17:39:45-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2016-05-06T03:16:51-00:00</lastmod>
+<lastmod>2016-05-08T17:39:45-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2016-05-06T03:16:51-00:00</lastmod>
+<lastmod>2016-05-08T17:39:45-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br//home/travis/build/pythonclub/pythonclub.github.io/output/pages/search.html</loc>
-<lastmod>2016-05-06T03:16:51-00:00</lastmod>
+<lastmod>2016-05-08T17:39:45-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2016-05-06T03:16:51-00:00</lastmod>
+<lastmod>2016-05-08T17:39:45-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html</loc>
+<lastmod>2016-05-08T20:34:44-03:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -642,7 +649,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/category/python.html</loc>
-<lastmod>2016-05-06T01:42:18-03:06</lastmod>
+<lastmod>2016-05-08T20:34:44-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -796,7 +803,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/python.html</loc>
-<lastmod>2016-05-06T01:42:18-03:06</lastmod>
+<lastmod>2016-05-08T20:34:44-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -901,7 +908,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/tutorial.html</loc>
-<lastmod>2016-05-06T01:42:18-03:06</lastmod>
+<lastmod>2016-05-08T20:34:44-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1027,7 +1034,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/travis-ci.html</loc>
-<lastmod>2016-05-06T01:42:18-03:06</lastmod>
+<lastmod>2016-05-08T20:34:44-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1111,14 +1118,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/landscape.html</loc>
-<lastmod>2016-05-06T01:42:18-03:06</lastmod>
+<lastmod>2016-05-08T20:34:44-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/git.html</loc>
-<lastmod>2016-05-06T01:42:18-03:06</lastmod>
+<lastmod>2016-05-08T20:34:44-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1244,7 +1251,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/coveralls.html</loc>
-<lastmod>2016-05-06T01:42:18-03:06</lastmod>
+<lastmod>2016-05-08T20:34:44-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1349,7 +1356,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/test.html</loc>
-<lastmod>2016-05-06T01:42:18-03:06</lastmod>
+<lastmod>2016-05-08T20:34:44-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1692,7 +1699,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/author/michell-stuttgart.html</loc>
-<lastmod>2016-05-06T01:42:18-03:06</lastmod>
+<lastmod>2016-05-08T20:34:44-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
