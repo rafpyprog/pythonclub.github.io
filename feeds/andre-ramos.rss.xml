@@ -17,8 +17,8 @@ $ sudo -H pip install Pillow
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Ubuntu 15.04/15.10:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install python-dev python3-dev build-essential liblcms2-dev zlib1g-dev libtiff4-dev libjpeg8-dev libfreetype6-dev libwebp-dev
+&lt;p&gt;Ubuntu 15.04/15.10/16.04:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install python-dev python3-dev build-essential liblcms2-dev zlib1g-dev libtiff5-dev libjpeg8-dev libfreetype6-dev libwebp-dev
 $ sudo -H pip install Pillow
 &lt;/pre&gt;&lt;/div&gt;
 
