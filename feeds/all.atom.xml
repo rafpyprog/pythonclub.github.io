@@ -1,5 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2016-05-13T12:25:00-03:00</updated><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 3 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html" rel="alternate"></link><published>2016-05-13T12:25:00-03:00</published><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-13:python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2016-05-20T21:09:18-03:00</updated><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 4 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html" rel="alternate"></link><published>2016-05-20T21:09:18-03:00</published><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-20:python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
+&lt;p&gt;Na &lt;a href="python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html"&gt;terceira&lt;/a&gt; parte deste tutorial, aprendemos a usar o &lt;code&gt;Coveralls&lt;/code&gt; para gerar relatórios de testes para o nosso projeto. A próxima ferramenta que iremos estudar será o serviço &lt;code&gt;Landscape&lt;/code&gt;. Neste tutorial serei breve, já que o uso &lt;em&gt;default&lt;/em&gt; da ferramenta é bem simples.&lt;/p&gt;
+&lt;h4&gt;Sobre o Landscape&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://landscape.io/"&gt;Landscape&lt;/a&gt; é uma ferramenta online semelhante ao já conhecido &lt;a href="https://www.pylint.org/"&gt;PyLint&lt;/a&gt;, ou seja, é um verificador de &lt;em&gt;bugs&lt;/em&gt;, estilo e de qualidade de código para &lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="" src="images/mstuttgart/snapshot_32.png" /&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Quando ativamos a análise do &lt;code&gt;Landscape&lt;/code&gt; em nosso repositório, ele é executado após cada &lt;em&gt;push&lt;/em&gt; ou &lt;em&gt;pull request&lt;/em&gt; e realiza uma varredura em nosso código fonte &lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt; atrás de possíveis &lt;em&gt;bugs&lt;/em&gt;, como por exemplo variáveis sendo usadas antes de serem declaradas, nomes reservados sendo usados como nomes de variáveis e etc. Ele também verifica se a formatação do seu código esta seguindo a &lt;a href="https://www.python.org/dev/peps/pep-0008/"&gt;PEP8&lt;/a&gt; e aponta possíveis falhas de &lt;em&gt;design&lt;/em&gt; em seu código.&lt;/p&gt;
+&lt;p&gt;Uma vez que a análise esteja finalizada, a ferramenta indica em porcentagem a "qualidade" do nosso código, ou em palavras mais precisas, o quanto nosso código está bem escrito segundo as boas práticas de desenvolvimento. Vale deixar claro que o &lt;code&gt;Landscape&lt;/code&gt; não verifica se seu código funciona corretamente, isso é responsabilidade dos testes que você escreveu, como foi visto na &lt;a href="python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html"&gt;primeira parte&lt;/a&gt; do tutorial.&lt;/p&gt;
+&lt;p&gt;Semelhante as ferramentas dos tutoriais anteriores, o &lt;code&gt;Landscape&lt;/code&gt; é totalmente gratuito para projetos &lt;em&gt;opensource&lt;/em&gt;.&lt;/p&gt;
+&lt;h4&gt;Criando uma conta&lt;/h4&gt;
+&lt;p&gt;O processo de inscrição é simples. No topo da página temos a permissão de nos inscrevermos usando a conta do &lt;code&gt;Github&lt;/code&gt;. Realize a inscrição e vamos as configurações.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="" src="images/mstuttgart/snapshot_33.png" /&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;h4&gt;Ativando o serviço&lt;/h4&gt;
+&lt;p&gt;De todas as ferramentas apresentadas, esta é a mais simples de configurar. O único passo necessário aqui é ativar o serviço para o nosso repositório. Como exemplo, estarei usando o mesmo repositório dos últimos tutoriais. Clique &lt;a href="https://github.com/mstuttgart/codigo-avulso-test-tutorial"&gt;aqui&lt;/a&gt; para visualizar o repositório.&lt;/p&gt;
+&lt;p&gt;Assim que realizar o cadastro, vamos nos deparar com uma tela contendo a listagem dos nosso repositórios que estão utilizando o serviço. Se você nunca usou o serviço provavelmente não terá nenhum repositório, então faça o seguinte: clique no botão &lt;code&gt;Sync with Github now&lt;/code&gt;, para realizar a sincronização com a sua conta do &lt;a href="https://github.com"&gt;Github&lt;/a&gt;. Assim que a sincronização estiver completa, clique no botão &lt;code&gt;Add repository&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="" src="images/mstuttgart/snapshot_34.png" /&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Ao clicar, seremos levados a uma tela com a listagem de todos os repositórios que temos permissão de escrita. Procure o repositório que deseja ativar o serviço (lembrando que o &lt;code&gt;Landscape&lt;/code&gt; funciona apenas para projetos &lt;code&gt;Python&lt;/code&gt;) e o selecione (basta clicar sobre o nome do repositório).&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="" src="images/mstuttgart/snapshot_35.png" /&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Adicione o repositório clicando no botão verde &lt;code&gt;Add Repository&lt;/code&gt;, logo abaixo da lista. Seremos novamente redirecionados a tela inicial, agora com o repositório escolhido já visível.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="" src="images/mstuttgart/snapshot_36.png" /&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Inclusive, a partir desse momento, o &lt;code&gt;Coveralls&lt;/code&gt; já irá iniciar a análise do seu projeto. Clique no nome do repositório para ver mais detalhes da analise.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="" src="images/mstuttgart/snapshot_37.png" /&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;No caso do meu projeto de teste, temos que a "saúde" do código está em &lt;code&gt;100%&lt;/code&gt;, ou seja, nenhuma parte do código apresenta erros de estilo, &lt;em&gt;bugs&lt;/em&gt; e está utilizando boas práticas de programação em todo seu escopo.&lt;/p&gt;
+&lt;p&gt;Na barra lateral localizada à esquerda da página, temos alguns items, entre os quais os mais importantes são descritos a seguir:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Error&lt;/code&gt;: são instruções no código que provavelmente indicam um erro. Por exemplo, quando referenciamos uma variável sem declará-la antes ou realizamos a chamada de algum método inexistente.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Smells&lt;/code&gt;: são sinais ou sintomas no código que possivelmente indicam uma falha no projeto do &lt;em&gt;software&lt;/em&gt;. Diferentemente de um &lt;em&gt;bug&lt;/em&gt;, &lt;em&gt;code smells&lt;/em&gt; não indicam uso incorreto da linguagem de programação e nem impedem o &lt;em&gt;software&lt;/em&gt; de funcionar. Ao invés disso, eles indicam falhas no &lt;em&gt;design&lt;/em&gt; do projeto que podem atrasar seu desenvolvimento ou mesmo ser a porta de entrada para &lt;em&gt;bugs&lt;/em&gt; no futuro. Exemplos de &lt;em&gt;code smells&lt;/em&gt; são: métodos ou códigos duplicados, classes muito grandes, uso forçado de algum &lt;em&gt;design pattern&lt;/em&gt; quando o mesmo poderia ser substituído por um código mais simples e fácil de manter, métodos muito longos ou com excessivo números de parâmetros e por aí vai. A lista pode crescer muito haha... para mais detalhes &lt;a href="https://en.wikipedia.org/wiki/Code_smell"&gt;leia&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Style&lt;/code&gt;: como o nome sugere, este item exibe os erros de estilo em seu código indicando trechos de código que não estão seguindo as regras de estilo da &lt;code&gt;PEP8&lt;/code&gt;, trechos de códigos com identação incorreta e etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Como último passo, agora somente nos resta adicionar uma &lt;code&gt;badge&lt;/code&gt; no arquivo &lt;code&gt;README.md&lt;/code&gt; em nosso repositório. Assim poderemos ver a porcentagem de "saúde" do nosso projeto sem precisar acessar a página do &lt;code&gt;Landscape&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Na página com o resultado da análise (onde é exibido a porcentagem de "saúde" do seu projeto), podemos pegar a &lt;code&gt;badge&lt;/code&gt; do &lt;code&gt;Landscape&lt;/code&gt;. No canto superior direito da tela, você encontra os botões abaixo:&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="" src="images/mstuttgart/snapshot_38.png" /&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Clique na &lt;code&gt;badge&lt;/code&gt; (onde está escrito &lt;em&gt;health&lt;/em&gt;) e a seguinte janela será exibida:&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="" src="images/mstuttgart/snapshot_39.png" /&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Selecione o texto da opção &lt;code&gt;Markdown&lt;/code&gt; e cole-o no &lt;code&gt;README.md&lt;/code&gt; do seu repositório. O meu &lt;code&gt;README.md&lt;/code&gt; ficou assim:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;# Codigo Avulso Test Tutorial&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Build&lt;/span&gt; &lt;span class="n"&gt;Status&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="nl"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//travis-ci.org/mstuttgart/codigo-avulso-test-tutorial.svg?branch=master)](https://travis-ci.org/mstuttgart/codigo-avulso-test-tutorial)&lt;/span&gt;
+
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Coverage&lt;/span&gt; &lt;span class="n"&gt;Status&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="nl"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//coveralls.io/repos/github/mstuttgart/codigo-avulso-test-tutorial/badge.svg?branch=master)](https://coveralls.io/github/mstuttgart/codigo-avulso-test-tutorial?branch=master)&lt;/span&gt;
+
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Code&lt;/span&gt; &lt;span class="n"&gt;Health&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="nl"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//landscape.io/github/mstuttgart/codigo-avulso-test-tutorial/master/landscape.svg?style=flat)](https://landscape.io/github/mstuttgart/codigo-avulso-test-tutorial/master)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Também é possível configurar o &lt;code&gt;Landscape&lt;/code&gt; para que o mesmo exclua algum diretório/arquivo da análise (muito útil com arquivos de interface compilados, usando por quem trabalha com PyQt/PySide) entre outras opções, mas isso fica para um tutorial futuro.&lt;/p&gt;
+&lt;p&gt;Abaixo podemos ver as três &lt;code&gt;badges&lt;/code&gt; que adicionamos em nosso projeto. Clique &lt;a href="https://github.com/mstuttgart/codigo-avulso-test-tutorial"&gt;aqui&lt;/a&gt; para acessar o repositório.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="" src="images/mstuttgart/snapshot_40.png" /&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;h4&gt;Conclusão&lt;/h4&gt;
+&lt;p&gt;Pronto pessoal, agora temos o nosso repositório exibindo informações sobre os testes unitários, relatórios de testes e analises de qualidade de código. Isso não garante que seu projeto seja livre de falhas e &lt;em&gt;bugs&lt;/em&gt;, mas te ajuda a evitá-los.&lt;/p&gt;
+&lt;p&gt;Vale lembrar que todas essas ferramentas ajudam muito, mas nada substitui o senso crítico e o hábito de sempre usar boas práticas durante o desenvolvimento. Por isso sempre busque aprender mais, estudar mais, ser humilde e ouvir quem tem mais experiência que você. Enfim, ser um programador e uma pessoa melhor a cada dia. Fica o conselho para todos nós, incluindo para este que vos escreve.&lt;/p&gt;
+&lt;p&gt;Espero que tenham gostado desta série de tutoriais. Obrigado por ler até aqui e até o próximo &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://codigoavulso.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4&lt;/a&gt;&lt;/p&gt;</summary><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 3 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html" rel="alternate"></link><published>2016-05-13T12:25:00-03:00</published><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-13:python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
 &lt;p&gt;Na &lt;a href="python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html"&gt;segunda&lt;/a&gt; parte deste tutorial, aprendemos a usar o &lt;code&gt;Travis CI&lt;/code&gt; para automatizar os testes do nosso projeto, facilitando a manutenção do código quando temos vários colaboradores. Nesta terceira parte, vamos configurar o serviço &lt;a href="https://coveralls.io"&gt;Coveralls&lt;/a&gt; para que o mesmo gere relatórios de teste sobre o nosso projeto. Os relatórios são muito úteis quando desejamos verificar o quanto do nosso projeto está coberto por testes, evitando assim que alguma &lt;em&gt;feature&lt;/em&gt; importante fique de fora. Assim como o &lt;code&gt;Travis CI&lt;/code&gt;, o &lt;code&gt;Coveralls&lt;/code&gt; será executado após cada &lt;em&gt;push&lt;/em&gt; ou &lt;em&gt;pull request&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Diferente do tutorial anterior, serei breve sobre o processo de inscrição do &lt;code&gt;Coveralls&lt;/code&gt;, focando mais no seu uso.&lt;/p&gt;
 &lt;h4&gt;Criando uma conta&lt;/h4&gt;
@@ -51,12 +119,6 @@
 
 &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;required&lt;/span&gt;
 
-&lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;flake8&lt;/span&gt;
-
-&lt;span class="n"&gt;before_script&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;flake8&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;
-
 &lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
   &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;py&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -71,11 +133,7 @@
 &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;required&lt;/span&gt;
 
 &lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;flake8&lt;/span&gt;
   &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;coveralls&lt;/span&gt;
-
-&lt;span class="n"&gt;before_script&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;flake8&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;
 
 &lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
   &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;coverage&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;py&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
@@ -85,12 +143,36 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;install&lt;/code&gt;:  aqui adicionamos o comando &lt;code&gt;pip install coveralls&lt;/code&gt;. A instalação do &lt;code&gt;coveralls&lt;/code&gt; é necessaria para que possamos gerar os relatórios. Obs.: Você pode instalá-lo em sua máquina e gerar relátorios em html. Fica a sugestão de estudo.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;script&lt;/code&gt;: aqui substimuímos o comando &lt;code&gt;run setup.py test&lt;/code&gt; por &lt;code&gt;coverage run --source=codigo_avulso_test_tutorial setup.py test&lt;/code&gt;. Esse comando executa os mesmo testes de antes, mas já prove um relatório sobre a cobertura de testes do seu código.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;after_success&lt;/code&gt;: a última alteração foi adicionar a tag &lt;code&gt;after_success&lt;/code&gt;. Essa tag indica que após a execuação bem sucedida dos testes, deve-se iniciar o serviço de analise do &lt;code&gt;Coveralls&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Assim que terminar de fazer essas alterações você já pode enviar o seu código para o &lt;code&gt;Github&lt;/code&gt;. Assim que subir o código, o &lt;code&gt;Travis CI&lt;/code&gt; irá iniciar o processo de teste. Finalizando os testes, o &lt;code&gt;Coveralls&lt;/code&gt;será iniciado. Se tudo ocorrer bem, a badge que adicionamos no aquivo README do projeto será atualizada exibindo a porcentagem do nosso código que está coberta por testes. Você pode clicar na badge ou ir até o seu perfil no site do &lt;a href="https://coveralls.io"&gt;Coveralls&lt;/a&gt; e verificar com mais detalhes as informações sobre seu projeto.&lt;/p&gt;
+&lt;h4&gt;Tag "install":&lt;/h4&gt;
+&lt;p&gt;Aqui adicionamos o comando &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install coveralls
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A instalação do &lt;code&gt;coveralls&lt;/code&gt; é necessaria para que possamos gerar os relatórios. Você pode instalá-lo em sua máquina e gerar relátorios em html. Fica a sugestão de estudo.&lt;/p&gt;
+&lt;h4&gt;Tag "script":&lt;/h4&gt;
+&lt;p&gt;Aqui substimuímos o comando &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;run setup.py &lt;span class="nb"&gt;test&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;por &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;coverage run --source&lt;span class="o"&gt;=&lt;/span&gt;codigo_avulso_test_tutorial setup.py &lt;span class="nb"&gt;test&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Esse comando executa os mesmo testes de antes, mas já prove um relatório sobre a cobertura de testes do seu código.&lt;/p&gt;
+&lt;h4&gt;Tag "after_success":&lt;/h4&gt;
+&lt;p&gt;A última alteração foi adicionar a tag &lt;code&gt;after_success&lt;/code&gt;. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;after_success:
+  - coveralls
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Essa tag indica que após a execuação bem sucedida dos testes, deve-se iniciar o serviço de analise do &lt;code&gt;Coveralls&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Assim que terminar de fazer essas alterações você já pode enviar o seu código para o &lt;code&gt;Github&lt;/code&gt;. Assim que subir o código, o &lt;code&gt;Travis CI&lt;/code&gt; irá iniciar o processo de teste. 
+Finalizando os testes, o &lt;code&gt;Coveralls&lt;/code&gt; será iniciado. Se tudo ocorrer bem, a badge que adicionamos no aquivo README.md do projeto será atualizada exibindo a porcentagem do nosso código 
+que está coberta por testes. Você pode clicar na badge ou ir até o seu perfil no site do &lt;a href="https://coveralls.io"&gt;Coveralls&lt;/a&gt; e verificar com mais detalhes as informações sobre seu projeto.&lt;/p&gt;
 &lt;p&gt;&lt;center&gt;
 &lt;img alt="" src="images/mstuttgart/snapshot_23.png" /&gt;
 &lt;/center&gt;&lt;/p&gt;
@@ -173,12 +255,6 @@
 
 &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;required&lt;/span&gt;
 
-&lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;flake8&lt;/span&gt;
-
-&lt;span class="n"&gt;before_script&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;flake8&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;
-
 &lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
   &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;py&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -189,8 +265,6 @@
 &lt;li&gt;&lt;code&gt;language&lt;/code&gt;: podemos definir qual linguagem nosso projeto utiliza. Se este parâmetro não for incluso, o &lt;code&gt;Travis CI&lt;/code&gt; irá considerar a linguagem &lt;code&gt;ruby&lt;/code&gt; como &lt;em&gt;default&lt;/em&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;python&lt;/code&gt;: aqui definimos que os testes serão executados usando o Python 2.7 e se desejarmos, também podemos adicionar outras versões do Python.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;sudo&lt;/code&gt;: usado para executar o &lt;code&gt;Travis CI&lt;/code&gt; como permissão de usuário &lt;code&gt;root&lt;/code&gt;. Necessário caso você deseje instalar alguma dependência usando o comando &lt;code&gt;apt-get install nomepacote&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;install&lt;/code&gt;: aqui vamos instalar as dependêcias do nosso projeto. Como o meu projeto não depende de nenhum módulo Python externo, vamos instalar, para fins de exemplo, o módulo &lt;code&gt;flake8&lt;/code&gt;. Esse módulo serve para verificarmos se o nosso código está seguindo as normas da &lt;code&gt;PEP8&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;before_script&lt;/code&gt;: Aqui executamos &lt;code&gt;flake8&lt;/code&gt; sobre o diretório &lt;code&gt;codigo_avulso_test_tutorial&lt;/code&gt;, garantindo que os arquios &lt;code&gt;.py&lt;/code&gt; contidos nesse repositório estão seguindo as normas da &lt;code&gt;PEP8&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;script&lt;/code&gt;: nessa &lt;code&gt;tag&lt;/code&gt;, finalmente vamos executar nosso &lt;em&gt;script&lt;/em&gt; de teste.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Dica: neste &lt;a href="http://lint.travis-ci.org/"&gt;link&lt;/a&gt; você pode colar o código do seu arquivo &lt;code&gt;.travis.yml&lt;/code&gt; para verificar se o mesmo está correto.&lt;/p&gt;
