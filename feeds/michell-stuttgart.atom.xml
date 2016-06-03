@@ -1,5 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/michell-stuttgart.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2016-05-20T21:09:18-03:00</updated><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 4 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html" rel="alternate"></link><published>2016-05-20T21:09:18-03:00</published><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-20:python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/michell-stuttgart.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2016-06-03T11:28:55-03:00</updated><entry><title>Relatórios de testes com Coveralls</title><link href="http://pythonclub.com.br/gerando-relatorios-de-testes-com-coveralls.html" rel="alternate"></link><published>2016-06-03T11:28:55-03:00</published><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-06-03:gerando-relatorios-de-testes-com-coveralls.html</id><summary type="html">&lt;p&gt;Na &lt;a href="http://codigoavulso.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html"&gt;terceira parte&lt;/a&gt; do tutorial sobre &lt;em&gt;unittest&lt;/em&gt;, vimos como utilizar o serviço &lt;a href="https://coveralls.io/"&gt;Coveralls&lt;/a&gt; para gerar relatórios sobre o testes do nosso projeto. Entretanto, uma "desvantagem" do serviço é que o processo de análise é iniciado apenas quando executarmos um &lt;em&gt;push&lt;/em&gt; ou um &lt;em&gt;pull request&lt;/em&gt;. Sendo assim, não seria interessante termos a liberdade de executar esses testes localmente?&lt;/p&gt;
+&lt;p&gt;Felizmente, os desenvolvedores do &lt;a href="https://coveralls.io/"&gt;Coveralls&lt;/a&gt; pensaram nisso e criaram um conjunto de comandos que nos permite executá-lo pelo terminal.&lt;/p&gt;
+&lt;h3&gt;Instalação&lt;/h3&gt;
+&lt;p&gt;Então, antes de iniciarmos, vamos a instalação do módulo, que pode ser feito pelo comando a seguir:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install coveralls
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Quando você instala o módulo, um &lt;em&gt;script&lt;/em&gt; de linha de comando chamado &lt;code&gt;coverage&lt;/code&gt; é adicionado ao diretório de &lt;em&gt;scripts&lt;/em&gt; python no seu sistema. Para suportar diferentes versões do Python, o módulo vem com um conjunto de &lt;em&gt;scripts&lt;/em&gt;. Então, para a versão 2.7 do Python, você pode utilizar o comando &lt;code&gt;coverage&lt;/code&gt; ou &lt;code&gt;coverage2&lt;/code&gt;. Para a versão 3, utilize &lt;code&gt;coverage3&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Gerando relatórios&lt;/h3&gt;
+&lt;p&gt;O comando usado para obtermos um relatório sobre os testes do nosso projeto é simples. No diretório do projeto, basta executar:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;coverage run --source&lt;span class="o"&gt;=&lt;/span&gt;nomedopacote setup.py &lt;span class="nb"&gt;test&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;o comando &lt;code&gt;run&lt;/code&gt; irá coletar dados sobre nosso código fonte. No nosso caso, usaremos o repositorio que criamos para o tutorial anterior: &lt;a href="https://github.com/mstuttgart/codigo-avulso-test-tutorial"&gt;codigo-avulso-test-tutorial&lt;/a&gt;. Assim, o comando seria:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;coverage run --source&lt;span class="o"&gt;=&lt;/span&gt;codigo_avulso_test_tutorial setup.py &lt;span class="nb"&gt;test&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Se você executar o comando &lt;code&gt;ls -la&lt;/code&gt; no terminal, verá que um arquivo chamando &lt;code&gt;.coverage&lt;/code&gt; foi criado. Esse arquivo contém algumas informações sobre o seu código. Vale alertar que para gerar os relatórios precisamos, obrigatoriamente, executar o comando acima, quando formos gerar o relatórios pela primeira vez ou quando o código sofrer alguma modificação.&lt;/p&gt;
+&lt;p&gt;Uma vez que o arquivo &lt;code&gt;.coverage&lt;/code&gt; foi gerado, execute o seguinte comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;coverage report
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Um relatório com a porcentagem de cobertura de testes (entre outras informações) de cada arquivo de código fonte será exibido no terminal.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Name                                               Stmts   Miss  Cover
+----------------------------------------------------------------------
+codigo_avulso_test_tutorial/__init__.py                &lt;span class="m"&gt;0&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt;   100%
+codigo_avulso_test_tutorial/circulo.py                 &lt;span class="m"&gt;9&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt;   100%
+codigo_avulso_test_tutorial/figura_geometrica.py       &lt;span class="m"&gt;5&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt;   100%
+codigo_avulso_test_tutorial/quadrado.py                &lt;span class="m"&gt;8&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt;   100%
+----------------------------------------------------------------------
+TOTAL                                                 &lt;span class="m"&gt;22&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt;   100%
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;As colunas exibidas no relatório possuem informações interessantes. São elas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Stmts: indica o total de trechos do código que, segundo o Coveralls, devem ser testados.&lt;/li&gt;
+&lt;li&gt;Miss: coluna que indica quantos trechos do código ainda não estão sob testes.&lt;/li&gt;
+&lt;li&gt;Cover: talvez a coluna mais importante, ela indica a porcentagem de cobertura de testes do arquivo fonte.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Em &lt;code&gt;TOTAL&lt;/code&gt; temos a cobertura total de testes do nosso projeto. Nesse projeto em especial, temos 100% porque o mesmo possui pouco código e os códigos existentes são simples de testar. Entretanto, em projeto mais complexos, nem sempre é possível chegar nessa porcentagem, então vale a pena se focar em escrever testes para as partes mais críticas do seu código e conseguir uma porcentagem perto dos 80%, considerado pelo &lt;code&gt;Coveralls&lt;/code&gt; como satisfatório.&lt;/p&gt;
+&lt;h4&gt;Gerando relatório em HTML&lt;/h4&gt;
+&lt;p&gt;Uma opção interessante é gerar o relatório em formato &lt;code&gt;html&lt;/code&gt; com o comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;coverage html
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Um diretório chamado &lt;code&gt;htmlcov&lt;/code&gt; será criado no diretório do projeto. Dentro desse diretório existe um arquivo de nome &lt;code&gt;index.html&lt;/code&gt;, que pode ser aberto no navegador.&lt;/p&gt;
+&lt;p&gt;Para o Google Chrome, usamos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;google-chrome htmlcov/index.html
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;ou com o Firefox&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;firefox htmlcov/index.html
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Abaixo temos o &lt;code&gt;index.html&lt;/code&gt; aberto. Nele podemos ver a lista dos arquivos que estão cobertos pelo &lt;code&gt;Coveralls&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="" src="images/mstuttgart/snapshot_41.png" /&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Vamos analisar os dados do arquivo &lt;code&gt;circulo.py&lt;/code&gt;. Assim, temos as seguintes colunas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;statements&lt;/code&gt;: indica o total de trechos do código que, segundo o Coveralls, devem ser testadas. No caso do arquivo &lt;code&gt;circulo.py&lt;/code&gt;,  o valor da coluna é 9, indicando que existem 9 trechos do código quem devem estar sob teste.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;missing&lt;/code&gt;: coluna que indica quantos trechos do código ainda não estão sob testes.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;excluded&lt;/code&gt;: coluna que indica quantos trechos do código foram ignorados pelo Coveralls. Algumas vezes pode ser necessário excluir alguns trechos de código do relatório devido ao tipo de código nele contido ou porque você simplesmente não deseja que aquele trecho seja incluido no relatorio. Isso é feito através de um arquivo de configuração, visto mais adiante.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;coverage&lt;/code&gt;: indica a porcentagem de cobertura de testes do nosso código.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Na imagem abaixo, logo após clicarmos em &lt;code&gt;codigo_avulso_test_tutorial/circulo.py&lt;/code&gt;, podemos ver os pontos do código que devem ser testados.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="" src="images/mstuttgart/snapshot_42.png" /&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Ao clicarmos nos três botões no cabeçalho da página:&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="" src="images/mstuttgart/snapshot_43.png" /&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;A página irá destacar, respectivamente, os trechos cobertos por testes, trechos sem testes ou que foram excluídos do &lt;code&gt;Coveralls&lt;/code&gt;.&lt;/p&gt;
+&lt;h4&gt;Gerando relatório em XML&lt;/h4&gt;
+&lt;p&gt;Os relatórios em XML podem ser facilmente gerados por:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;coverage xml
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Um arquivo chamado &lt;code&gt;coverage.xml&lt;/code&gt; será criado.&lt;/p&gt;
+&lt;h4&gt;Criando o arquivo coveragerc&lt;/h4&gt;
+&lt;p&gt;O arquivo &lt;code&gt;.coveragesrc&lt;/code&gt; é usado para determinar parâmetros de funcionamento do comando &lt;code&gt;coverage&lt;/code&gt;. Nele podemos incluir e excluir aquivos da analise do &lt;code&gt;Coveralls&lt;/code&gt; entre outras configurações. Abaixo temos um exemplo de arquivo de configuração.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[run]&lt;/span&gt;
+&lt;span class="na"&gt;source&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;codigo_avulso_test_tutorial&lt;/span&gt;
+&lt;span class="na"&gt;omit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&lt;/span&gt;
+&lt;span class="s"&gt;    codigo_avulso_test_tutorial/__init__.py&lt;/span&gt;
+&lt;span class="s"&gt;    codigo_avulso_test_tutorial/main.py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Na configuração acima, vamos omitir da análise o arquivo &lt;code&gt;__init__.py&lt;/code&gt; e um arquivo &lt;code&gt;main.py&lt;/code&gt;. Indicamos o &lt;em&gt;source&lt;/em&gt; que é onde o &lt;code&gt;Coveralls&lt;/code&gt; deve executar a análise.&lt;/p&gt;
+&lt;p&gt;O arquivo de configuração ainda pode receber várias informações. Você pode ver mais delas &lt;a href="http://coverage.readthedocs.io/en/latest/source.html#source"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Conclusão&lt;/h3&gt;
+&lt;p&gt;Neste tutorial vimos um pouco mais sobre o &lt;code&gt;Coveralls&lt;/code&gt;. Evitei colocar as informações deste tutorial nos tutoriais anteriores a fim de simplificá-los. Você pode aprender mais sobre o módulo consultando sua documentação &lt;a href="http://coverage.readthedocs.io/en/latest/index.html"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;É isso pessoal, obrigado pela leitura e até o próximo tutorial.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://codigoavulso.com.br/gerando-relatorios-de-testes-com-coveralls.html"&gt;gerando-relatorios-de-testes-com-coveralls&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="coveralls"></category><category term="coverage"></category><category term="relatório"></category><category term="test"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 4 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html" rel="alternate"></link><published>2016-05-20T21:09:18-03:00</published><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-20:python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
 &lt;p&gt;Na &lt;a href="python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html"&gt;terceira&lt;/a&gt; parte deste tutorial, aprendemos a usar o &lt;code&gt;Coveralls&lt;/code&gt; para gerar relatórios de testes para o nosso projeto. A próxima ferramenta que iremos estudar será o serviço &lt;code&gt;Landscape&lt;/code&gt;. Neste tutorial serei breve, já que o uso &lt;em&gt;default&lt;/em&gt; da ferramenta é bem simples.&lt;/p&gt;
 &lt;h4&gt;Sobre o Landscape&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://landscape.io/"&gt;Landscape&lt;/a&gt; é uma ferramenta online semelhante ao já conhecido &lt;a href="https://www.pylint.org/"&gt;PyLint&lt;/a&gt;, ou seja, é um verificador de &lt;em&gt;bugs&lt;/em&gt;, estilo e de qualidade de código para &lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt;.&lt;/p&gt;
@@ -67,7 +171,7 @@
 &lt;p&gt;Pronto pessoal, agora temos o nosso repositório exibindo informações sobre os testes unitários, relatórios de testes e analises de qualidade de código. Isso não garante que seu projeto seja livre de falhas e &lt;em&gt;bugs&lt;/em&gt;, mas te ajuda a evitá-los.&lt;/p&gt;
 &lt;p&gt;Vale lembrar que todas essas ferramentas ajudam muito, mas nada substitui o senso crítico e o hábito de sempre usar boas práticas durante o desenvolvimento. Por isso sempre busque aprender mais, estudar mais, ser humilde e ouvir quem tem mais experiência que você. Enfim, ser um programador e uma pessoa melhor a cada dia. Fica o conselho para todos nós, incluindo para este que vos escreve.&lt;/p&gt;
 &lt;p&gt;Espero que tenham gostado desta série de tutoriais. Obrigado por ler até aqui e até o próximo &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://mstuttgart.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4&lt;/a&gt;&lt;/p&gt;</summary><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 3 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html" rel="alternate"></link><published>2016-05-13T12:25:00-03:00</published><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-13:python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://codigoavulso.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4&lt;/a&gt;&lt;/p&gt;</summary><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 3 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html" rel="alternate"></link><published>2016-05-13T12:25:00-03:00</published><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-13:python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
 &lt;p&gt;Na &lt;a href="python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html"&gt;segunda&lt;/a&gt; parte deste tutorial, aprendemos a usar o &lt;code&gt;Travis CI&lt;/code&gt; para automatizar os testes do nosso projeto, facilitando a manutenção do código quando temos vários colaboradores. Nesta terceira parte, vamos configurar o serviço &lt;a href="https://coveralls.io"&gt;Coveralls&lt;/a&gt; para que o mesmo gere relatórios de teste sobre o nosso projeto. Os relatórios são muito úteis quando desejamos verificar o quanto do nosso projeto está coberto por testes, evitando assim que alguma &lt;em&gt;feature&lt;/em&gt; importante fique de fora. Assim como o &lt;code&gt;Travis CI&lt;/code&gt;, o &lt;code&gt;Coveralls&lt;/code&gt; será executado após cada &lt;em&gt;push&lt;/em&gt; ou &lt;em&gt;pull request&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Diferente do tutorial anterior, serei breve sobre o processo de inscrição do &lt;code&gt;Coveralls&lt;/code&gt;, focando mais no seu uso.&lt;/p&gt;
 &lt;h4&gt;Criando uma conta&lt;/h4&gt;
@@ -144,34 +248,34 @@
 
 
 &lt;h4&gt;Tag "install":&lt;/h4&gt;
-&lt;p&gt;Aqui adicionamos o comando &lt;/p&gt;
+&lt;p&gt;Aqui adicionamos o comando&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install coveralls
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;A instalação do &lt;code&gt;coveralls&lt;/code&gt; é necessaria para que possamos gerar os relatórios. Você pode instalá-lo em sua máquina e gerar relátorios em html. Fica a sugestão de estudo.&lt;/p&gt;
 &lt;h4&gt;Tag "script":&lt;/h4&gt;
-&lt;p&gt;Aqui substimuímos o comando &lt;/p&gt;
+&lt;p&gt;Aqui substimuímos o comando&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;run setup.py &lt;span class="nb"&gt;test&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;por &lt;/p&gt;
+&lt;p&gt;por&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;coverage run --source&lt;span class="o"&gt;=&lt;/span&gt;codigo_avulso_test_tutorial setup.py &lt;span class="nb"&gt;test&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Esse comando executa os mesmo testes de antes, mas já prove um relatório sobre a cobertura de testes do seu código.&lt;/p&gt;
 &lt;h4&gt;Tag "after_success":&lt;/h4&gt;
-&lt;p&gt;A última alteração foi adicionar a tag &lt;code&gt;after_success&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;A última alteração foi adicionar a tag &lt;code&gt;after_success&lt;/code&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;after_success:
   - coveralls
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Essa tag indica que após a execuação bem sucedida dos testes, deve-se iniciar o serviço de analise do &lt;code&gt;Coveralls&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Assim que terminar de fazer essas alterações você já pode enviar o seu código para o &lt;code&gt;Github&lt;/code&gt;. Assim que subir o código, o &lt;code&gt;Travis CI&lt;/code&gt; irá iniciar o processo de teste. 
-Finalizando os testes, o &lt;code&gt;Coveralls&lt;/code&gt; será iniciado. Se tudo ocorrer bem, a badge que adicionamos no aquivo README.md do projeto será atualizada exibindo a porcentagem do nosso código 
+&lt;p&gt;Assim que terminar de fazer essas alterações você já pode enviar o seu código para o &lt;code&gt;Github&lt;/code&gt;. Assim que subir o código, o &lt;code&gt;Travis CI&lt;/code&gt; irá iniciar o processo de teste.
+Finalizando os testes, o &lt;code&gt;Coveralls&lt;/code&gt; será iniciado. Se tudo ocorrer bem, a badge que adicionamos no aquivo README.md do projeto será atualizada exibindo a porcentagem do nosso código
 que está coberta por testes. Você pode clicar na badge ou ir até o seu perfil no site do &lt;a href="https://coveralls.io"&gt;Coveralls&lt;/a&gt; e verificar com mais detalhes as informações sobre seu projeto.&lt;/p&gt;
 &lt;p&gt;&lt;center&gt;
 &lt;img alt="" src="images/mstuttgart/snapshot_23.png" /&gt;
@@ -181,7 +285,7 @@ que está coberta por testes. Você pode clicar na badge ou ir até o seu perfil
 &lt;h4&gt;Conclusão&lt;/h4&gt;
 &lt;p&gt;Aqui encerramos a terceira parte do nossa série de tutoriais sobre &lt;code&gt;Unittest&lt;/code&gt;. O &lt;code&gt;Coveralls&lt;/code&gt; ainda possui muitas configurações não mostradas aqui, então se você se interessar, fica a sugestão de estudo. No próximo tutorial veremos como utilizar o &lt;code&gt;Landscape&lt;/code&gt;, um &lt;em&gt;linter&lt;/em&gt; que analise nossos códigos atrás de problemas de sintaxe, formatação e possíveis erros de códigos (variáveis não declaradas, varíaveis com escopo incorreto e etc).&lt;/p&gt;
 &lt;p&gt;É isso pessoal. Obrigado por ler até aqui e até o próximo tutorial!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://mstuttgart.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4&lt;/a&gt;&lt;/p&gt;</summary><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 2 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html" rel="alternate"></link><published>2016-05-08T20:34:44-03:00</published><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-08:python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://codigoavulso.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4&lt;/a&gt;&lt;/p&gt;</summary><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 2 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html" rel="alternate"></link><published>2016-05-08T20:34:44-03:00</published><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-08:python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
 &lt;p&gt;Na &lt;a href="python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html"&gt;primeira&lt;/a&gt; parte deste tutorial, aprendemos como criar testes para nosso projeto. Nesta segunda parte, vamos configurar o serviço Travis CI para que o mesmo execute os testes do nosso projeto diretamente no github. Isso é especialmente útil quando possuímos várias pessoas trabalhando em um mesmo projeto, pois o &lt;code&gt;Travis CI&lt;/code&gt; executa os testes após cada &lt;em&gt;push&lt;/em&gt; ou &lt;em&gt;pull request&lt;/em&gt;. Dessa forma garantimos que um determinado &lt;em&gt;commit&lt;/em&gt; não irá "quebrar" nossa aplicação.&lt;/p&gt;
 &lt;p&gt;Antes de inicarmos nosso trabalho de configuração do &lt;code&gt;Travis CI&lt;/code&gt;, vamos aprender um pouco mais sobre esse serviço.&lt;/p&gt;
 &lt;h4&gt;Sobre o Travis CI&lt;/h4&gt;
@@ -296,7 +400,7 @@ que está coberta por testes. Você pode clicar na badge ou ir até o seu perfil
 &lt;p&gt;Aqui encerramos a segunda parte do nossa série de tutoriais sobre &lt;code&gt;Unittest&lt;/code&gt;. Eu decidi separar a série em 4 partes para que cada uma fosse explicada com mais detalhes mas sem deixar o tutorial muito extenso. O &lt;code&gt;Travis IC&lt;/code&gt; ainda possui muitas configurações não abordadas aqui, então se você se interessar, pode dar uma olhada na sua documentação oficial &lt;a href="https://docs.travis-ci.com/"&gt;aqui&lt;/a&gt;. No próximo tutorial veremos como utilizar o &lt;code&gt;Coveralls&lt;/code&gt; para gerar relatórios dos nossos testes.&lt;/p&gt;
 &lt;p&gt;É isso pessoal. Obrigado por ler até aqui!&lt;/p&gt;
 &lt;p&gt;Até o próximo tutorial!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://mstuttgart.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4&lt;/a&gt;&lt;/p&gt;</summary><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html" rel="alternate"></link><published>2016-05-06T01:42:18-03:00</published><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-06:python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html</id><summary type="html">&lt;p&gt;Durante o desenvolvimento de um software, tão importante quanto escrever um código organizado e que siga as melhores práticas, é garantir que o mesmo cumpra os requisitos a que ele se propõe. Em outras palavras, garantir que o software funcione de maneira adequada.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://codigoavulso.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4&lt;/a&gt;&lt;/p&gt;</summary><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html" rel="alternate"></link><published>2016-05-06T01:42:18-03:00</published><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-06:python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html</id><summary type="html">&lt;p&gt;Durante o desenvolvimento de um software, tão importante quanto escrever um código organizado e que siga as melhores práticas, é garantir que o mesmo cumpra os requisitos a que ele se propõe. Em outras palavras, garantir que o software funcione de maneira adequada.&lt;/p&gt;
 &lt;p&gt;O processo de testes de um software faz parte do seu desenvolvimento, porém muitas vezes ele é encarado como algo tedioso e desnecessário. Entretanto, todo bom desenvolvedor sabe que investir tempo escrevendo testes para seu software está longe de ser "desperdício de tempo". O processo de teste, quando feito por uma pessoa, além de sujeitos a falhas é tedioso e demorado. Tendo isso em mente, podemos lançar mão de ferramentas que realizarão o processo de teste por nós. Em Python, umas das ferramentes da bibloteca padrão destinada a teste é a &lt;code&gt;Unittest&lt;/code&gt;, que usaremos nesse tutorial.&lt;/p&gt;
 &lt;p&gt;Nesta série de postagem, irei mostrar o passo-a-passo na criação de testes unitários para um pequeno projeto que vamos criar no github. Vou explicar como configurar a ferramenta &lt;a href="https://travis-ci.org/"&gt;Travis&lt;/a&gt;, que será responsável por executar os nossos testes no github. A ferramenta &lt;a href="https://coveralls.io/"&gt;Coveralls&lt;/a&gt;, que mapeia nosso código, e nos indica o quanto dele está coberto por testes. E como bônus, adicionar ao nosso projeto o &lt;a href="https://landscape.io"&gt;Landscape&lt;/a&gt;, ferramenta que monitora a "saúde" do nosso código.&lt;/p&gt;
 &lt;h3&gt;Iniciando nosso projeto&lt;/h3&gt;
@@ -629,4 +733,4 @@ git push origin master
 &lt;p&gt;Esse tutorial ficou bem extenso, mas espero que tenha sido útil pra vocês. No próxima parte do tutorial, vamos ver como configurar o Travis, para que ele execute nossos testes quando realizarmos um &lt;code&gt;push&lt;/code&gt; ou um &lt;code&gt;pull request&lt;/code&gt; para o github. Também veremos o Coveralls que emite relatórios do quando do seu código está coberto por testes, algo muito interessante para ver se um &lt;em&gt;software&lt;/em&gt; é bem testado.&lt;/p&gt;
 &lt;p&gt;Os testes que escrevemos foram bem simples, apenas para fim de exemplo. Porém em uma aplicação séria, deve-se ter cuidado na hora de escrever os testes, de maneira a garantir que todas as possibilidades de erros sejam cobertas. A filosofia do TDD de escrever os testes antes do código da nossa aplicação, é algo que exige prática. Eu mesmo ainda não me sinto completamente a vontade seguindo esse fluxo de trabalho. Mas, escrever os testes primeiro te ajuda a manter seu código coerente e funcional, pois vocẽ vai precisar fazê-lo passar pelos testes.&lt;/p&gt;
 &lt;p&gt;É isso pessoal. Obrigado por ler até aqui. Até a próxima postagem!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://mstuttgart.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4&lt;/a&gt;&lt;/p&gt;</summary><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry></feed>
+&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://codigoavulso.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4&lt;/a&gt;&lt;/p&gt;</summary><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry></feed>
