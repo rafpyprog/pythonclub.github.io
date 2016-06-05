@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/carlos-maniero.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2016-06-03T17:30:00-03:00</updated><entry><title>Curso Python asyncio: Aula 00 - Introdução ao módulo asyncio</title><link href="http://pythonclub.com.br/curso-asyncio-aula00.html" rel="alternate"></link><published>2016-06-03T17:30:00-03:00</published><author><name>Carlos Maniero</name></author><id>tag:pythonclub.com.br,2016-06-03:curso-asyncio-aula00.html</id><summary type="html">&lt;p&gt;Primeira aula do curso de asyncio.
+Nessa vídeo aula são abordadas as principais diferenças entre Concorrência e Paralelismo.&lt;/p&gt;
+&lt;p&gt;Slides:
+&lt;a class="reference external" href="http://carlosmaniero.github.io/curso-asyncio/aula00/"&gt;http://carlosmaniero.github.io/curso-asyncio/aula00/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;GitHub:
+&lt;a class="reference external" href="http://github.com/carlosmaniero/"&gt;http://github.com/carlosmaniero/&lt;/a&gt;
+&lt;a class="reference external" href="http://github.com/carlosmaniero/curso-asyncio"&gt;http://github.com/carlosmaniero/curso-asyncio&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://carlosmaniero.github.io/"&gt;http://carlosmaniero.github.io/&lt;/a&gt;&lt;/p&gt;
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/xGoEpCaachs" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</summary><category term="python"></category><category term="asyncio"></category></entry></feed>
