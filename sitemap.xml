@@ -5,44 +5,51 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/</loc>
-<lastmod>2016-06-11T15:53:50-00:00</lastmod>
+<lastmod>2016-06-16T16:51:21-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2016-06-11T15:53:50-00:00</lastmod>
+<lastmod>2016-06-16T16:51:21-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2016-06-11T15:53:50-00:00</lastmod>
+<lastmod>2016-06-16T16:51:21-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2016-06-11T15:53:50-00:00</lastmod>
+<lastmod>2016-06-16T16:51:21-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br//home/travis/build/pythonclub/pythonclub.github.io/output/pages/search.html</loc>
-<lastmod>2016-06-11T15:53:50-00:00</lastmod>
+<lastmod>2016-06-16T16:51:21-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2016-06-11T15:53:50-00:00</lastmod>
+<lastmod>2016-06-16T16:51:21-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/python-webassets-elm.html</loc>
+<lastmod>2016-06-14T17:25:00-03:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -746,6 +753,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/category/webassets.html</loc>
+<lastmod>2016-06-14T17:25:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/tag/wsgi.html</loc>
 <lastmod>2014-07-24T14:42:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -774,8 +788,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/tag/elm.html</loc>
+<lastmod>2016-06-14T17:25:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/tag/flask.html</loc>
-<lastmod>2016-03-14T11:59:00-03:06</lastmod>
+<lastmod>2016-06-14T17:25:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1068,8 +1089,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/tuplas.html</loc>
-<lastmod>2015-02-24T10:17:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/google-app-engine.html</loc>
+<lastmod>2015-05-24T00:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1187,8 +1208,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/google-app-engine.html</loc>
-<lastmod>2015-05-24T00:00:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/tuplas.html</loc>
+<lastmod>2015-02-24T10:17:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1301,6 +1322,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/tag/scraping.html</loc>
 <lastmod>2015-11-13T10:04:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/windows.html</loc>
+<lastmod>2014-05-14T10:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1474,8 +1502,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/windows.html</loc>
-<lastmod>2014-05-14T10:30:00-03:06</lastmod>
+<loc>http://pythonclub.com.br/tag/webassets.html</loc>
+<lastmod>2016-06-14T17:25:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1489,7 +1517,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/django.html</loc>
-<lastmod>2016-04-24T18:00:00-03:06</lastmod>
+<lastmod>2016-06-14T17:25:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1594,7 +1622,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/author/eduardo-cuducos.html</loc>
-<lastmod>2016-03-14T11:59:00-03:06</lastmod>
+<lastmod>2016-06-14T17:25:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
