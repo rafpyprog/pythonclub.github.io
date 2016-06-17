@@ -305,7 +305,7 @@ FAILED (failures=1)
 <p>Temos uma aplicação web rodando, mas quando tentamos acessar a raíz dela, ela nos diz que a página não está definida, não foi encontrada (é o que nos diz o código <code>404</code>).</p>
 <h3>Criando nossa primeira página</h3>
 <p>O Flask facilita muito a criação de aplicações web. De forma simplificada a qualquer método Python pode ser atribuída uma URL. Isso é feito com um decorador:</p>
-<div class="highlight"><pre><span></span>@app.route(&#39;/&#39;)
+<div class="highlight"><pre><span></span>@meu_web_app.route(&#39;/&#39;)
 def pagina_inicial():
     return &#39;&#39;
 </pre></div>
