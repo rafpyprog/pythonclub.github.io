@@ -1,5 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Tue, 14 Jun 2016 17:25:00 -0300</lastBuildDate><item><title>Python webassets &amp; Elm</title><link>http://pythonclub.com.br/python-webassets-elm.html</link><description>&lt;p&gt;Se você é geek e me conhece, ou se me segue nas redes sociais, já ouviu eu falar de &lt;a href="http://elm-lang.org/"&gt;Elm&lt;/a&gt;. É uma solução para &lt;em&gt;front-end&lt;/em&gt; com componentes reativos — mas Elm não é JavaScript. É uma outra linguagem, outro ambiente, outro compilador etc.&lt;/p&gt;
+<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Fri, 17 Jun 2016 13:47:24 -0300</lastBuildDate><item><title>Como distribuir sua aplicação Python com PyPI</title><link>http://pythonclub.com.br/como-distribuir-sua-aplicacao-python-com-pypi.html</link><description>&lt;p&gt;Imagine a seguinte situação: você passou alguns dias (ou mesmo meses) desenvolvendo uma módulo python, escreveu testes, implementou funcionalidades e depois de alguns ajustes, chegou a hora de liberar seu software para que outros desenvolvedores possam utilizá-lo. Qual o melhor modo de distribuí-lo?&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="images/mstuttgart/snapshot_44.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Caro leitor, se você costuma programar em Python (seja profissionalmente ou não) provavelmente já instalou outros módulos usando o &lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt;, através do comando abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install nomedomodulo
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Não seria interessante usar o mesmo método para distribuir a sua aplicação? Sim? Então mãos a obra.&lt;/p&gt;
+&lt;h3&gt;Sobre o PyPI - Python Package Index&lt;/h3&gt;
+&lt;p&gt;O site &lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt;, é um repositório de &lt;em&gt;softwares&lt;/em&gt; desenvolvidos na linguagem Python. Em outras palavras, ele garante que seu pacote Python sempre esteja disponível para a instalação. O seu funcionamente é simples, porém algumas configurações inicias devem ser feitas para que tudo funcione corretamente.&lt;/p&gt;
+&lt;h3&gt;Crie uma conta&lt;/h3&gt;
+&lt;p&gt;Primeiramente, para distribuir seus pacotes usando o &lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt;, precisamos criar uma conta em ambos os sites:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://pypi.python.org/pypi?%3Aaction=register_form"&gt;PyPI Live&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://testpypi.python.org/pypi?%3Aaction=register_form"&gt;PyPI Test&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Recomendo que você utilize o mesmo email e senha para ambos os sites. Posteriormente, isso tornará mais fácil o processo de configuração.&lt;/p&gt;
+&lt;h3&gt;Configurando o ambiente&lt;/h3&gt;
+&lt;p&gt;O próximo passo é criar um arquivo &lt;code&gt;.pypirc&lt;/code&gt; em sua &lt;code&gt;home&lt;/code&gt;. Esse arquivo contem informações de auteticação, tanto para o &lt;a href="https://pypi.python.org/pypi"&gt;PyPI Live&lt;/a&gt; quando para o &lt;a href="https://testpypi.python.org/pypi"&gt;PyPI Test&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;touch ~/.pypirc
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Apesar de não ser obrigatório a criação desse aquivo, ele facilita muito nosso trabalho, uma vez que você não precisaremos inserir nosso email e senha toda vez que formos enviar nosso código para o &lt;a href="https://pypi.python.org/pypi"&gt;PyPI Live&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Abra o arquivo &lt;code&gt;.pypirc&lt;/code&gt; em seu editor de texto favorito, e insira as informações abaixo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;distutils&lt;span class="o"&gt;]&lt;/span&gt;
+index-servers &lt;span class="o"&gt;=&lt;/span&gt;
+  pypi
+  pypitest
+
+&lt;span class="o"&gt;[&lt;/span&gt;pypi&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="nv"&gt;repository&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;https://pypi.python.org/pypi
+&lt;span class="nv"&gt;username&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;seu_nomedeusuario
+&lt;span class="nv"&gt;password&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;sua_senha
+
+&lt;span class="o"&gt;[&lt;/span&gt;pypitest&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="nv"&gt;repository&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;https://testpypi.python.org/pypi
+&lt;span class="nv"&gt;username&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;seu_nomedeusuario
+&lt;span class="nv"&gt;password&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;sua_senha
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Em &lt;em&gt;username&lt;/em&gt; insira seu nome de usuário e &lt;em&gt;password&lt;/em&gt;, insira sua senha. Faça isso tanto para o &lt;code&gt;pypi&lt;/code&gt; quanto para o &lt;code&gt;pypitest&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Um observação importante é que, caso a sua senha possua espaço, não a coloque entre aspas. Por exemplo, se a sua senha for "batuque da viola doida", coloque exatamente o mesmo texto em &lt;em&gt;password&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;password&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;batuque da viola doida
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Preparando o seu módulo Python&lt;/h3&gt;
+&lt;p&gt;Todo pacote distribuído pelo &lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt; precisa ter uma arquivo &lt;code&gt;setup.py&lt;/code&gt; em seu diretório raiz. E se seu projeto também usa um arquivo &lt;em&gt;readme&lt;/em&gt; em &lt;em&gt;markdown&lt;/em&gt; (normalmente chamado &lt;code&gt;README.md&lt;/code&gt;) você também precisará criar um arquivo chamado &lt;code&gt;setup.cfg&lt;/code&gt;no diretório raiz do módulo.&lt;/p&gt;
+&lt;p&gt;Como exemplo, iremos utilizar o módulo &lt;a href="https://github.com/mstuttgart/codigo-avulso-test-tutorial"&gt;codigo_avulso_test_tutorial&lt;/a&gt; que criei para ser utilizado como exemplo em nossos tutoriais. Assim, temos a seguinte estrutura básica de diretórios:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
+├── codigo_avulso_test_tutorial
+│   ├── circulo.py
+│   ├── figura_geometrica.py
+│   ├── __init__.py
+│   └── quadrado.py
+├── LICENSE
+├── README.md
+├── setup.cfg
+├── setup.py
+└── &lt;span class="nb"&gt;test&lt;/span&gt;
+    ├── circulo_test.py
+    ├── figura_geometrica_test.py
+    ├── __init__.py
+    └── quadrado_test.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Aqui, o que nos interessa são os arquivos &lt;code&gt;setup.py&lt;/code&gt; e &lt;code&gt;setup.cfg&lt;/code&gt;. Dentro do arquivo &lt;code&gt;setup.py&lt;/code&gt; temos várias informações sobre nossa aplicação que serão usadas pelo &lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;setuptools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;
+
+&lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;codigo-avulso-test-tutorial&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;0.1.1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;https://github.com/mstuttgart/codigo-avulso-test-tutorial&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;license&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;MIT License&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Michell Stuttgart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;author_email&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;michellstut@gmail.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;keywords&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tutorial test unittest codigoavulso&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;u&amp;#39;Tutorial de teste unitário em Python para o blog Código Avulso&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;packages&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+    &lt;span class="n"&gt;install_requires&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[],&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O nome de cada &lt;em&gt;tag&lt;/em&gt; é autoexplicativo, então não vou entrar em detalhes. Basta você usar o código acima e substituir com os dados do seu pacote.&lt;/p&gt;
+&lt;p&gt;O próximo passo é adicionar o seguinte conteúdo no arquivo &lt;code&gt;setup.cfg&lt;/code&gt; (caso você o tenha criado).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;metadata&lt;span class="o"&gt;]&lt;/span&gt;
+description-file &lt;span class="o"&gt;=&lt;/span&gt; README.md
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Esse arquivo irá dizer ao &lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt; onde seu arquivo &lt;em&gt;readme&lt;/em&gt; está.&lt;/p&gt;
+&lt;h3&gt;Publicando sua aplicação Python&lt;/h3&gt;
+&lt;p&gt;Agora iremos estudar os passos para enviar nossa aplicação para &lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt;, para que ela fique disponível para ser instalada através do &lt;code&gt;pip&lt;/code&gt;.&lt;/p&gt;
+&lt;h4&gt;Enviando para PyPI Test&lt;/h4&gt;
+&lt;p&gt;Primeiramente, vamos registrar nossa aplicação no &lt;a href="https://testpypi.python.org/pypi"&gt;PyPI Test&lt;/a&gt;. Esse passo serve para verificarmos se está tudo certo com nosso pacote e também validar se já não existe outro módulo com o mesmo nome.
+Registramos nossa aplicação com o seguinte comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python setup.py register -r pypitest
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Se tudo ocorrer bem teremos a seguinte saída (Server responde 200):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;running register
+running egg_info
+creating codigo_avulso_test_tutorial.egg-info
+writing codigo_avulso_test_tutorial.egg-info/PKG-INFO
+writing top-level names to codigo_avulso_test_tutorial.egg-info/top_level.txt
+writing dependency_links to codigo_avulso_test_tutorial.egg-info/dependency_links.txt
+writing manifest file &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+reading manifest file &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+writing manifest file &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+running check
+Registering codigo-avulso-test-tutorial to https://testpypi.python.org/pypi
+Server response &lt;span class="o"&gt;(&lt;/span&gt;200&lt;span class="o"&gt;)&lt;/span&gt;: OK
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Caso exista outro pacote com o mesmo nome, teríamos de escolher outro nome para o nosso pacote. Agora com nosso pacote devidamente registrado, executamos o comando abaixo para que o pacote seja enviado para o &lt;a href="https://testpypi.python.org/pypi"&gt;PyPI Test&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python setup.py sdist upload -r pypitest
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Se tudo ocorrer bem (Server responde 200), você verá uma saída semelhante a esta e já poderá ver sua aplicação na lista do &lt;a href="https://testpypi.python.org/pypi"&gt;PyPI Test&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;running sdist
+running egg_info
+writing codigo_avulso_test_tutorial.egg-info/PKG-INFO
+writing top-level names to codigo_avulso_test_tutorial.egg-info/top_level.txt
+writing dependency_links to codigo_avulso_test_tutorial.egg-info/dependency_links.txt
+reading manifest file &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+writing manifest file &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+warning: sdist: standard file not found: should have one of README, README.rst, README.txt
+
+.
+.
+.
+
+creating dist
+Creating tar archive
+removing &lt;span class="s1"&gt;&amp;#39;codigo-avulso-test-tutorial-0.1.1&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;and everything under it&lt;span class="o"&gt;)&lt;/span&gt;
+running upload
+Submitting dist/codigo-avulso-test-tutorial-0.1.1.tar.gz to https://testpypi.python.org/pypi
+Server response &lt;span class="o"&gt;(&lt;/span&gt;200&lt;span class="o"&gt;)&lt;/span&gt;: OK
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Enviando para PyPI Live&lt;/h4&gt;
+&lt;p&gt;Agora é pra valer. Executamos o mesmo passos para o &lt;a href="https://testpypi.python.org/pypi"&gt;PyPI Test&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python setup.py register -r pypi
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Tudo ocorrendo bem, enviamos nosso pacote:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python setup.py sdist upload -r pypi
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Parabéns! Com esse ultimo passo, publicamos o nosso pacote Python com sucesso! Agora ele pode ser &lt;a href="https://pypi.python.org/pypi/codigo-avulso-test-tutorial/0.1.1"&gt;visualizado na lista de aplicações&lt;/a&gt; do &lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt; e ser instalado usando &lt;code&gt;pip&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install nomedopacote
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ou, para o nosso exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install codigo_avulso_test_tutorial
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Conclusão&lt;/h3&gt;
+&lt;p&gt;É isso pessoal. Neste tutorial vimos como distribuir nossa aplicação Python, desde a crição na conta no &lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt; até o registro e &lt;em&gt;upload&lt;/em&gt; da nossa aplicação. Espero que tenham gostado e caso tenham alguma dúvida, deixem um comentário.&lt;/p&gt;
+&lt;p&gt;Obrigado pela leitura e até o próximo tutorial.&lt;/p&gt;
+&lt;h3&gt;Referências&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.python.org/moin/CheeseShopTutorial#Submitting_Packages_to_the_Package_Index"&gt;Documentação oficial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.codementor.io/python/tutorial/host-your-python-package-using-github-on-pypi"&gt;How to Host your Python Package on PyPI with GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://peterdowns.com/posts/first-time-with-pypi.html"&gt;How to submit a package to PyPI&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michell Stuttgart</dc:creator><pubDate>Fri, 17 Jun 2016 13:47:24 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2016-06-17:como-distribuir-sua-aplicacao-python-com-pypi.html</guid><category>python</category><category>pypi</category><category>tutorial</category><category>desenvolvimento</category><category>pypi</category><category>pip</category></item><item><title>Python webassets &amp; Elm</title><link>http://pythonclub.com.br/python-webassets-elm.html</link><description>&lt;p&gt;Se você é geek e me conhece, ou se me segue nas redes sociais, já ouviu eu falar de &lt;a href="http://elm-lang.org/"&gt;Elm&lt;/a&gt;. É uma solução para &lt;em&gt;front-end&lt;/em&gt; com componentes reativos — mas Elm não é JavaScript. É uma outra linguagem, outro ambiente, outro compilador etc.&lt;/p&gt;
 &lt;p&gt;É uma linguagem que muito me impressionou. Sou novato, engatinhando, tentando levantar e tomando belos tombos. Mas hoje resolvi um desses tombos: como integrar o Elm que uso para &lt;em&gt;front-end&lt;/em&gt; com &lt;em&gt;back-ends&lt;/em&gt; em Python.&lt;/p&gt;
 &lt;p&gt;A resposta foi o &lt;a href="https://github.com/cuducos/webassets-elm"&gt;webassets-elm&lt;/a&gt; — pacote que escrevi hoje e já está &lt;a href="https://pypi.python.org/pypi/webassets-elm"&gt;disponível no PyPI&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Nesse texto vou fazer uma pequena introdução sobre interfaces reativas, sobre Elm em si, e depois explico um pouco do problema que o &lt;a href="https://github.com/cuducos/webassets-elm"&gt;webassets-elm&lt;/a&gt; resolve — spoiler: é gambiarra.&lt;/p&gt;
