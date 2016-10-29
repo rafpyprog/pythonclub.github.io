@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/pedro-souza.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2016-10-23T20:30:00-02:00</updated><entry><title>Bot telegram mais web scraping - parte 1</title><link href="http://pythonclub.com.br/bot-telegram-mais-web-scraping-parte-1.html" rel="alternate"></link><published>2016-10-23T20:30:00-02:00</published><updated>2016-10-23T20:30:00-02:00</updated><author><name>Pedro Souza.</name></author><id>tag:pythonclub.com.br,2016-10-23:bot-telegram-mais-web-scraping-parte-1.html</id><summary type="html">&lt;p&gt;Irei separa o artigo em 2 partes para não ficar extenso. Nessa primeira 
 parte irei falar um pouco como criar um bot no telegram e como 
 programa-lo para nos responder.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://pythonclub.com.br/bot-telegram-mais-web-scraping-parte-1.html"&gt;&lt;strong&gt;Bot simples.&lt;/strong&gt;&lt;/a&gt;
-&lt;strong&gt;Bot e Web Scraping&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1 - Parte 1 - &lt;a href="http://pythonclub.com.br/bot-telegram-mais-web-scraping-parte-1.html"&gt;&lt;strong&gt;Bot simples.&lt;/strong&gt;&lt;/a&gt; (você está aqui)&lt;/p&gt;
+&lt;p&gt;2 - Parte 2 - &lt;strong&gt;Bot e Web Scraping&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Primeiro de tudo precisamos cria o bot, para isso usamos o próprio bot 
 do telegram que faz isso para gente. Para isso bastar iniciar uma 
 conversa com o &lt;a href="https://web.telegram.org/#/im?p=@BotFather"&gt;@BotFather&lt;/a&gt;, ele irá nós da algumas 
