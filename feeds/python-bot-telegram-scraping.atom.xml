@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/python-bot-telegram-scraping.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2016-10-23T20:30:00-02:00</updated><entry><title>Bot telegram mais web scraping - parte 1</title><link href="http://pythonclub.com.br/bot-telegram-mais-web-scraping-parte-1.html" rel="alternate"></link><published>2016-10-23T20:30:00-02:00</published><updated>2016-10-23T20:30:00-02:00</updated><author><name>Pedro Souza.</name></author><id>tag:pythonclub.com.br,2016-10-23:bot-telegram-mais-web-scraping-parte-1.html</id><summary type="html">&lt;p&gt;Irei separa o artigo em 2 partes para não ficar extenso. Nessa primeira 
+parte irei falar um pouco como criar um bot no telegram e como 
+programa-lo para nos responder.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://pythonclub.com.br/bot-telegram-mais-web-scraping-parte-1.html"&gt;&lt;strong&gt;Bot simples.&lt;/strong&gt;&lt;/a&gt;
+&lt;strong&gt;Bot e Web Scraping&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Primeiro de tudo precisamos cria o bot, para isso usamos o próprio bot 
+do telegram que faz isso para gente. Para isso bastar iniciar uma 
+conversa com o &lt;a href="https://web.telegram.org/#/im?p=@BotFather"&gt;@BotFather&lt;/a&gt;, ele irá nós da algumas 
+opções:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/newbot - create a new bot
+/token - generate authorization token
+/revoke - revoke bot access token
+/setname - change a bot&amp;#39;s name
+/setdescription - change bot description
+/setabouttext - change bot about info
+/setuserpic - change bot profile photo
+/setinline - change inline settings
+/setinlinegeo - toggle inline location requests
+/setinlinefeedback - change inline feedback settings
+/setcommands - change bot commands list
+/setjoingroups - can your bot be added to groups?
+/setprivacy - what messages does your bot see in groups?
+/deletebot - delete a bot
+/newgame - create a new game
+/listgames - get a list of your games
+/editgame - edit a game
+/deletegame - delete an existing game
+/cancel - cancel the current operation
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;As que nós interessa por enquanto são:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/newbot - Cria um novo bot. 
+/setdescription - Adiciona uma descrição ao nosso bot.
+/setuserpic - Adiciona uma imagem ao nosso bot.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Feito isso agora temos um token, que iremos usar para dar funções e vida 
+ao bot. Para isso iremos usar a lib telegram-bot, ela irá facilitar a 
+nosso vida, assim não iremos precisar mexer diretamente com a API do 
+telegram.&lt;/p&gt;
+&lt;h3&gt;Instalando telegram-bot utilizando o pip&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install python-telegram-bot
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora com a biblioteca instalada iremos programar um mini bot para nós falar as horas.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env python3&lt;/span&gt;
+&lt;span class="c1"&gt;# -*- coding:utf-8  -*-&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;telegram.ext&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Updater&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CommandHandler&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;strftime&lt;/span&gt;
+
+&lt;span class="n"&gt;up&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Updater&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Insira o token aqui.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;Horas&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bot&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="n"&gt;msg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Olá {user_name} agora são: &amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;msg&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;strftime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%H:%M:%S&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;bot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send_message&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chat_id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;chat_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                     &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                         &lt;span class="n"&gt;user_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_user&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;first_name&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="n"&gt;up&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dispatcher&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_handler&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CommandHandler&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;horas&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Horas&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;up&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;start_polling&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Entendendo o código.&lt;/h3&gt;
+&lt;p&gt;1 - Importamos tudo que iremos utilizar. &lt;br &gt;
+2 - Informamos o token do nosso bot. &lt;br &gt;
+3 - Criamos uma função que pega a horas com strftime e responde no chat. &lt;br &gt;
+4 - Criamos um comando para o nosso bot, no caso o /horas. &lt;br &gt;
+5 - Startamos o bot.&lt;br &gt;&lt;/p&gt;
+&lt;p&gt;Feito isso quando mandar um /horas para o bot ele irá nos responder com: "Olá SeuNome agora são 
+Horas."&lt;/p&gt;
+&lt;p&gt;Caso você queira adicionar mais funções ao bot, 
+&lt;a href="http://python-telegram-bot.readthedocs.io/en/latest/"&gt;aqui&lt;/a&gt; está a documentação da biblioteca.&lt;/p&gt;
+&lt;p&gt;Na próxima parte iremos escolher alguns site que fale sobre Python e fazer Scraping nele, assim 
+sempre que ele tiver uma nova postagem nosso bot vai nós enviar uma mensagem informando.&lt;/p&gt;</summary><category term="python"></category><category term="blog"></category><category term="tutorial"></category><category term="aulas"></category></entry></feed>
