@@ -5,44 +5,51 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/</loc>
-<lastmod>2016-10-29T15:09:42-00:00</lastmod>
+<lastmod>2016-11-26T14:45:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2016-10-29T15:09:42-00:00</lastmod>
+<lastmod>2016-11-26T14:45:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2016-10-29T15:09:42-00:00</lastmod>
+<lastmod>2016-11-26T14:45:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2016-10-29T15:09:42-00:00</lastmod>
+<lastmod>2016-11-26T14:45:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br//home/travis/build/pythonclub/pythonclub.github.io/output/pages/search.html</loc>
-<lastmod>2016-10-29T15:09:42-00:00</lastmod>
+<lastmod>2016-11-26T14:45:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2016-10-29T15:09:42-00:00</lastmod>
+<lastmod>2016-11-26T14:45:51-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/deploy-rapido-simples-com-dokku.html</loc>
+<lastmod>2016-11-23T17:30:00-02:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -725,6 +732,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/category/python-deploy.html</loc>
+<lastmod>2016-11-23T17:30:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/category/python-django.html</loc>
 <lastmod>2015-01-07T06:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -887,7 +901,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/python.html</loc>
-<lastmod>2016-10-23T20:30:00-03:06</lastmod>
+<lastmod>2016-11-23T17:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -923,6 +937,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/tag/uploadedfile.html</loc>
 <lastmod>2016-02-26T18:39:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/dokku.html</loc>
+<lastmod>2016-11-23T17:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1496,7 +1517,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/deploy.html</loc>
-<lastmod>2015-01-25T11:30:00-03:06</lastmod>
+<lastmod>2016-11-23T17:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1559,7 +1580,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/django.html</loc>
-<lastmod>2016-06-14T17:25:00-03:06</lastmod>
+<lastmod>2016-11-23T17:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1784,6 +1805,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/author/jose-cordeiro-de-oliveira-junior.html</loc>
 <lastmod>2016-02-19T09:00:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/author/junior-carvalho.html</loc>
+<lastmod>2016-11-23T17:30:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
