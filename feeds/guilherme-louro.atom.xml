@@ -57,7 +57,7 @@ $ sudo apt-get install python-pip
 
 
 &lt;p&gt;Adicione esta linha ao seu arquivo hosts&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;127.0.0.1 wsgi_test
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="m"&gt;127&lt;/span&gt;.0.0.1 wsgi_test
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -145,7 +145,7 @@ $ python manage.py migrate
 &lt;p&gt;Primeiramente, vamos criar um domínio fictício para responder com o nosso projeto ao ser acessado.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo vim /etc/hosts
 
-127.0.0.1   djangowsgi.com
+&lt;span class="m"&gt;127&lt;/span&gt;.0.0.1   djangowsgi.com
 &lt;/pre&gt;&lt;/div&gt;
 
 

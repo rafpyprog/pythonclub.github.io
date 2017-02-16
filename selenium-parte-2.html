@@ -158,28 +158,28 @@ que desejamos digitar e depois simulamos o pressionamento do botão &quot;Enter&
 <h3>Trabalhando com múltiplas janelas</h3>
 <p>E quando se abre uma nova janela? ou um alerta? O que fazemos?</p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">firefox</span><span class="o">.</span><span class="n">window_handles</span>
-<span class="p">[</span><span class="s1">u&#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="sa">u</span><span class="s1">&#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&#39;</span><span class="p">]</span>
 </pre></div>
 <p>A instância <tt class="docutils literal">firefox</tt> possui um atributo chamado <tt class="docutils literal">window_handles</tt>, que é uma lista
 contendo um ID para cada janela aberta.</p>
 <p><strong>Nota</strong>: O ID é criado para nova janela aberta e não para uma ABA ou um alerta javascript.</p>
 <p>Quando você abrir uma nova janela, poderá perceber que é criado automaticamente um novo ID.</p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">firefox</span><span class="o">.</span><span class="n">window_handles</span>
-<span class="p">[</span><span class="s1">u&#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&#39;</span><span class="p">,</span> <span class="s1">u&#39;{2ce4de19-0902-48e3-a1cc-50f6378afd79}&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="sa">u</span><span class="s1">&#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;{2ce4de19-0902-48e3-a1cc-50f6378afd79}&#39;</span><span class="p">]</span>
 </pre></div>
 <p>Para alternar entre janelas, basta chamar o metódo <tt class="docutils literal">switch_to_window</tt> passando o ID da janela como parâmetro.</p>
 <p>Imagine que temos uma janela aberta na página do Google e a outra na página da Python Club.</p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">firefox</span><span class="o">.</span><span class="n">window_handles</span>
-<span class="p">[</span><span class="s1">u&#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&#39;</span><span class="p">,</span> <span class="s1">u&#39;{2ce4de19-0902-48e3-a1cc-50f6378afd79}&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="sa">u</span><span class="s1">&#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;{2ce4de19-0902-48e3-a1cc-50f6378afd79}&#39;</span><span class="p">]</span>
 
 <span class="c1"># Título da janela atual</span>
 <span class="o">&gt;&gt;</span> <span class="n">firefox</span><span class="o">.</span><span class="n">title</span>
-<span class="s1">u&#39;Google&#39;</span>
+<span class="sa">u</span><span class="s1">&#39;Google&#39;</span>
 
 <span class="c1"># Trocar para a última janela da lista</span>
 <span class="o">&gt;&gt;</span> <span class="n">firefox</span><span class="o">.</span><span class="n">switch_to_window_handles</span><span class="p">(</span><span class="n">firefox</span><span class="o">.</span><span class="n">window_handles</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="o">&gt;&gt;</span> <span class="n">firefox</span><span class="o">.</span><span class="n">title</span>
-<span class="s1">u&#39;PythonClub //&#39;</span>
+<span class="sa">u</span><span class="s1">&#39;PythonClub //&#39;</span>
 
 <span class="c1"># Fechar a janela atual</span>
 <span class="o">&gt;&gt;</span> <span class="n">firefox</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -187,11 +187,11 @@ contendo um ID para cada janela aberta.</p>
 <span class="c1"># Voltar para a janela do Google</span>
 <span class="o">&gt;&gt;</span> <span class="n">firefox</span><span class="o">.</span><span class="n">switch_to_window_handles</span><span class="p">(</span><span class="n">firefox</span><span class="o">.</span><span class="n">window_handles</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="o">&gt;&gt;</span> <span class="n">firefox</span><span class="o">.</span><span class="n">title</span>
-<span class="s1">u&#39;Google&#39;</span>
+<span class="sa">u</span><span class="s1">&#39;Google&#39;</span>
 </pre></div>
 <p>E como saber o ID da janela atual? Simples!</p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">firefox</span><span class="o">.</span><span class="n">current_window_handle</span>
-<span class="s1">u&#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&#39;</span>
+<span class="sa">u</span><span class="s1">&#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&#39;</span>
 </pre></div>
 <p>Fácil não?!</p>
 <p>E se abrir um alerta <tt class="docutils literal">javascript</tt>, como fazemos???</p>
@@ -209,7 +209,7 @@ contendo um ID para cada janela aberta.</p>
 
 <span class="c1"># Se você quiser visualizar o texto que está presente no alerta</span>
 <span class="o">&gt;&gt;</span> <span class="n">alerta</span><span class="o">.</span><span class="n">text</span>
-<span class="s1">u&#39;Texto do alerta&#39;</span>
+<span class="sa">u</span><span class="s1">&#39;Texto do alerta&#39;</span>
 </pre></div>
 </div>
 <div class="section" id="trabalhando-com-frames">
@@ -236,7 +236,7 @@ contendo um ID para cada janela aberta.</p>
 </blockquote>
 <div class="highlight"><pre><span></span><span class="c1"># Vamos tentar localizar o botão que está dentro do frame e será gerado uma Exception</span>
 <span class="o">&gt;&gt;</span> <span class="n">firefox</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s1">&#39;&lt;botao_id&gt;&#39;</span><span class="p">)</span>
-<span class="n">NoSuchElementException</span><span class="p">:</span> <span class="n">Message</span><span class="p">:</span> <span class="s1">u&#39;Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;&lt;botao_id&gt;&quot;}&#39;</span>
+<span class="n">NoSuchElementException</span><span class="p">:</span> <span class="n">Message</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;&lt;botao_id&gt;&quot;}&#39;</span>
 
 <span class="c1"># Precisamos antes encontrar o frame</span>
 <span class="o">&gt;&gt;</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">firefox</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s1">&#39;buttons&#39;</span><span class="p">)</span>

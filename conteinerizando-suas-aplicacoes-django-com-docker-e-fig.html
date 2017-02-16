@@ -113,7 +113,7 @@
 <h1>Utilizando o fig com django</h1>
 <p>Com o docker e o fig devidamente instalados em sua máquina, é hora de integrar o django com essa maravilhosa ferramenta, para tanto, criaremos um diretório com um nome qualquer, aqui chamado de "app", e dentro do mesmo criaremos um arquivo chamado "Dockerfile", com o seguinte conteúdo.</p>
 <div class="highlight"><pre><span></span>FROM python:2.7
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED <span class="m">1</span>
 RUN mkdir /code
 WORKDIR /code
 ADD requirements.txt /code/
@@ -133,7 +133,7 @@ psycopg2
   image: postgres
 web:
   build: .
-  command: python manage.py runserver 0.0.0.0:8000
+  command: python manage.py runserver <span class="m">0</span>.0.0.0:8000
   volumes:
     - .:/code
   ports:

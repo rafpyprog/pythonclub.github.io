@@ -259,10 +259,10 @@ PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 t
 <p>A função <tt class="docutils literal">gen_city()</tt> escolhe uma cidade numa lista com o comando <a class="reference external" href="https://docs.python.org/2/library/random.html#random.choice">random.choice(seq)</a>  (suprimi alguns valores).</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen_city</span><span class="p">():</span>
     <span class="n">list_city</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">[</span><span class="s1">u&#39;São Paulo&#39;</span><span class="p">,</span> <span class="s1">&#39;SP&#39;</span><span class="p">],</span>
-        <span class="p">[</span><span class="s1">u&#39;Rio de Janeiro&#39;</span><span class="p">,</span> <span class="s1">&#39;RJ&#39;</span><span class="p">],</span>
-        <span class="p">[</span><span class="s1">u&#39;Porto Alegre&#39;</span><span class="p">,</span> <span class="s1">&#39;RS&#39;</span><span class="p">],</span>
-        <span class="p">[</span><span class="s1">u&#39;Campo Grande&#39;</span><span class="p">,</span> <span class="s1">&#39;MS&#39;</span><span class="p">]]</span>
+        <span class="p">[</span><span class="sa">u</span><span class="s1">&#39;São Paulo&#39;</span><span class="p">,</span> <span class="s1">&#39;SP&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="sa">u</span><span class="s1">&#39;Rio de Janeiro&#39;</span><span class="p">,</span> <span class="s1">&#39;RJ&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="sa">u</span><span class="s1">&#39;Porto Alegre&#39;</span><span class="p">,</span> <span class="s1">&#39;RS&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="sa">u</span><span class="s1">&#39;Campo Grande&#39;</span><span class="p">,</span> <span class="s1">&#39;MS&#39;</span><span class="p">]]</span>
     <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">list_city</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -274,7 +274,7 @@ PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 t
 
 <span class="k">class</span> <span class="nc">Connect</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_name</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># conectando...</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">db_name</span><span class="p">)</span>
@@ -301,7 +301,7 @@ PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 t
 <p>Agora, criamos uma instância da classe acima e chamamos de <tt class="docutils literal">ClientesDb()</tt>, representando um banco chamado <em>clientes.db</em>.</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ClientesDb</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">Connect</span><span class="p">(</span><span class="s1">&#39;clientes.db&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">close_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -309,7 +309,7 @@ PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 t
 </pre></div>
 <p>Fazendo desta forma é possível instanciar outras classes, uma para cada banco, como <tt class="docutils literal">PessoasDb()</tt> que veremos mais pra frente.</p>
 <p>Finalmente, para rodar o programa podemos escrever o código abaixo...</p>
-<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">cliente</span> <span class="o">=</span> <span class="n">ClientesDb</span><span class="p">()</span>
     <span class="n">cliente</span><span class="o">.</span><span class="n">close_connection</span><span class="p">()</span>
 </pre></div>
@@ -323,8 +323,8 @@ $ ls *.db
 <h2>Modo interativo</h2>
 <p>Legal mesmo é quando usamos o modo interativo para rodar os comandos do python, para isso podemos usar o python3 ou <a class="reference external" href="http://ipython.org/install.html">ipython3</a>. No terminal basta digitar python3 <tt class="docutils literal">ENTER</tt> que vai aparecer o prompt abaixo (<em>na mesma pasta do projeto, tá?</em>)</p>
 <div class="highlight"><pre><span></span>$ python3
-Python 3.4.0 <span class="o">(</span>default, Apr <span class="m">11</span> 2014, 13:05:18<span class="o">)</span>
-<span class="o">[</span>GCC 4.8.2<span class="o">]</span> on linux
+Python <span class="m">3</span>.4.0 <span class="o">(</span>default, Apr <span class="m">11</span> <span class="m">2014</span>, <span class="m">13</span>:05:18<span class="o">)</span>
+<span class="o">[</span>GCC <span class="m">4</span>.8.2<span class="o">]</span> on linux
 Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
 &gt;&gt;&gt;
 </pre></div>
@@ -358,7 +358,7 @@ Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&
 
 <span class="k">class</span> <span class="nc">Connect</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_name</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># conectando...</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">db_name</span><span class="p">)</span>
@@ -385,14 +385,14 @@ Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&
 
     <span class="n">tb_name</span> <span class="o">=</span> <span class="s1">&#39;clientes&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">Connect</span><span class="p">(</span><span class="s1">&#39;clientes.db&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span>
 
     <span class="k">def</span> <span class="nf">fechar_conexao</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close_db</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">ClientesDb</span><span class="p">()</span>
 </pre></div>
 <p>Rodando no <strong>terminal</strong>...</p>
@@ -427,7 +427,7 @@ $ ls *.db
 
     <span class="o">...</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">ClientesDb</span><span class="p">()</span>
     <span class="n">c</span><span class="o">.</span><span class="n">criar_schema</span><span class="p">()</span>
 </pre></div>
@@ -467,7 +467,7 @@ $ ls *.db
 
     <span class="o">...</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">ClientesDb</span><span class="p">()</span>
     <span class="n">c</span><span class="o">.</span><span class="n">criar_schema</span><span class="p">()</span>
     <span class="n">c</span><span class="o">.</span><span class="n">inserir_um_registro</span><span class="p">()</span>
@@ -906,7 +906,7 @@ sqlite_sequence
 
     <span class="n">tb_name</span> <span class="o">=</span> <span class="s1">&#39;pessoas&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">Connect</span><span class="p">(</span><span class="s1">&#39;pessoas.db&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span>
 </pre></div>

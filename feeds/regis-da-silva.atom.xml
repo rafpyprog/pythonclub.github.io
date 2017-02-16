@@ -31,7 +31,7 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ virtualenv -p python3 .venv
 $ &lt;span class="nb"&gt;source&lt;/span&gt; .venv/bin/activate
 $ mkdir drf&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; drf
-$ pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.9.5 &lt;span class="nv"&gt;djangorestframework&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;3.3.3
+$ pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.9.5 &lt;span class="nv"&gt;djangorestframework&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.3.3
 $ pip install django-filter drf-nested-routers
 $ pip freeze &amp;gt; requirements.txt
 $ django-admin.py startproject myproject .
@@ -40,10 +40,10 @@ $ python manage.py startapp core
 
 
 &lt;p&gt;Veja o meu requirements.txt&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;Django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.9.5
-django-filter&lt;span class="o"&gt;==&lt;/span&gt;0.11.0
-&lt;span class="nv"&gt;djangorestframework&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;3.3.3
-drf-nested-routers&lt;span class="o"&gt;==&lt;/span&gt;0.10.0
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;Django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.9.5
+django-filter&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.11.0
+&lt;span class="nv"&gt;djangorestframework&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.3.3
+drf-nested-routers&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.10.0
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -70,13 +70,13 @@ drf-nested-routers&lt;span class="o"&gt;==&lt;/span&gt;0.10.0
 
     &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;ordering&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;first_name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-        &lt;span class="n"&gt;verbose_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;u&amp;#39;pessoa&amp;#39;&lt;/span&gt;
-        &lt;span class="n"&gt;verbose_name_plural&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;u&amp;#39;pessoas&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;verbose_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pessoa&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;verbose_name_plural&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pessoas&amp;#39;&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;first_name&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot; &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;last_name&lt;/span&gt;
 
-    &lt;span class="n"&gt;full_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;property&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;full_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;property&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="fm"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -236,10 +236,10 @@ $ ./manage.py migrate
 &lt;span class="sd"&gt;    An HttpResponse that renders its content into JSON.&lt;/span&gt;
 &lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;JSONRenderer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;content_type&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;application/json&amp;#39;&lt;/span&gt;
-        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;JSONResponse&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;JSONResponse&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -299,16 +299,16 @@ $ ./manage.py migrate
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;core&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;
 
 &lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^persons/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;person_list&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^persons/(?P&amp;lt;pk&amp;gt;[0-9]+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;person_detail&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^persons/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;person_list&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^persons/(?P&amp;lt;pk&amp;gt;[0-9]+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;person_detail&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E acrescente a seguinte linha em &lt;code&gt;myproject/urls.py&lt;/code&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;core.urls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^admin/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;core.urls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^admin/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -324,7 +324,7 @@ $ ./manage.py migrate
 
 HTTP/1.0 &lt;span class="m"&gt;200&lt;/span&gt; OK
 Content-Type: application/json
-Date: Sun, &lt;span class="m"&gt;15&lt;/span&gt; Nov &lt;span class="m"&gt;2015&lt;/span&gt; 03:24:44 GMT
+Date: Sun, &lt;span class="m"&gt;15&lt;/span&gt; Nov &lt;span class="m"&gt;2015&lt;/span&gt; &lt;span class="m"&gt;03&lt;/span&gt;:24:44 GMT
 Server: WSGIServer/0.2 CPython/3.4.3
 X-Frame-Options: SAMEORIGIN
 
@@ -335,7 +335,7 @@ X-Frame-Options: SAMEORIGIN
         &lt;span class="s2"&gt;&amp;quot;email&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;paul@email.com&amp;quot;&lt;/span&gt;, 
         &lt;span class="s2"&gt;&amp;quot;first_name&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;Paul&amp;quot;&lt;/span&gt;, 
         &lt;span class="s2"&gt;&amp;quot;last_name&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;Van Dyke&amp;quot;&lt;/span&gt;, 
-        &lt;span class="s2"&gt;&amp;quot;pk&amp;quot;&lt;/span&gt;: 1
+        &lt;span class="s2"&gt;&amp;quot;pk&amp;quot;&lt;/span&gt;: &lt;span class="m"&gt;1&lt;/span&gt;
     &lt;span class="o"&gt;}&lt;/span&gt;, 
     &lt;span class="o"&gt;{&lt;/span&gt;
         &lt;span class="s2"&gt;&amp;quot;active&amp;quot;&lt;/span&gt;: true, 
@@ -343,7 +343,7 @@ X-Frame-Options: SAMEORIGIN
         &lt;span class="s2"&gt;&amp;quot;email&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;regis@email.com&amp;quot;&lt;/span&gt;, 
         &lt;span class="s2"&gt;&amp;quot;first_name&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;Regis&amp;quot;&lt;/span&gt;, 
         &lt;span class="s2"&gt;&amp;quot;last_name&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;Santos&amp;quot;&lt;/span&gt;, 
-        &lt;span class="s2"&gt;&amp;quot;pk&amp;quot;&lt;/span&gt;: 2
+        &lt;span class="s2"&gt;&amp;quot;pk&amp;quot;&lt;/span&gt;: &lt;span class="m"&gt;2&lt;/span&gt;
     &lt;span class="o"&gt;}&lt;/span&gt;
 &lt;span class="o"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -400,7 +400,7 @@ virtualenv -p python3 .venv
 &lt;span class="nv"&gt;PS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;(`basename \&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$VIRTUAL_ENV&lt;/span&gt;&lt;span class="s2"&gt;\&amp;quot;`)\e[1;34m:/\W\033[00m&lt;/span&gt;$&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Instalando o Django&lt;/span&gt;
-pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.8.12
+pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.8.12
 pip freeze &amp;gt; requirements.txt
 
 &lt;span class="c1"&gt;# Criando o projeto myproject ...&lt;/span&gt;
@@ -515,9 +515,9 @@ Awards
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Movie&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;u&amp;#39;título&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;título&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;year&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PositiveIntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ano&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;blank&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;released&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;u&amp;#39;lançamento&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;blank&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;released&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;lançamento&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;blank&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;director&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;diretor&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;blank&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;actors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;atores&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;blank&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;poster&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;URLField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;poster&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;blank&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -529,7 +529,7 @@ Awards
         &lt;span class="n"&gt;verbose_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;filme&amp;#39;&lt;/span&gt;
         &lt;span class="n"&gt;verbose_name_plural&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;filmes&amp;#39;&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -675,8 +675,8 @@ python manage.py migrate
 
 Faz o crawler numa api de filmes e retorna os dados.
      Uso: python manage.py initdata
-     ou: python manage.py initdata -m 20
-     ou: python manage.py initdata -m &lt;span class="m"&gt;20&lt;/span&gt; -y 2015
+     ou: python manage.py initdata -m &lt;span class="m"&gt;20&lt;/span&gt;
+     ou: python manage.py initdata -m &lt;span class="m"&gt;20&lt;/span&gt; -y &lt;span class="m"&gt;2015&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -728,8 +728,8 @@ Faz o crawler numa api de filmes e retorna os dados.
 
 Localiza um filme pelo título ou ano de lançamento.
      Uso: python manage.py search -t &lt;span class="s1"&gt;&amp;#39;Ted 2&amp;#39;&lt;/span&gt;
-     ou: python manage.py search -y 2015
-     ou: python manage.py search -t &lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt; -y 2015
+     ou: python manage.py search -y &lt;span class="m"&gt;2015&lt;/span&gt;
+     ou: python manage.py search -t &lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt; -y &lt;span class="m"&gt;2015&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -844,12 +844,12 @@ $ touch serializers.py
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;core&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;
 
 &lt;span class="n"&gt;router&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;routers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DefaultRouter&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;users&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UserViewSet&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;groups&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GroupViewSet&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;users&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UserViewSet&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;groups&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;views&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GroupViewSet&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^api-auth/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;rest_framework.urls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;namespace&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;rest_framework&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^api-auth/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;rest_framework.urls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;namespace&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;rest_framework&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -963,7 +963,7 @@ python manage.py runserver
         &lt;span class="n"&gt;verbose_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;pessoa&amp;quot;&lt;/span&gt;
         &lt;span class="n"&gt;verbose_name_plural&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;pessoas&amp;quot;&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Leia mais em&lt;/p&gt;
@@ -985,8 +985,8 @@ python manage.py createsuperuser
 &lt;div class="section" id="um-pouco-de-shell"&gt;
 &lt;h3&gt;Um pouco de shell&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py shell
-Python 3.4.0 &lt;span class="o"&gt;(&lt;/span&gt;default, Apr &lt;span class="m"&gt;11&lt;/span&gt; 2014, 13:05:18&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;[&lt;/span&gt;GCC 4.8.2&lt;span class="o"&gt;]&lt;/span&gt; on linux
+Python &lt;span class="m"&gt;3&lt;/span&gt;.4.0 &lt;span class="o"&gt;(&lt;/span&gt;default, Apr &lt;span class="m"&gt;11&lt;/span&gt; &lt;span class="m"&gt;2014&lt;/span&gt;, &lt;span class="m"&gt;13&lt;/span&gt;:05:18&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;GCC &lt;span class="m"&gt;4&lt;/span&gt;.8.2&lt;span class="o"&gt;]&lt;/span&gt; on linux
 Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;credits&amp;quot;&lt;/span&gt; or &lt;span class="s2"&gt;&amp;quot;license&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; more information.
 &lt;span class="o"&gt;(&lt;/span&gt;InteractiveConsole&lt;span class="o"&gt;)&lt;/span&gt;
 &amp;gt;&amp;gt;&amp;gt;
@@ -1042,8 +1042,8 @@ $ sudo apt-get install python3-psycopg2 &lt;span class="c1"&gt;# para python3&lt
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Abra o python3.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python3
-Python 3.4.0 &lt;span class="o"&gt;(&lt;/span&gt;default, Apr &lt;span class="m"&gt;11&lt;/span&gt; 2014, 13:05:18&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;[&lt;/span&gt;GCC 4.8.2&lt;span class="o"&gt;]&lt;/span&gt; on linux
+Python &lt;span class="m"&gt;3&lt;/span&gt;.4.0 &lt;span class="o"&gt;(&lt;/span&gt;default, Apr &lt;span class="m"&gt;11&lt;/span&gt; &lt;span class="m"&gt;2014&lt;/span&gt;, &lt;span class="m"&gt;13&lt;/span&gt;:05:18&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;GCC &lt;span class="m"&gt;4&lt;/span&gt;.8.2&lt;span class="o"&gt;]&lt;/span&gt; on linux
 Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;credits&amp;quot;&lt;/span&gt; or &lt;span class="s2"&gt;&amp;quot;license&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; more information.
 &amp;gt;&amp;gt;&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1115,7 +1115,7 @@ Ah, talvez isso aqui também seja útil &lt;a class="reference external" href="h
 &lt;p&gt;&lt;tt class="docutils literal"&gt;binutils g++&lt;/tt&gt; talvez não seja necessário, mas no meu caso precisou.&lt;/p&gt;
 &lt;p&gt;No final, se você conseguir ver a versão do programa é porque deu tudo certo.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ psql -V
-psql &lt;span class="o"&gt;(&lt;/span&gt;PostgreSQL&lt;span class="o"&gt;)&lt;/span&gt; 9.3.5
+psql &lt;span class="o"&gt;(&lt;/span&gt;PostgreSQL&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;9&lt;/span&gt;.3.5
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="criando-um-banco-de-dados"&gt;
@@ -1168,7 +1168,7 @@ psql &lt;span class="o"&gt;(&lt;/span&gt;PostgreSQL&lt;span class="o"&gt;)&lt;/s
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora, vamos abrir o banco de dados &lt;em&gt;mydb&lt;/em&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ psql mydb
-psql &lt;span class="o"&gt;(&lt;/span&gt;9.3.5&lt;span class="o"&gt;)&lt;/span&gt;
+psql &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;9&lt;/span&gt;.3.5&lt;span class="o"&gt;)&lt;/span&gt;
 Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; help.
 
 &lt;span class="nv"&gt;mydb&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&amp;gt;
@@ -1178,7 +1178,7 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt; &lt;span class
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Resultado:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;CREATE TABLE
-INSERT &lt;span class="m"&gt;0&lt;/span&gt; 1
+INSERT &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
  id &lt;span class="p"&gt;|&lt;/span&gt;   city    &lt;span class="p"&gt;|&lt;/span&gt; uf
 ----+-----------+----
   &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; São Paulo &lt;span class="p"&gt;|&lt;/span&gt; SP
@@ -1231,8 +1231,8 @@ Ah, talvez isso aqui também seja útil &lt;a class="reference external" href="h
  Column &lt;span class="p"&gt;|&lt;/span&gt;         Type          &lt;span class="p"&gt;|&lt;/span&gt;                      Modifiers
 --------+-----------------------+-----------------------------------------------------
  id     &lt;span class="p"&gt;|&lt;/span&gt; integer               &lt;span class="p"&gt;|&lt;/span&gt; not null default nextval&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cities_id_seq&amp;#39;&lt;/span&gt;::regclass&lt;span class="o"&gt;)&lt;/span&gt;
- city   &lt;span class="p"&gt;|&lt;/span&gt; character varying&lt;span class="o"&gt;(&lt;/span&gt;50&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
- uf     &lt;span class="p"&gt;|&lt;/span&gt; character varying&lt;span class="o"&gt;(&lt;/span&gt;2&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="p"&gt;|&lt;/span&gt;
+ city   &lt;span class="p"&gt;|&lt;/span&gt; character varying&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;50&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+ uf     &lt;span class="p"&gt;|&lt;/span&gt; character varying&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="p"&gt;|&lt;/span&gt;
 Indexes:
     &lt;span class="s2"&gt;&amp;quot;cities_pkey&amp;quot;&lt;/span&gt; PRIMARY KEY, btree &lt;span class="o"&gt;(&lt;/span&gt;id&lt;span class="o"&gt;)&lt;/span&gt;
 Referenced by:
@@ -1279,11 +1279,11 @@ $ psql mydb
 &lt;p&gt;Resultado:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; id &lt;span class="p"&gt;|&lt;/span&gt;   name   &lt;span class="p"&gt;|&lt;/span&gt; age &lt;span class="p"&gt;|&lt;/span&gt; city_id &lt;span class="p"&gt;|&lt;/span&gt;            created            &lt;span class="p"&gt;|&lt;/span&gt; id &lt;span class="p"&gt;|&lt;/span&gt;   city    &lt;span class="p"&gt;|&lt;/span&gt; uf
 ----+----------+-----+---------+-------------------------------+----+-----------+----
-  &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Abel     &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;12&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02 &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; São Paulo &lt;span class="p"&gt;|&lt;/span&gt; SP
-  &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Jose     &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;54&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02 &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Salvador  &lt;span class="p"&gt;|&lt;/span&gt; BA
-  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Regis    &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;35&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:47:10.63258-02  &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; São Paulo &lt;span class="p"&gt;|&lt;/span&gt; SP
-  &lt;span class="m"&gt;4&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Thiago   &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;15&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02 &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Curitiba  &lt;span class="p"&gt;|&lt;/span&gt; PR
-  &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Veronica &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;28&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02 &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; São Paulo &lt;span class="p"&gt;|&lt;/span&gt; SP
+  &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Abel     &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;12&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2015&lt;/span&gt;-02-04 &lt;span class="m"&gt;03&lt;/span&gt;:49:01.597185-02 &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; São Paulo &lt;span class="p"&gt;|&lt;/span&gt; SP
+  &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Jose     &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;54&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2015&lt;/span&gt;-02-04 &lt;span class="m"&gt;03&lt;/span&gt;:49:01.597185-02 &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Salvador  &lt;span class="p"&gt;|&lt;/span&gt; BA
+  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Regis    &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;35&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2015&lt;/span&gt;-02-04 &lt;span class="m"&gt;03&lt;/span&gt;:47:10.63258-02  &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; São Paulo &lt;span class="p"&gt;|&lt;/span&gt; SP
+  &lt;span class="m"&gt;4&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Thiago   &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;15&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2015&lt;/span&gt;-02-04 &lt;span class="m"&gt;03&lt;/span&gt;:49:01.597185-02 &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Curitiba  &lt;span class="p"&gt;|&lt;/span&gt; PR
+  &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Veronica &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;28&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2015&lt;/span&gt;-02-04 &lt;span class="m"&gt;03&lt;/span&gt;:49:01.597185-02 &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; São Paulo &lt;span class="p"&gt;|&lt;/span&gt; SP
 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt; rows&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="section" id="exemplo-de-count-e-inner-join"&gt;
@@ -1296,9 +1296,9 @@ $ psql mydb
 &lt;p&gt;Mais em &lt;a class="reference external" href="http://www.postgresql.org/docs/9.4/static/tutorial-agg.html"&gt;2.7. Aggregate Functions&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;   city    &lt;span class="p"&gt;|&lt;/span&gt; persons
 -----------+---------
- São Paulo &lt;span class="p"&gt;|&lt;/span&gt;       3
- Curitiba  &lt;span class="p"&gt;|&lt;/span&gt;       1
- Salvador  &lt;span class="p"&gt;|&lt;/span&gt;       1
+ São Paulo &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;3&lt;/span&gt;
+ Curitiba  &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt;
+ Salvador  &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt;
 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt; rows&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;E apenas para não esquecer, o operador para &lt;em&gt;diferente&lt;/em&gt; é&lt;/p&gt;
@@ -1313,12 +1313,12 @@ $ psql mydb
 &lt;p&gt;antes: &lt;tt class="docutils literal"&gt;SELECT * FROM person WHERE name Like 'Jose';&lt;/tt&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; id &lt;span class="p"&gt;|&lt;/span&gt; name &lt;span class="p"&gt;|&lt;/span&gt; age &lt;span class="p"&gt;|&lt;/span&gt; city_id &lt;span class="p"&gt;|&lt;/span&gt;            created
 ----+------+-----+---------+-------------------------------
-  &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Jose &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;54&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02
+  &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Jose &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;54&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2015&lt;/span&gt;-02-04 &lt;span class="m"&gt;03&lt;/span&gt;:49:01.597185-02
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;depois: &lt;tt class="docutils literal"&gt;SELECT * FROM person WHERE id=3;&lt;/tt&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; id &lt;span class="p"&gt;|&lt;/span&gt;     name      &lt;span class="p"&gt;|&lt;/span&gt; age &lt;span class="p"&gt;|&lt;/span&gt; city_id &lt;span class="p"&gt;|&lt;/span&gt;            created
 ----+---------------+-----+---------+-------------------------------
-  &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Jose da Silva &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;52&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02
+  &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Jose da Silva &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;52&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2015&lt;/span&gt;-02-04 &lt;span class="m"&gt;03&lt;/span&gt;:49:01.597185-02
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Note que &lt;tt class="docutils literal"&gt;age = age - 2&lt;/tt&gt; fez com que a idade diminuisse de 54 para 52. Ou seja, dá pra fazer operações algébricas com &lt;tt class="docutils literal"&gt;UPDATE&lt;/tt&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -1329,9 +1329,9 @@ $ psql mydb
 &lt;p&gt;Fazendo &lt;tt class="docutils literal"&gt;SELECT * FROM person;&lt;/tt&gt; repare que foram excluidos &lt;em&gt;Abel&lt;/em&gt; e &lt;em&gt;Thiago&lt;/em&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; id &lt;span class="p"&gt;|&lt;/span&gt;     name      &lt;span class="p"&gt;|&lt;/span&gt; age &lt;span class="p"&gt;|&lt;/span&gt; city_id &lt;span class="p"&gt;|&lt;/span&gt;            created
 ----+---------------+-----+---------+-------------------------------
-  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Regis         &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;35&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:47:10.63258-02
-  &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Veronica      &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;28&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02
-  &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Jose da Silva &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;52&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; 2015-02-04 03:49:01.597185-02
+  &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Regis         &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;35&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2015&lt;/span&gt;-02-04 &lt;span class="m"&gt;03&lt;/span&gt;:47:10.63258-02
+  &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Veronica      &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;28&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2015&lt;/span&gt;-02-04 &lt;span class="m"&gt;03&lt;/span&gt;:49:01.597185-02
+  &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; Jose da Silva &lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="m"&gt;52&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;       &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2015&lt;/span&gt;-02-04 &lt;span class="m"&gt;03&lt;/span&gt;:49:01.597185-02
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Mais informações em &lt;a class="reference external" href="http://www.postgresql.org/docs/9.4/static/tutorial-sql.html"&gt;Chapter 2. The SQL Language&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -1402,8 +1402,8 @@ Number of child tables: 1 (Use \d+ to list them.)
    Column   &lt;span class="p"&gt;|&lt;/span&gt;         Type          &lt;span class="p"&gt;|&lt;/span&gt;                      Modifiers
 ------------+-----------------------+-----------------------------------------------------
  id         &lt;span class="p"&gt;|&lt;/span&gt; integer               &lt;span class="p"&gt;|&lt;/span&gt; not null default nextval&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;person_id_seq&amp;#39;&lt;/span&gt;::regclass&lt;span class="o"&gt;)&lt;/span&gt;
- name       &lt;span class="p"&gt;|&lt;/span&gt; character varying&lt;span class="o"&gt;(&lt;/span&gt;50&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
- commission &lt;span class="p"&gt;|&lt;/span&gt; numeric&lt;span class="o"&gt;(&lt;/span&gt;6,2&lt;span class="o"&gt;)&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt;
+ name       &lt;span class="p"&gt;|&lt;/span&gt; character varying&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;50&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+ commission &lt;span class="p"&gt;|&lt;/span&gt; numeric&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;,2&lt;span class="o"&gt;)&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt;
 Inherits: person
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;A diferença é que com menos código criamos as duas tabelas e não precisamos criar VIEW. Mas a tabela &lt;em&gt;seller&lt;/em&gt; depende da tabela &lt;em&gt;person&lt;/em&gt;.&lt;/p&gt;
@@ -1584,7 +1584,7 @@ $ sudo apt-get install -y virtualenv
 &lt;/div&gt;
 &lt;div class="section" id="instalando-django-1-7-django-bootstrap3"&gt;
 &lt;h2&gt;Instalando Django 1.7 + django-bootstrap3&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.7.2 django-bootstrap3
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.7.2 django-bootstrap3
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;em&gt;Dica&lt;/em&gt;: se você digitar &lt;tt class="docutils literal"&gt;pip freeze&lt;/tt&gt; você verá a versão dos programas instalados.&lt;/p&gt;
 &lt;/div&gt;
@@ -1665,7 +1665,7 @@ $ sudo apt-get install -y virtualenv
         &lt;span class="n"&gt;verbose_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;band&amp;#39;&lt;/span&gt;
         &lt;span class="n"&gt;verbose_name_plural&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;bands&amp;#39;&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;
 
     &lt;span class="c1"&gt;# count members by band&lt;/span&gt;
@@ -1675,7 +1675,7 @@ $ sudo apt-get install -y virtualenv
 
     &lt;span class="c1"&gt;# retorna a url no formato /bands/1&lt;/span&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_band_detail_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;u&amp;quot;/bands/&lt;/span&gt;&lt;span class="si"&gt;%i&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/bands/&lt;/span&gt;&lt;span class="si"&gt;%i&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;
 
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Member&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1699,7 +1699,7 @@ $ sudo apt-get install -y virtualenv
         &lt;span class="n"&gt;verbose_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;member&amp;#39;&lt;/span&gt;
         &lt;span class="n"&gt;verbose_name_plural&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;members&amp;#39;&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1712,15 +1712,15 @@ $ sudo apt-get install -y virtualenv
 
 &lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;mysite.bands.views&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^bands/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;band_listing&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bands&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^bands/(?P&amp;lt;pk&amp;gt;\d+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;band_detail&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;band_detail&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^bandform/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;BandForm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;band_form&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^memberform/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MemberForm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;member_form&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^contact/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;band_contact&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;contact&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^protected/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;protected_view&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;protected&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^accounts/login/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;message&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^admin/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^bands/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;band_listing&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bands&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^bands/(?P&amp;lt;pk&amp;gt;\d+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;band_detail&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;band_detail&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^bandform/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;BandForm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;band_form&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^memberform/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MemberForm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;member_form&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^contact/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;band_contact&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;contact&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^protected/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;protected_view&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;protected&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^accounts/login/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;message&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^admin/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1868,7 +1868,7 @@ Vou comentar apenas os comandos que se destacam.&lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;navbar-brand&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{% url &amp;#39;home&amp;#39; %}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Home&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;onde 'home' é o nome que foi dado ao link lá em urls.py.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;base.html&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Note que em &lt;strong&gt;base&lt;/strong&gt; carregamos o &lt;a class="reference external" href="http://django-bootstrap3.readthedocs.org/en/latest/"&gt;bootstrap3&lt;/a&gt; com o comando&lt;/p&gt;
@@ -2175,10 +2175,10 @@ PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;. Mas o programa roda 
 &lt;p&gt;A função &lt;tt class="docutils literal"&gt;gen_city()&lt;/tt&gt; escolhe uma cidade numa lista com o comando &lt;a class="reference external" href="https://docs.python.org/2/library/random.html#random.choice"&gt;random.choice(seq)&lt;/a&gt;  (suprimi alguns valores).&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;gen_city&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="n"&gt;list_city&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;u&amp;#39;São Paulo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;u&amp;#39;Rio de Janeiro&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;u&amp;#39;Porto Alegre&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;RS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;u&amp;#39;Campo Grande&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;MS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;São Paulo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Rio de Janeiro&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Porto Alegre&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;RS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Campo Grande&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;MS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;list_city&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -2190,7 +2190,7 @@ PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;. Mas o programa roda 
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;db_name&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;db_name&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="c1"&gt;# conectando...&lt;/span&gt;
             &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;db_name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2217,7 +2217,7 @@ PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;. Mas o programa roda 
 &lt;p&gt;Agora, criamos uma instância da classe acima e chamamos de &lt;tt class="docutils literal"&gt;ClientesDb()&lt;/tt&gt;, representando um banco chamado &lt;em&gt;clientes.db&lt;/em&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ClientesDb&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;clientes.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;close_connection&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -2225,7 +2225,7 @@ PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;. Mas o programa roda 
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Fazendo desta forma é possível instanciar outras classes, uma para cada banco, como &lt;tt class="docutils literal"&gt;PessoasDb()&lt;/tt&gt; que veremos mais pra frente.&lt;/p&gt;
 &lt;p&gt;Finalmente, para rodar o programa podemos escrever o código abaixo...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;cliente&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ClientesDb&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;cliente&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close_connection&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -2239,8 +2239,8 @@ $ ls *.db
 &lt;h2&gt;Modo interativo&lt;/h2&gt;
 &lt;p&gt;Legal mesmo é quando usamos o modo interativo para rodar os comandos do python, para isso podemos usar o python3 ou &lt;a class="reference external" href="http://ipython.org/install.html"&gt;ipython3&lt;/a&gt;. No terminal basta digitar python3 &lt;tt class="docutils literal"&gt;ENTER&lt;/tt&gt; que vai aparecer o prompt abaixo (&lt;em&gt;na mesma pasta do projeto, tá?&lt;/em&gt;)&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python3
-Python 3.4.0 &lt;span class="o"&gt;(&lt;/span&gt;default, Apr &lt;span class="m"&gt;11&lt;/span&gt; 2014, 13:05:18&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;[&lt;/span&gt;GCC 4.8.2&lt;span class="o"&gt;]&lt;/span&gt; on linux
+Python &lt;span class="m"&gt;3&lt;/span&gt;.4.0 &lt;span class="o"&gt;(&lt;/span&gt;default, Apr &lt;span class="m"&gt;11&lt;/span&gt; &lt;span class="m"&gt;2014&lt;/span&gt;, &lt;span class="m"&gt;13&lt;/span&gt;:05:18&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;GCC &lt;span class="m"&gt;4&lt;/span&gt;.8.2&lt;span class="o"&gt;]&lt;/span&gt; on linux
 Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;credits&amp;quot;&lt;/span&gt; or &lt;span class="s2"&gt;&amp;quot;license&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; more information.
 &amp;gt;&amp;gt;&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -2274,7 +2274,7 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span clas
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;db_name&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;db_name&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="c1"&gt;# conectando...&lt;/span&gt;
             &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;db_name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2301,14 +2301,14 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span clas
 
     &lt;span class="n"&gt;tb_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;clientes&amp;#39;&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;clientes.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tb_name&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fechar_conexao&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close_db&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ClientesDb&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Rodando no &lt;strong&gt;terminal&lt;/strong&gt;...&lt;/p&gt;
@@ -2343,7 +2343,7 @@ $ ls *.db
 
     &lt;span class="o"&gt;...&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ClientesDb&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;criar_schema&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -2383,7 +2383,7 @@ $ ls *.db
 
     &lt;span class="o"&gt;...&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ClientesDb&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;criar_schema&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;inserir_um_registro&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -2822,7 +2822,7 @@ sqlite_sequence
 
     &lt;span class="n"&gt;tb_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pessoas&amp;#39;&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pessoas.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tb_name&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -3222,13 +3222,13 @@ $ sqlite3 clientes.db &lt;span class="s1"&gt;&amp;#39;PRAGMA table_info(clientes
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Veja a interação do programa:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Nome: Regis
-Idade: 35
-CPF: 30020030011
+Idade: &lt;span class="m"&gt;35&lt;/span&gt;
+CPF: &lt;span class="m"&gt;30020030011&lt;/span&gt;
 Email: regis@email.com
-Fone: &lt;span class="m"&gt;11&lt;/span&gt; 9537-0000
+Fone: &lt;span class="m"&gt;11&lt;/span&gt; &lt;span class="m"&gt;9537&lt;/span&gt;-0000
 Cidade: Sao Paulo
 UF: SP
-Criado em &lt;span class="o"&gt;(&lt;/span&gt;yyyy-mm-dd&lt;span class="o"&gt;)&lt;/span&gt;: 2014-06-15
+Criado em &lt;span class="o"&gt;(&lt;/span&gt;yyyy-mm-dd&lt;span class="o"&gt;)&lt;/span&gt;: &lt;span class="m"&gt;2014&lt;/span&gt;-06-15
 Dados inseridos com sucesso.
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -3255,14 +3255,14 @@ Dados inseridos com sucesso.
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python3 06_read_data.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Eis o resultado:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;1, &lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;, 35, &lt;span class="s1"&gt;&amp;#39;00000000000&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;regis@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;11-98765-4321&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Sao Paulo&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-08&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;(&lt;/span&gt;2, &lt;span class="s1"&gt;&amp;#39;Aloisio&amp;#39;&lt;/span&gt;, 87, &lt;span class="s1"&gt;&amp;#39;11111111111&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;aloisio@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;98765-4322&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Porto Alegre&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;RS&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-09&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;(&lt;/span&gt;3, &lt;span class="s1"&gt;&amp;#39;Bruna&amp;#39;&lt;/span&gt;, 21, &lt;span class="s1"&gt;&amp;#39;22222222222&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;bruna@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;21-98765-4323&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Rio de Janeiro&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-09&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;(&lt;/span&gt;4, &lt;span class="s1"&gt;&amp;#39;Matheus&amp;#39;&lt;/span&gt;, 19, &lt;span class="s1"&gt;&amp;#39;33333333333&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;matheus@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;11-98765-4324&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Campinas&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-08&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;(&lt;/span&gt;5, &lt;span class="s1"&gt;&amp;#39;Fabio&amp;#39;&lt;/span&gt;, 23, &lt;span class="s1"&gt;&amp;#39;44444444444&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;fabio@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;1234-5678&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Belo Horizonte&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;MG&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-09&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;(&lt;/span&gt;6, &lt;span class="s1"&gt;&amp;#39;Joao&amp;#39;&lt;/span&gt;, 21, &lt;span class="s1"&gt;&amp;#39;55555555555&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;joao@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;11-1234-5600&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Sao Paulo&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-09&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;(&lt;/span&gt;7, &lt;span class="s1"&gt;&amp;#39;Xavier&amp;#39;&lt;/span&gt;, 24, &lt;span class="s1"&gt;&amp;#39;66666666666&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;xavier@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;12-1234-5601&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Campinas&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-10&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;(&lt;/span&gt;8, &lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;, 35, &lt;span class="s1"&gt;&amp;#39;30020030011&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;regis@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;11 9750-0000&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Sao Paulo&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-15&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;, &lt;span class="m"&gt;35&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;00000000000&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;regis@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;11-98765-4321&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Sao Paulo&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-08&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Aloisio&amp;#39;&lt;/span&gt;, &lt;span class="m"&gt;87&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;11111111111&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;aloisio@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;98765-4322&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Porto Alegre&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;RS&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-09&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Bruna&amp;#39;&lt;/span&gt;, &lt;span class="m"&gt;21&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;22222222222&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;bruna@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;21-98765-4323&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Rio de Janeiro&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-09&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Matheus&amp;#39;&lt;/span&gt;, &lt;span class="m"&gt;19&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;33333333333&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;matheus@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;11-98765-4324&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Campinas&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-08&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Fabio&amp;#39;&lt;/span&gt;, &lt;span class="m"&gt;23&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;44444444444&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;fabio@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;1234-5678&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Belo Horizonte&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;MG&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-09&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Joao&amp;#39;&lt;/span&gt;, &lt;span class="m"&gt;21&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;55555555555&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;joao@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;11-1234-5600&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Sao Paulo&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-09&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;7&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Xavier&amp;#39;&lt;/span&gt;, &lt;span class="m"&gt;24&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;66666666666&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;xavier@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;12-1234-5601&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Campinas&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-10&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;, &lt;span class="m"&gt;35&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;30020030011&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;regis@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;11 9750-0000&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Sao Paulo&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-15&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="update-alterando-os-dados"&gt;
@@ -3401,11 +3401,11 @@ CREATE TABLE clientes &lt;span class="o"&gt;(&lt;/span&gt;
         id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
         nome TEXT NOT NULL,
         idade INTEGER,
-        cpf     VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;11&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
+        cpf     VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;11&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
         email TEXT NOT NULL,
         fone TEXT,
         cidade TEXT,
-        uf VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;2&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
+        uf VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
         criado_em DATE NOT NULL
 , bloqueado BOOLEAN&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -3516,7 +3516,7 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#calculadora.py&lt;/span&gt;
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Calculadora&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
 
@@ -3534,7 +3534,7 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Note que definimos dois parâmetros &lt;tt class="docutils literal"&gt;a&lt;/tt&gt; e &lt;tt class="docutils literal"&gt;b&lt;/tt&gt; (dentro do parênteses). E o &lt;tt class="docutils literal"&gt;self.a&lt;/tt&gt; é um novo campo.&lt;/p&gt;
 &lt;p&gt;Poderíamos definir&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;param1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;param2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;param1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;param2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;param1&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;param2&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -3606,27 +3606,27 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
     &lt;span class="n"&gt;seq&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
     &lt;span class="n"&gt;objects&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;idade&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seq&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seq&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seq&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seq&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__repr__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;{}: {} - {} - {}&amp;gt;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__repr__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;{}: {} - {} - {}&amp;gt;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="nd"&gt;@classmethod&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;u1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;u1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;u2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Fabio&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -3651,7 +3651,7 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
 &lt;span class="n"&gt;objects&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Atribui um valor inicial aos atributos no momento da chamada do construtor.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Inicializando os atributos, &lt;tt class="docutils literal"&gt;id&lt;/tt&gt; começa com &lt;tt class="docutils literal"&gt;None&lt;/tt&gt;, pois a instância foi criada mas ainda não foi salva.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
@@ -3662,29 +3662,29 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;self.__class__&lt;/tt&gt; acessa a classe que criou a instância, assim é possível acessar o atributo de &lt;tt class="docutils literal"&gt;seq&lt;/tt&gt;. Aqui poderia ser usado &lt;tt class="docutils literal"&gt;User.seq&lt;/tt&gt;, porém caso &lt;tt class="docutils literal"&gt;User&lt;/tt&gt; fosse herdado, o &lt;tt class="docutils literal"&gt;seq&lt;/tt&gt; seria o de &lt;tt class="docutils literal"&gt;User&lt;/tt&gt; e não da classe filha.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seq&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seq&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seq&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seq&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Da mesma forma que acessamos &lt;tt class="docutils literal"&gt;seq&lt;/tt&gt;, acessamos objects e é feito um &lt;tt class="docutils literal"&gt;append&lt;/tt&gt; com a instância.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Retorna uma representação do objeto como str, usado em conversões para string. Exemplo: &lt;tt class="docutils literal"&gt;str(my_user), print my_user&lt;/tt&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Retorna uma representação do objeto usada para outros objetos. Exemplo: quando é convertida uma lista de user para string.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__repr__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__repr__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;self.__class__.__name__&lt;/tt&gt; é a forma de acessar o nome da classe que gerou a instância.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;{}: {} - {} - {}&amp;gt;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;{}: {} - {} - {}&amp;gt;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Class method usado para acessar todas as instâncias salvas (que chamaram o método &lt;tt class="docutils literal"&gt;save&lt;/tt&gt;). Aqui usamos um &lt;tt class="docutils literal"&gt;&amp;#64;classmethod&lt;/tt&gt;, pois faz mais sentido ser um método de classe do que de instância, pois estamos retornando informações da classe e não de uma instância isolada.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@classmethod&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Demonstração do uso da classe.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;u1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="n"&gt;u2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Fabio&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
@@ -3834,16 +3834,16 @@ PRAGMA &lt;span class="nv"&gt;foreign_keys&lt;/span&gt;&lt;span class="o"&gt;=&l
 BEGIN TRANSACTION&lt;span class="p"&gt;;&lt;/span&gt;
 CREATE TABLE clientes&lt;span class="o"&gt;(&lt;/span&gt;
 id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-Nome VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;100&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
-CPF VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;11&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
-Email VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;20&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
-Fone VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;20&lt;span class="o"&gt;)&lt;/span&gt;,
-UF VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;2&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL
+Nome VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;100&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
+CPF VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;11&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
+Email VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;20&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
+Fone VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;20&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,
+UF VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL
 &lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;1,&lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;00000000000&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;rg@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1100000000&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;2,&lt;span class="s1"&gt;&amp;#39;Abigail&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;11111111111&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;abigail@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1112345678&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;3,&lt;span class="s1"&gt;&amp;#39;Benedito&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;22222222222&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;benedito@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1187654321&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;4,&lt;span class="s1"&gt;&amp;#39;Zacarias&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;33333333333&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;zacarias@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1199999999&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;00000000000&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;rg@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1100000000&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;Abigail&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;11111111111&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;abigail@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1112345678&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;Benedito&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;22222222222&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;benedito@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1187654321&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;Zacarias&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;33333333333&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;zacarias@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1199999999&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 COMMIT&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Pronto, se corromper o seu banco de dados, você pode recuperá-lo:&lt;/p&gt;
@@ -3871,9 +3871,9 @@ sqlite&amp;gt; .mode column
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;id          Nome        CPF          Email         Fone        UF          bloqueado
 ----------  ----------  -----------  ------------  ----------  ----------  ----------
-&lt;span class="m"&gt;1&lt;/span&gt;           Regis       &lt;span class="m"&gt;00000000000&lt;/span&gt;  rg@email.com  &lt;span class="m"&gt;1100000000&lt;/span&gt;  SP          1
-&lt;span class="m"&gt;2&lt;/span&gt;           Abigail     &lt;span class="m"&gt;11111111111&lt;/span&gt;  abigail@emai  &lt;span class="m"&gt;1112345678&lt;/span&gt;  RJ          1
-&lt;span class="m"&gt;3&lt;/span&gt;           Benedito    &lt;span class="m"&gt;22222222222&lt;/span&gt;  benedito@ema  &lt;span class="m"&gt;1187654321&lt;/span&gt;  SP          0
+&lt;span class="m"&gt;1&lt;/span&gt;           Regis       &lt;span class="m"&gt;00000000000&lt;/span&gt;  rg@email.com  &lt;span class="m"&gt;1100000000&lt;/span&gt;  SP          &lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="m"&gt;2&lt;/span&gt;           Abigail     &lt;span class="m"&gt;11111111111&lt;/span&gt;  abigail@emai  &lt;span class="m"&gt;1112345678&lt;/span&gt;  RJ          &lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="m"&gt;3&lt;/span&gt;           Benedito    &lt;span class="m"&gt;22222222222&lt;/span&gt;  benedito@ema  &lt;span class="m"&gt;1187654321&lt;/span&gt;  SP          &lt;span class="m"&gt;0&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Então vamos criar duas novas tabelas: &lt;em&gt;cidades&lt;/em&gt; e &lt;em&gt;clientes_novo&lt;/em&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sqlite&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;cidades&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
@@ -3908,9 +3908,9 @@ sqlite&amp;gt; .mode column
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;id          Nome        CPF          Email         Fone        bloqueado   cidade_id
 ----------  ----------  -----------  ------------  ----------  ----------  ----------
-&lt;span class="m"&gt;1&lt;/span&gt;           Regis       &lt;span class="m"&gt;00000000000&lt;/span&gt;  rg@email.com  &lt;span class="m"&gt;1100000000&lt;/span&gt;  1
-&lt;span class="m"&gt;2&lt;/span&gt;           Abigail     &lt;span class="m"&gt;11111111111&lt;/span&gt;  abigail@emai  &lt;span class="m"&gt;1112345678&lt;/span&gt;  1
-&lt;span class="m"&gt;3&lt;/span&gt;           Benedito    &lt;span class="m"&gt;22222222222&lt;/span&gt;  benedito@ema  &lt;span class="m"&gt;1187654321&lt;/span&gt;  0
+&lt;span class="m"&gt;1&lt;/span&gt;           Regis       &lt;span class="m"&gt;00000000000&lt;/span&gt;  rg@email.com  &lt;span class="m"&gt;1100000000&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="m"&gt;2&lt;/span&gt;           Abigail     &lt;span class="m"&gt;11111111111&lt;/span&gt;  abigail@emai  &lt;span class="m"&gt;1112345678&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="m"&gt;3&lt;/span&gt;           Benedito    &lt;span class="m"&gt;22222222222&lt;/span&gt;  benedito@ema  &lt;span class="m"&gt;1187654321&lt;/span&gt;  &lt;span class="m"&gt;0&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora você terá que popular as cidades e definir a &lt;tt class="docutils literal"&gt;cidade_id&lt;/tt&gt; em cada cliente. Lembrando que a chave é &lt;tt class="docutils literal"&gt;AUTOINCREMENT&lt;/tt&gt;, então use &lt;tt class="docutils literal"&gt;NULL&lt;/tt&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sqlite&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;cidades&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Campinas&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
@@ -3936,9 +3936,9 @@ sqlite&amp;gt; .mode column
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;id          Nome        CPF          Email         Fone        bloqueado   cidade_id
 ----------  ----------  -----------  ------------  ----------  ----------  ----------
-&lt;span class="m"&gt;1&lt;/span&gt;           Regis       &lt;span class="m"&gt;00000000000&lt;/span&gt;  rg@email.com  &lt;span class="m"&gt;1100000000&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt;           3
-&lt;span class="m"&gt;2&lt;/span&gt;           Abigail     &lt;span class="m"&gt;11111111111&lt;/span&gt;  abigail@emai  &lt;span class="m"&gt;1112345678&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt;           1
-&lt;span class="m"&gt;3&lt;/span&gt;           Benedito    &lt;span class="m"&gt;22222222222&lt;/span&gt;  benedito@ema  &lt;span class="m"&gt;1187654321&lt;/span&gt;  &lt;span class="m"&gt;0&lt;/span&gt;           2
+&lt;span class="m"&gt;1&lt;/span&gt;           Regis       &lt;span class="m"&gt;00000000000&lt;/span&gt;  rg@email.com  &lt;span class="m"&gt;1100000000&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt;           &lt;span class="m"&gt;3&lt;/span&gt;
+&lt;span class="m"&gt;2&lt;/span&gt;           Abigail     &lt;span class="m"&gt;11111111111&lt;/span&gt;  abigail@emai  &lt;span class="m"&gt;1112345678&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt;           &lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="m"&gt;3&lt;/span&gt;           Benedito    &lt;span class="m"&gt;22222222222&lt;/span&gt;  benedito@ema  &lt;span class="m"&gt;1187654321&lt;/span&gt;  &lt;span class="m"&gt;0&lt;/span&gt;           &lt;span class="m"&gt;2&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Façamos um &lt;tt class="docutils literal"&gt;INNER JOIN&lt;/tt&gt; para visualizar todos os dados, inclusive a &lt;em&gt;cidade&lt;/em&gt; e o &lt;em&gt;uf&lt;/em&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sqlite&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;clientes&lt;/span&gt; &lt;span class="k"&gt;INNER&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="n"&gt;cidades&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;clientes&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cidade_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cidades&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -4034,7 +4034,7 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
 &lt;span class="c1"&gt;# BASE_DIR = os.path.dirname(os.path.dirname(__file__))&lt;/span&gt;
 &lt;span class="c1"&gt;# Unipath aqui&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;unipath&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;
-&lt;span class="n"&gt;BASE_DIR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parent&lt;/span&gt;
+&lt;span class="n"&gt;BASE_DIR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vm"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parent&lt;/span&gt;
 
 &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
@@ -4072,10 +4072,10 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
 
         &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
                 &lt;span class="n"&gt;ordering&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;criado_em&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-                &lt;span class="n"&gt;verbose_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;u&amp;#39;nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-                &lt;span class="n"&gt;verbose_name_plural&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;u&amp;#39;nomes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                &lt;span class="n"&gt;verbose_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                &lt;span class="n"&gt;verbose_name_plural&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;nomes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-        &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__unicode__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__unicode__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
                 &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Vamos criar o banco de dados através do comando &lt;strong&gt;syncdb&lt;/strong&gt;.&lt;/p&gt;
@@ -4112,10 +4112,10 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
 &lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;autodiscover&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
 &lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cadastro.views&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^cadastro/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Criar&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cadastro&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^lista/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Lista&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;lista&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^admin/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^cadastro/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Criar&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cadastro&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^lista/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Lista&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;lista&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^admin/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/forms.py&lt;/em&gt;.&lt;/p&gt;
@@ -4277,7 +4277,7 @@ $ sudo easy_install pip
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;strong&gt;Django 1.6&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.6
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.6
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Obs: repare que instalamos o Django direto no sistema, mas na verdade ele deverá ser instalado dentro de cada virtualenv. Leia sobre &lt;a class="reference internal" href="#o-que-e-virtualenv-e-requirements"&gt;O que é Virtualenv e Requirements?&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;

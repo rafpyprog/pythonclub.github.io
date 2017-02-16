@@ -103,26 +103,26 @@ sudo pip install pyftpdlib
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Após executar o comando acima, você obterá uma saida similar a esta:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fabio@luzfcb:~$ python -m pyftpdlib
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt;&amp;gt;&amp;gt; starting FTP server on 0.0.0.0:2121, &lt;span class="nv"&gt;pid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;21884&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; poller: &amp;lt;class &lt;span class="s1"&gt;&amp;#39;pyftpdlib.ioloop.Epoll&amp;#39;&lt;/span&gt;&amp;gt;
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; masquerade &lt;span class="o"&gt;(&lt;/span&gt;NAT&lt;span class="o"&gt;)&lt;/span&gt; address: None
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; passive ports: None
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; use sendfile&lt;span class="o"&gt;(&lt;/span&gt;2&lt;span class="o"&gt;)&lt;/span&gt;: False
+&lt;span class="o"&gt;[&lt;/span&gt;I &lt;span class="m"&gt;14&lt;/span&gt;-06-11 &lt;span class="m"&gt;13&lt;/span&gt;:17:38&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt;&amp;gt;&amp;gt; starting FTP server on &lt;span class="m"&gt;0&lt;/span&gt;.0.0.0:2121, &lt;span class="nv"&gt;pid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;21884&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;I &lt;span class="m"&gt;14&lt;/span&gt;-06-11 &lt;span class="m"&gt;13&lt;/span&gt;:17:38&lt;span class="o"&gt;]&lt;/span&gt; poller: &amp;lt;class &lt;span class="s1"&gt;&amp;#39;pyftpdlib.ioloop.Epoll&amp;#39;&lt;/span&gt;&amp;gt;
+&lt;span class="o"&gt;[&lt;/span&gt;I &lt;span class="m"&gt;14&lt;/span&gt;-06-11 &lt;span class="m"&gt;13&lt;/span&gt;:17:38&lt;span class="o"&gt;]&lt;/span&gt; masquerade &lt;span class="o"&gt;(&lt;/span&gt;NAT&lt;span class="o"&gt;)&lt;/span&gt; address: None
+&lt;span class="o"&gt;[&lt;/span&gt;I &lt;span class="m"&gt;14&lt;/span&gt;-06-11 &lt;span class="m"&gt;13&lt;/span&gt;:17:38&lt;span class="o"&gt;]&lt;/span&gt; passive ports: None
+&lt;span class="o"&gt;[&lt;/span&gt;I &lt;span class="m"&gt;14&lt;/span&gt;-06-11 &lt;span class="m"&gt;13&lt;/span&gt;:17:38&lt;span class="o"&gt;]&lt;/span&gt; use sendfile&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;: False
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Para visualizar localmente, abra o navegador e acesse o endereço &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;ftp://127.0.0.1:2121&lt;/span&gt;&lt;/tt&gt; ou &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;ftp://endereço_ip_ou_hostname_atual_do_seu_servidor:2121&lt;/span&gt;&lt;/tt&gt;&lt;/p&gt;
 &lt;p&gt;Você vai obter algo como:&lt;/p&gt;
 &lt;img alt="acessando o servidor FTP localmente pelo navegador" src="images/luzfcb/ftp_001.png" /&gt;
 &lt;p&gt;No terminal, você poderá visualizar o log:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fabio@luzfcb:~$ python -m pyftpdlib
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt;&amp;gt;&amp;gt; starting FTP server on 0.0.0.0:2121, &lt;span class="nv"&gt;pid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;21884&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; poller: &amp;lt;class &lt;span class="s1"&gt;&amp;#39;pyftpdlib.ioloop.Epoll&amp;#39;&lt;/span&gt;&amp;gt;
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; masquerade &lt;span class="o"&gt;(&lt;/span&gt;NAT&lt;span class="o"&gt;)&lt;/span&gt; address: None
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; passive ports: None
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; use sendfile&lt;span class="o"&gt;(&lt;/span&gt;2&lt;span class="o"&gt;)&lt;/span&gt;: False
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:22:28&lt;span class="o"&gt;]&lt;/span&gt; 127.0.0.1:41154-&lt;span class="o"&gt;[]&lt;/span&gt; FTP session opened &lt;span class="o"&gt;(&lt;/span&gt;connect&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:22:28&lt;span class="o"&gt;]&lt;/span&gt; 127.0.0.1:41154-&lt;span class="o"&gt;[&lt;/span&gt;anonymous&lt;span class="o"&gt;]&lt;/span&gt; USER &lt;span class="s1"&gt;&amp;#39;anonymous&amp;#39;&lt;/span&gt; logged in.
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:22:28&lt;span class="o"&gt;]&lt;/span&gt; 127.0.0.1:41154-&lt;span class="o"&gt;[&lt;/span&gt;anonymous&lt;span class="o"&gt;]&lt;/span&gt; CWD /home/luzfcb/pythonclub.github.io 250
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:22:28&lt;span class="o"&gt;]&lt;/span&gt; 127.0.0.1:41154-&lt;span class="o"&gt;[&lt;/span&gt;anonymous&lt;span class="o"&gt;]&lt;/span&gt; FTP session closed &lt;span class="o"&gt;(&lt;/span&gt;disconnect
+&lt;span class="o"&gt;[&lt;/span&gt;I &lt;span class="m"&gt;14&lt;/span&gt;-06-11 &lt;span class="m"&gt;13&lt;/span&gt;:17:38&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt;&amp;gt;&amp;gt; starting FTP server on &lt;span class="m"&gt;0&lt;/span&gt;.0.0.0:2121, &lt;span class="nv"&gt;pid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;21884&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;I &lt;span class="m"&gt;14&lt;/span&gt;-06-11 &lt;span class="m"&gt;13&lt;/span&gt;:17:38&lt;span class="o"&gt;]&lt;/span&gt; poller: &amp;lt;class &lt;span class="s1"&gt;&amp;#39;pyftpdlib.ioloop.Epoll&amp;#39;&lt;/span&gt;&amp;gt;
+&lt;span class="o"&gt;[&lt;/span&gt;I &lt;span class="m"&gt;14&lt;/span&gt;-06-11 &lt;span class="m"&gt;13&lt;/span&gt;:17:38&lt;span class="o"&gt;]&lt;/span&gt; masquerade &lt;span class="o"&gt;(&lt;/span&gt;NAT&lt;span class="o"&gt;)&lt;/span&gt; address: None
+&lt;span class="o"&gt;[&lt;/span&gt;I &lt;span class="m"&gt;14&lt;/span&gt;-06-11 &lt;span class="m"&gt;13&lt;/span&gt;:17:38&lt;span class="o"&gt;]&lt;/span&gt; passive ports: None
+&lt;span class="o"&gt;[&lt;/span&gt;I &lt;span class="m"&gt;14&lt;/span&gt;-06-11 &lt;span class="m"&gt;13&lt;/span&gt;:17:38&lt;span class="o"&gt;]&lt;/span&gt; use sendfile&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;: False
+&lt;span class="o"&gt;[&lt;/span&gt;I &lt;span class="m"&gt;14&lt;/span&gt;-06-11 &lt;span class="m"&gt;13&lt;/span&gt;:22:28&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="m"&gt;127&lt;/span&gt;.0.0.1:41154-&lt;span class="o"&gt;[]&lt;/span&gt; FTP session opened &lt;span class="o"&gt;(&lt;/span&gt;connect&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;I &lt;span class="m"&gt;14&lt;/span&gt;-06-11 &lt;span class="m"&gt;13&lt;/span&gt;:22:28&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="m"&gt;127&lt;/span&gt;.0.0.1:41154-&lt;span class="o"&gt;[&lt;/span&gt;anonymous&lt;span class="o"&gt;]&lt;/span&gt; USER &lt;span class="s1"&gt;&amp;#39;anonymous&amp;#39;&lt;/span&gt; logged in.
+&lt;span class="o"&gt;[&lt;/span&gt;I &lt;span class="m"&gt;14&lt;/span&gt;-06-11 &lt;span class="m"&gt;13&lt;/span&gt;:22:28&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="m"&gt;127&lt;/span&gt;.0.0.1:41154-&lt;span class="o"&gt;[&lt;/span&gt;anonymous&lt;span class="o"&gt;]&lt;/span&gt; CWD /home/luzfcb/pythonclub.github.io &lt;span class="m"&gt;250&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;I &lt;span class="m"&gt;14&lt;/span&gt;-06-11 &lt;span class="m"&gt;13&lt;/span&gt;:22:28&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="m"&gt;127&lt;/span&gt;.0.0.1:41154-&lt;span class="o"&gt;[&lt;/span&gt;anonymous&lt;span class="o"&gt;]&lt;/span&gt; FTP session closed &lt;span class="o"&gt;(&lt;/span&gt;disconnect
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Você tambem pode usar algumas opções para modificar como o &lt;tt class="docutils literal"&gt;pyftpdlib&lt;/tt&gt; é iniciado.&lt;/p&gt;
 &lt;p&gt;Para ver estas opção, execute:&lt;/p&gt;
@@ -159,12 +159,12 @@ Options:
      activate a more verbose logging
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Por exemplo, poderiamos mudar a porta padrão&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python -m pyftpdlib -p 8080
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python -m pyftpdlib -p &lt;span class="m"&gt;8080&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Se você quiser iniciar o servidor FTP de modo que quem for acessar não necessite informar a porta, ou seja
 ele poderá acessar o servidor em um endereço similar a &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;ftp://127.0.0.1&lt;/span&gt;&lt;/tt&gt; ou &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;ftp://endereço_ip_ou_hostname_atual_do_seu_servidor&lt;/span&gt;&lt;/tt&gt;,
 é necessario executá-lo como super-usuário, informando a porta 21, que é a padrão do protocolo, conforme exemplificado abaixo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo python -m pyftpdlib -p 21
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo python -m pyftpdlib -p &lt;span class="m"&gt;21&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="modo-customizado-por-voce"&gt;
@@ -205,7 +205,7 @@ ele poderá acessar o servidor em um endereço similar a &lt;tt class="docutils 
     &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MultiprocessFTPServer&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;handler&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;serve_forever&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;__main__&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;__main__&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;

@@ -176,14 +176,14 @@
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">)</span>
 
-<span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+<span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;MEDIA_ROOT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROJECT_ROOT</span><span class="p">,</span> <span class="s1">&#39;media_files&#39;</span><span class="p">)</span>
 
 
 <span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticias/cadastro&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">cadastro</span><span class="p">():</span>
     <span class="o">...</span>
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;cadastro.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Inserir nova noticia&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;cadastro.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;Inserir nova noticia&quot;</span><span class="p">)</span>
 
 
 <span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
@@ -203,7 +203,7 @@
     <span class="k">return</span> <span class="n">send_from_directory</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MEDIA_ROOT&#39;</span><span class="p">),</span> <span class="n">filename</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">use_reloader</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 
@@ -229,7 +229,7 @@
 </blockquote>
 <h5>settings.py</h5>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+<span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
 <span class="n">MEDIA_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROJECT_ROOT</span><span class="p">,</span> <span class="s1">&#39;media_files&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -257,7 +257,7 @@
 <span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/noticias/cadastro&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">cadastro</span><span class="p">():</span>
     <span class="o">...</span>
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;cadastro.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Inserir nova noticia&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;cadastro.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;Inserir nova noticia&quot;</span><span class="p">)</span>
 
 
 <span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
@@ -377,7 +377,7 @@
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">db</span> <span class="kn">import</span> <span class="n">noticias</span>
 
-<span class="n">noticias_blueprint</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;noticias&#39;</span><span class="p">,</span> <span class="n">__name__</span><span class="p">)</span>
+<span class="n">noticias_blueprint</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;noticias&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
 
 
 <span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/noticias/cadastro&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
@@ -397,7 +397,7 @@
         <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;cadastro_sucesso.html&#39;</span><span class="p">,</span>
                                <span class="n">id_nova_noticia</span><span class="o">=</span><span class="n">id_nova_noticia</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;cadastro.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Inserir nova noticia&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;cadastro.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;Inserir nova noticia&quot;</span><span class="p">)</span>
 
 
 <span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
@@ -405,7 +405,7 @@
     <span class="n">todas_as_noticias</span> <span class="o">=</span> <span class="n">noticias</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span>
                            <span class="n">noticias</span><span class="o">=</span><span class="n">todas_as_noticias</span><span class="p">,</span>
-                           <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Todas as notícias&quot;</span><span class="p">)</span>
+                           <span class="n">title</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;Todas as notícias&quot;</span><span class="p">)</span>
 
 
 <span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/noticia/&lt;int:noticia_id&gt;&quot;</span><span class="p">)</span>
@@ -587,7 +587,7 @@
 <p>Por padrão o Flask já oferece todas as ferramentas necessárias para gerenciar questões de configurações, tudo o que <strong>no outro framework</strong> :) acabamos precisando de módulos de terceiros para fazer as coisas de maneira <strong>decoupled</strong>, no Flask já esta built-in. Então vamos conhecer as abordagens de configuração.</p>
 <h4>O objeto "config"</h4>
 <p>Independente da abordagem de configuração que você escolher, no final as variáveis vão para no mesmo atributo que é o <strong>app.config</strong>, este atributo é uma subclasse de <strong>dict</strong> e se comporta exatamente como um dicionário, sendo assim podemos alterar seus valores livremente. (mas lembre-se que isso deve ocorrer quando a app estiver em estado de configuração).</p>
-<div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;DATABASE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;mysql://user:password@localhost/database&quot;</span>
 
@@ -611,7 +611,7 @@
     <span class="o">...</span>
 <span class="p">}</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">my_app_config</span><span class="p">)</span>
 </pre></div>
@@ -641,7 +641,7 @@
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 
 <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
-    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_pyfile</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.cfg&quot;</span> <span class="o">%</span> <span class="n">mode</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">app</span>
 </pre></div>
@@ -677,7 +677,7 @@
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 
 <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">config_env_var</span><span class="o">=</span><span class="s1">&#39;FLASK_CONFIG&#39;</span><span class="p">):</span>
-    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_envvar</span><span class="p">(</span><span class="n">config_env_var</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">app</span>
 </pre></div>
@@ -721,7 +721,7 @@
 
 
 <h5>app.py</h5>
-<div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="s1">&#39;production.json&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -749,8 +749,8 @@
 
 
 <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">config_env_var</span><span class="o">=</span><span class="s1">&#39;FLASK_CONFIG&#39;</span><span class="p">,</span> <span class="n">extra_config</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>  <span class="c1"># pega as constantes do próprio arquivo</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>  <span class="c1"># pega as constantes do próprio arquivo</span>
     <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="s1">&#39;default_settings&#39;</span><span class="p">)</span>  <span class="c1"># pega o módulo, pode usar o caminho completo</span>
     <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_envvar</span><span class="p">(</span><span class="n">config_env_var</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>  <span class="c1"># pega o caminho do arquivo de uma env-var</span>
     <span class="k">if</span> <span class="n">extra_config</span><span class="p">:</span>
@@ -779,7 +779,7 @@
 
 <p>Agora na hora de configurar podemos variar entre Development e Production</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;Production&#39;</span><span class="p">):</span>
-    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="s2">&quot;default_settings.</span><span class="si">%s</span><span class="s2">Config&quot;</span> <span class="o">%</span> <span class="n">mode</span><span class="p">)</span>
     <span class="o">...</span>
     <span class="k">return</span> <span class="n">app</span>
@@ -814,9 +814,9 @@
 
 <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;production&#39;</span><span class="p">):</span>
     <span class="n">instance_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_instance&quot;</span> <span class="o">%</span> <span class="n">mode</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_instance&quot;</span> <span class="o">%</span> <span class="n">mode</span>
     <span class="p">)</span>
-    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">,</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span>
                 <span class="n">instance_path</span><span class="o">=</span><span class="n">instance_path</span><span class="p">,</span>
                 <span class="n">instance_relative_config</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_pyfile</span><span class="p">(</span><span class="s1">&#39;config.cfg&#39;</span><span class="p">)</span>
@@ -844,7 +844,7 @@
 
 
 <p>Agora imagine que queremos pegar todas as configurações referents ao MONGO e ao REDIS em dicionários separados:</p>
-<div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_pyfile</span><span class="p">(</span><span class="s1">&#39;config.cfg&#39;</span><span class="p">)</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get_namespace</span><span class="p">(</span><span class="s1">&#39;MONGO_&#39;</span><span class="p">)</span>
@@ -946,7 +946,7 @@
 
 <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
     <span class="n">instance_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_instance&quot;</span> <span class="o">%</span> <span class="n">mode</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_instance&quot;</span> <span class="o">%</span> <span class="n">mode</span>
     <span class="p">)</span>
 
     <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">,</span>
@@ -991,7 +991,7 @@
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">..db</span> <span class="kn">import</span> <span class="n">get_table</span>
 
-<span class="n">noticias_blueprint</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;noticias&#39;</span><span class="p">,</span> <span class="n">__name__</span><span class="p">)</span>
+<span class="n">noticias_blueprint</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;noticias&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
 
 
 <span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/noticias/cadastro&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
@@ -1012,7 +1012,7 @@
         <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;cadastro_sucesso.html&#39;</span><span class="p">,</span>
                                <span class="n">id_nova_noticia</span><span class="o">=</span><span class="n">id_nova_noticia</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;cadastro.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Inserir nova noticia&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;cadastro.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;Inserir nova noticia&quot;</span><span class="p">)</span>
 
 
 <span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
@@ -1021,7 +1021,7 @@
     <span class="n">todas_as_noticias</span> <span class="o">=</span> <span class="n">noticias</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span>
                            <span class="n">noticias</span><span class="o">=</span><span class="n">todas_as_noticias</span><span class="p">,</span>
-                           <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Todas as notícias&quot;</span><span class="p">)</span>
+                           <span class="n">title</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;Todas as notícias&quot;</span><span class="p">)</span>
 
 
 <span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/noticia/&lt;int:noticia_id&gt;&quot;</span><span class="p">)</span>

@@ -81,11 +81,11 @@ System check identified some issues:
 
 WARNINGS:
 ?: &lt;span class="o"&gt;(&lt;/span&gt;1_7.W001&lt;span class="o"&gt;)&lt;/span&gt; MIDDLEWARE_CLASSES is not set.
-    HINT: Django 1.7 changed the global defaults &lt;span class="k"&gt;for&lt;/span&gt; the MIDDLEWARE_CLASSES. django.contrib.sessions.middleware.SessionMiddleware, django.contrib.auth.middleware.AuthenticationMiddleware, and django.contrib.messages.middleware.MessageMiddleware were removed from the defaults. If your project needs these middleware &lt;span class="k"&gt;then&lt;/span&gt; you should configure this setting.
+    HINT: Django &lt;span class="m"&gt;1&lt;/span&gt;.7 changed the global defaults &lt;span class="k"&gt;for&lt;/span&gt; the MIDDLEWARE_CLASSES. django.contrib.sessions.middleware.SessionMiddleware, django.contrib.auth.middleware.AuthenticationMiddleware, and django.contrib.messages.middleware.MessageMiddleware were removed from the defaults. If your project needs these middleware &lt;span class="k"&gt;then&lt;/span&gt; you should configure this setting.
 
 System check identified &lt;span class="m"&gt;1&lt;/span&gt; issue &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; silenced&lt;span class="o"&gt;)&lt;/span&gt;.
-September 26, &lt;span class="m"&gt;2015&lt;/span&gt; - 08:50:09
-Django version 1.8.5, using settings &lt;span class="s1"&gt;&amp;#39;helloworld&amp;#39;&lt;/span&gt;
+September &lt;span class="m"&gt;26&lt;/span&gt;, &lt;span class="m"&gt;2015&lt;/span&gt; - &lt;span class="m"&gt;08&lt;/span&gt;:50:09
+Django version &lt;span class="m"&gt;1&lt;/span&gt;.8.5, using settings &lt;span class="s1"&gt;&amp;#39;helloworld&amp;#39;&lt;/span&gt;
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 &lt;/pre&gt;&lt;/div&gt;
@@ -106,14 +106,14 @@ arquivo apontado pelo &lt;tt class="docutils literal"&gt;ROOT_URLCONF&lt;/tt&gt;
 &lt;p&gt;Abra o arquivo &lt;tt class="docutils literal"&gt;helloworld.py&lt;/tt&gt; e insira o seguinte código:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;SECRET_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;helloworld&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
-&lt;span class="n"&gt;ROOT_URLCONF&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt;
+&lt;span class="n"&gt;ROOT_URLCONF&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Estamos dizendo ao Django que nossas &lt;cite&gt;urls&lt;/cite&gt; estão nesse arquivo, para reconhecer as urls, o django procura
 pela variável &lt;tt class="docutils literal"&gt;urlpatterns&lt;/tt&gt;.&lt;/p&gt;
 &lt;p&gt;Logo, nosso arquivo deve ficar assim:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;SECRET_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;helloworld&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
-&lt;span class="n"&gt;ROOT_URLCONF&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt;
+&lt;span class="n"&gt;ROOT_URLCONF&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt;
 
 &lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -131,7 +131,7 @@ e precisa retornar alguma resposta para o navegador, vamos retornar um &lt;tt cl
 
 &lt;span class="n"&gt;SECRET_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;helloworld&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
-&lt;span class="n"&gt;ROOT_URLCONF&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt;
+&lt;span class="n"&gt;ROOT_URLCONF&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;hello_world&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Django na prática - Hello World!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -147,13 +147,13 @@ Precisamos dizer ao framework como essa view pode ser encontrada e para qual &lt
 
 &lt;span class="n"&gt;SECRET_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;helloworld&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
-&lt;span class="n"&gt;ROOT_URLCONF&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt;
+&lt;span class="n"&gt;ROOT_URLCONF&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;hello_world&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Django na prática - Hello World!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;r&amp;#39;^$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;hello_world&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;hello_world&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Dentro do &lt;tt class="docutils literal"&gt;urlpatterns&lt;/tt&gt; nós informamos quais são as urls disponíveis no nosso projeto.
@@ -916,15 +916,15 @@ Os dados são armazenados por padrão são em memória, porém você pode config
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Com o cliente aberto podemos escolher qual &lt;tt class="docutils literal"&gt;database&lt;/tt&gt; queremos trabalhar, utilizando o comando &lt;tt class="docutils literal"&gt;select&lt;/tt&gt;.
 Basta informar qual o índice da base que queremos utilizar.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;127.0.0.1:6379 &amp;gt; &lt;span class="k"&gt;select&lt;/span&gt; 1
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="m"&gt;127&lt;/span&gt;.0.0.1:6379 &amp;gt; &lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Nesse caso selecionamos a base de índice 1 para realizar as consultas.&lt;/p&gt;
 &lt;p&gt;Se quisermos consultar todas as &lt;tt class="docutils literal"&gt;keys&lt;/tt&gt; que estão armazenadas, basta utilizarmos o comando &lt;tt class="docutils literal"&gt;keys&lt;/tt&gt; com um parâmetro &amp;quot;*&amp;quot;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;127.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;1&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt; keys *
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="m"&gt;127&lt;/span&gt;.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt; keys *
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Se nossas &lt;tt class="docutils literal"&gt;keys&lt;/tt&gt; fossem nomeadas com o prefixo &amp;quot;cache&amp;quot; ou &amp;quot;session&amp;quot;, poderíamos consultá-las assim:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;127.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;1&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt; keys cache:*
-127.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;1&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt; keys session:*
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="m"&gt;127&lt;/span&gt;.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt; keys cache:*
+&lt;span class="m"&gt;127&lt;/span&gt;.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt; keys session:*
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Existe também a &lt;a class="reference external" href="http://redis.io/commands"&gt;lista completa de comandos&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -932,7 +932,7 @@ Basta informar qual o índice da base que queremos utilizar.&lt;/p&gt;
 &lt;div class="section" id="django"&gt;
 &lt;h2&gt;Django&lt;/h2&gt;
 &lt;p&gt;Utilizarei nesse exemplo versão &amp;quot;1.6.4&amp;quot; do Django.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install &lt;span class="nv"&gt;Django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.6.4
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install &lt;span class="nv"&gt;Django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.6.4
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Para instalar e configurar um ambiente para o Django basta seguir um dos tutoriais abaixo:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1032,10 +1032,10 @@ Basta adicionar &lt;tt class="docutils literal"&gt;django.contrib.sessions.middl
 &lt;p&gt;Para visualizar se o registro foi gravado com sucesso, execute os seguintes comandos:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt; redis-cli
 
-127.0.0.1:6379&amp;gt; &lt;span class="k"&gt;select&lt;/span&gt; 1
-127.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;1&lt;span class="o"&gt;]&lt;/span&gt;&amp;gt; keys *
+&lt;span class="m"&gt;127&lt;/span&gt;.0.0.1:6379&amp;gt; &lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="m"&gt;127&lt;/span&gt;.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&amp;gt; keys *
 
-1&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;:1:django.contrib.sessions.cachemnpnqzfl03iwugb99q9ls4w0k2r74gs2&amp;quot;&lt;/span&gt;
+&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;:1:django.contrib.sessions.cachemnpnqzfl03iwugb99q9ls4w0k2r74gs2&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Se tudo ocorreu como planejado, nesse momento temos as sessões e o cache sendo armazenados no Redis.&lt;/p&gt;
 &lt;p&gt;Espero que tenha gostado, até o próximo!&lt;/p&gt;
@@ -1175,28 +1175,28 @@ que desejamos digitar e depois simulamos o pressionamento do botão &amp;quot;En
 &lt;h3&gt;Trabalhando com múltiplas janelas&lt;/h3&gt;
 &lt;p&gt;E quando se abre uma nova janela? ou um alerta? O que fazemos?&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;window_handles&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;u&amp;#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;A instância &lt;tt class="docutils literal"&gt;firefox&lt;/tt&gt; possui um atributo chamado &lt;tt class="docutils literal"&gt;window_handles&lt;/tt&gt;, que é uma lista
 contendo um ID para cada janela aberta.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Nota&lt;/strong&gt;: O ID é criado para nova janela aberta e não para uma ABA ou um alerta javascript.&lt;/p&gt;
 &lt;p&gt;Quando você abrir uma nova janela, poderá perceber que é criado automaticamente um novo ID.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;window_handles&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;u&amp;#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;u&amp;#39;{2ce4de19-0902-48e3-a1cc-50f6378afd79}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;{2ce4de19-0902-48e3-a1cc-50f6378afd79}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Para alternar entre janelas, basta chamar o metódo &lt;tt class="docutils literal"&gt;switch_to_window&lt;/tt&gt; passando o ID da janela como parâmetro.&lt;/p&gt;
 &lt;p&gt;Imagine que temos uma janela aberta na página do Google e a outra na página da Python Club.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;window_handles&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;u&amp;#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;u&amp;#39;{2ce4de19-0902-48e3-a1cc-50f6378afd79}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;{2ce4de19-0902-48e3-a1cc-50f6378afd79}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Título da janela atual&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
-&lt;span class="s1"&gt;u&amp;#39;Google&amp;#39;&lt;/span&gt;
+&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Google&amp;#39;&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Trocar para a última janela da lista&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_window_handles&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;window_handles&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
-&lt;span class="s1"&gt;u&amp;#39;PythonClub //&amp;#39;&lt;/span&gt;
+&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;PythonClub //&amp;#39;&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Fechar a janela atual&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1204,11 +1204,11 @@ contendo um ID para cada janela aberta.&lt;/p&gt;
 &lt;span class="c1"&gt;# Voltar para a janela do Google&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_window_handles&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;window_handles&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
-&lt;span class="s1"&gt;u&amp;#39;Google&amp;#39;&lt;/span&gt;
+&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Google&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;E como saber o ID da janela atual? Simples!&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;current_window_handle&lt;/span&gt;
-&lt;span class="s1"&gt;u&amp;#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&amp;#39;&lt;/span&gt;
+&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Fácil não?!&lt;/p&gt;
 &lt;p&gt;E se abrir um alerta &lt;tt class="docutils literal"&gt;javascript&lt;/tt&gt;, como fazemos???&lt;/p&gt;
@@ -1226,7 +1226,7 @@ contendo um ID para cada janela aberta.&lt;/p&gt;
 
 &lt;span class="c1"&gt;# Se você quiser visualizar o texto que está presente no alerta&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;alerta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;
-&lt;span class="s1"&gt;u&amp;#39;Texto do alerta&amp;#39;&lt;/span&gt;
+&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Texto do alerta&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="trabalhando-com-frames"&gt;
@@ -1253,7 +1253,7 @@ contendo um ID para cada janela aberta.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Vamos tentar localizar o botão que está dentro do frame e será gerado uma Exception&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;lt;botao_id&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;NoSuchElementException&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Message&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;u&amp;#39;Unable to locate element: {&amp;quot;method&amp;quot;:&amp;quot;id&amp;quot;,&amp;quot;selector&amp;quot;:&amp;quot;&amp;lt;botao_id&amp;gt;&amp;quot;}&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;NoSuchElementException&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Message&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Unable to locate element: {&amp;quot;method&amp;quot;:&amp;quot;id&amp;quot;,&amp;quot;selector&amp;quot;:&amp;quot;&amp;lt;botao_id&amp;gt;&amp;quot;}&amp;#39;&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Precisamos antes encontrar o frame&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;frame&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;buttons&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1455,7 +1455,7 @@ para isso você precisa saber como encontrá-lo.&lt;/p&gt;
     &lt;span class="n"&gt;post_link&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;post_title&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_attribute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;href&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="c1"&gt;# printar informações&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;u&amp;quot;Títutlo: {titulo}, &lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;Link: {link}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Títutlo: {titulo}, &lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;Link: {link}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
       &lt;span class="n"&gt;titulo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;post_title&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
       &lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;post_link&lt;/span&gt;
   &lt;span class="p"&gt;)&lt;/span&gt;

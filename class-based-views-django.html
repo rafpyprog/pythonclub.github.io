@@ -154,7 +154,7 @@ no Django atualmente:</p>
 <span class="kn">from</span> <span class="nn">meuapp.views</span> <span class="kn">import</span> <span class="n">AboutView</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^about/&#39;</span><span class="p">,</span> <span class="n">AboutView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^about/&#39;</span><span class="p">,</span> <span class="n">AboutView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span>
 <span class="p">]</span>
 </pre></div>
 
@@ -229,7 +229,7 @@ esse mixin pega automaticamente os argumentos da URL que serviu a View.</p>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span>
     <span class="s1">&#39;&#39;</span><span class="p">,</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^say_hello/(?P&lt;name&gt;[\w_-]+)/$&#39;</span><span class="p">,</span> <span class="n">HelloView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;say_hello&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^say_hello/(?P&lt;name&gt;[\w_-]+)/$&#39;</span><span class="p">,</span> <span class="n">HelloView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;say_hello&#39;</span><span class="p">),</span>
 <span class="p">)</span>
 </pre></div>
 
@@ -255,8 +255,8 @@ uma requisição é:</p>
 <span class="kn">from</span> <span class="nn">article.views</span> <span class="kn">import</span> <span class="n">ArticleCounterRedirectView</span><span class="p">,</span> <span class="n">ArticleDetail</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^counter/(?P&lt;pk&gt;[0-9]+)/$&#39;</span><span class="p">,</span> <span class="n">ArticleCounterRedirectView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;article-counter&#39;</span><span class="p">),</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^details/(?P&lt;pk&gt;[0-9]+)/$&#39;</span><span class="p">,</span> <span class="n">ArticleDetail</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;article-detail&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^counter/(?P&lt;pk&gt;[0-9]+)/$&#39;</span><span class="p">,</span> <span class="n">ArticleCounterRedirectView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;article-counter&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^details/(?P&lt;pk&gt;[0-9]+)/$&#39;</span><span class="p">,</span> <span class="n">ArticleDetail</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;article-detail&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
 
@@ -379,7 +379,7 @@ renderizar esse artigo no template <code>detalhe_artigo.html</code> com o nome
 <span class="kn">from</span> <span class="nn">article.views</span> <span class="kn">import</span> <span class="n">ArticleDetailView</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^(?P&lt;titulo&gt;[-\w]+)/$&#39;</span><span class="p">,</span> <span class="n">ArticleDetailView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;article-detail&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(?P&lt;titulo&gt;[-\w]+)/$&#39;</span><span class="p">,</span> <span class="n">ArticleDetailView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;article-detail&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
 
@@ -583,9 +583,9 @@ mensagens de erro.</p>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="c1"># ...</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;author/add/$&#39;</span><span class="p">,</span> <span class="n">AuthorCreate</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;author_add&#39;</span><span class="p">),</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;author/(?P&lt;pk&gt;[0-9]+)/$&#39;</span><span class="p">,</span> <span class="n">AuthorUpdate</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;author_update&#39;</span><span class="p">),</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;author/(?P&lt;pk&gt;[0-9]+)/delete/$&#39;</span><span class="p">,</span> <span class="n">AuthorDelete</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;author_delete&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;author/add/$&#39;</span><span class="p">,</span> <span class="n">AuthorCreate</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;author_add&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;author/(?P&lt;pk&gt;[0-9]+)/$&#39;</span><span class="p">,</span> <span class="n">AuthorUpdate</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;author_update&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;author/(?P&lt;pk&gt;[0-9]+)/delete/$&#39;</span><span class="p">,</span> <span class="n">AuthorDelete</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;author_delete&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
 
@@ -625,7 +625,7 @@ data futura a não ser que o atributo <code>allow_future</code> seja definido co
 <span class="kn">from</span> <span class="nn">myapp.models</span> <span class="kn">import</span> <span class="n">Article</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^archive/$&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^archive/$&#39;</span><span class="p">,</span>
         <span class="n">ArchiveIndexView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">Article</span><span class="p">,</span> <span class="n">date_field</span><span class="o">=</span><span class="s2">&quot;pub_date&quot;</span><span class="p">),</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;article_archive&quot;</span><span class="p">),</span>
 <span class="p">]</span>
@@ -663,7 +663,7 @@ determinado ano.</p>
 <span class="kn">from</span> <span class="nn">myapp.views</span> <span class="kn">import</span> <span class="n">ArticleYearArchiveView</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^(?P&lt;year&gt;[0-9]{4})/$&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(?P&lt;year&gt;[0-9]{4})/$&#39;</span><span class="p">,</span>
         <span class="n">ArticleYearArchiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;article_year_archive&quot;</span><span class="p">),</span>
 <span class="p">]</span>
@@ -710,11 +710,11 @@ determinado mês.</p>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="c1"># Example: /2012/aug/</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[-\w]+)/$&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[-\w]+)/$&#39;</span><span class="p">,</span>
         <span class="n">ArticleMonthArchiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;archive_month&quot;</span><span class="p">),</span>
     <span class="c1"># Example: /2012/08/</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[0-9]+)/$&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[0-9]+)/$&#39;</span><span class="p">,</span>
         <span class="n">ArticleMonthArchiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">month_format</span><span class="o">=</span><span class="s1">&#39;%m&#39;</span><span class="p">),</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;archive_month_numeric&quot;</span><span class="p">),</span>
 <span class="p">]</span>
@@ -769,7 +769,7 @@ determinada semana.</p>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="c1"># Example: /2012/week/23/</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^(?P&lt;year&gt;[0-9]{4})/week/(?P&lt;week&gt;[0-9]+)/$&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(?P&lt;year&gt;[0-9]{4})/week/(?P&lt;week&gt;[0-9]+)/$&#39;</span><span class="p">,</span>
         <span class="n">ArticleWeekArchiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;archive_week&quot;</span><span class="p">),</span>
 <span class="p">]</span>
@@ -830,7 +830,7 @@ determinado dia.</p>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="c1"># Example: /2012/nov/10/</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[-\w]+)/(?P&lt;day&gt;[0-9]+)/$&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[-\w]+)/(?P&lt;day&gt;[0-9]+)/$&#39;</span><span class="p">,</span>
         <span class="n">ArticleDayArchiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;archive_day&quot;</span><span class="p">),</span>
 <span class="p">]</span>
@@ -867,7 +867,7 @@ determinar o ano/mês/dia.</p>
 <span class="kn">from</span> <span class="nn">myapp.views</span> <span class="kn">import</span> <span class="n">ArticleTodayArchiveView</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^today/$&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^today/$&#39;</span><span class="p">,</span>
         <span class="n">ArticleTodayArchiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;archive_today&quot;</span><span class="p">),</span>
 <span class="p">]</span>
@@ -882,7 +882,7 @@ junto com o pk/slug para determinar qual objeto deve ser obtido.</p>
 <span class="kn">from</span> <span class="nn">django.views.generic.dates</span> <span class="kn">import</span> <span class="n">DateDetailView</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[-\w]+)/(?P&lt;day&gt;[0-9]+)/(?P&lt;pk&gt;[0-9]+)/$&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[-\w]+)/(?P&lt;day&gt;[0-9]+)/(?P&lt;pk&gt;[0-9]+)/$&#39;</span><span class="p">,</span>
         <span class="n">DateDetailView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">Article</span><span class="p">,</span> <span class="n">date_field</span><span class="o">=</span><span class="s2">&quot;pub_date&quot;</span><span class="p">),</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;archive_date_detail&quot;</span><span class="p">),</span>
 <span class="p">]</span>

@@ -132,7 +132,7 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
 <div class="highlight"><pre><span></span><span class="c1">#calculadora.py</span>
 <span class="k">class</span> <span class="nc">Calculadora</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
 
@@ -150,7 +150,7 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
 </pre></div>
 <p>Note que definimos dois parâmetros <tt class="docutils literal">a</tt> e <tt class="docutils literal">b</tt> (dentro do parênteses). E o <tt class="docutils literal">self.a</tt> é um novo campo.</p>
 <p>Poderíamos definir</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">param1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">param2</span>
 </pre></div>
@@ -222,27 +222,27 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
     <span class="n">seq</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">objects</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nome</span><span class="p">,</span> <span class="n">idade</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nome</span><span class="p">,</span> <span class="n">idade</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nome</span> <span class="o">=</span> <span class="n">nome</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">idade</span> <span class="o">=</span> <span class="n">idade</span>
 
     <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">seq</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">seq</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">seq</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">seq</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nome</span>
 
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;&lt;{}: {} - {} - {}&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nome</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">idade</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;&lt;{}: {} - {} - {}&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nome</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">idade</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">all</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">objects</span>
+    <span class="k">def</span> <span class="nf">all</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">objects</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">u1</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s1">&#39;Regis&#39;</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span>
     <span class="n">u1</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
     <span class="n">u2</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s1">&#39;Fabio&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
@@ -267,7 +267,7 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
 <span class="n">objects</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 <p>Atribui um valor inicial aos atributos no momento da chamada do construtor.</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nome</span><span class="p">,</span> <span class="n">idade</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nome</span><span class="p">,</span> <span class="n">idade</span><span class="p">):</span>
 </pre></div>
 <p>Inicializando os atributos, <tt class="docutils literal">id</tt> começa com <tt class="docutils literal">None</tt>, pois a instância foi criada mas ainda não foi salva.</p>
 <div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">None</span>
@@ -278,29 +278,29 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </pre></div>
 <p><tt class="docutils literal">self.__class__</tt> acessa a classe que criou a instância, assim é possível acessar o atributo de <tt class="docutils literal">seq</tt>. Aqui poderia ser usado <tt class="docutils literal">User.seq</tt>, porém caso <tt class="docutils literal">User</tt> fosse herdado, o <tt class="docutils literal">seq</tt> seria o de <tt class="docutils literal">User</tt> e não da classe filha.</p>
-<div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">seq</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">seq</span>
+<div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">seq</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">seq</span>
 </pre></div>
 <p>Da mesma forma que acessamos <tt class="docutils literal">seq</tt>, acessamos objects e é feito um <tt class="docutils literal">append</tt> com a instância.</p>
-<div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </pre></div>
 <p>Retorna uma representação do objeto como str, usado em conversões para string. Exemplo: <tt class="docutils literal">str(my_user), print my_user</tt>.</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nome</span>
 </pre></div>
 <p>Retorna uma representação do objeto usada para outros objetos. Exemplo: quando é convertida uma lista de user para string.</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </pre></div>
 <p><tt class="docutils literal">self.__class__.__name__</tt> é a forma de acessar o nome da classe que gerou a instância.</p>
-<div class="highlight"><pre><span></span><span class="k">return</span> <span class="s1">&#39;&lt;{}: {} - {} - {}&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nome</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">idade</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="k">return</span> <span class="s1">&#39;&lt;{}: {} - {} - {}&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nome</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">idade</span><span class="p">)</span>
 </pre></div>
 <p>Class method usado para acessar todas as instâncias salvas (que chamaram o método <tt class="docutils literal">save</tt>). Aqui usamos um <tt class="docutils literal">&#64;classmethod</tt>, pois faz mais sentido ser um método de classe do que de instância, pois estamos retornando informações da classe e não de uma instância isolada.</p>
 <div class="highlight"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">all</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">objects</span>
+<span class="k">def</span> <span class="nf">all</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">objects</span>
 </pre></div>
 <p>Demonstração do uso da classe.</p>
-<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
         <span class="n">u1</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s1">&#39;Regis&#39;</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span>
         <span class="n">u2</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s1">&#39;Fabio&#39;</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
         <span class="k">print</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>

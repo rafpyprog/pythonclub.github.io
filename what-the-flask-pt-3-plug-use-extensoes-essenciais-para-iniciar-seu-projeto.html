@@ -211,7 +211,7 @@ Flask-Bootstrap
 
 <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
     <span class="n">instance_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_instance&quot;</span> <span class="o">%</span> <span class="n">mode</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_instance&quot;</span> <span class="o">%</span> <span class="n">mode</span>
     <span class="p">)</span>
 
     <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">,</span>
@@ -237,7 +237,7 @@ Flask-Bootstrap
 <p>As extensões Flask seguem dois padrões de inicialização: Imediato e Lazy, é recomendado que toda extensão siga este protocolo.</p>
 <p>Inicialização imediata:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask_nome_da_extensao</span> <span class="kn">import</span> <span class="n">Extensao</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="n">Extensao</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 </pre></div>
 
@@ -245,7 +245,7 @@ Flask-Bootstrap
 <p>Da forma acima sempre importamos uma classe com o nome da extensao e então passamos o nosso <strong>app</strong> como parametro na inicialiação da extensão. Assim durante o init da extensão ela poderá injetar templates, modificar rotas e adicionar configs no app que foi passado como parametro.</p>
 <p>Inicialização Lazy:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask_nome_da_extensao</span> <span class="kn">import</span> <span class="n">Extensao</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="n">extensao</span> <span class="o">=</span> <span class="n">Extensao</span><span class="p">()</span>  <span class="c1"># note que não é passado nada como parametro!</span>
 
 
@@ -383,7 +383,7 @@ Flask-Bootstrap
 <p>Se você precisar de ajuda ou estiver usando um sistema operacional alternativo pode seguir as <a href="http://docs.docker.com/linux/started/">instruções do site oficial</a></p>
 <h4>Executando um container MongoDB</h4>
 <p>No DockerHub está disponível a imagem oficial do Mongo, basta executar o comando abaixo para ter o Mongo rodando em um container.</p>
-<div class="highlight"><pre><span></span><span class="x">docker run -d -v </span><span class="p">$</span><span class="nv">PWD</span><span class="x">/mongodata:/data/db -p 27017:27017 mongo</span>
+<div class="highlight"><pre><span></span>docker run -d -v $PWD/mongodata:/data/db -p 27017:27017 mongo
 </pre></div>
 
 
@@ -463,7 +463,7 @@ Flask-Bootstrap
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="n">Noticia</span>
 
-<span class="n">noticias_blueprint</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;noticias&#39;</span><span class="p">,</span> <span class="n">__name__</span><span class="p">)</span>
+<span class="n">noticias_blueprint</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;noticias&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
 
 
 <span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/noticias/cadastro&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
@@ -479,7 +479,7 @@ Flask-Bootstrap
         <span class="n">nova_noticia</span> <span class="o">=</span> <span class="n">Noticia</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">dados_do_formulario</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;cadastro_sucesso.html&#39;</span><span class="p">,</span>
                                <span class="n">id_nova_noticia</span><span class="o">=</span><span class="n">nova_noticia</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;cadastro.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Inserir nova noticia&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;cadastro.html&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;Inserir nova noticia&quot;</span><span class="p">)</span>
 
 
 <span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
@@ -487,7 +487,7 @@ Flask-Bootstrap
     <span class="n">todas_as_noticias</span> <span class="o">=</span> <span class="n">Noticia</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span>
                            <span class="n">noticias</span><span class="o">=</span><span class="n">todas_as_noticias</span><span class="p">,</span>
-                           <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Todas as notícias&quot;</span><span class="p">)</span>
+                           <span class="n">title</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;Todas as notícias&quot;</span><span class="p">)</span>
 
 
 <span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/noticia/&lt;noticia_id&gt;&quot;</span><span class="p">)</span>
@@ -525,7 +525,7 @@ Flask-Bootstrap
 
 <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
     <span class="n">instance_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_instance&quot;</span> <span class="o">%</span> <span class="n">mode</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_instance&quot;</span> <span class="o">%</span> <span class="n">mode</span>
     <span class="p">)</span>
 
     <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">,</span>
@@ -612,8 +612,8 @@ Flask-Security
     <span class="n">description</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">createrole</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="k">def</span> <span class="nf">createrole</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
             <span class="n">description</span><span class="o">=</span><span class="n">description</span>
         <span class="p">)</span>
@@ -635,10 +635,10 @@ Flask-Security
     <span class="n">login_count</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">IntField</span><span class="p">()</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">createuser</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">createuser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span>
                    <span class="n">active</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">roles</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                    <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
             <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span>
             <span class="n">password</span><span class="o">=</span><span class="n">encrypt_password</span><span class="p">(</span><span class="n">password</span><span class="p">),</span>
@@ -681,7 +681,7 @@ Flask-Security
 
 <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
     <span class="n">instance_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_instance&quot;</span> <span class="o">%</span> <span class="n">mode</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_instance&quot;</span> <span class="o">%</span> <span class="n">mode</span>
     <span class="p">)</span>
 
     <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">,</span>
@@ -718,7 +718,7 @@ Flask-Security
 <span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="n">Noticia</span>
 <span class="kn">from</span> <span class="nn">flask_security</span> <span class="kn">import</span> <span class="n">login_required</span>  <span class="c1"># decorator</span>
 
-<span class="n">noticias_blueprint</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;noticias&#39;</span><span class="p">,</span> <span class="n">__name__</span><span class="p">)</span>
+<span class="n">noticias_blueprint</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;noticias&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
 
 
 <span class="nd">@noticias_blueprint.route</span><span class="p">(</span><span class="s2">&quot;/noticias/cadastro&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
@@ -866,7 +866,7 @@ Flask-Admin
 
 <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
     <span class="n">instance_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_instance&quot;</span> <span class="o">%</span> <span class="n">mode</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_instance&quot;</span> <span class="o">%</span> <span class="n">mode</span>
     <span class="p">)</span>
 
     <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">,</span>
@@ -1064,7 +1064,7 @@ Flask-Admin
     <span class="n">todas_as_noticias</span> <span class="o">=</span> <span class="n">Noticia</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span>
                            <span class="n">noticias</span><span class="o">=</span><span class="n">todas_as_noticias</span><span class="p">,</span>
-                           <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Todas as notícias&quot;</span><span class="p">)</span>
+                           <span class="n">title</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;Todas as notícias&quot;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -1180,7 +1180,7 @@ flask-cache
 
 <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
     <span class="n">instance_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_instance&quot;</span> <span class="o">%</span> <span class="n">mode</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_instance&quot;</span> <span class="o">%</span> <span class="n">mode</span>
     <span class="p">)</span>
 
     <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">,</span>
@@ -1227,7 +1227,7 @@ flask-cache
     <span class="n">todas_as_noticias</span> <span class="o">=</span> <span class="n">Noticia</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span>
                            <span class="n">noticias</span><span class="o">=</span><span class="n">todas_as_noticias</span><span class="p">,</span>
-                           <span class="n">title</span><span class="o">=</span><span class="s2">u&quot;Todas as notícias&quot;</span><span class="p">)</span>
+                           <span class="n">title</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;Todas as notícias&quot;</span><span class="p">)</span>
 </pre></div>
 
 

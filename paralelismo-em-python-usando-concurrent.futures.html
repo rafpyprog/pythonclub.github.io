@@ -187,40 +187,11 @@ e</li>
 
 
 <p>Trazendo os seguintes resultados:</p>
-<table>
-<thead>
-<tr>
-<th align="left">Função</th>
-<th>#</th>
-<th align="center">Execução</th>
-<th>#</th>
-<th align="right">Tempo gasto</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><code>increase_price_serial</code></td>
-<td>#</td>
-<td align="center">Sequencial</td>
-<td>#</td>
-<td align="right">2.2e-05 secs</td>
-</tr>
-<tr>
-<td align="left"><code>increase_price_with_threads</code></td>
-<td>#</td>
-<td align="center">Concorrente</td>
-<td>#</td>
-<td align="right">0.001646 secs</td>
-</tr>
-<tr>
-<td align="left"><code>increase_price_with_subprocess</code></td>
-<td>#</td>
-<td align="center">Paralela</td>
-<td>#</td>
-<td align="right">0.016269  secs</td>
-</tr>
-</tbody>
-</table>
+<p>|Função                           |#|Execução            |#|Tempo gasto          |
+|:--------------------------------|#|:------------------:|#|--------------------:|
+| <code>increase_price_serial</code>         |#|Sequencial          |#|  2.2e-05 secs       |
+| <code>increase_price_with_threads</code>   |#|Concorrente         |#|    0.001646 secs    |
+| <code>increase_price_with_subprocess</code> |#|Paralela            |#|  0.016269  secs     |</p>
 <p>Veja que <code>increase_price_with_subproces</code>, mesmo sendo executada paralelamente, levou mais tempo que <code>increase_price_serial</code>. Isso ocorreu pois a função <code>increase_price_by_10_percent</code>, que é utilizada para fazer operações  nos itens da lista, é uma função que não exige muito trabalho do processador. Desta forma, o  <code>ProcessPoolExecutor</code> leva mais tempo fazendo o processo de paralelização propriamente dito do que realmente executando as operações de cálculo.</p>
 <p>Vamos criar neste momento uma função que realize operações mais complexas:</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">increase_price_crazy</span><span class="p">(</span><span class="n">price</span><span class="p">):</span>
@@ -246,40 +217,11 @@ e</li>
 
 
 <p>Obtendo o reultado abaixo:</p>
-<table>
-<thead>
-<tr>
-<th align="left">Função</th>
-<th>#</th>
-<th align="center">Execução</th>
-<th>#</th>
-<th align="right">Tempo gasto</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><code>increase_price_serial</code></td>
-<td>#</td>
-<td align="center">Sequencial</td>
-<td>#</td>
-<td align="right">4.10181 secs</td>
-</tr>
-<tr>
-<td align="left"><code>increase_price_with_threads</code></td>
-<td>#</td>
-<td align="center">Concorrente</td>
-<td>#</td>
-<td align="right">4.566346 secs</td>
-</tr>
-<tr>
-<td align="left"><code>increase_price_with_subprocess</code></td>
-<td>#</td>
-<td align="center">Paralela</td>
-<td>#</td>
-<td align="right">2.082025 secs</td>
-</tr>
-</tbody>
-</table>
+<p>|Função                           |#|Execução            |#|Tempo gasto          |
+|:--------------------------------|#|:------------------:|#|--------------------:|
+| <code>increase_price_serial</code>         |#|Sequencial          |#|  4.10181 secs       |
+| <code>increase_price_with_threads</code>   |#|Concorrente         |#|  4.566346 secs      |
+| <code>increase_price_with_subprocess</code> |#|Paralela            |#|  2.082025 secs      |</p>
 <blockquote>
 <p><strong>Nota:</strong> os valores de tempo gasto vão variar de acordo com o hardware disponível.</p>
 </blockquote>

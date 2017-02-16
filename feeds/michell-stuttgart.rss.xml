@@ -76,7 +76,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Utilizando um algoritmo genérico, podemos reslo o problema da seguinte maneira:&lt;/p&gt;
+&lt;p&gt;Utilizando um algoritmo genérico, podemos resolver o problema da seguinte maneira:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;novo_dicionario&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
 
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;chave&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;valor&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dicionario&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -182,7 +182,7 @@ index-servers &lt;span class="o"&gt;=&lt;/span&gt;
     &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Michell Stuttgart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="n"&gt;author_email&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;michellstut@gmail.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="n"&gt;keywords&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tutorial test unittest codigoavulso&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;u&amp;#39;Tutorial de teste unitário em Python para o blog Código Avulso&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Tutorial de teste unitário em Python para o blog Código Avulso&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="n"&gt;packages&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
     &lt;span class="n"&gt;install_requires&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[],&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
@@ -218,7 +218,7 @@ reading manifest file &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutoria
 writing manifest file &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
 running check
 Registering codigo-avulso-test-tutorial to https://testpypi.python.org/pypi
-Server response &lt;span class="o"&gt;(&lt;/span&gt;200&lt;span class="o"&gt;)&lt;/span&gt;: OK
+Server response &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;200&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;: OK
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -246,7 +246,7 @@ Creating tar archive
 removing &lt;span class="s1"&gt;&amp;#39;codigo-avulso-test-tutorial-0.1.1&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;and everything under it&lt;span class="o"&gt;)&lt;/span&gt;
 running upload
 Submitting dist/codigo-avulso-test-tutorial-0.1.1.tar.gz to https://testpypi.python.org/pypi
-Server response &lt;span class="o"&gt;(&lt;/span&gt;200&lt;span class="o"&gt;)&lt;/span&gt;: OK
+Server response &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;200&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;: OK
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -308,12 +308,12 @@ Server response &lt;span class="o"&gt;(&lt;/span&gt;200&lt;span class="o"&gt;)&l
 &lt;p&gt;Um relatório com a porcentagem de cobertura de testes (entre outras informações) de cada arquivo de código fonte será exibido no terminal.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Name                                               Stmts   Miss  Cover
 ----------------------------------------------------------------------
-codigo_avulso_test_tutorial/__init__.py                &lt;span class="m"&gt;0&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt;   100%
-codigo_avulso_test_tutorial/circulo.py                 &lt;span class="m"&gt;9&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt;   100%
-codigo_avulso_test_tutorial/figura_geometrica.py       &lt;span class="m"&gt;5&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt;   100%
-codigo_avulso_test_tutorial/quadrado.py                &lt;span class="m"&gt;8&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt;   100%
+codigo_avulso_test_tutorial/__init__.py                &lt;span class="m"&gt;0&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt;   &lt;span class="m"&gt;100&lt;/span&gt;%
+codigo_avulso_test_tutorial/circulo.py                 &lt;span class="m"&gt;9&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt;   &lt;span class="m"&gt;100&lt;/span&gt;%
+codigo_avulso_test_tutorial/figura_geometrica.py       &lt;span class="m"&gt;5&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt;   &lt;span class="m"&gt;100&lt;/span&gt;%
+codigo_avulso_test_tutorial/quadrado.py                &lt;span class="m"&gt;8&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt;   &lt;span class="m"&gt;100&lt;/span&gt;%
 ----------------------------------------------------------------------
-TOTAL                                                 &lt;span class="m"&gt;22&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt;   100%
+TOTAL                                                 &lt;span class="m"&gt;22&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt;   &lt;span class="m"&gt;100&lt;/span&gt;%
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -878,7 +878,7 @@ OK
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Quadrado&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;FiguraGeometrica&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
       &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lado&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
 
     &lt;span class="c1"&gt;# Retorna a area do quadrado&lt;/span&gt;
@@ -961,7 +961,7 @@ OK
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Circulo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;FiguraGeometrica&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
       &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raio&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
 
     &lt;span class="c1"&gt;# Retorna a area do circulo&lt;/span&gt;

@@ -173,7 +173,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">fatorial</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="mi">120</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">fatorial</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span> <span class="mi">720</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
 
@@ -240,7 +240,7 @@ OK
         <span class="n">response</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
 
@@ -272,7 +272,7 @@ OK
     <span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">meu_web_app</span>
   <span class="n">File</span> <span class="s2">&quot;/Users/cuducos/Desktop/flask/app.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">3</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
     <span class="n">meu_web_app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">()</span>
-<span class="ne">TypeError</span><span class="p">:</span> <span class="n">__init__</span><span class="p">()</span> <span class="n">missing</span> <span class="mi">1</span> <span class="n">required</span> <span class="n">positional</span> <span class="n">argument</span><span class="p">:</span> <span class="s1">&#39;import_name&#39;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="fm">__init__</span><span class="p">()</span> <span class="n">missing</span> <span class="mi">1</span> <span class="n">required</span> <span class="n">positional</span> <span class="n">argument</span><span class="p">:</span> <span class="s1">&#39;import_name&#39;</span>
 </pre></div>
 
 
@@ -357,7 +357,7 @@ OK
 <h3>Conteúdo como resposta</h3>
 <p>Temos um servidor web funcionando, mas não vemos nada na nossa aplicação web. Podemos verificar isso em três passos rápidos:</p>
 <p>Primeiro adicionamos essas linhas ao <code>app.py</code> para que, quando executarmos o <code>app.py</code> (mas não quando ele for importado no <code>tests.py</code>), a aplicação web seja iniciada:</p>
-<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">meu_web_app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 

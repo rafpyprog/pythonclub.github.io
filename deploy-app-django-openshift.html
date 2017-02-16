@@ -178,7 +178,7 @@ Durante o processo de <strong>deploy</strong> o Openshift automaticamente execut
 
 
 <p>Crie um virtualenv para testar se o <strong>requirements.txt</strong> está correto:</p>
-<div class="highlight"><pre><span></span>pyenv virtualenv 2.7.8 openshift
+<div class="highlight"><pre><span></span>pyenv virtualenv <span class="m">2</span>.7.8 openshift
 pyenv activate openshift
 pip install -r requirements.txt
 </pre></div>
@@ -302,7 +302,7 @@ touch wsgi/static/.gitkeep
 <p>Vamos criar uma <em>view</em> básica somente para testar nosso projeto.</p>
 <p>Adicione a url abaixo no arquivo <em>openshift/openshift/urls.py</em>:</p>
 <div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^$&#39;</span><span class="p">,</span> <span class="s1">&#39;exemplo.views.home&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^$&#39;</span><span class="p">,</span> <span class="s1">&#39;exemplo.views.home&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">),</span>
     <span class="o">...</span>
 </pre></div>
 

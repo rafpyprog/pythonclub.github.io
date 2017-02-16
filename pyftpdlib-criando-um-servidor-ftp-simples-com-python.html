@@ -202,26 +202,26 @@ sudo pip install pyftpdlib
 </pre></div>
 <p>Após executar o comando acima, você obterá uma saida similar a esta:</p>
 <div class="highlight"><pre><span></span>fabio@luzfcb:~$ python -m pyftpdlib
-<span class="o">[</span>I 14-06-11 13:17:38<span class="o">]</span> &gt;&gt;&gt; starting FTP server on 0.0.0.0:2121, <span class="nv">pid</span><span class="o">=</span><span class="m">21884</span> <span class="o">&lt;&lt;&lt;</span>
-<span class="o">[</span>I 14-06-11 13:17:38<span class="o">]</span> poller: &lt;class <span class="s1">&#39;pyftpdlib.ioloop.Epoll&#39;</span>&gt;
-<span class="o">[</span>I 14-06-11 13:17:38<span class="o">]</span> masquerade <span class="o">(</span>NAT<span class="o">)</span> address: None
-<span class="o">[</span>I 14-06-11 13:17:38<span class="o">]</span> passive ports: None
-<span class="o">[</span>I 14-06-11 13:17:38<span class="o">]</span> use sendfile<span class="o">(</span>2<span class="o">)</span>: False
+<span class="o">[</span>I <span class="m">14</span>-06-11 <span class="m">13</span>:17:38<span class="o">]</span> &gt;&gt;&gt; starting FTP server on <span class="m">0</span>.0.0.0:2121, <span class="nv">pid</span><span class="o">=</span><span class="m">21884</span> <span class="o">&lt;&lt;&lt;</span>
+<span class="o">[</span>I <span class="m">14</span>-06-11 <span class="m">13</span>:17:38<span class="o">]</span> poller: &lt;class <span class="s1">&#39;pyftpdlib.ioloop.Epoll&#39;</span>&gt;
+<span class="o">[</span>I <span class="m">14</span>-06-11 <span class="m">13</span>:17:38<span class="o">]</span> masquerade <span class="o">(</span>NAT<span class="o">)</span> address: None
+<span class="o">[</span>I <span class="m">14</span>-06-11 <span class="m">13</span>:17:38<span class="o">]</span> passive ports: None
+<span class="o">[</span>I <span class="m">14</span>-06-11 <span class="m">13</span>:17:38<span class="o">]</span> use sendfile<span class="o">(</span><span class="m">2</span><span class="o">)</span>: False
 </pre></div>
 <p>Para visualizar localmente, abra o navegador e acesse o endereço <tt class="docutils literal"><span class="pre">ftp://127.0.0.1:2121</span></tt> ou <tt class="docutils literal"><span class="pre">ftp://endereço_ip_ou_hostname_atual_do_seu_servidor:2121</span></tt></p>
 <p>Você vai obter algo como:</p>
 <img alt="acessando o servidor FTP localmente pelo navegador" src="images/luzfcb/ftp_001.png" />
 <p>No terminal, você poderá visualizar o log:</p>
 <div class="highlight"><pre><span></span>fabio@luzfcb:~$ python -m pyftpdlib
-<span class="o">[</span>I 14-06-11 13:17:38<span class="o">]</span> &gt;&gt;&gt; starting FTP server on 0.0.0.0:2121, <span class="nv">pid</span><span class="o">=</span><span class="m">21884</span> <span class="o">&lt;&lt;&lt;</span>
-<span class="o">[</span>I 14-06-11 13:17:38<span class="o">]</span> poller: &lt;class <span class="s1">&#39;pyftpdlib.ioloop.Epoll&#39;</span>&gt;
-<span class="o">[</span>I 14-06-11 13:17:38<span class="o">]</span> masquerade <span class="o">(</span>NAT<span class="o">)</span> address: None
-<span class="o">[</span>I 14-06-11 13:17:38<span class="o">]</span> passive ports: None
-<span class="o">[</span>I 14-06-11 13:17:38<span class="o">]</span> use sendfile<span class="o">(</span>2<span class="o">)</span>: False
-<span class="o">[</span>I 14-06-11 13:22:28<span class="o">]</span> 127.0.0.1:41154-<span class="o">[]</span> FTP session opened <span class="o">(</span>connect<span class="o">)</span>
-<span class="o">[</span>I 14-06-11 13:22:28<span class="o">]</span> 127.0.0.1:41154-<span class="o">[</span>anonymous<span class="o">]</span> USER <span class="s1">&#39;anonymous&#39;</span> logged in.
-<span class="o">[</span>I 14-06-11 13:22:28<span class="o">]</span> 127.0.0.1:41154-<span class="o">[</span>anonymous<span class="o">]</span> CWD /home/luzfcb/pythonclub.github.io 250
-<span class="o">[</span>I 14-06-11 13:22:28<span class="o">]</span> 127.0.0.1:41154-<span class="o">[</span>anonymous<span class="o">]</span> FTP session closed <span class="o">(</span>disconnect
+<span class="o">[</span>I <span class="m">14</span>-06-11 <span class="m">13</span>:17:38<span class="o">]</span> &gt;&gt;&gt; starting FTP server on <span class="m">0</span>.0.0.0:2121, <span class="nv">pid</span><span class="o">=</span><span class="m">21884</span> <span class="o">&lt;&lt;&lt;</span>
+<span class="o">[</span>I <span class="m">14</span>-06-11 <span class="m">13</span>:17:38<span class="o">]</span> poller: &lt;class <span class="s1">&#39;pyftpdlib.ioloop.Epoll&#39;</span>&gt;
+<span class="o">[</span>I <span class="m">14</span>-06-11 <span class="m">13</span>:17:38<span class="o">]</span> masquerade <span class="o">(</span>NAT<span class="o">)</span> address: None
+<span class="o">[</span>I <span class="m">14</span>-06-11 <span class="m">13</span>:17:38<span class="o">]</span> passive ports: None
+<span class="o">[</span>I <span class="m">14</span>-06-11 <span class="m">13</span>:17:38<span class="o">]</span> use sendfile<span class="o">(</span><span class="m">2</span><span class="o">)</span>: False
+<span class="o">[</span>I <span class="m">14</span>-06-11 <span class="m">13</span>:22:28<span class="o">]</span> <span class="m">127</span>.0.0.1:41154-<span class="o">[]</span> FTP session opened <span class="o">(</span>connect<span class="o">)</span>
+<span class="o">[</span>I <span class="m">14</span>-06-11 <span class="m">13</span>:22:28<span class="o">]</span> <span class="m">127</span>.0.0.1:41154-<span class="o">[</span>anonymous<span class="o">]</span> USER <span class="s1">&#39;anonymous&#39;</span> logged in.
+<span class="o">[</span>I <span class="m">14</span>-06-11 <span class="m">13</span>:22:28<span class="o">]</span> <span class="m">127</span>.0.0.1:41154-<span class="o">[</span>anonymous<span class="o">]</span> CWD /home/luzfcb/pythonclub.github.io <span class="m">250</span>
+<span class="o">[</span>I <span class="m">14</span>-06-11 <span class="m">13</span>:22:28<span class="o">]</span> <span class="m">127</span>.0.0.1:41154-<span class="o">[</span>anonymous<span class="o">]</span> FTP session closed <span class="o">(</span>disconnect
 </pre></div>
 <p>Você tambem pode usar algumas opções para modificar como o <tt class="docutils literal">pyftpdlib</tt> é iniciado.</p>
 <p>Para ver estas opção, execute:</p>
@@ -258,12 +258,12 @@ Options:
      activate a more verbose logging
 </pre></div>
 <p>Por exemplo, poderiamos mudar a porta padrão</p>
-<div class="highlight"><pre><span></span>python -m pyftpdlib -p 8080
+<div class="highlight"><pre><span></span>python -m pyftpdlib -p <span class="m">8080</span>
 </pre></div>
 <p>Se você quiser iniciar o servidor FTP de modo que quem for acessar não necessite informar a porta, ou seja
 ele poderá acessar o servidor em um endereço similar a <tt class="docutils literal"><span class="pre">ftp://127.0.0.1</span></tt> ou <tt class="docutils literal"><span class="pre">ftp://endereço_ip_ou_hostname_atual_do_seu_servidor</span></tt>,
 é necessario executá-lo como super-usuário, informando a porta 21, que é a padrão do protocolo, conforme exemplificado abaixo.</p>
-<div class="highlight"><pre><span></span>sudo python -m pyftpdlib -p 21
+<div class="highlight"><pre><span></span>sudo python -m pyftpdlib -p <span class="m">21</span>
 </pre></div>
 </div>
 <div class="section" id="modo-customizado-por-voce">
@@ -304,7 +304,7 @@ ele poderá acessar o servidor em um endereço similar a <tt class="docutils lit
     <span class="n">server</span> <span class="o">=</span> <span class="n">MultiprocessFTPServer</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span> <span class="n">handler</span><span class="p">)</span>
     <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>

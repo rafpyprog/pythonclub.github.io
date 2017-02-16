@@ -336,7 +336,7 @@ Clique nesse item e salve na pasta que desejar com um nome sucinto e seguido da 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">([],</span> <span class="bp">self</span><span class="o">.</span><span class="n">verificationErrors</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
 <p>Veja o mesmo código gerado pela exportação do teste para Java (73 linhas):</p>
@@ -345,8 +345,8 @@ Clique nesse item e salve na pasta que desejar com um nome sucinto e seguido da 
 <span class="kn">import</span> <span class="nn">java.util.regex.Pattern</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.concurrent.TimeUnit</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.junit.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">static</span> <span class="n">org</span><span class="o">.</span><span class="na">junit</span><span class="o">.</span><span class="na">Assert</span><span class="o">.*;</span>
-<span class="kn">import</span> <span class="nn">static</span> <span class="n">org</span><span class="o">.</span><span class="na">hamcrest</span><span class="o">.</span><span class="na">CoreMatchers</span><span class="o">.*;</span>
+<span class="kn">import static</span> <span class="nn">org.junit.Assert.*</span><span class="o">;</span>
+<span class="kn">import static</span> <span class="nn">org.hamcrest.CoreMatchers.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.openqa.selenium.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.openqa.selenium.firefox.FirefoxDriver</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.openqa.selenium.support.ui.Select</span><span class="o">;</span>

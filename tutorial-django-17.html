@@ -145,7 +145,7 @@ $ sudo apt-get install -y virtualenv
 </div>
 <div class="section" id="instalando-django-1-7-django-bootstrap3">
 <h2>Instalando Django 1.7 + django-bootstrap3</h2>
-<div class="highlight"><pre><span></span>$ pip install <span class="nv">django</span><span class="o">==</span>1.7.2 django-bootstrap3
+<div class="highlight"><pre><span></span>$ pip install <span class="nv">django</span><span class="o">==</span><span class="m">1</span>.7.2 django-bootstrap3
 </pre></div>
 <p><em>Dica</em>: se você digitar <tt class="docutils literal">pip freeze</tt> você verá a versão dos programas instalados.</p>
 </div>
@@ -226,7 +226,7 @@ $ sudo apt-get install -y virtualenv
         <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;band&#39;</span>
         <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s1">&#39;bands&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 
     <span class="c1"># count members by band</span>
@@ -236,7 +236,7 @@ $ sudo apt-get install -y virtualenv
 
     <span class="c1"># retorna a url no formato /bands/1</span>
     <span class="k">def</span> <span class="nf">get_band_detail_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">u&quot;/bands/</span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">return</span> <span class="sa">u</span><span class="s2">&quot;/bands/</span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span>
 
 
 <span class="k">class</span> <span class="nc">Member</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -260,7 +260,7 @@ $ sudo apt-get install -y virtualenv
         <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;member&#39;</span>
         <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s1">&#39;members&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 </pre></div>
 </div>
@@ -273,15 +273,15 @@ $ sudo apt-get install -y virtualenv
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span>
     <span class="s1">&#39;mysite.bands.views&#39;</span><span class="p">,</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^$&#39;</span><span class="p">,</span> <span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">),</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^bands/$&#39;</span><span class="p">,</span> <span class="s1">&#39;band_listing&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;bands&#39;</span><span class="p">),</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^bands/(?P&lt;pk&gt;\d+)/$&#39;</span><span class="p">,</span> <span class="s1">&#39;band_detail&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;band_detail&#39;</span><span class="p">),</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^bandform/$&#39;</span><span class="p">,</span> <span class="n">BandForm</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;band_form&#39;</span><span class="p">),</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^memberform/$&#39;</span><span class="p">,</span> <span class="n">MemberForm</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;member_form&#39;</span><span class="p">),</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^contact/$&#39;</span><span class="p">,</span> <span class="s1">&#39;band_contact&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;contact&#39;</span><span class="p">),</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^protected/$&#39;</span><span class="p">,</span> <span class="s1">&#39;protected_view&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;protected&#39;</span><span class="p">),</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^accounts/login/$&#39;</span><span class="p">,</span> <span class="s1">&#39;message&#39;</span><span class="p">),</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^$&#39;</span><span class="p">,</span> <span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^bands/$&#39;</span><span class="p">,</span> <span class="s1">&#39;band_listing&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;bands&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^bands/(?P&lt;pk&gt;\d+)/$&#39;</span><span class="p">,</span> <span class="s1">&#39;band_detail&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;band_detail&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^bandform/$&#39;</span><span class="p">,</span> <span class="n">BandForm</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;band_form&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^memberform/$&#39;</span><span class="p">,</span> <span class="n">MemberForm</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;member_form&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^contact/$&#39;</span><span class="p">,</span> <span class="s1">&#39;band_contact&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;contact&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^protected/$&#39;</span><span class="p">,</span> <span class="s1">&#39;protected_view&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;protected&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^accounts/login/$&#39;</span><span class="p">,</span> <span class="s1">&#39;message&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span><span class="p">),</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -429,7 +429,7 @@ Vou comentar apenas os comandos que se destacam.</blockquote>
 <div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;navbar-brand&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;home&#39; %}&quot;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </pre></div>
 <p>onde 'home' é o nome que foi dado ao link lá em urls.py.</p>
-<div class="highlight"><pre><span></span><span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^$&#39;</span><span class="p">,</span> <span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">),</span>
+<div class="highlight"><pre><span></span><span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^$&#39;</span><span class="p">,</span> <span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">),</span>
 </pre></div>
 <p><strong>base.html</strong></p>
 <p>Note que em <strong>base</strong> carregamos o <a class="reference external" href="http://django-bootstrap3.readthedocs.org/en/latest/">bootstrap3</a> com o comando</p>

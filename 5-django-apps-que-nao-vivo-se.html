@@ -130,10 +130,10 @@ pip install coverage
 <p>O coverage mostra a seguinte tabela:</p>
 <div class="highlight"><pre><span></span>Name               Stmts   Miss  Cover   Missing
 ------------------------------------------------
-foo.models            <span class="m">30</span>      <span class="m">5</span>    85%   10-12, 16, 19
-bar.models            <span class="m">10</span>      <span class="m">1</span>    90%   4
+foo.models            <span class="m">30</span>      <span class="m">5</span>    <span class="m">85</span>%   <span class="m">10</span>-12, <span class="m">16</span>, <span class="m">19</span>
+bar.models            <span class="m">10</span>      <span class="m">1</span>    <span class="m">90</span>%   <span class="m">4</span>
 ------------------------------------------------
-TOTAL                 <span class="m">40</span>      <span class="m">6</span>    87%
+TOTAL                 <span class="m">40</span>      <span class="m">6</span>    <span class="m">87</span>%
 </pre></div>
 <ul class="simple">
 <li>Stmts: Linhas que precisam ser testadas.</li>
@@ -155,7 +155,7 @@ TOTAL                 <span class="m">40</span>      <span class="m">6</span>   
         <span class="c1"># cria o User sem persistir</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">mommy</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="s1">&#39;auth.User&#39;</span><span class="p">)</span>
         <span class="c1"># cria o User, atribui um username e persiste</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">mommy</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;auth.User&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s1">u&#39;user.test&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">mommy</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;auth.User&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;user.test&#39;</span><span class="p">)</span>
         <span class="c1"># cria e persiste uma lista de User</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">list_users</span> <span class="o">=</span> <span class="n">mommy</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;auth.User&#39;</span><span class="p">,</span> <span class="n">_quantity</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
@@ -210,7 +210,7 @@ TOTAL                 <span class="m">40</span>      <span class="m">6</span>   
 <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
     <span class="n">urlpatterns</span> <span class="o">+=</span> <span class="n">patterns</span><span class="p">(</span>
         <span class="s1">&#39;&#39;</span><span class="p">,</span>
-        <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^__debug__/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">debug_toolbar</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+        <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^__debug__/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">debug_toolbar</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
     <span class="p">)</span>
 </pre></div>
 <p>O django-debug-toolbar possui muitas funcionalidades, e como dito antes, é bem fácil <a class="reference external" href="http://django-debug-toolbar.readthedocs.org/en/1.2/configuration.html">configurá-las</a>, sinta-se a vontade para usar e abusar.</p>

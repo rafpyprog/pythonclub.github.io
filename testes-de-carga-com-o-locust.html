@@ -145,7 +145,7 @@ Installing setuptools, pip...done.
 
 <p>Para confirmar se o Locust está instalado, use o comando <code>locust</code> com a opção <code>-V</code></p>
 <div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>user@machine:~/locust$ locust -V
-<span class="o">[</span>2015-01-08 22:59:28,251<span class="o">]</span> machine/INFO/stdout: Locust 0.7.2
+<span class="o">[</span><span class="m">2015</span>-01-08 <span class="m">22</span>:59:28,251<span class="o">]</span> machine/INFO/stdout: Locust <span class="m">0</span>.7.2
 </pre></div>
 
 
@@ -169,7 +169,7 @@ Installing setuptools, pip...done.
              <span class="s1">&#39;DS&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span> <span class="o">*</span> <span class="mi">86400</span><span class="p">,</span>  <span class="c1"># day to seconds</span>
              <span class="s1">&#39;HS&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">h</span><span class="p">:</span> <span class="n">h</span> <span class="o">*</span> <span class="mi">3600</span><span class="p">}</span>   <span class="c1"># hour to seconds</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&lt;rule&gt;/&lt;int:value&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">conversion</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
@@ -179,7 +179,7 @@ Installing setuptools, pip...done.
         <span class="k">return</span> <span class="s2">&quot;Rule for conversion not found&quot;</span><span class="p">,</span> <span class="mi">404</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 
@@ -326,7 +326,7 @@ Note que os resultados são apresentados por cada <em>Task</em> e são totalizad
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">abort</span>
 
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SECRET_KEY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;a7b05c4e06fe0502af4a3d42dd41327b&#39;</span>
 
 <span class="n">users</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;john&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;mypass&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;John Lee&#39;</span><span class="p">},</span>
@@ -375,7 +375,7 @@ Note que os resultados são apresentados por cada <em>Task</em> e são totalizad
 <span class="s1">    &#39;&#39;&#39;</span> <span class="o">%</span> <span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 
@@ -422,7 +422,7 @@ Note que os resultados são apresentados por cada <em>Task</em> e são totalizad
 
 <p>Essa instancia do Locust não irá simular nenhum cliente para teste, apenas irá disponibilizar a interface web com as estatisticas dos testes realizados e irá aguardar a conexão dos <em>slaves</em>, poís esses serão os responsáveis pela realização dos testes.</p>
 <p>Agora, para iniciar uma instância <em>slave</em> do Locust, são utilizados dois parâmetros, o <code>--slave</code> que determina que essa instância é um slave e o parâmetro <code>--master-host</code> com a localização do <em>master</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>user@machine:~/locust$ locust -f locust_script.py --slave --master-host<span class="o">=</span>192.168.0.15
+<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>user@machine:~/locust$ locust -f locust_script.py --slave --master-host<span class="o">=</span><span class="m">192</span>.168.0.15
 </pre></div>
 
 

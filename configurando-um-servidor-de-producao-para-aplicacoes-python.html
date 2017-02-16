@@ -234,48 +234,48 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 <span class="nv">LOGFILE</span><span class="o">=</span>/home/myusr/www/myproject/logs/gunicorn.log
 <span class="nv">LOGDIR</span><span class="o">=</span><span class="k">$(</span>dirname <span class="nv">$LOGFILE</span><span class="k">)</span>
 <span class="c1"># Numero de processo simultaneo, modifique de acordo com seu processador</span>
-<span class="nv">NUM_WORKERS</span><span class="o">=</span>3
+<span class="nv">NUM_WORKERS</span><span class="o">=</span><span class="m">3</span>
 <span class="c1"># Usuario/Grupo que vai rodar o gunicorn</span>
 <span class="nv">USER</span><span class="o">=</span>myusr
 <span class="c1">#GROUP=root</span>
 <span class="c1"># Endereço local que o gunicorn irá rodar</span>
-<span class="nv">ADDRESS</span><span class="o">=</span>127.0.0.1:8000
+<span class="nv">ADDRESS</span><span class="o">=</span><span class="m">127</span>.0.0.1:8000
 <span class="c1"># Ativando ambiente virtual e executando o gunicorn para este projeto</span>
 <span class="nb">source</span> /home/myusr/envs/myproject/bin/activate
 <span class="nb">cd</span> /home/myusr/www/myproject/project/
 <span class="nb">test</span> -d <span class="nv">$LOGDIR</span> <span class="o">||</span> mkdir -p <span class="nv">$LOGDIR</span>
-<span class="nb">exec</span> gunicorn -w <span class="nv">$NUM_WORKERS</span> --bind<span class="o">=</span><span class="nv">$ADDRESS</span> --user<span class="o">=</span><span class="nv">$USER</span> --log-level<span class="o">=</span>debug --log-file<span class="o">=</span><span class="nv">$LOGFILE</span> 2&gt;&gt;<span class="nv">$LOGFILE</span> myproject.wsgi:application
+<span class="nb">exec</span> gunicorn -w <span class="nv">$NUM_WORKERS</span> --bind<span class="o">=</span><span class="nv">$ADDRESS</span> --user<span class="o">=</span><span class="nv">$USER</span> --log-level<span class="o">=</span>debug --log-file<span class="o">=</span><span class="nv">$LOGFILE</span> <span class="m">2</span>&gt;&gt;<span class="nv">$LOGFILE</span> myproject.wsgi:application
 </pre></div>
 
 
 <p>Na linha 6, <em>ADDRESS</em>, diz que o nosso projeto vai rodar localhost com a porta 8000, esse mesmo ip:porta será usado na configuração do <code>nginx.conf</code>, as linhas abaixo fazem o processo de ativar o ambiente virtual e navegar para pasta do fonte do projeto, para que o <strong><em>Gunicorn</em></strong> possa encontrar o arquivo <code>wsgi.py</code>, esse é o arquivo que configura o ambiente de produção no <strong><em>Django</em></strong>.</p>
 <p>Agora vamos configurar o <code>nginx.conf</code>, para que ele possa escutar o nosso dominio na porta 80 e redirecionar a requisição para a nossa aplicação no <em>127.0.0.1:8000</em>.</p>
-<div class="highlight"><pre><span></span><span class="nt">upstream</span> <span class="nt">myproject</span><span class="nc">.com.br</span> <span class="p">{</span>
-    <span class="n">server</span> <span class="m">127</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">1</span><span class="o">:</span><span class="m">8000</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="nt">upstream</span> <span class="nt">myproject</span><span class="p">.</span><span class="nc">com</span><span class="p">.</span><span class="nc">br</span> <span class="p">{</span>
+    <span class="err">server</span> <span class="err">127.0.0.1:8000</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nt">server</span> <span class="p">{</span>
-    <span class="n">listen</span> <span class="m">80</span><span class="p">;</span>
-    <span class="n">server_name</span> <span class="n">myproject</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">br</span><span class="p">;</span>
-    <span class="n">client_max_body_size</span> <span class="m">50</span><span class="n">M</span><span class="p">;</span>
+    <span class="err">listen</span> <span class="err">80</span><span class="p">;</span>
+    <span class="err">server_name</span> <span class="err">myproject.com.br</span><span class="p">;</span>
+    <span class="err">client_max_body_size</span> <span class="err">50M</span><span class="p">;</span>
 
-    <span class="n">access_log</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">access</span><span class="o">.</span><span class="n">log</span><span class="p">;</span>
-    <span class="n">error_log</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">error</span><span class="o">.</span><span class="n">log</span><span class="p">;</span>
+    <span class="err">access_log</span> <span class="err">/home/myusr/www/myproject/logs/access.log</span><span class="p">;</span>
+    <span class="err">error_log</span> <span class="err">/home/myusr/www/myproject/logs/error.log</span><span class="p">;</span>
 
-    <span class="n">location</span> <span class="o">/</span><span class="nb">static</span><span class="o">/</span> <span class="err">{</span>
-        <span class="n">alias</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="nb">static</span><span class="o">/</span><span class="p">;</span>
+    <span class="err">location</span> <span class="err">/static/</span> <span class="err">{</span>
+        <span class="err">alias</span> <span class="err">/home/myusr/www/myproject/static/</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="nt">location</span> <span class="o">/</span><span class="nt">media</span><span class="o">/</span> <span class="p">{</span>
-        <span class="n">alias</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="p">;</span>
+        <span class="err">alias</span> <span class="err">/home/myusr/www/myproject/media/</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="nt">location</span> <span class="o">/</span> <span class="p">{</span>
-        <span class="n">proxy_set_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">For</span> <span class="err">$</span><span class="n">proxy_add_x_forwarded_for</span><span class="p">;</span>
-        <span class="n">proxy_set_header</span> <span class="n">Host</span> <span class="err">$</span><span class="n">http_host</span><span class="p">;</span>
-        <span class="n">proxy_redirect</span> <span class="n">off</span><span class="p">;</span>
+        <span class="err">proxy_set_header</span> <span class="err">X-Forwarded-For</span> <span class="err">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+        <span class="err">proxy_set_header</span> <span class="err">Host</span> <span class="err">$http_host</span><span class="p">;</span>
+        <span class="err">proxy_redirect</span> <span class="err">off</span><span class="p">;</span>
 
-        <span class="n">if</span> <span class="p">(</span><span class="o">!-</span><span class="n">f</span> <span class="err">$</span><span class="n">request_filename</span><span class="p">)</span> <span class="err">{</span>
-            <span class="n">proxy_pass</span> <span class="n">http</span><span class="o">://</span><span class="n">myproject</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">br</span><span class="p">;</span>
-            <span class="n">break</span><span class="p">;</span>
+        <span class="err">if</span> <span class="err">(!-f</span> <span class="err">$request_filename)</span> <span class="err">{</span>
+            <span class="err">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">myproject</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">br</span><span class="p">;</span>
+            <span class="err">break</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="err">}</span>
 <span class="err">}</span>

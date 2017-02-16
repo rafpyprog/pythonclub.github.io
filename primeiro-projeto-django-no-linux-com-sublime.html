@@ -149,7 +149,7 @@
 <div class="highlight"><pre><span></span>$ python –version
 </pre></div>
 <p>o resultado será:</p>
-<div class="highlight"><pre><span></span>Python 2.7.3
+<div class="highlight"><pre><span></span>Python <span class="m">2</span>.7.3
 </pre></div>
 <p>Vamos começar instalando os pacotes necessários no Sistema Operacional:</p>
 <div class="highlight"><pre><span></span>$ sudo apt-get update
@@ -161,7 +161,7 @@ $ sudo pip install virtualenv
 <div class="highlight"><pre><span></span>$ virtualenv --version
 </pre></div>
 <p>Resultado:</p>
-<div class="highlight"><pre><span></span>1.11.5
+<div class="highlight"><pre><span></span><span class="m">1</span>.11.5
 </pre></div>
 <p>O pacote <strong>python-setuptools</strong> foi utilizado apenas para instalarmos o <strong>easy_install</strong> que usamos para instalar o <strong>pip</strong>.</p>
 <p>A partir de agora, no ambiente virtual sempre usaremos o <strong>pip</strong> para instalar os pacotes.</p>
@@ -179,7 +179,7 @@ $ <span class="nb">source</span> bin/activate
 </pre></div>
 <p>Quando executamos o comando <strong>pip install django</strong> sem especificarmos a versão desejada,
 o pip instala a ultima versão disponivel. Se quizermos instalar uma versão específica devemos executar assim:</p>
-<div class="highlight"><pre><span></span>$ pip install <span class="nv">django</span><span class="o">==</span>1.5.4
+<div class="highlight"><pre><span></span>$ pip install <span class="nv">django</span><span class="o">==</span><span class="m">1</span>.5.4
 </pre></div>
 <p>Então podemos finalmente criar o projeto django executando o seguinte comando:</p>
 <div class="highlight"><pre><span></span>$ django-admin.py startproject first_django_project
@@ -223,11 +223,11 @@ $ python manage.py startapp core
 Validating models...
 
 <span class="m">0</span> errors found
-May 11, <span class="m">2014</span> - 03:30:48
-Django version 1.6.4, using settings <span class="s1">&#39;first_django_project.settings&#39;</span>
+May <span class="m">11</span>, <span class="m">2014</span> - <span class="m">03</span>:30:48
+Django version <span class="m">1</span>.6.4, using settings <span class="s1">&#39;first_django_project.settings&#39;</span>
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
-<span class="o">[</span>11/May/2014 03:30:59<span class="o">]</span> <span class="s2">&quot;GET / HTTP/1.1&quot;</span> <span class="m">200</span> 1757
+<span class="o">[</span><span class="m">11</span>/May/2014 <span class="m">03</span>:30:59<span class="o">]</span> <span class="s2">&quot;GET / HTTP/1.1&quot;</span> <span class="m">200</span> <span class="m">1757</span>
 </pre></div>
 <img alt="comando runserver do django-admin.py" src="images/fabianogoes/django-runserver.png" />
 <p>Chegou o momento de instalarmos o editor. No caso deste tutorial usaremos o <strong>Sublime Text 3</strong></p>
@@ -248,7 +248,7 @@ Project &gt;&gt; Add Forlder to Project...
 <p>O fluxo de um request em projetos django é o seguinte:
 URL --&gt; VIEW --&gt; TEMPLATE</p>
 <p>Então vamos começar criando uma url <em>home</em> para o projeto, no arquivo urls.py:</p>
-<div class="highlight"><pre><span></span><span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^$&#39;</span><span class="p">,</span> <span class="s1">&#39;core.views.home&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">),</span>
+<div class="highlight"><pre><span></span><span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^$&#39;</span><span class="p">,</span> <span class="s1">&#39;core.views.home&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">),</span>
 </pre></div>
 <p>Com a url criada e apontando para view <strong>core.views.home</strong> vamos criar a tal view <strong>home</strong>,
 no arquivo core/views.py</p>
@@ -284,11 +284,11 @@ estou exibindo esta variável usando: <strong>{{ texto }}</strong></p>
 Validating models...
 
 <span class="m">0</span> errors found
-May 11, <span class="m">2014</span> - 03:30:48
-Django version 1.6.4, using settings <span class="s1">&#39;first_django_project.settings&#39;</span>
+May <span class="m">11</span>, <span class="m">2014</span> - <span class="m">03</span>:30:48
+Django version <span class="m">1</span>.6.4, using settings <span class="s1">&#39;first_django_project.settings&#39;</span>
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
-<span class="o">[</span>11/May/2014 03:30:59<span class="o">]</span> <span class="s2">&quot;GET / HTTP/1.1&quot;</span> <span class="m">200</span> 1757
+<span class="o">[</span><span class="m">11</span>/May/2014 <span class="m">03</span>:30:59<span class="o">]</span> <span class="s2">&quot;GET / HTTP/1.1&quot;</span> <span class="m">200</span> <span class="m">1757</span>
 </pre></div>
 <img alt="comando runserver do django-admin.py" src="images/fabianogoes/runserv-index.png" />
 <p>Para finalizarmos vamos criar uma classe model simples, apenas para ilustrar o uso do <strong>Admin</strong></p>
@@ -299,7 +299,7 @@ Quit the server with CONTROL-C.
         <span class="n">nome</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
         <span class="n">cpf</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nome</span>
 </pre></div>
 <p>Vamos rodar o comando <strong>syncdb</strong> para o dango criar as tabelas.
