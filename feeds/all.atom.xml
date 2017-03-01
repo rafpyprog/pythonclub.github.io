@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2017-01-16T20:37:39-02:00</updated><entry><title>Instalando o Python versião 3.7.0 alpha 1 no Ubuntu 16.04</title><link href="http://pythonclub.com.br/instalando-o-python-versi%C3%A3o-3.7.0-alpha-1-no-ubuntu-16.04.md.html" rel="alternate"></link><published>2017-01-16T20:37:39-02:00</published><updated>2017-01-16T20:37:39-02:00</updated><author><name>Welton Vaz</name></author><id>tag:pythonclub.com.br,2017-01-16:instalando-o-python-versião-3.7.0-alpha-1-no-ubuntu-16.04.md.html</id><summary type="html">&lt;p&gt;Instalando o Python versião 3.7.0 alpha 1 no Ubuntu 16.04&lt;/p&gt;
-&lt;p&gt;A versão mais recente do Python, a 3.7.0 alfa 1, pode agora ser baixada ou clonada do GitHub facilmente. Um das linguagens mais fáceis de usar e aprender, o Python foi criada nos anos 90 e é elogiada por sua fácil leitura de código e necessidade de poucas linhas de código, comparada a outras linguagens. Agora mais proxima da comunidade no Github!&lt;/p&gt;
-&lt;p&gt;Depois disso os caminhos mudaram e conheci a profissão de Analista de Suporte e me ocupo disso desde então. Atualmente voltei a aprender uma linguagem, antes de mais nada, dei uma atualizada em lógica de programação, por sinal existe muitas boas apostilas e cursos gratuitos na Internet, dois caminhos muito bons.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2017-01-16T20:37:39-02:00</updated><entry><title>Instalando o Python versão 3.7.0 alpha 1 no Ubuntu 16.04</title><link href="http://pythonclub.com.br/instalando-o-python-vers%C3%A3o-3.7.0-alpha-1-no-ubuntu-16.04.md.html" rel="alternate"></link><published>2017-01-16T20:37:39-02:00</published><updated>2017-01-16T20:37:39-02:00</updated><author><name>Welton Vaz</name></author><id>tag:pythonclub.com.br,2017-01-16:instalando-o-python-versão-3.7.0-alpha-1-no-ubuntu-16.04.md.html</id><summary type="html">&lt;p&gt;Instalando o Python versão 3.7.0 alpha 1 no Ubuntu 16.04&lt;/p&gt;
+&lt;p&gt;A versão mais recente do Python, a 3.7.0 alfa 1, pode agora ser baixada ou clonada do GitHub facilmente. Uma das linguagens mais fáceis de usar e aprender, o Python foi criado nos anos 90 e é elogiado por sua fácil leitura de código e necessidade de poucas linhas de código, comparada a outras linguagens. Agora mais próxima da comunidade no Github!&lt;/p&gt;
+&lt;p&gt;Depois disso os caminhos mudaram e conheci a profissão de Analista de Suporte e me ocupo disso desde então. Atualmente voltei a aprender uma linguagem, antes de mais nada, dei uma atualizada em lógica de programação, por sinal existem muitas boas apostilas e cursos gratuitos na Internet, dois caminhos muito bons.&lt;/p&gt;
 &lt;p&gt;Sobre linguagem de programação, existem várias. Neste quesito comecei a conhecer a linguagem Python e logo me apaixonei pela simplicidade, beleza e eficiência.&lt;/p&gt;
 &lt;p&gt;Depois disso tudo, você tem que instalar a linguagem em sua máquina. Por padrão, o Ubuntu 16.04 instala a versão 3.4, mas se você quiser, pode usar a versão 3.7.0a0&lt;/p&gt;
 &lt;p&gt;Obs.: Execute os comandos como root, ou usando o comando sudo no terminal.&lt;/p&gt;
@@ -13,12 +13,12 @@ make
 make &lt;span class="nb"&gt;test&lt;/span&gt;
 make install
 
-&lt;span class="c1"&gt;# Se vc quiser usar váras versões do Python 2.7, 3.6 e 3.7 use o comando abaixo&lt;/span&gt;
+&lt;span class="c1"&gt;# Se você quiser usar várias versões do Python 2.7, 3.6 e 3.7 use o comando abaixo&lt;/span&gt;
 make altinstall
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Observação: via apt instalei as dependências do python, no caso o openssl, porque o pip apresenta vários problemas com certificados na instalação dos modúlos, mas, isso é para outro artigo&lt;/p&gt;
+&lt;p&gt;Observação: via apt instalei as dependências do python, no caso o openssl, porque o pip apresenta vários problemas com certificados na instalação dos módulos, mas, isso é para outro artigo&lt;/p&gt;
 &lt;p&gt;Depois disso é só entrar no interpretador:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python3.7
 &lt;/pre&gt;&lt;/div&gt;
@@ -35,7 +35,7 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span clas
 &lt;h3&gt;Referências&lt;/h3&gt;
 &lt;p&gt;Para ler mais sobre a linguagem: 
 &lt;em&gt; &lt;a href="http://python.org"&gt;Python&lt;/a&gt; - Site oficial da Linguagem Python!
-&lt;/em&gt; &lt;a href="https://github.com/python/cpython"&gt;This is Python version 3.7.0 alpha 1&lt;/a&gt; - Git da proxima versão do Python, hospedado no Github!
+&lt;/em&gt; &lt;a href="https://github.com/python/cpython"&gt;This is Python version 3.7.0 alpha 1&lt;/a&gt; - Git da próxima versão do Python, hospedado no Github!
 * &lt;a href="http://python.org.br/"&gt;Python-Brasil&lt;/a&gt; - A comunidade Python Brasil reune grupos de usuários em todo o Brasil interessados em difundir e divulgar a linguagem de programação.&lt;/p&gt;</summary><category term="python"></category><category term="tutorial"></category><category term="install"></category></entry><entry><title>Abrangência de Listas e Dicionários</title><link href="http://pythonclub.com.br/abrangencia-de-listas-e-dicionarios-com-python.html" rel="alternate"></link><published>2017-01-16T10:37:39-02:00</published><updated>2017-01-16T10:37:39-02:00</updated><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2017-01-16:abrangencia-de-listas-e-dicionarios-com-python.html</id><summary type="html">&lt;p&gt;A utilização de listas em Python é algo trivial. A facilidade provida pela linguagem aliada a simplicidade da estrutura de dados &lt;em&gt;list&lt;/em&gt; a torna, ao lado dos dicionários &lt;em&gt;dict&lt;/em&gt;, uma das estrutura de dados mais utilizadas em Python. Aqui neste tutorial irei compartilhar algo que aprendi trabalhando com listas e dicionário em Python, mais especificamente no que diz respeito a &lt;em&gt;abrangência&lt;/em&gt; de listas (e dicionários).&lt;/p&gt;
 &lt;h3&gt;Abrangência de listas&lt;/h3&gt;
 &lt;p&gt;A abrangência de listas, ou do inglês &lt;em&gt;list comprehensions&lt;/em&gt;, é um  termo utilizado para descrever uma sintaxe compacta que o Python nos oferece para criamos uma lista baseada em outra lista. Pareceu confuso? Ok, vamos aos exemplos!&lt;/p&gt;

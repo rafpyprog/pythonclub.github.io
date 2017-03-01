@@ -5,48 +5,48 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/</loc>
-<lastmod>2017-02-23T17:49:25-00:00</lastmod>
+<lastmod>2017-03-01T00:45:52-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2017-02-23T17:49:25-00:00</lastmod>
+<lastmod>2017-03-01T00:45:52-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2017-02-23T17:49:25-00:00</lastmod>
+<lastmod>2017-03-01T00:45:52-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2017-02-23T17:49:25-00:00</lastmod>
+<lastmod>2017-03-01T00:45:52-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br//home/travis/build/pythonclub/pythonclub.github.io/output/pages/search.html</loc>
-<lastmod>2017-02-23T17:49:25-00:00</lastmod>
+<lastmod>2017-03-01T00:45:52-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2017-02-23T17:49:25-00:00</lastmod>
+<lastmod>2017-03-01T00:45:52-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/instalando-o-python-versião-3.7.0-alpha-1-no-ubuntu-16.04.md.html</loc>
+<loc>http://pythonclub.com.br/instalando-o-python-versão-3.7.0-alpha-1-no-ubuntu-16.04.md.html</loc>
 <lastmod>2017-01-16T20:37:39-02:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
