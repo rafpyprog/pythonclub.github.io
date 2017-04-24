@@ -120,7 +120,7 @@
 </pre></div>
 
 
-<p>Substituindo "<app-name>" pelo nome de sua aplicação.
+<p>Substituindo "<code>&lt;app-name&gt;</code>" pelo nome de sua aplicação.
 O arquivo manifest.yml criado por Changaco(github) e "forkeado" por Grief(github) contém as configurações de um cartridge customizado que contém o python 3.5.</p>
 <p>Para os curiosos o conteúdo do arquivo</p>
 <div class="highlight"><pre><span></span>---
@@ -173,12 +173,12 @@ Version-Overrides:
 </pre></div>
 
 
-<p>Após isso sua aplicação já estárá executando, caso deseje acessar o endereço da mesma deverá ser http://<app-name>-<username>.rhcloud.com.
+<p>Após isso sua aplicação já estárá executando, caso deseje acessar o endereço da mesma deverá ser http://<code>&lt;app-name&gt;</code>-<username>.rhcloud.com.
 Você verá que a página do seu projeto não é nada mais do que o diy (Dot It Yourself), que é uma aplicação Ruby de exemplo que você pode alterar, e é o que vamos fazer.</p>
 <p>Se você acessar o diretório do seu projeto verá que existe um diretório ".openshift", dentro desse diretório existe um outro diretório chamado "action_hooks", e dentro desse diretório existem dois arquivos "start" e "stop".</p>
 <ul>
-<li>"<app-name>/.openshift/action_hooks/start"</li>
-<li>"<app-name>/.openshift/action_hooks/stop"</li>
+<li>"<code>&lt;app-name&gt;</code>/.openshift/action_hooks/start"</li>
+<li>"<code>&lt;app-name&gt;</code>/.openshift/action_hooks/stop"</li>
 </ul>
 <p>Os dois arquivos são respectivamente os comandos para "subir" e "pausar" sua aplicação.</p>
 <h3>Flask</h3>
