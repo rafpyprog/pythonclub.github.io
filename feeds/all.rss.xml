@@ -1,5 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Wed, 26 Apr 2017 09:00:00 -0300</lastBuildDate><item><title>What the Flask? pt 4 - Extensões para o Flask</title><link>http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html</link><description>&lt;h2&gt;What The Flask - 4/5&lt;/h2&gt;
+<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Thu, 20 Jul 2017 23:45:24 -0300</lastBuildDate><item><title>Peewee - Um ORM Python minimalista</title><link>http://pythonclub.com.br/peewee-um-orm-python-minimalista.html</link><description>&lt;p&gt;&lt;a href="http://peewee.readthedocs.io/en/latest/index.html"&gt;Peewee&lt;/a&gt; é um ORM destinado a criar e gerenciar tabelas de banco de dados relacionais através de objetos Python. Segundo a &lt;a href="https://pt.wikipedia.org/wiki/Mapeamento_objeto-relacional"&gt;wikipedia&lt;/a&gt;, um ORM é:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Mapeamento objeto-relacional (ou ORM, do inglês: Object-relational mapping) é uma técnica de desenvolvimento utilizada para reduzir a impedância da programação orientada aos objetos utilizando bancos de dados relacionais. As tabelas do banco de dados são representadas através de classes e os registros de cada tabela são representados como instâncias das classes correspondentes.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;O que o ORM faz é, basicamente, transformar classes Python em tabelas no banco de dados, além de permitir construir &lt;em&gt;querys&lt;/em&gt; usando diretamente objetos Python ao invés de SQL.&lt;/p&gt;
+&lt;p&gt;O Peewee é destinado a projetos de pequeno/médio porte, se destacando pela simplicidade quando comparado a outros ORM mais conhecidos, como o SQLAlchemy. Uma analogia utilizada pelo autor da API e que acho muito interessante é que Peewee está para o SQLAlchemy assim como SQLite está para o PostgreSQL.&lt;/p&gt;
+&lt;p&gt;Em relação aos recursos por ele oferecidos, podemos citar que ele possui suporte nativo a SQLite, PostgreSQL e MySQL, embora seja necessário a instalação de &lt;em&gt;drivers&lt;/em&gt; para utilizá-lo com PostgreSQL e MySQL e suporta tanto Python 2.6+ quanto Python 3.4+. &lt;/p&gt;
+&lt;p&gt;Neste tutorial, utilizaremos o SQLite, por sua simplicidade de uso e por não precisar de nenhuma configuração.&lt;/p&gt;
+&lt;h3&gt;Instalação&lt;/h3&gt;
+&lt;p&gt;O Peewee pode ser facilmente instalado com o gerenciador de pacotes &lt;em&gt;pip&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install peewee
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Criando o banco de dados&lt;/h3&gt;
+&lt;p&gt;Para criar as tabelas é bem simples. Inicialmente passamos o nome do nosso banco de dados (a extensão &lt;code&gt;*.db&lt;/code&gt; indica um arquivo do SQLite).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;peewee&lt;/span&gt;
+
+&lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SqliteDatabase&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;codigo_avulso.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Diferente de outros bancos de dados que funcionam através um servidor, o SQLite cria um arquivo de extensão &lt;code&gt;*.db&lt;/code&gt;, onde todos os nossos dados são armazenados.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DICA&lt;/strong&gt;: caso deseje ver as tabelas existentes no arquivo &lt;code&gt;codigo_avulso.db&lt;/code&gt;, instale o aplicativo &lt;code&gt;SQLiteBrowser&lt;/code&gt;. Com ele fica fácil monitorar as tabelas criadas e acompanhar o tutorial.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; sudo apt-get install sqlitebrowser
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A título de exemplo, vamos criar um banco destinado a armazenar nomes de livros e de seus respectivos autores. Comecemos primeiro com a classe que representa os autores.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;peewee&lt;/span&gt;
+
+&lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SqliteDatabase&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;codigo_avulso.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    Classe que representa a tabela Author&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# A tabela possui apenas o campo &amp;#39;name&amp;#39;, que&lt;/span&gt;
+    &lt;span class="c1"&gt;# receberá o nome do autor&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="c1"&gt;# Indica em qual banco de dados a tabela&lt;/span&gt;
+        &lt;span class="c1"&gt;# &amp;#39;author&amp;#39; sera criada (obrigatorio). Neste caso,&lt;/span&gt;
+        &lt;span class="c1"&gt;# utilizamos o banco &amp;#39;codigo_avulso.db&amp;#39; criado anteriormente.&lt;/span&gt;
+        &lt;span class="n"&gt;database&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Em seguida, criamos a classe que representa os livros. Ela possui uma relação de "muitos para um" com a tabela de autores, ou seja, cada livro possui apenas um autor, mas um autor pode possuir vários livros.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;peewee&lt;/span&gt;
+
+&lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SqliteDatabase&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;codigo_avulso.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Book&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    Classe que representa a tabela Book&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# A tabela possui apenas o campo &amp;#39;title&amp;#39;, que&lt;/span&gt;
+    &lt;span class="c1"&gt;# receberá o nome do livro&lt;/span&gt;
+    &lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Chave estrangeira para a tabela Author&lt;/span&gt;
+    &lt;span class="n"&gt;author&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ForeignKeyField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="c1"&gt;# Indica em qual banco de dados a tabela&lt;/span&gt;
+        &lt;span class="c1"&gt;# &amp;#39;author&amp;#39; sera criada (obrigatorio). Neste caso,&lt;/span&gt;
+        &lt;span class="c1"&gt;# utilizamos o banco &amp;#39;codigo_avulso.db&amp;#39; criado anteriormente.&lt;/span&gt;
+        &lt;span class="n"&gt;database&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora, vamos reunir tudo em um único arquivo &lt;code&gt;model.py&lt;/code&gt;. Como exemplo, eu criei um arquivo &lt;em&gt;main.py&lt;/em&gt; para utilizarmos as classes que acabamos de criar.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;peewee&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;model&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;
+
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create_table&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;OperationalError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Tabela Author ja existe!&amp;#39;&lt;/span&gt;
+
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create_table&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;OperationalError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Tabela Book ja existe!&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Após executarmos o código, será criado um arquivo de nome &lt;code&gt;codigo_avulso.db&lt;/code&gt; no mesmo diretório do nosso arquivo &lt;code&gt;main.py&lt;/code&gt;, contendo as tabelas &lt;code&gt;Author&lt;/code&gt; e &lt;code&gt;Book&lt;/code&gt;. A estrutura do diretório ficou assim:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
+├── codigo_avulso.db
+├── main.py
+├── model.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Inserindo dados no banco&lt;/h3&gt;
+&lt;p&gt;Agora, vamos popular nosso banco com alguns autores e seus respectivos livros. Isso pode ser feito de dois modos. Através do método &lt;code&gt;create&lt;/code&gt;, quando desejamos inserir um registro apenas; ou pelo método &lt;code&gt;insert_many&lt;/code&gt;, quando desejamos inserir vários registros de uma vez em uma mesma tabela.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Inserimos um autor de nome &amp;quot;H. G. Wells&amp;quot; na tabela &amp;#39;Author&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;author_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;H. G. Wells&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;book_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;A Máquina do Tempo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;author&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;author_1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;book_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Guerra dos Mundos&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;author&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;author_1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Inserimos um autor de nome &amp;quot;Julio Verne&amp;quot; na tabela &amp;#39;Author&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;author_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Julio Verne&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;book_3&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Volta ao Mundo em 80 Dias&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;author&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;author_2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;book_4&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Vinte Mil Leguas Submarinas&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;author_id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;author_1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;books&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;book_1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;book_2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;book_3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;book_4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Inserimos os quatro livros na tabela &amp;#39;Book&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert_many&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;books&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Consultando dados no banco&lt;/h3&gt;
+&lt;p&gt;O Peewee possui comandos destinados a realizar consultas no banco. De maneira semelhante ao conhecido &lt;code&gt;SELECT&lt;/code&gt;. Podemos fazer essa consulta de duas maneiras. Se desejamos o primeiro registro que corresponda a nossa pesquisa, podemos utilizar o método &lt;code&gt;get()&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;book&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Volta ao Mundo em 80 Dias&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Porém, se desejamos mais de um registro, utilizamos o método &lt;code&gt;select&lt;/code&gt;. Por exemplo, para consultar todos os livros escritos pelo autor "H. G. Wells".&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;books&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;where&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;H. G. Wells&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Exibe a quantidade de registros que corresponde a nossa pesquisa&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;books&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;book&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;books&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Resultado:&lt;/span&gt;
+&lt;span class="c1"&gt;# * A Máquina do Tempo&lt;/span&gt;
+&lt;span class="c1"&gt;# * Guerra dos Mundos&lt;/span&gt;
+&lt;span class="c1"&gt;# * Vinte Mil Leguas Submarinas&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Também podemos utilizar outras comandos do SQL como &lt;code&gt;limit&lt;/code&gt; e &lt;code&gt;group&lt;/code&gt; (para mais detalhes, ver a documentação &lt;a href="http://peewee.readthedocs.io/en/latest/index.html"&gt;aqui&lt;/a&gt;).&lt;/p&gt;
+&lt;h3&gt;Alterando dados no banco&lt;/h3&gt;
+&lt;p&gt;Alterar dados também é bem simples. No exemplo anterior, se observarmos o resultado da consulta dos livros do autor "H. G. Wells", iremos nos deparar com o livro de título "Vinte Mil Léguas Submarinas". Se você, caro leitor, gosta de contos de ficção-científica, sabe que esta obra foi escrito por "Julio Verne", coincidentemente um dos autores que também estão cadastrados em nosso banco. Sendo assim, vamos corrigir o autor do respectivo livro.&lt;/p&gt;
+&lt;p&gt;Primeiro vamos buscar o registro do autor e do livro:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;new_author&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Julio Verne&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;book&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Vinte Mil Leguas Submarinas&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora vamos alterar o autor e gravar essa alteração no banco.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Alteramos o autor do livro&lt;/span&gt;
+&lt;span class="n"&gt;book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;author&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new_author&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Salvamos a alteração no banco&lt;/span&gt;
+&lt;span class="n"&gt;book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Deletando dados do banco&lt;/h3&gt;
+&lt;p&gt;Assim como as operações anteriores, também podemos deletar registros do banco de maneira bem prática. Como exemplo, vamos deletar o livro "Guerra dos Mundos" do nosso banco de dados.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Buscamos o livro que desejamos excluir do banco&lt;/span&gt;
+&lt;span class="n"&gt;book&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Guerra dos Mundos&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Excluimos o livro do banco&lt;/span&gt;
+&lt;span class="n"&gt;book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delete_instance&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Simples não?&lt;/p&gt;
+&lt;h3&gt;Conclusão&lt;/h3&gt;
+&lt;p&gt;É isso pessoal. Este tutorial foi uma introdução bem enxuta sobre o Peewee. Ainda existem muitos tópicos que não abordei aqui, como a criação de &lt;em&gt;primary_key&lt;/em&gt;, de campos &lt;em&gt;many2many&lt;/em&gt; entre outros recursos, pois foge do escopo deste tutorial. Se você gostou do ORM, aconselho a dar uma olhada também na sua documentação, para conseguir extrair todo o potencial da ferramenta. A utilização de um ORM evita que o desenvolvedor perca tempo escrevendo &lt;em&gt;query&lt;/em&gt; SQL e foque totalmente no desenolvimento de código. &lt;/p&gt;
+&lt;p&gt;O Peewee também possui suporte ao flamework &lt;em&gt;flask&lt;/em&gt;, então dependendo do tamanho do projeto, pode ser uma alternativa interessante no lugar de ORM mais complexos como o SQLAlchemy.&lt;/p&gt;
+&lt;p&gt;É isso pessoal. Obrigado pela leitura e até o próximo tutorial!&lt;/p&gt;
+&lt;h3&gt;Referências&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://peewee.readthedocs.io/en/latest/index.html"&gt;Documentação do Peewee (em inglês)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.blog.pythonlibrary.org/2014/07/17/an-intro-to-peewee-another-python-orm/"&gt;An Intro to peewee – Another Python ORM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://jonathansoma.com/tutorials/webapps/intro-to-peewee/"&gt;Introduction to peewee&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.novatec.com.br/livros/introducao-sql/"&gt;Introdução à Linguagem SQL&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michell Stuttgart</dc:creator><pubDate>Thu, 20 Jul 2017 23:45:24 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2017-07-20:peewee-um-orm-python-minimalista.html</guid><category>Python</category><category>Peewee</category><category>ORM</category><category>banco de dados</category></item><item><title>What the Flask? pt 4 - Extensões para o Flask</title><link>http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html</link><description>&lt;h2&gt;What The Flask - 4/5&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Finalmente!!! Depois de uma longa espera o &lt;strong&gt;What The Flask&lt;/strong&gt; está de volta!
 A idéia era publicar primeiro a parte 4 (sobre Blueprints) e só depois a 5
