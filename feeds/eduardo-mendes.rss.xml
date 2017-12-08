@@ -1,10 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Mon, 20 Nov 2017 19:43:00 -0200</lastBuildDate><item><title>Programação funcional com Python #0- saindo da zona de conforto</title><link>http://pythonclub.com.br/progrmacao-funcional-com-python-0.html</link><description>&lt;figure style="float:left;"&gt;
-&lt;img src="/images/z4r4tu5tr4/lambda.jpg"&gt;
-&lt;/figure&gt;
+<rss version="2.0"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Fri, 08 Dec 2017 13:30:00 -0200</lastBuildDate><item><title>Programação funcional com Python #1 - Funções</title><link>http://pythonclub.com.br/progrmacao-funcional-com-python-1.html</link><description>&lt;h1&gt;1. Funções&lt;/h1&gt;
+&lt;p&gt;Como nem tudo são flores, vamos começar do começo e entender algumas características das funções do python (o objeto função) e dar uma revisada básica em alguns conceitos de função só pra gente não se perder no básico depois. Então o primeiro tópico vai se limitar a falar da estrutura básica das funções em python, sem entrar profundamente em cada um dos tópicos. Será uma explanação de código e abrir a cabeça para novas oportunidades de código mais pythonicos e que preferencialmente gere menos efeito colateral. Mas calma, não vamos ensinar a fazer funções, você já está cheio disso.&lt;/p&gt;
+&lt;h2&gt;1.1 Funções como objeto de primeira classe&lt;/h2&gt;
+&lt;p&gt;Funções como objeto de primeira classe, são funções que se comportam como qualquer tipo nativo de uma determinada linguagem. Por exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# uma lista&lt;/span&gt;
 
-&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
-&lt;h1&gt;0. Saindo da zona de conforto&lt;/h1&gt;
+&lt;span class="n"&gt;lista&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;str&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;um&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Todos esses exemplos são tipos de objetos de primeira classe em Python, mas no caso as funções também são. Como assim? Pode-se passar funções como parâmetro de uma outra função, podemos armazenar funções em variáveis, pode-se definir funções em estruturas de dados:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Funções como objeto de primeira classe&lt;/span&gt;
+
+&lt;span class="n"&gt;func&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="c1"&gt;# a função anônima, lambda, foi armazenada em uma variável&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func_2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+
+&lt;span class="n"&gt;lista&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;func_2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c1"&gt;# a variável que armazena a função foi inserida em uma estrutura, assim como uma função gerada com def&lt;/span&gt;
+
+&lt;span class="n"&gt;lista_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c1"&gt;# aqui as funções foram definidas dentro de uma estrutura&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Como é possível notar, em python, as funções podem ser inseridas em qualquer contexto e também geradas em tempo de execução. Com isso nós podemos, além de inserir funções em estruturas, retornar funções, passar funções como parâmetro (HOFs), definir funções dentro de funções(closures) e assim por diante. Caso você tenha aprendido a programar usando uma linguagem em que as funções não são objetos de primeira classe, não se assuste. Isso faz parte da rotina comum do python. Preferencialmente, e quase obrigatoriamente, é melhor fazer funções simples, pequenas e de pouca complexidade para que elas não sofram interferência do meio externo, gerem menos manutenção e o melhor de tudo, possam ser combinadas em outras funções. Então vamos lá!&lt;/p&gt;
+&lt;h2&gt;1.2 Funções puras&lt;/h2&gt;
+&lt;p&gt;Funções puras são funções que não sofrem interferência do meio externo. Vamos começar pelo exemplo ruim:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;valor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;mais_cinco&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;valor&lt;/span&gt;
+
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;mais_cinco&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="c1"&gt;# True&lt;/span&gt;
+
+&lt;span class="n"&gt;valor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;
+
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;mais_cinco&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="c1"&gt;# AssertionError&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;mais_cinco()&lt;/code&gt; é o exemplo claro de uma função que gera efeito colateral. Uma função pura deve funcionar como uma caixa preta, todas as vezes em que o mesmo input for dado nela, ela terá que retornar o mesmo valor. Agora vamos usar o mesmo exemplo, só alterando a linha do return:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;valor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;mais_cinco&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;mais_cinco&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="c1"&gt;# True&lt;/span&gt;
+
+&lt;span class="n"&gt;valor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;
+
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;mais_cinco&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="c1"&gt;# True&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Pode parecer trivial, mas muitas vezes por comodidade deixamos o meio influenciar no comportamento de uma função. Por definição o Python só faz possível, e vamos falar disso em outro tópico, a leitura de variáveis externas. Ou seja, dentro do contexto da função as variáveis externas não podem ser modificadas, mas isso não impede que o contexto externo a modifique. Se você for uma pessoa inteligente como o Jaber deve saber que nunca é uma boa ideia usar valores externos. Mas, caso seja necessário, você pode sobrescrever o valor de uma variável no contexto global usando a palavra reservada &lt;code&gt;global&lt;/code&gt;. O que deve ficar com uma cara assim:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;valor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;teste&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;global&lt;/span&gt; &lt;span class="n"&gt;valor&lt;/span&gt; &lt;span class="c1"&gt;# aqui é feita a definição&lt;/span&gt;
+    &lt;span class="n"&gt;valor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;valor&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 7&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Só lembre-se de ser sempre coerente quando fizer isso, as consequências podem ser imprevisíveis. Nessa linha de funções puras e pequeninas, podemos caracterizar, embora isso não as defina, funções de ordem superior, que são funções que recebem uma função como argumento, ou as devolvem, e fazem a chamada das mesmas dentro do contexto da função que a recebeu como parâmetro. Isso resulta em uma composição de funções, o que agrega muito mais valor caso as funções não gerem efeitos colaterais.&lt;/p&gt;
+&lt;h2&gt;1.3 Funções de ordem superior (HOFs)&lt;/h2&gt;
+&lt;p&gt;Funções de ordem superior são funções que recebem funções como argumento(s) e/ou retornam funções como resposta. Existem muitas funções embutidas em python de ordem superior, como: &lt;code&gt;map, filter, zip&lt;/code&gt; e praticamente todo o módulo functools &lt;code&gt;import functools&lt;/code&gt;. Porém, nada impede de criarmos novas funções de ordem superior. Um ponto a ser lembrado é que map e filter não tem mais a devida importância em python com a entrada das comprehensions (embora eu as adore), o que nos faz escolher única e exclusivamente por gosto, apesar de comprehensions serem mais legíveis (vamos falar disso em outro contexto), existem muitos casos onde elas ainda fazem sentido. Mas sem me estender muito, vamos ao código:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="c1"&gt;# uma função simples, soma mais 2 a qualquer inteiro&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func_mais_2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;funcao&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;valor&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    Executa a função passada por parâmetro e retorna esse valor somado com dois&lt;/span&gt;
+
+&lt;span class="sd"&gt;    Ou seja, é uma composição de funções:&lt;/span&gt;
+
+&lt;span class="sd"&gt;    Dado que func(valor) é processado por func_func:&lt;/span&gt;
+&lt;span class="sd"&gt;        func_mais_2(func(valor)) == f(g(x))&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;funcao&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;valor&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Um ponto a tocar, e o que eu acho mais bonito, é que a função vai retornar diferentes respostas para o mesmo valor, variando a entrada da função. Nesse caso, dada a entrada de um inteiro ele será somado com 2 e depois com mais dois. Mas, vamos estender este exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="c1"&gt;# uma função simples, soma mais 2 a qualquer inteiro&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func_mais_2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;funcao&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;valor&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    Função que usamos antes.&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;funcao&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;valor&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;func_mais_2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="c1"&gt;# true&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func_quadrada&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;val&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    Eleva o valor de entrada ao quadrado.&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;val&lt;/span&gt;
+
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;func_mais_2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;func_quadrada&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="c1"&gt;# true&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;1.3.1 Um exemplo usando funções embutidas:&lt;/h3&gt;
+&lt;p&gt;Muitas das funções embutidas em python são funções de ordem superior (HOFs) como a função map, que é uma das minhas preferidas. Uma função de map recebe uma função, que recebe um único argumento e devolve para nós uma nova lista com a função aplicada a cada elemento da lista:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+
+&lt;span class="n"&gt;lista&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c1"&gt;# true&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Mas fique tranquilo, falaremos muito mais sobre isso.&lt;/p&gt;
+&lt;h2&gt;1.4 &lt;code&gt;__call__&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Por que falar de classes? Lembre-se, Python é uma linguagem construída em classes, e todos os objetos que podem ser chamados/invocados implementam o método &lt;code&gt;__call__&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Em uma função anônima:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
+
+&lt;span class="s1"&gt;&amp;#39;__call__&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;dir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# True&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Em funções tradicionais:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
+
+&lt;span class="s1"&gt;&amp;#39;__call__&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;dir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# True&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Isso quer dizer que podemos gerar classes que se comportam como funções?&lt;/p&gt;
+&lt;p&gt;SIIIIIM. Chupa Haskell&lt;/p&gt;
+&lt;p&gt;Essa é uma parte interessante da estrutura de criação do Python a qual veremos mais em outro momento sobre introspecção de funções, mas vale a pena dizer que classes, funções nomeadas, funções anônimas e funções geradoras usam uma base comum para funcionarem, essa é uma das coisas mais bonitas em python e que em certo ponto fere a ortogonalidade da linguagem, pois coisas iguais tem funcionamentos diferentes, mas facilita o aprendizado da linguagem, mas não é nosso foco agora.&lt;/p&gt;
+&lt;h2&gt;1.5 Funções geradoras&lt;/h2&gt;
+&lt;p&gt;Embora faremos um tópico extremamente focado em funções geradoras, não custa nada dar uma palinha, não?&lt;/p&gt;
+&lt;p&gt;Funções geradoras são funções que nos retornam um iterável. Mas ele é lazy (só é computado quando invocado). Para exemplo de uso, muitos conceitos precisam ser esclarecidos antes de entendermos profundamente o que acontece com elas, mas digo logo: são funções lindas &amp;lt;3&lt;/p&gt;
+&lt;p&gt;Para que uma função seja geradora, em tese, só precisamos trocar o return por yield:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;gen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;elemento&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;elemento&lt;/span&gt;
+
+&lt;span class="n"&gt;gerador&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gen&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gerador&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 1&lt;/span&gt;
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gerador&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 2&lt;/span&gt;
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gerador&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 3&lt;/span&gt;
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gerador&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 4&lt;/span&gt;
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gerador&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 5&lt;/span&gt;
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gerador&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# StopIteration&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Passando bem por cima, uma função geradora nos retorna um iterável que é preguiçoso. Ou seja, ele só vai efetuar a computação quando for chamado.&lt;/p&gt;
+&lt;h2&gt;1.6 Funções anônimas (lambda)&lt;/h2&gt;
+&lt;p&gt;Funções anônimas, ou funções lambda, são funções que podem ser declaradas em qualquer contexto. Tá... Todo tipo de função em python pode ser declarada em tempo de execução. Porém funções anônimas podem ser atribuídas a variáveis, podem ser definidas dentro de sequências e declaradas em um argumento de função. Vamos olhar sua sintaxe:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;argumento&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;argumento&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A palavra reservada &lt;code&gt;lambda&lt;/code&gt; define a função, assim como uma &lt;code&gt;def&lt;/code&gt;. Porém em uma &lt;code&gt;def&lt;/code&gt; quase que instintivamente sempre quebramos linha:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+  &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Uma das diferenças triviais em python é que as funções anônimas não tem nome. Tá, isso era meio óbvio, mas vamos averiguar:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+  &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="c1"&gt;# func&lt;/span&gt;
+
+&lt;span class="n"&gt;lambda_func&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;
+
+&lt;span class="n"&gt;lambda_func&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="c1"&gt;# &amp;#39;&amp;lt;lambda&amp;gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O resultado &lt;code&gt;'&amp;lt;lambda&amp;gt;'&lt;/code&gt; será o mesmo para qualquer função. Isso torna sua depuração praticamente impossível em python. Por isso os usuários de python (e nisso incluo todos os usuários, até aqueles que gostam de funcional) não encorajam o uso de funções lambda a todos os contextos da linguagem. Mas, em funções que aceitam outra funções isso é meio que uma tradição, caso a função (no caso a que executa o código a ser usado pelo lambda) não esteja definida e nem seja reaproveitada em outro contexto. Eu gosto de dizer que lambdas são muito funcionais em aplicações parciais de função. Porém, os lambdas não passam de açúcar sintático em Python, pois não há nada que uma função padrão (definida com &lt;code&gt;def&lt;/code&gt;), não possa fazer de diferente. Até a introspecção retorna o mesmo resultado:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+  &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# function&lt;/span&gt;
+
+&lt;span class="n"&gt;lambda_func&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;
+
+&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lambda_func&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# function&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Uma coisa que vale ser lembrada é que funções anônimas em python só executam uma expressão. Ou seja, não podemos usar laços de repetição (&lt;code&gt;while&lt;/code&gt;, &lt;code&gt;for&lt;/code&gt;), tratamento de exceções (&lt;code&gt;try&lt;/code&gt;, &lt;code&gt;except&lt;/code&gt;, &lt;code&gt;finally&lt;/code&gt;). Um simples &lt;code&gt;if&lt;/code&gt; com uso de &lt;code&gt;elif&lt;/code&gt; também não pode ser definido. Como sintaticamente só são aceitas expressões, o único uso de um &lt;code&gt;if&lt;/code&gt; é o ternário:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;valor_1&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;condicao&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="n"&gt;valor_2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O que dentro de um lambda teria essa aparência:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;argumento&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;argumento&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;argumento&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="n"&gt;argumento&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Funções lambda também podem ter múltiplos argumentos, embora seu processamento só possa ocorrer em uma expressão:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;arg_1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;arg_2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;arg_3&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;arg_1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;arg_2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;arg_3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;arg_1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;arg_2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;arg_3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Embora essa seja uma explanação inicial sobre as funções anônimas, grande parte dos tópicos fazem uso delas e vamos poder explorar melhor sua infinitude.&lt;/p&gt;
+&lt;p&gt;Mas por hoje é só e no tópico seguinte vamos discutir, mesmo que superficialmente, iteradores e iteráveis e suas relações com a programação funcional.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Eduardo Mendes</dc:creator><pubDate>Fri, 08 Dec 2017 13:30:00 -0200</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2017-12-08:progrmacao-funcional-com-python-1.html</guid><category>python</category><category>fp</category><category>funcional</category><category>functional programming</category></item><item><title>Programação funcional com Python #0 - Saindo da zona de conforto</title><link>http://pythonclub.com.br/progrmacao-funcional-com-python-0.html</link><description>&lt;h1&gt;0. Saindo da zona de conforto&lt;/h1&gt;
 &lt;p&gt;Sinta-se um vencedor, se você chegou até aqui, isso significa que quer aprender mais sobre o mundo da programação.&lt;/p&gt;
 &lt;p&gt;Aprender novos paradígmas podem te trazer muitas coisas positivas, assim como aprender linguagens diferentes, pois paradígmas e linguagens transpõem maneiras, estruturas e métodos de implementação completamente diferentes. Com isso você pode ter mais ferramentas para usar no dia a dia. Você pode aumentar sua capacidade de expressar ideias de diferentes maneiras. Eu penso que o maior limitador de um programador é a linguagem de programação em que ele tem domínio. Quando você aprende linguagens imperativas, como C, Python, Java e etc..., você se vê limitado ao escopo de criar e manipular variáveis. Não que isso seja uma coisa ruim, porém existem outras maneiras de resolver problemas e quando você tem conhecimento disso consegue avaliar melhor quando implementar cada tipo de coisa.&lt;/p&gt;
 &lt;p&gt;Você pode me dizer que aprender diferentes tipos de estruturas e maneiras de computar é uma coisa negativa pois tudo é variável nesse contexto. Mas eu penso exatamente o contrário, quanto mais você aprender da sua língua nativa, no caso estamos falando em português, maior o campo de domínio que você tem sobre como se comunicar e expressar ideias. Assim como aprender outras línguas te darão mais fundamentos para expressar ideias em outros idiomas, que não são melhores que os seu, mas diferentes e compõem diferentes estruturas, e isso pode ser libertador. Não quero me prolongar nesse assunto, mas dizer que isso pode acrescentar muito na suas habilidades cognitivas, até mesmo para usar ferramentas que você já usa no seu dia a dia.&lt;/p&gt;
@@ -140,4 +343,5 @@
 &lt;p&gt;Se você pretende realmente se aprofundar no assunto enquanto acompanha esse curso, fazer uma imersão ou coisa parecida. Tudo começa com o cálculo lambda mentalizado pelo incrível &lt;a href="https://en.wikipedia.org/wiki/Alonzo_Church"&gt;Alonzo Church&lt;/a&gt;. Caso você não o conheça, ele foi um matemático fantástico e teve uma carreira acadêmica brilhante. Foi o orientador de pessoas incríveis como Alan Turing, Raymond Smullyan etc...&lt;/p&gt;
 &lt;p&gt;Outro grande homem e que vale a pena mencionar e ser buscado é o &lt;a href="https://pt.wikipedia.org/wiki/Haskell_Curry"&gt;Haskell Curry&lt;/a&gt;, um lógico que trouxe excelentes contribuições para o que chamamos hoje de programação funcional.&lt;/p&gt;
 &lt;p&gt;A primeira linguagem funcional 'oficial' (não gosto muito de dizer isso) é o Lisp (List Processing) criada pelo fenomenal &lt;a href="https://pt.wikipedia.org/wiki/John_McCarthy"&gt;John McCarthy&lt;/a&gt; que também vale a pena ser pesquisado e estudado.&lt;/p&gt;
-&lt;p&gt;Veremos o básico sobre os tipos de função no próximo tópico.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Eduardo Mendes</dc:creator><pubDate>Mon, 20 Nov 2017 19:43:00 -0200</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2017-11-20:progrmacao-funcional-com-python-0.html</guid><category>python</category><category>fp</category><category>funcional</category><category>functional programming</category></item></channel></rss>
+&lt;p&gt;Veremos o básico sobre os tipos de função no próximo tópico.&lt;/p&gt;
+&lt;p&gt;OBS: &lt;a href="https://github.com/z4r4tu5tr4/python-funcional/blob/master/referencias.md"&gt;Referências&lt;/a&gt; usadas durante todos os tópicos.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Eduardo Mendes</dc:creator><pubDate>Mon, 20 Nov 2017 19:43:00 -0200</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2017-11-20:progrmacao-funcional-com-python-0.html</guid><category>python</category><category>fp</category><category>funcional</category><category>functional programming</category></item></channel></rss>
