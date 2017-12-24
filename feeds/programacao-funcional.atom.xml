@@ -1,5 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/programacao-funcional.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2017-12-08T13:30:00-02:00</updated><entry><title>Programação funcional com Python #1 - Funções</title><link href="http://pythonclub.com.br/progrmacao-funcional-com-python-1.html" rel="alternate"></link><published>2017-12-08T13:30:00-02:00</published><updated>2017-12-08T13:30:00-02:00</updated><author><name>Eduardo Mendes</name></author><id>tag:pythonclub.com.br,2017-12-08:progrmacao-funcional-com-python-1.html</id><summary type="html">&lt;h1&gt;1. Funções&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/programacao-funcional.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2017-12-23T22:50:00-02:00</updated><entry><title>Programação funcional com Python #2 - Iteraveis e iteradores</title><link href="http://pythonclub.com.br/progrmacao-funcional-com-python-2.html" rel="alternate"></link><published>2017-12-23T22:50:00-02:00</published><updated>2017-12-23T22:50:00-02:00</updated><author><name>Eduardo Mendes</name></author><id>tag:pythonclub.com.br,2017-12-23:progrmacao-funcional-com-python-2.html</id><summary type="html">&lt;h1&gt;2. Iteráveis e iteradores&lt;/h1&gt;
+&lt;p&gt;O que são iteráveis? Basicamente e a grosso modo, iteráveis em python são todos os objetos que implementam o método &lt;code&gt;__getitem__&lt;/code&gt; ou &lt;code&gt;__iter__&lt;/code&gt;. Beleza, vamos partir do simples.&lt;/p&gt;
+&lt;p&gt;Quase todos os tipos de dados em python são iteráveis, por exemplo: listas, strings, tuplas, dicionários, conjuntos, etc...&lt;/p&gt;
+&lt;p&gt;Vamos aos exemplos, eles são sempre mágicos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# iteração&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 1&lt;/span&gt;
+&lt;span class="c1"&gt;# 2&lt;/span&gt;
+&lt;span class="c1"&gt;# 3&lt;/span&gt;
+&lt;span class="c1"&gt;# 4&lt;/span&gt;
+&lt;span class="c1"&gt;# 5&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Era só isso? Sim, nem doeu, fala a verdade.&lt;/p&gt;
+&lt;p&gt;Em python, o comando &lt;code&gt;for&lt;/code&gt; nos fornece um iterador implícito. O que? Não entendi.&lt;/p&gt;
+&lt;p&gt;O laço &lt;code&gt;for&lt;/code&gt; em python itera em cada elemento da sequência. Como no exemplo, o &lt;code&gt;for&lt;/code&gt;, ou &lt;code&gt;foreach&lt;/code&gt;, no caso vai passando por cada elemento da sequência. Não é necessária a implementação de um index como na linguagem C, onde a iteração é explícita:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="n"&gt;sequencia&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;2.1 &lt;code&gt;__getitem__&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;O padrão de projeto iterator em python já vem implementado por padrão, como já foi dito antes. Basta que um objeto tenha os métodos &lt;code&gt;__iter__&lt;/code&gt; ou &lt;code&gt;__getitem__&lt;/code&gt; para que um laço possa ser utilizado.&lt;/p&gt;
+&lt;p&gt;Vamos exemplificar:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;iteravel&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    Um objeto que implementa o `__getitem__` pode ser acessado por posição&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sequencia&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seq&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sequencia&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;posicao&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;        Por exemplo, quando tentamos acessar um elemento da sequência usando&lt;/span&gt;
+&lt;span class="sd"&gt;        slice:&lt;/span&gt;
+&lt;span class="sd"&gt;            &amp;gt;&amp;gt;&amp;gt; iteravel[2]&lt;/span&gt;
+
+&lt;span class="sd"&gt;        O interpretador python chama o __getitem__ do objeto e nos retorna&lt;/span&gt;
+&lt;span class="sd"&gt;            a posição solicitada&lt;/span&gt;
+
+&lt;span class="sd"&gt;        um exemplo:&lt;/span&gt;
+&lt;span class="sd"&gt;        IN: lista = [1, 2, 3, 4]&lt;/span&gt;
+&lt;span class="sd"&gt;        IN: lista[0]&lt;/span&gt;
+&lt;span class="sd"&gt;        OUT: 1&lt;/span&gt;
+&lt;span class="sd"&gt;        &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seq&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;posicao&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Então, pode-se compreender, sendo bem rústico, que todos os objetos que implementam &lt;code&gt;__getitem__&lt;/code&gt; são iteráveis em python.&lt;/p&gt;
+&lt;h2&gt;2.2 &lt;code&gt;__iter__&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Agora os objetos que implementam &lt;code&gt;__iter__&lt;/code&gt; tem algumas peculiaridades. Por exemplo, quando o iterável (vamos pensar no &lt;code&gt;for&lt;/code&gt;) chamar a sequência, ela vai pedir o &lt;code&gt;__iter__&lt;/code&gt; que vai retornar uma instância de si mesmo para o &lt;code&gt;for&lt;/code&gt; e ele vai chamar o &lt;code&gt;__next__&lt;/code&gt; até que a exceção &lt;code&gt;StopIteration&lt;/code&gt; aconteça.&lt;/p&gt;
+&lt;p&gt;Uma classe que implementa &lt;code&gt;__iter__&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;iteravel&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sequencia&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+       &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sequencia&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__next__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;        Neste caso, como o método pop do objeto data é chamado&lt;/span&gt;
+&lt;span class="sd"&gt;            (vamos pensar em uma lista) ele vai retornar o primeiro elemento&lt;/span&gt;
+&lt;span class="sd"&gt;            (o de index 0) e vai remove-lo da lista&lt;/span&gt;
+
+&lt;span class="sd"&gt;        E quando a sequência estiver vazia ele vai nos retornar um StopIteration&lt;/span&gt;
+&lt;span class="sd"&gt;            O que vai fazer com que a iteração acabe.&lt;/span&gt;
+
+&lt;span class="sd"&gt;        Porém, estamos iterando com pop, o que faz a nossa iteração ser a única,&lt;/span&gt;
+&lt;span class="sd"&gt;            pois ela não pode ser repetida, dado que os elementos foram&lt;/span&gt;
+&lt;span class="sd"&gt;            removidos da lista&lt;/span&gt;
+&lt;span class="sd"&gt;        &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sequencia&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+           &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;StopIteration&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sequencia&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__iter__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Como é possível notar, o objeto com &lt;code&gt;__iter__&lt;/code&gt; não necessita de um &lt;code&gt;__getitem__&lt;/code&gt; e vise-versa. As diferenças partem do ponto em que um pode ser acessado por index/slice e outro não. Também um bom ponto é que nesse nosso caso, removemos os elementos da sequência, ou seja, ela se torna descartável.&lt;/p&gt;
+&lt;p&gt;Esse conceito, de ser descartado, pode parecer um pouco estranho no início, mas economiza muita memória. E, como estamos falando de programação funcional, pode-se dizer que nossa sequência se torna imutável, pois não existe uma maneira de mudar os valores contidos na lista do objeto.&lt;/p&gt;
+&lt;p&gt;Seguem dois links maravilhosos explicando sobre iteração em python:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://www.python.org/dev/peps/pep-0234/"&gt;PEP0243&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=ULj7ejvuzI8"&gt;Iteração em Python: do básico ao genial&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;O primeiro é a PEP sobre as estruturas dos iteráveis e o segundo um video do Guru Luciano Ramalho explicando tudo sobre iteradores.&lt;/p&gt;
+&lt;p&gt;Ah... Ia quase me esquecendo, se você não entendeu muita coisa sobre os dunders, você pode ler o &lt;a href="https://docs.python.org/3/reference/datamodel.html#special-method-names"&gt;Python data model&lt;/a&gt;. Obs: não me responsabilizo pelo programador melhor que você sairá desta página.&lt;/p&gt;
+&lt;p&gt;Embora esse tópico seja talvez o mais curto, ele vai ser de fundamental importância para o entendimento de um pouco de tudo nesse 'Curso'. É sério. Vamos entender como trabalhar com iteráveis de uma maneira bonita no próximo tópico.&lt;/p&gt;</summary><category term="python"></category><category term="fp"></category><category term="funcional"></category><category term="functional programming"></category></entry><entry><title>Programação funcional com Python #1 - Funções</title><link href="http://pythonclub.com.br/progrmacao-funcional-com-python-1.html" rel="alternate"></link><published>2017-12-08T13:30:00-02:00</published><updated>2017-12-08T13:30:00-02:00</updated><author><name>Eduardo Mendes</name></author><id>tag:pythonclub.com.br,2017-12-08:progrmacao-funcional-com-python-1.html</id><summary type="html">&lt;h1&gt;1. Funções&lt;/h1&gt;
 &lt;p&gt;Como nem tudo são flores, vamos começar do começo e entender algumas características das funções do python (o objeto função) e dar uma revisada básica em alguns conceitos de função só pra gente não se perder no básico depois. Então o primeiro tópico vai se limitar a falar da estrutura básica das funções em python, sem entrar profundamente em cada um dos tópicos. Será uma explanação de código e abrir a cabeça para novas oportunidades de código mais pythonicos e que preferencialmente gere menos efeito colateral. Mas calma, não vamos ensinar a fazer funções, você já está cheio disso.&lt;/p&gt;
 &lt;h2&gt;1.1 Funções como objeto de primeira classe&lt;/h2&gt;
 &lt;p&gt;Funções como objeto de primeira classe, são funções que se comportam como qualquer tipo nativo de uma determinada linguagem. Por exemplo:&lt;/p&gt;
