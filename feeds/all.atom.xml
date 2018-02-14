@@ -135,7 +135,7 @@
 &lt;li&gt;0 - &lt;a href="http://pythonclub.com.br/django-rest-framework-quickstart.html"&gt;Quickstart&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;1 - &lt;a href="http://pythonclub.com.br/django-rest-framework-serialization.html"&gt;Serialization&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;2 - &lt;strong&gt;Requests &amp;amp; Responses&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;3 - Class based views&lt;/li&gt;
+&lt;li&gt;3 - &lt;a href="http://pythonclub.com.br/django-rest-framework-class-based-views.html"&gt;Class based views&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Este post é continuação do post &lt;a href="http://pythonclub.com.br/django-rest-framework-serialization.html"&gt;Django Rest Framework Serialization&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;O uso de &lt;em&gt;requests&lt;/em&gt; e &lt;em&gt;responses&lt;/em&gt; torna nossa api mais flexível. A funcionalidade principal do objeto &lt;strong&gt;Request&lt;/strong&gt; é o atributo &lt;code&gt;request.data&lt;/code&gt;, que é semelhante ao &lt;code&gt;request.POST&lt;/code&gt;, mas é mais útil para trabalhar com APIs.&lt;/p&gt;
@@ -3530,8 +3530,8 @@ $ lektor server
 &lt;ul&gt;
 &lt;li&gt;0 - &lt;a href="http://pythonclub.com.br/django-rest-framework-quickstart.html"&gt;Quickstart&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;1 - &lt;strong&gt;Serialization&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;2 - Requests &amp;amp; Responses&lt;/li&gt;
-&lt;li&gt;3 - Class based views&lt;/li&gt;
+&lt;li&gt;2 - &lt;a href="http://pythonclub.com.br/django-rest-framework-requests-responses.html"&gt;Requests &amp;amp; Responses&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;3 - &lt;a href="http://pythonclub.com.br/django-rest-framework-class-based-views.html"&gt;Class based views&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Pra quem não sabe, para usar API Web usamos REST, no caso, &lt;a href="http://www.django-rest-framework.org/"&gt;Django Rest Framework&lt;/a&gt;, framework web do &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -5615,8 +5615,8 @@ $ sudo -H pip install Pillow
 &lt;ul&gt;
 &lt;li&gt;0 - &lt;strong&gt;Quickstart&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;1 - &lt;a href="http://pythonclub.com.br/django-rest-framework-serialization.html"&gt;Serialization&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;2 - Requests &amp;amp; Responses&lt;/li&gt;
-&lt;li&gt;3 - Class based views&lt;/li&gt;
+&lt;li&gt;2 - &lt;a href="http://pythonclub.com.br/django-rest-framework-requests-responses.html"&gt;Requests &amp;amp; Responses&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;3 - &lt;a href="http://pythonclub.com.br/django-rest-framework-class-based-views.html"&gt;Class based views&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Obs&lt;/strong&gt;: se você não sabe &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; sugiro que leia este &lt;a href="http://pythonclub.com.br/tutorial-django-17.html"&gt;tutorial&lt;/a&gt; antes.&lt;/p&gt;
