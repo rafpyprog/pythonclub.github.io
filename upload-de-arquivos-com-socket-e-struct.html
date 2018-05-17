@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PythonClub, ">
+    <meta name="theme-color" content="#101212">
+
+        <link rel="alternate"  href="http://pythonclub.com.br/feeds/all.atom.xml" type="application/atom+xml" title="PythonClub Full Atom Feed"/>
+        <link rel="alternate" href="http://pythonclub.com.br/feeds/all.rss.xml" type="application/rss+xml" title="PythonClub Full RSS Feed"/>
+
+    <link rel="shortcut icon" href="http://pythonclub.com.br/theme/images/favicon.ico" >
+
+            <title>Upload de Arquivos com Socket e Struct por Silvio Ap Silva // #PythonClub // </title>
+
+    <meta property="fb:app_id" content="1487080281503641" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Upload de Arquivos com Socket e Struct" />
+    <meta property="og:site_name" content="PythonClub" />
+    <meta property="og:url" content="http://pythonclub.com.br/upload-de-arquivos-com-socket-e-struct.html" />
+    <meta property="og:description" content="Apesar de termos muitas formas de enviarmos arquivos para servidores hoje em dia, como por exemplo o scp e rsync, podemos usar o python com seus modulos built-in para enviar arquivos a servidores usando struct para serializar os dados e socket para criar uma conexão cliente/servidor. Struct O modulo ..." />
+    <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/custom.css">
+
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pygments.css">
+
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50935105-1', 'pythonclub.com.br');
+      ga('require', 'linkid', 'linkid.js');
+      ga('send', 'pageview');
+
+    </script>
+    <!-- transifex -->
+    <!-- <script type="text/javascript">  -->
+    <!-- window.liveSettings = {  -->
+    <!--     api_key: "f8fd260a9bdc4e9195c80e31416bb254",  -->
+    <!--     picker: "bottom-right",  -->
+    <!--     detectlang: true,  -->
+    <!--     autocollect: true  -->
+    <!-- };  -->
+    <!-- </script>  -->
+    <!-- <script type="text/javascript" src="//cdn.transifex.com/live.js"></script>  -->
+    <!-- end transifex -->
+    <meta name="google-site-verification" content="XQc_QtnTecI9nxAfplXGtECCpZQDwbDRcn7pyDVa1LE" />
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://pythonclub.com.br/author/silvio-ap-silva.html" title="See posts by Silvio Ap Silva">
+                        <img class="article-avatar" alt="Silvio Ap Silva" src="https://www.gravatar.com/avatar/e9ba155ec4ef54fd29de9e880fd336cc">
+                </a>
+                <h2 class="article-info">Silvio Ap Silva</h2>
+    			<ul class="author-social">
+                    <li>
+                        <a target="_blank" href="https://github.com/kanazux">
+                            <i class="fa fa-lg fa-fw fa-github"></i>
+                            <strong>Github</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://twitter.com/@kanazux">
+                            <i class="fa fa-lg fa-fw fa-twitter"></i>
+                            <strong>Twitter</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://www.linkedin.com/in/SilvioApSilva">
+                            <i class="fa fa-lg fa-fw fa-linkedin"></i>
+                            <strong>Linkedin</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://kanazuchi.com">
+                            <i class="fa fa-lg fa-fw fa-globe"></i>
+                            <strong>Site</strong>
+                        </a>
+                    </li>
+                </ul>
+                <h5>Publicado em:</h5>
+                <p>Thu 17 May 2018</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Upload de Arquivos com Socket e Struct</h1>
+                        <p class="post-meta">
+                            // Tags                                 <a class="post-category" href="http://pythonclub.com.br/tag/python.html">python</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/tutorial.html">tutorial</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/network.html">network</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/struct.html">struct</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/socket.html">socket</a>
+                        </p>
+                </header>
+            </section>
+            <p>Apesar de termos muitas formas de enviarmos arquivos para servidores hoje em dia, como por exemplo o <em>scp</em> e <em>rsync</em>, podemos usar o python com seus modulos <em>built-in</em> para enviar arquivos a servidores usando struct para serializar os dados e socket para criar uma conexão cliente/servidor.</p>
+<h3><em>Struct</em></h3>
+<p>O modulo <a href="https://docs.python.org/3/library/struct.html">struct</a> é usado para converter bytes no python em formatos do struct em C.
+Com ele podemos enviar num unico conjunto de dados o nome de um arquivo e os bytes referentes ao seus dados.</p>
+<p>Struct também é utilizado para serializar diversos tipos de dados diferentes, como bytes, inteiros, floats além de outros, no nosso caso usaremos apenas bytes.</p>
+<p>Vamos criar um arquivo para serializar.</p>
+<div class="highlight"><pre><span></span><span class="err">!</span><span class="n">echo</span> <span class="s2">&quot;Upload de arquivos com sockets e struct</span><span class="se">\n</span><span class="s2">Criando um arquivo para serializar.&quot;</span> <span class="o">&gt;</span> <span class="n">arquivo_para_upload</span>
+</pre></div>
+
+
+<p>Agora em posse de um arquivo vamos criar nossa estrutura de bytes para enviar.</p>
+<div class="highlight"><pre><span></span><span class="n">arquivo</span> <span class="o">=</span> <span class="s2">&quot;arquivo_para_upload&quot;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">arquivo</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arq</span><span class="p">:</span>
+    <span class="n">dados_arquivo</span> <span class="o">=</span> <span class="n">arq</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">serializar</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">Struct</span><span class="p">(</span><span class="s2">&quot;{}s {}s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arquivo</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">dados_arquivo</span><span class="p">)))</span>
+    <span class="n">dados_upload</span> <span class="o">=</span> <span class="n">serializar</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">arquivo</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="n">dados_arquivo</span><span class="p">])</span>
+</pre></div>
+
+
+<p>Por padrão, struct usa caracteres no inicio da sequencia dos dados para definir a ordem dos bytes, tamanho e alinhamento dos bytes nos dados empacotados.
+Esses caracteres podem ser vistos na <a href="https://docs.python.org/3/library/struct.html#byte-order-size-and-alignment">seção 7.1.2.1</a> da documentação.
+Como não definimos, será usado o <strong>@</strong> que é o padrão.</p>
+<p>Nessa linha:</p>
+<div class="highlight"><pre><span></span><span class="n">serializar</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">Struct</span><span class="p">(</span><span class="s2">&quot;{}s {}s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arquivo</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">dados_arquivo</span><span class="p">)))</span>
+</pre></div>
+
+
+<p>definimos que nossa estrutura serializada seria de dois conjuntos de caracteres, a primeira com o tamanho do nome do arquivo, e a segunda com o tamanho total dos dados lidos em</p>
+<div class="highlight"><pre><span></span><span class="n">dados_arquivo</span> <span class="o">=</span> <span class="n">arq</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Se desempacotarmos os dados, teremos uma lista com o nome do arquivo e os dados lidos anteriormente.</p>
+<div class="highlight"><pre><span></span><span class="n">serializar</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="n">dados_upload</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>b&#39;arquivo_para_upload&#39;
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">serializar</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="n">dados_upload</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>b&#39;Upload de arquivos com sockets e struct\\nCriando um arquivo para serializar.\n&#39;
+</pre></div>
+
+
+<p>Agora de posse dos nossos dados já serializados, vamos criar um cliente e um servidor com socket para transferirmos nosso arquivo.</p>
+<h3><em>Socket</em></h3>
+<p>O modulo <a href="https://docs.python.org/3/library/socket.html">socket</a> prove interfaces de socket BSD, disponiveis em praticamente todos os sistemas operacionais.</p>
+<h4>Familias de sockets</h4>
+<p>Diversas familias de sockets podem ser usadas para termos acessos a objetos que nos permitam fazer chamadas de sistema.
+Mais informações sobre as familias podem ser encontradas na <a href="https://docs.python.org/3/library/socket.html#socket-families">seção 18.1.1</a> da documentação. No nosso exemplo usaremos a AF_INET.</p>
+<h4>AF_INET</h4>
+<p><strong>AF_INET</strong> precisa basicamente de um par de dados, contendo um endereço IPv4 e uma porta para ser instanciada.
+Para endereços IPv6 o modulo disponibiliza o <strong>AF_INET6</strong></p>
+<h4>Constante [SOCK_STREAM]</h4>
+<p>As constantes representam as familias de sockets, como a constante AF_INET e os protocolos usados como parametros para o modulo socket.
+Um dos protocolos mais usados encontrados na maioria dos sistemas é o SOCK_STREAM.</p>
+<p>Ele é um protocolo baseado em comunicação que permite que duas partes estabeleçam uma conexão e conversem entre si.</p>
+<h3><em>Servidor e cliente socket</em></h3>
+<p>Como vamos usar um protocolo baseado em comunicação, iremos construir o servidor e cliente paralelamente para um melhor entendimento.</p>
+<blockquote>
+<p>Servidor</p>
+</blockquote>
+<p>Para esse exemplo eu vou usar a porta 6124 para o servidor, ela esta fora da range reservada pela IANA para sistemas conhecidos, que vai de 0-1023.</p>
+<p>Vamos importar a bilioteca socket e definir um host e porta para passarmos como parametro para a constante AF_INET.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
+<span class="n">host</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span>
+<span class="n">porta</span> <span class="o">=</span> <span class="mi">6124</span>
+<span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Agora usaremos o metodo bind para criarmos um ponto de conexão para nosso cliente. Esse metodo espera por uma tupla contento o host e porta como parametros.</p>
+<div class="highlight"><pre><span></span><span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">porta</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Agora vamos colocar nosso servidor socket em modo escuta com o metodo listen. Esse metodo recebe como parametro um numero inteiro (<strong>backlog</strong>) definindo qual o tamanho da fila que será usada para receber pacotes SYN até dropar a conexão. Usaremos um valor baixo o que evita SYN flood na rede. Mais informações sobre <em>backlog</em> podem ser encontradas na <a href="https://tools.ietf.org/html/rfc7413">RFC 7413</a>.</p>
+<div class="highlight"><pre><span></span><span class="n">sock</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Agora vamos colocar o nosso socket em um loop esperando por uma conexão e um inicio de conversa. Pra isso vamos usar o metodo <em>accept</em> que nos devolve uma tupla, onde o primeiro elemento é um novo objeto socket para enviarmos e recebermos informações, e o segundo contendo informações sobre o endereço de origem e porta usada pelo cliente.</p>
+<p><strong>Vamos criar um diretório para salvar nosso novo arquivo.</strong></p>
+<div class="highlight"><pre><span></span><span class="err">!</span><span class="n">mkdir</span> <span class="n">arquivos_recebidos</span>
+</pre></div>
+
+
+<p><em>Os dados são enviados sempre em bytes</em>. <strong>Leia os comentários</strong></p>
+<div class="highlight"><pre><span></span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">novo_sock</span><span class="p">,</span> <span class="n">cliente</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">novo_sock</span><span class="p">:</span>  <span class="c1"># Caso haja uma nova conexão</span>
+        <span class="n">ouvir</span> <span class="o">=</span> <span class="n">novo_sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># Colocamos nosso novo objeto socket para ouvir</span>
+        <span class="k">if</span> <span class="n">ouvir</span> <span class="o">!=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">:</span>  <span class="c1"># Se houver uma mensagem...</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Aqui usaremos os dados enviados na mensagem para criar nosso serielizador.</span>
+
+<span class="sd">            Com ele criado poderemos desempacotar os dados assim que recebermos.</span>
+<span class="sd">            Veja no cliente mais abaixo qual a primeira mensagem enviada.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">mensagem</span><span class="p">,</span> <span class="n">nome</span><span class="p">,</span> <span class="n">dados</span> <span class="o">=</span> <span class="n">ouvir</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+            <span class="n">serializar</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">Struct</span><span class="p">(</span><span class="s2">&quot;{}s {}s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nome</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">dados</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">])))</span>
+            <span class="n">novo_sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;Pode enviar!&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>  <span class="c1"># Enviaremos uma mensagem para o cliente enviar os dados.</span>
+            <span class="n">dados</span> <span class="o">=</span> <span class="n">novo_sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># Agora iremos esperar por eles.</span>
+            <span class="n">nome</span><span class="p">,</span> <span class="n">arquivo</span> <span class="o">=</span> <span class="n">serializar</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="n">dados</span><span class="p">)</span>  <span class="c1"># Vamos desempacotar os dados</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Agora enviamos uma mensagem dizendo que o arquivo foi recebido.</span>
+
+<span class="sd">            E iremos salva-lo no novo diretório criado.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">novo_sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;Os dados do arquivo {} foram enviados.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nome</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;arquivos_recebidos/{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nome</span><span class="o">.</span><span class="n">decode</span><span class="p">()),</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">novo_arquivo</span><span class="p">:</span>
+                <span class="n">novo_arquivo</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">arquivo</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Arquivo {} salvo em arquivos_recebidos.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nome</span><span class="o">.</span><span class="n">decode</span><span class="p">()))</span>
+
+    <span class="n">Arquivo</span> <span class="n">arquivo_para_upload</span> <span class="n">salvo</span> <span class="n">em</span> <span class="n">arquivos_recebidos</span><span class="o">.</span>
+</pre></div>
+
+
+<blockquote>
+<p>Cliente</p>
+</blockquote>
+<p>Nosso cliente irá usar o metodo <em>connect</em> para se connectar no servidor e a partir dai começar enviar e receber mensagens. Ele também recebe como parametros uma tupla com o host e porta de conexão do servidor.</p>
+<div class="highlight"><pre><span></span><span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span>
+<span class="n">porta</span> <span class="o">=</span> <span class="mi">6124</span>
+<span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>  <span class="c1"># Cria nosso objeto socket</span>
+<span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">porta</span><span class="p">))</span>
+<span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;Enviarei um arquivo chamado: {} contendo: {} bytes&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">arquivo</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dados_arquivo</span><span class="p">))</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>  <span class="c1"># Enviamos a mensagem com o nome e tamanho do arquivo.</span>
+<span class="n">ouvir</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># Aguardamos uma mensagem de confirmação do servidor.</span>
+<span class="k">if</span> <span class="n">ouvir</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Pode enviar!&quot;</span><span class="p">:</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">dados_upload</span><span class="p">)</span>  <span class="c1"># Enviamos os dados empacotados.</span>
+    <span class="n">resposta</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># Aguardamos a confirmação de que os dados foram enviados.</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">resposta</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+    <span class="n">Os</span> <span class="n">dados</span> <span class="n">do</span> <span class="n">arquivo</span> <span class="n">arquivo_para_upload</span> <span class="n">foram</span> <span class="n">enviados</span><span class="o">.</span>
+</pre></div>
+
+
+<p>Agora podemos checar nossos arquivos e ver se eles foram salvos corretamente.</p>
+<div class="highlight"><pre><span></span><span class="err">!</span><span class="n">md5sum</span> <span class="n">arquivo_para_upload</span><span class="p">;</span> <span class="n">md5sum</span> <span class="n">arquivos_recebidos</span><span class="o">/</span><span class="n">arquivos_para_upload</span>
+
+    <span class="mf">605e99</span><span class="n">b3d873df0b91d8834ff292d320</span>  <span class="n">arquivo_para_upload</span>
+    <span class="mf">605e99</span><span class="n">b3d873df0b91d8834ff292d320</span>  <span class="n">arquivos_recebidos</span><span class="o">/</span><span class="n">arquivo_para_upload</span>
+</pre></div>
+
+
+<p>Com base nesse exemplo, podem ser enviados diversos arquivos, sendo eles texto, arquivos compactados ou binários.</p>
+<p>Sem mais delongas, fiquem com Cher e até a próxima!</p>
+<p>Abraços.</p>
+
+            <div class="licence">
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licença Creative Commons"
+                                                                                               style="border-width:0"
+                                                                                               src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"/></a><br/><a
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title"
+                    href="http://pythonclub.com.br/upload-de-arquivos-com-socket-e-struct.html">"Upload de Arquivos com Socket e Struct"</a> de <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="http://pythonclub.com.br/author/silvio-ap-silva.html"
+                    property="cc:attributionName" rel="cc:attributionURL">"Silvio Ap Silva"</a> está licenciado com uma Licença
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons -
+                    Atribuição-NãoComercial-SemDerivações 4.0 Internacional</a>.
+            </div>
+
+            <div class="sharing">
+                <!-- Facebook sharing -->
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=1487080281503641&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-share-button" data-href="http://pythonclub.com.br/upload-de-arquivos-com-socket-e-struct.html" data-type="button_count"></div>
+
+                <!-- Google+ sharing -->
+                <div class="g-plus alinhar" data-action="share" data-annotation="bubble" data-href="http://pythonclub.com.br/upload-de-arquivos-com-socket-e-struct.html"></div>
+
+                <!-- Twitter sharing -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="pt" style="margin-bottom: -4px !important;">Tweetar</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Topo</a>
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES: THIS CODE IS ONLY AN EXAMPLE * * */
+                        var disqus_shortname = 'pythonclub'; // Required - Replace example with your forum shortname
+                        var disqus_identifier = 'upload-de-arquivos-com-socket-e-struct.html';
+                        var disqus_title = 'Upload de Arquivos com Socket e Struct';
+                        var disqus_url = 'http://pythonclub.com.br/upload-de-arquivos-com-socket-e-struct.html';
+                    
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </div>
+<footer class="footer">
+    <p>&copy; PythonClub &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://pythonclub.com.br/theme/js/dynamic_random_articles.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+        $(window).load(function(){
+          $("iframe").css("margin-bottom", "-6px")
+          $("#twitter-widget-0").css("margin-bottom", "-5px");
+          $("#twitter-widget-0").css("margin-left", "-1px");
+        });
+    </script>
+    <script type="text/javascript" src="https://apis.google.com/js/platform.js">
+      {lang: 'pt-BR'}
+    </script>
+
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+
+        $(function(){
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/upload-de-arquivos-com-socket-e-struct.html", "title": "Upload de Arquivos com Socket e Struct"}, {"url": "http://pythonclub.com.br/monitorando-ips-duplicados-na-rede.html", "title": "Monitorando Ips Duplicados na Rede"}, {"url": "http://pythonclub.com.br/django-rest-framework-class-based-views.html", "title": "Django Rest Framework - #3 Class Based Views"}, {"url": "http://pythonclub.com.br/django-rest-framework-requests-responses.html", "title": "Django Rest Framework - #2 Requests and Responses"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-2.html", "title": "Programa\u00e7\u00e3o funcional com Python #2 - Iteraveis e iteradores"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-1.html", "title": "Programa\u00e7\u00e3o funcional com Python #1 - Fun\u00e7\u00f5es"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-0.html", "title": "Programa\u00e7\u00e3o funcional com Python #0 - Saindo da zona de conforto"}, {"url": "http://pythonclub.com.br/peewee-um-orm-python-minimalista.html", "title": "Peewee - Um ORM Python minimalista"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html", "title": "What the Flask? pt 4 - Extens\u00f5es para o Flask"}, {"url": "http://pythonclub.com.br/configurando-python-3.5-openshift-flask-gunicorn.html", "title": "Configurando OpenShift com Python 3.5 + Flask + Gunicorn"}, {"url": "http://pythonclub.com.br/instalando-o-python-vers\u00e3o-3.7.0-alpha-1-no-ubuntu-16.04.md.html", "title": "Instalando o Python vers\u00e3o 3.7.0 alpha 1 no Ubuntu 16.04"}, {"url": "http://pythonclub.com.br/abrangencia-de-listas-e-dicionarios-com-python.html", "title": "Abrang\u00eancia de Listas e Dicion\u00e1rios"}, {"url": "http://pythonclub.com.br/debugging-logging.html", "title": "Debugging - logging"}, {"url": "http://pythonclub.com.br/deploy-rapido-simples-com-dokku.html", "title": "Deploy r\u00e1pido e simples com Dokku"}, {"url": "http://pythonclub.com.br/bot-telegram-mais-web-scraping-parte-1.html", "title": "Bot telegram mais web scraping - parte 1"}, {"url": "http://pythonclub.com.br/como-distribuir-sua-aplicacao-python-com-pypi.html", "title": "Como distribuir sua aplica\u00e7\u00e3o Python com PyPI"}, {"url": "http://pythonclub.com.br/python-webassets-elm.html", "title": "Python webassets & Elm"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula1.html", "title": "Curso Python asyncio: Aula 01 - Iterators e Generators"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula00.html", "title": "Curso Python asyncio: Aula 00 - Introdu\u00e7\u00e3o ao m\u00f3dulo asyncio"}, {"url": "http://pythonclub.com.br/gerando-relatorios-de-testes-com-coveralls.html", "title": "Relat\u00f3rios de testes com Coveralls"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 4 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 3 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 2 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)"}, {"url": "http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html", "title": "GitHub Pages com Pelican e Travis-CI"}, {"url": "http://pythonclub.com.br/sites-estaticos-com-lektor.html", "title": "Sites Est\u00e1ticos com Lektor"}, {"url": "http://pythonclub.com.br/django-rest-framework-serialization.html", "title": "Django Rest Framework Serialization"}, {"url": "http://pythonclub.com.br/explicit-is-better-than-implicit.html", "title": "Explicit is better than implicit"}, {"url": "http://pythonclub.com.br/tdd-com-python-e-flask.html", "title": "TDD com Python e Flask"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html", "title": "Upload de arquivos no Django: entendendo os modos de leitura"}, {"url": "http://pythonclub.com.br/python-generators.html", "title": "Python Generators"}, {"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+        });
+        
+    </script>
+        <!-- spot_im -->
+        <!--    <div id="spot-im-root"></div> -->
+        <!--    <script type="text/javascript">!function(t,o,p){function e(){var t=o.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"==o.location.protocol?"https":"http")+":"+p,o.body.appendChild(t)}t.spotId="3de816246c80a51757bb01c5b8c95cda",t.spotName="",t.allowDesktop=!0,t.allowMobile=!1,t.containerId="spot-im-root",e()}(window.SPOTIM={},document,"//www.spot.im/embed/scripts/launcher.js");</script> -->
+        <!-- end spot_im -->
+   
+            <script>
+              ((window.gitter = {}).chat = {}).options = {
+                    room: 'pythonclub/pythonclub.github.io'
+              };
+            </script>
+            <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+   
+</body>
+</html>
