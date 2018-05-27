@@ -16022,9 +16022,11 @@ $ sqlite3 clientes_recuperado.db &lt;span class="s1"&gt;&amp;#39;SELECT * FROM c
 &lt;p&gt;&lt;a class="reference external" href="http://www.blog.pythonlibrary.org/2012/07/18/python-a-simple-step-by-step-sqlite-tutorial/"&gt;Python A Simple Step by Step SQLite Tutorial&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://docs.python.org/2/library/sqlite3.html#sqlite3.Connection.iterdump"&gt;Python docs, SQLite, Connection Objects&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="Python"></category><category term="Banco de dados"></category></entry><entry><title>Introdução a Classes e Métodos em Python (básico)</title><link href="http://pythonclub.com.br/introducao-classes-metodos-python-basico.html" rel="alternate"></link><published>2014-06-12T23:59:00-03:00</published><updated>2014-06-12T23:59:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-06-12:introducao-classes-metodos-python-basico.html</id><summary type="html">&lt;p&gt;Eu não sou a melhor pessoa do mundo para explicar este assunto, mas eu escrevi este post para introduzir um tópico sobre &lt;em&gt;manipulação de banco de dados em SQLite3 com Python&lt;/em&gt;, porém mais informações sobre classes e métodos podem ser encontradas nos links abaixo. Veja os exemplos em &lt;a class="reference external" href="https://github.com/rg3915/pythonDesktopApp/tree/master/pythonBasico"&gt;https://github.com/rg3915/pythonDesktopApp&lt;/a&gt;.&lt;/p&gt;
+</summary><category term="Python"></category><category term="Banco de dados"></category></entry><entry><title>Introdução a Classes e Métodos em Python (básico)</title><link href="http://pythonclub.com.br/introducao-classes-metodos-python-basico.html" rel="alternate"></link><published>2014-06-12T23:59:00-03:00</published><updated>2014-06-12T23:59:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-06-12:introducao-classes-metodos-python-basico.html</id><summary type="html">&lt;p&gt;Eu não sou a melhor pessoa do mundo para explicar este assunto, mas vou tentar fazer uma breve introdução a classes e métodos em Python.&lt;/p&gt;
+&lt;p&gt;Mais informações sobre classes e métodos podem ser encontradas nos links abaixo. Veja os exemplos em &lt;a class="reference external" href="https://github.com/rg3915/python-classes-metodos/tree/master/pythonBasico"&gt;https://github.com/rg3915/python-classes-metodos&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&amp;gt; Este artigo foi atualizado em 26 de Maio de 2018.&lt;/p&gt;
 &lt;p&gt;PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Segundo a documentação do &lt;a class="reference external" href="https://docs.python.org/2/tutorial/classes.html#class-objects"&gt;Python&lt;/a&gt; e o video &lt;a class="reference external" href="https://www.youtube.com/watch?v=Zr_FiKbgRbU"&gt;Python para Zumbis&lt;/a&gt;, uma &lt;strong&gt;classe&lt;/strong&gt; associa dados (&lt;strong&gt;atributos&lt;/strong&gt;) e operações (&lt;strong&gt;métodos&lt;/strong&gt;) numa só estrutura. Um &lt;strong&gt;objeto&lt;/strong&gt; é uma variável cujo tipo é uma classe, ou seja, um &lt;strong&gt;objeto é uma instância&lt;/strong&gt; de uma classe.&lt;/p&gt;
+&lt;p&gt;Segundo a documentação do &lt;a class="reference external" href="https://docs.python.org/3/tutorial/classes.html#class-objects"&gt;Python&lt;/a&gt; e o video &lt;a class="reference external" href="https://www.youtube.com/watch?v=Zr_FiKbgRbU"&gt;Python para Zumbis&lt;/a&gt;, uma &lt;strong&gt;classe&lt;/strong&gt; associa dados (&lt;strong&gt;atributos&lt;/strong&gt;) e operações (&lt;strong&gt;métodos&lt;/strong&gt;) numa só estrutura. Um &lt;strong&gt;objeto é uma instância&lt;/strong&gt; de uma classe. Ou seja, uma representação da classe. Por exemplo, Regis é uma instância de uma classe chamada Pessoa, mas a Pessoa é a classe que o representa de uma forma genérica. Se você criar um outro ojbeto chamado Fabio, esse objeto também será uma instancia da classe Pessoa.&lt;/p&gt;
 &lt;p&gt;Na sua sintaxe mais elementar definimos uma classe conforme abaixo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NomeDaClasse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;pass&lt;/span&gt;
@@ -16040,7 +16042,6 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Juntando os dois temos:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NomeDaClasse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;atributo1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
 
         &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;metodo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
                 &lt;span class="k"&gt;pass&lt;/span&gt;
@@ -16056,8 +16057,27 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;metodo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;pass&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Voltando a explicação sobre a classe: O &lt;tt class="docutils literal"&gt;atributo1&lt;/tt&gt; é um atributo com valor inicial &lt;tt class="docutils literal"&gt;None&lt;/tt&gt; (nada). Poderia ser &lt;tt class="docutils literal"&gt;atributo1 = 0&lt;/tt&gt;, por exemplo.&lt;/p&gt;
-&lt;p&gt;Importante: Note que para nome de &lt;strong&gt;classes&lt;/strong&gt; usamos &lt;em&gt;PalavrasComeçandoPorMaiúscula&lt;/em&gt; (isso tambem é conhecido como &amp;quot;CamelCase&amp;quot;) e para nome de &lt;strong&gt;métodos (funções)&lt;/strong&gt; usamos &lt;em&gt;minúsculas_separadas_por_underscore&lt;/em&gt;. Esta é uma convenção adotada pelos &lt;em&gt;Pythonistas&lt;/em&gt; segundo o &lt;a class="reference external" href="http://www.python.org.br/wiki/GuiaDeEstilo"&gt;Guia de Estilo&lt;/a&gt; &lt;strong&gt;PEP 8&lt;/strong&gt; - &lt;a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/"&gt;Style Guide for Python Code&lt;/a&gt; escrito por &lt;a class="reference external" href="http://www.python.org.br/wiki/GuidoVanRossum"&gt;Guido Van Rossum&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Importante: Note que para nome de &lt;strong&gt;classes&lt;/strong&gt; usamos &lt;em&gt;PalavrasComeçandoPorMaiúscula&lt;/em&gt; (isso tambem é conhecido como &amp;quot;&lt;a class="reference external" href="http://pep8.org/#descriptive-naming-styles"&gt;CapitalizeWords&lt;/a&gt;&amp;quot;) e para nome de &lt;strong&gt;métodos (funções)&lt;/strong&gt; usamos &lt;em&gt;minúsculas_separadas_por_underscore&lt;/em&gt;. Esta é uma convenção adotada pelos &lt;em&gt;Pythonistas&lt;/em&gt; segundo o &lt;a class="reference external" href="http://www.python.org.br/wiki/GuiaDeEstilo"&gt;Guia de Estilo&lt;/a&gt; &lt;strong&gt;PEP 8&lt;/strong&gt; - &lt;a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/"&gt;Style Guide for Python Code&lt;/a&gt; escrito por &lt;a class="reference external" href="http://www.python.org.br/wiki/GuidoVanRossum"&gt;Guido Van Rossum&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="section" id="exemplo-0-pessoa"&gt;
+&lt;h2&gt;Exemplo 0 - Pessoa&lt;/h2&gt;
+&lt;p&gt;No exemplo mencionado no começo desse post o código mais simples seria o seguinte:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Pessoa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;
+
+
+&lt;span class="n"&gt;regis&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Pessoa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;regis&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;fabio&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Pessoa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Fabio&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fabio&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Note que &lt;tt class="docutils literal"&gt;regis&lt;/tt&gt; é uma instância da classe &lt;tt class="docutils literal"&gt;Pessoa&lt;/tt&gt;, e &lt;tt class="docutils literal"&gt;fabio&lt;/tt&gt; é uma outra instância. Ou seja, temos dois &lt;strong&gt;objetos&lt;/strong&gt;: &lt;tt class="docutils literal"&gt;regis&lt;/tt&gt; e &lt;tt class="docutils literal"&gt;fabio&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Os dois métodos serão explicados no próximo exemplo.&lt;/p&gt;
+&lt;/div&gt;
 &lt;div class="section" id="exemplo-1-calculadora-simples"&gt;
 &lt;h2&gt;Exemplo 1 - Calculadora simples&lt;/h2&gt;
 &lt;p&gt;Existem pelo menos duas formas diferentes de trabalhar com os parâmetros de entrada. Neste exemplo, definiremos o &lt;strong&gt;parâmetro apenas uma vez&lt;/strong&gt; com um método especial do Python chamado &lt;tt class="docutils literal"&gt;__init__&lt;/tt&gt;. Segundo &lt;a class="reference external" href="http://homepages.dcc.ufmg.br/~joaoreis/Site%20de%20tutoriais/aprendendopython/poo.html#init"&gt;João Reis&lt;/a&gt;, este método é chamado quando um objeto de uma classe é instânciado. Este método é útil para fazer qualquer inicialização que você queira com seu objeto, ou seja, ele é o método &lt;strong&gt;&amp;quot;Inicializador&amp;quot;&lt;/strong&gt; da instancia.&lt;/p&gt;
@@ -16138,15 +16158,20 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;calculadora2&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Calculadora&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Calculadora&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Soma:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;soma&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;Soma&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Subtração:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;subtrai&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;Subtra&lt;/span&gt;&lt;span class="err"&gt;çã&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Multiplicação:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;multiplica&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;Multiplica&lt;/span&gt;&lt;span class="err"&gt;çã&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Divisão:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;divide&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;Divis&lt;/span&gt;&lt;span class="err"&gt;ã&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;64.0&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;A vantagem de colocar os parâmetros em cada método, é que podemos calcular qualquer valor sem ter que instanciar uma nova classe para cada valor diferente.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="exemplo-3-classe-pedido"&gt;
 &lt;h2&gt;Exemplo 3 - Classe Pedido&lt;/h2&gt;
-&lt;p&gt;Agora veremos um exemplo que mais se aproxima do que iremos fazer em banco de dados, mas aqui iremos apenas instanciar os objetos e armazená-los em memória numa lista.&lt;/p&gt;
+&lt;p&gt;Agora veremos um outro exemplo, mas aqui iremos apenas instanciar os objetos e armazená-los em memória numa lista.&lt;/p&gt;
 &lt;p&gt;Veremos o código na íntegra e depois os comentários.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#user.py&lt;/span&gt;
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;User&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -16189,6 +16214,9 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;u2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Fabio&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;u2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;Regis&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;Fabio&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora os comentários:&lt;/p&gt;
 &lt;p&gt;Definindo a classe&lt;/p&gt;
@@ -16243,6 +16271,50 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
 &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Após chamar o &lt;tt class="docutils literal"&gt;save&lt;/tt&gt; para as duas instâncias elas são guardadas e o método &lt;tt class="docutils literal"&gt;User.all()&lt;/tt&gt; retorna essa lista.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="exemplo-4-televisao"&gt;
+&lt;h2&gt;Exemplo 4 - Televisão&lt;/h2&gt;
+&lt;p&gt;Escrevi mais um exemplo para fixar melhor o entendimento: &lt;a class="reference external" href="https://github.com/rg3915/python-classes-metodos/blob/master/pythonBasico/tv/tv.py"&gt;tv.py&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Televisao&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ligada&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;canal&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;muda_canal_para_baixo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;canal&lt;/span&gt; &lt;span class="o"&gt;-=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;muda_canal_para_cima&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;canal&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;tv&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Televisao&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Canal inicial:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;canal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Ligada:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ligada&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ligada&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+    &lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;canal&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Ligada:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ligada&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Canal inicial:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;canal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;muda_canal_para_cima&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Canal +&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;canal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;muda_canal_para_cima&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Canal +&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;canal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;muda_canal_para_baixo&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Canal -&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;canal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Este programa está muito bem explicado no video &lt;a class="reference external" href="https://www.youtube.com/watch?v=Zr_FiKbgRbU"&gt;Python para Zumbis&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A seguir o resultado do programa:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Canal inicial:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Ligada:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Ligada:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Canal inicial:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Canal +&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Canal +&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Canal -&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agradeço a colaboração de &lt;a class="reference external" href="https://gist.github.com/fabiocerqueira/1b05352a26892dea6813"&gt;Fabio Cerqueira&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Veja os exemplos em &lt;a class="reference external" href="https://github.com/rg3915/pythonDesktopApp/tree/master/pythonBasico"&gt;https://github.com/rg3915/pythonDesktopApp&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Mais informações em&lt;/p&gt;

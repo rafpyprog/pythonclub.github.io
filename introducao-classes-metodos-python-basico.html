@@ -90,9 +90,11 @@
                         </p>
                 </header>
             </section>
-            <p>Eu não sou a melhor pessoa do mundo para explicar este assunto, mas eu escrevi este post para introduzir um tópico sobre <em>manipulação de banco de dados em SQLite3 com Python</em>, porém mais informações sobre classes e métodos podem ser encontradas nos links abaixo. Veja os exemplos em <a class="reference external" href="https://github.com/rg3915/pythonDesktopApp/tree/master/pythonBasico">https://github.com/rg3915/pythonDesktopApp</a>.</p>
+            <p>Eu não sou a melhor pessoa do mundo para explicar este assunto, mas vou tentar fazer uma breve introdução a classes e métodos em Python.</p>
+<p>Mais informações sobre classes e métodos podem ser encontradas nos links abaixo. Veja os exemplos em <a class="reference external" href="https://github.com/rg3915/python-classes-metodos/tree/master/pythonBasico">https://github.com/rg3915/python-classes-metodos</a>.</p>
+<p>&gt; Este artigo foi atualizado em 26 de Maio de 2018.</p>
 <p>PS: <em>Considere a sintaxe para Python 3</em>.</p>
-<p>Segundo a documentação do <a class="reference external" href="https://docs.python.org/2/tutorial/classes.html#class-objects">Python</a> e o video <a class="reference external" href="https://www.youtube.com/watch?v=Zr_FiKbgRbU">Python para Zumbis</a>, uma <strong>classe</strong> associa dados (<strong>atributos</strong>) e operações (<strong>métodos</strong>) numa só estrutura. Um <strong>objeto</strong> é uma variável cujo tipo é uma classe, ou seja, um <strong>objeto é uma instância</strong> de uma classe.</p>
+<p>Segundo a documentação do <a class="reference external" href="https://docs.python.org/3/tutorial/classes.html#class-objects">Python</a> e o video <a class="reference external" href="https://www.youtube.com/watch?v=Zr_FiKbgRbU">Python para Zumbis</a>, uma <strong>classe</strong> associa dados (<strong>atributos</strong>) e operações (<strong>métodos</strong>) numa só estrutura. Um <strong>objeto é uma instância</strong> de uma classe. Ou seja, uma representação da classe. Por exemplo, Regis é uma instância de uma classe chamada Pessoa, mas a Pessoa é a classe que o representa de uma forma genérica. Se você criar um outro ojbeto chamado Fabio, esse objeto também será uma instancia da classe Pessoa.</p>
 <p>Na sua sintaxe mais elementar definimos uma classe conforme abaixo:</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NomeDaClasse</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
         <span class="k">pass</span>
@@ -108,7 +110,6 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
 </pre></div>
 <p>Juntando os dois temos:</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NomeDaClasse</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-        <span class="n">atributo1</span> <span class="o">=</span> <span class="bp">None</span>
 
         <span class="k">def</span> <span class="nf">metodo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
                 <span class="k">pass</span>
@@ -124,8 +125,27 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">metodo</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
-<p>Voltando a explicação sobre a classe: O <tt class="docutils literal">atributo1</tt> é um atributo com valor inicial <tt class="docutils literal">None</tt> (nada). Poderia ser <tt class="docutils literal">atributo1 = 0</tt>, por exemplo.</p>
-<p>Importante: Note que para nome de <strong>classes</strong> usamos <em>PalavrasComeçandoPorMaiúscula</em> (isso tambem é conhecido como &quot;CamelCase&quot;) e para nome de <strong>métodos (funções)</strong> usamos <em>minúsculas_separadas_por_underscore</em>. Esta é uma convenção adotada pelos <em>Pythonistas</em> segundo o <a class="reference external" href="http://www.python.org.br/wiki/GuiaDeEstilo">Guia de Estilo</a> <strong>PEP 8</strong> - <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/">Style Guide for Python Code</a> escrito por <a class="reference external" href="http://www.python.org.br/wiki/GuidoVanRossum">Guido Van Rossum</a>.</p>
+<p>Importante: Note que para nome de <strong>classes</strong> usamos <em>PalavrasComeçandoPorMaiúscula</em> (isso tambem é conhecido como &quot;<a class="reference external" href="http://pep8.org/#descriptive-naming-styles">CapitalizeWords</a>&quot;) e para nome de <strong>métodos (funções)</strong> usamos <em>minúsculas_separadas_por_underscore</em>. Esta é uma convenção adotada pelos <em>Pythonistas</em> segundo o <a class="reference external" href="http://www.python.org.br/wiki/GuiaDeEstilo">Guia de Estilo</a> <strong>PEP 8</strong> - <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/">Style Guide for Python Code</a> escrito por <a class="reference external" href="http://www.python.org.br/wiki/GuidoVanRossum">Guido Van Rossum</a>.</p>
+<div class="section" id="exemplo-0-pessoa">
+<h2>Exemplo 0 - Pessoa</h2>
+<p>No exemplo mencionado no começo desse post o código mais simples seria o seguinte:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pessoa</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nome</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nome</span> <span class="o">=</span> <span class="n">nome</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nome</span>
+
+
+<span class="n">regis</span> <span class="o">=</span> <span class="n">Pessoa</span><span class="p">(</span><span class="s1">&#39;Regis&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">regis</span><span class="p">)</span>
+<span class="n">fabio</span> <span class="o">=</span> <span class="n">Pessoa</span><span class="p">(</span><span class="s1">&#39;Fabio&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fabio</span><span class="p">)</span>
+</pre></div>
+<p>Note que <tt class="docutils literal">regis</tt> é uma instância da classe <tt class="docutils literal">Pessoa</tt>, e <tt class="docutils literal">fabio</tt> é uma outra instância. Ou seja, temos dois <strong>objetos</strong>: <tt class="docutils literal">regis</tt> e <tt class="docutils literal">fabio</tt>.</p>
+<p>Os dois métodos serão explicados no próximo exemplo.</p>
+</div>
 <div class="section" id="exemplo-1-calculadora-simples">
 <h2>Exemplo 1 - Calculadora simples</h2>
 <p>Existem pelo menos duas formas diferentes de trabalhar com os parâmetros de entrada. Neste exemplo, definiremos o <strong>parâmetro apenas uma vez</strong> com um método especial do Python chamado <tt class="docutils literal">__init__</tt>. Segundo <a class="reference external" href="http://homepages.dcc.ufmg.br/~joaoreis/Site%20de%20tutoriais/aprendendopython/poo.html#init">João Reis</a>, este método é chamado quando um objeto de uma classe é instânciado. Este método é útil para fazer qualquer inicialização que você queira com seu objeto, ou seja, ele é o método <strong>&quot;Inicializador&quot;</strong> da instancia.</p>
@@ -206,15 +226,20 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">calculadora2</span> <span class="kn">import</span> <span class="n">Calculadora</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Calculadora</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Soma:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">soma</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">Soma</span><span class="p">:</span> <span class="mi">5</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Subtração:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">subtrai</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">Subtra</span><span class="err">çã</span><span class="n">o</span><span class="p">:</span> <span class="o">-</span><span class="mi">8</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Multiplicação:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">multiplica</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">Multiplica</span><span class="err">çã</span><span class="n">o</span><span class="p">:</span> <span class="mi">9</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Divisão:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">Divis</span><span class="err">ã</span><span class="n">o</span><span class="p">:</span> <span class="mf">64.0</span>
+<span class="o">&gt;&gt;&gt;</span>
 </pre></div>
 <p>A vantagem de colocar os parâmetros em cada método, é que podemos calcular qualquer valor sem ter que instanciar uma nova classe para cada valor diferente.</p>
 </div>
 <div class="section" id="exemplo-3-classe-pedido">
 <h2>Exemplo 3 - Classe Pedido</h2>
-<p>Agora veremos um exemplo que mais se aproxima do que iremos fazer em banco de dados, mas aqui iremos apenas instanciar os objetos e armazená-los em memória numa lista.</p>
+<p>Agora veremos um outro exemplo, mas aqui iremos apenas instanciar os objetos e armazená-los em memória numa lista.</p>
 <p>Veremos o código na íntegra e depois os comentários.</p>
 <div class="highlight"><pre><span></span><span class="c1">#user.py</span>
 <span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -257,6 +282,9 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
 <span class="o">&gt;&gt;&gt;</span> <span class="n">u2</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s1">&#39;Fabio&#39;</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">u2</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+<span class="p">[</span><span class="o">&lt;</span><span class="n">User</span><span class="p">:</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">Regis</span> <span class="o">-</span> <span class="mi">35</span><span class="o">&gt;</span>
+<span class="p">,</span> <span class="o">&lt;</span><span class="n">User</span><span class="p">:</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">Fabio</span> <span class="o">-</span> <span class="mi">20</span><span class="o">&gt;</span>
+<span class="p">]</span>
 </pre></div>
 <p>Agora os comentários:</p>
 <p>Definindo a classe</p>
@@ -311,6 +339,50 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
 <span class="k">print</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 </pre></div>
 <p>Após chamar o <tt class="docutils literal">save</tt> para as duas instâncias elas são guardadas e o método <tt class="docutils literal">User.all()</tt> retorna essa lista.</p>
+</div>
+<div class="section" id="exemplo-4-televisao">
+<h2>Exemplo 4 - Televisão</h2>
+<p>Escrevi mais um exemplo para fixar melhor o entendimento: <a class="reference external" href="https://github.com/rg3915/python-classes-metodos/blob/master/pythonBasico/tv/tv.py">tv.py</a>.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Televisao</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ligada</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canal</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="k">def</span> <span class="nf">muda_canal_para_baixo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canal</span> <span class="o">-=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">muda_canal_para_cima</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canal</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">tv</span> <span class="o">=</span> <span class="n">Televisao</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Canal inicial:&#39;</span><span class="p">,</span> <span class="n">tv</span><span class="o">.</span><span class="n">canal</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Ligada:&#39;</span><span class="p">,</span> <span class="n">tv</span><span class="o">.</span><span class="n">ligada</span><span class="p">)</span>
+
+    <span class="n">tv</span><span class="o">.</span><span class="n">ligada</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">tv</span><span class="o">.</span><span class="n">canal</span> <span class="o">=</span> <span class="mi">5</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Ligada:&#39;</span><span class="p">,</span> <span class="n">tv</span><span class="o">.</span><span class="n">ligada</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Canal inicial:&#39;</span><span class="p">,</span> <span class="n">tv</span><span class="o">.</span><span class="n">canal</span><span class="p">)</span>
+    <span class="n">tv</span><span class="o">.</span><span class="n">muda_canal_para_cima</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Canal +&#39;</span><span class="p">,</span> <span class="n">tv</span><span class="o">.</span><span class="n">canal</span><span class="p">)</span>
+    <span class="n">tv</span><span class="o">.</span><span class="n">muda_canal_para_cima</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Canal +&#39;</span><span class="p">,</span> <span class="n">tv</span><span class="o">.</span><span class="n">canal</span><span class="p">)</span>
+    <span class="n">tv</span><span class="o">.</span><span class="n">muda_canal_para_baixo</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Canal -&#39;</span><span class="p">,</span> <span class="n">tv</span><span class="o">.</span><span class="n">canal</span><span class="p">)</span>
+</pre></div>
+<p>Este programa está muito bem explicado no video <a class="reference external" href="https://www.youtube.com/watch?v=Zr_FiKbgRbU">Python para Zumbis</a>.</p>
+<p>A seguir o resultado do programa:</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="n">tv</span><span class="o">.</span><span class="n">py</span>
+<span class="p">(</span><span class="s1">&#39;Canal inicial:&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;Ligada:&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;Ligada:&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;Canal inicial:&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;Canal +&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;Canal +&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;Canal -&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</pre></div>
 <p>Agradeço a colaboração de <a class="reference external" href="https://gist.github.com/fabiocerqueira/1b05352a26892dea6813">Fabio Cerqueira</a>.</p>
 <p>Veja os exemplos em <a class="reference external" href="https://github.com/rg3915/pythonDesktopApp/tree/master/pythonBasico">https://github.com/rg3915/pythonDesktopApp</a>.</p>
 <p>Mais informações em</p>
