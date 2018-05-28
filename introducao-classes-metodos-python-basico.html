@@ -94,9 +94,9 @@
 <p>Mais informações sobre classes e métodos podem ser encontradas nos links abaixo. Veja os exemplos em <a class="reference external" href="https://github.com/rg3915/python-classes-metodos/tree/master/pythonBasico">https://github.com/rg3915/python-classes-metodos</a>.</p>
 <p>&gt; Este artigo foi atualizado em 26 de Maio de 2018.</p>
 <p>PS: <em>Considere a sintaxe para Python 3</em>.</p>
-<p>Segundo a documentação do <a class="reference external" href="https://docs.python.org/3/tutorial/classes.html#class-objects">Python</a> e o video <a class="reference external" href="https://www.youtube.com/watch?v=Zr_FiKbgRbU">Python para Zumbis</a>, uma <strong>classe</strong> associa dados (<strong>atributos</strong>) e operações (<strong>métodos</strong>) numa só estrutura. Um <strong>objeto é uma instância</strong> de uma classe. Ou seja, uma representação da classe. Por exemplo, Regis é uma instância de uma classe chamada Pessoa, mas a Pessoa é a classe que o representa de uma forma genérica. Se você criar um outro ojbeto chamado Fabio, esse objeto também será uma instancia da classe Pessoa.</p>
+<p>Segundo a documentação do <a class="reference external" href="https://docs.python.org/3/tutorial/classes.html#class-objects">Python</a> e o video <a class="reference external" href="https://www.youtube.com/watch?v=Zr_FiKbgRbU">Python para Zumbis</a>, uma <strong>classe</strong> associa dados (<strong>atributos</strong>) e operações (<strong>métodos</strong>) numa só estrutura. Um <strong>objeto é uma instância</strong> de uma classe. Ou seja, uma representação da classe. Por exemplo, Regis é uma instância de uma classe chamada Pessoa, mas a Pessoa é a classe que o representa de uma forma genérica. Se você criar um outro objeto chamado Fabio, esse objeto também será uma instancia da classe Pessoa.</p>
 <p>Na sua sintaxe mais elementar definimos uma classe conforme abaixo:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NomeDaClasse</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NomeDaClasse</span><span class="p">:</span>
         <span class="k">pass</span>
 </pre></div>
 <p>E um método (função) como:</p>
@@ -109,7 +109,7 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
         <span class="k">return</span> <span class="n">args</span>
 </pre></div>
 <p>Juntando os dois temos:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NomeDaClasse</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NomeDaClasse</span><span class="p">:</span>
 
         <span class="k">def</span> <span class="nf">metodo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
                 <span class="k">pass</span>
@@ -129,7 +129,7 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
 <div class="section" id="exemplo-0-pessoa">
 <h2>Exemplo 0 - Pessoa</h2>
 <p>No exemplo mencionado no começo desse post o código mais simples seria o seguinte:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pessoa</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pessoa</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nome</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nome</span> <span class="o">=</span> <span class="n">nome</span>
@@ -150,7 +150,7 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
 <h2>Exemplo 1 - Calculadora simples</h2>
 <p>Existem pelo menos duas formas diferentes de trabalhar com os parâmetros de entrada. Neste exemplo, definiremos o <strong>parâmetro apenas uma vez</strong> com um método especial do Python chamado <tt class="docutils literal">__init__</tt>. Segundo <a class="reference external" href="http://homepages.dcc.ufmg.br/~joaoreis/Site%20de%20tutoriais/aprendendopython/poo.html#init">João Reis</a>, este método é chamado quando um objeto de uma classe é instânciado. Este método é útil para fazer qualquer inicialização que você queira com seu objeto, ou seja, ele é o método <strong>&quot;Inicializador&quot;</strong> da instancia.</p>
 <div class="highlight"><pre><span></span><span class="c1">#calculadora.py</span>
-<span class="k">class</span> <span class="nc">Calculadora</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Calculadora</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
@@ -207,7 +207,7 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
 <h2>Exemplo 2 - Calculadora</h2>
 <p>Agora faremos uma classe sem valor inicial e com <strong>dois parâmetros</strong> <em>para todos os métodos</em>.</p>
 <div class="highlight"><pre><span></span><span class="c1">#calculadora2.py</span>
-<span class="k">class</span> <span class="nc">Calculadora</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Calculadora</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">soma</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
@@ -242,7 +242,7 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
 <p>Agora veremos um outro exemplo, mas aqui iremos apenas instanciar os objetos e armazená-los em memória numa lista.</p>
 <p>Veremos o código na íntegra e depois os comentários.</p>
 <div class="highlight"><pre><span></span><span class="c1">#user.py</span>
-<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">User</span><span class="p">:</span>
 
     <span class="n">seq</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">objects</span> <span class="o">=</span> <span class="p">[]</span>
@@ -288,7 +288,7 @@ A função <tt class="docutils literal">metodo</tt> pode retornar um valor de sa
 </pre></div>
 <p>Agora os comentários:</p>
 <p>Definindo a classe</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span><span class="p">:</span>
 </pre></div>
 <p>Define um atributo que servirá como contador inicial e um atributo <tt class="docutils literal">objects</tt> (tupla vazia) que é uma lista de instâncias de <tt class="docutils literal">User</tt> que foram salvos (que chamaram o método <tt class="docutils literal">save</tt>).</p>
 <div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="mi">0</span>

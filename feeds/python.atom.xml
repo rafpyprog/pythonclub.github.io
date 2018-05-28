@@ -2897,9 +2897,9 @@ Depois de fechar a pagina
 &lt;p&gt;Mais informações sobre classes e métodos podem ser encontradas nos links abaixo. Veja os exemplos em &lt;a class="reference external" href="https://github.com/rg3915/python-classes-metodos/tree/master/pythonBasico"&gt;https://github.com/rg3915/python-classes-metodos&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&amp;gt; Este artigo foi atualizado em 26 de Maio de 2018.&lt;/p&gt;
 &lt;p&gt;PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Segundo a documentação do &lt;a class="reference external" href="https://docs.python.org/3/tutorial/classes.html#class-objects"&gt;Python&lt;/a&gt; e o video &lt;a class="reference external" href="https://www.youtube.com/watch?v=Zr_FiKbgRbU"&gt;Python para Zumbis&lt;/a&gt;, uma &lt;strong&gt;classe&lt;/strong&gt; associa dados (&lt;strong&gt;atributos&lt;/strong&gt;) e operações (&lt;strong&gt;métodos&lt;/strong&gt;) numa só estrutura. Um &lt;strong&gt;objeto é uma instância&lt;/strong&gt; de uma classe. Ou seja, uma representação da classe. Por exemplo, Regis é uma instância de uma classe chamada Pessoa, mas a Pessoa é a classe que o representa de uma forma genérica. Se você criar um outro ojbeto chamado Fabio, esse objeto também será uma instancia da classe Pessoa.&lt;/p&gt;
+&lt;p&gt;Segundo a documentação do &lt;a class="reference external" href="https://docs.python.org/3/tutorial/classes.html#class-objects"&gt;Python&lt;/a&gt; e o video &lt;a class="reference external" href="https://www.youtube.com/watch?v=Zr_FiKbgRbU"&gt;Python para Zumbis&lt;/a&gt;, uma &lt;strong&gt;classe&lt;/strong&gt; associa dados (&lt;strong&gt;atributos&lt;/strong&gt;) e operações (&lt;strong&gt;métodos&lt;/strong&gt;) numa só estrutura. Um &lt;strong&gt;objeto é uma instância&lt;/strong&gt; de uma classe. Ou seja, uma representação da classe. Por exemplo, Regis é uma instância de uma classe chamada Pessoa, mas a Pessoa é a classe que o representa de uma forma genérica. Se você criar um outro objeto chamado Fabio, esse objeto também será uma instancia da classe Pessoa.&lt;/p&gt;
 &lt;p&gt;Na sua sintaxe mais elementar definimos uma classe conforme abaixo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NomeDaClasse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NomeDaClasse&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="k"&gt;pass&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;E um método (função) como:&lt;/p&gt;
@@ -2912,7 +2912,7 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Juntando os dois temos:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NomeDaClasse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NomeDaClasse&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 
         &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;metodo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
                 &lt;span class="k"&gt;pass&lt;/span&gt;
@@ -2932,7 +2932,7 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
 &lt;div class="section" id="exemplo-0-pessoa"&gt;
 &lt;h2&gt;Exemplo 0 - Pessoa&lt;/h2&gt;
 &lt;p&gt;No exemplo mencionado no começo desse post o código mais simples seria o seguinte:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Pessoa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Pessoa&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;
@@ -2953,7 +2953,7 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
 &lt;h2&gt;Exemplo 1 - Calculadora simples&lt;/h2&gt;
 &lt;p&gt;Existem pelo menos duas formas diferentes de trabalhar com os parâmetros de entrada. Neste exemplo, definiremos o &lt;strong&gt;parâmetro apenas uma vez&lt;/strong&gt; com um método especial do Python chamado &lt;tt class="docutils literal"&gt;__init__&lt;/tt&gt;. Segundo &lt;a class="reference external" href="http://homepages.dcc.ufmg.br/~joaoreis/Site%20de%20tutoriais/aprendendopython/poo.html#init"&gt;João Reis&lt;/a&gt;, este método é chamado quando um objeto de uma classe é instânciado. Este método é útil para fazer qualquer inicialização que você queira com seu objeto, ou seja, ele é o método &lt;strong&gt;&amp;quot;Inicializador&amp;quot;&lt;/strong&gt; da instancia.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#calculadora.py&lt;/span&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Calculadora&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Calculadora&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
@@ -3010,7 +3010,7 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
 &lt;h2&gt;Exemplo 2 - Calculadora&lt;/h2&gt;
 &lt;p&gt;Agora faremos uma classe sem valor inicial e com &lt;strong&gt;dois parâmetros&lt;/strong&gt; &lt;em&gt;para todos os métodos&lt;/em&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#calculadora2.py&lt;/span&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Calculadora&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Calculadora&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;soma&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
@@ -3045,7 +3045,7 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
 &lt;p&gt;Agora veremos um outro exemplo, mas aqui iremos apenas instanciar os objetos e armazená-los em memória numa lista.&lt;/p&gt;
 &lt;p&gt;Veremos o código na íntegra e depois os comentários.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#user.py&lt;/span&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;User&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;User&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 
     &lt;span class="n"&gt;seq&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
     &lt;span class="n"&gt;objects&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
@@ -3091,7 +3091,7 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora os comentários:&lt;/p&gt;
 &lt;p&gt;Definindo a classe&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;User&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;User&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Define um atributo que servirá como contador inicial e um atributo &lt;tt class="docutils literal"&gt;objects&lt;/tt&gt; (tupla vazia) que é uma lista de instâncias de &lt;tt class="docutils literal"&gt;User&lt;/tt&gt; que foram salvos (que chamaram o método &lt;tt class="docutils literal"&gt;save&lt;/tt&gt;).&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;seq&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
