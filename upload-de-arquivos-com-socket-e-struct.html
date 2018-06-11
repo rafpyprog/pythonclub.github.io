@@ -18,7 +18,7 @@
     <meta property="og:title" content="Upload de Arquivos com Socket e Struct" />
     <meta property="og:site_name" content="PythonClub" />
     <meta property="og:url" content="http://pythonclub.com.br/upload-de-arquivos-com-socket-e-struct.html" />
-    <meta property="og:description" content="Apesar de termos muitas formas de enviarmos arquivos para servidores hoje em dia, como por exemplo o scp e rsync, podemos usar o python com seus modulos built-in para enviar arquivos a servidores usando struct para serializar os dados e socket para criar uma conexão cliente/servidor. Struct O modulo ..." />
+    <meta property="og:description" content="Apesar de termos muitas formas de enviarmos arquivos para servidores hoje em dia, como por exemplo o scp e rsync, podemos usar o python com seus módulos built-in para enviar arquivos a servidores usando struct para serializar os dados e socket para criar uma conexão cliente/servidor. Struct O módulo ..." />
     <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
@@ -110,10 +110,10 @@
                         </p>
                 </header>
             </section>
-            <p>Apesar de termos muitas formas de enviarmos arquivos para servidores hoje em dia, como por exemplo o <em>scp</em> e <em>rsync</em>, podemos usar o python com seus modulos <em>built-in</em> para enviar arquivos a servidores usando struct para serializar os dados e socket para criar uma conexão cliente/servidor.</p>
+            <p>Apesar de termos muitas formas de enviarmos arquivos para servidores hoje em dia, como por exemplo o <em>scp</em> e <em>rsync</em>, podemos usar o python com seus módulos <em>built-in</em> para enviar arquivos a servidores usando struct para serializar os dados e socket para criar uma conexão cliente/servidor.</p>
 <h3><em>Struct</em></h3>
-<p>O modulo <a href="https://docs.python.org/3/library/struct.html">struct</a> é usado para converter bytes no python em formatos do struct em C.
-Com ele podemos enviar num unico conjunto de dados o nome de um arquivo e os bytes referentes ao seus dados.</p>
+<p>O módulo <a href="https://docs.python.org/3/library/struct.html">struct</a> é usado para converter bytes no python em formatos do struct em C.
+Com ele podemos enviar num único conjunto de dados o nome de um arquivo e os bytes referentes ao seus dados.</p>
 <p>Struct também é utilizado para serializar diversos tipos de dados diferentes, como bytes, inteiros, floats além de outros, no nosso caso usaremos apenas bytes.</p>
 <p>Vamos criar um arquivo para serializar.</p>
 <div class="highlight"><pre><span></span><span class="err">!</span><span class="n">echo</span> <span class="s2">&quot;Upload de arquivos com sockets e struct</span><span class="se">\n</span><span class="s2">Criando um arquivo para serializar.&quot;</span> <span class="o">&gt;</span> <span class="n">arquivo_para_upload</span>
@@ -132,7 +132,7 @@ Com ele podemos enviar num unico conjunto de dados o nome de um arquivo e os byt
 </pre></div>
 
 
-<p>Por padrão, struct usa caracteres no inicio da sequencia dos dados para definir a ordem dos bytes, tamanho e alinhamento dos bytes nos dados empacotados.
+<p>Por padrão, struct usa caracteres no início da sequência dos dados para definir a ordem dos bytes, tamanho e alinhamento dos bytes nos dados empacotados.
 Esses caracteres podem ser vistos na <a href="https://docs.python.org/3/library/struct.html#byte-order-size-and-alignment">seção 7.1.2.1</a> da documentação.
 Como não definimos, será usado o <strong>@</strong> que é o padrão.</p>
 <p>Nessa linha:</p>
@@ -166,13 +166,13 @@ Como não definimos, será usado o <strong>@</strong> que é o padrão.</p>
 <h3><em>Socket</em></h3>
 <p>O modulo <a href="https://docs.python.org/3/library/socket.html">socket</a> prove interfaces de socket BSD, disponiveis em praticamente todos os sistemas operacionais.</p>
 <h4>Familias de sockets</h4>
-<p>Diversas familias de sockets podem ser usadas para termos acessos a objetos que nos permitam fazer chamadas de sistema.
-Mais informações sobre as familias podem ser encontradas na <a href="https://docs.python.org/3/library/socket.html#socket-families">seção 18.1.1</a> da documentação. No nosso exemplo usaremos a AF_INET.</p>
+<p>Diversas famílias de sockets podem ser usadas para termos acessos a objetos que nos permitam fazer chamadas de sistema.
+Mais informações sobre as famílias podem ser encontradas na <a href="https://docs.python.org/3/library/socket.html#socket-families">seção 18.1.1</a> da documentação. No nosso exemplo usaremos a AF_INET.</p>
 <h4>AF_INET</h4>
 <p><strong>AF_INET</strong> precisa basicamente de um par de dados, contendo um endereço IPv4 e uma porta para ser instanciada.
 Para endereços IPv6 o modulo disponibiliza o <strong>AF_INET6</strong></p>
 <h4>Constante [SOCK_STREAM]</h4>
-<p>As constantes representam as familias de sockets, como a constante AF_INET e os protocolos usados como parametros para o modulo socket.
+<p>As constantes representam as famílias de sockets, como a constante AF_INET e os protocolos usados como parâmetros para o modulo socket.
 Um dos protocolos mais usados encontrados na maioria dos sistemas é o SOCK_STREAM.</p>
 <p>Ele é um protocolo baseado em comunicação que permite que duas partes estabeleçam uma conexão e conversem entre si.</p>
 <h3><em>Servidor e cliente socket</em></h3>
@@ -189,17 +189,17 @@ Um dos protocolos mais usados encontrados na maioria dos sistemas é o SOCK_STRE
 </pre></div>
 
 
-<p>Agora usaremos o metodo bind para criarmos um ponto de conexão para nosso cliente. Esse metodo espera por uma tupla contento o host e porta como parametros.</p>
+<p>Agora usaremos o metodo bind para criarmos um ponto de conexão para nosso cliente. Esse método espera por uma tupla contento o host e porta como parâmetros.</p>
 <div class="highlight"><pre><span></span><span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">porta</span><span class="p">))</span>
 </pre></div>
 
 
-<p>Agora vamos colocar nosso servidor socket em modo escuta com o metodo listen. Esse metodo recebe como parametro um numero inteiro (<strong>backlog</strong>) definindo qual o tamanho da fila que será usada para receber pacotes SYN até dropar a conexão. Usaremos um valor baixo o que evita SYN flood na rede. Mais informações sobre <em>backlog</em> podem ser encontradas na <a href="https://tools.ietf.org/html/rfc7413">RFC 7413</a>.</p>
+<p>Agora vamos colocar nosso servidor socket em modo escuta com o metodo listen. Esse método recebe como parâmetro um número inteiro (<strong>backlog</strong>) definindo qual o tamanho da fila que será usada para receber pacotes SYN até dropar a conexão. Usaremos um valor baixo o que evita SYN flood na rede. Mais informações sobre <em>backlog</em> podem ser encontradas na <a href="https://tools.ietf.org/html/rfc7413">RFC 7413</a>.</p>
 <div class="highlight"><pre><span></span><span class="n">sock</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 
 
-<p>Agora vamos colocar o nosso socket em um loop esperando por uma conexão e um inicio de conversa. Pra isso vamos usar o metodo <em>accept</em> que nos devolve uma tupla, onde o primeiro elemento é um novo objeto socket para enviarmos e recebermos informações, e o segundo contendo informações sobre o endereço de origem e porta usada pelo cliente.</p>
+<p>Agora vamos colocar o nosso socket em um loop esperando por uma conexão e um início de conversa. Pra isso vamos usar o metodo <em>accept</em> que nos devolve uma tupla, onde o primeiro elemento é um novo objeto socket para enviarmos e recebermos informações, e o segundo contendo informações sobre o endereço de origem e porta usada pelo cliente.</p>
 <p><strong>Vamos criar um diretório para salvar nosso novo arquivo.</strong></p>
 <div class="highlight"><pre><span></span><span class="err">!</span><span class="n">mkdir</span> <span class="n">arquivos_recebidos</span>
 </pre></div>
@@ -239,7 +239,7 @@ Um dos protocolos mais usados encontrados na maioria dos sistemas é o SOCK_STRE
 <blockquote>
 <p>Cliente</p>
 </blockquote>
-<p>Nosso cliente irá usar o metodo <em>connect</em> para se connectar no servidor e a partir dai começar enviar e receber mensagens. Ele também recebe como parametros uma tupla com o host e porta de conexão do servidor.</p>
+<p>Nosso cliente irá usar o metodo <em>connect</em> para se conectar no servidor e a partir dai começar enviar e receber mensagens. Ele também recebe como parâmetros uma tupla com o host e porta de conexão do servidor.</p>
 <div class="highlight"><pre><span></span><span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span>
 <span class="n">porta</span> <span class="o">=</span> <span class="mi">6124</span>
 <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>  <span class="c1"># Cria nosso objeto socket</span>
