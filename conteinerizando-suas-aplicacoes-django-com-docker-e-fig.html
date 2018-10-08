@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PythonClub, ">
+    <meta name="theme-color" content="#101212">
+
+        <link rel="alternate"  href="http://pythonclub.com.br/feeds/all.atom.xml" type="application/atom+xml" title="PythonClub Full Atom Feed"/>
+        <link rel="alternate" href="http://pythonclub.com.br/feeds/all.rss.xml" type="application/rss+xml" title="PythonClub Full RSS Feed"/>
+
+    <link rel="shortcut icon" href="http://pythonclub.com.br/theme/images/favicon.ico" >
+
+            <title>Conteinerizando suas aplicações django com docker e fig por Hudson Brendon // #PythonClub // </title>
+
+    <meta property="fb:app_id" content="1487080281503641" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Conteinerizando suas aplicações django com docker e fig" />
+    <meta property="og:site_name" content="PythonClub" />
+    <meta property="og:url" content="http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html" />
+    <meta property="og:description" content="Se você como eu é um desenvolvedor incansável quando o assunto é automatizar ao máximo seu workflow de trabalho,este post foi feito para você. O fig utilizando-se do docker, torna a criação de ambientes de desenvolvimento algo muito simples. Instalação A instalação do fig é bem simples, primeiro você …" />
+    <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/custom.css">
+
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pygments.css">
+
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50935105-1', 'pythonclub.com.br');
+      ga('require', 'linkid', 'linkid.js');
+      ga('send', 'pageview');
+
+    </script>
+    <!-- transifex -->
+    <!-- <script type="text/javascript">  -->
+    <!-- window.liveSettings = {  -->
+    <!--     api_key: "f8fd260a9bdc4e9195c80e31416bb254",  -->
+    <!--     picker: "bottom-right",  -->
+    <!--     detectlang: true,  -->
+    <!--     autocollect: true  -->
+    <!-- };  -->
+    <!-- </script>  -->
+    <!-- <script type="text/javascript" src="//cdn.transifex.com/live.js"></script>  -->
+    <!-- end transifex -->
+    <meta name="google-site-verification" content="XQc_QtnTecI9nxAfplXGtECCpZQDwbDRcn7pyDVa1LE" />
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://pythonclub.com.br/author/hudson-brendon.html" title="See posts by Hudson Brendon">
+                        <img class="article-avatar" alt="Hudson Brendon" src="https://www.gravatar.com/avatar/f78e203ab84e5824ec71f4c4c0810960">
+                </a>
+                <h2 class="article-info">Hudson Brendon</h2>
+    			<ul class="author-social">
+                    <li>
+                        <a target="_blank" href="https://github.com/hudsonbrendon">
+                            <i class="fa fa-lg fa-fw fa-github"></i>
+                            <strong>Github</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://twitter.com/hudsonbrendon">
+                            <i class="fa fa-lg fa-fw fa-twitter"></i>
+                            <strong>Twitter</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/hudson.brendon">
+                            <i class="fa fa-lg fa-fw fa-facebook"></i>
+                            <strong>Facebook</strong>
+                        </a>
+                    </li>
+                </ul>
+                <h5>Publicado em:</h5>
+                <p>Sun 25 January 2015</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Conteinerizando suas aplicações django com docker e fig</h1>
+                        <p class="post-meta">
+                            // Tags                                 <a class="post-category" href="http://pythonclub.com.br/tag/django.html">django</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/docker.html">docker</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/fig.html">fig</a>
+                        </p>
+                </header>
+            </section>
+            <p><img alt="Docker" src="/images/hudsonbrendon/django-fig.png"></p>
+<p>Se você como eu é um desenvolvedor incansável quando o assunto é automatizar ao máximo seu workflow de trabalho,este post foi feito para você. O <a href="http://www.fig.sh/">fig</a> utilizando-se do docker, torna a criação de ambientes de desenvolvimento algo muito simples.</p>
+<h1>Instalação</h1>
+<p>A instalação do fig é bem simples, primeiro você terá que ter o docker instalado em sua máquina, caso não tenha, siga esse <a href="http://hudsonbrendon.com/docker-introducao-e-aplicacao.html">tutorial</a> onde exemplifico a instalação do mesmo de forma bem simples. Com o docker pronto, é hora de instalar o fig, essa ferramenta é um pacote python, e a forma mais simples de instalá-la é através do pip, que é o gerenciador de pacotes do python, caso não o tenha instalado em sua máquina, acesse o <a href="https://pip.pypa.io/en/latest/installing.html">site oficial</a> e veja a forma mais simples para você obtê-lo. Com tudo pronto, execute no terminal.</p>
+<div class="highlight"><pre><span></span>$ pip install -U fig
+</pre></div>
+
+
+<h1>Utilizando o fig com django</h1>
+<p>Com o docker e o fig devidamente instalados em sua máquina, é hora de integrar o django com essa maravilhosa ferramenta, para tanto, criaremos um diretório com um nome qualquer, aqui chamado de "app", e dentro do mesmo criaremos um arquivo chamado "Dockerfile", com o seguinte conteúdo.</p>
+<div class="highlight"><pre><span></span>FROM python:2.7
+ENV PYTHONUNBUFFERED <span class="m">1</span>
+RUN mkdir /code
+WORKDIR /code
+ADD requirements.txt /code/
+RUN pip install -r requirements.txt
+ADD . /code/
+</pre></div>
+
+
+<p>Em seguinda criaremos um arquivo chamado "requirements.txt", com os seguintes pacotes.</p>
+<div class="highlight"><pre><span></span>Django
+psycopg2
+</pre></div>
+
+
+<p>E por fim um arquivo, "fig.yml", com a configuração abaixo.</p>
+<div class="highlight"><pre><span></span>db:
+  image: postgres
+web:
+  build: .
+  command: python manage.py runserver <span class="m">0</span>.0.0.0:8000
+  volumes:
+    - .:/code
+  ports:
+    - <span class="s2">&quot;8000:8000&quot;</span>
+  links:
+  - db
+</pre></div>
+
+
+<h1>Quem é quem no jogo do bicho</h1>
+<p>Com os arquivos criados é hora de entender qual a função de cada um no workflow.</p>
+<ul>
+<li>
+<p><strong>Dockerfile</strong> - É o arquivo que especifica como uma imagem no docker será criada, os pacotes que serão instalados, usuários que serão criados, portas que serão expostas, diretórios que serão compartilhados entre o host e um container, etc. Para mais informações <a href="http://hudsonbrendon.com/docker-introducao-e-aplicacao.html">acesse</a>.</p>
+</li>
+<li>
+<p><strong>requirements.txt</strong> - É um arquivo que guarda todas as dependências de um projeto python.</p>
+</li>
+<li>
+<p><strong>fig.yml</strong> - É o arquivo de configuração do fig, é composto por blocos e cada bloco corresponde a um container, podendo eles serem "linkados", o fig utilizará esse arquivo como base para criar os conteineres necessários, e executar tudo que foi especificado no mesmo.</p>
+</li>
+</ul>
+<p>Com os arquivos finalizados, é hora de criar uma aplicação em django, para isso basta.</p>
+<div class="highlight"><pre><span></span>$ fig run web django-admin.py startproject figexample .
+</pre></div>
+
+
+<p>E o resultado será esse:</p>
+<div class="highlight"><pre><span></span>$ ls
+Dockerfile       fig.yml          figexample       manage.py        requirements.txt
+</pre></div>
+
+
+<p>Com a aplicação em mãos, a primeira coisa que você deve fazer é abrir o arquivo settings.py de sua aplicação, e configurar o banco de dados da mesma. Para isso no arquivo figexample/settings.py basta especificar as configurações abaixo no banco de dados.</p>
+<div class="highlight"><pre><span></span><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+<span class="s1">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s1">&#39;django.db.backends.postgresql_psycopg2&#39;</span><span class="p">,</span>
+<span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="s1">&#39;postgres&#39;</span><span class="p">,</span>
+<span class="s1">&#39;USER&#39;</span><span class="p">:</span> <span class="s1">&#39;postgres&#39;</span><span class="p">,</span>
+<span class="s1">&#39;HOST&#39;</span><span class="p">:</span> <span class="s1">&#39;db&#39;</span><span class="p">,</span>
+<span class="s1">&#39;PORT&#39;</span><span class="p">:</span> <span class="mi">5432</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Com o banco configurado é hora de subir sua aplicação, na pasta raiz do projeto use.</p>
+<div class="highlight"><pre><span></span>$ fig up
+</pre></div>
+
+
+<p>O fig se encarregará de criar todos os conteineres, linkalos, e startar sua aplicação na porta 8000, acesse seu <a href="http://localhost:8000/">localhost:8000</a> e você verá sua aplicação em execução.</p>
+<p>Para rodar os comandos do django, você pode fazer da seguinte forma.</p>
+<div class="highlight"><pre><span></span>$ fig run &lt;bloco&gt; &lt;comando&gt;
+</pre></div>
+
+
+<p>Por exemplo.</p>
+<div class="highlight"><pre><span></span>$ fig run web ./manage.py syncdb
+</pre></div>
+
+
+<p>Lembrando que esse comando sempre será o padrão.</p>
+<h1>Conclusão</h1>
+<p>Como você pode ver, o fig em conjunto com o docker torna seu workflow algo extremamente simples e eficaz. O melhor disso tudo, é que, para trabalhar com esse mesmo ambiente em uma nova máquina, você apenas precisará do fig e docker instalados, acessar a rais do projeto e executar um fig up, gerando com isso,uma comodidade jamais vista.</p>
+
+            <div class="licence">
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licença Creative Commons"
+                                                                                               style="border-width:0"
+                                                                                               src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"/></a><br/><a
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title"
+                    href="http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html">"Conteinerizando suas aplicações django com docker e fig"</a> de <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="http://pythonclub.com.br/author/hudson-brendon.html"
+                    property="cc:attributionName" rel="cc:attributionURL">"Hudson Brendon"</a> está licenciado com uma Licença
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons -
+                    Atribuição-NãoComercial-SemDerivações 4.0 Internacional</a>.
+            </div>
+
+            <div class="sharing">
+                <!-- Facebook sharing -->
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=1487080281503641&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-share-button" data-href="http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html" data-type="button_count"></div>
+
+                <!-- Google+ sharing -->
+                <div class="g-plus alinhar" data-action="share" data-annotation="bubble" data-href="http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html"></div>
+
+                <!-- Twitter sharing -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="pt" style="margin-bottom: -4px !important;">Tweetar</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Topo</a>
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES: THIS CODE IS ONLY AN EXAMPLE * * */
+                        var disqus_shortname = 'pythonclub'; // Required - Replace example with your forum shortname
+                        var disqus_identifier = 'conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html';
+                        var disqus_title = 'Conteinerizando suas aplicações django com docker e fig';
+                        var disqus_url = 'http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html';
+                    
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </div>
+<footer class="footer">
+    <p>&copy; PythonClub &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://pythonclub.com.br/theme/js/dynamic_random_articles.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+        $(window).load(function(){
+          $("iframe").css("margin-bottom", "-6px")
+          $("#twitter-widget-0").css("margin-bottom", "-5px");
+          $("#twitter-widget-0").css("margin-left", "-1px");
+        });
+    </script>
+    <script type="text/javascript" src="https://apis.google.com/js/platform.js">
+      {lang: 'pt-BR'}
+    </script>
+
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+
+        $(function(){
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/trabalhando-com-operadores-ternarios.html", "title": "Trabalhando com operadores tern\u00e1rios"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-com-socket-e-struct.html", "title": "Upload de Arquivos com Socket e Struct"}, {"url": "http://pythonclub.com.br/monitorando-ips-duplicados-na-rede.html", "title": "Monitorando Ips Duplicados na Rede"}, {"url": "http://pythonclub.com.br/django-rest-framework-class-based-views.html", "title": "Django Rest Framework - #3 Class Based Views"}, {"url": "http://pythonclub.com.br/django-rest-framework-requests-responses.html", "title": "Django Rest Framework - #2 Requests and Responses"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-2.html", "title": "Programa\u00e7\u00e3o funcional com Python #2 - Iteraveis e iteradores"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-1.html", "title": "Programa\u00e7\u00e3o funcional com Python #1 - Fun\u00e7\u00f5es"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-0.html", "title": "Programa\u00e7\u00e3o funcional com Python #0 - Saindo da zona de conforto"}, {"url": "http://pythonclub.com.br/peewee-um-orm-python-minimalista.html", "title": "Peewee - Um ORM Python minimalista"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html", "title": "What the Flask? pt 4 - Extens\u00f5es para o Flask"}, {"url": "http://pythonclub.com.br/configurando-python-3.5-openshift-flask-gunicorn.html", "title": "Configurando OpenShift com Python 3.5 + Flask + Gunicorn"}, {"url": "http://pythonclub.com.br/instalando-o-python-vers\u00e3o-3.7.0-alpha-1-no-ubuntu-16.04.md.html", "title": "Instalando o Python vers\u00e3o 3.7.0 alpha 1 no Ubuntu 16.04"}, {"url": "http://pythonclub.com.br/abrangencia-de-listas-e-dicionarios-com-python.html", "title": "Abrang\u00eancia de Listas e Dicion\u00e1rios"}, {"url": "http://pythonclub.com.br/debugging-logging.html", "title": "Debugging - logging"}, {"url": "http://pythonclub.com.br/deploy-rapido-simples-com-dokku.html", "title": "Deploy r\u00e1pido e simples com Dokku"}, {"url": "http://pythonclub.com.br/bot-telegram-mais-web-scraping-parte-1.html", "title": "Bot telegram mais web scraping - parte 1"}, {"url": "http://pythonclub.com.br/como-distribuir-sua-aplicacao-python-com-pypi.html", "title": "Como distribuir sua aplica\u00e7\u00e3o Python com PyPI"}, {"url": "http://pythonclub.com.br/python-webassets-elm.html", "title": "Python webassets & Elm"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula1.html", "title": "Curso Python asyncio: Aula 01 - Iterators e Generators"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula00.html", "title": "Curso Python asyncio: Aula 00 - Introdu\u00e7\u00e3o ao m\u00f3dulo asyncio"}, {"url": "http://pythonclub.com.br/gerando-relatorios-de-testes-com-coveralls.html", "title": "Relat\u00f3rios de testes com Coveralls"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 4 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 3 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 2 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)"}, {"url": "http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html", "title": "GitHub Pages com Pelican e Travis-CI"}, {"url": "http://pythonclub.com.br/sites-estaticos-com-lektor.html", "title": "Sites Est\u00e1ticos com Lektor"}, {"url": "http://pythonclub.com.br/django-rest-framework-serialization.html", "title": "Django Rest Framework Serialization"}, {"url": "http://pythonclub.com.br/explicit-is-better-than-implicit.html", "title": "Explicit is better than implicit"}, {"url": "http://pythonclub.com.br/tdd-com-python-e-flask.html", "title": "TDD com Python e Flask"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html", "title": "Upload de arquivos no Django: entendendo os modos de leitura"}, {"url": "http://pythonclub.com.br/python-generators.html", "title": "Python Generators"}, {"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+        });
+        
+    </script>
+        <!-- spot_im -->
+        <!--    <div id="spot-im-root"></div> -->
+        <!--    <script type="text/javascript">!function(t,o,p){function e(){var t=o.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"==o.location.protocol?"https":"http")+":"+p,o.body.appendChild(t)}t.spotId="3de816246c80a51757bb01c5b8c95cda",t.spotName="",t.allowDesktop=!0,t.allowMobile=!1,t.containerId="spot-im-root",e()}(window.SPOTIM={},document,"//www.spot.im/embed/scripts/launcher.js");</script> -->
+        <!-- end spot_im -->
+   
+            <script>
+              ((window.gitter = {}).chat = {}).options = {
+                    room: 'pythonclub/pythonclub.github.io'
+              };
+            </script>
+            <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+   
+</body>
+</html>

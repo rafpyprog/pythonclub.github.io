@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>PythonClub - Vitor Hugo de Oliveira Vargas</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Sat, 06 Oct 2018 09:21:00 -0300</lastBuildDate><item><title>Trabalhando com operadores ternários</title><link>http://pythonclub.com.br/trabalhando-com-operadores-ternarios.html</link><description>&lt;p&gt;Quando estamos escrevendo um código qualquer, possivelmente 
+a expressão que mais utilizamos é o &lt;code&gt;if&lt;/code&gt;. Para qualquer 
+tarefas que buscamos automatizar ou problemas que buscamos 
+resolver, sempre acabamos caindo em lógicas como "Se isso 
+acontecer, então faça aquilo, senão faça aquele outro...".&lt;/p&gt;
+&lt;p&gt;Quando estamos falando de ações a serem executadas …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Vitor Hugo de Oliveira Vargas</dc:creator><pubDate>Sat, 06 Oct 2018 09:21:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2018-10-06:/trabalhando-com-operadores-ternarios.html</guid><category>Python</category><category>tutorial</category><category>operadores ternários</category></item></channel></rss>

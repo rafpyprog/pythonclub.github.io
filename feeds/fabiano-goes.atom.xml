@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/fabiano-goes.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-11T02:00:00-03:00</updated><entry><title>Seu primeiro projeto Django com Sublime Text no Linux</title><link href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html" rel="alternate"></link><published>2014-05-11T02:00:00-03:00</published><updated>2014-05-11T02:00:00-03:00</updated><author><name>Fabiano Góes</name></author><id>tag:pythonclub.com.br,2014-05-11:primeiro-projeto-django-no-linux-com-sublime.html</id><summary type="html">&lt;div class="section" id="o-objetivo-deste-artigo"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub - Fabiano Góes</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/fabiano-goes.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-11T02:00:00-03:00</updated><entry><title>Seu primeiro projeto Django com Sublime Text no Linux</title><link href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html" rel="alternate"></link><published>2014-05-11T02:00:00-03:00</published><updated>2014-05-11T02:00:00-03:00</updated><author><name>Fabiano Góes</name></author><id>tag:pythonclub.com.br,2014-05-11:/primeiro-projeto-django-no-linux-com-sublime.html</id><summary type="html">&lt;p class="first last"&gt;Primeiro projeto Django no Linux/Ubuntu com Sublime Text 3&lt;/p&gt;
+</summary><content type="html">&lt;div class="section" id="o-objetivo-deste-artigo"&gt;
 &lt;h2&gt;O objetivo deste artigo:&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Instalar/Verificar python instalado no Sistema Operacional.&lt;/li&gt;
@@ -199,4 +200,4 @@ digite o super usuário e senha criado ao rodar o comando &lt;strong&gt;syncdb&l
 &lt;p&gt;espero que gostem, um abraço a todos!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="python"></category><category term="django"></category><category term="vitualenv"></category></entry></feed>
+</content><category term="python"></category><category term="django"></category><category term="vitualenv"></category></entry></feed>

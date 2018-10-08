@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PythonClub, ">
+    <meta name="theme-color" content="#101212">
+
+        <link rel="alternate"  href="http://pythonclub.com.br/feeds/all.atom.xml" type="application/atom+xml" title="PythonClub Full Atom Feed"/>
+        <link rel="alternate" href="http://pythonclub.com.br/feeds/all.rss.xml" type="application/rss+xml" title="PythonClub Full RSS Feed"/>
+
+    <link rel="shortcut icon" href="http://pythonclub.com.br/theme/images/favicon.ico" >
+
+            <title>Class Based Views no Django por Raphael Passini Diniz // #PythonClub // </title>
+
+    <meta property="fb:app_id" content="1487080281503641" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Class Based Views no Django" />
+    <meta property="og:site_name" content="PythonClub" />
+    <meta property="og:url" content="http://pythonclub.com.br/class-based-views-django.html" />
+    <meta property="og:description" content="Esse tutorial tem como objetivo explicar o básico sobre Class Based Views no Django. Por motivos de agilidade vou usar CBV para me referir as Class Based Views. Segundo a documentação do Django sobre CBV: CBV's permitem você estruturar as suas views e reutilizar código aproveitando heranças e mixins O …" />
+    <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/custom.css">
+
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pygments.css">
+
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50935105-1', 'pythonclub.com.br');
+      ga('require', 'linkid', 'linkid.js');
+      ga('send', 'pageview');
+
+    </script>
+    <!-- transifex -->
+    <!-- <script type="text/javascript">  -->
+    <!-- window.liveSettings = {  -->
+    <!--     api_key: "f8fd260a9bdc4e9195c80e31416bb254",  -->
+    <!--     picker: "bottom-right",  -->
+    <!--     detectlang: true,  -->
+    <!--     autocollect: true  -->
+    <!-- };  -->
+    <!-- </script>  -->
+    <!-- <script type="text/javascript" src="//cdn.transifex.com/live.js"></script>  -->
+    <!-- end transifex -->
+    <meta name="google-site-verification" content="XQc_QtnTecI9nxAfplXGtECCpZQDwbDRcn7pyDVa1LE" />
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://pythonclub.com.br/author/raphael-passini-diniz.html" title="See posts by Raphael Passini Diniz">
+                        <img class="article-avatar" alt="Raphael Passini Diniz" src="https://www.gravatar.com/avatar/43cfafc71bc52dd0b1865adff79418e4">
+                </a>
+                <h2 class="article-info">Raphael Passini Diniz</h2>
+    			<ul class="author-social">
+                    <li>
+                        <a target="_blank" href="https://github.com/raphapassini">
+                            <i class="fa fa-lg fa-fw fa-github"></i>
+                            <strong>Github</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://bitbucket.org/raphapassini">
+                            <i class="fa fa-lg fa-fw fa-bitbucket"></i>
+                            <strong>Bitbucket</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://twitter.com/raphapassini">
+                            <i class="fa fa-lg fa-fw fa-twitter"></i>
+                            <strong>Twitter</strong>
+                        </a>
+                    </li>
+                </ul>
+                <h5>Publicado em:</h5>
+                <p>Mon 26 October 2015</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Class Based Views no Django</h1>
+                        <p class="post-meta">
+                            // Tags                                 <a class="post-category" href="http://pythonclub.com.br/tag/python.html">python</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/blog.html">blog</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/tutorial.html">tutorial</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/django.html">django</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/cbv.html">cbv</a>
+                        </p>
+                </header>
+            </section>
+            <p>Esse tutorial tem como objetivo explicar o básico sobre Class Based Views
+no Django. Por motivos de agilidade vou usar <code>CBV</code> para me referir as
+<code>Class Based Views</code>.</p>
+<p>Segundo a documentação do Django sobre CBV:</p>
+<blockquote>
+<p>CBV's permitem você estruturar as suas views e reutilizar código aproveitando
+  heranças e mixins</p>
+</blockquote>
+<p>O Django já vem CBV's genéricas que atendem as necessidades da maioria das aplicações.
+Essas views genéricas são flexiveis o suficiente para você poder adaptá-las as
+suas necessidades.</p>
+<p>Nesse tutorial eu vou falar brevemente sobre os 4 grupos de CBV's que existem
+no Django atualmente:</p>
+<ul>
+<li><a href="#base_views">Base views</a><ul>
+<li><a href="#view">View</a></li>
+<li><a href="#template_view">TemplateView</a></li>
+<li><a href="#redirect_view">RedirectView</a></li>
+</ul>
+</li>
+<li><a href="#display_views">Display views</a><ul>
+<li><a href="#detail_view">DetailView</a></li>
+<li><a href="#list_view">ListView</a></li>
+</ul>
+</li>
+<li><a href="#editing_views">Editing views</a><ul>
+<li><a href="#model_view">Model based Views</a></li>
+<li><a href="#create_update_delete_view">CreateView, UpdateView, DeleteView</a></li>
+</ul>
+</li>
+<li><a href="#date_views">Date views</a><ul>
+<li><a href="#archive_view">ArchiveView</a></li>
+<li><a href="#year_view">YearView</a></li>
+<li><a href="#month_view">MonthView</a></li>
+<li><a href="#week_view">WeekView</a></li>
+<li><a href="#day_view">DayView</a></li>
+<li><a href="#today_view">TodayView</a></li>
+<li><a href="#date_detail_view">DateDetailView</a></li>
+</ul>
+</li>
+<li><a href="#conclusao">Conclusão</a></li>
+<li><a href="#ref">Referências</a></li>
+</ul>
+<p>Antes de começarmos a falar sobre as CBV's vamos ver como apontar uma rota
+ do Django para uma CBV:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">TemplateView</span>
+<span class="kn">from</span> <span class="nn">meuapp.views</span> <span class="kn">import</span> <span class="n">AboutView</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^about/&#39;</span><span class="p">,</span> <span class="n">AboutView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<h2><a name="base_views"></a>Base Views</h2>
+<p>As classes listadas abaixo contém muito da funcionalidade necessária para criar
+views no Django. Essas classes são a base sob a qual as outras CBV's são
+construídas.</p>
+<h3><a name="view"></a>View</h3>
+<p>A classe genérica <em>master</em>. <strong>Todas</strong> as outras classes herdam dessa classe.
+O fluxo básico de execução dessa classe quando recebe uma requisição é:</p>
+<ol>
+<li><code>dispatch()</code></li>
+<li><code>http_method_not_allowed()</code></li>
+<li><code>options()</code></li>
+</ol>
+<p>A função <code>dispatch()</code> verifica se a classe tem um método com o nome do verbo
+HTTP usado na requisição. Caso não haja, um <code>http.HttpResponseNotAllowed</code> é
+retornado.</p>
+<p>Essa classe sempre responde a requisições com o verbo <code>OPTIONS</code> retornando
+nesse caso uma lista com os verbos suportados. A não ser que o método
+<code>options()</code> seja sobrescrito.</p>
+<p>Um exemplo de implementação:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">View</span>
+
+<span class="k">class</span> <span class="nc">MyView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>No exemplo acima a classe só responde a requisições do tipo <code>GET</code> e
+<code>OPTIONS</code>, todas as outras requisições retornam
+<code>http.HttpResponseNotAllowed</code>.</p>
+<h3><a name="template_view"></a>Template View</h3>
+<p>Renderiza um template. O fluxo básico de execução dessa classe quando recebe
+uma requisição é:</p>
+<ol>
+<li><code>dispatch()</code></li>
+<li><code>http_method_not_allowed()</code></li>
+<li><code>get_context_data()</code></li>
+</ol>
+<p>Quando você precisa apenas renderizar uma página para o usuário essa com certeza
+é a melhor CBV para o caso. Você pode editar o contexto que o template recebe
+sobrescrevendo a função <code>get_context_data()</code></p>
+<p>Um exemplo de implementação:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic.base</span> <span class="kn">import</span> <span class="n">TemplateView</span>
+
+<span class="kn">from</span> <span class="nn">articles.models</span> <span class="kn">import</span> <span class="n">Article</span>
+
+<span class="k">class</span> <span class="nc">HomePageView</span><span class="p">(</span><span class="n">TemplateView</span><span class="p">):</span>
+
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;home.html&quot;</span>
+
+    <span class="k">def</span> <span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">HomePageView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">context</span><span class="p">[</span><span class="s1">&#39;latest_articles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Article</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">context</span>
+</pre></div>
+
+
+<p>No exemplo acima o template <em>home.html</em> será renderizado e vai receber como
+contexto uma variável chamada <code>lastest_articles</code>.</p>
+<p>Uma coisa interessante é que o contexto da <code>TemplateView</code> é populado pelo
+<a href="https://docs.djangoproject.com/en/1.8/ref/class-based-views/mixins-simple/#django.views.generic.base.ContextMixin">ContextMixin</a>
+esse mixin pega automaticamente os argumentos da URL que serviu a View.</p>
+<p>Considere por exemplo:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">patterns</span><span class="p">,</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="n">HelloView</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span>
+    <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^say_hello/(?P&lt;name&gt;[\w_-]+)/$&#39;</span><span class="p">,</span> <span class="n">HelloView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;say_hello&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>No caso do exemplo acima o template renderizado pela <code>HelloView</code> teria
+em seu contexto a variável <code>name</code>.</p>
+<h3><a name="redirect_view"></a>Redirect View</h3>
+<p>Redireciona o usuário para a url informada.</p>
+<p>A URL a ser redirecionada pode conter parâmetros no estilo dicionário-de-strings.
+Os parâmetros capturados na URL do <code>RedirectView</code> serão repassados para a
+URL que o usuário está sendo redirecionado.</p>
+<p>O fluxo básico de execução dessa classe quando recebe
+uma requisição é:</p>
+<ol>
+<li><code>dispatch()</code></li>
+<li><code>http_method_not_allowed()</code></li>
+<li><code>get_redirect_url()</code></li>
+</ol>
+<p>Considere a seguinte configuração de URL's para o exemplo de implementação:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">django.views.generic.base</span> <span class="kn">import</span> <span class="n">RedirectView</span>
+
+<span class="kn">from</span> <span class="nn">article.views</span> <span class="kn">import</span> <span class="n">ArticleCounterRedirectView</span><span class="p">,</span> <span class="n">ArticleDetail</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^counter/(?P&lt;pk&gt;[0-9]+)/$&#39;</span><span class="p">,</span> <span class="n">ArticleCounterRedirectView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;article-counter&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^details/(?P&lt;pk&gt;[0-9]+)/$&#39;</span><span class="p">,</span> <span class="n">ArticleDetail</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;article-detail&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<p>Exemplo de implementação:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span>
+<span class="kn">from</span> <span class="nn">django.views.generic.base</span> <span class="kn">import</span> <span class="n">RedirectView</span>
+
+<span class="kn">from</span> <span class="nn">articles.models</span> <span class="kn">import</span> <span class="n">Article</span>
+
+<span class="k">class</span> <span class="nc">ArticleCounterRedirectView</span><span class="p">(</span><span class="n">RedirectView</span><span class="p">):</span>
+
+    <span class="n">permanent</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">query_string</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">pattern_name</span> <span class="o">=</span> <span class="s1">&#39;article-detail&#39;</span>
+
+    <span class="k">def</span> <span class="nf">get_redirect_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">article</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Article</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;pk&#39;</span><span class="p">])</span>
+        <span class="n">article</span><span class="o">.</span><span class="n">update_counter</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">ArticleCounterRedirectView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_redirect_url</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Principais atributos:</p>
+<ul>
+<li><code>url</code>: A URL destino no formato de String</li>
+<li><code>pattern_name</code>: O nome do padrão de URL. Um <code>reverse</code> será aplicado
+  usando os mesmos
+  <code>args</code> e <code>kwargs</code> passados para a <code>RedirectView</code></li>
+<li><code>permanent</code>: Se for <code>True</code> retorna o status code como 301, caso contrário,
+  retorna 302.</li>
+<li><code>query_string</code>: Se for <code>True</code> a query_string será enviada para a URL de
+  destino.</li>
+</ul>
+<h2><a name="display_views"></a>Display Views</h2>
+<p>As duas views abaixo foram desenvolvidas para exibir informações. Tipicamente
+essas views são as mais usadas na maioria dos projetos.</p>
+<h3><a name="detail_view"></a>DetailView</h3>
+<p>Renderiza um template contendo em seu contexto <strong>um objeto</strong> obtido pelo
+parâmetro enviado na URL.</p>
+<p>No fluxo de execução dessa view o objeto que está sendo utilizado está em
+<code>self.object</code></p>
+<p>O fluxo básico de execução dessa classe quando recebe
+uma requisição é:</p>
+<ol>
+<li><code>dispatch()</code></li>
+<li><code>http_method_not_allowed()</code></li>
+<li><code>get_template_names()</code></li>
+<li><code>get_slug_field()</code></li>
+<li><code>get_queryset()</code></li>
+<li><code>get_object()</code></li>
+<li><code>get_context_object_name()</code></li>
+<li><code>get_context_data()</code></li>
+<li><code>get()</code></li>
+<li><code>render_to_response()</code></li>
+</ol>
+<p>O fluxo parece grande e complexo mas na verdade é muito simples e facilmente
+customizável. Basicamente o que acontece é:</p>
+<p><code>get_template_names()</code> retorna uma lista de templates que devem ser usados para
+renderizar a resposta. Caso o primeiro template da lista não seja encontrado o
+Django tenta o segundo e assim por diante.</p>
+<p>Em seguida o <code>get_slug_field()</code> entra em ação, essa função deve retornar o
+nome do campo que será usado para fazer a busca pelo objeto. Por default o
+Django procura pelo campo <code>slug</code>.</p>
+<p>Agora o <code>get_queryset</code> deve retornar um queryset que será usado para buscar
+um objeto. Aqui é um ótimo lugar para, por exemplo, aplicar um filtro para
+exibir somente o Artigo cujo autor é o usuário logado. Considere o exemplo
+abaixo:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ArtigoView</span><span class="p">(</span><span class="n">DetailView</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Artigo</span>
+
+    <span class="n">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+
+    <span class="c1"># ... o restante do código foi suprimido</span>
+</pre></div>
+
+
+<p><strong>IMPORTANTE:</strong> O <code>get_queryset()</code> é chamado pela implementação default do
+método <code>get_object()</code>, se o <code>get_object()</code> for sobrescrito a chamada ao
+<code>get_queryset()</code> pode não ser realizada.</p>
+<p>O <code>get_object()</code> então é o responsável por retornar o objeto que será enviado
+para o template. Normalmente essa função não precisa ser sobrescrita.</p>
+<p>Depois de obter o objeto que será enviado para o template é necessário saber
+qual será o nome desse objeto no contexto do template, isso é feito pela função
+<code>get_context_object_name()</code>, por default o nome do objeto no template será o
+nome do <code>Model</code>, no exemplo acima seria <code>artigo</code></p>
+<p>Depois disso temos o <code>get_context_data()</code> que já foi comentado acima e então
+o <code>get()</code> que obtém o objeto e coloca no contexto, e em seguida o
+<code>render_to_response</code> que renderiza o template.</p>
+<p><strong>IMPORTANTE:</strong> É importante notar que o Django oferece variáveis de
+instância para facilitar a customização do comportamento da classe.
+Por exemplo a troca do nome do objeto pode ser feita alterando a variável de
+instância <code>context_object_name</code> ao invés de sobrescrever a função
+<code>get_object_name()</code>.</p>
+<p>Abaixo segue um exemplo, onde exibir os detalhes de um <em>Artigo</em> somente se o
+usuário for o autor dele e vamos pegar esse <em>Artigo</em> pelo campo <code>titulo</code> e
+renderizar esse artigo no template <code>detalhe_artigo.html</code> com o nome
+<code>meu_artigo</code>.</p>
+<p><strong>views.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic.detail</span> <span class="kn">import</span> <span class="n">DetailView</span>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+
+<span class="kn">from</span> <span class="nn">articles.models</span> <span class="kn">import</span> <span class="n">Article</span>
+
+<span class="k">class</span> <span class="nc">ArticleDetailView</span><span class="p">(</span><span class="n">DetailView</span><span class="p">):</span>
+    <span class="n">slug_field</span> <span class="o">=</span> <span class="s1">&#39;titulo&#39;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Article</span>
+    <span class="n">context_object_name</span> <span class="o">=</span> <span class="s1">&#39;meu_artigo&#39;</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;detalhe_artigo.html&#39;</span>
+
+    <span class="n">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>urls.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+
+<span class="kn">from</span> <span class="nn">article.views</span> <span class="kn">import</span> <span class="n">ArticleDetailView</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(?P&lt;titulo&gt;[-\w]+)/$&#39;</span><span class="p">,</span> <span class="n">ArticleDetailView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;article-detail&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<p><strong>detalhe_artigo.html</strong></p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ meu_artigo.titulo }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ meu_artigo.conteudo }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Reporter: {{ meu_artigo.user.name }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Published: {{ meu_artigo.data_publicacao|date }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h3><a name="list_view"></a>ListView</h3>
+<p>Uma página que representa uma lista de objetos.
+Enquanto essa view está executando a variável <code>self.object_list</code> vai conter
+a lista de objetos que a view está utilizando.</p>
+<p>O fluxo básico de execução dessa classe quando recebe
+uma requisição é:</p>
+<ol>
+<li><code>dispatch()</code></li>
+<li><code>http_method_not_allowed()</code></li>
+<li><code>get_template_names()</code></li>
+<li><code>get_queryset()</code></li>
+<li><code>get_object()</code></li>
+<li><code>get_context_object_name()</code></li>
+<li><code>get_context_data()</code></li>
+<li><code>get()</code></li>
+<li><code>render_to_response()</code></li>
+</ol>
+<p>Nada de novo aqui certo? Podemos exibir apenas uma lista de Artigos que estão
+com <code>status='publicado'</code></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic.list</span> <span class="kn">import</span> <span class="n">ListView</span>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+
+<span class="kn">from</span> <span class="nn">articles.models</span> <span class="kn">import</span> <span class="n">Artigo</span>
+
+<span class="k">class</span> <span class="nc">ArticleListView</span><span class="p">(</span><span class="n">ListView</span><span class="p">):</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Artigo</span>
+
+    <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Artigo</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;publicado&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Outra opção seria:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic.list</span> <span class="kn">import</span> <span class="n">ListView</span>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+
+<span class="kn">from</span> <span class="nn">articles.models</span> <span class="kn">import</span> <span class="n">Artigo</span>
+
+<span class="k">class</span> <span class="nc">ArticleListView</span><span class="p">(</span><span class="n">ListView</span><span class="p">):</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Artigo</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Artigo</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;publicado&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>artigo_list.html</strong></p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Articles<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+{% for article in object_list %}
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{ article.pub_date|date }} - {{ article.headline }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+{% empty %}
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>No articles yet.<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+{% endfor %}
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p><strong>DICA:</strong> Normalmente sobrescrevemos as funções quando o retorno depende dos
+parâmetros da requisição e utilizamos as variáveis de instância quando não há
+essa dependência.</p>
+<p>O nome do template que é usado em ambas as views <code>DetailView</code> e <code>ListView</code>
+é determinado da seguinte forma:</p>
+<ul>
+<li>O valor da variável <code>template_name</code> na View (se definido)</li>
+<li>O valor do campo <code>template_name_field</code> na instância do objeto que a view
+  está usando.</li>
+<li><code>&lt;app_label&gt;/&lt;model_name&gt;&lt;template_name_suffix&gt;.html</code></li>
+</ul>
+<h2><a name="editing_views"></a>Editing Views</h2>
+<p>As views descritas abaixo contém o comportamento básico para edição de conteúdo.</p>
+<h3><a name="form_view"></a>FormView</h3>
+<p>Uma view que mostra um formulário. Se houver erro, mostra o formulário novamente
+contendo os erros de validação. Em caso de sucesso redireciona o usuário para
+uma nova URL.</p>
+<p><strong>forms.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+
+<span class="k">class</span> <span class="nc">ContactForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">Textarea</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">send_email</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># send email using the self.cleaned_data dictionary</span>
+        <span class="k">pass</span>
+</pre></div>
+
+
+<p><strong>views.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">myapp.forms</span> <span class="kn">import</span> <span class="n">ContactForm</span>
+<span class="kn">from</span> <span class="nn">django.views.generic.edit</span> <span class="kn">import</span> <span class="n">FormView</span>
+
+<span class="k">class</span> <span class="nc">ContactView</span><span class="p">(</span><span class="n">FormView</span><span class="p">):</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;contact.html&#39;</span>
+    <span class="n">form_class</span> <span class="o">=</span> <span class="n">ContactForm</span>
+    <span class="n">success_url</span> <span class="o">=</span> <span class="s1">&#39;/thanks/&#39;</span>
+
+    <span class="k">def</span> <span class="nf">form_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+        <span class="c1"># This method is called when valid form data has been POSTed.</span>
+        <span class="c1"># It should return an HttpResponse.</span>
+        <span class="n">form</span><span class="o">.</span><span class="n">send_email</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">ContactView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">form_valid</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>contact.html</strong></p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>{% csrf_token %}
+    {{ form.as_p }}
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Send message&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>As funções mais importantes do <code>FormView</code> são:</p>
+<ul>
+<li><code>form_valid()</code>: Chamada quando o formulário é validado com sucesso</li>
+<li><code>form_invalid()</code>: Chamada quando o formuĺário contém erros</li>
+<li><code>get_sucess_url()</code>: Chamada quando o formulário é validado com sucesso
+  e retorna a url para qual o usuário deve ser redirecionado.</li>
+</ul>
+<h3><a name="model_view"></a>Views para lidar com <code>models</code> (ModelForms)</h3>
+<p>Grande parte do "poder" das CBV's vem quando precisamos trabalhar com models.</p>
+<p>As views listadas abaixo: <code>CreateView</code>, <code>UpdateView</code> e <code>DeleteView</code> foram
+criadas para facilitar esse trabalho com os models, essas views podem gerar um
+<code>ModelForm</code> de maneira automática, desde que seja possível determinar qual
+é o model que a view está utilizando.</p>
+<p>A view vai tentar determinar o model a ser usado das seguintes formas:</p>
+<ul>
+<li>Se houver um atributo <code>model</code> na classe</li>
+<li>Se o método <code>get_object()</code> retorna um objeto, a classe desse objeto será
+  usada</li>
+<li>Se houver um atributo <code>queryset</code> o model do <code>queryset</code> será utilizado</li>
+</ul>
+<p>Você não precisa nem mesmo definir um <code>success_url</code> as views <code>CreateView</code> e
+<code>UpdateView</code> utilizam automaticamente a função <code>get_absolute_url()</code> do model
+se essa função existir.</p>
+<p>Você também pode customizar o formulário usado na view se você precisar de algum
+tratamento adicional, para fazer isso basta definir a classe de formulários a ser
+usada no atributo <code>form_class</code>:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic.edit</span> <span class="kn">import</span> <span class="n">CreateView</span>
+<span class="kn">from</span> <span class="nn">myapp.models</span> <span class="kn">import</span> <span class="n">Author</span>
+<span class="kn">from</span> <span class="nn">myapp.forms</span> <span class="kn">import</span> <span class="n">AuthorForm</span>
+
+<span class="k">class</span> <span class="nc">AuthorCreate</span><span class="p">(</span><span class="n">CreateView</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Author</span>
+    <span class="n">form_class</span> <span class="o">=</span> <span class="n">AuthorForm</span>
+</pre></div>
+
+
+<h3><a name="create_update_delete_view"></a>CreateView, UpdateView e DeleteView</h3>
+<p>Uma view que exibe um form para criar, atualizar ou apagar um objeto.
+Caso existam erros no formulário, este é exibido novamente junto com as
+mensagens de erro.</p>
+<p>Em caso de sucesso o objeto é salvo.</p>
+<p><strong>models.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.core.urlresolvers</span> <span class="kn">import</span> <span class="n">reverse</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Author</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_absolute_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;author-detail&#39;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;pk&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pk</span><span class="p">})</span>
+</pre></div>
+
+
+<p><strong>views.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic.edit</span> <span class="kn">import</span> <span class="n">CreateView</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">,</span> <span class="n">DeleteView</span>
+<span class="kn">from</span> <span class="nn">django.core.urlresolvers</span> <span class="kn">import</span> <span class="n">reverse_lazy</span>
+<span class="kn">from</span> <span class="nn">myapp.models</span> <span class="kn">import</span> <span class="n">Author</span>
+
+<span class="k">class</span> <span class="nc">AuthorCreate</span><span class="p">(</span><span class="n">CreateView</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Author</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+
+<span class="k">class</span> <span class="nc">AuthorUpdate</span><span class="p">(</span><span class="n">UpdateView</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Author</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+
+<span class="k">class</span> <span class="nc">AuthorDelete</span><span class="p">(</span><span class="n">DeleteView</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Author</span>
+    <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;author-list&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>urls.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">myapp.views</span> <span class="kn">import</span> <span class="n">AuthorCreate</span><span class="p">,</span> <span class="n">AuthorUpdate</span><span class="p">,</span> <span class="n">AuthorDelete</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># ...</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;author/add/$&#39;</span><span class="p">,</span> <span class="n">AuthorCreate</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;author_add&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;author/(?P&lt;pk&gt;[0-9]+)/$&#39;</span><span class="p">,</span> <span class="n">AuthorUpdate</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;author_update&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;author/(?P&lt;pk&gt;[0-9]+)/delete/$&#39;</span><span class="p">,</span> <span class="n">AuthorDelete</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;author_delete&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<p>O atributo <code>fields</code> determina quais campos do model devem estar presentes no
+formulário. É obrigatório especificar o atributo <code>fields</code> ou então o atributo
+<code>form_class</code>, nunca os dois ao mesmo tempo, pois isso geraria uma exceção
+<a href="https://docs.djangoproject.com/en/1.8/ref/exceptions/#django.core.exceptions.ImproperlyConfigured"><code>ImproperlyConfigured</code></a>.</p>
+<p>É importante notar também que a <code>DeleteView</code> exibe as informações do objeto que
+será deletado quando é acessada usando o verbo <code>GET</code>, quando usado o verbo
+<code>POST</code> o objeto é efetivamente apagado.</p>
+<p><strong>DICA</strong>: O nome dos templates é determinado da seguinte forma:</p>
+<ul>
+<li><code>CreateView</code> e UpdateView usam myapp/author_form.html</li>
+<li><code>DeleteView</code> usa myapp/author_confirm_delete.html</li>
+</ul>
+<h2><a name="date_views"></a>Date Views</h2>
+<p>Date-based generic views são views com a função de exibir páginas com dados
+filtrados por datas, por exemplo: posts em um blog, notícias, consultas ao médico, etc.</p>
+<h3><a name="archive_view"></a>ArchiveIndexView</h3>
+<p>Uma página que exibe os "últimas" objetos inseridos, desconsiderando aqueles com uma
+data futura a não ser que o atributo <code>allow_future</code> seja definido como <code>True</code>.</p>
+<p>É importante notar que:</p>
+<ul>
+<li>O nome default do <code>context_object_name</code> é <code>latest</code>.</li>
+<li>O sufixo <code>_archive</code> no nome do template.</li>
+<li>Além da lista de objetos o contexto também contem a variável <code>date_list</code>
+  contendo todos os anos que tem objetos em ordem decrescente.
+  Isso pode ser alterado para mês ou dia usando o atributo
+  <code>date_list_period</code>. Isso se aplica a todas as <em>Data-based generic views</em>.</li>
+</ul>
+<p>Implementação simples:</p>
+<p><strong>urls.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">django.views.generic.dates</span> <span class="kn">import</span> <span class="n">ArchiveIndexView</span>
+
+<span class="kn">from</span> <span class="nn">myapp.models</span> <span class="kn">import</span> <span class="n">Article</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^archive/$&#39;</span><span class="p">,</span>
+        <span class="n">ArchiveIndexView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">Article</span><span class="p">,</span> <span class="n">date_field</span><span class="o">=</span><span class="s2">&quot;pub_date&quot;</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;article_archive&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<h3><a name="year_view"></a>YearArchiveView</h3>
+<p>Uma página para exibir um arquivo anual. Retorna todos os objetos de um
+determinado ano.</p>
+<p>No contexto além da lista de objetos temos ainda:</p>
+<ul>
+<li><code>date_list</code>: Um objeto QuerySet contendo todos os meses que tenham objetos
+    naquele ano representados como objetos datetime.datetime em ordem crescente.</li>
+<li><code>year</code>: Um objeto datetime.datetime representando o ano atual</li>
+<li><code>next_year</code>: Um objeto datetime.datetime representando o próximo ano</li>
+<li><code>previous_year</code>: Um objeto datetime.datetime representando o ano anterior</li>
+</ul>
+<p>Exemplo de implementação:</p>
+<p><strong>views.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic.dates</span> <span class="kn">import</span> <span class="n">YearArchiveView</span>
+
+<span class="kn">from</span> <span class="nn">myapp.models</span> <span class="kn">import</span> <span class="n">Article</span>
+
+<span class="k">class</span> <span class="nc">ArticleYearArchiveView</span><span class="p">(</span><span class="n">YearArchiveView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Article</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">date_field</span> <span class="o">=</span> <span class="s2">&quot;pub_date&quot;</span>
+    <span class="n">make_object_list</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">allow_future</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+
+
+<p><strong>urls.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+
+<span class="kn">from</span> <span class="nn">myapp.views</span> <span class="kn">import</span> <span class="n">ArticleYearArchiveView</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(?P&lt;year&gt;[0-9]{4})/$&#39;</span><span class="p">,</span>
+        <span class="n">ArticleYearArchiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;article_year_archive&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<p><strong>article_archive_year.html</strong></p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    {% for date in date_list %}
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{ date|date }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    {% endfor %}
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h3><a name="month_view"></a>MonthArchiveView</h3>
+<p>Uma página para exibir um arquivo mensal. Retorna todos os objetos de um
+determinado mês.</p>
+<p>No contexto além da lista de objetos temos ainda:</p>
+<ul>
+<li><code>date_list</code>: Um objeto QuerySet contendo todos os dias que tenham objetos
+    naquele mês representados como objetos datetime.datetime em ordem crescente.</li>
+<li><code>month</code>: Um objeto datetime.datetime representando o mês atual</li>
+<li><code>next_month</code>: Um objeto datetime.datetime representando o próximo mês</li>
+<li><code>previous_month</code>: Um objeto datetime.datetime representando o mês anterior</li>
+</ul>
+<p>Exemplo de implementação:</p>
+<p><strong>views.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic.dates</span> <span class="kn">import</span> <span class="n">MonthArchiveView</span>
+
+<span class="kn">from</span> <span class="nn">myapp.models</span> <span class="kn">import</span> <span class="n">Article</span>
+
+<span class="k">class</span> <span class="nc">ArticleMonthArchiveView</span><span class="p">(</span><span class="n">MonthArchiveView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Article</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">date_field</span> <span class="o">=</span> <span class="s2">&quot;pub_date&quot;</span>
+    <span class="n">allow_future</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+
+
+<p><strong>urls.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+
+<span class="kn">from</span> <span class="nn">myapp.views</span> <span class="kn">import</span> <span class="n">ArticleMonthArchiveView</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># Example: /2012/aug/</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[-\w]+)/$&#39;</span><span class="p">,</span>
+        <span class="n">ArticleMonthArchiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;archive_month&quot;</span><span class="p">),</span>
+    <span class="c1"># Example: /2012/08/</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[0-9]+)/$&#39;</span><span class="p">,</span>
+        <span class="n">ArticleMonthArchiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">month_format</span><span class="o">=</span><span class="s1">&#39;%m&#39;</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;archive_month_numeric&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<p><strong>article_archive_month.html</strong></p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    {% for article in object_list %}
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{ article.pub_date|date:&quot;F j, Y&quot; }}: {{ article.title }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    {% endfor %}
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    {% if previous_month %}
+        Previous Month: {{ previous_month|date:&quot;F Y&quot; }}
+    {% endif %}
+    {% if next_month %}
+        Next Month: {{ next_month|date:&quot;F Y&quot; }}
+    {% endif %}
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h3><a name="week_view"></a>WeekArchiveView</h3>
+<p>Uma página para exibir um arquivo semanal. Retorna todos os objetos de uma
+determinada semana.</p>
+<p>No contexto além da lista de objetos temos ainda:</p>
+<ul>
+<li><code>week</code>: Um objeto datetime.datetime representando a semana atual</li>
+<li><code>next_week</code>: Um objeto datetime.datetime representando a próxima semana</li>
+<li><code>previous_week</code>: Um objeto datetime.datetime representando a semana anterior</li>
+</ul>
+<p>Implementação simples:</p>
+<p><strong>views.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic.dates</span> <span class="kn">import</span> <span class="n">WeekArchiveView</span>
+
+<span class="kn">from</span> <span class="nn">myapp.models</span> <span class="kn">import</span> <span class="n">Article</span>
+
+<span class="k">class</span> <span class="nc">ArticleWeekArchiveView</span><span class="p">(</span><span class="n">WeekArchiveView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Article</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">date_field</span> <span class="o">=</span> <span class="s2">&quot;pub_date&quot;</span>
+    <span class="n">week_format</span> <span class="o">=</span> <span class="s2">&quot;%W&quot;</span>
+    <span class="n">allow_future</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+
+
+<p><strong>urls.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+
+<span class="kn">from</span> <span class="nn">myapp.views</span> <span class="kn">import</span> <span class="n">ArticleWeekArchiveView</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># Example: /2012/week/23/</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(?P&lt;year&gt;[0-9]{4})/week/(?P&lt;week&gt;[0-9]+)/$&#39;</span><span class="p">,</span>
+        <span class="n">ArticleWeekArchiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;archive_week&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<p><strong>article_archive_week.html</strong></p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Week {{ week|date:&#39;W&#39; }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    {% for article in object_list %}
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{ article.pub_date|date:&quot;F j, Y&quot; }}: {{ article.title }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    {% endfor %}
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    {% if previous_week %}
+        Previous Week: {{ previous_week|date:&quot;F Y&quot; }}
+    {% endif %}
+    {% if previous_week and next_week %}--{% endif %}
+    {% if next_week %}
+        Next week: {{ next_week|date:&quot;F Y&quot; }}
+    {% endif %}
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h3><a name="day_view"></a>DayArchiveView</h3>
+<p>Uma página para exibir um arquivo diário. Retorna todos os objetos de um
+determinado dia.</p>
+<p>No contexto além da lista de objetos temos ainda:</p>
+<ul>
+<li><code>day</code>: Um objeto datetime.datetime representando o dia atual</li>
+<li><code>next_day</code>: Um objeto datetime.datetime representando o próximo dia</li>
+<li><code>previous_day</code>: Um objeto datetime.datetime representando o dia anterior</li>
+<li><code>next_month</code>: Um objeto datetime.datetime representando o primeiro dia do
+    próximo mês</li>
+<li><code>previous_month</code>: Um objeto datetime.datetime representando o primeiro dia
+    do mês anterior</li>
+</ul>
+<p>Implementação simples:</p>
+<p><strong>views.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic.dates</span> <span class="kn">import</span> <span class="n">DayArchiveView</span>
+
+<span class="kn">from</span> <span class="nn">myapp.models</span> <span class="kn">import</span> <span class="n">Article</span>
+
+<span class="k">class</span> <span class="nc">ArticleDayArchiveView</span><span class="p">(</span><span class="n">DayArchiveView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Article</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">date_field</span> <span class="o">=</span> <span class="s2">&quot;pub_date&quot;</span>
+    <span class="n">allow_future</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+
+
+<p><strong>urls.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+
+<span class="kn">from</span> <span class="nn">myapp.views</span> <span class="kn">import</span> <span class="n">ArticleDayArchiveView</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># Example: /2012/nov/10/</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[-\w]+)/(?P&lt;day&gt;[0-9]+)/$&#39;</span><span class="p">,</span>
+        <span class="n">ArticleDayArchiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;archive_day&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<p><strong>article_archive_day.html</strong></p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ day }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    {% for article in object_list %}
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{ article.pub_date|date:&quot;F j, Y&quot; }}: {{ article.title }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    {% endfor %}
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    {% if previous_day %}
+        Previous Day: {{ previous_day }}
+    {% endif %}
+    {% if previous_day and next_day %}--{% endif %}
+    {% if next_day %}
+        Next Day: {{ next_day }}
+    {% endif %}
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h3><a name="today_view"></a>TodayArchiveView</h3>
+<p>É a mesma coisa do <code>DayArchiveView</code> mas não usa os parâmetros da URL para
+determinar o ano/mês/dia.</p>
+<p>O que muda é o urls.py, veja o exemplo abaixo:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+
+<span class="kn">from</span> <span class="nn">myapp.views</span> <span class="kn">import</span> <span class="n">ArticleTodayArchiveView</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^today/$&#39;</span><span class="p">,</span>
+        <span class="n">ArticleTodayArchiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;archive_today&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<h3><a name="date_detail_view"></a>DateDetailView</h3>
+<p>É a mesma coisa que a <code>DetailView</code> com a diferença que a data é utilizada
+junto com o pk/slug para determinar qual objeto deve ser obtido.</p>
+<p>O que muda é o urls.py, veja o exemplo abaixo:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">django.views.generic.dates</span> <span class="kn">import</span> <span class="n">DateDetailView</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[-\w]+)/(?P&lt;day&gt;[0-9]+)/(?P&lt;pk&gt;[0-9]+)/$&#39;</span><span class="p">,</span>
+        <span class="n">DateDetailView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">Article</span><span class="p">,</span> <span class="n">date_field</span><span class="o">=</span><span class="s2">&quot;pub_date&quot;</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;archive_date_detail&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<h3><a name="conclusao"></a>Conclusão</h3>
+<p>Longe de tentar exaurir um assunto de tamanha complexidade e abrangência minha
+intenção com esse artigo foi mostrar o funcionamento básico das Class Based Views
+e quem sabe incentivar você a utilizar CBV's no seu próximo projeto.</p>
+<p>Envie para mim qualquer dúvida, crítica ou sugestão que você tiver em qualquer
+uma das minhas redes sociais, posso demorar um pouco a responder mas eu respondo! :)</p>
+<p>Ah, se você se interessou pelo assunto e quer se aprofundar mais eu aconselho
+começar pela <a href="https://docs.djangoproject.com/en/1.8/topics/class-based-views/intro/">Documentação oficial</a></p>
+<h3><a name="ref"></a>Referências</h3>
+<ul>
+<li><a href="https://docs.djangoproject.com/en/1.8/topics/class-based-views/">https://docs.djangoproject.com/en/1.8/topics/class-based-views/</a></li>
+<li><a href="https://docs.djangoproject.com/en/1.8/ref/class-based-views/">https://docs.djangoproject.com/en/1.8/ref/class-based-views/</a></li>
+<li><a href="https://github.com/django/django/blob/master/django/views/generic/">https://github.com/django/django/blob/master/django/views/generic/</a></li>
+<li><a href="http://ccbv.co.uk/">http://ccbv.co.uk/</a></li>
+</ul>
+
+            <div class="licence">
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licença Creative Commons"
+                                                                                               style="border-width:0"
+                                                                                               src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"/></a><br/><a
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title"
+                    href="http://pythonclub.com.br/class-based-views-django.html">"Class Based Views no Django"</a> de <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="http://pythonclub.com.br/author/raphael-passini-diniz.html"
+                    property="cc:attributionName" rel="cc:attributionURL">"Raphael Passini Diniz"</a> está licenciado com uma Licença
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons -
+                    Atribuição-NãoComercial-SemDerivações 4.0 Internacional</a>.
+            </div>
+
+            <div class="sharing">
+                <!-- Facebook sharing -->
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=1487080281503641&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-share-button" data-href="http://pythonclub.com.br/class-based-views-django.html" data-type="button_count"></div>
+
+                <!-- Google+ sharing -->
+                <div class="g-plus alinhar" data-action="share" data-annotation="bubble" data-href="http://pythonclub.com.br/class-based-views-django.html"></div>
+
+                <!-- Twitter sharing -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="pt" style="margin-bottom: -4px !important;">Tweetar</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Topo</a>
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES: THIS CODE IS ONLY AN EXAMPLE * * */
+                        var disqus_shortname = 'pythonclub'; // Required - Replace example with your forum shortname
+                        var disqus_identifier = 'class-based-views-django.html';
+                        var disqus_title = 'Class Based Views no Django';
+                        var disqus_url = 'http://pythonclub.com.br/class-based-views-django.html';
+                    
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </div>
+<footer class="footer">
+    <p>&copy; PythonClub &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://pythonclub.com.br/theme/js/dynamic_random_articles.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+        $(window).load(function(){
+          $("iframe").css("margin-bottom", "-6px")
+          $("#twitter-widget-0").css("margin-bottom", "-5px");
+          $("#twitter-widget-0").css("margin-left", "-1px");
+        });
+    </script>
+    <script type="text/javascript" src="https://apis.google.com/js/platform.js">
+      {lang: 'pt-BR'}
+    </script>
+
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+
+        $(function(){
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/trabalhando-com-operadores-ternarios.html", "title": "Trabalhando com operadores tern\u00e1rios"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-com-socket-e-struct.html", "title": "Upload de Arquivos com Socket e Struct"}, {"url": "http://pythonclub.com.br/monitorando-ips-duplicados-na-rede.html", "title": "Monitorando Ips Duplicados na Rede"}, {"url": "http://pythonclub.com.br/django-rest-framework-class-based-views.html", "title": "Django Rest Framework - #3 Class Based Views"}, {"url": "http://pythonclub.com.br/django-rest-framework-requests-responses.html", "title": "Django Rest Framework - #2 Requests and Responses"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-2.html", "title": "Programa\u00e7\u00e3o funcional com Python #2 - Iteraveis e iteradores"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-1.html", "title": "Programa\u00e7\u00e3o funcional com Python #1 - Fun\u00e7\u00f5es"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-0.html", "title": "Programa\u00e7\u00e3o funcional com Python #0 - Saindo da zona de conforto"}, {"url": "http://pythonclub.com.br/peewee-um-orm-python-minimalista.html", "title": "Peewee - Um ORM Python minimalista"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html", "title": "What the Flask? pt 4 - Extens\u00f5es para o Flask"}, {"url": "http://pythonclub.com.br/configurando-python-3.5-openshift-flask-gunicorn.html", "title": "Configurando OpenShift com Python 3.5 + Flask + Gunicorn"}, {"url": "http://pythonclub.com.br/instalando-o-python-vers\u00e3o-3.7.0-alpha-1-no-ubuntu-16.04.md.html", "title": "Instalando o Python vers\u00e3o 3.7.0 alpha 1 no Ubuntu 16.04"}, {"url": "http://pythonclub.com.br/abrangencia-de-listas-e-dicionarios-com-python.html", "title": "Abrang\u00eancia de Listas e Dicion\u00e1rios"}, {"url": "http://pythonclub.com.br/debugging-logging.html", "title": "Debugging - logging"}, {"url": "http://pythonclub.com.br/deploy-rapido-simples-com-dokku.html", "title": "Deploy r\u00e1pido e simples com Dokku"}, {"url": "http://pythonclub.com.br/bot-telegram-mais-web-scraping-parte-1.html", "title": "Bot telegram mais web scraping - parte 1"}, {"url": "http://pythonclub.com.br/como-distribuir-sua-aplicacao-python-com-pypi.html", "title": "Como distribuir sua aplica\u00e7\u00e3o Python com PyPI"}, {"url": "http://pythonclub.com.br/python-webassets-elm.html", "title": "Python webassets & Elm"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula1.html", "title": "Curso Python asyncio: Aula 01 - Iterators e Generators"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula00.html", "title": "Curso Python asyncio: Aula 00 - Introdu\u00e7\u00e3o ao m\u00f3dulo asyncio"}, {"url": "http://pythonclub.com.br/gerando-relatorios-de-testes-com-coveralls.html", "title": "Relat\u00f3rios de testes com Coveralls"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 4 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 3 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 2 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)"}, {"url": "http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html", "title": "GitHub Pages com Pelican e Travis-CI"}, {"url": "http://pythonclub.com.br/sites-estaticos-com-lektor.html", "title": "Sites Est\u00e1ticos com Lektor"}, {"url": "http://pythonclub.com.br/django-rest-framework-serialization.html", "title": "Django Rest Framework Serialization"}, {"url": "http://pythonclub.com.br/explicit-is-better-than-implicit.html", "title": "Explicit is better than implicit"}, {"url": "http://pythonclub.com.br/tdd-com-python-e-flask.html", "title": "TDD com Python e Flask"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html", "title": "Upload de arquivos no Django: entendendo os modos de leitura"}, {"url": "http://pythonclub.com.br/python-generators.html", "title": "Python Generators"}, {"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+        });
+        
+    </script>
+        <!-- spot_im -->
+        <!--    <div id="spot-im-root"></div> -->
+        <!--    <script type="text/javascript">!function(t,o,p){function e(){var t=o.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"==o.location.protocol?"https":"http")+":"+p,o.body.appendChild(t)}t.spotId="3de816246c80a51757bb01c5b8c95cda",t.spotName="",t.allowDesktop=!0,t.allowMobile=!1,t.containerId="spot-im-root",e()}(window.SPOTIM={},document,"//www.spot.im/embed/scripts/launcher.js");</script> -->
+        <!-- end spot_im -->
+   
+            <script>
+              ((window.gitter = {}).chat = {}).options = {
+                    room: 'pythonclub/pythonclub.github.io'
+              };
+            </script>
+            <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+   
+</body>
+</html>

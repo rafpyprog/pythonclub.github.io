@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>PythonClub - Raphael Passini</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Thu, 18 Sep 2014 19:00:00 -0300</lastBuildDate><item><title>Gerenciando assets com django-pipeline</title><link>http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html</link><description>&lt;h1&gt;Gerenciando Assets Com django-pipeline&lt;/h1&gt;
+&lt;p&gt;O objetivo desse post é explicar a utilização do aplicativo django-pipeline para gerenciar a compilação e compressão de arquivos CoffeScript, Less, Sass, entre outros.&lt;/p&gt;
+&lt;h2&gt;Instalando&lt;/h2&gt;
+&lt;p&gt;Primeiro vamos instalar o pacote django-pipeline&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pipeline&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Depois vamos alterar o nosso arquivo settings.py e adicionar o …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Raphael Passini</dc:creator><pubDate>Thu, 18 Sep 2014 19:00:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2014-09-18:/gerenciando-assets-com-django-pipeline.html</guid><category>Django</category><category>django-pipeline</category><category>assets</category><category>static</category></item></channel></rss>

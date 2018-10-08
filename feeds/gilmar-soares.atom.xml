@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/gilmar-soares.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-13T22:00:00-03:00</updated><entry><title>Exemplo de como "Parsear" Sites com BeautifulSoup</title><link href="http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html" rel="alternate"></link><published>2014-05-13T22:00:00-03:00</published><updated>2014-05-13T22:00:00-03:00</updated><author><name>Gilmar Soares</name></author><id>tag:pythonclub.com.br,2014-05-13:parseando-sites-com-beautifulsoup.html</id><summary type="html">&lt;div class="section" id="parseando-sites-com-beautifulsoup"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub - Gilmar Soares</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/gilmar-soares.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-13T22:00:00-03:00</updated><entry><title>Exemplo de como "Parsear" Sites com BeautifulSoup</title><link href="http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html" rel="alternate"></link><published>2014-05-13T22:00:00-03:00</published><updated>2014-05-13T22:00:00-03:00</updated><author><name>Gilmar Soares</name></author><id>tag:pythonclub.com.br,2014-05-13:/parseando-sites-com-beautifulsoup.html</id><summary type="html">&lt;div class="section" id="parseando-sites-com-beautifulsoup"&gt;
+&lt;h2&gt;Parseando Sites com BeautifulSoup&lt;/h2&gt;
+&lt;div class="section" id="como-pegar-informacoes-de-sites-com-beautifulsoup"&gt;
+&lt;h3&gt;Como &amp;quot;pegar&amp;quot; informações de Sites com BeautifulSoup?&lt;/h3&gt;
+&lt;p&gt;Vamos falar nesse artigo do Beautifulsoup, biblioteca Python necessária para fazer “parse” de sites.&lt;/p&gt;
+&lt;p&gt;Para iniciarmos o exemplo será necessário instalar a biblioteca Python Beautifulsoup no seu ambiente, e assumo que o leitor tenha PIP instalado, então segue comando …&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</summary><content type="html">&lt;div class="section" id="parseando-sites-com-beautifulsoup"&gt;
 &lt;h2&gt;Parseando Sites com BeautifulSoup&lt;/h2&gt;
 &lt;div class="section" id="como-pegar-informacoes-de-sites-com-beautifulsoup"&gt;
 &lt;h3&gt;Como &amp;quot;pegar&amp;quot; informações de Sites com BeautifulSoup?&lt;/h3&gt;
@@ -83,4 +88,4 @@ nesse Script implementei bastante coisa do Beautifulsoup e algumas outras coisas
 &lt;/dl&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="beautifulsoup"></category></entry></feed>
+</content><category term="beautifulsoup"></category></entry></feed>

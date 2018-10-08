@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PythonClub, ">
+    <meta name="theme-color" content="#101212">
+
+        <link rel="alternate"  href="http://pythonclub.com.br/feeds/all.atom.xml" type="application/atom+xml" title="PythonClub Full Atom Feed"/>
+        <link rel="alternate" href="http://pythonclub.com.br/feeds/all.rss.xml" type="application/rss+xml" title="PythonClub Full RSS Feed"/>
+
+    <link rel="shortcut icon" href="http://pythonclub.com.br/theme/images/favicon.ico" >
+
+            <title>What the Flask? pt 4 - Extensões para o Flask por Bruno Cezar Rocha // #PythonClub // </title>
+
+    <meta property="fb:app_id" content="1487080281503641" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="What the Flask? pt 4 - Extensões para o Flask" />
+    <meta property="og:site_name" content="PythonClub" />
+    <meta property="og:url" content="http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html" />
+    <meta property="og:description" content="What The Flask - 4/5 Finalmente!!! Depois de uma longa espera o What The Flask está de volta! A idéia era publicar primeiro a parte 4 (sobre Blueprints) e só depois a 5 sobre como criar extensões. Mas esses 2 temas estão muito interligados então neste artigo os 2 assuntos …" />
+    <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/custom.css">
+
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pygments.css">
+
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50935105-1', 'pythonclub.com.br');
+      ga('require', 'linkid', 'linkid.js');
+      ga('send', 'pageview');
+
+    </script>
+    <!-- transifex -->
+    <!-- <script type="text/javascript">  -->
+    <!-- window.liveSettings = {  -->
+    <!--     api_key: "f8fd260a9bdc4e9195c80e31416bb254",  -->
+    <!--     picker: "bottom-right",  -->
+    <!--     detectlang: true,  -->
+    <!--     autocollect: true  -->
+    <!-- };  -->
+    <!-- </script>  -->
+    <!-- <script type="text/javascript" src="//cdn.transifex.com/live.js"></script>  -->
+    <!-- end transifex -->
+    <meta name="google-site-verification" content="XQc_QtnTecI9nxAfplXGtECCpZQDwbDRcn7pyDVa1LE" />
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://pythonclub.com.br/author/bruno-cezar-rocha.html" title="See posts by Bruno Cezar Rocha">
+                        <img class="article-avatar" alt="Bruno Cezar Rocha" src="https://www.gravatar.com/avatar/9200c133c210ad51e8005277e932061a">
+                </a>
+                <h2 class="article-info">Bruno Cezar Rocha</h2>
+    			<ul class="author-social">
+                    <li>
+                        <a target="_blank" href="https://www.gittip.com/rochacbruno">
+                            <i class="fa fa-lg fa-fw fa-gittip"></i>
+                            <strong>Gittip</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://github.com/rochacbruno">
+                            <i class="fa fa-lg fa-fw fa-github"></i>
+                            <strong>Github</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://bitbucket.org/rochacbruno">
+                            <i class="fa fa-lg fa-fw fa-bitbucket"></i>
+                            <strong>Bitbucket</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://twitter.com/rochacbruno">
+                            <i class="fa fa-lg fa-fw fa-twitter"></i>
+                            <strong>Twitter</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://www.linkedin.com/in/rochacbruno">
+                            <i class="fa fa-lg fa-fw fa-linkedin"></i>
+                            <strong>Linkedin</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://brunorocha.org">
+                            <i class="fa fa-lg fa-fw fa-globe"></i>
+                            <strong>Site</strong>
+                        </a>
+                    </li>
+                </ul>
+                <h5>Publicado em:</h5>
+                <p>Wed 26 April 2017</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>What the Flask? pt 4 - Extensões para o Flask</h1>
+                        <p class="post-meta">
+                            // Tags                                 <a class="post-category" href="http://pythonclub.com.br/tag/flask.html">flask</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/web.html">web</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/tutorial.html">tutorial</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/what-the-flask.html">what-the-flask</a>
+                        </p>
+                </header>
+            </section>
+            <h2>What The Flask - 4/5</h2>
+<blockquote>
+<p>Finalmente!!! Depois de uma longa espera o <strong>What The Flask</strong> está de volta!
+A idéia era publicar primeiro a parte 4 (sobre Blueprints) e só depois a 5
+sobre como criar extensões. Mas esses 2 temas estão muito interligados
+então neste artigo os 2 assuntos serão abordados. E a parte 5 será a final falando sobre deploy!</p>
+</blockquote>
+<figure style="float:left;margin-right:30px;width:35%">
+<img src="/images/rochacbruno/code.png" alt="code" >
+</figure>
+
+<ol>
+<li><a href="/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html"><strong>Hello Flask</strong></a>: Introdução ao desenvolvimento web com Flask</li>
+<li><a href="/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html"><strong>Flask patterns</strong></a>: Estruturando aplicações Flask</li>
+<li><a href="/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html"><strong>Plug &amp; Use</strong></a>: extensões essenciais para iniciar seu projeto</li>
+<li><a href="/what-the-flask-pt-4-extensoes-para-o-flask.html"><strong>Magic(app)</strong></a>: Criando Extensões para o Flask(<strong>&lt;-- Você está aqui</strong>)</li>
+<li><strong>Run Flask Run</strong>: "deploiando" seu app nos principais web servers e na nuvem</li>
+</ol>
+<p>Não sei se você ainda se lembra? mas estavámos desenvolvendo um <a href="http://github.com/rochacbruno/wtf">CMS de notícias</a>,
+utilizamos as extensões <code>Flask-MongoEngine</code>, <code>Flask-Security</code>, <code>Flask-Admin</code> e <code>Flask-Bootstrap</code>.</p>
+<p>E neste artigo iremos adicionar mais uma extensão em nosso CMS, mas <strong>iremos criar uma extensão</strong>
+ao invés de usar uma das extensões disponíveis.</p>
+<blockquote>
+<p><strong>Extensão ou Plugin?</strong> Por <a href="https://pt.wikipedia.org/wiki/Plug-in">definição</a>
+<strong>plugins</strong> diferem de <strong>extensões</strong>.
+Plugins geralmente são externos e utilizam algum tipo de API pública para se integrar com o aplicativo.
+Extensões, por outro lado, geralmente são integradas com a lógica da aplicação, isto é, as interfaces do próprio framework.
+Ambos, plugins e extensões, aumentam a utilidade da aplicação original, mas <strong>plugin</strong> é algo relacionado apenas a camadas de mais
+alto nível da aplicação, enquanto extensões estão acopladas ao framework. Em outras palavras, <strong>plugin</strong> é algo que você escreve
+pensando apenas na <strong>sua aplicação</strong> e está altamente acoplado a ela enquanto <strong>extensão</strong> é algo que pode ser usado <strong>por qualquer aplicação</strong> escrita no mesmo framework pois está acoplado a lógica do framework e não das aplicações escritas com ele.</p>
+</blockquote>
+<h1>Quando criar uma extensão?</h1>
+<p>Faz sentido criar uma extensão quando você identifica uma functionalidade
+que pode ser <strong>reaproveitada</strong> por outras aplicações Flask, assim você mesmo se
+beneficia do fato de não precisar reescrever (copy-paste) aquela funcionalidade
+em outros apps e também pode publicar sua extensão como <strong>open-source</strong> beneficiando
+toda a <strong>comunidade</strong> e incorporando as <strong>melhorias</strong>, ou seja, <strong>todo mundo ganha!</strong></p>
+<h2>Exemplo prático</h2>
+<p>Imagine que você está publicando seu site mas gostaria de prover um <code>sitemap</code>. (URL que lista todas as páginas existentes no seu site usada pelo Google para melhorar a sua classificação nas buscas).</p>
+<p>Como veremos no exemplo abaixo publicar um <strong>sitemap</strong> é uma tarefa bastante
+simples, mas é uma coisa que você precisará fazer em todos os sites que
+desenvolver e que pode se tornar uma funcionalidade mais complexa na medida
+que necessitar controlar datas de publicação e extração de URLs automáticamente.</p>
+<h2>Exemplo 1 - Publicando o sitemap sem o uso de extensões</h2>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">make_response</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/artigos&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">artigos</span><span class="p">():</span>
+    <span class="s2">&quot;este endpoint retorna a lista de artigos&quot;</span>
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/paginas&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">paginas</span><span class="p">():</span>
+    <span class="s2">&quot;este endpoint retorna a lista de paginas&quot;</span>
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/contato&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">contato</span><span class="p">():</span>
+    <span class="s2">&quot;este endpoint retorna o form de contato&quot;</span>
+
+<span class="c1">######################################</span>
+<span class="c1"># Esta parte poderia ser uma extensão</span>
+<span class="c1">######################################</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/sitemap.xml&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">sitemap</span><span class="p">():</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;&lt;url&gt;&lt;loc&gt;{0}&lt;/loc&gt;&lt;/url&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">page</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;/artigos&#39;</span><span class="p">,</span> <span class="s1">&#39;/paginas&#39;</span><span class="p">,</span> <span class="s1">&#39;/contato&#39;</span><span class="p">]</span>
+    <span class="p">]</span>
+    <span class="n">sitemap_xml</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#39;</span>
+        <span class="s1">&#39;&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;{0}&lt;/urlset&gt;&#39;</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="n">sitemap_xml</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;application/xml&#39;</span>
+    <span class="k">return</span> <span class="n">response</span>
+<span class="c1">#######################################</span>
+<span class="c1"># / Esta parte poderia ser uma extensão</span>
+<span class="c1">#######################################</span>
+
+
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Executando e acessando http://localhost:5000/sitemap.xml o resultado será:</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;urlset</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;url&gt;&lt;loc&gt;</span>/artigos<span class="nt">&lt;/loc&gt;&lt;/url&gt;</span>
+    <span class="nt">&lt;url&gt;&lt;loc&gt;</span>/paginas<span class="nt">&lt;/loc&gt;&lt;/url&gt;</span>
+    <span class="nt">&lt;url&gt;&lt;loc&gt;</span>/contato<span class="nt">&lt;/loc&gt;&lt;/url&gt;</span>
+<span class="nt">&lt;/urlset&gt;</span>
+</pre></div>
+
+
+<blockquote>
+<p><strong>NOTE</strong>: O app acima é apenas um simples exemplo de como gerar um sitemap e a
+intenção dele aqui é apenas a de servir de exemplo para extensão que criaremos
+nos próximos passos, existem outras boas práticas a serem seguidas na
+publicação de <a href="https://www.sitemaps.org/pt_BR/protocol.html">sitemap</a> mas não é
+o foco deste tutorial.</p>
+</blockquote>
+<p>Vamos então transformar o exemplo acima em uma <strong>Extensão</strong> e utilizar uma abordagem
+mais dinâmica para coletar as URLs, mas antes vamos entender como funcionam as
+extensões no Flask.</p>
+<h1>Como funciona uma Extensão do Flask?</h1>
+<p>Lembra que na <a href="/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html#app_factory">parte 2</a> desta série falamos sobre os <strong>patterns</strong> do Flask e sobre
+o <strong>application factory</strong> e <strong>blueprints</strong>? As extensões irão seguir estes
+mesmos padrões em sua arquitetura.</p>
+<p>O grande <strong>"segredo"</strong> para se trabalhar com <strong>Flask</strong> é entender que sempre iremos
+interagir com uma instância geralmente chamada de <strong>app</strong> e que pode ser acessada
+também através do proxy <strong>current_app</strong> e que sempre aplicaremos um padrão que
+é quase <strong>funcional</strong> neste deste objeto sendo que a grande diferença aqui é
+que neste paradigma do Flask as funções (chamadas de <strong>factories</strong>) introduzem <strong>side effects</strong>, ou seja, elas alteram ou injetam funcionalidades no <strong>app</strong> que é manipulado até que chega ao seu <strong>estado de execução</strong>. (enquanto em um paradigma funcional as funções não podem ter side effects)</p>
+<p>Também é importante entender os estados <strong>configuração</strong>, <strong>request</strong> e <strong>interativo/execução</strong> do
+Flask, asunto que abordamos na <a href="/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html#o_contexto_da_aplicacao">parte 1</a> desta série.</p>
+<p>Em resumo, iremos criar uma <strong>factory</strong> que recebe uma instância da classe <strong>Flask</strong>, o objeto <strong>app</strong> (ou o acessa através do proxy <strong>current_app</strong>) e então altera ou injeta funcionalidades neste objeto.</p>
+<p>Dominar o Flask depende muito do entendimento desse <strong>padrão de factories</strong> e os <strong>3 estados da app</strong> citados acima, se você não está seguro quanto a estes conceitos aconselho reler
+as <a href="/tag/what-the-flask.html">partes 1 e 2</a> desta série (e é claro sinta se livre para deixar comentários
+com as suas dúvidas).</p>
+<p>Só para relembrar veja o seguinte exemplo:</p>
+<div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>  <span class="c1"># criamos a instancia de app</span>
+<span class="n">admin</span> <span class="o">=</span> <span class="n">Admin</span><span class="p">()</span>  <span class="c1"># instancia do Flask-Admin ainda não inicializada</span>
+
+<span class="n">do_something</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>  <span class="c1"># injeta ou altera funcionalidades do app</span>
+<span class="n">do_another_thing</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">admin</span><span class="p">)</span>  <span class="c1"># injeta ou altera funcionalidades do apo ou do admin</span>
+<span class="n">Security</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>  <span class="c1"># adiciona funcionalidades de login e controle de acesso</span>
+<span class="n">Cache</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>  <span class="c1"># adiciona cache para views e templates</span>
+<span class="n">SimpleSitemap</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>  <span class="c1"># A extensão que iremos criar! Ela adiciona o /sitemap.xml no app</span>
+
+<span class="n">admin</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>  <span class="c1"># agora sim inicializamos o flask-admin no modo lazy</span>
+</pre></div>
+
+
+<p>Olhando o código acima pode parecer bastante simples, você pode achar que basta
+receber a intância de <code>app</code> e sair alterando sem seguir nenhum padrão.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bad_example_of_flask_extension</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="s2">&quot;Mal exemplo de factory que injeta ou altera funcionalidades do app&quot;</span>
+    <span class="c1"># adiciona rotas</span>
+    <span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/qualquercoisa)</span>
+    <span class="k">def</span> <span class="nf">qualquercoisa</span><span class="p">():</span>
+        <span class="o">...</span>
+    <span class="c1"># substitui objetos usando composição</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config_class</span> <span class="o">=</span> <span class="n">MyCustomConfigclass</span>
+    <span class="c1"># altera config</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;QUALQUERCOISA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;QUALQUERVALOR&#39;</span>
+    <span class="c1"># sobrescreve métodos e atributos do app</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">make_responde</span> <span class="o">=</span> <span class="n">another_function</span>
+    <span class="c1"># Qualquer coisa que o Python (e a sua consciência) permita!</span>
+</pre></div>
+
+
+<p>Isso pode provavelmente funcionar mas não é uma boa prática, existem muitos
+problemas com o <strong>factory</strong> acima e alguns deles são:</p>
+<ol>
+<li>Nunca devemos definir rotas dessa maneira com <code>app.route</code> em uma extensão <strong>o correto é usar blueprints</strong>.</li>
+<li>Lembre-se dos <strong>3 estados do Flask</strong>, devemos levar em consideração que no momento
+que a aplicação for iniciada a extensão pode ainda não estar pronta para ser carregada,
+por exemplo, a sua extensão pode depender de um banco de dados que ainda não
+foi inicializado, portanto as extensões precisam sempre ter um <strong>modo lazy</strong>.</li>
+<li>Usar funções pode se ruma boa idéia na maioria dos casos, mas lembre-se que
+precisamos manter estado em algumas situações então pode ser <strong>melhor usar
+classes</strong> ao invés de funções pois as classes permitem uma construção mais dinâmica.</li>
+<li>Nossa extensão precisa ser reutilizavel em qualquer app flask, portanto
+devemos usar namespaces ao ler configurações e definir rotas.</li>
+</ol>
+<blockquote>
+<p><strong>NOTE</strong>: Eu <strong>NÃO</strong> estou dizendo que você não deve usar funções para extender seu app
+Flask, eu mesmo faço isso em muitos casos. Apenas tenha em mente esses detalhes
+citados na hora de decidir qual abordagem usar.</p>
+</blockquote>
+<h1>Patterns of a Flask extension</h1>
+<p>Preferencialmente uma <strong>Extensão</strong> do <strong>Flask</strong> deve seguir esses <strong>padrões</strong>:</p>
+<ul>
+<li>Estar em um módulo nomeado com o prefixo <strong>flask_</strong> como por exemplo <strong>flask_admin</strong>
+e <strong>flask_login</strong> e neste artigo criaremos o <strong>flask_simple_sitemap</strong>. (<strong>NOTE:</strong> Antigamente as extensões usavam o padrão <strong>flask.ext.nome_extensao</strong> mas este tipo de plublicação de módulo com namespace do <strong>flask.ext</strong> foi descontinuado e não é mais recomendado.)</li>
+<li>Fornecer um <strong>método</strong> de inicialização <strong>lazy</strong> nomeado <strong>init_app</strong>.</li>
+<li>Ler todas as suas configurações a partir do <strong>app.config</strong></li>
+<li>Ter suas configurações prefixadas com o nome da extensão, exemplo: <strong>SIMPLE_SITEMAP_URLS</strong> ao invés de apenas <strong>SITEMAP_URLS</strong> pois isto evita conflitos com configurações de outras extensões.</li>
+<li>Caso a extensão adicione views e URL rules, isto deve ser feito com <strong>Blueprint</strong></li>
+<li>Caso a extensão adicione arquivos estáticos ou de template isto também deve ser
+feito com <strong>Blueprint</strong></li>
+<li>ao registrar <strong>urls</strong> e <strong>endpoints</strong> permitir que sejam dinâmicos através de config e
+sempre prefixar com o nome da extensão. Exemplo: <code>url_for('simple_sitemap.sitemap')</code> é
+melhor do que <code>url_for('sitemap')</code> para evitar conflitos com outras extensões.</li>
+</ul>
+<blockquote>
+<p><strong>NOTE:</strong> Tenha em mente que regras foram feitas para serem <strong>quebradas</strong>,
+O <strong>Guido</strong> escreveu na <a href="https://www.python.org/dev/peps/pep-0008/#a-foolish-consistency-is-the-hobgoblin-of-little-minds">PEP8</a> "A Foolish Consistency is the Hobgoblin of Little Minds", ou seja, tenha os padrões como guia mas nunca deixe que eles atrapalhem
+o seu objetivo.
+Eu mesmo já quebrei essa regra 1 no <a href="http://github.com/rochacbruno/flasgger">flasgger</a>,
+eu poderia ter chamado de <code>flask_openapi</code> ou <code>flask_swaggerui</code> mas achei <code>Flasgger</code> um nome mais divertido :)</p>
+</blockquote>
+<p>De todos os padrões acima o mais importante é o de evitar o conflito com outras extensões!</p>
+<blockquote>
+<p>Zen do Python: <strong>Namespaces são uma ótima idéia! vamos usar mais deles!</strong></p>
+</blockquote>
+<h1>Criando a extensão Simple Sitemap</h1>
+<p>Ok, agora que você já sabe a <strong>teoria</strong> vamos colocar em <strong>prática</strong>,
+abre ai o <strong>vim</strong>, <strong>emacs</strong>, <strong>pycharm</strong> ou seu <strong>vscode</strong> e vamos reescrever o
+nosso app do <strong>Exemplo 1</strong> usando uma extensão chamada <strong>flask_simple_sitemap</strong> e para isso vamos começar criando a extensão:</p>
+<p>A extensão será um <strong>novo módulo Python</strong> que vai ser instalado usando <code>setup</code> ou <code>pip</code> portanto crie um projeto separado.</p>
+<p>Em seu terminal <code>*nix</code> execute os comandos:</p>
+<div class="highlight"><pre><span></span>➤ $
+<span class="c1"># Entre na pasta onde vc armazena seus projetos</span>
+<span class="nb">cd</span> Projects
+
+<span class="c1"># crie o diretório root do projeto</span>
+mkdir simple_sitemap
+<span class="nb">cd</span> simple_sitemap
+
+<span class="c1"># torna a extensão instalável (vamos escrever esse arquivo depois)</span>
+touch setup.py
+
+<span class="c1"># é sempre bom incluir uma documentação básica</span>
+<span class="nb">echo</span> <span class="s1">&#39;# Prometo documentar essa extensão!&#39;</span> &gt; README.md
+
+<span class="c1"># se não tiver testes não serve para nada! :)</span>
+touch tests.py
+
+<span class="c1"># crie o diretório que será o nosso package</span>
+mkdir flask_simple_sitemap
+
+<span class="c1"># __init__.py para transformar o diretório em Python package</span>
+<span class="nb">echo</span> <span class="s1">&#39;from .base import SimpleSitemap&#39;</span> &gt; flask_simple_sitemap/__init__.py
+
+<span class="c1"># A implementação da extensão será escrita neste arquivo</span>
+<span class="c1"># (evite usar main.py pois este nome é reservado para .zipped packages)</span>
+touch flask_simple_sitemap/base.py
+
+<span class="c1"># Crie a pasta de templates</span>
+mkdir flask_simple_sitemap/templates
+
+<span class="c1"># usaremos Jinja para gerar o XML</span>
+touch flask_simple_sitemap/templates/sitemap.xml
+
+<span class="c1"># incluindo templates no build manifest do setuptools</span>
+<span class="nb">echo</span> <span class="s1">&#39;recursive-include flask_simple_sitemap/templates *&#39;</span> &gt; MANIFEST.in
+
+<span class="c1"># precisaremos de um arquivo de requirements para os testes</span>
+touch requirements-test.txt
+</pre></div>
+
+
+<p>Agora voce terá a seguinte estrutura:</p>
+<div class="highlight"><pre><span></span>➤ tree
+simple_sitemap/
+├── flask_simple_sitemap/
+│   ├── base.py
+│   ├── __init__.py
+│   └── templates/
+│       └── sitemap.xml
+├── MANIFEST.in
+├── README.md
+├── requirements-test.txt
+├── setup.py
+└── tests.py
+
+<span class="m">2</span> directories, <span class="m">8</span> files
+</pre></div>
+
+
+<p>O primeiro passo é escrever o <code>setup.py</code> já que a extensão precisa ser instalavél:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">find_packages</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;flask_simple_sitemap&#39;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.0.1&#39;</span><span class="p">,</span>
+    <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(),</span>
+    <span class="n">include_package_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">zip_safe</span><span class="o">=</span><span class="bp">False</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>Eu tenho o costumo de praticar o que eu chamo de <strong>RDD</strong> (<strong>R</strong>eadme <strong>D</strong>riven <strong>D</strong>development), ou seja,
+ao criar projetos como este eu costumo escreve primeiro o <strong>README.md</strong> explicando como deve funcionar e só
+depois de ter isto pronto que eu começo a programar.</p>
+<p>Edite o <code>README.md</code></p>
+<div class="highlight"><pre><span></span># Flask Simple Sitemap
+
+Esta extensão adiciona a funcionalidade de geração de sitemap ao seu app flask.
+
+## Como instalar?
+
+Para instalar basta clonar o repositório e executar:
+
+    $ python setup.py install
+
+Ou via `pip install flask_simple_sitemap`
+
+## Como usar?
+
+Basta importar e inicializar:
+
+    from flask import Flask
+    from flask_simple_sitemap import SimpleSitemap
+
+    app = Flask(__name__)
+    SimpleSitemap(app)
+
+    @app.route(&#39;/)
+    def index():
+        return &#39;Hello World&#39;
+
+Como em toda extensão Flask também é possível inicializar no modo Lazy chamando
+o método `init_app`
+
+## Opções de configuração:
+
+esta extensão utiliza o namespace de configuração `SIMPLE_SITEMAP_`
+
+- **SIMPLE_SITEMAP_BLUEPRINT** define o nome do blueprint e do url prefix (default: `&#39;simple_sitemap&#39;`)
+- **SIMPLE_SITEMAP_URL** define a url que irá renderizar o sitemap (default: `&#39;/sitemap.xml&#39;`)
+- **SIMPLE_SITEMAP_PATHS** dicionário de URLs a serem adicionadas ao sitemap (exemplo: URLs criadas a partir de posts em bancos de dados)
+</pre></div>
+
+
+<p>Agora que já sabemos pelo <strong>README</strong> o que queremos entregar de funcionalidade
+já é possível escrever o <strong>tests.py</strong> e aplicar também um pouco de <strong>TDD</strong></p>
+<p>O Flask tem uma integração bem interesante com o <strong>py.test</strong> e podemos editar o <strong>tests.py</strong>
+da seguinte maneira:</p>
+<blockquote>
+<p><strong>NOTE:</strong> O ideal é fazer o <strong>test setup</strong> no arquivo <strong>conftest.py</strong> e usar fixtures do py.test, mas aqui vamos
+escrever tudo junto no <strong>tests.py</strong> para ficar mais prático.<br>
+<br />
+<strong>Zen do Python:</strong> <code>praticidade vence a pureza</code> :)</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="c1">####################################################################</span>
+<span class="c1"># Início do Test Setup</span>
+<span class="c1">#</span>
+
+<span class="kn">import</span> <span class="nn">xmltodict</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">flask_simple_sitemap</span> <span class="kn">import</span> <span class="n">SimpleSitemap</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">extension</span> <span class="o">=</span> <span class="n">SimpleSitemap</span><span class="p">()</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SIMPLE_SITEMAP_BLUEPRINT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;test_sitemap&#39;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SIMPLE_SITEMAP_URL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/test_sitemap.xml&#39;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SIMPLE_SITEMAP_PATHS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;/this_is_a_test&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;lastmod&#39;</span><span class="p">:</span> <span class="s1">&#39;2017-04-24&#39;</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/hello&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello&#39;</span>
+
+<span class="c1"># assert lazy initialization</span>
+<span class="n">extension</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">test_client</span><span class="p">()</span>
+
+<span class="c1">#</span>
+<span class="c1"># Final Test Setup</span>
+<span class="c1">####################################################################</span>
+
+<span class="c1">####################################################################</span>
+<span class="c1"># Cláusula que Permite testar manualmente o app com `python tests.py`</span>
+<span class="c1">#</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># acesse localhost:5000/test_sitemap.xml</span>
+<span class="c1">####################################################################</span>
+
+<span class="c1">####################################################################</span>
+<span class="c1"># Agora sim os testes que serão executados com `py.test tests.py -v`</span>
+<span class="c1">#</span>
+
+<span class="k">def</span> <span class="nf">test_sitemap_uses_custom_url</span><span class="p">():</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/test_sitemap.xml&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+
+<span class="k">def</span> <span class="nf">test_generated_sitemap_xml_is_valid</span><span class="p">():</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/test_sitemap.xml&#39;</span><span class="p">)</span>
+    <span class="n">xml</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">xmltodict</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">xml</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="s1">&#39;urlset&#39;</span> <span class="ow">in</span> <span class="n">result</span>
+    <span class="c1"># rules are Ordered</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;urlset&#39;</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;loc&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;/test_sitemap.xml&#39;</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;urlset&#39;</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;loc&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;/hello&#39;</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;urlset&#39;</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;loc&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;/this_is_a_test&#39;</span>
+
+<span class="c1">#</span>
+<span class="c1"># Ao terminar o tutorial reescreva esses testes usando fixtures :)</span>
+<span class="c1"># E é claro poderá adicionar mais testes!</span>
+<span class="c1">###################################################################</span>
+</pre></div>
+
+
+<p>Para que os testes acima sejam executados precisamos instalar algumas dependencias portanto o <strong>requirements-test.txt</strong> precisa deste conteúdo:</p>
+<div class="highlight"><pre><span></span>flask
+pytest
+xmltodict
+--editable .
+</pre></div>
+
+
+<blockquote>
+<p><strong>NOTE:</strong> ao usar <code>--editable .</code> no arquivo de requirements você faz com que a extensão seja auto instalada em modo de edição
+desta forma executamos apenas <code>pip install -r requirements-test.txt</code> e o pip se encarrega de rodar o <code>python setup.py develop</code>.</p>
+</blockquote>
+<p>Vamos então começar a desenvolver editando o <strong>front-end</strong> da extensão 
+que será escrito no template: <strong>flask_simple_sitemap/templates/sitemap.xml</strong> este template espera um dict <code>paths</code>
+chaveado pela <code>location</code> e contento <code>sitemap tag names</code> em seu valor.
+exemplo <code>paths = {'/artigos': {'lastmod': '2017-04-24'}, ...}</code></p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;urlset</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;</span><span class="nt">&gt;</span>
+    {% for loc, data in paths.items() %}
+    <span class="nt">&lt;url&gt;</span>
+        <span class="nt">&lt;loc&gt;</span>{{loc|safe}}<span class="nt">&lt;/loc&gt;</span>
+        {% for tag_name, value in data.items() %}
+            <span class="err">&lt;</span>{{tag_name}}&gt;{{value}}<span class="err">&lt;</span>/{{tag_name}}&gt;
+        {% endfor %}
+    <span class="nt">&lt;/url&gt;</span>
+    {% endfor %}
+<span class="nt">&lt;/urlset&gt;</span>
+</pre></div>
+
+
+<p>E então finalmente escreveremos a classe base da extensão no arquivo <strong>flask_simple_sitemap/base.py</strong></p>
+<p>Lembrando de algumas boas práticas:</p>
+<ul>
+<li>Prover um método de inicialização <strong>lazy</strong> com a assinatura <code>init_app(self, app)</code></li>
+<li>Impedir registro em <strong>duplicidade</strong> e inserir um registro no <code>app.extensions</code></li>
+<li>Ao adicionar rotas sempre usar <strong>Blueprints</strong> e <strong>namespaces</strong> (o Blueprint já se encarrega do namespace nas urls)</li>
+<li>Configs devem sempre ter um prefixo, faremos isso com o <code>get_namespace</code> que aprendemos na parte 1</li>
+</ul>
+<blockquote>
+<p><strong>NOTE:</strong> Leia atentamente os <strong>comentários</strong> e <strong>docstrings</strong> do código abaixo.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">make_response</span>
+
+
+<span class="k">class</span> <span class="nc">SimpleSitemap</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="s2">&quot;Extensão Flask para publicação de sitemap&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Define valores padrão para a extensão</span>
+<span class="sd">        e caso o `app` seja informado efetua a inicialização imeditatamente</span>
+<span class="sd">        caso o `app` não seja passado então</span>
+<span class="sd">        a inicialização deverá ser feita depois (`lazy`)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;blueprint&#39;</span><span class="p">:</span> <span class="s1">&#39;simple_sitemap&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;/sitemap.xml&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;paths&#39;</span><span class="p">:</span> <span class="p">{}</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="bp">None</span>  <span class="c1"># indica uma extensão não inicializada</span>
+
+        <span class="k">if</span> <span class="n">app</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">init_app</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Método que Inicializa a extensão e</span>
+<span class="sd">        pode ser chamado de forma `lazy`.</span>
+
+<span class="sd">        É interessante que este método seja apenas o `entry point` da extensão</span>
+<span class="sd">        e que todas as operações de inicialização sejam feitas em métodos</span>
+<span class="sd">        auxiliares privados para melhor organização e manutenção do código.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_register</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_load_config</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_register_view</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_register</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;De acordo com as boas práticas para extensões devemos checar se</span>
+<span class="sd">        a extensão já foi inicializada e então falhar explicitamente caso</span>
+<span class="sd">        seja verdadeiro.</span>
+<span class="sd">        Se tudo estiver ok, então registramos o app.extensions e o self.app</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="s1">&#39;extensions&#39;</span><span class="p">):</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">extensions</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="s1">&#39;simple_sitemap&#39;</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">extensions</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Flask extension already initialized&quot;</span><span class="p">)</span>
+
+        <span class="c1"># se tudo está ok! então registramos a extensão no app.extensions!</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="s1">&#39;simple_sitemap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
+
+        <span class="c1"># Marcamos esta extensão como inicializada</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">app</span>
+
+    <span class="k">def</span> <span class="nf">_load_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Carrega todas as variaveis de config que tenham o prefixo `SIMPLE_SITEMAP_`</span>
+<span class="sd">        Por exemplo, se no config estiver especificado:</span>
+
+<span class="sd">            SIMPLE_SITEMAP_URL = &#39;/sitemap.xml&#39;</span>
+
+<span class="sd">        Podemos acessar dentro da extensão da seguinte maneira:</span>
+
+<span class="sd">           self.config[&#39;url&#39;]</span>
+
+<span class="sd">        e isto é possível por causa do `get_namespace` do Flask utilizado abaixo.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get_namespace</span><span class="p">(</span>
+                <span class="n">namespace</span><span class="o">=</span><span class="s1">&#39;SIMPLE_SITEMAP_&#39;</span><span class="p">,</span>
+                <span class="n">lowercase</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                <span class="n">trim_namespace</span><span class="o">=</span><span class="bp">True</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_register_view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;aqui registramos o blueprint contendo a rota `/sitemap.xml`&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">blueprint</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span>
+            <span class="c1"># O nome do blueprint deve ser unico</span>
+            <span class="c1"># usaremos o valor informado em `SIMPLE_SITEMAP_BLUEPRINT`</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;blueprint&#39;</span><span class="p">],</span>
+
+            <span class="c1"># Agora passamos o nome do módulo Python que o Blueprint</span>
+            <span class="c1"># está localizado, o Flask usa isso para carregar os templates</span>
+            <span class="vm">__name__</span><span class="p">,</span>
+
+            <span class="c1"># informamos que a pasta de templates será a `templates`</span>
+            <span class="c1"># já é a pasta default do Flask mas como a nossa extensão está</span>
+            <span class="c1"># adicionando um arquivo na árvore de templates será necessário</span>
+            <span class="c1"># informar</span>
+            <span class="n">template_folder</span><span class="o">=</span><span class="s1">&#39;templates&#39;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># inserimos a rota atráves do método `add_url_rule` pois fica</span>
+        <span class="c1"># esteticamente mais bonito do que usar @self.blueprint.route()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">blueprint</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">],</span>  <span class="c1"># /sitemap.xml é o default</span>
+            <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;sitemap&#39;</span><span class="p">,</span>
+            <span class="n">view_func</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sitemap_view</span><span class="p">,</span>  <span class="c1"># usamos outro método como view</span>
+            <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># agora só falta registar o blueprint na app</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blueprint</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">paths</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Cria a lista de URLs que será adicionada ao sitemap.</span>
+
+<span class="sd">        Esta property será executada apenas quando a URL `/sitemap.xml` for requisitada</span>
+
+<span class="sd">        É interessante ter este método seja público pois permite que seja sobrescrito</span>
+<span class="sd">        e é neste método que vamos misturar as URLs especificadas no config com</span>
+<span class="sd">        as urls extraidas do roteamento do Flask (Werkzeug URL Rules).</span>
+
+<span class="sd">        Para carregar URLs dinâmicamente (de bancos de dados) o usuário da extensão</span>
+<span class="sd">        poderá sobrescrever este método ou contribur com o `SIMPLE_SITEMAP_PATHS`</span>
+
+<span class="sd">        Como não queremos que exista duplicação de URLs usamos um dict onde</span>
+<span class="sd">        a chave é a url e o valor é um dicionário completando os dados ex:</span>
+
+<span class="sd">        app.config[&#39;SIMPLE_SITEMAP_PATHS&#39;] = {</span>
+<span class="sd">            &#39;/artigos&#39;: {</span>
+<span class="sd">                &#39;lastmod&#39;: &#39;2017-01-01&#39;</span>
+<span class="sd">            },</span>
+<span class="sd">            ...</span>
+<span class="sd">        }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">paths</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># 1) Primeiro extraimos todas as URLs registradas na app</span>
+        <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">url_map</span><span class="o">.</span><span class="n">iter_rules</span><span class="p">():</span>
+            <span class="c1"># Adicionamos apenas GET que não receba argumentos</span>
+            <span class="k">if</span> <span class="s1">&#39;GET&#39;</span> <span class="ow">in</span> <span class="n">rule</span><span class="o">.</span><span class="n">methods</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">rule</span><span class="o">.</span><span class="n">arguments</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># para urls que não contém `lastmod` inicializamos com</span>
+                <span class="c1"># um dicionário vazio</span>
+                <span class="n">paths</span><span class="p">[</span><span class="n">rule</span><span class="o">.</span><span class="n">rule</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># caso existam URLs que recebam argumentos então deverão ser carregadas</span>
+        <span class="c1"># de forma dinâmica pelo usuário da extensão</span>
+        <span class="c1"># faremos isso na hora de usar essa extensão no CMS de notícias.</span>
+
+        <span class="c1"># 2) Agora carregamos URLs informadas na config</span>
+        <span class="c1"># isso é fácil pois já temos o config carregado no _load_config</span>
+        <span class="n">paths</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;paths&#39;</span><span class="p">])</span>
+
+        <span class="c1"># 3) Precisamos sempre retornar o `paths` neste método pois isso permite</span>
+        <span class="c1"># que ele seja sobrescrito com o uso de super(....)</span>
+        <span class="k">return</span> <span class="n">paths</span>
+
+    <span class="k">def</span> <span class="nf">sitemap_view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;Esta é a view exposta pela url `/sitemap.xml`&quot;</span>
+        <span class="c1"># geramos o XML através da renderização do template `sitemap.xml`</span>
+        <span class="n">sitemap_xml</span> <span class="o">=</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;sitemap.xml&#39;</span><span class="p">,</span> <span class="n">paths</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">paths</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="n">sitemap_xml</span><span class="p">)</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;application/xml&#39;</span>
+        <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+
+
+<blockquote>
+<p><strong>NOTE</strong>: Neste exemplo usamos um método de desenvolvimento muito legal que eu chamo de:
+<br> <strong>ITF</strong> (<strong>Important Things First</strong>) onde <strong>Arquitetura, Documentação, Testes e Front End (e protótipos)</strong> são muito mais importantes do que a implementação de back end em si.
+<br> Assumimos que caso a nossa implementação seja alterada os conceitos anteriores se mantém integros com a proposta do produto.
+<br> Ordem de prioridade no projeto: <strong>1)</strong> Definimos a arquitetura <strong>2)</strong> Escrevemos documentação <strong>3)</strong> Escrevemos testes <strong>4)</strong> Implementamos front end (e protótipo) <strong>5)</strong> <strong>back end é o menos importante</strong> do ponto de vista do produto e por isso ficou para o final! :)</p>
+</blockquote>
+<p>O código da extensão etá disponível em <a href="http://github.com/rochacbruno/flask_simple_sitemap">http://github.com/rochacbruno/flask_simple_sitemap</a></p>
+<h1>Usando a extensão em nosso CMS de notícias</h1>
+<p>Agora vem a melhor parte, usar a extensão recém criada em nosso projeto existente.</p>
+<p>O repositório do CMS está no <a href="https://github.com/rochacbruno/wtf/tree/extended">github</a> 
+Precisamos do <strong>MongoDB</strong> em execução e a forma mais fácil é através do <strong>docker</strong></p>
+<div class="highlight"><pre><span></span>➤ docker run -d -p <span class="m">27017</span>:27017 mongo
+</pre></div>
+
+
+<p>Se preferir utilize uma instância do MongoDB instalada localmente ou um Mongo As a Service.</p>
+<blockquote>
+<p><strong>NOTE:</strong> O modo de execução acima é efemero e não persiste os dados, para persistir use <code>-v $PWD/etc/mongodata:/data/db</code>.</p>
+</blockquote>
+<p>Agora que o Mongo está rodando execute o nosso CMS.</p>
+<p>Obtendo, instalando e executando:</p>
+<div class="highlight"><pre><span></span>➤
+git clone -b extended --single-branch https://github.com/rochacbruno/wtf.git extended
+<span class="nb">cd</span> wtf
+
+<span class="c1"># adicione nossa extensao nos requirements do CMS </span>
+<span class="c1"># sim eu publiquei no PyPI, mas se preferir instale a partir do fonte que vc escreveu</span>
+<span class="nb">echo</span> <span class="s1">&#39;flask_simple_sitemap&#39;</span> &gt;&gt; requirements.txt
+
+<span class="c1"># activate a virtualenv</span>
+pip install -r requirements.txt
+
+<span class="c1"># execute</span>
+python run.py 
+</pre></div>
+
+
+<p>Agora com o CMS executando acesse <a href="http://localhost:5000">http://localhost:5000</a> e verá a seguinte tela:</p>
+<figure>
+<img src="/images/rochacbruno/cms_index.png" alt="cms" >
+</figure>
+
+<p>Os detalhes dessa aplicação você deve ser lembrar pois estão nas partes <a href="http://pythonclub.com.br/tag/what-the-flask.html">1, 2 e 3</a> deste tutorial. </p>
+<p>Agora você pode
+se registrar novas notícias usando o link <a href="http://localhost:5000/noticias/cadastro">cadastro</a> e precisará efetuar <strong>login</strong> e para isso
+deve se <a href="http://localhost:5000/admin/register/">registrar</a> como usuário do aplicativo.</p>
+<h3>Temos as seguintes <strong>urls</strong> publicads no CMS</h3>
+<ul>
+<li><code>'/'</code> lista todas as noticias na home page</li>
+<li><code>'/noticias/cadastro'</code> exibe um formulário para incluir noticias</li>
+<li><code>'/noticia/&lt;id&gt;</code> acessa uma noticia especifica</li>
+<li><code>'/admin'</code> instancia do <strong>Flask Admin</strong> para adminstrar usuários e o banco de dados</li>
+</ul>
+<p>Agora vamos incluir a extensão <strong>flask_simple_sitemap</strong> que criamos e adicionar as URLs das noticias dinâmicamente.</p>
+<p>Edite o arquico <strong>wtf/news_app.py</strong> incluindo a extensão <strong>flask_simple_sitemap</strong> e também adicionando as URLs de todas as noticias
+que existirem no banco de dados.</p>
+<div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">flask_bootstrap</span> <span class="kn">import</span> <span class="n">Bootstrap</span>
+<span class="kn">from</span> <span class="nn">flask_security</span> <span class="kn">import</span> <span class="n">Security</span><span class="p">,</span> <span class="n">MongoEngineUserDatastore</span>
+<span class="kn">from</span> <span class="nn">flask_debugtoolbar</span> <span class="kn">import</span> <span class="n">DebugToolbarExtension</span>
+
+<span class="c1">###############################################</span>
+<span class="c1"># 1) importe a nossa nova extensão</span>
+<span class="kn">from</span> <span class="nn">flask_simple_sitemap</span> <span class="kn">import</span> <span class="n">SimpleSitemap</span>
+
+<span class="kn">from</span> <span class="nn">.admin</span> <span class="kn">import</span> <span class="n">configure_admin</span>
+<span class="kn">from</span> <span class="nn">.blueprints.noticias</span> <span class="kn">import</span> <span class="n">noticias_blueprint</span>
+<span class="kn">from</span> <span class="nn">.db</span> <span class="kn">import</span> <span class="n">db</span>
+<span class="kn">from</span> <span class="nn">.security_models</span> <span class="kn">import</span> <span class="n">User</span><span class="p">,</span> <span class="n">Role</span>
+<span class="kn">from</span> <span class="nn">.cache</span> <span class="kn">import</span> <span class="n">cache</span>
+
+<span class="c1">##############################################</span>
+<span class="c1"># 2) importe o model de Noticia</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Noticia</span>
+
+
+<span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
+    <span class="n">instance_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_instance&quot;</span> <span class="o">%</span> <span class="n">mode</span>
+    <span class="p">)</span>
+
+    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="s2">&quot;wtf&quot;</span><span class="p">,</span>
+                <span class="n">instance_path</span><span class="o">=</span><span class="n">instance_path</span><span class="p">,</span>
+                <span class="n">instance_relative_config</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="s1">&#39;wtf.default_settings&#39;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_pyfile</span><span class="p">(</span><span class="s1">&#39;config.cfg&#39;</span><span class="p">)</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;MEDIA_ROOT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;PROJECT_ROOT&#39;</span><span class="p">),</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">instance_path</span><span class="p">,</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MEDIA_FOLDER&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">noticias_blueprint</span><span class="p">)</span>
+
+    <span class="n">Bootstrap</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+    <span class="n">Security</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="n">app</span><span class="p">,</span> <span class="n">datastore</span><span class="o">=</span><span class="n">MongoEngineUserDatastore</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">User</span><span class="p">,</span> <span class="n">Role</span><span class="p">))</span>
+    <span class="n">configure_admin</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+    <span class="n">DebugToolbarExtension</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+    <span class="n">cache</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+    <span class="c1">############################################</span>
+    <span class="c1"># 3) Adicionane as noticias ao sitemap</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SIMPLE_SITEMAP_PATHS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;/noticia/{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">noticia</span><span class="o">.</span><span class="n">id</span><span class="p">):</span> <span class="p">{}</span> <span class="c1"># dict vazio mesmo por enquanto!</span>
+        <span class="k">for</span> <span class="n">noticia</span> <span class="ow">in</span> <span class="n">Noticia</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="c1">############################################</span>
+    <span class="c1"># 4) Inicialize a extensão SimpleSitemap</span>
+    <span class="n">sitemap</span> <span class="o">=</span> <span class="n">SimpleSitemap</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">app</span>
+</pre></div>
+
+
+<p>Agora execute o <code>python run.py</code> e acesse <a href="http://localhost:5000/sitemap.xml">http://localhost:5000/sitemap.xml</a> </p>
+<p>Você verá o <strong>sitemap</strong> gerado incluindo as URLs das notícias cadastradas!</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;urlset</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;url&gt;</span>
+  <span class="nt">&lt;loc&gt;</span>/noticia/58ffe998e138231eef84f9a7<span class="nt">&lt;/loc&gt;</span>
+<span class="nt">&lt;/url&gt;</span>
+<span class="nt">&lt;url&gt;</span>
+  <span class="nt">&lt;loc&gt;</span>/noticias/cadastro<span class="nt">&lt;/loc&gt;</span>
+<span class="nt">&lt;/url&gt;</span>
+<span class="nt">&lt;url&gt;</span>
+  <span class="nt">&lt;loc&gt;</span>/<span class="nt">&lt;/loc&gt;</span>
+<span class="nt">&lt;/url&gt;</span>
+...
+# + um monte de URL do /admin aqui
+<span class="nt">&lt;/urlset&gt;</span>
+</pre></div>
+
+
+<blockquote>
+<p><strong>NOTE:</strong> Funcionou! legal! porém ainda não está bom. Existem algumas 
+melhorias a serem feitas e vou deixar essas melhorias para você fazer!</p>
+</blockquote>
+<h1>Desafio What The Flask!</h1>
+<h2>1) Melhore a geração de URLs do CMS</h2>
+<p>Você reparou que a URL das notícias está bem feia? 
+<strong>/noticia/58ffe998e138231eef84f9a7</strong> não é uma boa URL
+Para ficar mais simples no começo optamos por usar o <strong>id</strong> da notícia como URL 
+mas isso não é uma boa prática e o pior é que isso introduz até mesmo <strong>problemas de
+segurança</strong>.</p>
+<p>Você conseguer arrumar isso? transformando em: <strong>/noticia/titulo-da-noticia-aqui</strong> ?</p>
+<p>Vou dar umas dicas:</p>
+<p><strong>Altere o Model:</strong></p>
+<ul>
+<li>Altere o model Noticia em: <a href="https://github.com/rochacbruno/wtf/blob/extended/wtf/models.py#L5">https://github.com/rochacbruno/wtf/blob/extended/wtf/models.py#L5</a>.</li>
+<li>Insira um novo campo para armazenar o <strong>slug</strong> da notícia, o valor será o título transformado para <strong>lowercase</strong>, <strong>espaços substituidos por -</strong>. Ex: para o <strong>título</strong>: 'Isto é uma notícia' será salvo o <strong>slug</strong>: 'isto-e-uma-noticia'.</li>
+<li>Utilize o método <strong>save</strong> do MongoEngine ou se preferir use <strong>signals</strong> para gerar o <strong>slug</strong> da notícia.</li>
+<li>Utilize o módulo <strong>awesome-slugify</strong> disponível no <code>PyPI</code> para criar o <strong>slug</strong> a partir do título.</li>
+</ul>
+<p><strong>Altere a view:</strong></p>
+<ul>
+<li>Altere a view que está em: <a href="https://github.com/rochacbruno/wtf/blob/extended/wtf/blueprints/noticias.py#L45">https://github.com/rochacbruno/wtf/blob/extended/wtf/blueprints/noticias.py#L45</a>.</li>
+<li>Ao invés de <code>&lt;noticia_id&gt;</code> utilize <code>&lt;noticia_slug&gt;</code>.</li>
+<li>Efetue a busca através do campo <strong>slug</strong>.</li>
+</ul>
+<p>Altere as urls passadas ao <strong>SIMPLE_SITEMAP_PATHS</strong> usando o <strong>slug</strong> ao invés do <strong>id</strong>.</p>
+<h2>2) Adicione data de publicação nas notícias</h2>
+<p>Reparou que o sitemap está sem a data da notícia? adicione o campo <strong>modified</strong>
+ao model <strong>Noticia</strong> e faça com que ele salve a data de <strong>criação</strong> e/ou <strong>alteração</strong> da notícia.</p>
+<p><strong>Queremos algo como:</strong></p>
+<div class="highlight"><pre><span></span>    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SIMPLE_SITEMAP_PATHS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;/noticia/{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">noticia</span><span class="o">.</span><span class="n">slug</span><span class="p">):</span> <span class="p">{</span>
+            <span class="s1">&#39;lastmod&#39;</span><span class="p">:</span> <span class="n">noticia</span><span class="o">.</span><span class="n">modified</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="n">noticia</span> <span class="ow">in</span> <span class="n">Noticia</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Para gerar no sitemap:</strong></p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;urlset</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;url&gt;</span>
+  <span class="nt">&lt;loc&gt;</span>/noticia/titulo-da-noticia<span class="nt">&lt;/loc&gt;</span>
+  <span class="nt">&lt;lastmod&gt;</span>2017-04-25<span class="nt">&lt;/lastmod&gt;</span>
+<span class="nt">&lt;/url&gt;</span>
+...
+</pre></div>
+
+
+<h2>3) Crie uma opção de filtros na extensão <code>simple_sitemap</code></h2>
+<p>Uma coisa chata também é o fato do <code>sitemap.xml</code> ter sido gerado com esse 
+monte de URL indesejada. As URLs iniciadas com <code>/admin</code> por exemplo não precisam
+ir para o <code>sitemap.xml</code>.</p>
+<p>Implemente esta funcionalidade a extensão:</p>
+<blockquote>
+<p><strong>DICA</strong>: Use <strong>regex</strong> <code>import re</code></p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SIMPLE_SITEMAP_EXCLUDE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># urls que derem match com estes filtros não serão adicionadas ao sitemap</span>
+    <span class="s1">&#39;^/admin/.*&#39;</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<blockquote>
+<p><strong>DESAFIO:</strong> Após implementar as melhorias inclua nos comentários um link para a sua solução, pode ser um <strong>fork</strong> dos repositórios
+ou até mesmo um link para <strong>gist</strong> ou <strong>pastebin</strong> (enviarei uns adesivos de Flask para quem completar o desafio!)</p>
+</blockquote>
+<hr />
+
+<blockquote>
+<p>O diff com as alterações realizadas no CMS encontra-se no <a href="https://github.com/rochacbruno/wtf/compare/extended...sitemap?expand=1">github.com/rochacbruno/wtf</a> <br>
+A versão final da extensão <code>SimpleSitemap</code> está no <a href="https://github.com/rochacbruno/flask_simple_sitemap">github.com/rochacbruno/flask_simple_sitemap</a> <br>
+A versão final do CMS app está no <a href="https://github.com/rochacbruno/wtf/tree/sitemap">github.com/rochacbruno/wtf</a></p>
+</blockquote>
+<p>Se você está a procura de uma extensão para <code>sitemap</code> para uso em produção aconselho a <a href="https://github.com/inveniosoftware/flask-sitemap">flask_sitemap</a> </p>
+<hr>
+
+<blockquote>
+<p><strong>END:</strong> Sim chegamos ao fim desta quarta parte da série <strong>W</strong>hat <strong>T</strong>he <strong>F</strong>lask. Eu espero que você tenha aproveitado as dicas aqui mencionadas. Nas próximas partes iremos efetuar o deploy de aplicativos Flask. Acompanhe o PythonClub, o meu <a href="http://brunorocha.org">site</a> e meu <a href="http://twitter.com/rochacbruno">twitter</a> para ficar sabendo quando a próxima parte for publicada.</p>
+</blockquote>
+<hr />
+
+<blockquote>
+<p><strong>PUBLICIDADE:</strong> Iniciarei um curso online de Python e Flask, para iniciantes abordando com muito mais detalhes e exemplos práticos os temas desta série de artigos e muitas outras coisas envolvendo Python e Flask, o curso será oferecido no CursoDePython.com.br, ainda não tenho detalhes especificos sobre o valor do curso, mas garanto que será um preço justo e acessível. Caso você tenha interesse por favor preencha este <a href="https://docs.google.com/forms/d/1qWx4pzNVSPQmxsLgYBjTve6b_gGKfKLMSkPebvpMJwg/viewform?usp=send_form">formulário</a> pois dependendo da quantidade de pessoas interessadas o curso sairá mais rapidamente.</p>
+</blockquote>
+<hr />
+
+<blockquote>
+<p><strong>PUBLICIDADE 2:</strong> Também estou escrevendo um livro de receitas <strong>Flask CookBook</strong> através da plataforma LeanPub, caso tenha interesse por favor preenche o formulário na <a href="https://leanpub.com/pythoneflask">página do livro</a></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<p><strong>PUBLICIDADE 3:</strong> Inscreva-se no meu novo <a href="http://www.youtube.com/channel/UCKkjiNMtdyCOFE3-w7TB8xw?sub_confirmation=1">canal de tutoriais</a></p>
+</blockquote>
+<p>Muito obrigado e aguardo seu feedback com dúvidas, sugestões, correções etc na caixa de comentários abaixo.</p>
+<p>Abraço! "Python é vida!"</p>
+
+            <div class="licence">
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licença Creative Commons"
+                                                                                               style="border-width:0"
+                                                                                               src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"/></a><br/><a
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title"
+                    href="http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html">"What the Flask? pt 4 - Extensões para o Flask"</a> de <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="http://pythonclub.com.br/author/bruno-cezar-rocha.html"
+                    property="cc:attributionName" rel="cc:attributionURL">"Bruno Cezar Rocha"</a> está licenciado com uma Licença
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons -
+                    Atribuição-NãoComercial-SemDerivações 4.0 Internacional</a>.
+            </div>
+
+            <div class="sharing">
+                <!-- Facebook sharing -->
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=1487080281503641&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-share-button" data-href="http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html" data-type="button_count"></div>
+
+                <!-- Google+ sharing -->
+                <div class="g-plus alinhar" data-action="share" data-annotation="bubble" data-href="http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html"></div>
+
+                <!-- Twitter sharing -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="pt" style="margin-bottom: -4px !important;">Tweetar</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Topo</a>
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES: THIS CODE IS ONLY AN EXAMPLE * * */
+                        var disqus_shortname = 'pythonclub'; // Required - Replace example with your forum shortname
+                        var disqus_identifier = 'what-the-flask-pt-4-extensoes-para-o-flask.html';
+                        var disqus_title = 'What the Flask? pt 4 - Extensões para o Flask';
+                        var disqus_url = 'http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html';
+                    
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </div>
+<footer class="footer">
+    <p>&copy; PythonClub &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://pythonclub.com.br/theme/js/dynamic_random_articles.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+        $(window).load(function(){
+          $("iframe").css("margin-bottom", "-6px")
+          $("#twitter-widget-0").css("margin-bottom", "-5px");
+          $("#twitter-widget-0").css("margin-left", "-1px");
+        });
+    </script>
+    <script type="text/javascript" src="https://apis.google.com/js/platform.js">
+      {lang: 'pt-BR'}
+    </script>
+
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+
+        $(function(){
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/trabalhando-com-operadores-ternarios.html", "title": "Trabalhando com operadores tern\u00e1rios"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-com-socket-e-struct.html", "title": "Upload de Arquivos com Socket e Struct"}, {"url": "http://pythonclub.com.br/monitorando-ips-duplicados-na-rede.html", "title": "Monitorando Ips Duplicados na Rede"}, {"url": "http://pythonclub.com.br/django-rest-framework-class-based-views.html", "title": "Django Rest Framework - #3 Class Based Views"}, {"url": "http://pythonclub.com.br/django-rest-framework-requests-responses.html", "title": "Django Rest Framework - #2 Requests and Responses"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-2.html", "title": "Programa\u00e7\u00e3o funcional com Python #2 - Iteraveis e iteradores"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-1.html", "title": "Programa\u00e7\u00e3o funcional com Python #1 - Fun\u00e7\u00f5es"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-0.html", "title": "Programa\u00e7\u00e3o funcional com Python #0 - Saindo da zona de conforto"}, {"url": "http://pythonclub.com.br/peewee-um-orm-python-minimalista.html", "title": "Peewee - Um ORM Python minimalista"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html", "title": "What the Flask? pt 4 - Extens\u00f5es para o Flask"}, {"url": "http://pythonclub.com.br/configurando-python-3.5-openshift-flask-gunicorn.html", "title": "Configurando OpenShift com Python 3.5 + Flask + Gunicorn"}, {"url": "http://pythonclub.com.br/instalando-o-python-vers\u00e3o-3.7.0-alpha-1-no-ubuntu-16.04.md.html", "title": "Instalando o Python vers\u00e3o 3.7.0 alpha 1 no Ubuntu 16.04"}, {"url": "http://pythonclub.com.br/abrangencia-de-listas-e-dicionarios-com-python.html", "title": "Abrang\u00eancia de Listas e Dicion\u00e1rios"}, {"url": "http://pythonclub.com.br/debugging-logging.html", "title": "Debugging - logging"}, {"url": "http://pythonclub.com.br/deploy-rapido-simples-com-dokku.html", "title": "Deploy r\u00e1pido e simples com Dokku"}, {"url": "http://pythonclub.com.br/bot-telegram-mais-web-scraping-parte-1.html", "title": "Bot telegram mais web scraping - parte 1"}, {"url": "http://pythonclub.com.br/como-distribuir-sua-aplicacao-python-com-pypi.html", "title": "Como distribuir sua aplica\u00e7\u00e3o Python com PyPI"}, {"url": "http://pythonclub.com.br/python-webassets-elm.html", "title": "Python webassets & Elm"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula1.html", "title": "Curso Python asyncio: Aula 01 - Iterators e Generators"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula00.html", "title": "Curso Python asyncio: Aula 00 - Introdu\u00e7\u00e3o ao m\u00f3dulo asyncio"}, {"url": "http://pythonclub.com.br/gerando-relatorios-de-testes-com-coveralls.html", "title": "Relat\u00f3rios de testes com Coveralls"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 4 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 3 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 2 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)"}, {"url": "http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html", "title": "GitHub Pages com Pelican e Travis-CI"}, {"url": "http://pythonclub.com.br/sites-estaticos-com-lektor.html", "title": "Sites Est\u00e1ticos com Lektor"}, {"url": "http://pythonclub.com.br/django-rest-framework-serialization.html", "title": "Django Rest Framework Serialization"}, {"url": "http://pythonclub.com.br/explicit-is-better-than-implicit.html", "title": "Explicit is better than implicit"}, {"url": "http://pythonclub.com.br/tdd-com-python-e-flask.html", "title": "TDD com Python e Flask"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html", "title": "Upload de arquivos no Django: entendendo os modos de leitura"}, {"url": "http://pythonclub.com.br/python-generators.html", "title": "Python Generators"}, {"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+        });
+        
+    </script>
+        <!-- spot_im -->
+        <!--    <div id="spot-im-root"></div> -->
+        <!--    <script type="text/javascript">!function(t,o,p){function e(){var t=o.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"==o.location.protocol?"https":"http")+":"+p,o.body.appendChild(t)}t.spotId="3de816246c80a51757bb01c5b8c95cda",t.spotName="",t.allowDesktop=!0,t.allowMobile=!1,t.containerId="spot-im-root",e()}(window.SPOTIM={},document,"//www.spot.im/embed/scripts/launcher.js");</script> -->
+        <!-- end spot_im -->
+   
+            <script>
+              ((window.gitter = {}).chat = {}).options = {
+                    room: 'pythonclub/pythonclub.github.io'
+              };
+            </script>
+            <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+   
+</body>
+</html>

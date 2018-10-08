@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PythonClub, ">
+    <meta name="theme-color" content="#101212">
+
+        <link rel="alternate"  href="http://pythonclub.com.br/feeds/all.atom.xml" type="application/atom+xml" title="PythonClub Full Atom Feed"/>
+        <link rel="alternate" href="http://pythonclub.com.br/feeds/all.rss.xml" type="application/rss+xml" title="PythonClub Full RSS Feed"/>
+
+    <link rel="shortcut icon" href="http://pythonclub.com.br/theme/images/favicon.ico" >
+
+            <title>Python webassets & Elm por Eduardo Cuducos // #PythonClub // </title>
+
+    <meta property="fb:app_id" content="1487080281503641" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Python webassets & Elm" />
+    <meta property="og:site_name" content="PythonClub" />
+    <meta property="og:url" content="http://pythonclub.com.br/python-webassets-elm.html" />
+    <meta property="og:description" content="Se você é geek e me conhece, ou se me segue nas redes sociais, já ouviu eu falar de Elm. É uma solução para front-end com componentes reativos — mas Elm não é JavaScript. É uma outra linguagem, outro ambiente, outro compilador etc. É uma linguagem que muito me impressionou. Sou …" />
+    <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/custom.css">
+
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pygments.css">
+
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50935105-1', 'pythonclub.com.br');
+      ga('require', 'linkid', 'linkid.js');
+      ga('send', 'pageview');
+
+    </script>
+    <!-- transifex -->
+    <!-- <script type="text/javascript">  -->
+    <!-- window.liveSettings = {  -->
+    <!--     api_key: "f8fd260a9bdc4e9195c80e31416bb254",  -->
+    <!--     picker: "bottom-right",  -->
+    <!--     detectlang: true,  -->
+    <!--     autocollect: true  -->
+    <!-- };  -->
+    <!-- </script>  -->
+    <!-- <script type="text/javascript" src="//cdn.transifex.com/live.js"></script>  -->
+    <!-- end transifex -->
+    <meta name="google-site-verification" content="XQc_QtnTecI9nxAfplXGtECCpZQDwbDRcn7pyDVa1LE" />
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://pythonclub.com.br/author/eduardo-cuducos.html" title="See posts by Eduardo Cuducos">
+                        <img class="article-avatar" alt="Eduardo Cuducos" src="https://www.gravatar.com/avatar/35f0a285fbf11a7155bb23695c5a270e">
+                </a>
+                <h2 class="article-info">Eduardo Cuducos</h2>
+    			<ul class="author-social">
+                    <li>
+                        <a target="_blank" href="https://github.com/cuducos">
+                            <i class="fa fa-lg fa-fw fa-github"></i>
+                            <strong>Github</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://twitter.com/cuducos">
+                            <i class="fa fa-lg fa-fw fa-twitter"></i>
+                            <strong>Twitter</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://www.linkedin.com/in/cuducos">
+                            <i class="fa fa-lg fa-fw fa-linkedin"></i>
+                            <strong>Linkedin</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://cuducos.me">
+                            <i class="fa fa-lg fa-fw fa-globe"></i>
+                            <strong>Site</strong>
+                        </a>
+                    </li>
+                </ul>
+                    <small class="about-author">Sociólogo, geek, cozinheiro e fã de esportes.</small>
+                <h5>Publicado em:</h5>
+                <p>Tue 14 June 2016</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Python webassets & Elm</h1>
+                        <p class="post-meta">
+                            // Tags                                 <a class="post-category" href="http://pythonclub.com.br/tag/elm.html">elm</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/webassets.html">webassets</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/flask.html">flask</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/django.html">django</a>
+                        </p>
+                </header>
+            </section>
+            <p>Se você é geek e me conhece, ou se me segue nas redes sociais, já ouviu eu falar de <a href="http://elm-lang.org/">Elm</a>. É uma solução para <em>front-end</em> com componentes reativos — mas Elm não é JavaScript. É uma outra linguagem, outro ambiente, outro compilador etc.</p>
+<p>É uma linguagem que muito me impressionou. Sou novato, engatinhando, tentando levantar e tomando belos tombos. Mas hoje resolvi um desses tombos: como integrar o Elm que uso para <em>front-end</em> com <em>back-ends</em> em Python.</p>
+<p>A resposta foi o <a href="https://github.com/cuducos/webassets-elm">webassets-elm</a> — pacote que escrevi hoje e já está <a href="https://pypi.python.org/pypi/webassets-elm">disponível no PyPI</a>.</p>
+<p>Nesse texto vou fazer uma pequena introdução sobre interfaces reativas, sobre Elm em si, e depois explico um pouco do problema que o <a href="https://github.com/cuducos/webassets-elm">webassets-elm</a> resolve — spoiler: é gambiarra.</p>
+<h2>O que é um <em>front-end</em> com componente reativo?</h2>
+<p>Componentes reativos são elementos na interface do usuário que seguem a <a href="https://en.wikipedia.org/wiki/Reactive_programming">programação reativa</a>: “um paradigma de programação orientado ao fluxo de dados e a propagação de mudanças” — como a Wikipédia define.</p>
+<p>Mas o que isso quer dizer? Comecemos com um exemplo básico <strong>não</strong> reativo:</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="c1"># 42</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="c1"># 42</span>
+</pre></div>
+
+
+<p>Se esse bloco fosse reativo, ao mudar o valor de <code>a</code>, a alteração deveria também mudar o valor de <code>c</code> — ou seja, o segundo <code>print(c)</code> deveria resultar em <code>13</code>, não em <code>42</code>.</p>
+<p>Isso é muito útil quando gerenciamos interfaces complexas no <em>front-end</em>: ao invés de gerenciarmos vários <code>div</code>, <code>span</code> com suas classes e conteúdos, definimos uma estrutura de dados e as <em>regras</em> para renderização desses dados em HTML. Alterando os dados, o HTML é atualizado automaticamente.</p>
+<p>Isso seria uma carroça de lerdeza se tivéssemos que atualizar o <a href="https://pt.wikipedia.org/wiki/Modelo_de_Objeto_de_Documentos">DOM</a> cada vez que nossos dados fossem alterados — afinal <a href="https://www.youtube.com/watch?v=hQVTIJBZook">não é o JavaScript que é lento, o DOM é que é</a>. Por isso mesmo todos as alternativas para <em>front-end</em> reativo — <a href="http://elm-lang.org/">Elm</a>, <a href="https://facebook.github.io/react/">React</a>, <a href="https://vuejs.org/">Vue</a> e muitas outras — trabalham com um DOM virtual: todas as alterações são feitas primeiro nesse (eficiente) DOM virtual, que é comparado com o DOM real e então apenas as alterações mínimas são feitas no (lento) DOM real para que a interface seja atualizada. Simples assim.</p>
+<h2>Por quê Elm?</h2>
+<p>Mas por quê Elm? Se praticamente a única linguagem que roda em navegador é JavaScript, que sentido faz aprender Elm? Elm é mais fácil que JavaScript? Essas são perguntas com as quais me habituei. Então vou falar aqui em linhas gerais o que normalmente respondo.</p>
+<p>Não posso negar que JavaScript é mais fácil de aprender — no sentido de que a curva de aprendizado é bem menor. Só que daí até escrever JavaScript de qualidade tem um abismo de distância (alô, <em><a href="https://medium.com/@joaomilho/festina-lente-e29070811b84#.80xxnrf4f">technical debt</a></em>).</p>
+<p>O que eu gostei no Elm é que, apesar de a curva de aprendizado ser muito maior que a do JavaScript, a linguagem já te força a escrever código com certa qualidade. Por exemplo:</p>
+<ul>
+<li><strong>Interface reativa de acordo com “melhores práticas”</strong>: pensar na arquitetura do código é totalmente opcional no JavaScript, mas escrever algo com qualidade vai requerer que você aprenda JavaScript (sem <a href="http://jquery.com">jQuery</a>), como usar <a href="https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84">JavaScript de forma funcional</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>, <a href="https://facebook.github.io/react/">React</a>, <a href="http://redux.js.org">Redux</a> ou ainda <a href="https://vuejs.org/">Vue</a>, para dar alguns exemplos. Então, se juntar a curva de aprendizado de todas coisas, vai ser uma curva de aprendizado parecida com a do próprio Elm (que já é funcional pois é um <a href="https://www.haskell.org">Heskell</a> simplificado, já tem <a href="http://guide.elm-lang.org/architecture/index.html">sua própria arquitetura</a> etc.)</li>
+<li><strong>Erros</strong>: Com JavaScript (incluindo jQuery, ReactJs, Vue etc.) pode acontecer de passar erros para a produção ou homologação — um caso raro no qual uma função espere <code>x</code>, mas receba <code>y</code>, um loop infinito, uma função ou variável não definida, um objeto não encontrado. Com Elm, não: o compilador já elimina trocentos mil possibilidades de erro na compilação (como dizem na home do Elm, no <em>runtime exceptions</em>). Isso porquê o Elm já trabalha com tipagem e com objetos imutáveis, e consegue verificar possibilidades que o cérebro humano demoraria para imaginar. Se tem alguma possibilidade de teu código receber <code>String</code> quando espera <code>Integer</code>, ou de cair em um <code>import</code> cíclico, ele não compila se você não corrigir. Ele é chato, mas não deixa passar erro.</li>
+<li><strong>Mensagens de erro</strong>: Se o Elm é chato por não compilar se houver possibilidade de erro, suas mensagens não são nada chatas. Na minha opinião uma das coisas mais chatas de desenvolver com JavaScript é que a console é muito ruim: as mensagens são vagas, é o terror do <code>undefined is not a function</code>, <code>NaN</code> etc. Já as mensagens de erro do compilador do Elm são muito educativas, te mostram o que está errado, onde está errado e, muitas vezes, como resolver.</li>
+</ul>
+<p><img alt="Compiler errors for humans" src="http://elm-lang.org/assets/blog/error-messages/0.15.1/naming.png"></p>
+<p>Por fim, o JavaScript é muito verboso. Muito. Elm é mais conciso. Sem contar que ninguém vai se perder tentando descobrir se tem que fechar o parênteses antes das chaves, ou depois do ponto-e-vírgula.</p>
+<p>Enfim, se se interessam por Elm, além dos links que coloquei no texto, sugiro mais esses (todos em inglês):</p>
+<ul>
+<li><a href="https://egghead.io/lessons/elm-elm-in-5-minutes">Elm em 7 minutos</a></li>
+<li><a href="http://ohanhi.github.io/master-elm-1-why-elm.html">Por quê Elm — parte 1</a></li>
+<li><a href="https://youtu.be/3_M2G9U51GA">Introdução ao Elm</a></li>
+</ul>
+<h2>Webassets &amp; webassets-elm</h2>
+<p>Para quem não conhece, o <a href="http://webassets.readthedocs.io/">webassets</a> é pacote muito utilizado no mundo Python para compilar, dar um <em>minify</em> e comprimir CSS, JS etc. Por exemplo ele tem filtros que transformam o todos os <a href="http://sass-lang.com">SASS</a> em CSS e, depois, junta tudo em um único <code>.css</code> bem compacto.</p>
+<p>A integração com <a href="http://flask.pocoo.org">Flask</a> ou <a href="http://djangoproject.com">Django</a> é super fácil e útil com o <a href="http://flask-assets.readthedocs.io/">flask-assets</a> ou <a href="http://django-assets.readthedocs.org/">django-assets</a>. Com isso sua própria aplicação gera, no servidor, seus <em>assets</em>. Em ambiente de desenvolvimento e produção a geração dos <em>assets</em> passa a ocorrer automaticamente (sem necessidade de <em>watchers</em> ou de rodar manualmente <code>sass</code>, <code>coffee</code>, <code>browserify</code>, <code>webpack</code>, <code>grunt</code>, <code>gulp</code> etc.).</p>
+<p>O <a href="https://github.com/cuducos/webassets-elm">webassets-elm</a> nada mais é, então, do que um filtro para o <em>webassets</em> saber o que fazer com arquivos <code>.elm</code> — ou seja para transformar meus arquivos em Elm em <code>.js</code> para o navegador saber o que fazer com eles (isso é o que chamamos de <em>compilar</em> no Elm). Parece simples, e a arquitetura do <em>webassets</em> ajuda muito: eles mesmos oferecem um objeto <a href="https://github.com/miracle2k/webassets/blob/master/src/webassets/filter/__init__.py#L400-L456"><code>ExternalTool</code></a> para facilitar a criação de filtros personalizados.</p>
+<p>O que quero é que na hora que eu rodar minha aplicação em Flask ou em Django, se eu tiver alterado qualquer arquivo <code>.elm</code> (ou <code>.sass</code>), por exemplo, automaticamente a aplicação já gere um <code>.js</code> (ou <code>.css</code>) atualizado.</p>
+<p>O problema é que toda a arquitetura do <em>webassets</em> é pensada tendo o <a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_output_.28stdout.29"><code>stdout</code></a> como padrão. E o <code>elm-make</code> (comando que compila os arquivos Elm) <a href="https://github.com/elm-lang/elm-make/issues/39">só grava em arquivo, não joga o resultado para o <code>stdout</code></a>. </p>
+<p>Faz sentido o <em>webassets</em> ser assim: muitas vezes o que interessa é só o resultado das compilações, já que esses resultados podem ser processados novamente (um <em>minify</em>, por exemplo) antes de se juntar a outros resultados para, finalmente, salvar um asset <code>.css</code> ou <code>.js</code>.</p>
+<p>Então, a única complicação no <em>webassets-elm</em> é essa — aí mora a famosa <em>gambiarra</em>, o famoso <em>jeitinho brasileiro</em> enquanto o <code>elm-make</code> não oferece uma forma de compilar para o <code>stdout</code>.</p>
+<h3>Estrutura de um filtro do <em>webassets</em></h3>
+<p>Normalmente um <a href="https://webassets.readthedocs.io/en/latest/custom_filters.html">filtro para o <em>webassets</em> é simples</a>, veja esse exemplo (simplificado) de <a href="https://github.com/renstrom/webassets-browserify/blob/master/webassets_browserify/__init__.py">um filtro para utilizar o Browserify</a>.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Browserify</span><span class="p">(</span><span class="n">ExternalTool</span><span class="p">):</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;browserify&#39;</span>
+
+    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">infile</span><span class="p">,</span> <span class="n">outfile</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">binary</span> <span class="ow">or</span> <span class="s1">&#39;browserify&#39;</span><span class="p">]</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;source_path&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subprocess</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">outfile</span><span class="p">,</span> <span class="n">infile</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Basicamente dentro de <code>input(…)</code>, que recebe o arquivo de entrada (<code>infile</code>) e o arquivo de saída (<code>outfile</code>), definimos qual o binário a ser chamado (<code>browserify</code>, por padrão, no exemplo) e adicionamos os argumentos que queremos passar para o binário (<code>kwargs['source_path']</code>). Tudo muito parecido com o <a href="https://docs.python.org/3.5/library/subprocess.html"><code>subprocess</code> nativo do Python</a>.</p>
+<p>Em outras palavras, se o <code>source_path</code> for <code>/home/johndoe/42.sass</code>, é como se digitássemos <code>browserify /home/johndoe/42.sass</code> no terminal e o <em>webassets</em> juntaria o resultado desse comando no arquivo final (<code>outfile</code>).</p>
+<h3>Estrutura do <em>webassets-elm</em></h3>
+<p>Mas o <code>elm-make</code> não funciona assim. Ele gera uma arquivo. Se chamarmos <code>elm-make hello.elm</code> ele gera um <code>index.html</code> (com o JavaScript compilado dentro). Podemos gerar apenas um JavaScript usando o argumento <code>--output</code>. Por exemplo, podemos usar <code>elm-make hello.elm --output hello.js</code> e teríamos apenas o JavaScript compilado no arquivo <code>hello.js</code>.</p>
+<p>Por esse motivo o <em>webassets-elm</em> precisou de <a href="https://github.com/cuducos/webassets-elm/blob/master/webassets_elm/__init__.py#L25-L43">uma gambiarra</a>. Primeiro ele chama o <code>elm-make</code> gravando um arquivo temporário:</p>
+<div class="highlight"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="n">mkstemp</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;.js&#39;</span><span class="p">)</span>
+<span class="n">elm_make</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">binary</span> <span class="ow">or</span> <span class="s1">&#39;elm-make&#39;</span>
+<span class="n">write_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">elm_make</span><span class="p">,</span> <span class="n">kw</span><span class="p">[</span><span class="s1">&#39;source_path&#39;</span><span class="p">],</span> <span class="s1">&#39;--output&#39;</span><span class="p">,</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;--yes&#39;</span><span class="p">]</span>
+<span class="k">with</span> <span class="n">TemporaryFile</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fake_write_obj</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">subprocess</span><span class="p">(</span><span class="n">write_args</span><span class="p">,</span> <span class="n">fake_write_obj</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Depois usa o <code>cat</code> (ou <code>type</code>, no Windows) para jogar o conteúdo desse arquivo temporário para o <code>stdout</code>:</p>
+<div class="highlight"><pre><span></span><span class="n">cat_or_type</span> <span class="o">=</span> <span class="s1">&#39;type&#39;</span> <span class="k">if</span> <span class="n">platform</span> <span class="o">==</span> <span class="s1">&#39;win32&#39;</span> <span class="k">else</span> <span class="s1">&#39;cat&#39;</span>
+<span class="n">read_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">cat_or_type</span><span class="p">,</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">subprocess</span><span class="p">(</span><span class="n">read_args</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Não sei se é a melhor solução, mas foi o que resolveu por enquanto. Qualquer palpite, crítica, <em>pull request</em>, <a href="https://twitter.com/cuducos/status/742698891343204353">RT</a>, estrelinha no GitHub, <em>issue</em>, contribuição é bem-vinda ; )</p>
+
+            <div class="licence">
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licença Creative Commons"
+                                                                                               style="border-width:0"
+                                                                                               src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"/></a><br/><a
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title"
+                    href="http://pythonclub.com.br/python-webassets-elm.html">"Python webassets & Elm"</a> de <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="http://pythonclub.com.br/author/eduardo-cuducos.html"
+                    property="cc:attributionName" rel="cc:attributionURL">"Eduardo Cuducos"</a> está licenciado com uma Licença
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons -
+                    Atribuição-NãoComercial-SemDerivações 4.0 Internacional</a>.
+            </div>
+
+            <div class="sharing">
+                <!-- Facebook sharing -->
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=1487080281503641&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-share-button" data-href="http://pythonclub.com.br/python-webassets-elm.html" data-type="button_count"></div>
+
+                <!-- Google+ sharing -->
+                <div class="g-plus alinhar" data-action="share" data-annotation="bubble" data-href="http://pythonclub.com.br/python-webassets-elm.html"></div>
+
+                <!-- Twitter sharing -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="pt" style="margin-bottom: -4px !important;">Tweetar</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Topo</a>
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES: THIS CODE IS ONLY AN EXAMPLE * * */
+                        var disqus_shortname = 'pythonclub'; // Required - Replace example with your forum shortname
+                        var disqus_identifier = 'python-webassets-elm.html';
+                        var disqus_title = 'Python webassets & Elm';
+                        var disqus_url = 'http://pythonclub.com.br/python-webassets-elm.html';
+                    
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </div>
+<footer class="footer">
+    <p>&copy; PythonClub &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://pythonclub.com.br/theme/js/dynamic_random_articles.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+        $(window).load(function(){
+          $("iframe").css("margin-bottom", "-6px")
+          $("#twitter-widget-0").css("margin-bottom", "-5px");
+          $("#twitter-widget-0").css("margin-left", "-1px");
+        });
+    </script>
+    <script type="text/javascript" src="https://apis.google.com/js/platform.js">
+      {lang: 'pt-BR'}
+    </script>
+
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+
+        $(function(){
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/trabalhando-com-operadores-ternarios.html", "title": "Trabalhando com operadores tern\u00e1rios"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-com-socket-e-struct.html", "title": "Upload de Arquivos com Socket e Struct"}, {"url": "http://pythonclub.com.br/monitorando-ips-duplicados-na-rede.html", "title": "Monitorando Ips Duplicados na Rede"}, {"url": "http://pythonclub.com.br/django-rest-framework-class-based-views.html", "title": "Django Rest Framework - #3 Class Based Views"}, {"url": "http://pythonclub.com.br/django-rest-framework-requests-responses.html", "title": "Django Rest Framework - #2 Requests and Responses"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-2.html", "title": "Programa\u00e7\u00e3o funcional com Python #2 - Iteraveis e iteradores"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-1.html", "title": "Programa\u00e7\u00e3o funcional com Python #1 - Fun\u00e7\u00f5es"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-0.html", "title": "Programa\u00e7\u00e3o funcional com Python #0 - Saindo da zona de conforto"}, {"url": "http://pythonclub.com.br/peewee-um-orm-python-minimalista.html", "title": "Peewee - Um ORM Python minimalista"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html", "title": "What the Flask? pt 4 - Extens\u00f5es para o Flask"}, {"url": "http://pythonclub.com.br/configurando-python-3.5-openshift-flask-gunicorn.html", "title": "Configurando OpenShift com Python 3.5 + Flask + Gunicorn"}, {"url": "http://pythonclub.com.br/instalando-o-python-vers\u00e3o-3.7.0-alpha-1-no-ubuntu-16.04.md.html", "title": "Instalando o Python vers\u00e3o 3.7.0 alpha 1 no Ubuntu 16.04"}, {"url": "http://pythonclub.com.br/abrangencia-de-listas-e-dicionarios-com-python.html", "title": "Abrang\u00eancia de Listas e Dicion\u00e1rios"}, {"url": "http://pythonclub.com.br/debugging-logging.html", "title": "Debugging - logging"}, {"url": "http://pythonclub.com.br/deploy-rapido-simples-com-dokku.html", "title": "Deploy r\u00e1pido e simples com Dokku"}, {"url": "http://pythonclub.com.br/bot-telegram-mais-web-scraping-parte-1.html", "title": "Bot telegram mais web scraping - parte 1"}, {"url": "http://pythonclub.com.br/como-distribuir-sua-aplicacao-python-com-pypi.html", "title": "Como distribuir sua aplica\u00e7\u00e3o Python com PyPI"}, {"url": "http://pythonclub.com.br/python-webassets-elm.html", "title": "Python webassets & Elm"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula1.html", "title": "Curso Python asyncio: Aula 01 - Iterators e Generators"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula00.html", "title": "Curso Python asyncio: Aula 00 - Introdu\u00e7\u00e3o ao m\u00f3dulo asyncio"}, {"url": "http://pythonclub.com.br/gerando-relatorios-de-testes-com-coveralls.html", "title": "Relat\u00f3rios de testes com Coveralls"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 4 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 3 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 2 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)"}, {"url": "http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html", "title": "GitHub Pages com Pelican e Travis-CI"}, {"url": "http://pythonclub.com.br/sites-estaticos-com-lektor.html", "title": "Sites Est\u00e1ticos com Lektor"}, {"url": "http://pythonclub.com.br/django-rest-framework-serialization.html", "title": "Django Rest Framework Serialization"}, {"url": "http://pythonclub.com.br/explicit-is-better-than-implicit.html", "title": "Explicit is better than implicit"}, {"url": "http://pythonclub.com.br/tdd-com-python-e-flask.html", "title": "TDD com Python e Flask"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html", "title": "Upload de arquivos no Django: entendendo os modos de leitura"}, {"url": "http://pythonclub.com.br/python-generators.html", "title": "Python Generators"}, {"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+        });
+        
+    </script>
+        <!-- spot_im -->
+        <!--    <div id="spot-im-root"></div> -->
+        <!--    <script type="text/javascript">!function(t,o,p){function e(){var t=o.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"==o.location.protocol?"https":"http")+":"+p,o.body.appendChild(t)}t.spotId="3de816246c80a51757bb01c5b8c95cda",t.spotName="",t.allowDesktop=!0,t.allowMobile=!1,t.containerId="spot-im-root",e()}(window.SPOTIM={},document,"//www.spot.im/embed/scripts/launcher.js");</script> -->
+        <!-- end spot_im -->
+   
+            <script>
+              ((window.gitter = {}).chat = {}).options = {
+                    room: 'pythonclub/pythonclub.github.io'
+              };
+            </script>
+            <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+   
+</body>
+</html>

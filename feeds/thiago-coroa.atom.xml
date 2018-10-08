@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/thiago-coroa.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-14T10:30:00-03:00</updated><entry><title>Instalando e Configurando o Python e Django no Windows</title><link href="http://pythonclub.com.br/instalacao-python-django-windows.html" rel="alternate"></link><published>2014-05-14T10:30:00-03:00</published><updated>2014-05-14T10:30:00-03:00</updated><author><name>Thiago Corôa</name></author><id>tag:pythonclub.com.br,2014-05-14:instalacao-python-django-windows.html</id><summary type="html">&lt;div class="section" id="instalacao-do-python-2-7"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub - Thiago Corôa</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/thiago-coroa.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-14T10:30:00-03:00</updated><entry><title>Instalando e Configurando o Python e Django no Windows</title><link href="http://pythonclub.com.br/instalacao-python-django-windows.html" rel="alternate"></link><published>2014-05-14T10:30:00-03:00</published><updated>2014-05-14T10:30:00-03:00</updated><author><name>Thiago Corôa</name></author><id>tag:pythonclub.com.br,2014-05-14:/instalacao-python-django-windows.html</id><summary type="html">&lt;div class="section" id="instalacao-do-python-2-7"&gt;
+&lt;h2&gt;Instalação do Python 2.7&lt;/h2&gt;
+&lt;p&gt;Para começar a desenvolver algo em Python, devemos baixar o Python(Nossa, que descoberta!),
+sendo a versão mais indicada o 2.7, por ser mais estável, possuir mais bibliotecas disponíveis
+e compatíveis e ser utilizada por mais desenvolvedores no mundo pythonico.&lt;/p&gt;
+&lt;div class="section" id="vejamos-como-fazer-esta-instalacao"&gt;
+&lt;h3&gt;Vejamos como fazer esta …&lt;/h3&gt;&lt;/div&gt;&lt;/div&gt;</summary><content type="html">&lt;div class="section" id="instalacao-do-python-2-7"&gt;
 &lt;h2&gt;Instalação do Python 2.7&lt;/h2&gt;
 &lt;p&gt;Para começar a desenvolver algo em Python, devemos baixar o Python(Nossa, que descoberta!),
 sendo a versão mais indicada o 2.7, por ser mais estável, possuir mais bibliotecas disponíveis
@@ -41,4 +47,4 @@ Instalaremos digitando no prompt de comando:&lt;/p&gt;
 &lt;p&gt;Muito difícil não?&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="python"></category><category term="django"></category><category term="windows"></category></entry></feed>
+</content><category term="python"></category><category term="django"></category><category term="windows"></category></entry></feed>

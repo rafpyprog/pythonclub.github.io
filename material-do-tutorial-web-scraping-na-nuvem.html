@@ -1,0 +1,1100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PythonClub, ">
+    <meta name="theme-color" content="#101212">
+
+        <link rel="alternate"  href="http://pythonclub.com.br/feeds/all.atom.xml" type="application/atom+xml" title="PythonClub Full Atom Feed"/>
+        <link rel="alternate" href="http://pythonclub.com.br/feeds/all.rss.xml" type="application/rss+xml" title="PythonClub Full RSS Feed"/>
+
+    <link rel="shortcut icon" href="http://pythonclub.com.br/theme/images/favicon.ico" >
+
+            <title>Web Scraping na Nuvem com Scrapy por Elias Dorneles // #PythonClub // </title>
+
+    <meta property="fb:app_id" content="1487080281503641" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Web Scraping na Nuvem com Scrapy" />
+    <meta property="og:site_name" content="PythonClub" />
+    <meta property="og:url" content="http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html" />
+    <meta property="og:description" content="Este tutorial foi apresentado na Python Brasil 2015 em São José dos Campos. Roteiro Introdução a web scraping com Scrapy Conceitos do Scrapy Hands-on: crawler para versões diferentes dum site de citações Rodando no Scrapy Cloud O tutorial é 90% Scrapy e 10% Scrapy Cloud. Nota: Scrapy Cloud é o …" />
+    <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/custom.css">
+
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pygments.css">
+
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50935105-1', 'pythonclub.com.br');
+      ga('require', 'linkid', 'linkid.js');
+      ga('send', 'pageview');
+
+    </script>
+    <!-- transifex -->
+    <!-- <script type="text/javascript">  -->
+    <!-- window.liveSettings = {  -->
+    <!--     api_key: "f8fd260a9bdc4e9195c80e31416bb254",  -->
+    <!--     picker: "bottom-right",  -->
+    <!--     detectlang: true,  -->
+    <!--     autocollect: true  -->
+    <!-- };  -->
+    <!-- </script>  -->
+    <!-- <script type="text/javascript" src="//cdn.transifex.com/live.js"></script>  -->
+    <!-- end transifex -->
+    <meta name="google-site-verification" content="XQc_QtnTecI9nxAfplXGtECCpZQDwbDRcn7pyDVa1LE" />
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://pythonclub.com.br/author/elias-dorneles.html" title="See posts by Elias Dorneles">
+                        <img class="article-avatar" alt="Elias Dorneles" src="https://www.gravatar.com/avatar/dfd7b9492f5c5e49dca373bfdd7a3b1a">
+                </a>
+                <h2 class="article-info">Elias Dorneles</h2>
+    			<ul class="author-social">
+                    <li>
+                        <a target="_blank" href="https://github.com/eliasdorneles">
+                            <i class="fa fa-lg fa-fw fa-github"></i>
+                            <strong>Github</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://twitter.com/eliasdorneles">
+                            <i class="fa fa-lg fa-fw fa-twitter"></i>
+                            <strong>Twitter</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://eliasdorneles.github.io">
+                            <i class="fa fa-lg fa-fw fa-globe"></i>
+                            <strong>Site</strong>
+                        </a>
+                    </li>
+                </ul>
+                <h5>Publicado em:</h5>
+                <p>Fri 13 November 2015</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Web Scraping na Nuvem com Scrapy</h1>
+                        <p class="post-meta">
+                            // Tags                                 <a class="post-category" href="http://pythonclub.com.br/tag/scrapy.html">scrapy</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/spider.html">spider</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/web-scraping.html">web-scraping</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/scraping.html">scraping</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/crawling.html">crawling</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/js2xml.html">js2xml</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/extruct.html">extruct</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/web.html">web</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/scrapy-cloud.html">scrapy-cloud</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/scrapinghub.html">scrapinghub</a>
+                        </p>
+                </header>
+            </section>
+            <p>Este tutorial foi apresentado na Python Brasil 2015 em São José dos Campos.</p>
+<h2>Roteiro</h2>
+<ul>
+<li>Introdução a web scraping com <a href="http://scrapy.org/">Scrapy</a></li>
+<li>Conceitos do Scrapy</li>
+<li>Hands-on: crawler para versões diferentes dum site de citações</li>
+<li>Rodando no <a href="http://scrapinghub.com/platform/">Scrapy Cloud</a></li>
+</ul>
+<p>O tutorial é 90% Scrapy e 10% Scrapy Cloud.</p>
+<blockquote>
+<p><strong>Nota:</strong> Scrapy Cloud é o serviço PaaS da Scrapinghub, a empresa em que
+trabalho e que é responsável pelo desenvolvimento do Scrapy.</p>
+</blockquote>
+<h3>Precisa de ajuda?</h3>
+<p>Pergunte no <a href="http://pt.stackoverflow.com/tags/scrapy">Stackoverflow em Português usando a tag
+scrapy</a> ou pergunte em inglês no
+<a href="http://stackoverflow.com/tags/scrapy">Stackoverflow em inglês</a> ou na <a href="https://groups.google.com/forum/#!forum/scrapy-users">lista de
+e-mail scrapy-users</a>.</p>
+<h2>Introdução a web scraping com Scrapy</h2>
+<h3>O que é Scrapy?</h3>
+<p><a href="http://scrapy.org/">Scrapy</a> é um framework para crawlear web sites e extrair dados estruturados que
+podem ser usados para uma gama de aplicações úteis (data mining, arquivamento,
+etc).</p>
+<dl>
+<dt><em>Scraping:</em></dt>
+<dd>extrair dados do conteúdo da página</dd>
+<dt><em>Crawling:</em></dt>
+<dd>seguir links de uma página a outra</dd>
+</dl>
+<p>Se você já fez extração de dados de páginas Web antes em Python, são grandes as
+chances de você ter usado algo como requests + beautifulsoup. Essas tecnologias
+ajudam a fazer <em>scraping</em>.</p>
+<p>A grande vantagem de usar Scrapy é que tem suporte de primeira classe a
+<em>crawling</em>.</p>
+<p>Por exemplo, ele permite configurar o tradeoff de <strong>politeness vs speed</strong> (sem
+precisar escrever código pra isso) e já vem com uma configuração útil de
+fábrica para crawling habilitada: suporte a cookies, redirecionamento tanto via
+HTTP header quanto via tag HTML <code>meta</code>, tenta de novo requisições que falham,
+evita requisições duplicadas, etc.</p>
+<p>Além disso, o framework é altamente extensível, permite seguir combinando
+componentes e crescer um projeto de maneira gerenciável.</p>
+<h3>Instalando o Scrapy</h3>
+<p>Recomendamos usar virtualenv, e instalar o Scrapy com:</p>
+<div class="highlight"><pre><span></span>pip install scrapy
+</pre></div>
+
+
+<p>A dependência chatinha é normalmente o <a href="http://lxml.de/">lxml</a> (que precisa de
+algumas bibliotecas C instaladas). Caso tenha dificuldade, <a href="http://doc.scrapy.org/en/latest/intro/install.html#intro-install-platform-notes">consulte as
+instruções específicas por
+plataforma</a>
+ou peça ajuda nos canais citados acima.</p>
+<p>Para verificar se o Scrapy está instalado corretamente, rode o comando:</p>
+<div class="highlight"><pre><span></span>scrapy version
+</pre></div>
+
+
+<p>A saída que obtenho rodando este comando no meu computador é:</p>
+<div class="highlight"><pre><span></span>$ scrapy version
+<span class="m">2015</span>-11-14 <span class="m">19</span>:58:56 <span class="o">[</span>scrapy<span class="o">]</span> INFO: Scrapy <span class="m">1</span>.0.3 started <span class="o">(</span>bot: scrapybot<span class="o">)</span>
+<span class="m">2015</span>-11-14 <span class="m">19</span>:58:56 <span class="o">[</span>scrapy<span class="o">]</span> INFO: Optional features available: ssl, http11
+<span class="m">2015</span>-11-14 <span class="m">19</span>:58:56 <span class="o">[</span>scrapy<span class="o">]</span> INFO: Overridden settings: <span class="o">{}</span>
+Scrapy <span class="m">1</span>.0.3
+</pre></div>
+
+
+<h3>Rodando um spider</h3>
+<p>Para ter uma noção inicial de como usar o Scrapy, vamos começar rodando um
+spider de exemplo.</p>
+<p>Crie um arquivo <strong>youtube_spider.py</strong> com o seguinte conteúdo:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+
+
+<span class="k">def</span> <span class="nf">first</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="n">xpath</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="n">xpath</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">YoutubeChannelLister</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;channel-lister&#39;</span>
+    <span class="n">youtube_channel</span> <span class="o">=</span> <span class="s1">&#39;portadosfundos&#39;</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://www.youtube.com/user/</span><span class="si">%s</span><span class="s1">/videos&#39;</span> <span class="o">%</span> <span class="n">youtube_channel</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">sel</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s2">&quot;ul#channels-browse-content-grid &amp;gt; li&quot;</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="p">{</span>
+                <span class="s1">&#39;link&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="n">first</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s1">&#39;.//h3/a/@href&#39;</span><span class="p">)),</span>
+                <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">first</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s1">&#39;.//h3/a/text()&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;views&#39;</span><span class="p">:</span> <span class="n">first</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">&quot;.//ul/li[1]/text()&quot;</span><span class="p">),</span>
+            <span class="p">}</span>
+</pre></div>
+
+
+<p>Agora, rode o spider com o comando:</p>
+<div class="highlight"><pre><span></span>scrapy runspider youtube_spider.py -o portadosfundos.csv
+</pre></div>
+
+
+<p>O scrapy vai procurar um spider no arquivo <strong>youtube_spider.py</strong> e
+escrever os dados no arquivo CSV <strong>portadosfundos.csv</strong>.</p>
+<p>Caso tudo deu certo, você verá o log da página sendo baixada, os dados sendo
+extraídos, e umas estatísticas resumindo o processo no final, algo como:</p>
+<div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="nt">2015-11-14</span> <span class="nt">20</span><span class="p">:</span><span class="nd">14</span><span class="p">:</span><span class="nd">21</span> <span class="cp">[</span><span class="nx">scrapy</span><span class="cp">]</span> <span class="nt">DEBUG</span><span class="o">:</span> <span class="nt">Crawled</span> <span class="o">(</span><span class="nt">200</span><span class="o">)</span> <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">GET</span> <span class="nt">https</span><span class="o">://</span><span class="nt">www</span><span class="p">.</span><span class="nc">youtube</span><span class="p">.</span><span class="nc">com</span><span class="o">/</span><span class="nt">user</span><span class="o">/</span><span class="nt">portadosfundos</span><span class="o">/</span><span class="nt">videos</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="o">(</span><span class="nt">referer</span><span class="o">:</span> <span class="nt">None</span><span class="o">)</span>
+<span class="nt">2015-11-14</span> <span class="nt">20</span><span class="p">:</span><span class="nd">14</span><span class="p">:</span><span class="nd">22</span> <span class="cp">[</span><span class="nx">scrapy</span><span class="cp">]</span> <span class="nt">DEBUG</span><span class="o">:</span> <span class="nt">Scraped</span> <span class="nt">from</span> <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">200</span> <span class="nt">https</span><span class="o">://</span><span class="nt">www</span><span class="p">.</span><span class="nc">youtube</span><span class="p">.</span><span class="nc">com</span><span class="o">/</span><span class="nt">user</span><span class="o">/</span><span class="nt">portadosfundos</span><span class="o">/</span><span class="nt">videos</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="p">{</span><span class="err">&#39;views&#39;:</span> <span class="err">u&#39;323,218</span> <span class="err">views&#39;,</span> <span class="err">&#39;link&#39;:</span> <span class="err">u&#39;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">youtube</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">watch</span><span class="o">?</span><span class="n">v</span><span class="o">=</span><span class="n">qSqPkRi-UiE</span><span class="s1">&#39;, &#39;</span><span class="n">title</span><span class="s1">&#39;: u&#39;</span><span class="n">GAR</span><span class="err">\</span><span class="n">xc7ONS</span><span class="s1">&#39;}</span>
+<span class="s1">2015-11-14 20:14:22 </span><span class="cp">[</span><span class="nx">scrapy</span><span class="cp">]</span><span class="s1"> DEBUG: Scraped from &amp;lt;200 https://www.youtube.com/user/portadosfundos/videos&amp;gt;</span>
+<span class="s1">{&#39;</span><span class="n">views</span><span class="s1">&#39;: u&#39;</span><span class="mi">1</span><span class="p">,</span><span class="mi">295</span><span class="p">,</span><span class="mi">054</span> <span class="n">views</span><span class="s1">&#39;, &#39;</span><span class="n">link</span><span class="s1">&#39;: u&#39;</span><span class="n">https</span><span class="o">://</span><span class="n">www</span><span class="o">.</span><span class="n">youtube</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">watch</span><span class="o">?</span><span class="n">v</span><span class="o">=</span><span class="n">yXc8KCxyEyQ</span><span class="s1">&#39;, &#39;</span><span class="n">title</span><span class="s1">&#39;: u&#39;</span><span class="n">SUCESSO</span><span class="s1">&#39;}</span>
+<span class="s1">2015-11-14 20:14:22 </span><span class="cp">[</span><span class="nx">scrapy</span><span class="cp">]</span><span class="s1"> DEBUG: Scraped from &amp;lt;200 https://www.youtube.com/user/portadosfundos/videos&amp;gt;</span>
+<span class="s1">{&#39;</span><span class="n">views</span><span class="s1">&#39;: u&#39;</span><span class="mi">1</span><span class="p">,</span><span class="mi">324</span><span class="p">,</span><span class="mi">448</span> <span class="n">views</span><span class="s1">&#39;, &#39;</span><span class="n">link</span><span class="s1">&#39;: u&#39;</span><span class="n">https</span><span class="o">://</span><span class="n">www</span><span class="o">.</span><span class="n">youtube</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">watch</span><span class="o">?</span><span class="n">v</span><span class="o">=</span><span class="n">k9CbDcOT1e8</span><span class="s1">&#39;, &#39;</span><span class="n">title</span><span class="s1">&#39;: u&#39;</span><span class="n">BIBLIOTECA</span><span class="s1">&#39;}</span>
+<span class="s1">...</span>
+<span class="s1">{&#39;</span><span class="n">downloader</span><span class="o">/</span><span class="n">request_bytes</span><span class="s1">&#39;: 239,</span>
+<span class="s1"> &#39;</span><span class="n">downloader</span><span class="o">/</span><span class="n">request_count</span><span class="s1">&#39;: 1,</span>
+<span class="s1"> &#39;</span><span class="n">downloader</span><span class="o">/</span><span class="n">request_method_count</span><span class="o">/</span><span class="n">GET</span><span class="s1">&#39;: 1,</span>
+<span class="s1"> &#39;</span><span class="n">downloader</span><span class="o">/</span><span class="n">response_bytes</span><span class="s1">&#39;: 27176,</span>
+<span class="s1"> &#39;</span><span class="n">downloader</span><span class="o">/</span><span class="n">response_count</span><span class="s1">&#39;: 1,</span>
+<span class="s1"> &#39;</span><span class="n">downloader</span><span class="o">/</span><span class="n">response_status_count</span><span class="o">/</span><span class="mi">200</span><span class="s1">&#39;: 1,</span>
+<span class="s1"> &#39;</span><span class="n">item_scraped_count</span><span class="err">&#39;</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
+<span class="o">...</span>
+<span class="mi">2015-11-14</span> <span class="mi">20</span><span class="o">:</span><span class="mi">14</span><span class="o">:</span><span class="mi">22</span> <span class="cp">[</span><span class="nx">scrapy</span><span class="cp">]</span> <span class="n">INFO</span><span class="o">:</span> <span class="n">Spider</span> <span class="n">closed</span> <span class="p">(</span><span class="n">finished</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Ao final, verifique os resultados abrindo o arquivo CSV no seu editor de
+planilhas favorito.</p>
+<p>Se você quiser os dados em JSON, basta mudar a extensão do arquivo de saída:</p>
+<div class="highlight"><pre><span></span>scrapy runspider youtube_spider.py -o portadosfundos.json
+</pre></div>
+
+
+<p>Outro formato interessante que o Scrapy suporta é <a href="http://jsonlines.org">JSON lines</a>:</p>
+<div class="highlight"><pre><span></span>scrapy runspider youtube_spider.py -o portadosfundos.jl
+</pre></div>
+
+
+<p>Esse formato usa um item JSON em cada linha -- isso é muito útil para arquivos
+grandes, porque fica fácil de concatenar dois arquivos ou acrescentar novas
+entradas a um arquivo já existente.</p>
+<h2>Conceitos do Scrapy</h2>
+<h2>Spiders</h2>
+<p>Conceito central no Scrapy,
+<a href="http://doc.scrapy.org/en/latest/topics/spiders.html">spiders</a> são classes que
+herdam de
+<a href="http://doc.scrapy.org/en/latest/topics/spiders.html#scrapy-spider"><code>scrapy.Spider</code></a>,
+definindo de alguma maneira as requisições iniciais do crawl e como proceder
+para tratar os resultados dessas requisições.</p>
+<p>Um exemplo simples de spider é:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+
+<span class="k">class</span> <span class="nc">SpiderSimples</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;meuspider&#39;</span>
+
+    <span class="k">def</span> <span class="nf">start_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="s1">&#39;http://example.com&#39;</span><span class="p">)]</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Visitei o site: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Se você rodar o spider acima com o comando <code>scrapy runspider</code>, deverá ver no
+log as mensagens:</p>
+<div class="highlight"><pre><span></span><span class="nt">2015-11-14</span> <span class="nt">21</span><span class="p">:</span><span class="nd">11</span><span class="p">:</span><span class="nd">13</span> <span class="cp">[</span><span class="nx">scrapy</span><span class="cp">]</span> <span class="nt">DEBUG</span><span class="o">:</span> <span class="nt">Crawled</span> <span class="o">(</span><span class="nt">200</span><span class="o">)</span> <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">GET</span> <span class="nt">http</span><span class="o">://</span><span class="nt">example</span><span class="p">.</span><span class="nc">com</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="o">(</span><span class="nt">referer</span><span class="o">:</span> <span class="nt">None</span><span class="o">)</span>
+<span class="nt">2015-11-14</span> <span class="nt">21</span><span class="p">:</span><span class="nd">11</span><span class="p">:</span><span class="nd">13</span> <span class="cp">[</span><span class="nx">meuspider</span><span class="cp">]</span> <span class="nt">DEBUG</span><span class="o">:</span> <span class="nt">Visitei</span> <span class="nt">o</span> <span class="nt">site</span><span class="o">:</span> <span class="nt">http</span><span class="o">://</span><span class="nt">example</span><span class="p">.</span><span class="nc">com</span>
+</pre></div>
+
+
+<p>Como iniciar um crawl a partir de uma lista de URLs é uma tarefa comum,
+o Scrapy permite você usar o atribute de classe <code>start_urls</code> em vez de
+definir o método <code>start_requests()</code> a cada vez:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+
+<span class="k">class</span> <span class="nc">SpiderSimples</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;meuspider&#39;</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;http://example.com&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Visitei o site: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>Callbacks e próximas requisições</h2>
+<p>Repare o método <code>parse()</code>, ele recebe um objeto <em>response</em> que representa uma
+resposta HTTP, é o que chamamos de um <strong>callback</strong>. Os métodos <strong>callbacks</strong> no
+Scrapy são
+<a href="https://pythonhelp.wordpress.com/2012/09/03/generator-expressions/">generators</a>
+(ou retornam uma lista ou iterável) de objetos que podem ser:</p>
+<ul>
+<li>dados extraídos (dicionários Python ou objetos que herdam de scrapy.Item)</li>
+<li>requisições a serem feitas a seguir (objetos scrapy.Request)</li>
+</ul>
+<p>O motor do Scrapy itera sobre os objetos resultantes dos callbacks e os
+encaminha para o pipeline de dados ou para a fila de próximas requisições a
+serem feitas.</p>
+<p>Exemplo:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+
+<span class="k">class</span> <span class="nc">SpiderSimples</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;meuspider&#39;</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;http://example.com&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Visitei o site: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;tamanho&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">)}</span>
+
+        <span class="n">proxima_url</span> <span class="o">=</span> <span class="s1">&#39;http://www.google.com.br&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Agora vou para: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">proxima_url</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">proxima_url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle_google</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">handle_google</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Visitei o google via URL: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Antes de rodar o código acima, experimente ler o código e prever
+o que ele vai fazer. Depois, rode e verifique se ele fez mesmo
+o que você esperava.</p>
+<p>Você deverá ver no log algo como:</p>
+<div class="highlight"><pre><span></span><span class="nt">2015-11-14</span> <span class="nt">21</span><span class="p">:</span><span class="nd">32</span><span class="p">:</span><span class="nd">53</span> <span class="cp">[</span><span class="nx">scrapy</span><span class="cp">]</span> <span class="nt">DEBUG</span><span class="o">:</span> <span class="nt">Crawled</span> <span class="o">(</span><span class="nt">200</span><span class="o">)</span> <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">GET</span> <span class="nt">http</span><span class="o">://</span><span class="nt">example</span><span class="p">.</span><span class="nc">com</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="o">(</span><span class="nt">referer</span><span class="o">:</span> <span class="nt">None</span><span class="o">)</span>
+<span class="nt">2015-11-14</span> <span class="nt">21</span><span class="p">:</span><span class="nd">32</span><span class="p">:</span><span class="nd">53</span> <span class="cp">[</span><span class="nx">meuspider</span><span class="cp">]</span> <span class="nt">DEBUG</span><span class="o">:</span> <span class="nt">Visitei</span> <span class="nt">o</span> <span class="nt">site</span><span class="o">:</span> <span class="nt">http</span><span class="o">://</span><span class="nt">example</span><span class="p">.</span><span class="nc">com</span>
+<span class="nt">2015-11-14</span> <span class="nt">21</span><span class="p">:</span><span class="nd">32</span><span class="p">:</span><span class="nd">53</span> <span class="cp">[</span><span class="nx">scrapy</span><span class="cp">]</span> <span class="nt">DEBUG</span><span class="o">:</span> <span class="nt">Scraped</span> <span class="nt">from</span> <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">200</span> <span class="nt">http</span><span class="o">://</span><span class="nt">example</span><span class="p">.</span><span class="nc">com</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="p">{</span><span class="err">&#39;url&#39;:</span> <span class="err">&#39;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="s1">&#39;, &#39;</span><span class="n">tamanho</span><span class="err">&#39;</span><span class="o">:</span> <span class="mi">1270</span><span class="p">}</span>
+<span class="nt">2015-11-14</span> <span class="nt">21</span><span class="p">:</span><span class="nd">32</span><span class="p">:</span><span class="nd">53</span> <span class="cp">[</span><span class="nx">meuspider</span><span class="cp">]</span> <span class="nt">DEBUG</span><span class="o">:</span> <span class="nt">Agora</span> <span class="nt">vou</span> <span class="nt">para</span><span class="o">:</span> <span class="nt">http</span><span class="o">://</span><span class="nt">www</span><span class="p">.</span><span class="nc">google</span><span class="p">.</span><span class="nc">com</span><span class="p">.</span><span class="nc">br</span>
+<span class="nt">2015-11-14</span> <span class="nt">21</span><span class="p">:</span><span class="nd">32</span><span class="p">:</span><span class="nd">53</span> <span class="cp">[</span><span class="nx">scrapy</span><span class="cp">]</span> <span class="nt">DEBUG</span><span class="o">:</span> <span class="nt">Crawled</span> <span class="o">(</span><span class="nt">200</span><span class="o">)</span> <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">GET</span> <span class="nt">http</span><span class="o">://</span><span class="nt">www</span><span class="p">.</span><span class="nc">google</span><span class="p">.</span><span class="nc">com</span><span class="p">.</span><span class="nc">br</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="o">(</span><span class="nt">referer</span><span class="o">:</span> <span class="nt">http</span><span class="o">://</span><span class="nt">example</span><span class="p">.</span><span class="nc">com</span><span class="o">)</span>
+<span class="nt">2015-11-14</span> <span class="nt">21</span><span class="p">:</span><span class="nd">32</span><span class="p">:</span><span class="nd">54</span> <span class="cp">[</span><span class="nx">meuspider</span><span class="cp">]</span> <span class="nt">DEBUG</span><span class="o">:</span> <span class="nt">Visitei</span> <span class="nt">o</span> <span class="nt">google</span> <span class="nt">via</span> <span class="nt">URL</span><span class="o">:</span> <span class="nt">http</span><span class="o">://</span><span class="nt">www</span><span class="p">.</span><span class="nc">google</span><span class="p">.</span><span class="nc">com</span><span class="p">.</span><span class="nc">br</span>
+<span class="nt">2015-11-14</span> <span class="nt">21</span><span class="p">:</span><span class="nd">32</span><span class="p">:</span><span class="nd">54</span> <span class="cp">[</span><span class="nx">scrapy</span><span class="cp">]</span> <span class="nt">INFO</span><span class="o">:</span> <span class="nt">Closing</span> <span class="nt">spider</span> <span class="o">(</span><span class="nt">finished</span><span class="o">)</span>
+</pre></div>
+
+
+<h3>Settings</h3>
+<p>Outro conceito importante do Scrapy são as <strong>settings</strong> (isto é, configurações).
+As <strong>settings</strong> oferecem uma maneira de configurar componentes do Scrapy, podendo
+ser setadas de várias maneiras, tanto via linha de comando, variáveis de ambiente
+em um arquivo <strong>settings.py</strong> no caso de você estar usando um projeto Scrapy ou ainda
+diretamente no spider definindo um atributo de classe <code>custom_settings</code>.</p>
+<p>Exemplo setando no código do spider um delay de 1.5 segundos entre cada
+requisição:</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">MeuSpider</span><span class="p">(</span><span class="nx">scrapy</span><span class="p">.</span><span class="nx">Spider</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;meuspider&#39;</span>
+
+    <span class="nx">custom_settings</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;DOWNLOAD_DELAY&#39;</span><span class="o">:</span> <span class="mf">1.5</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<p>Para setar uma setting diretamente na linha de comando com <code>scrapy runspider</code>,
+use opção <code>-s</code>:</p>
+<div class="highlight"><pre><span></span>scrapy runspider meuspider.py -s DOWNLOAD_DELAY=1.5
+</pre></div>
+
+
+<p>Uma setting útil durante o desenvolvimento é a <em>HTTPCACHE_ENABLED</em>, que
+habilita uma cache das requisições HTTP -- útil para evitar baixar as
+mesmas páginas várias vezes enquanto você refina o código de extração.</p>
+<blockquote>
+<p><strong>Dica:</strong> na versão atual do Scrapy, a cache por padrão só funciona caso você
+esteja dentro de um projeto, que é onde ele coloca um diretório
+<code>.scrapy/httpcache</code> para os arquivos de cache. Caso você queira usar a cache
+rodando o spider com <code>scrapy runspider</code>, você pode usar um truque "enganar" o
+Scrapy criando um arquivo vazio com o nome <code>scrapy.cfg</code> no diretório atual, e
+o Scrapy criará a estrutura de diretórios <code>.scrapy/httpcache</code> no diretório
+atual.</p>
+</blockquote>
+<p>Bem, por ora você já deve estar familiarizado com os conceitos importantes do
+Scrapy, está na hora de partir para exemplos mais realistas.</p>
+<h2>Hands-on: crawler para versões diferentes dum site de citações</h2>
+<p>Vamos agora criar um crawler para um site de frases e citações, feito
+para esse tutorial e disponível em: <a href="http://spidyquotes.herokuapp.com">http://spidyquotes.herokuapp.com</a></p>
+<blockquote>
+<p><em>Nota:</em> O código-fonte do site está disponível em:
+<a href="https://github.com/eliasdorneles/spidyquotes">https://github.com/eliasdorneles/spidyquotes</a></p>
+</blockquote>
+<h3>Descrição dos objetivos:</h3>
+<p>O site contém uma lista de citações com autor e tags, paginadas com 10 citações
+por páginas. Queremos obter todas as citações, juntamente com os respectivos
+autores e lista de tags.</p>
+<p>Existem 4 variações do site, com o mesmo conteúdo mas usando markup HTML diferente.</p>
+<ul>
+<li>Versão com markup HTML semântico: <a href="http://spidyquotes.herokuapp.com/">http://spidyquotes.herokuapp.com/</a></li>
+<li>Versão com leiaute em tabelas: <a href="http://spidyquotes.herokuapp.com/tableful/">http://spidyquotes.herokuapp.com/tableful/</a></li>
+<li>Versão com os dados dentro do código Javascript: <a href="http://spidyquotes.herokuapp.com/js/">http://spidyquotes.herokuapp.com/js/</a></li>
+<li>Versão com AJAX e scroll infinito: <a href="http://spidyquotes.herokuapp.com/scroll">http://spidyquotes.herokuapp.com/scroll</a></li>
+</ul>
+<p>Para ver as diferenças entre cada versão do site, acione a opção "Exibir
+código-fonte" (<kbd>Ctrl</kbd>-<kbd>U</kbd>) do menu de contexto do seu
+browser.</p>
+<blockquote>
+<p><strong>Nota:</strong> cuidado com a opção "Inspecionar elemento" do browser para inspecionar
+a estrutura do markup. Diferentemente do resultado da opção "Exibir
+código-fonte" Usando essa ferramenta, o código que você vê representa as
+estruturas que o browser cria para a página, e nem sempre mapeiam diretamente
+ao código HTML que veio na requisição HTTP (que é o que você obtém quando usa
+o Scrapy), especialmente se a página estiver usando Javascript ou AJAX. Outro
+exemplo é o elemento <code>&lt;tbody&gt;</code> que é adicionado automaticamente pelos
+browsers em todas as tabelas, mesmo quando não declarado no markup.</p>
+</blockquote>
+<h3>Spider para a versão com HTML semântico</h3>
+<p>Para explorar a página (e a API de scraping do Scrapy), você pode usar
+o comando <code>scrapy shell URL</code>:</p>
+<div class="highlight"><pre><span></span>scrapy shell http://spidyquotes.herokuapp.com/
+</pre></div>
+
+
+<p>Esse comando abre um shell Python (ou <a href="http://ipython.org">IPython</a>, se você o
+tiver instalado no mesmo virtualenv) com o objeto <code>response</code>, o mesmo que você
+obteria num método <strong>callback</strong>. Recomendo usar o IPython porque fica mais fácil
+de explorar as APIs sem precisar ter que abrir a documentação a cada vez.</p>
+<p>Exemplo de exploração com o shell:</p>
+<div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="err">#</span> <span class="nt">olhando</span> <span class="nt">o</span> <span class="nt">fonte</span> <span class="nt">HTML</span><span class="o">,</span> <span class="nt">percebi</span> <span class="nt">que</span> <span class="nt">cada</span> <span class="nt">cita</span><span class="err">çã</span><span class="nt">o</span> <span class="nt">est</span><span class="err">á</span> <span class="nt">num</span> <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;quote&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="err">#</span> <span class="nt">vamos</span> <span class="nt">pegar</span> <span class="nt">o</span> <span class="nt">primeiro</span> <span class="nt">dele</span><span class="o">,</span> <span class="nt">e</span> <span class="nt">ver</span> <span class="nt">como</span> <span class="nt">extrair</span> <span class="nt">o</span> <span class="nt">texto</span><span class="o">:</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">quote</span> <span class="o">=</span> <span class="nt">response</span><span class="p">.</span><span class="nc">css</span><span class="o">(</span><span class="s1">&#39;.quote&#39;</span><span class="o">)</span><span class="cp">[</span><span class="mi">0</span><span class="cp">]</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">quote</span>
+    <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">Selector</span> <span class="nt">xpath</span><span class="o">=</span><span class="nt">u</span><span class="s2">&quot;descendant-or-self::*</span><span class="cp">[</span><span class="p">@</span><span class="nx">class</span> <span class="ow">and</span> <span class="nx">contains</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="nx">normalize</span><span class="na">-space</span><span class="p">(@</span><span class="nx">class</span><span class="p">),</span> <span class="s1">&#39; &#39;</span><span class="p">),</span> <span class="s1">&#39; quote &#39;</span><span class="p">)</span><span class="cp">]</span><span class="s2">&quot;</span> <span class="nt">data</span><span class="o">=</span><span class="nt">u</span><span class="s1">&#39;&amp;lt;div class=&quot;quote&quot; itemscope itemtype=&quot;h&#39;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">print</span> <span class="nt">quote</span><span class="p">.</span><span class="nc">extract</span><span class="o">()</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;quote&quot;</span> <span class="nt">itemscope</span> <span class="nt">itemtype</span><span class="o">=</span><span class="s2">&quot;http://schema.org/CreativeWork&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+        <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">span</span> <span class="nt">itemprop</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="err">“</span><span class="nt">We</span> <span class="nt">accept</span> <span class="nt">the</span> <span class="nt">love</span> <span class="nt">we</span> <span class="nt">think</span> <span class="nt">we</span> <span class="nt">deserve</span><span class="o">.</span><span class="err">”</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">span</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+        <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">small</span> <span class="nt">itemprop</span><span class="o">=</span><span class="s2">&quot;author&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">Stephen</span> <span class="nt">Chbosky</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">small</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+        <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;tags&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+            <span class="nt">Tags</span><span class="o">:</span>
+            <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">meta</span> <span class="nt">itemprop</span><span class="o">=</span><span class="s2">&quot;keywords&quot;</span> <span class="nt">content</span><span class="o">=</span><span class="s2">&quot;inspirational,love&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+
+            <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;/tag/inspirational/page/1/&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">inspirational</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">a</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+
+            <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;/tag/love/page/1/&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="nt">love</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">a</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+
+        <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">div</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+    <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">div</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">print</span> <span class="nt">quote</span><span class="p">.</span><span class="nc">css</span><span class="o">(</span><span class="s1">&#39;span&#39;</span><span class="o">)</span><span class="p">.</span><span class="nc">extract_first</span><span class="o">()</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">span</span> <span class="nt">itemprop</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="err">“</span><span class="nt">We</span> <span class="nt">accept</span> <span class="nt">the</span> <span class="nt">love</span> <span class="nt">we</span> <span class="nt">think</span> <span class="nt">we</span> <span class="nt">deserve</span><span class="o">.</span><span class="err">”</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">span</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">print</span> <span class="nt">quote</span><span class="p">.</span><span class="nc">css</span><span class="o">(</span><span class="s1">&#39;span::text&#39;</span><span class="o">)</span><span class="p">.</span><span class="nc">extract_first</span><span class="o">()</span>  <span class="err">#</span> <span class="nt">texto</span>
+<span class="err">“</span><span class="nt">We</span> <span class="nt">accept</span> <span class="nt">the</span> <span class="nt">love</span> <span class="nt">we</span> <span class="nt">think</span> <span class="nt">we</span> <span class="nt">deserve</span><span class="o">.</span><span class="err">”</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">quote</span><span class="p">.</span><span class="nc">css</span><span class="o">(</span><span class="s1">&#39;small::text&#39;</span><span class="o">)</span><span class="p">.</span><span class="nc">extract_first</span><span class="o">()</span>  <span class="err">#</span> <span class="nt">autor</span>
+    <span class="nt">u</span><span class="s1">&#39;Stephen Chbosky&#39;</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> 
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="err">#</span> <span class="nt">para</span> <span class="nt">a</span> <span class="nt">lista</span> <span class="nt">de</span> <span class="nt">tags</span><span class="o">,</span> <span class="nt">usamos</span> <span class="p">.</span><span class="nc">extract</span><span class="o">()</span> <span class="nt">em</span> <span class="nt">vez</span> <span class="nt">de</span> <span class="p">.</span><span class="nc">extract_first</span><span class="o">()</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">quote</span><span class="p">.</span><span class="nc">css</span><span class="o">(</span><span class="s1">&#39;.tags a::text&#39;</span><span class="o">)</span><span class="p">.</span><span class="nc">extract</span><span class="o">()</span>
+    <span class="cp">[</span><span class="nx">u</span><span class="s1">&#39;inspirational&#39;</span><span class="p">,</span> <span class="nx">u</span><span class="s1">&#39;love&#39;</span><span class="cp">]</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span>
+</pre></div>
+
+
+<p>Com o resultado da exploração inicial acima, podemos começar escrevendo um
+spider assim, num arquivo <code>quote_spider.py</code>:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+
+
+<span class="k">class</span> <span class="nc">QuotesSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;quotes&#39;</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;http://spidyquotes.herokuapp.com/&#39;</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">quote</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;.quote&#39;</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="p">{</span>
+                <span class="s1">&#39;texto&#39;</span><span class="p">:</span> <span class="n">quote</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;span::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">(),</span>
+                <span class="s1">&#39;autor&#39;</span><span class="p">:</span> <span class="n">quote</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;small::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">(),</span>
+                <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="n">quote</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;.tags a::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">(),</span>
+            <span class="p">}</span>
+</pre></div>
+
+
+<p>Se você rodar esse spider com:</p>
+<div class="highlight"><pre><span></span>scrapy runspider quote_spider.py -o quotes.csv
+</pre></div>
+
+
+<p>Você obterá os dados das citações da primeira página no arquivo <code>quotes.csv</code>.
+Só está faltando agora seguir o link para a próxima página, o que você também
+pode descobrir com mais alguma exploração no shell:</p>
+<div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">response</span><span class="p">.</span><span class="nc">css</span><span class="o">(</span><span class="s1">&#39;li.next&#39;</span><span class="o">)</span>
+    <span class="cp">[</span><span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="nx">u</span><span class="s2">&quot;descendant-or-self::li[@class and contains(concat(&#39; &#39;, normalize-space(@class), &#39; &#39;), &#39; next &#39;)]&quot;</span> <span class="n">data</span><span class="o">=</span><span class="nx">u</span><span class="s1">&#39;&amp;lt;li class=&quot;next&quot;&amp;gt;</span><span class="se">\n</span><span class="s1">                &amp;lt;a hre&#39;</span><span class="o">&amp;</span><span class="nx nx-Member">gt</span><span class="p">;</span><span class="cp">]</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">response</span><span class="p">.</span><span class="nc">css</span><span class="o">(</span><span class="s1">&#39;li.next a&#39;</span><span class="o">)</span>
+    <span class="cp">[</span><span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="nx">u</span><span class="s2">&quot;descendant-or-self::li[@class and contains(concat(&#39; &#39;, normalize-space(@class), &#39; &#39;), &#39; next &#39;)]/descendant-or-self::*/a&quot;</span> <span class="n">data</span><span class="o">=</span><span class="nx">u</span><span class="s1">&#39;&amp;lt;a href=&quot;/page/2/&quot;&amp;gt;Next &amp;lt;span aria-hidde&#39;</span><span class="o">&amp;</span><span class="nx nx-Member">gt</span><span class="p">;</span><span class="cp">]</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">response</span><span class="p">.</span><span class="nc">css</span><span class="o">(</span><span class="s1">&#39;li.next a::attr(&quot;href&quot;)&#39;</span><span class="o">)</span><span class="p">.</span><span class="nc">extract_first</span><span class="o">()</span>
+    <span class="nt">u</span><span class="s1">&#39;/page/2/&#39;</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="err">#</span> <span class="nt">o</span> <span class="nt">link</span> <span class="err">é</span> <span class="nt">relativo</span><span class="o">,</span> <span class="nt">temos</span> <span class="nt">que</span> <span class="nt">joinear</span> <span class="nt">com</span> <span class="nt">a</span> <span class="nt">URL</span> <span class="nt">da</span> <span class="nt">resposta</span><span class="o">:</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">response</span><span class="p">.</span><span class="nc">urljoin</span><span class="o">(</span><span class="nt">response</span><span class="p">.</span><span class="nc">css</span><span class="o">(</span><span class="s1">&#39;li.next a::attr(&quot;href&quot;)&#39;</span><span class="o">)</span><span class="p">.</span><span class="nc">extract_first</span><span class="o">())</span>
+    <span class="nt">u</span><span class="s1">&#39;http://spidyquotes.herokuapp.com/page/2/&#39;</span>
+</pre></div>
+
+
+<p>Juntando isso com o spider, ficamos com:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+
+
+<span class="k">class</span> <span class="nc">QuotesSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;quotes&#39;</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;http://spidyquotes.herokuapp.com/&#39;</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">quote</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;.quote&#39;</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="p">{</span>
+                <span class="s1">&#39;texto&#39;</span><span class="p">:</span> <span class="n">quote</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;span::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">(),</span>
+                <span class="s1">&#39;autor&#39;</span><span class="p">:</span> <span class="n">quote</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;small::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">(),</span>
+                <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="n">quote</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;.tags a::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">(),</span>
+            <span class="p">}</span>
+        <span class="n">link_next</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;li.next a::attr(&quot;href&quot;)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">link_next</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="n">link_next</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Agora, se você rodar esse spider novamente com:</p>
+<div class="highlight"><pre><span></span>scrapy runspider quote_spider.py
+</pre></div>
+
+
+<p>Perceberá que ainda assim ele vai extrair apenas os items da primeira página, e a segunda página
+vai falhar com um código HTTP 429, com a seguinte mensagem no log:</p>
+<div class="highlight"><pre><span></span><span class="nt">2015-11-15</span> <span class="nt">00</span><span class="p">:</span><span class="nd">06</span><span class="p">:</span><span class="nd">15</span> <span class="cp">[</span><span class="nx">scrapy</span><span class="cp">]</span> <span class="nt">DEBUG</span><span class="o">:</span> <span class="nt">Crawled</span> <span class="o">(</span><span class="nt">429</span><span class="o">)</span> <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">GET</span> <span class="nt">http</span><span class="o">://</span><span class="nt">spidyquotes</span><span class="p">.</span><span class="nc">herokuapp</span><span class="p">.</span><span class="nc">com</span><span class="o">/</span><span class="nt">page</span><span class="o">/</span><span class="nt">2</span><span class="o">/&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="o">(</span><span class="nt">referer</span><span class="o">:</span> <span class="nt">http</span><span class="o">://</span><span class="nt">spidyquotes</span><span class="p">.</span><span class="nc">herokuapp</span><span class="p">.</span><span class="nc">com</span><span class="o">/)</span>
+<span class="nt">2015-11-15</span> <span class="nt">00</span><span class="p">:</span><span class="nd">06</span><span class="p">:</span><span class="nd">15</span> <span class="cp">[</span><span class="nx">scrapy</span><span class="cp">]</span> <span class="nt">DEBUG</span><span class="o">:</span> <span class="nt">Ignoring</span> <span class="nt">response</span> <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">429</span> <span class="nt">http</span><span class="o">://</span><span class="nt">spidyquotes</span><span class="p">.</span><span class="nc">herokuapp</span><span class="p">.</span><span class="nc">com</span><span class="o">/</span><span class="nt">page</span><span class="o">/</span><span class="nt">2</span><span class="o">/&amp;</span><span class="nt">gt</span><span class="o">;:</span> <span class="nt">HTTP</span> <span class="nt">status</span> <span class="nt">code</span> <span class="nt">is</span> <span class="nt">not</span> <span class="nt">handled</span> <span class="nt">or</span> <span class="nt">not</span> <span class="nt">allowed</span>
+<span class="nt">2015-11-15</span> <span class="nt">00</span><span class="p">:</span><span class="nd">06</span><span class="p">:</span><span class="nd">15</span> <span class="cp">[</span><span class="nx">scrapy</span><span class="cp">]</span> <span class="nt">INFO</span><span class="o">:</span> <span class="nt">Closing</span> <span class="nt">spider</span> <span class="o">(</span><span class="nt">finished</span><span class="o">)</span>
+</pre></div>
+
+
+<p><center>
+  <img alt="" src="http://httpstatusdogs.com/wp-content/uploads/2011/12/429.jpg">
+</center></p>
+<p>O status HTTP 429 é usado para indicar que o servidor está recebendo muitas
+requisições do mesmo cliente num curto período de tempo.</p>
+<p>No caso do nosso site, podemos simular o problema no próprio browser se
+apertarmos o botão atualizar várias vezes no mesmo segundo:</p>
+<p><center>
+  <img alt="" src="http://i.imgur.com/V3arr9E.jpg">
+</center></p>
+<p>Neste caso, a mensagem no próprio site já nos diz o problema e a solução: o máximo de
+requisições permitido é uma a cada segundo, então podemos resolver o problema setando
+a configuração <code>DOWNLOAD_DELAY</code> para 1.5, deixando uma margem decente para podermos
+fazer crawling sabendo que estamos respeitando a política.</p>
+<p>Como esta é uma necessidade comum para alguns sites, o Scrapy também permite
+você configurar este comportamento diretamente no spider, setando o atributo de
+classe <code>download_delay</code>:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+
+
+<span class="k">class</span> <span class="nc">QuotesSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;quotes&#39;</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;http://spidyquotes.herokuapp.com/&#39;</span>
+    <span class="p">]</span>
+    <span class="n">download_delay</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">quote</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;.quote&#39;</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="p">{</span>
+                <span class="s1">&#39;texto&#39;</span><span class="p">:</span> <span class="n">quote</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;span::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">(),</span>
+                <span class="s1">&#39;autor&#39;</span><span class="p">:</span> <span class="n">quote</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;small::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">(),</span>
+                <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="n">quote</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;.tags a::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">(),</span>
+            <span class="p">}</span>
+        <span class="n">link_next</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;li.next a::attr(&quot;href&quot;)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">link_next</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="n">link_next</span><span class="p">))</span>
+</pre></div>
+
+
+<h3>Usando extruct para microdata</h3>
+<p>Se você é um leitor perspicaz, deve ter notado que o markup HTML tem umas
+marcações adicionais ao HTML normal, usando atributos <code>itemprop</code> e <code>itemtype</code>.
+Trata-se de um mecanismo chamado
+<a href="https://en.wikipedia.org/wiki/Microdata_(HTML)">Microdata</a>, <a href="http://www.w3.org/TR/microdata/">especificado pela
+W3C</a> e feito justamente para facilitar a
+tarefa de extração automatizada. Vários sites suportam este tipo de marcação,
+alguns exemplos famosos são <a href="http://www.yelp.com">Yelp</a>, <a href="http://www.theguardian.co.uk">The
+Guardian</a>, <a href="http://lemonde.fr">LeMonde</a>, etc.</p>
+<p>Quando um site tem esse tipo de marcação para o conteúdo que você está
+interessado, você pode usar o extrator de microdata da biblioteca
+<a href="https://pypi.python.org/pypi/extruct">extruct</a>.</p>
+<p>Instale a biblioteca extruct com:</p>
+<div class="highlight"><pre><span></span>pip install extruct
+</pre></div>
+
+
+<p>Veja como fica o código usando a lib:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">from</span> <span class="nn">extruct.w3cmicrodata</span> <span class="kn">import</span> <span class="n">LxmlMicrodataExtractor</span>
+
+
+<span class="k">class</span> <span class="nc">QuotesSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;quotes-microdata&quot;</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;http://spidyquotes.herokuapp.com/&#39;</span><span class="p">]</span>
+    <span class="n">download_delay</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">extractor</span> <span class="o">=</span> <span class="n">LxmlMicrodataExtractor</span><span class="p">()</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="n">extractor</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body_as_unicode</span><span class="p">(),</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)[</span><span class="s1">&#39;items&#39;</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">it</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">]</span>
+
+        <span class="n">link_next</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;li.next a::attr(&quot;href&quot;)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">link_next</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="n">link_next</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Usando microdata você reduz sobremaneira os problemas de mudanças de leiaute,
+pois o desenvolvedor do site ao colocar o markup microdata se compromete a
+mantê-lo atualizado.</p>
+<h3>Lidando com leiaute de tabelas:</h3>
+<p>Agora, vamos extrair os mesmos dados mas para um markup faltando bom-gosto:
+<a href="http://spidyquotes.herokuapp.com/tableful/">http://spidyquotes.herokuapp.com/tableful/</a></p>
+<p>Para lidar com esse tipo de coisa, a dica é: <strong>aprenda XPath</strong>, vale a pena!</p>
+<p>Comece aqui: <a href="http://www.slideshare.net/scrapinghub/xpath-for-web-scraping">http://www.slideshare.net/scrapinghub/xpath-for-web-scraping</a></p>
+<blockquote>
+<p><em>O domínio de XPath diferencia os gurus dos gafanhotos. -- Elias Dorneles, 2014</em></p>
+</blockquote>
+<p>Como o markup HTML dessa página não uma estrutura boa, em vez de fazer scraping
+baseado nas classes CSS ou ids dos elementos, com XPath podemos fazer baseando-se
+na estrutura e nos padrões presentes no conteúdo.</p>
+<p>Por exemplo, se você abrir o shell para a página
+<a href="http://spidyquotes.herokuapp.com/tableful">http://spidyquotes.herokuapp.com/tableful</a>, usando a expressão a seguir
+retorna os os nós <code>tr</code> (linhas da tabela) que contém os textos das citações,
+usando uma condição para pegar apenas linhas que estão imediatamente antes de
+linhas cujo texto comece com <code>"Tags: "</code>:</p>
+<div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">response</span><span class="p">.</span><span class="nc">xpath</span><span class="o">(</span><span class="s1">&#39;//tr</span><span class="cp">[</span><span class="nx">.</span><span class="p">/</span><span class="nx">following</span><span class="na">-sibling</span><span class="nl">::tr</span><span class="err">[</span><span class="mi">1</span><span class="cp">]</span><span class="s1">/td</span><span class="cp">[</span><span class="nx">starts</span><span class="na">-with</span><span class="p">(</span><span class="nx">.</span><span class="p">,</span> <span class="s2">&quot;Tags:&quot;</span><span class="p">)</span><span class="cp">]</span><span class="s1">]&#39;</span><span class="o">)</span>
+<span class="cp">[</span><span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;</span> <span class="n">data</span><span class="o">=</span><span class="nx">u</span><span class="s1">&#39;&amp;lt;tr style=&quot;border-bottom: 0px; &quot;&amp;gt;</span><span class="se">\n</span><span class="s1">      &#39;</span><span class="o">&amp;</span><span class="nx nx-Member">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;</span> <span class="n">data</span><span class="o">=</span><span class="nx">u</span><span class="s1">&#39;&amp;lt;tr style=&quot;border-bottom: 0px; &quot;&amp;gt;</span><span class="se">\n</span><span class="s1">      &#39;</span><span class="o">&amp;</span><span class="nx nx-Member">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;</span> <span class="n">data</span><span class="o">=</span><span class="nx">u</span><span class="s1">&#39;&amp;lt;tr style=&quot;border-bottom: 0px; &quot;&amp;gt;</span><span class="se">\n</span><span class="s1">      &#39;</span><span class="o">&amp;</span><span class="nx nx-Member">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;</span> <span class="n">data</span><span class="o">=</span><span class="nx">u</span><span class="s1">&#39;&amp;lt;tr style=&quot;border-bottom: 0px; &quot;&amp;gt;</span><span class="se">\n</span><span class="s1">      &#39;</span><span class="o">&amp;</span><span class="nx nx-Member">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;</span> <span class="n">data</span><span class="o">=</span><span class="nx">u</span><span class="s1">&#39;&amp;lt;tr style=&quot;border-bottom: 0px; &quot;&amp;gt;</span><span class="se">\n</span><span class="s1">      &#39;</span><span class="o">&amp;</span><span class="nx nx-Member">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;</span> <span class="n">data</span><span class="o">=</span><span class="nx">u</span><span class="s1">&#39;&amp;lt;tr style=&quot;border-bottom: 0px; &quot;&amp;gt;</span><span class="se">\n</span><span class="s1">      &#39;</span><span class="o">&amp;</span><span class="nx nx-Member">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;</span> <span class="n">data</span><span class="o">=</span><span class="nx">u</span><span class="s1">&#39;&amp;lt;tr style=&quot;border-bottom: 0px; &quot;&amp;gt;</span><span class="se">\n</span><span class="s1">      &#39;</span><span class="o">&amp;</span><span class="nx nx-Member">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;</span> <span class="n">data</span><span class="o">=</span><span class="nx">u</span><span class="s1">&#39;&amp;lt;tr style=&quot;border-bottom: 0px; &quot;&amp;gt;</span><span class="se">\n</span><span class="s1">      &#39;</span><span class="o">&amp;</span><span class="nx nx-Member">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;</span> <span class="n">data</span><span class="o">=</span><span class="nx">u</span><span class="s1">&#39;&amp;lt;tr style=&quot;border-bottom: 0px; &quot;&amp;gt;</span><span class="se">\n</span><span class="s1">      &#39;</span><span class="o">&amp;</span><span class="nx nx-Member">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;</span> <span class="n">data</span><span class="o">=</span><span class="nx">u</span><span class="s1">&#39;&amp;lt;tr style=&quot;border-bottom: 0px; &quot;&amp;gt;</span><span class="se">\n</span><span class="s1">      &#39;</span><span class="o">&amp;</span><span class="nx nx-Member">gt</span><span class="p">;</span><span class="cp">]</span>
+</pre></div>
+
+
+<p>Para extrair os dados, precisamos de alguma exploração:</p>
+<div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">quote</span> <span class="o">=</span> <span class="nt">response</span><span class="p">.</span><span class="nc">xpath</span><span class="o">(</span><span class="s1">&#39;//tr</span><span class="cp">[</span><span class="nx">.</span><span class="p">/</span><span class="nx">following</span><span class="na">-sibling</span><span class="nl">::tr</span><span class="err">[</span><span class="mi">1</span><span class="cp">]</span><span class="s1">/td</span><span class="cp">[</span><span class="nx">starts</span><span class="na">-with</span><span class="p">(</span><span class="nx">.</span><span class="p">,</span> <span class="s2">&quot;Tags:&quot;</span><span class="p">)</span><span class="cp">]</span><span class="s1">]&#39;</span><span class="o">)</span><span class="cp">[</span><span class="mi">0</span><span class="cp">]</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">print</span> <span class="nt">quote</span><span class="p">.</span><span class="nc">extract</span><span class="o">()</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">tr</span> <span class="nt">style</span><span class="o">=</span><span class="s2">&quot;border-bottom: 0px; &quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+            <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">td</span> <span class="nt">style</span><span class="o">=</span><span class="s2">&quot;padding-top: 2em;&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span><span class="err">“</span><span class="nt">We</span> <span class="nt">accept</span> <span class="nt">the</span> <span class="nt">love</span> <span class="nt">we</span> <span class="nt">think</span> <span class="nt">we</span> <span class="nt">deserve</span><span class="o">.</span><span class="err">”</span> <span class="nt">Author</span><span class="o">:</span> <span class="nt">Stephen</span> <span class="nt">Chbosky</span><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">td</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+                    <span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">tr</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">quote</span><span class="p">.</span><span class="nc">xpath</span><span class="o">(</span><span class="s1">&#39;string(.)&#39;</span><span class="o">)</span><span class="p">.</span><span class="nc">extract_first</span><span class="o">()</span>
+    <span class="nt">u</span><span class="s1">&#39;\n            \u201cWe accept the love we think we deserve.\u201d Author: Stephen Chbosky\n        &#39;</span>
+<span class="o">&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">quote</span><span class="p">.</span><span class="nc">xpath</span><span class="o">(</span><span class="s1">&#39;normalize-space(.)&#39;</span><span class="o">)</span><span class="p">.</span><span class="nc">extract_first</span><span class="o">()</span>
+    <span class="nt">u</span><span class="s1">&#39;\u201cWe accept the love we think we deserve.\u201d Author: Stephen Chbosky&#39;</span>
+</pre></div>
+
+
+<p>Note como não tem marcação separando o autor do conteúdo, apenas uma string
+"Author:".  Então podemos usar o método <code>.re()</code> da classe seletor, que nos
+permite usar uma expressão regular:</p>
+<div class="highlight"><pre><span></span>&amp;gt;&amp;gt;&amp;gt; text, author = quote.xpath(&#39;normalize-space(.)&#39;).re(&#39;(.+) Author: (.+)&#39;)
+&amp;gt;&amp;gt;&amp;gt; text
+    u&#39;\u201cWe accept the love we think we deserve.\u201d&#39;
+&amp;gt;&amp;gt;&amp;gt; author
+    u&#39;Stephen Chbosky&#39;
+</pre></div>
+
+
+<p>O código final do spider fica:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+
+
+<span class="k">class</span> <span class="nc">QuotesSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;quotes-tableful&#39;</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;http://spidyquotes.herokuapp.com/tableful&#39;</span><span class="p">]</span>
+    <span class="n">download_delay</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">quotes_xpath</span> <span class="o">=</span> <span class="s1">&#39;//tr[./following-sibling::tr[1]/td[starts-with(., &quot;Tags:&quot;)]]&#39;</span>
+
+        <span class="k">for</span> <span class="n">quote</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="n">quotes_xpath</span><span class="p">):</span>
+            <span class="n">texto</span><span class="p">,</span> <span class="n">autor</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;normalize-space(.)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">re</span><span class="p">(</span><span class="s1">&#39;(.+) Author: (.+)&#39;</span><span class="p">)</span>
+            <span class="n">tags</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./following-sibling::tr[1]//a/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+            <span class="k">yield</span> <span class="nb">dict</span><span class="p">(</span><span class="n">texto</span><span class="o">=</span><span class="n">texto</span><span class="p">,</span> <span class="n">autor</span><span class="o">=</span><span class="n">autor</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
+
+        <span class="n">link_next</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//a[contains(., &quot;Next&quot;)]/@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">link_next</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="n">link_next</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Note como o uso de XPath permitiu vincularmos elementos de acordo com o conteúdo
+tanto no caso das tags quanto no caso do link para a próxima página.</p>
+<h3>Lidando com dados dentro do código</h3>
+<p>Olhando o código-fonte da versão do site: <a href="http://spidyquotes.herokuapp.com/js/">http://spidyquotes.herokuapp.com/js/</a>
+vemos que os dados que queremos estão todos num bloco de código Javascript,
+dentro de um array estático. E agora?</p>
+<p>A dica aqui é usar a lib <a href="https://github.com/redapple/js2xml">js2xml</a> para
+converter o código Javascript em XML e então usar XPath ou CSS em cima do XML
+resultante para extrair os dados que a gente quer.</p>
+<p>Instale a biblioteca js2xml com:</p>
+<div class="highlight"><pre><span></span>pip install js2xml
+</pre></div>
+
+
+<p>Exemplo no shell:</p>
+<div class="highlight"><pre><span></span><span class="n">scrapy</span> <span class="n">shell</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">spidyquotes</span><span class="o">.</span><span class="n">herokuapp</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">js</span><span class="o">/</span>
+
+<span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">js2xml</span>
+<span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">script</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//script[contains(., &quot;var data =&quot;)]/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+<span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">sel</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Selector</span><span class="p">(</span><span class="n">_root</span><span class="o">=</span><span class="n">js2xml</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">script</span><span class="p">))</span>
+<span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//var[@name=&quot;data&quot;]/array/object&#39;</span><span class="p">)</span>
+    <span class="p">[</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//var[@name=&quot;data&quot;]/array/object&#39;</span> <span class="n">data</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;&amp;lt;object&amp;gt;&amp;lt;property name=&quot;author&quot;&amp;gt;&amp;lt;object&amp;gt;&#39;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//var[@name=&quot;data&quot;]/array/object&#39;</span> <span class="n">data</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;&amp;lt;object&amp;gt;&amp;lt;property name=&quot;author&quot;&amp;gt;&amp;lt;object&amp;gt;&#39;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//var[@name=&quot;data&quot;]/array/object&#39;</span> <span class="n">data</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;&amp;lt;object&amp;gt;&amp;lt;property name=&quot;author&quot;&amp;gt;&amp;lt;object&amp;gt;&#39;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//var[@name=&quot;data&quot;]/array/object&#39;</span> <span class="n">data</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;&amp;lt;object&amp;gt;&amp;lt;property name=&quot;author&quot;&amp;gt;&amp;lt;object&amp;gt;&#39;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//var[@name=&quot;data&quot;]/array/object&#39;</span> <span class="n">data</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;&amp;lt;object&amp;gt;&amp;lt;property name=&quot;author&quot;&amp;gt;&amp;lt;object&amp;gt;&#39;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//var[@name=&quot;data&quot;]/array/object&#39;</span> <span class="n">data</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;&amp;lt;object&amp;gt;&amp;lt;property name=&quot;author&quot;&amp;gt;&amp;lt;object&amp;gt;&#39;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//var[@name=&quot;data&quot;]/array/object&#39;</span> <span class="n">data</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;&amp;lt;object&amp;gt;&amp;lt;property name=&quot;author&quot;&amp;gt;&amp;lt;object&amp;gt;&#39;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//var[@name=&quot;data&quot;]/array/object&#39;</span> <span class="n">data</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;&amp;lt;object&amp;gt;&amp;lt;property name=&quot;author&quot;&amp;gt;&amp;lt;object&amp;gt;&#39;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//var[@name=&quot;data&quot;]/array/object&#39;</span> <span class="n">data</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;&amp;lt;object&amp;gt;&amp;lt;property name=&quot;author&quot;&amp;gt;&amp;lt;object&amp;gt;&#39;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;,</span>
+ <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Selector</span> <span class="n">xpath</span><span class="o">=</span><span class="s1">&#39;//var[@name=&quot;data&quot;]/array/object&#39;</span> <span class="n">data</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;&amp;lt;object&amp;gt;&amp;lt;property name=&quot;author&quot;&amp;gt;&amp;lt;object&amp;gt;&#39;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;]</span>
+<span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">quote</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//var[@name=&quot;data&quot;]/array/object&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">quote</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;string(./property[@name=&quot;text&quot;])&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+    <span class="sa">u</span><span class="s1">&#39;</span><span class="se">\u201c</span><span class="s1">We accept the love we think we deserve.</span><span class="se">\u201d</span><span class="s1">&#39;</span>
+<span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">quote</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;string(./property[@name=&quot;author&quot;]//property[@name=&quot;name&quot;])&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+    <span class="sa">u</span><span class="s1">&#39;Stephen Chbosky&#39;</span>
+<span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">quote</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./property[@name=&quot;tags&quot;]//string/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+    <span class="p">[</span><span class="sa">u</span><span class="s1">&#39;inspirational&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;love&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>O código final fica:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">import</span> <span class="nn">js2xml</span>
+
+
+<span class="k">class</span> <span class="nc">QuotesSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;quotes-js&#39;</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;http://spidyquotes.herokuapp.com/js/&#39;</span><span class="p">]</span>
+    <span class="n">download_delay</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">script</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//script[contains(., &quot;var data =&quot;)]/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+        <span class="n">sel</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Selector</span><span class="p">(</span><span class="n">_root</span><span class="o">=</span><span class="n">js2xml</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">script</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">quote</span> <span class="ow">in</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//var[@name=&quot;data&quot;]/array/object&#39;</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="p">{</span>
+                <span class="s1">&#39;texto&#39;</span><span class="p">:</span> <span class="n">quote</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;string(./property[@name=&quot;text&quot;])&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">(),</span>
+                <span class="s1">&#39;autor&#39;</span><span class="p">:</span> <span class="n">quote</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span>
+                    <span class="s1">&#39;string(./property[@name=&quot;author&quot;]//property[@name=&quot;name&quot;])&#39;</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">(),</span>
+                <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="n">quote</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./property[@name=&quot;tags&quot;]//string/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">(),</span>
+            <span class="p">}</span>
+
+        <span class="n">link_next</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;li.next a::attr(&quot;href&quot;)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">link_next</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="n">link_next</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Fica um pouco obscuro pela transformação de código Javascript em XML, mas a
+extração fica mais confiável do que hacks baseados em expressões regulares.</p>
+<h3>Lidando com AJAX</h3>
+<p>Agora, vamos para a versão AJAX com scroll infinito: <a href="http://spidyquotes.herokuapp.com/scroll/">http://spidyquotes.herokuapp.com/scroll/</a></p>
+<p>Se você observar o código-fonte, verá que os dados não estão lá.  No fonte só
+tem um código Javascript que busca os dados via AJAX, você pode ver isso
+olhando a aba <em>Network</em> das ferramentas do browser (no meu caso Chrome, mas
+no Firefox é similar).</p>
+<p>Nesse caso, precisamos replicar essas requisições com o Scrapy, e tratar
+os resultados de acordo com a resposta.</p>
+<p>Explorando no shell, vemos que o conteúdo é JSON:</p>
+<div class="highlight"><pre><span></span>scrapy shell http://spidyquotes.herokuapp.com/api/quotes?page=1
+
+&amp;gt;&amp;gt;&amp;gt; response.headers
+{&#39;Content-Type&#39;: &#39;application/json&#39;,
+ &#39;Date&#39;: &#39;Sun, 15 Nov 2015 22:18:29 GMT&#39;,
+ &#39;Server&#39;: &#39;gunicorn/19.3.0&#39;,
+ &#39;Via&#39;: &#39;1.1 vegur&#39;}
+</pre></div>
+
+
+<p>Portanto, podemos simplesmente usar o módulo JSON da biblioteca padrão e ser feliz:</p>
+<div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+<span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="p">[</span><span class="sa">u</span><span class="s1">&#39;has_next&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;quotes&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;tag&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;page&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;top_ten_tags&#39;</span><span class="p">]</span>
+<span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;has_next&#39;</span><span class="p">]</span>
+<span class="bp">True</span>
+<span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;quotes&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">{</span><span class="sa">u</span><span class="s1">&#39;author&#39;</span><span class="p">:</span> <span class="p">{</span><span class="sa">u</span><span class="s1">&#39;goodreads_link&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;/author/show/12898.Stephen_Chbosky&#39;</span><span class="p">,</span>
+  <span class="sa">u</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Stephen Chbosky&#39;</span><span class="p">},</span>
+ <span class="sa">u</span><span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">u</span><span class="s1">&#39;inspirational&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;love&#39;</span><span class="p">],</span>
+ <span class="sa">u</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;</span><span class="se">\u201c</span><span class="s1">We accept the love we think we deserve.</span><span class="se">\u201d</span><span class="s1">&#39;</span><span class="p">}</span>
+<span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;page&#39;</span><span class="p">]</span>
+<span class="mi">1</span>
+</pre></div>
+
+
+<p>Código final do spider fica:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+
+<span class="k">class</span> <span class="nc">QuotesSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;quotes-scroll&#39;</span>
+    <span class="n">quotes_base_url</span> <span class="o">=</span> <span class="s1">&#39;http://spidyquotes.herokuapp.com/api/quotes?page=</span><span class="si">%s</span><span class="s1">&#39;</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="n">quotes_base_url</span> <span class="o">%</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">download_delay</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;quotes&#39;</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="k">yield</span> <span class="p">{</span>
+                <span class="s1">&#39;texto&#39;</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;autor&#39;</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;tags&#39;</span><span class="p">],</span>
+            <span class="p">}</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;has_next&#39;</span><span class="p">]:</span>
+            <span class="n">next_page</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;page&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">quotes_base_url</span> <span class="o">%</span> <span class="n">next_page</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Ao lidar com requisições desse tipo, uma ferramenta útil que pode ser o
+<a href="https://pypi.python.org/pypi/minreq">minreq</a>, instale com: <code>pip install
+minreq</code>.</p>
+<p>O minreq tenta encontrar a requisição mínima necessária para replicar
+uma requisição do browser, e pode opcionalmente mostrar como montar
+um objeto <code>scrapy.Request</code> equivalente.</p>
+<p>Rode o minreq com:</p>
+<div class="highlight"><pre><span></span>minreq --action print_scrapy_request
+</pre></div>
+
+
+<p>Ele fica esperando você colar uma requisição no formato cURL. Para isto,
+encontre a requisição AJAX que você quer replicar na aba Network do browser, e
+use o recurso "Copy as cURL":</p>
+<p><img alt="" src="http://i.imgur.com/hqz9b58.jpg"></p>
+<p>Cole no prompt do minreq, e espere ele fazer a mágica. =)</p>
+<blockquote>
+<p><strong>Nota:</strong> O minreq está em estágio pre-alpha, você provavelmente vai
+encontrar bugs -- por favor reporte no GitHub.</p>
+</blockquote>
+<h2>Rodando no Scrapy Cloud</h2>
+<p>O <a href="http://scrapinghub.com/platform/">Scrapy Cloud</a> é a plataforma PaaS para
+rodar crawlers na nuvem, o que permite evitar uma série de preocupações com
+infraestrutura.</p>
+<p>Funciona como um "Heroku para crawlers", você faz deploy do seu projeto Scrapy
+e configura jobs para rodar spiders periodicamente.  Você pode também
+configurar scripts Python para rodar periodicamente, os quais podem gerenciar o
+escalonamento dos spiders.</p>
+<p>Comece criando uma conta free forever em: <a href="http://try.scrapinghub.com/free">http://try.scrapinghub.com/free</a></p>
+<h3>Criação do projeto</h3>
+<p>Até aqui nossos exemplos foram simplesmente rodando spiders com <code>scrapy runspider</code>.
+Para fazer o deploy, chegou a hora de criar um projeto Scrapy propriamente dito.</p>
+<p>Para criar um projeto, basta rodar o comando <code>scrapy startproject</code> passando o nome do projeto:</p>
+<div class="highlight"><pre><span></span>scrapy startproject quotes_crawler
+</pre></div>
+
+
+<p>Feito isso, entre no diretório do projeto com <code>cd quotes_crawler</code> e copie os
+arquivos com spiders para dentro do diretório <code>quotes_crawler/spiders</code>.
+Certifique-se de usar um nome único para cada spider.</p>
+<p>A partir desse momento, você deve ser capaz de rodar cada spider em separado usando o comando:</p>
+<div class="highlight"><pre><span></span>scrapy crawl NOME_DO_SPIDER
+</pre></div>
+
+
+<blockquote>
+<p><strong>Nota:</strong> Dependendo do caso, é legal começar com um projeto desde o começo,
+para já fazer tudo de maneira estruturada. Pessoalmente, eu gosto de começar
+com spiders em arquivos soltos, quando estou apenas testando a viabilidade de
+um crawler. Crio um projeto apenas quando vou colaborar no código com outras
+pessoas ou fazer deploy no Cloud, nessa hora já é interessante que fique tudo
+estruturado e fácil de crescer dentro de um projeto.</p>
+</blockquote>
+<h3>Configuração no Scrapy Cloud</h3>
+<p>Antes do deploy, você precisa criar um projeto no Scrapy Cloud. Na tela
+inicial, clique no botão adicionar uma organização:</p>
+<p><center>
+  <img alt="" src="http://i.imgur.com/9fsBv4I.png">
+</center></p>
+<p>Dê um nome para a organização e confirme:</p>
+<p><center>
+  <img alt="" src="http://i.imgur.com/GvfEXzu.png">
+</center></p>
+<p>Em seguida, adicione um serviço do para hospedar o seu serviço, clicando no
+botão "+ Service" que aparece dentro da organização criada:</p>
+<p><center>
+  <img alt="" src="http://i.imgur.com/D0VTJLc.png">
+</center></p>
+<p>Preencha os dados do seu projeto e confirme:</p>
+<p><center>
+  <img alt="" src="http://i.imgur.com/05Hvbu3.png">
+</center></p>
+<p>Depois disso, clique no nome do serviço na página inicial para acessar o local
+onde seu projeto estará disponível:</p>
+<p><center>
+  <img alt="" src="http://i.imgur.com/OIZLxYA.png">
+</center></p>
+<p>Note o número identificador do seu projeto: você usará esse identificador na
+hora fazer o deploy.</p>
+<p><center>
+  <img alt="" src="http://i.imgur.com/ErsMJbB.png">
+</center></p>
+<h3>Instalando e configurando shub</h3>
+<p>A maneira mais fácil de fazer deploy no Scrapy Cloud é usando a ferramenta
+<a href="http://doc.scrapinghub.com/shub.html">shub</a>, cliente da linha de comando
+para o Scrapy Cloud e demais serviços da Scrapinghub.</p>
+<p>Instale-a com:</p>
+<div class="highlight"><pre><span></span>pip install shub --upgrade
+</pre></div>
+
+
+<p>Faça login com o shub, usando o comando:</p>
+<div class="highlight"><pre><span></span>shub login
+</pre></div>
+
+
+<p>Informe sua API key conforme for solicitado (<a href="https://dash.scrapinghub.com/account/apikey">descubra aqui sua API
+key</a>).</p>
+<blockquote>
+<p><strong>Dica:</strong> Ao fazer login, o shub criará no arquivo <code>~/.netrc</code> uma entrada
+configurada para usar sua API key.  Esse arquivo também é usado pelo <code>curl</code>,
+o que é útil para quando você deseje fazer requisições HTTP para as APIs na
+linha de comando.</p>
+</blockquote>
+<h3>Preparando o projeto</h3>
+<p>Antes de fazer deploy do projeto, precisamos fazer deploy das dependências no
+Scrapy Cloud.
+Crie um arquivo <code>requirements-deploy.txt</code> com o seguinte conteúdo:</p>
+<div class="highlight"><pre><span></span>extruct
+js2xml
+slimit
+ply
+</pre></div>
+
+
+<p>Rode o comando:</p>
+<div class="highlight"><pre><span></span>shub deploy-reqs PROJECT_ID requirements-deploy.txt
+</pre></div>
+
+
+<p>Substitua <code>PROJECT_ID</code> pelo id do seu projeto (neste caso, 27199).</p>
+<h4>Deploy das dependências</h4>
+<p>Agora faça deploy do projeto com o comando:</p>
+<div class="highlight"><pre><span></span>shub deploy -p PROJECT_ID
+</pre></div>
+
+
+<p>Novamente, substituindo <code>PROJECT_ID</code> pelo id do seu projeto (neste caso, 27199)</p>
+<p>Se tudo deu certo, você verá algo como</p>
+<div class="highlight"><pre><span></span>$ shub deploy -p <span class="m">27199</span>
+Packing version <span class="m">1447628479</span>
+Deploying to Scrapy Cloud project <span class="s2">&quot;27199&quot;</span>
+<span class="o">{</span><span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;ok&quot;</span>, <span class="s2">&quot;project&quot;</span>: <span class="m">27199</span>, <span class="s2">&quot;version&quot;</span>: <span class="s2">&quot;1447628479&quot;</span>, <span class="s2">&quot;spiders&quot;</span>: <span class="m">5</span><span class="o">}</span>
+Run your spiders at: https://dash.scrapinghub.com/p/27199/
+</pre></div>
+
+
+<p>Agora você pode ir para a URL indicada (neste caso, <a href="https://dash.scrapinghub.com/p/27199/">https://dash.scrapinghub.com/p/27199/</a>)
+e agendar jobs dos spiders usando o botão "Schedule".</p>
+<blockquote>
+<p><strong>Nota:</strong> opcionalmente, você pode configurar o identificador do projeto no
+arquivo <code>scrapy.cfg</code>, para não precisar ter que lembrar a cada vez.</p>
+</blockquote>
+<p>Para configurar um spider para rodar periodicamente, utilize a aba "Periodic
+Jobs", no menu à esquerda.</p>
+<h1>The End</h1>
+<p>Era isso, se você chegou até aqui, parabéns e obrigado pela atenção! :)</p>
+<p>Você pode conferir o código do projeto final em: <a href="https://github.com/eliasdorneles/quotes_crawler">https://github.com/eliasdorneles/quotes_crawler</a></p>
+<p>Para obter ajuda, pergunte no <a href="http://pt.stackoverflow.com/tags/scrapy">Stackoverflow em Português usando a tag
+scrapy</a> ou pergunte em inglês no
+<a href="http://stackoverflow.com/tags/scrapy">Stackoverflow em inglês</a> ou na <a href="https://groups.google.com/forum/#!forum/scrapy-users">lista de
+e-mail scrapy-users</a>.</p>
+<p>Obrigado Valdir pela ajuda com a montagem desse tutorial, tanto no desenvolvimento
+do app <code>spidyquotes</code> quanto na escrita do material. <em>You rock, dude!</em></p>
+
+            <div class="licence">
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licença Creative Commons"
+                                                                                               style="border-width:0"
+                                                                                               src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"/></a><br/><a
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title"
+                    href="http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html">"Web Scraping na Nuvem com Scrapy"</a> de <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="http://pythonclub.com.br/author/elias-dorneles.html"
+                    property="cc:attributionName" rel="cc:attributionURL">"Elias Dorneles"</a> está licenciado com uma Licença
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons -
+                    Atribuição-NãoComercial-SemDerivações 4.0 Internacional</a>.
+            </div>
+
+            <div class="sharing">
+                <!-- Facebook sharing -->
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=1487080281503641&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-share-button" data-href="http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html" data-type="button_count"></div>
+
+                <!-- Google+ sharing -->
+                <div class="g-plus alinhar" data-action="share" data-annotation="bubble" data-href="http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html"></div>
+
+                <!-- Twitter sharing -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="pt" style="margin-bottom: -4px !important;">Tweetar</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Topo</a>
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES: THIS CODE IS ONLY AN EXAMPLE * * */
+                        var disqus_shortname = 'pythonclub'; // Required - Replace example with your forum shortname
+                        var disqus_identifier = 'material-do-tutorial-web-scraping-na-nuvem.html';
+                        var disqus_title = 'Web Scraping na Nuvem com Scrapy';
+                        var disqus_url = 'http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html';
+                    
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </div>
+<footer class="footer">
+    <p>&copy; PythonClub &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://pythonclub.com.br/theme/js/dynamic_random_articles.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+        $(window).load(function(){
+          $("iframe").css("margin-bottom", "-6px")
+          $("#twitter-widget-0").css("margin-bottom", "-5px");
+          $("#twitter-widget-0").css("margin-left", "-1px");
+        });
+    </script>
+    <script type="text/javascript" src="https://apis.google.com/js/platform.js">
+      {lang: 'pt-BR'}
+    </script>
+
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+
+        $(function(){
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/trabalhando-com-operadores-ternarios.html", "title": "Trabalhando com operadores tern\u00e1rios"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-com-socket-e-struct.html", "title": "Upload de Arquivos com Socket e Struct"}, {"url": "http://pythonclub.com.br/monitorando-ips-duplicados-na-rede.html", "title": "Monitorando Ips Duplicados na Rede"}, {"url": "http://pythonclub.com.br/django-rest-framework-class-based-views.html", "title": "Django Rest Framework - #3 Class Based Views"}, {"url": "http://pythonclub.com.br/django-rest-framework-requests-responses.html", "title": "Django Rest Framework - #2 Requests and Responses"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-2.html", "title": "Programa\u00e7\u00e3o funcional com Python #2 - Iteraveis e iteradores"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-1.html", "title": "Programa\u00e7\u00e3o funcional com Python #1 - Fun\u00e7\u00f5es"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-0.html", "title": "Programa\u00e7\u00e3o funcional com Python #0 - Saindo da zona de conforto"}, {"url": "http://pythonclub.com.br/peewee-um-orm-python-minimalista.html", "title": "Peewee - Um ORM Python minimalista"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html", "title": "What the Flask? pt 4 - Extens\u00f5es para o Flask"}, {"url": "http://pythonclub.com.br/configurando-python-3.5-openshift-flask-gunicorn.html", "title": "Configurando OpenShift com Python 3.5 + Flask + Gunicorn"}, {"url": "http://pythonclub.com.br/instalando-o-python-vers\u00e3o-3.7.0-alpha-1-no-ubuntu-16.04.md.html", "title": "Instalando o Python vers\u00e3o 3.7.0 alpha 1 no Ubuntu 16.04"}, {"url": "http://pythonclub.com.br/abrangencia-de-listas-e-dicionarios-com-python.html", "title": "Abrang\u00eancia de Listas e Dicion\u00e1rios"}, {"url": "http://pythonclub.com.br/debugging-logging.html", "title": "Debugging - logging"}, {"url": "http://pythonclub.com.br/deploy-rapido-simples-com-dokku.html", "title": "Deploy r\u00e1pido e simples com Dokku"}, {"url": "http://pythonclub.com.br/bot-telegram-mais-web-scraping-parte-1.html", "title": "Bot telegram mais web scraping - parte 1"}, {"url": "http://pythonclub.com.br/como-distribuir-sua-aplicacao-python-com-pypi.html", "title": "Como distribuir sua aplica\u00e7\u00e3o Python com PyPI"}, {"url": "http://pythonclub.com.br/python-webassets-elm.html", "title": "Python webassets & Elm"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula1.html", "title": "Curso Python asyncio: Aula 01 - Iterators e Generators"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula00.html", "title": "Curso Python asyncio: Aula 00 - Introdu\u00e7\u00e3o ao m\u00f3dulo asyncio"}, {"url": "http://pythonclub.com.br/gerando-relatorios-de-testes-com-coveralls.html", "title": "Relat\u00f3rios de testes com Coveralls"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 4 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 3 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 2 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)"}, {"url": "http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html", "title": "GitHub Pages com Pelican e Travis-CI"}, {"url": "http://pythonclub.com.br/sites-estaticos-com-lektor.html", "title": "Sites Est\u00e1ticos com Lektor"}, {"url": "http://pythonclub.com.br/django-rest-framework-serialization.html", "title": "Django Rest Framework Serialization"}, {"url": "http://pythonclub.com.br/explicit-is-better-than-implicit.html", "title": "Explicit is better than implicit"}, {"url": "http://pythonclub.com.br/tdd-com-python-e-flask.html", "title": "TDD com Python e Flask"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html", "title": "Upload de arquivos no Django: entendendo os modos de leitura"}, {"url": "http://pythonclub.com.br/python-generators.html", "title": "Python Generators"}, {"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+        });
+        
+    </script>
+        <!-- spot_im -->
+        <!--    <div id="spot-im-root"></div> -->
+        <!--    <script type="text/javascript">!function(t,o,p){function e(){var t=o.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"==o.location.protocol?"https":"http")+":"+p,o.body.appendChild(t)}t.spotId="3de816246c80a51757bb01c5b8c95cda",t.spotName="",t.allowDesktop=!0,t.allowMobile=!1,t.containerId="spot-im-root",e()}(window.SPOTIM={},document,"//www.spot.im/embed/scripts/launcher.js");</script> -->
+        <!-- end spot_im -->
+   
+            <script>
+              ((window.gitter = {}).chat = {}).options = {
+                    room: 'pythonclub/pythonclub.github.io'
+              };
+            </script>
+            <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+   
+</body>
+</html>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>PythonClub - Elias Dorneles</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Fri, 13 Nov 2015 10:04:00 -0200</lastBuildDate><item><title>Web Scraping na Nuvem com Scrapy</title><link>http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html</link><description>&lt;p&gt;Este tutorial foi apresentado na Python Brasil 2015 em São José dos Campos.&lt;/p&gt;
+&lt;h2&gt;Roteiro&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Introdução a web scraping com &lt;a href="http://scrapy.org/"&gt;Scrapy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Conceitos do Scrapy&lt;/li&gt;
+&lt;li&gt;Hands-on: crawler para versões diferentes dum site de citações&lt;/li&gt;
+&lt;li&gt;Rodando no &lt;a href="http://scrapinghub.com/platform/"&gt;Scrapy Cloud&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;O tutorial é 90% Scrapy e 10% Scrapy Cloud.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Scrapy Cloud é o …&lt;/p&gt;&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Elias Dorneles</dc:creator><pubDate>Fri, 13 Nov 2015 10:04:00 -0200</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2015-11-13:/material-do-tutorial-web-scraping-na-nuvem.html</guid><category>scrapy</category><category>spider</category><category>web-scraping</category><category>scraping</category><category>crawling</category><category>js2xml</category><category>extruct</category><category>web</category><category>scrapy-cloud</category><category>scrapinghub</category></item></channel></rss>

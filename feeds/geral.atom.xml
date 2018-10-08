@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub - Geral</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/geral.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2018-10-06T09:21:00-03:00</updated><entry><title>Trabalhando com operadores ternários</title><link href="http://pythonclub.com.br/trabalhando-com-operadores-ternarios.html" rel="alternate"></link><published>2018-10-06T09:21:00-03:00</published><updated>2018-10-06T09:21:00-03:00</updated><author><name>Vitor Hugo de Oliveira Vargas</name></author><id>tag:pythonclub.com.br,2018-10-06:/trabalhando-com-operadores-ternarios.html</id><summary type="html">&lt;p&gt;Quando estamos escrevendo um código qualquer, possivelmente 
+a expressão que mais utilizamos é o &lt;code&gt;if&lt;/code&gt;. Para qualquer 
+tarefas que buscamos automatizar ou problemas que buscamos 
+resolver, sempre acabamos caindo em lógicas como "Se isso 
+acontecer, então faça aquilo, senão faça aquele outro...".&lt;/p&gt;
+&lt;p&gt;Quando estamos falando de ações a serem executadas …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Quando estamos escrevendo um código qualquer, possivelmente 
+a expressão que mais utilizamos é o &lt;code&gt;if&lt;/code&gt;. Para qualquer 
+tarefas que buscamos automatizar ou problemas que buscamos 
+resolver, sempre acabamos caindo em lógicas como "Se isso 
+acontecer, então faça aquilo, senão faça aquele outro...".&lt;/p&gt;
+&lt;p&gt;Quando estamos falando de ações a serem executadas, pessoalmente
+gosto da forma com que o código fica organizado em python quando
+usamos este tipo de condições, por exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;vencer_o_thanos&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;restaurar_a_paz&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Graças a indentação e ao espaçamento, vemos onde onde começa e/ou 
+termina o bloco  executado caso a varável &lt;code&gt;vencer_o_thanos&lt;/code&gt; seja 
+&lt;code&gt;True&lt;/code&gt;. Quanto mais &lt;code&gt;if&lt;/code&gt;'s você aninhar, mais bonito seu 
+código fica e em momento algum o mesmo se torna mais confuso 
+(ao menos, não deveria se tornar). Entretanto, sempre fico 
+extremamente incomodado quando tenho de escrever um bloco apenas 
+marcar uma variável, como por exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;vencer_o_thanos&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;paz&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+
+&lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;paz&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Por isso, para trabalhar com variáveis que possuem um valor condicional,
+gosto sempre de trabalhar com expressões condicionais, ou como costumam
+ser chamadas, &lt;strong&gt;operadores ternários&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Operadores ternários são todos os operadores que podem receber três 
+operandos. Como as expressões condicionais costumam ser os operadores 
+ternários mais populares nas linguagens em que aparecem, acabamos por 
+associar estes nomes e considerar que são a mesma coisa. Cuidado ao tirar
+este tipo de conclusão, mesmo que toda vogal esteja no alfabeto, o 
+alfabeto não é composto apenas por vogais.&lt;/p&gt;
+&lt;p&gt;A estrutura de uma expressão condicional é algo bem simples, veja só:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;paz&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;vencer_o_thanos&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;tipo_de_x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Par&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;impar&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Resumidamente, teremos &lt;strong&gt;um valor seguido de uma condição e por fim seu 
+valor caso a condição seja falsa&lt;/strong&gt;. Pessoalmente acredito que apesar de um
+pouco diferente, essa forma de escrita para casos como o exemplificado acima
+é muito mais clara, mais explicita.&lt;/p&gt;
+&lt;p&gt;Se você fizer uma tradução literal das booleanas utilizadas no primeiro exemplo,
+lerá algo como &lt;code&gt;paz é verdadeira caso vencer_o_thanos, caso contrário é Falsa.&lt;/code&gt; 
+já o segundo exemplo fica mais claro ainda, pois lemos algo como 
+&lt;code&gt;tipo_de_x é par caso o resto da divisão de x por 2 seja 0, se não, tipo_de_x é impar.&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Interpretar código dessa forma pode ser estranho para um programador. Interpretar
+uma abertura de chave ou uma indentação já é algo mas natural. Todavia, para aqueles
+que estão começando, o raciocínio ocorre de forma muito mais parecida com a descrita
+acima. Espero que tenham gostado do texto e que esse conhecimento lhes seja útil.&lt;/p&gt;</content><category term="Python"></category><category term="tutorial"></category><category term="operadores ternários"></category></entry></feed>

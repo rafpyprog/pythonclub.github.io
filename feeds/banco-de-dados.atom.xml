@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/banco-de-dados.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-16T01:00:00-03:00</updated><entry><title>Guia rápido de comandos SQLite3</title><link href="http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html" rel="alternate"></link><published>2014-05-16T01:00:00-03:00</published><updated>2014-05-16T01:00:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-05-16:guia-rapido-comandos-sqlite3.html</id><summary type="html">&lt;p&gt;É sempre bom ter tudo que você precisa de forma rápida e simples.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub - Banco de dados</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/banco-de-dados.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-16T01:00:00-03:00</updated><entry><title>Guia rápido de comandos SQLite3</title><link href="http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html" rel="alternate"></link><published>2014-05-16T01:00:00-03:00</published><updated>2014-05-16T01:00:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-05-16:/guia-rapido-comandos-sqlite3.html</id><summary type="html">&lt;p class="first last"&gt;Guia rápido de comandos SQLite3&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;É sempre bom ter tudo que você precisa de forma rápida e simples.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#criando-uma-tabela"&gt;Criando uma tabela&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#crud"&gt;CRUD&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#backup"&gt;Backup&lt;/a&gt;&lt;/p&gt;
@@ -251,4 +252,4 @@ sqlite&amp;gt; .mode column
 &lt;p&gt;&lt;a class="reference external" href="http://grasswiki.osgeo.org/wiki/Sqlite_Drop_Column"&gt;Sqlite Drop Column&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Leia também sobre &lt;a class="reference external" href="http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html"&gt;SQLite3 e Python&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="sqlite"></category></entry></feed>
+</content><category term="sqlite"></category></entry></feed>

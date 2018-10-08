@@ -1,5 +1,414 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/eric-hideki.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-01T13:16:00-03:00</updated><entry><title>Como colaborar na tradução do Djangobook sem conhecer programação</title><link href="http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html" rel="alternate"></link><published>2014-05-01T13:16:00-03:00</published><updated>2014-05-01T13:16:00-03:00</updated><author><name>Eric Hideki</name></author><id>tag:pythonclub.com.br,2014-05-01:como_colaborar_com_projetos_open_source.html</id><summary type="html">&lt;p&gt;Uma das perguntas que os iniciantes sempre se perguntam é: Como ganhar experiência? Ou colaborar com projetos open source sem ter conhecimentos? Pois é, saiba que você pode colaborar sem dificuldades, e que
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub - Eric Hideki</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/eric-hideki.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2016-01-09T10:30:00-02:00</updated><entry><title>Como encontrar soluções para seus problemas com Python</title><link href="http://pythonclub.com.br/como-encontrar-solucoes-python.html" rel="alternate"></link><published>2016-01-09T10:30:00-02:00</published><updated>2016-01-09T10:30:00-02:00</updated><author><name>Eric Hideki</name></author><id>tag:pythonclub.com.br,2016-01-09:/como-encontrar-solucoes-python.html</id><summary type="html">&lt;h2&gt;Como encontrar soluções para seus problemas com Python&lt;/h2&gt;
+&lt;p&gt;Quando estamos aprendendo algo, o início geralmente é difícil. Conseguir absorver novos conceitos e entender como as coisas funcionam não é uma das tarefas mais simples, porém nessas horas precisamos lembrar do conceito de 'babysteps' (Um passo de cada vez), ter paciência …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Como encontrar soluções para seus problemas com Python&lt;/h2&gt;
+&lt;p&gt;Quando estamos aprendendo algo, o início geralmente é difícil. Conseguir absorver novos conceitos e entender como as coisas funcionam não é uma das tarefas mais simples, porém nessas horas precisamos lembrar do conceito de 'babysteps' (Um passo de cada vez), ter paciência e persistir. &lt;/p&gt;
+&lt;p&gt;A diferença entre uma pessoa experiente comparado a um iniciante é que a pessoa experiente errou muito mais vezes do que um iniciante, e com o tempo aprendeu com os erros.&lt;/p&gt;
+&lt;p&gt;E na área de programação temos inúmeros tutoriais e cursos espalhados pela internet, e geralmente as pessoas começam a aprender por conta própria. E quando acontece um problema (e isso irá acontecer inevitavelmente) e não sabemos como solucioná-lo, se torna um obstáculo chato. &lt;/p&gt;
+&lt;p&gt;Neste artigo irei mostrar algumas formas de poder encontrar soluções para seus problemas enquanto aprende a programar. &lt;/p&gt;
+&lt;p&gt;Os exemplos se aplicam a Python, mas podem ser exemplificados para qualquer outra linguagem ou tecnologia (se você trabalha com outras tecnologias como PHP ou Ruby, deixe nos comentários quais ferramentas utilizam para encontrar soluções dos seus problemas).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; Veja essa palestra fantástica do &lt;a href="http://tedxtalks.ted.com/video/The-First-20-Hours-How-to-Learn"&gt;Josh Kaufman sobre as primeiras 20 horas de aprendizado&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Python console&lt;/h2&gt;
+&lt;p&gt;Uma grande feature do Python é seu console interativo, por ele conseguimos testar nossos códigos e alguns scripts em tempo real. Vejamos um exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Python&lt;/span&gt; &lt;span class="mf"&gt;3.4&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Oct&lt;/span&gt; &lt;span class="mi"&gt;14&lt;/span&gt; &lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;28&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;GCC&lt;/span&gt; &lt;span class="mf"&gt;4.8&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="n"&gt;linux&lt;/span&gt;
+&lt;span class="n"&gt;Type&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;credits&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;license&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Eric&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Python&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;JavaScript&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Django&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Flask&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
+&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+  &lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;unsupported&lt;/span&gt; &lt;span class="n"&gt;operand&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;set&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;tuple&amp;#39;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;tuple&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;JavaScript&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Eric&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Python&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Django&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Flask&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;O que aconteceu?&lt;/h3&gt;
+&lt;p&gt;Na variável &lt;strong&gt;a&lt;/strong&gt; criamos um &lt;em&gt;set&lt;/em&gt; com os nomes &lt;em&gt;Eric, Python e JavaScript&lt;/em&gt;, e depois criamos uma &lt;em&gt;tupla&lt;/em&gt; com os nomes &lt;em&gt;Django e Flask&lt;/em&gt;. &lt;/p&gt;
+&lt;p&gt;Ao tentarmos juntar &lt;strong&gt;a + b&lt;/strong&gt;, o interpretador Python nos retorna um erro: &lt;em&gt;TypeError: unsupported operand type(s) for +: 'set' and 'tuple'&lt;/em&gt;. Ou seja, o que ele diz é que não podemos somar um set a uma tupla.&lt;/p&gt;
+&lt;p&gt;O interpretador Python realiza as operações em tempo real, e se caso o que você deseja fazer não estiver correto, o interpretador irá informar o erro. Se o erro não for explícito para você, basta copiar e colar o erro no Google e encontrará os motivos do erro.&lt;/p&gt;
+&lt;p&gt;Para resolver esse problema, uma das soluções apresentada é transformar nosso set em uma tupla, onde fazemos a conversão em tempo de execução com o comando &lt;strong&gt;tuple(a) + b&lt;/strong&gt;. &lt;/p&gt;
+&lt;h2&gt;&lt;a href="http://ipython.org/"&gt;Ipython&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Que tal termos um interpretador Python mais poderoso e com mais funcionalidades que o tradicional? O &lt;a href="http://ipython.org/"&gt;Ipython&lt;/a&gt; foi criado especificamente esse objetivo.&lt;/p&gt;
+&lt;p&gt;Vamos explorá-lo um pouco:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ipython&lt;/span&gt;
+
+&lt;span class="n"&gt;Python&lt;/span&gt; &lt;span class="mf"&gt;2.7&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Jun&lt;/span&gt; &lt;span class="mi"&gt;22&lt;/span&gt; &lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;58&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+&lt;span class="n"&gt;Type&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;credits&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;license&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+
+&lt;span class="n"&gt;IPython&lt;/span&gt; &lt;span class="mf"&gt;1.2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt; &lt;span class="n"&gt;An&lt;/span&gt; &lt;span class="n"&gt;enhanced&lt;/span&gt; &lt;span class="n"&gt;Interactive&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="err"&gt;?&lt;/span&gt;         &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Introduction&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;overview&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;IPython&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s features.&lt;/span&gt;
+&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;quickref&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Quick&lt;/span&gt; &lt;span class="n"&gt;reference&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;help&lt;/span&gt;      &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s own help system.&lt;/span&gt;
+&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;   &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Details&lt;/span&gt; &lt;span class="n"&gt;about&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;object&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;object??&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;extra&lt;/span&gt; &lt;span class="n"&gt;details&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Eric&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;capitalize&lt;/span&gt;  &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isalnum&lt;/span&gt;     &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lstrip&lt;/span&gt;      &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;splitlines&lt;/span&gt;
+&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;center&lt;/span&gt;      &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isalpha&lt;/span&gt;     &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;partition&lt;/span&gt;   &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;startswith&lt;/span&gt;
+&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;       &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isdigit&lt;/span&gt;     &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;     &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strip&lt;/span&gt;
+&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;      &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;islower&lt;/span&gt;     &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rfind&lt;/span&gt;       &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;swapcase&lt;/span&gt;
+&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;encode&lt;/span&gt;      &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isspace&lt;/span&gt;     &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rindex&lt;/span&gt;      &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
+&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;endswith&lt;/span&gt;    &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;istitle&lt;/span&gt;     &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rjust&lt;/span&gt;       &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;translate&lt;/span&gt;
+&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;expandtabs&lt;/span&gt;  &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isupper&lt;/span&gt;     &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpartition&lt;/span&gt;  &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upper&lt;/span&gt;
+&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find&lt;/span&gt;        &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;        &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rsplit&lt;/span&gt;      &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zfill&lt;/span&gt;
+&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;      &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ljust&lt;/span&gt;       &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rstrip&lt;/span&gt;      
+&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;       &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lower&lt;/span&gt;       &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;    
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;startswith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;O&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;startswith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;E&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lower&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;eric&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;O que aconteceu?&lt;/h3&gt;
+&lt;p&gt;Criamos uma variável &lt;strong&gt;nome&lt;/strong&gt; onde é um simples String "Eric". E se digitarmos &lt;strong&gt;nome.&lt;/strong&gt; e apertar TAB, o Ipython irá apresentar diversas operações que podemos fazer com essa variável. &lt;/p&gt;
+&lt;p&gt;Por exemplo, &lt;strong&gt;nome.startswith&lt;/strong&gt; verifica se a primeira letra ou número começa com o parâmetro passado a ele. &lt;/p&gt;
+&lt;p&gt;Na primeira tentativa verificamos se a variável começa com a letra &lt;em&gt;O&lt;/em&gt;, e ele me retornou &lt;strong&gt;False&lt;/strong&gt;, ou seja, não é verdade. &lt;/p&gt;
+&lt;p&gt;Na segunda tentativa tentamos com a letra &lt;strong&gt;E&lt;/strong&gt;, e ele me retornou &lt;strong&gt;True&lt;/strong&gt;, o que é verdade já que o nome &lt;strong&gt;Eric&lt;/strong&gt; começa com a letra "E".&lt;/p&gt;
+&lt;p&gt;O Ipython vai muito mais além do que isso, vá e dê uma olhada na página oficial e o que ele pode fazer. &lt;/p&gt;
+&lt;p&gt;E temos também o &lt;a href="http://ipython.org/notebook.html"&gt;Ipython Notebook&lt;/a&gt; que é FANTÁSTICO, amplamente utilizado para computação científica.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="http://www.dreampie.org/"&gt;Dreampie&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Quando queremos testar algo mais elaborado, ter um console que permita criamos nossos códigos de forma mais organizada além do Interpretador padrão do Python e o IPython, podemos utilizar o &lt;a href="http://www.dreampie.org/"&gt;Dreampie&lt;/a&gt; que é ideal para isso.&lt;/p&gt;
+&lt;p&gt;Vamos a outro exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Python&lt;/span&gt; &lt;span class="mf"&gt;2.7&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Jun&lt;/span&gt; &lt;span class="mi"&gt;22&lt;/span&gt; &lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;58&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;GCC&lt;/span&gt; &lt;span class="mf"&gt;4.8&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="n"&gt;linux2&lt;/span&gt;
+&lt;span class="n"&gt;Type&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;credits&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;license()&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;DreamPie&lt;/span&gt; &lt;span class="mf"&gt;1.1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;colunas&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Eric&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Hideki&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Luciano&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Ramalho&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;David&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Beazley&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Tim&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Peters&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;operator&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;itemgetter&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;colunas_por_nome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;colunas&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;itemgetter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;colunas_por_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;colunas&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;itemgetter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pprint&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;pprint&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;pprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;colunas_por_nome&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;David&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Beazley&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Eric&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Hideki&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Luciano&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Ramalho&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Tim&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Peters&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;pprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;colunas_por_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Tim&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Peters&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Luciano&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Ramalho&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Eric&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Hideki&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;David&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Beazley&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/erichideki/pythonclub.github.io/pelican/content/images/erichideki/dreampie.jpg" alt="Preview da tela do Dreampie."&gt;&lt;/p&gt;
+&lt;h3&gt;O que aconteceu?&lt;/h3&gt;
+&lt;p&gt;Temos uma lista de dicionários desordenado e queremos ordenar de acordo com os parâmetros que queremos. Com isso, utilizamos duas bibliotecas que já estão por padrão com o Python: &lt;em&gt;&lt;a href="https://docs.python.org/2/library/operator.html?highlight=itemgetter#operator.itemgetter"&gt;operator&lt;/a&gt; e &lt;a href="https://docs.python.org/2/library/pprint.html"&gt;pprint&lt;/a&gt;&lt;/em&gt;. &lt;/p&gt;
+&lt;p&gt;Dentro da biblioteca &lt;strong&gt;operator&lt;/strong&gt; temos a funcionalidade &lt;strong&gt;itemgetter&lt;/strong&gt;, onde através dos parâmetros que passamos, ele irá fazer a seleção. Já o &lt;strong&gt;pprint&lt;/strong&gt; irá mostrar o resultado da nossa seleção de forma mais bonita. Vamos explicar detalhadamente o que cada coisa faz.&lt;/p&gt;
+&lt;p&gt;Criamos nossa lista de dicionários:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;colunas&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Eric&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Hideki&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Luciano&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Ramalho&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;David&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Beazley&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Tim&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Peters&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Importamos a biblioteca operator e sua funcionalidade itemgetter:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;operator&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;itemgetter&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;E criamos nossa funcionalidade para ordenar a lista de dicionários de acordo com o parâmetro selecionado, que nesse caso será o primeiro nome, o &lt;strong&gt;pname&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;colunas_por_nome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;colunas&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;itemgetter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pnome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finalizando, utilizamos o &lt;strong&gt;pprint&lt;/strong&gt; para exibir o resultado:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;pprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;colunas_por_nome&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Bacana, né? E também utilizamos a mesma lógica para ordenar de acordo com o &lt;strong&gt;id&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Se quiser saber mais a respeito do Ipython, indico o artigo do &lt;a href="https://pythonhelp.wordpress.com/2011/02/22/dreampie-o-shell-python-que-voce-sempre-sonhou/"&gt;Python Help que fala a respeito&lt;/a&gt;.&lt;/p&gt;
+&lt;h1&gt;&lt;a href="http://www.pythontutor.com/"&gt;Python Tutor&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;Ao observarmos uma funcionalidade queremos entender o que ele faz, e muitas vezes o que cada coisa no código faz não fica muito bem claro em nossas ideias. Por isso o Python Tutor existe! Ele exibe passo-a-passo o que está acontecendo no código.&lt;/p&gt;
+&lt;iframe width="800" height="500" frameborder="0" src="http://www.pythontutor.com/visualize.html#code=prefix+%3D+%22Hello+%22%0A%0An1+%3D+raw_input(%22Enter+your+name%22%29%0A%0An2+%3D+raw_input(%22Enter+another+name%22%29%0A%0Ares+%3D+prefix+%2B+n1+%2B+%22+and+%22+%2B+n2%0Aprint(res%29&amp;mode=display&amp;origin=opt-frontend.js&amp;cumulative=false&amp;heapPrimitives=false&amp;textReferences=false&amp;py=2&amp;rawInputLstJSON=%5B%5D&amp;curInstr=0"&gt; &lt;/iframe&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Forward&lt;/strong&gt; e veja o que acontece.&lt;/p&gt;
+&lt;h1&gt;Outras opções&lt;/h1&gt;
+&lt;p&gt;Também existem outras ferramentas que podem auxiliar e melhorar seu código:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Anaconda para Sublime Text&lt;/strong&gt; - &lt;a href="http://damnwidget.github.io/anaconda/"&gt;http://damnwidget.github.io/anaconda/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Autopep8&lt;/strong&gt; - &lt;a href="https://pypi.python.org/pypi/autopep8"&gt;https://pypi.python.org/pypi/autopep8&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Jedi&lt;/strong&gt; - &lt;a href="https://github.com/davidhalter/jedi"&gt;https://github.com/davidhalter/jedi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pyflakes&lt;/strong&gt; - &lt;a href="https://pypi.python.org/pypi/pyflakes"&gt;https://pypi.python.org/pypi/pyflakes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PDB&lt;/strong&gt; - &lt;a href="https://docs.python.org/2/library/pdb.html"&gt;https://docs.python.org/2/library/pdb.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Locais onde podemos postar nossas dúvidas&lt;/h2&gt;
+&lt;p&gt;Vale sempre lembrar que é muito importante consultar a documentação oficial do Python, seja a &lt;a href="https://docs.python.org/2/"&gt;versão 2&lt;/a&gt; ou a &lt;a href="https://docs.python.org/3/"&gt;versão 3&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Também existem outro lugar muito legal, o &lt;strong&gt;&lt;a href="http://pt.stackoverflow.com/"&gt;Stackoverflow&lt;/a&gt;&lt;/strong&gt;. Se ainda o problema persistir, acesse as listas de discussões da comunidade Python no Brasil. &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Python Brasil&lt;/strong&gt; - &lt;a href="https://groups.google.com/forum/#!forum/python-brasil"&gt;https://groups.google.com/forum/#!forum/python-brasil&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Django Brasil&lt;/strong&gt; - &lt;a href="https://groups.google.com/forum/#!forum/django-brasil"&gt;https://groups.google.com/forum/#!forum/django-brasil&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Web2py Brasil&lt;/strong&gt; - &lt;a href="https://groups.google.com/forum/#!forum/web2py-users-brazil"&gt;https://groups.google.com/forum/#!forum/web2py-users-brazil&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flask Brasil&lt;/strong&gt; - &lt;a href="https://groups.google.com/forum/#!forum/flask-brasil"&gt;https://groups.google.com/forum/#!forum/flask-brasil&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Comunidades locais da comunidade Python ao redor do Brasil&lt;/strong&gt; - &lt;a href="http://pythonbrasil.github.io/wiki/comunidades-locais"&gt;http://pythonbrasil.github.io/wiki/comunidades-locais&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Deixe nos comentários seu feedback, e se tiver outra dica que não foi citado, não deixe de indicar.&lt;/p&gt;</content><category term="python"></category><category term="blog"></category><category term="tutorial"></category><category term="aulas"></category></entry><entry><title>Bottle Framework full stack sem Django</title><link href="http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html" rel="alternate"></link><published>2014-12-03T19:40:00-02:00</published><updated>2014-12-03T19:40:00-02:00</updated><author><name>Eric Hideki</name></author><id>tag:pythonclub.com.br,2014-12-03:/bottle-framework-full-stack-sem-django.html</id><summary type="html">&lt;h1&gt;Esse artigo foi originalmente traduzido de:&lt;/h1&gt;
+&lt;p&gt;&lt;a href="http://www.avelino.xxx/2014/12/bottle-full-stack-without-django"&gt;http://www.avelino.xxx/2014/12/bottle-full-stack-without-django&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Este artigo é baseado em uma palestra que apresentei aqui no Brasil, seguem os &lt;a href="https://speakerdeck.com/avelino/bottle-o-full-stack-sem-django"&gt;slides&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Bottle micro framework web" src="/images/erichideki/bottle.png"&gt;&lt;/p&gt;
+&lt;p&gt;Bottle é um micro framework web compatível com WSGI, depende apenas da biblioteca padrão do Python, sendo compatível com Python 2.6 …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Esse artigo foi originalmente traduzido de:&lt;/h1&gt;
+&lt;p&gt;&lt;a href="http://www.avelino.xxx/2014/12/bottle-full-stack-without-django"&gt;http://www.avelino.xxx/2014/12/bottle-full-stack-without-django&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Este artigo é baseado em uma palestra que apresentei aqui no Brasil, seguem os &lt;a href="https://speakerdeck.com/avelino/bottle-o-full-stack-sem-django"&gt;slides&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Bottle micro framework web" src="/images/erichideki/bottle.png"&gt;&lt;/p&gt;
+&lt;p&gt;Bottle é um micro framework web compatível com WSGI, depende apenas da biblioteca padrão do Python, sendo compatível com Python 2.6, 2.7, 3.2, 3.3 e 3.4, &lt;a href="https://github.com/defnull/bottle/blob/master/bottle.py"&gt;sendo um arquivo único&lt;/a&gt;. Ele foi criado pelo Marcel Hellkamp (&lt;a href="https://github.com/defnull"&gt;@defnull&lt;/a&gt;) e mantido pela &lt;a href="https://github.com/orgs/bottlepy/people"&gt;comunidade&lt;/a&gt; que mantém esse framework.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; é um framework para rápido desenvolvimento na web, escrito em Python, no qual usa o padrão MTV(model-template-view), sendo pragmático. Foi originalmente criado como um sistema de gerenciamento de um site jornalístico na cidade de Lawrence, Kansas. Se tornou um projeto open-source e foi publicado sobre a licença BSD em 2005. O nome Django foi inspirado pelo músido de jazz Django Reinhardt. Django se tornou muito conhecido pelas suas baterias inclusas, i.e diversas bibliotecas distribuídas que se juntaram ao centro do framework para simplificar o trabalho (chamado "Full stack").&lt;/p&gt;
+&lt;p&gt;Pragmatismo é o que contém a prática, considerações realistas, com objetivos bem definidos. Ser pragmático é ser prático tendo objetivos definidos. Em outras palavras, o time que desenvolve o Django toma algumas modelagens de arquitetura e quem usa Django segue essa arquitetura sem ser capaz de mudá-la facilmente.&lt;/p&gt;
+&lt;p&gt;Isto é bom para um framework web que tem baterias inclusas? Depente, se você usa tudo o que o framework oferece, sim, mas nem todos os designs de aplicações são iguais.&lt;/p&gt;
+&lt;p&gt;Muitos projetos não usam 80% do que Django oferece, nesses casos em que não usam mais que 50%, o custo que pagamos ao oferecer o Django a alguém é alto, já que temos definido a arquitetura, ou seja, perde-se a performance porque o Django tem diversos módulos que não serão usados e obrigatoriamente subirá alguns módulos que não iremos usar. Quando nós usamos um micro framework, fazemos toda a arquitetura da aplicação, então não temos previamente preparado a arquitetura para desenvolver o necessário, dedicando o tempo do time para definir a arquitetura da aplicação.&lt;/p&gt;
+&lt;p&gt;Todos os pacotes que nós temos na biblioteca padrão do Python/Django podem ser substituídas usando um micro framework!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ORM - &lt;a href="http://www.sqlalchemy.org/"&gt;SQLAlchemy&lt;/a&gt; to &lt;a href="https://github.com/iurisilvio/bottle-sqlalchemy"&gt;bottle-sqlalchemy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Forms - &lt;a href="https://wtforms.readthedocs.org/en/latest/"&gt;WTForms&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Template Engine - &lt;a href="http://jinja.pocoo.org/docs/dev/"&gt;Jinja2&lt;/a&gt;, &lt;a href="http://www.makotemplates.org/"&gt;mako&lt;/a&gt;, etc&lt;/li&gt;
+&lt;li&gt;Migration - &lt;a href="http://alembic.readthedocs.org/en/latest/"&gt;Alembic&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;SQLAlchemy&lt;/h2&gt;
+&lt;p&gt;O SQLAlchemy existe antes do Django, &lt;a href="https://github.com/zzzeek/sqlalchemy/commit/ec052c6a1f1fb0236bd367c510d82f076cb67bc9"&gt;sim, antes do Django&lt;/a&gt; e desde 2005 temos um time focado no desenvolvimento da ORM, ao contrário do Django que dispṍe tempo cuidando do framework web + ORM (Eu acredito que eu não preciso falar com um desenvolvedor focado render mais do que um desenvolvedor não focado).&lt;/p&gt;
+&lt;p&gt;Estrutura de um modelo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Entity&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Base&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;__tablename__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;entity&amp;#39;&lt;/span&gt;
+    &lt;span class="nb"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Integer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Sequence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id_seq&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;primary_key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__repr__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;Entity(&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s2"&gt;&amp;#39;, &amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;#39;)&amp;gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;WTForms&lt;/h2&gt;
+&lt;p&gt;A solução alternativa para aqueles que não usam Django e precisam trabalhar com formulários, nós temos o WTForms, que foi criado em &lt;a href="https://github.com/wtforms/wtforms/commit/c0998bac1a4d5cd5fdf43a825529a64e24dea9a5"&gt;2008&lt;/a&gt; e atualizado ainda hoje!&lt;/p&gt;
+&lt;p&gt;Estrutura de um formulário:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;UserForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Form&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TextField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;validators&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;DataRequired&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;Length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;
+    &lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TextField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;validators&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;DataRequired&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;Length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Mecanismo de template&lt;/h2&gt;
+&lt;p&gt;Jinja2 é um moderno e contém um design de template amigável para Python, modelado após os templates do Django. É rápido, amplamente usado e seguro com a opcional área restrita de template no ambiente de desenvolvimento.&lt;/p&gt;
+&lt;p&gt;Estrutura de um template:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{% block title %}{% endblock %}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+{% for user in users %}
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ user.url }}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{ user.username }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+{% endfor %}
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Migrações&lt;/h2&gt;
+&lt;p&gt;A utilização do Alembic começa com a criação do ambiente de migração. Este é o diretório de arquivos que especificam para uma particular aplicação. O ambiente de migração é criado apenas uma vez, e é mantido ao longo do desenvolvimento do código da aplicação.&lt;/p&gt;
+&lt;p&gt;Estrutura de uma migração:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;revision&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1975ea83b712&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;down_revision&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;alembic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;op&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlalchemy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sa&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;upgrade&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;downgrade&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Como criar a evolução e o rebaixamento:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;upgrade&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;op&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create_table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;account&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Integer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;primary_key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;nullable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;description&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Unicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;downgrade&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;op&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drop_table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;account&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Estrutura de alteração de tabela:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;$ alembic revision -m &amp;quot;Add a column&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;revision&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ae1027a6acf&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;down_revision&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1975ea83b712&amp;#39;&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;alembic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;op&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlalchemy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sa&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;upgrade&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;op&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;account&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;last_transaction_date&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DateTime&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;downgrade&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;op&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drop_column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;account&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;last_transaction_date&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+&lt;p&gt;Exatamente o que você vê, tudo o que o Django contém temos fora do conjunto do Django. Eu não escreveria esse artigo para falar mal do Django, e sim mostrar que existem outras soluções para desenvolvimento full stack. Muitas pessoas usam o Django mas não entendem o ambiente Python, hoje o Django traz muitas coisas preparadas que fazem alguns desenvolvedores serem preguiçosos e não adquirir experiência em arquitetura de software.&lt;/p&gt;
+&lt;p&gt;Venha ajudar o Bottle, somos uma comunidade em crescimento, para contribuir com o código do Bottle, olhe essa issue que nós abrimos. Em caso de dúvidas, nós temos uma lista de e-mail e um canal IRC.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://bottlepy.org/docs/dev/development.html#get-involved"&gt;Se envolva!&lt;/a&gt;&lt;/p&gt;</content><category term="bottle"></category><category term="python"></category></entry><entry><title>Desenvolvendo com Bottle - Parte 1</title><link href="http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html" rel="alternate"></link><published>2014-12-03T15:05:00-02:00</published><updated>2014-12-03T15:05:00-02:00</updated><author><name>Eric Hideki</name></author><id>tag:pythonclub.com.br,2014-12-03:/desenvolvendo-com-bottle-parte-1.html</id><summary type="html">&lt;h1&gt;Texto originalmente escrito em:&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://realpython.com/blog/python/developing-with-bottle-part-1/"&gt;https://realpython.com/blog/python/developing-with-bottle-part-1/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Eu amo &lt;a href="http://bottlepy.org/docs/stable/"&gt;bottle&lt;/a&gt;. Ele é simples, rápido e poderoso micro-framework Python, perfeito para pequenas aplicações web e rápida prototipação. É também perfeita ferramenta de ensino para aqueles que estão começando agora com desenvolvimento web.&lt;/p&gt;
+&lt;p&gt;Vamos dar um rápido exemplo.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Este …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;h1&gt;Texto originalmente escrito em:&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://realpython.com/blog/python/developing-with-bottle-part-1/"&gt;https://realpython.com/blog/python/developing-with-bottle-part-1/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Eu amo &lt;a href="http://bottlepy.org/docs/stable/"&gt;bottle&lt;/a&gt;. Ele é simples, rápido e poderoso micro-framework Python, perfeito para pequenas aplicações web e rápida prototipação. É também perfeita ferramenta de ensino para aqueles que estão começando agora com desenvolvimento web.&lt;/p&gt;
+&lt;p&gt;Vamos dar um rápido exemplo.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Este tutorial espera que você esteja em um ambiente baseado em Unix - e.g, Mac OSX, sistemas Linux, ou no Linux rodando uma Virtual Machine no Windows. Eu irei estar usando Sublime Text 2 como meu editor de texto.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;Começando&lt;/h1&gt;
+&lt;p&gt;Primeiramente, vamos criar um diretório para trabalhar:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir bottle
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; bottle
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Depois, você precisa ter pip, virtualenv, e git instalados.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://pypi.python.org/pypi/virtualenv"&gt;virtualenv&lt;/a&gt; é uma ferramenta Python que torna fácil gerenciar módulos Python necessários para um particular projeto. Ele também mantém os módulos isolados para que não entre em conflito com outros projetos.&lt;a href="https://pypi.python.org/pypi/pip"&gt;pip&lt;/a&gt;, entretanto, é um gerenciador de pacotes usado para gerenciar a instalaçao de bibliotecas e módulos.&lt;/p&gt;
+&lt;p&gt;Para ajudar com a instalação do pip(e todas as dependências) em um ambiente Unix, siga as instruções nesse &lt;a href="https://gist.github.com/mjhea0/5692708"&gt;Gist&lt;/a&gt;. Se você está no Windows, por favor veja esse &lt;a href="https://www.youtube.com/watch?v=MIHYflJwyLk"&gt;vídeo&lt;/a&gt; para sua ajuda.&lt;/p&gt;
+&lt;p&gt;Uma vez com o pip instalado, execute os seguintes comandos para instalar o virtualenv:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install virtualenv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora nós podemos facilmente configurar nosso ambiente local executando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ virtualenv --no-site-packages testenv
+$ &lt;span class="nb"&gt;source&lt;/span&gt; testenv/bin/activate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instalar o Bottle:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install bottle
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora criamos o arquivo &lt;em&gt;requirements.txt&lt;/em&gt;, que permitirá você instalar os exatos módulos e dependências iguais no caso de você querer usar esse aplicativo em qualquer outro local. Clique &lt;a href="https://pip.pypa.io/en/latest/user_guide.html#requirements-files"&gt;aqui&lt;/a&gt; para aprender mais.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip freeze &amp;gt; requirements.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finalmente, vamos colocar nossa aplicação em um controle de versão usando Git. Para mais informações sobre o Git, por favor veja esse &lt;a href="http://git-scm.com/book/pt-br/v1/Primeiros-passos-No%C3%A7%C3%B5es-B%C3%A1sicas-de-Git"&gt;site&lt;/a&gt;, que inclui instruções de instalação.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git init
+$ git add .
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;initial commit&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Escrevendo sua aplicação&lt;/h2&gt;
+&lt;p&gt;Agora estamos preparados para escrever nossa aplicação com Bottle. Crie seu arquivo de aplicação, &lt;em&gt;app.py&lt;/em&gt;, que irá carregar todo o nosso primeiro aplicativo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bottle&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;
+
+&lt;span class="n"&gt;index_html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&amp;#39;Minha primeira aplicação! Por {{ autor }}&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+
+&lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/:qualquer&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;alguma_coisa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;qualquer&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;autor&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;qualquer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;autor&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Seu nome aqui:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;PORT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8080&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;0.0.0.0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Salve o arquivo.&lt;/p&gt;
+&lt;p&gt;Agora você pode executar sua aplicação localmente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python app.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Você poderá ser capaz de conectar a &lt;a href="http://localhost:8080/abc"&gt;http://localhost:8080/abc&lt;/a&gt; e ver sua aplicação rodando!
+Mude &lt;code&gt;abc&lt;/code&gt; para seu nome. Dê refresh no navegador.&lt;/p&gt;
+&lt;h1&gt;O que tá acontecendo?&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;O decorator &lt;code&gt;@route&lt;/code&gt; diz que a aplicação deve interpretar o caminho depois do &lt;code&gt;/&lt;/code&gt; como variável &lt;code&gt;qualquer&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Isto é passado para a função sendo como um argumento&lt;code&gt;(def alguma_coisa(qualquer='')&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Nós então passamos isto para a função do template sendo um argumento(&lt;code&gt;autor=qualquer&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;O template então renderiza a variável autor com &lt;code&gt;{{ autor }}&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1&gt;Shell script&lt;/h1&gt;
+&lt;p&gt;Quer começar de forma rápida? Crie um inicializador de aplicação em poucos segundos usando o Shell script.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;bottle&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;bottle&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;virtualenv&lt;/span&gt;
+&lt;span class="n"&gt;virtualenv&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;packages&lt;/span&gt; &lt;span class="n"&gt;testenv&lt;/span&gt;
+&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;testenv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;bottle&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;freeze&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;initial commit&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;EOF&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bottle&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;
+
+&lt;span class="n"&gt;index_html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&amp;#39;Minha primeira aplicação wweb! Por {{=&amp;lt;&lt;/span&gt;&lt;span class="si"&gt;% %&lt;/span&gt;&lt;span class="s1"&gt;&amp;gt;=}}{{ autor }}&amp;lt;%={{ }}=%&amp;gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+
+&lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/:qualquer&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;alguma_coisa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;qualquer&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;autor&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;qualquer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;autor&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Seu nome aqui:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;PORT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8080&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;0.0.0.0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;EOF&lt;/span&gt;
+
+&lt;span class="n"&gt;chmod&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Updated&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Baixe esse script através dessa &lt;a href="https://gist.github.com/mjhea0/5784132"&gt;Gist-list&lt;/a&gt;, e então execute o seguinte comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ bash bottle.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Próximos passos&lt;/h1&gt;
+&lt;p&gt;A partir desse ponto, é tão fácil adicionando uma nova &lt;code&gt;@route&lt;/code&gt;-decorated functions() para criar novas páginas, assim como fizemos com essas duas páginas.&lt;/p&gt;
+&lt;p&gt;Criar o HTML é simples: Nessa aplicação, nós apenas adicionamos HTML na mesma linha e arquivo.Isto é fácil de modificar(usando, por exemplo, &lt;code&gt;open('index.html').read())&lt;/code&gt; para ler o template de um arquivo.&lt;/p&gt;
+&lt;p&gt;Referências para a &lt;a href="http://bottlepy.org/docs/dev/"&gt;documentação&lt;/a&gt; do Bottle para mais informações.&lt;/p&gt;</content><category term="bottle"></category><category term="python"></category></entry><entry><title>Como colaborar na tradução do Djangobook sem conhecer programação</title><link href="http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html" rel="alternate"></link><published>2014-05-01T13:16:00-03:00</published><updated>2014-05-01T13:16:00-03:00</updated><author><name>Eric Hideki</name></author><id>tag:pythonclub.com.br,2014-05-01:/como_colaborar_com_projetos_open_source.html</id><summary type="html">&lt;p&gt;Uma das perguntas que os iniciantes sempre se perguntam é: Como ganhar experiência? Ou colaborar com projetos open source sem ter conhecimentos? Pois é, saiba que você pode colaborar sem dificuldades, e que
+qualquer colaboração é muito importante.&lt;/p&gt;
+&lt;p&gt;Um dos projetos que estão em andamento é a tradução do Djangobook …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Uma das perguntas que os iniciantes sempre se perguntam é: Como ganhar experiência? Ou colaborar com projetos open source sem ter conhecimentos? Pois é, saiba que você pode colaborar sem dificuldades, e que
 qualquer colaboração é muito importante.&lt;/p&gt;
 &lt;p&gt;Um dos projetos que estão em andamento é a tradução do Djangobook. Djangobook é um dos tutoriais mais lidos em todo o mundo, uma das principais portas de entrada no mundo do desenvolvimento web. Através dos tutoriais do livro você será capaz de criar rápidas, robustas e organizadas aplicações.&lt;/p&gt;
 &lt;p&gt;Sabe um pouco de inglês e gostaria de praticar? Nada melhor do que traduzir um texto ou artigo.&lt;/p&gt;
@@ -11,4 +420,4 @@ qualquer colaboração é muito importante.&lt;/p&gt;
 &lt;p&gt;Depois temos a seção abaixo escrito Propose file change, nele podemos colocar o título do arquivo que estamos alterando/enviado, e logo depois os comentários sobre quais foram as alterações que efetuamos. Então clicamos no botão &lt;tt class="docutils literal"&gt;Propose file change&lt;/tt&gt;.&lt;/p&gt;
 &lt;p&gt;Na parte inferior estará demonstrando algumas linhas de código em vermelho e verde, respectivamente. Nas linhas vermelhas estão os arquivos que serão deletados, já os de cor verde serão os substitutos. E agora basta enviar um &lt;tt class="docutils literal"&gt;Pull Request&lt;/tt&gt;.&lt;/p&gt;
 &lt;p&gt;Pronto. Você acaba de encaminhar uma proposta de melhoria de um projeto, basta o mantenedor observar suas alterações, se estiver de acordo com os padrões de qualidade ele irá dar um &lt;tt class="docutils literal"&gt;Merge&lt;/tt&gt; com o antigo código e pronto.&lt;/p&gt;
-</summary><category term="djangobook"></category></entry></feed>
+</content><category term="djangobook"></category></entry></feed>

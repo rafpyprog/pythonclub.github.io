@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>PythonClub - Diego Garcia</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Sun, 07 Jun 2015 11:00:00 -0300</lastBuildDate><item><title>A armadilha dos argumentos com valores padrão</title><link>http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html</link><description>&lt;figure style="float:left;"&gt;
+&lt;img src="/images/drgarcia1986/is_a_trap.png"&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;/br&gt;
+Algo muito comum em várias linguagens de programação é a possibilidade de definir &lt;em&gt;valores default&lt;/em&gt; (valores padrão) para argumentos de funções e métodos, tornando a utilização desses opcional.
+Isso é ótimo, principalmente para manter retrocompatibilidade, porém, o python possui uma pequena armadilha que caso passe despercebida, pode causar sérios problemas …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Diego Garcia</dc:creator><pubDate>Sun, 07 Jun 2015 11:00:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2015-06-07:/a-armadilha-dos-argumentos-com-valores-padrao.html</guid><category>python</category><category>mutable</category><category>function</category><category>class</category><category>anti-pattern</category></item><item><title>Debugging em python (sem IDE)</title><link>http://pythonclub.com.br/debugging-em-python-sem-ide.html</link><description>&lt;figure style="float:right;"&gt;
+&lt;img src="/images/drgarcia1986/debugging.png"&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;/br&gt;
+Um dos principais motivos que ainda levam desenvolvedores Python a recorrerem a IDEs pesadas e que requerem instalação é o &lt;strong&gt;debugging&lt;/strong&gt;. 
+Devs que vieram de linguagens como &lt;em&gt;DotNet&lt;/em&gt;, &lt;em&gt;Java&lt;/em&gt; e &lt;em&gt;Delphi&lt;/em&gt; por exemplo, estão acostumados a IDEs super pesadas e inchadas que no final das contas, além do debugging, só …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Diego Garcia</dc:creator><pubDate>Sun, 15 Feb 2015 22:30:00 -0200</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2015-02-15:/debugging-em-python-sem-ide.html</guid><category>python</category><category>pdb</category><category>ipython</category><category>ipdb</category><category>debugging</category></item><item><title>Publicando seu Hello World no Heroku</title><link>http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html</link><description>&lt;figure style="float:left;"&gt;
+&lt;img src="/images/drgarcia1986/heroku.png"&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
+&lt;p&gt;O que é uma aplicação web se ela não está efetivamente na web? Não precisa ser efetivamente uma aplicação de produção, as vezes precisamos validar protótipos, compartilhar ferramentas online ou até mesmo publicar uma aplicação pela satisfação de publicar. Para isso não é necessário se preocupar com infraestrutura ou gastar …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Diego Garcia</dc:creator><pubDate>Sun, 25 Jan 2015 11:30:00 -0200</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2015-01-25:/publicando-seu-hello-world-no-heroku.html</guid><category>web</category><category>tutorial</category><category>heroku</category><category>flask</category><category>git</category><category>deploy</category></item><item><title>Testes de carga com o Locust</title><link>http://pythonclub.com.br/testes-de-carga-com-o-locust.html</link><description>&lt;figure style="float:right;"&gt;
+&lt;img style="border-radius: 50%;" src="/images/drgarcia1986/the_locust.jpg"&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;/br&gt;
+Quanto de carga sua aplicação web aguenta? Se conseguiu responder essa pergunta, como você fez para medir esse desempenho? Se você não conseguiu responder nenhuma das questões anteriores, ou apenas uma, ou até mesmo respondeu as duas mas em algum momento utilizou a palavra &lt;em&gt;complicado&lt;/em&gt; para descrever como testou, chegou …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Diego Garcia</dc:creator><pubDate>Sun, 11 Jan 2015 18:00:00 -0200</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2015-01-11:/testes-de-carga-com-o-locust.html</guid><category>locust</category><category>web</category><category>tutorial</category><category>test</category><category>load-testing</category></item></channel></rss>

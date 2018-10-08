@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>PythonClub - Artur Felipe de Sousa</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Sun, 04 May 2014 22:21:00 -0300</lastBuildDate><item><title>Sobre o six e como ele ajuda a escrever código compatível com python 2 e 3</title><link>http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html</link><description>&lt;h3&gt;Python 2.x ou python 3.x?&lt;/h3&gt;
+&lt;p&gt;Quem de nós já não se deparou com a seguinte dúvida: Qual versão do
+python devo usar para começar meu projeto?&lt;/p&gt;
+&lt;p&gt;Há 6 anos, em dezembro de 2008 foi lançada a versão 3.0 do python. Uma versão
+polêmica, a primeira incopatível com …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Artur Felipe de Sousa</dc:creator><pubDate>Sun, 04 May 2014 22:21:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2014-05-04:/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html</guid><category>python</category><category>six</category><category>compatibility</category></item></channel></rss>

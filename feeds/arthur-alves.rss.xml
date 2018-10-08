@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>PythonClub - Arthur Alves</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Thu, 28 Aug 2014 00:30:00 -0300</lastBuildDate><item><title>Criando sites estáticos com Pelican Framework</title><link>http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html</link><description>&lt;figure style="float:right;"&gt;
+&lt;img style="border-radius: 50%;" src="/images/arthur-alves/captaoboing.png"&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;/br&gt;  &lt;/p&gt;
+&lt;h3&gt;O que é?&lt;/h3&gt;
+&lt;p&gt;As vezes temos a necessidade de criar algo rápido, como por exemplo um blog ou uma landing page, e não desejamos utilizar ferramentas muito robustas como Django, Web2py, etc. Na verdade eu faço isso mas é um exagero. Em um outro projeto meu queria uma solução muito …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Arthur Alves</dc:creator><pubDate>Thu, 28 Aug 2014 00:30:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2014-08-28:/criando-sites-estaticos-com-pelican.html</guid><category>tutorial</category><category>pelican</category><category>blog</category><category>framework</category></item></channel></rss>

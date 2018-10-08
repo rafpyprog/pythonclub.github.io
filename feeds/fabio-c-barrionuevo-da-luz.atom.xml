@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/fabio-c-barrionuevo-da-luz.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-06-11T18:00:00-03:00</updated><entry><title>pyftpdlib - Criando um servidor FTP simples com python</title><link href="http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html" rel="alternate"></link><published>2014-06-11T18:00:00-03:00</published><updated>2014-06-11T18:00:00-03:00</updated><author><name>Fábio C. Barrionuevo da Luz</name></author><id>tag:pythonclub.com.br,2014-06-11:pyftpdlib-criando-um-servidor-ftp-simples-com-python.html</id><summary type="html">&lt;div class="section" id="criando-um-servidor-ftp-simples-com-python"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub - Fábio C. Barrionuevo da Luz</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/fabio-c-barrionuevo-da-luz.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-06-11T18:00:00-03:00</updated><entry><title>pyftpdlib - Criando um servidor FTP simples com python</title><link href="http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html" rel="alternate"></link><published>2014-06-11T18:00:00-03:00</published><updated>2014-06-11T18:00:00-03:00</updated><author><name>Fábio C. Barrionuevo da Luz</name></author><id>tag:pythonclub.com.br,2014-06-11:/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html</id><summary type="html">&lt;div class="section" id="criando-um-servidor-ftp-simples-com-python"&gt;
+&lt;h2&gt;Criando um servidor FTP simples com python&lt;/h2&gt;
+&lt;div class="section" id="o-que-e-ftp"&gt;
+&lt;h3&gt;O que é FTP?&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;FTP&lt;/strong&gt; é um acrônimo de &lt;strong&gt;F&lt;/strong&gt;ile &lt;strong&gt;T&lt;/strong&gt;ransfer &lt;strong&gt;P&lt;/strong&gt;rotocol. É um protocolo inventado
+por &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Abhay_Bhushan"&gt;Abhay Bhushan&lt;/a&gt; em abril de 1971 para resolver os problemas de transferências de dados na &lt;a class="reference external" href="http://pt.wikipedia.org/wiki/ArpaNET"&gt;ARPANET&lt;/a&gt;,
+rede precursora (pode-se dizer mãe) da Internet …&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</summary><content type="html">&lt;div class="section" id="criando-um-servidor-ftp-simples-com-python"&gt;
 &lt;h2&gt;Criando um servidor FTP simples com python&lt;/h2&gt;
 &lt;div class="section" id="o-que-e-ftp"&gt;
 &lt;h3&gt;O que é FTP?&lt;/h3&gt;
@@ -193,7 +199,9 @@ ele poderá acessar o servidor em um endereço similar a &lt;tt class="docutils 
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="python"></category><category term="ftp"></category><category term="tutorial"></category><category term="servidor-ftp"></category></entry><entry><title>Como fazer fork, clone, push pull-request no Github</title><link href="http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html" rel="alternate"></link><published>2014-05-13T01:40:00-03:00</published><updated>2014-05-13T01:40:00-03:00</updated><author><name>Fábio C. Barrionuevo da Luz</name></author><id>tag:pythonclub.com.br,2014-05-13:como-fazer-fork-clone-push-pull-request-no-github.html</id><summary type="html">&lt;p&gt;Neste video, ensino o básico que vai lhe ajudar a dar seus primeiros passos no git, github e talvez lhe dar a habilidade necessaria para contribuir com postagens neste blog ou em qualquer outro projeto que você quiser.&lt;/p&gt;
+</content><category term="python"></category><category term="ftp"></category><category term="tutorial"></category><category term="servidor-ftp"></category></entry><entry><title>Como fazer fork, clone, push pull-request no Github</title><link href="http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html" rel="alternate"></link><published>2014-05-13T01:40:00-03:00</published><updated>2014-05-13T01:40:00-03:00</updated><author><name>Fábio C. Barrionuevo da Luz</name></author><id>tag:pythonclub.com.br,2014-05-13:/como-fazer-fork-clone-push-pull-request-no-github.html</id><summary type="html">&lt;p&gt;Neste video, ensino o básico que vai lhe ajudar a dar seus primeiros passos no git, github e talvez lhe dar a habilidade necessaria para contribuir com postagens neste blog ou em qualquer outro projeto que você quiser.&lt;/p&gt;
+&lt;div class="section" id="como-fazer-fork-clone-push-pull-request-no-github-ou-como-contribuir-com-projetos-open-source"&gt;
+&lt;h2&gt;Como fazer fork, clone, push pull-request no Github, ou como contribuir com …&lt;/h2&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Neste video, ensino o básico que vai lhe ajudar a dar seus primeiros passos no git, github e talvez lhe dar a habilidade necessaria para contribuir com postagens neste blog ou em qualquer outro projeto que você quiser.&lt;/p&gt;
 &lt;div class="section" id="como-fazer-fork-clone-push-pull-request-no-github-ou-como-contribuir-com-projetos-open-source"&gt;
 &lt;h2&gt;Como fazer fork, clone, push pull-request no Github, ou como contribuir com projetos open-source&lt;/h2&gt;
 &lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/am1XMMKk0UI" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;div class="section" id="referencias-uteis"&gt;
@@ -217,4 +225,4 @@ ele poderá acessar o servidor em um endereço similar a &lt;tt class="docutils 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="tutorial"></category><category term="git"></category><category term="github"></category></entry></feed>
+</content><category term="tutorial"></category><category term="git"></category><category term="github"></category></entry></feed>
