@@ -79,7 +79,7 @@
                     </li>
                 </ul>
                 <h5>Publicado em:</h5>
-                <p>Tue 20 November 2018</p>
+                <p>Thu 29 November 2018</p>
                 <a href="/">&larr;Home</a>
             </hgroup>
         </header>
@@ -118,8 +118,8 @@
 </div>
 <div class="section" id="selection-sort">
 <h2>Selection Sort</h2>
-<p>Como o algoritmo funciona: Como implementar o algoritmo usando Python: <a class="reference external" href="https://www.youtube.com/watch?v=PLvo_Yb_myrNBhIdq8qqtNSDFtnBfsKL2r&amp;list=PLvo_Yb_myrNBhIdq8qqtNSDFtnBfsKL2r&amp;t=0s&amp;index=4">https://www.youtube.com/watch?v=PLvo_Yb_myrNBhIdq8qqtNSDFtnBfsKL2r</a>.</p>
-<div class="youtube youtube-16x9"><iframe src="https://www.youtube.com/embed/PLvo_Yb_myrNBhIdq8qqtNSDFtnBfsKL2r" allowfullscreen seamless frameBorder="0"></iframe></div><p>Como implementar o algoritmo usando Python: <a class="reference external" href="https://www.youtube.com/watch?v=0ORfCwwhF_I&amp;index=5&amp;list=PLvo_Yb_myrNBhIdq8qqtNSDFtnBfsKL2r">https://www.youtube.com/watch?v=0ORfCwwhF_I</a>.</p>
+<p>Como o algoritmo funciona: Como implementar o algoritmo usando Python: <a class="reference external" href="https://www.youtube.com/watch?v=vHxtP9BC-AA&amp;list=PLvo_Yb_myrNBhIdq8qqtNSDFtnBfsKL2r&amp;index=4">https://www.youtube.com/watch?v=vHxtP9BC-AA</a>.</p>
+<div class="youtube youtube-16x9"><iframe src="https://www.youtube.com/embed/vHxtP9BC-AA" allowfullscreen seamless frameBorder="0"></iframe></div><p>Como implementar o algoritmo usando Python: <a class="reference external" href="https://www.youtube.com/watch?v=0ORfCwwhF_I&amp;index=5&amp;list=PLvo_Yb_myrNBhIdq8qqtNSDFtnBfsKL2r&amp;index=5">https://www.youtube.com/watch?v=0ORfCwwhF_I</a>.</p>
 <div class="youtube youtube-16x9"><iframe src="https://www.youtube.com/embed/0ORfCwwhF_I" allowfullscreen seamless frameBorder="0"></iframe></div><p>Código do algoritmo</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)):</span>
@@ -146,6 +146,31 @@
             <span class="n">p</span> <span class="o">-=</span> <span class="mi">1</span>
 
         <span class="n">array</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_element</span>
+</pre></div>
+</div>
+<div class="section" id="merge-sort">
+<h2>Merge Sort</h2>
+<p>Como o algoritmo funciona: Como implementar o algoritmo usando Python: <a class="reference external" href="https://www.youtube.com/watch?v=Lnww0ibU0XM&amp;list=PLvo_Yb_myrNBhIdq8qqtNSDFtnBfsKL2r&amp;t=0s&amp;index=8">https://www.youtube.com/watch?v=Lnww0ibU0XM</a>.</p>
+<div class="youtube youtube-16x9"><iframe src="https://www.youtube.com/embed/Lnww0ibU0XM" allowfullscreen seamless frameBorder="0"></iframe></div><p>Como implementar o algoritmo usando Python - Parte I: <a class="reference external" href="https://www.youtube.com/watch?v=cXJHETlYyVk&amp;index=9&amp;list=PLvo_Yb_myrNBhIdq8qqtNSDFtnBfsKL2r">https://www.youtube.com/watch?v=cXJHETlYyVk</a>.</p>
+<div class="youtube youtube-16x9"><iframe src="https://www.youtube.com/embed/cXJHETlYyVk" allowfullscreen seamless frameBorder="0"></iframe></div><p>Código do algoritmo</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="n">sort_half</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">sort_half</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;=</span> <span class="n">end</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="n">middle</span> <span class="o">=</span> <span class="p">(</span><span class="n">start</span> <span class="o">+</span> <span class="n">end</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+
+    <span class="n">sort_half</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">middle</span><span class="p">)</span>
+    <span class="n">sort_half</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">middle</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+
+    <span class="n">merge</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+    <span class="n">array</span><span class="p">[</span><span class="n">start</span><span class="p">:</span> <span class="n">end</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">start</span><span class="p">:</span> <span class="n">end</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 
