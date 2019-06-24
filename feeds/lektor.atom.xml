@@ -48,12 +48,12 @@ $ pip install --editable .
 &lt;p&gt;Ele irá te fazer algumas perguntas e criar um projeto com o nome que você informou.&lt;/p&gt;
 &lt;h3&gt;Estrutura&lt;/h3&gt;
 &lt;p&gt;Esta é a estrutura básica de um site gerado pelo lektor:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;meusite
-├── assets/
-├── content/
-├── templates/
-├── models/
-└── meusite.lektorproject
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;meusite&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;assets&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;templates&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;meusite&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lektorproject&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

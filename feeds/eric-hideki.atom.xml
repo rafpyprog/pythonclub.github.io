@@ -311,7 +311,7 @@ $ &lt;span class="nb"&gt;source&lt;/span&gt; testenv/bin/activate
 
 
 &lt;p&gt;Agora criamos o arquivo &lt;em&gt;requirements.txt&lt;/em&gt;, que permitirá você instalar os exatos módulos e dependências iguais no caso de você querer usar esse aplicativo em qualquer outro local. Clique &lt;a href="https://pip.pypa.io/en/latest/user_guide.html#requirements-files"&gt;aqui&lt;/a&gt; para aprender mais.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip freeze &amp;gt; requirements.txt
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="k"&gt;freeze&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

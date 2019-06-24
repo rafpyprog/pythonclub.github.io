@@ -130,9 +130,9 @@ Ou seja, por questões de optimização, seguindo nosso exemplo, o python não c
 
 
 &lt;p&gt;Em argumentos com valores default, não é diferente.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def my_function(my_str=&amp;#39;abc&amp;#39;):
-    my_str += &amp;#39;d&amp;#39;
-    print(my_str)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;my_function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;my_str&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;abc&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;my_str&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;d&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;my_str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

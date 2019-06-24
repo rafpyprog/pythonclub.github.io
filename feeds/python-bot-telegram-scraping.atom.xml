@@ -13,32 +13,32 @@ programa-lo para nos responder.&lt;/p&gt;
 do telegram que faz isso para gente. Para isso bastar iniciar uma 
 conversa com o &lt;a href="https://web.telegram.org/#/im?p=@BotFather"&gt;@BotFather&lt;/a&gt;, ele irá nós da algumas 
 opções:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/newbot - create a new bot
-/token - generate authorization token
-/revoke - revoke bot access token
-/setname - change a bot&amp;#39;s name
-/setdescription - change bot description
-/setabouttext - change bot about info
-/setuserpic - change bot profile photo
-/setinline - change inline settings
-/setinlinegeo - toggle inline location requests
-/setinlinefeedback - change inline feedback settings
-/setcommands - change bot commands list
-/setjoingroups - can your bot be added to groups?
-/setprivacy - what messages does your bot see in groups?
-/deletebot - delete a bot
-/newgame - create a new game
-/listgames - get a list of your games
-/editgame - edit a game
-/deletegame - delete an existing game
-/cancel - cancel the current operation
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;newbot&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="k"&gt;create&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;bot&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;token&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;generate&lt;/span&gt; &lt;span class="k"&gt;authorization&lt;/span&gt; &lt;span class="n"&gt;token&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;revoke&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="k"&gt;revoke&lt;/span&gt; &lt;span class="n"&gt;bot&lt;/span&gt; &lt;span class="k"&gt;access&lt;/span&gt; &lt;span class="n"&gt;token&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;setname&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;change&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;bot&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;setdescription&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;change&lt;/span&gt; &lt;span class="n"&gt;bot&lt;/span&gt; &lt;span class="n"&gt;description&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;setabouttext&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;change&lt;/span&gt; &lt;span class="n"&gt;bot&lt;/span&gt; &lt;span class="n"&gt;about&lt;/span&gt; &lt;span class="n"&gt;info&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;setuserpic&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;change&lt;/span&gt; &lt;span class="n"&gt;bot&lt;/span&gt; &lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="n"&gt;photo&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;setinline&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;change&lt;/span&gt; &lt;span class="n"&gt;inline&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;setinlinegeo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;toggle&lt;/span&gt; &lt;span class="n"&gt;inline&lt;/span&gt; &lt;span class="k"&gt;location&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;setinlinefeedback&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;change&lt;/span&gt; &lt;span class="n"&gt;inline&lt;/span&gt; &lt;span class="n"&gt;feedback&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;setcommands&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;change&lt;/span&gt; &lt;span class="n"&gt;bot&lt;/span&gt; &lt;span class="n"&gt;commands&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;setjoingroups&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;bot&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;added&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;groups&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;setprivacy&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;what&lt;/span&gt; &lt;span class="n"&gt;messages&lt;/span&gt; &lt;span class="n"&gt;does&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;bot&lt;/span&gt; &lt;span class="n"&gt;see&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;groups&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;deletebot&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="k"&gt;delete&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;bot&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;newgame&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="k"&gt;create&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;game&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;listgames&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="k"&gt;get&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;games&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;editgame&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;edit&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;game&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;deletegame&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="k"&gt;delete&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="k"&gt;existing&lt;/span&gt; &lt;span class="n"&gt;game&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;cancel&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;cancel&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="k"&gt;current&lt;/span&gt; &lt;span class="k"&gt;operation&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;As que nós interessa por enquanto são:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/newbot - Cria um novo bot. 
-/setdescription - Adiciona uma descrição ao nosso bot.
-/setuserpic - Adiciona uma imagem ao nosso bot.
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;newbot&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;Cria&lt;/span&gt; &lt;span class="n"&gt;um&lt;/span&gt; &lt;span class="n"&gt;novo&lt;/span&gt; &lt;span class="n"&gt;bot&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; 
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;setdescription&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;Adiciona&lt;/span&gt; &lt;span class="n"&gt;uma&lt;/span&gt; &lt;span class="n"&gt;descri&lt;/span&gt;&lt;span class="err"&gt;çã&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;ao&lt;/span&gt; &lt;span class="n"&gt;nosso&lt;/span&gt; &lt;span class="n"&gt;bot&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;setuserpic&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;Adiciona&lt;/span&gt; &lt;span class="n"&gt;uma&lt;/span&gt; &lt;span class="n"&gt;imagem&lt;/span&gt; &lt;span class="n"&gt;ao&lt;/span&gt; &lt;span class="n"&gt;nosso&lt;/span&gt; &lt;span class="n"&gt;bot&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

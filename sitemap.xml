@@ -5,44 +5,51 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/</loc>
-<lastmod>2018-11-29T13:09:19-00:00</lastmod>
+<lastmod>2019-06-24T20:12:01-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2018-11-29T13:09:19-00:00</lastmod>
+<lastmod>2019-06-24T20:12:01-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2018-11-29T13:09:19-00:00</lastmod>
+<lastmod>2019-06-24T20:12:01-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2018-11-29T13:09:19-00:00</lastmod>
+<lastmod>2019-06-24T20:12:01-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br//home/travis/build/pythonclub/pythonclub.github.io/output/pages/search.html</loc>
-<lastmod>2018-11-29T13:09:19-00:00</lastmod>
+<lastmod>2019-06-24T20:12:01-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2018-11-29T13:09:19-00:00</lastmod>
+<lastmod>2019-06-24T20:12:01-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tutorial-django-2.html</loc>
+<lastmod>2019-06-24T22:00:00-03:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -866,7 +873,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/category/python-django.html</loc>
-<lastmod>2015-01-07T06:00:00-03:06</lastmod>
+<lastmod>2019-06-24T22:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1048,7 +1055,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/python.html</loc>
-<lastmod>2018-11-29T13:10:00-03:06</lastmod>
+<lastmod>2019-06-24T22:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1811,7 +1818,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/django.html</loc>
-<lastmod>2018-02-15T23:00:00-03:06</lastmod>
+<lastmod>2019-06-24T22:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -2147,7 +2154,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/author/regis-da-silva.html</loc>
-<lastmod>2018-02-15T23:00:00-03:06</lastmod>
+<lastmod>2019-06-24T22:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

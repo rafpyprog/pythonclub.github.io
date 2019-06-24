@@ -101,8 +101,8 @@ Initialized empty Git repository in /home/user/heroku_hello_world/.git/
 
 
 &lt;p&gt;Para não &lt;em&gt;sujar&lt;/em&gt; nosso repositório com arquivos desnecessários como por exemplo o virtualenv, crie um arquivo chamado &lt;code&gt;.gitignore&lt;/code&gt; na raiz do repositório e nele iremos determinar quais arquivos o git deve ignorar.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*.pyc
-venv
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="n"&gt;venv&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

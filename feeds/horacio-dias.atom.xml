@@ -19,53 +19,53 @@
 &lt;p&gt;Substituindo "&lt;code&gt;&amp;lt;app-name&amp;gt;&lt;/code&gt;" pelo nome de sua aplicação.
 O arquivo manifest.yml criado por Changaco(github) e "forkeado" por Grief(github) contém as configurações de um cartridge customizado que contém o python 3.5.&lt;/p&gt;
 &lt;p&gt;Para os curiosos o conteúdo do arquivo&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;---
-Name: python
-Cartridge-Short-Name: PYTHON
-Display-Name: Only Python
-Description: &amp;#39;An embedded cartridge that provides only python, nothing else.&amp;#39;
-Version: &amp;#39;3.5.0&amp;#39;
-Versions: [&amp;#39;3.5.0&amp;#39;, &amp;#39;2.7.11&amp;#39;]
-License: The Python License
-License-Url: http://docs.python.org/3/license.html
-Vendor: python.org
-Cartridge-Version: 0.0.2
-Cartridge-Vendor: praisebetoscience
-Categories:
-- service
-- python
-- embedded
-Website: https://github.com/praisebetoscience/openshift-cartridge-python-3.5
-Help-Topics:
-  Developer Center: https://www.openshift.com/developers
-Provides:
-- python
-Publishes:
-Subscribes:
-  set-env:
-    Type: ENV:*
-    Required: false
-  set-doc-url:
-    Type: STRING:urlpath
-    Required: false
-Scaling:
-  Min: 1
-  Max: -1
-Version-Overrides:
-  &amp;#39;2.7.11&amp;#39;:
-    Display-Name: Python 2.7
-    License: The Python License, version 2.7
-    Provides:
-    - python-2.7
-    - python
-    - python(version) = 2.7
-  &amp;#39;3.5.0&amp;#39;:
-    Display-Name: Python 3.5
-    License: The Python License, version 3.5
-    Provides:
-    - python-3.5
-    - python
-    - python(version) = 3.5
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;---&lt;/span&gt;
+&lt;span class="nv"&gt;Name&lt;/span&gt;: &lt;span class="nv"&gt;python&lt;/span&gt;
+&lt;span class="nv"&gt;Cartridge&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Short&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Name&lt;/span&gt;: &lt;span class="nv"&gt;PYTHON&lt;/span&gt;
+&lt;span class="nv"&gt;Display&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Name&lt;/span&gt;: &lt;span class="nv"&gt;Only&lt;/span&gt; &lt;span class="nv"&gt;Python&lt;/span&gt;
+&lt;span class="nv"&gt;Description&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;An embedded cartridge that provides only python, nothing else.&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
+&lt;span class="nv"&gt;Version&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;3.5.0&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
+&lt;span class="nv"&gt;Versions&lt;/span&gt;: [&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;3.5.0&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;2.7.11&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;]
+&lt;span class="nv"&gt;License&lt;/span&gt;: &lt;span class="nv"&gt;The&lt;/span&gt; &lt;span class="nv"&gt;Python&lt;/span&gt; &lt;span class="nv"&gt;License&lt;/span&gt;
+&lt;span class="nv"&gt;License&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Url&lt;/span&gt;: &lt;span class="nv"&gt;http&lt;/span&gt;:&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nv"&gt;docs&lt;/span&gt;.&lt;span class="nv"&gt;python&lt;/span&gt;.&lt;span class="nv"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;license&lt;/span&gt;.&lt;span class="nv"&gt;html&lt;/span&gt;
+&lt;span class="nv"&gt;Vendor&lt;/span&gt;: &lt;span class="nv"&gt;python&lt;/span&gt;.&lt;span class="nv"&gt;org&lt;/span&gt;
+&lt;span class="nv"&gt;Cartridge&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Version&lt;/span&gt;: &lt;span class="mi"&gt;0&lt;/span&gt;.&lt;span class="mi"&gt;0&lt;/span&gt;.&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="nv"&gt;Cartridge&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Vendor&lt;/span&gt;: &lt;span class="nv"&gt;praisebetoscience&lt;/span&gt;
+&lt;span class="nv"&gt;Categories&lt;/span&gt;:
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;service&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;embedded&lt;/span&gt;
+&lt;span class="nv"&gt;Website&lt;/span&gt;: &lt;span class="nv"&gt;https&lt;/span&gt;:&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nv"&gt;github&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;praisebetoscience&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;openshift&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;cartridge&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;.&lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;span class="nv"&gt;Help&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Topics&lt;/span&gt;:
+  &lt;span class="nv"&gt;Developer&lt;/span&gt; &lt;span class="nv"&gt;Center&lt;/span&gt;: &lt;span class="nv"&gt;https&lt;/span&gt;:&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nv"&gt;www&lt;/span&gt;.&lt;span class="nv"&gt;openshift&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;developers&lt;/span&gt;
+&lt;span class="nv"&gt;Provides&lt;/span&gt;:
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;
+&lt;span class="nv"&gt;Publishes&lt;/span&gt;:
+&lt;span class="nv"&gt;Subscribes&lt;/span&gt;:
+  &lt;span class="nv"&gt;set&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;env&lt;/span&gt;:
+    &lt;span class="nv"&gt;Type&lt;/span&gt;: &lt;span class="nv"&gt;ENV&lt;/span&gt;:&lt;span class="o"&gt;*&lt;/span&gt;
+    &lt;span class="nv"&gt;Required&lt;/span&gt;: &lt;span class="nv"&gt;false&lt;/span&gt;
+  &lt;span class="nv"&gt;set&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;doc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;:
+    &lt;span class="nv"&gt;Type&lt;/span&gt;: &lt;span class="nv"&gt;STRING&lt;/span&gt;:&lt;span class="nv"&gt;urlpath&lt;/span&gt;
+    &lt;span class="nv"&gt;Required&lt;/span&gt;: &lt;span class="nv"&gt;false&lt;/span&gt;
+&lt;span class="nv"&gt;Scaling&lt;/span&gt;:
+  &lt;span class="nv"&gt;Min&lt;/span&gt;: &lt;span class="mi"&gt;1&lt;/span&gt;
+  &lt;span class="nv"&gt;Max&lt;/span&gt;: &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="nv"&gt;Version&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Overrides&lt;/span&gt;:
+  &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;2.7.11&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;:
+    &lt;span class="nv"&gt;Display&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Name&lt;/span&gt;: &lt;span class="nv"&gt;Python&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;.&lt;span class="mi"&gt;7&lt;/span&gt;
+    &lt;span class="nv"&gt;License&lt;/span&gt;: &lt;span class="nv"&gt;The&lt;/span&gt; &lt;span class="nv"&gt;Python&lt;/span&gt; &lt;span class="nv"&gt;License&lt;/span&gt;, &lt;span class="nv"&gt;version&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;.&lt;span class="mi"&gt;7&lt;/span&gt;
+    &lt;span class="nv"&gt;Provides&lt;/span&gt;:
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;.&lt;span class="mi"&gt;7&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;version&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;.&lt;span class="mi"&gt;7&lt;/span&gt;
+  &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;3.5.0&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;:
+    &lt;span class="nv"&gt;Display&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Name&lt;/span&gt;: &lt;span class="nv"&gt;Python&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;.&lt;span class="mi"&gt;5&lt;/span&gt;
+    &lt;span class="nv"&gt;License&lt;/span&gt;: &lt;span class="nv"&gt;The&lt;/span&gt; &lt;span class="nv"&gt;Python&lt;/span&gt; &lt;span class="nv"&gt;License&lt;/span&gt;, &lt;span class="nv"&gt;version&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;.&lt;span class="mi"&gt;5&lt;/span&gt;
+    &lt;span class="nv"&gt;Provides&lt;/span&gt;:
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;.&lt;span class="mi"&gt;5&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;version&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;.&lt;span class="mi"&gt;5&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -81,8 +81,8 @@ Você verá que a página do seu projeto não é nada mais do que o diy (Dot It 
 &lt;p&gt;Vamos criar um projeto de exemplo, bem simples, que apenas nos retorne a versão do python utilizada.
 Primeiramente vamos criar nosso requirements.txt, com gunicorn e o flask.&lt;/p&gt;
 &lt;p&gt;"requirements.txt"&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gunicorn
-flask
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;gunicorn&lt;/span&gt;
+&lt;span class="n"&gt;flask&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

@@ -213,7 +213,7 @@ A maneira de uso se assemelha bastante ao pdb, bastando trocar o pacote &lt;code
 
 
 &lt;p&gt;Para instalar o ipdb basta utilizar o &lt;code&gt;pip&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install ipdb
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;ipdb&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

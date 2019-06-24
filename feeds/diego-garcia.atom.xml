@@ -130,9 +130,9 @@ Ou seja, por questões de optimização, seguindo nosso exemplo, o python não c
 
 
 &lt;p&gt;Em argumentos com valores default, não é diferente.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def my_function(my_str=&amp;#39;abc&amp;#39;):
-    my_str += &amp;#39;d&amp;#39;
-    print(my_str)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;my_function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;my_str&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;abc&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;my_str&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;d&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;my_str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -397,7 +397,7 @@ A maneira de uso se assemelha bastante ao pdb, bastando trocar o pacote &lt;code
 
 
 &lt;p&gt;Para instalar o ipdb basta utilizar o &lt;code&gt;pip&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install ipdb
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;ipdb&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -506,8 +506,8 @@ Initialized empty Git repository in /home/user/heroku_hello_world/.git/
 
 
 &lt;p&gt;Para não &lt;em&gt;sujar&lt;/em&gt; nosso repositório com arquivos desnecessários como por exemplo o virtualenv, crie um arquivo chamado &lt;code&gt;.gitignore&lt;/code&gt; na raiz do repositório e nele iremos determinar quais arquivos o git deve ignorar.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*.pyc
-venv
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="n"&gt;venv&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

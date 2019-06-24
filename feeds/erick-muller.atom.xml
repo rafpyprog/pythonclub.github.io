@@ -5,11 +5,11 @@
 &lt;h2&gt;Parte 1 - instalar o Java&lt;/h2&gt;
 &lt;p&gt;As aplicações da JetBrains não são exatamente compatíveis com a versão do Java que vem por padrão no Ubuntu. Por isso, precisamos atualizar. &lt;/p&gt;
 &lt;p&gt;Abra o terminal e execute os comandos abaixo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get update
-echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
-sudo apt-get install oracle-java8-installer -y
-sudo apt-get install oracle-java8-set-default -y
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="k"&gt;add&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;repository&lt;/span&gt; &lt;span class="n"&gt;ppa&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;webupd8team&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt; &lt;span class="k"&gt;update&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="n"&gt;oracle&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;java8&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;installer&lt;/span&gt; &lt;span class="n"&gt;shared&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;accepted&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;oracle&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;license&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;v1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="k"&gt;true&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;debconf&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;set&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;selections&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;oracle&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;java8&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;installer&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;oracle&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;java8&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;set&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -19,20 +19,20 @@ sudo apt-get install oracle-java8-set-default -y
 
 
 &lt;p&gt;a saída esperada é algo como:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;java version &amp;quot;1.8.0_45&amp;quot;
-Java(TM) SE Runtime Environment (build 1.8.0_45-b14)
-Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt; &lt;span class="k"&gt;version&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;1.8.0_45&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;Java&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TM&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;SE&lt;/span&gt; &lt;span class="n"&gt;Runtime&lt;/span&gt; &lt;span class="n"&gt;Environment&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;_45&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b14&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Java&lt;/span&gt; &lt;span class="n"&gt;HotSpot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TM&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nb"&gt;Bit&lt;/span&gt; &lt;span class="n"&gt;Server&lt;/span&gt; &lt;span class="n"&gt;VM&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;45&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b02&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mixed&lt;/span&gt; &lt;span class="k"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Parte 2 - pip e virtualenv&lt;/h2&gt;
 &lt;p&gt;O PyCharm usa o &lt;strong&gt;pip&lt;/strong&gt; para baixar módulos/bibliotecas/extensões (como quiser chamar) do python, e o &lt;strong&gt;virtualenv&lt;/strong&gt; para criar os queridos ambientes virtuais que mantém a sanidade dos programadores python. Então, para tirar proveito dessas funcionalidades, é bom garantir que estejam instalados também. &lt;/p&gt;
 &lt;p&gt;Para isto, abra o console e:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ~/Downloads
-wget -c https://bootstrap.pypa.io/get-pip.py
-sudo -H python2 get-pip.py
-sudo -H python3 get-pip.py
-sudo -H pip2 install virtualenv
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;Downloads&lt;/span&gt;
+&lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;c&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;bootstrap&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pypa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;H&lt;/span&gt; &lt;span class="n"&gt;python2&lt;/span&gt; &lt;span class="k"&gt;get&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;H&lt;/span&gt; &lt;span class="n"&gt;python3&lt;/span&gt; &lt;span class="k"&gt;get&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;H&lt;/span&gt; &lt;span class="n"&gt;pip2&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;virtualenv&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -44,7 +44,7 @@ sudo -H pip2 install virtualenv
 &lt;/ul&gt;
 &lt;h2&gt;Parte 4 - instalar o PyCharm&lt;/h2&gt;
 &lt;p&gt;Com os pré-requisitos prontos e instalados, vamos ao prato principal: &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo tar -C /opt/ -xzf &amp;lt;diretorio_onde_gravou_o_download&amp;gt;/pycharm-community-4.5.1.tar.gz
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;C&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xzf&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;diretorio_onde_gravou_o_download&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;/&lt;/span&gt;&lt;span class="n"&gt;pycharm&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;community&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gz&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

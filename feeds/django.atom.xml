@@ -13,16 +13,16 @@
 
 
 &lt;p&gt;Essa &lt;em&gt;view&lt;/em&gt; recebe um arquivo &lt;code&gt;CSV&lt;/code&gt; (upload do usuáio) e só processa as linhas do arquivo, sem salvá-lo em disco. No Python 3, esse trecho da &lt;em&gt;view&lt;/em&gt; passou a dar erro:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;_csv.Error: iterator should return strings, not bytes (did you open the file in text mode?)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;_csv&lt;/span&gt;.&lt;span class="nv"&gt;Error&lt;/span&gt;: &lt;span class="nv"&gt;iterator&lt;/span&gt; &lt;span class="nv"&gt;should&lt;/span&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nv"&gt;strings&lt;/span&gt;, &lt;span class="nv"&gt;not&lt;/span&gt; &lt;span class="nv"&gt;bytes&lt;/span&gt; &lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;did&lt;/span&gt; &lt;span class="nv"&gt;you&lt;/span&gt; &lt;span class="nv"&gt;open&lt;/span&gt; &lt;span class="nv"&gt;the&lt;/span&gt; &lt;span class="nv"&gt;file&lt;/span&gt; &lt;span class="nv"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;text&lt;/span&gt; &lt;span class="nv"&gt;mode&lt;/span&gt;?&lt;span class="ss"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;O Henrique, além de falar que o código funcionava “por acaso”, me lembrou que o &lt;code&gt;csv.reader(…)&lt;/code&gt; já recebe um arquivo aberto. Assim fui explorar a maneira que o Django estava me entregando os arquivos no &lt;code&gt;HttpRequest&lt;/code&gt; (no caso da minha &lt;em&gt;view&lt;/em&gt;, o que eu tinha em mãos no &lt;code&gt;request.FILES['file.csv']&lt;/code&gt;).&lt;/p&gt;
 &lt;h2&gt;Simulando o ambiente da &lt;em&gt;view&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;Para explorar isso, eu precisava simular o ambiente da minha &lt;em&gt;view&lt;/em&gt;. Comecei criando um arquivo simples, &lt;code&gt;teste.txt&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Linha 1, foo
-Linha 2, bar
-Linha 3, acentuação
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Linha&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;
+&lt;span class="n"&gt;Linha&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt;
+&lt;span class="n"&gt;Linha&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;acentua&lt;/span&gt;&lt;span class="err"&gt;çã&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -127,12 +127,12 @@ sed -i &lt;span class="s2"&gt;&amp;quot;/django.contrib.staticfiles/a\    &amp;#
 &lt;p&gt;Pronto! Agora nós já temos um projetinho Django funcionando. Note que o nome da app é &lt;strong&gt;core&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3&gt;Criando as pastas&lt;/h3&gt;
 &lt;p&gt;Para criarmos um novo comando precisamos das seguintes pastas:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;core
-├── management
-│   ├── __init__.py
-│   ├── commands
-│   │   ├── __init__.py
-│   │   ├── novocomando.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;management&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;commands&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;novocomando&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1568,7 +1568,7 @@ Dockerfile       fig.yml          figexample       manage.py        requirements
 &lt;h2&gt;Qual a solução?&lt;/h2&gt;
 &lt;p&gt;Devido a ser um problema recorrente, publiquei um pacote no PyPI chamado &lt;a href="https://pypi.python.org/pypi/django-global-permissions/0.1.0"&gt;Django Global Permissions&lt;/a&gt;, que possibilita a criação de permissões genéricas, resolvendo o empecilho que mencionei anteriormente.&lt;/p&gt;
 &lt;p&gt;Para utilizar esse pacote, basta instalá-lo e adicioná-lo à tupla &lt;code&gt;INSTALLED_APPS&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install django-global-permissions
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;global&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;permissions&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1654,7 +1654,7 @@ Existem &lt;em&gt;cartridges&lt;/em&gt; que habilitam uma linguagem (Python, Rub
 &lt;p&gt;Você precisa ter uma conta no &lt;a href="https://www.openshift.com/products/online"&gt;Openshift Online&lt;/a&gt; e o programa &lt;strong&gt;rhc&lt;/strong&gt; instalado em sua máquina.&lt;/p&gt;
 &lt;p&gt;Crie uma conta gratuita clicando &lt;a href="https://www.openshift.com/app/account/new"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Depois instale o programa &lt;strong&gt;ruby&lt;/strong&gt; e o &lt;strong&gt;rhc&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get update &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;amp&lt;span class="p"&gt;;&amp;amp;&lt;/span&gt;amp&lt;span class="p"&gt;;&lt;/span&gt; apt-get install -y ruby
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install -y ruby
 sudo gem install rhc
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1717,7 +1717,7 @@ Durante o processo de &lt;strong&gt;deploy&lt;/strong&gt; o Openshift automatica
 
 
 &lt;p&gt;Adicione o Django no &lt;em&gt;requirements.txt&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Django==1.7&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt; requirements.txt
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Django==1.7&amp;#39;&lt;/span&gt; &amp;gt; requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1733,10 +1733,10 @@ pip install -r requirements.txt
 &lt;p&gt;De agora em diante não direi mais para você fazer o &lt;em&gt;commit&lt;/em&gt; o tempo todo mas é uma boa prática que você o faça a cada etapa.&lt;/p&gt;
 &lt;p&gt;Execute o comando abaixo para criar o arquivo &lt;strong&gt;.gitignore&lt;/strong&gt; e adicionar algumas entradas nele.
 Esse arquivo irá impedir que alguns arquivos desnecessários sejam adicionados ao git.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt; .gitignore &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&lt;/span&gt;EOF
-*.pyc
-*.sqlite3
-EOF
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &amp;gt; .gitignore &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;span class="s"&gt;*.pyc&lt;/span&gt;
+&lt;span class="s"&gt;*.sqlite3&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1764,18 +1764,18 @@ Um desses arquivos é o &lt;strong&gt;wsgi.py&lt;/strong&gt; na raiz do reposit�
 O WSGI &lt;em&gt;entry-point&lt;/em&gt; nada mais é do que o &lt;em&gt;callable&lt;/em&gt; do servidor WSGI.
 No nosso caso usamos uma variável mas poderia ser um método ou uma função, o importante é que ele tenha o nome de &lt;strong&gt;application&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Execute o comando abaixo para criar o WSGI &lt;em&gt;entry-point&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt; wsgi.py &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&lt;/span&gt;EOF
-&lt;span class="c1"&gt;#!/usr/bin/python&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &amp;gt; wsgi.py &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;span class="s"&gt;#!/usr/bin/python&lt;/span&gt;
 
-import os
-import sys
-from django.core.wsgi import get_wsgi_application
+&lt;span class="s"&gt;import os&lt;/span&gt;
+&lt;span class="s"&gt;import sys&lt;/span&gt;
+&lt;span class="s"&gt;from django.core.wsgi import get_wsgi_application&lt;/span&gt;
 
-sys.path.append&lt;span class="o"&gt;(&lt;/span&gt;os.path.join&lt;span class="o"&gt;(&lt;/span&gt;os.environ&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;OPENSHIFT_REPO_DIR&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;openshift&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
-os.environ&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;DJANGO_SETTINGS_MODULE&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;openshift.production&amp;#39;&lt;/span&gt;
+&lt;span class="s"&gt;sys.path.append(os.path.join(os.environ[&amp;#39;OPENSHIFT_REPO_DIR&amp;#39;], &amp;#39;openshift&amp;#39;))&lt;/span&gt;
+&lt;span class="s"&gt;os.environ[&amp;#39;DJANGO_SETTINGS_MODULE&amp;#39;] = &amp;#39;openshift.production&amp;#39;&lt;/span&gt;
 
-&lt;span class="nv"&gt;application&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; get_wsgi_application&lt;span class="o"&gt;()&lt;/span&gt;
-EOF
+&lt;span class="s"&gt;application = get_wsgi_application()&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1904,7 +1904,7 @@ Outras &lt;strong&gt;markers&lt;/strong&gt; disponíveis estão detalhadas &lt;a
 Em algumas ações o Openshift vai procurar determinados arquivos dentro dela e executá-los em uma determinada ordem.
 Para listar quais são as ações disponíveis execute o comando &lt;code&gt;rhc app --help&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rhc app --help
-Usage: rhc app &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&lt;/span&gt;action&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt;
+Usage: rhc app &amp;lt;action&amp;gt;
 
 Creates and controls an OpenShift application.  To see the list of all applications use the rhc domain show command.  Note that delete is not reversible
 and will stop your application and &lt;span class="k"&gt;then&lt;/span&gt; remove the application and repo from the remote server. No &lt;span class="nb"&gt;local&lt;/span&gt; changes are made.
@@ -1948,11 +1948,11 @@ Para saber mais sobre &lt;em&gt;action hooks&lt;/em&gt; clique &lt;a href="http:
 
 &lt;p&gt;Em nosso &lt;em&gt;deploy&lt;/em&gt;, apenas vamos atualizar o schema do banco e recolher os arquivos estáticos.
 Note que precisamos informar o arquivo de configuração que usaremos em produção, que é diferente daquele que está no arquivo &lt;strong&gt;manage.py&lt;/strong&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt; .openshift/action_hooks/deploy &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&lt;/span&gt;EOF
-&lt;span class="nv"&gt;PYTHONPATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="se"&gt;\$&lt;/span&gt;OPENSHIFT_REPO_DIR/openshift
-django-admin.py migrate --settings&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;openshift.production&amp;#39;&lt;/span&gt; --pythonpath&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="se"&gt;\$&lt;/span&gt;PYTHONPATH
-python &lt;span class="se"&gt;\$&lt;/span&gt;PYTHONPATH/manage.py collectstatic -c --noinput --settings&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;openshift.production&amp;#39;&lt;/span&gt; --pythonpath&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="se"&gt;\$&lt;/span&gt;PYTHONPATH
-EOF
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &amp;gt; .openshift/action_hooks/deploy &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;span class="s"&gt;PYTHONPATH=\$OPENSHIFT_REPO_DIR/openshift&lt;/span&gt;
+&lt;span class="s"&gt;django-admin.py migrate --settings=&amp;#39;openshift.production&amp;#39; --pythonpath=\$PYTHONPATH&lt;/span&gt;
+&lt;span class="s"&gt;python \$PYTHONPATH/manage.py collectstatic -c --noinput --settings=&amp;#39;openshift.production&amp;#39; --pythonpath=\$PYTHONPATH&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

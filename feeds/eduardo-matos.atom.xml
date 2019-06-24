@@ -8,7 +8,7 @@
 &lt;h2&gt;Qual a solução?&lt;/h2&gt;
 &lt;p&gt;Devido a ser um problema recorrente, publiquei um pacote no PyPI chamado &lt;a href="https://pypi.python.org/pypi/django-global-permissions/0.1.0"&gt;Django Global Permissions&lt;/a&gt;, que possibilita a criação de permissões genéricas, resolvendo o empecilho que mencionei anteriormente.&lt;/p&gt;
 &lt;p&gt;Para utilizar esse pacote, basta instalá-lo e adicioná-lo à tupla &lt;code&gt;INSTALLED_APPS&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install django-global-permissions
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;global&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;permissions&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

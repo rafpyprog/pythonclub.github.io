@@ -807,34 +807,34 @@ que está coberta por testes. Você pode clicar na badge ou ir até o seu perfil
 
 
 &lt;p&gt;Observe que o nome do arquivo obrigatoriamente deve inciar com ponto. Após criarmos o arquivo, teremos a seguinte estrutura de diretórios:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
-├── codigo_avulso_test_tutorial
-│   ├── circulo.py
-│   ├── circulo.pyc
-│   ├── figura_geometrica.py
-│   ├── figura_geometrica.pyc
-│   ├── __init__.py
-│   ├── __init__.pyc
-│   ├── quadrado.py
-│   └── quadrado.pyc
-├── codigo_avulso_test_tutorial.egg-info
-│   ├── dependency_links.txt
-│   ├── PKG-INFO
-│   ├── SOURCES.txt
-│   └── top_level.txt
-├── LICENSE
-├── README.md
-├── setup.py
-├── test
-│   ├── circulo_test.py
-│   ├── circulo_test.pyc
-│   ├── figura_geometrica_test.py
-│   ├── figura_geometrica_test.pyc
-│   ├── __init__.py
-│   ├── __init__.pyc
-│   ├── quadrado_test.py
-│   └── quadrado_test.pyc
-└── .travis.yml
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;quadrado&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;quadrado&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;dependency_links&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;PKG&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;INFO&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;SOURCES&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;top_level&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;LICENSE&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;README&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;travis&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;yml&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -893,13 +893,13 @@ que está coberta por testes. Você pode clicar na badge ou ir até o seu perfil
 &lt;p&gt;Nesta série de postagem, irei mostrar o passo-a-passo na criação de testes unitários para um pequeno projeto que vamos criar no github. Vou explicar como configurar a ferramenta &lt;a href="https://travis-ci.org/"&gt;Travis&lt;/a&gt;, que será responsável por executar os nossos testes no github. A ferramenta &lt;a href="https://coveralls.io/"&gt;Coveralls&lt;/a&gt;, que mapeia nosso código, e nos indica o quanto dele está coberto por testes. E como bônus, adicionar ao nosso projeto o &lt;a href="https://landscape.io"&gt;Landscape&lt;/a&gt;, ferramenta que monitora a "saúde" do nosso código.&lt;/p&gt;
 &lt;h3&gt;Iniciando nosso projeto&lt;/h3&gt;
 &lt;p&gt;Inicialmente, criei no &lt;a href="https://github.com/"&gt;github&lt;/a&gt; um repositório que vai receber meu código e que posteriormente será configurado para rodar nossos testes. No meu caso, o repositório foi esse &lt;a href="https://github.com/mstuttgart/codigo-avulso-test-tutorial"&gt;codigo-avulso-test-tutorial&lt;/a&gt;. Após realizar o clone, criei a seguite estrutura de diretorios:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
-├── codigo_avulso_test_tutorial
-│   └── __init__.py
-├── LICENSE
-├── README.md
-└── test
-    └── __init__.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;LICENSE&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;README&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+    &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -916,19 +916,19 @@ O nosso projeto consiste de um grupo de classes representando figuras geométric
 
 
 &lt;p&gt;Uma observação importante é que os arquivos de teste devem ter o nome terminado em &lt;code&gt;test&lt;/code&gt;, para que o módulo de Unittest encontre os nossos arquivos de teste automaticamente. Após a criação dos arquivos, teremos a seguinte estrutura de diretório:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
-├── codigo_avulso_test_tutorial
-│   ├── circulo.py
-│   ├── figura_geometrica.py
-│   ├── __init__.py
-│   └── quadrado.py
-├── LICENSE
-├── README.md
-└── test
-    ├── circulo_test.py
-    ├── figura_geometrica_test.py
-    ├── __init__.py
-    └── quadrado_test.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;quadrado&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;LICENSE&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;README&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+    &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+    &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+    &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+    &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -946,20 +946,20 @@ O nosso projeto consiste de um grupo de classes representando figuras geométric
 
 
 &lt;p&gt;A estrutura do nosso projeto agora está assim:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
-├── codigo_avulso_test_tutorial
-│   ├── circulo.py
-│   ├── figura_geometrica.py
-│   ├── __init__.py
-│   └── quadrado.py
-├── LICENSE
-├── README.md
-├── setup.py
-└── test
-    ├── circulo_test.py
-    ├── figura_geometrica_test.py
-    ├── __init__.py
-    └── quadrado_test.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;quadrado&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;LICENSE&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;README&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+    &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+    &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+    &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+    &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1031,21 +1031,21 @@ O nosso projeto consiste de um grupo de classes representando figuras geométric
 
 
 &lt;p&gt;Esse nosso comando vai executar a nossa classe &lt;code&gt;TestFiguraGeometrica&lt;/code&gt;. Se tudo estiver correto, teremos a seguinte saída:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;running test
-running egg_info
-writing codigo_avulso_test_tutorial.egg-info/PKG-INFO
-writing top-level names to codigo_avulso_test_tutorial.egg-info/top_level.txt
-writing dependency_links to codigo_avulso_test_tutorial.egg-info/dependency_links.txt
-reading manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
-writing manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
-running build_ext
-test_get_area (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
-test_get_perimetro (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;egg_info&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;PKG&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;INFO&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;level&lt;/span&gt; &lt;span class="k"&gt;names&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;top_level&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;dependency_links&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dependency_links&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;reading&lt;/span&gt; &lt;span class="n"&gt;manifest&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;manifest&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;build_ext&lt;/span&gt;
+&lt;span class="n"&gt;test_get_area&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestFiguraGeometrico&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_perimetro&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestFiguraGeometrico&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
 
-----------------------------------------------------------------------
-Ran 2 tests in 0.000s
+&lt;span class="c1"&gt;----------------------------------------------------------------------&lt;/span&gt;
+&lt;span class="n"&gt;Ran&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;tests&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;000&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
 
-OK
+&lt;span class="n"&gt;OK&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1105,23 +1105,23 @@ OK
 
 
 &lt;p&gt;Se tudo estiver certo, teremos a seguinte saída.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;running test
-running egg_info
-writing codigo_avulso_test_tutorial.egg-info/PKG-INFO
-writing top-level names to codigo_avulso_test_tutorial.egg-info/top_level.txt
-writing dependency_links to codigo_avulso_test_tutorial.egg-info/dependency_links.txt
-reading manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
-writing manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
-running build_ext
-test_get_area (test.quadrado_test.TestQuadrado) ... ok
-test_get_perimetro (test.quadrado_test.TestQuadrado) ... ok
-test_get_area (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
-test_get_perimetro (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;egg_info&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;PKG&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;INFO&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;level&lt;/span&gt; &lt;span class="k"&gt;names&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;top_level&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;dependency_links&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dependency_links&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;reading&lt;/span&gt; &lt;span class="n"&gt;manifest&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;manifest&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;build_ext&lt;/span&gt;
+&lt;span class="n"&gt;test_get_area&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestQuadrado&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_perimetro&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestQuadrado&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_area&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestFiguraGeometrico&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_perimetro&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestFiguraGeometrico&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
 
-----------------------------------------------------------------------
-Ran 4 tests in 0.000s
+&lt;span class="c1"&gt;----------------------------------------------------------------------&lt;/span&gt;
+&lt;span class="n"&gt;Ran&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="n"&gt;tests&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;000&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
 
-OK
+&lt;span class="n"&gt;OK&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1188,33 +1188,33 @@ OK
 
 
 &lt;p&gt;Se tudo estiver certo, teremos a seguinte saída.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;running test
-running egg_info
-writing codigo_avulso_test_tutorial.egg-info/PKG-INFO
-writing top-level names to codigo_avulso_test_tutorial.egg-info/top_level.txt
-writing dependency_links to codigo_avulso_test_tutorial.egg-info/dependency_links.txt
-reading manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
-writing manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
-running build_ext
-test_get_area (test.quadrado_test.TestQuadrado) ... ok
-test_get_perimetro (test.quadrado_test.TestQuadrado) ... ok
-test_get_area (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
-test_get_perimetro (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
-test_get_area (test.circulo_test.TestCirculo) ... ok
-test_get_perimetro (test.circulo_test.TestCirculo) ... ok
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;egg_info&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;PKG&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;INFO&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;level&lt;/span&gt; &lt;span class="k"&gt;names&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;top_level&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;dependency_links&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dependency_links&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;reading&lt;/span&gt; &lt;span class="n"&gt;manifest&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;manifest&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;build_ext&lt;/span&gt;
+&lt;span class="n"&gt;test_get_area&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestQuadrado&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_perimetro&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestQuadrado&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_area&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestFiguraGeometrico&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_perimetro&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestFiguraGeometrico&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_area&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;circulo_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestCirculo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_perimetro&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;circulo_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestCirculo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
 
-----------------------------------------------------------------------
-Ran 6 tests in 0.001s
+&lt;span class="c1"&gt;----------------------------------------------------------------------&lt;/span&gt;
+&lt;span class="n"&gt;Ran&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="n"&gt;tests&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;001&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
 
-OK
+&lt;span class="n"&gt;OK&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;Conclusão&lt;/h3&gt;
 &lt;p&gt;Com os testes ok, só nos resta subir o código para o github:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git add --all
-git commit -m &amp;quot;[NEW] Adicionado classes e testes&amp;quot;
-git push origin master
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;--all&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;commit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;[NEW] Adicionado classes e testes&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;origin&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;master&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

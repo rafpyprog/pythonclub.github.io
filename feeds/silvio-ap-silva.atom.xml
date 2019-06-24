@@ -41,7 +41,7 @@ Como não definimos, será usado o &lt;strong&gt;@&lt;/strong&gt; que é o padr�
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;b&amp;#39;arquivo_para_upload&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;arquivo_para_upload&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -49,7 +49,7 @@ Como não definimos, será usado o &lt;strong&gt;@&lt;/strong&gt; que é o padr�
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;b&amp;#39;Upload de arquivos com sockets e struct\\nCriando um arquivo para serializar.\n&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Upload de arquivos com sockets e struct\\nCriando um arquivo para serializar.\n&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

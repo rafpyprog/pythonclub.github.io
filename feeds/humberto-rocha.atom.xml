@@ -126,12 +126,12 @@ Commit all changes to your .travis.yml.
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ touch .travis.yml
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;E adicionar o seguinte conteúdo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;sudo&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;false&lt;/span&gt;
-&lt;span class="l l-Scalar l-Scalar-Plain"&gt;branches&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
-  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;only&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;false&lt;/span&gt;
+&lt;span class="nt"&gt;branches&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="nt"&gt;only&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
   &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;pelican&lt;/span&gt;
-&lt;span class="l l-Scalar l-Scalar-Plain"&gt;language&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;python&lt;/span&gt;
-&lt;span class="l l-Scalar l-Scalar-Plain"&gt;before_install&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+&lt;span class="nt"&gt;language&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;python&lt;/span&gt;
+&lt;span class="nt"&gt;before_install&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 &lt;span class="c1"&gt;# troque a linha abaixo pelo resultado do comando:&lt;/span&gt;
 &lt;span class="c1"&gt;# travis encrypt-file publish-key&lt;/span&gt;
 &lt;span class="c1"&gt;# porém mantenha o final:&lt;/span&gt;
@@ -146,10 +146,10 @@ Commit all changes to your .travis.yml.
 &lt;span class="c1"&gt;# Caso esteja montando a página de projeto troque master:master&lt;/span&gt;
 &lt;span class="c1"&gt;# por gh-pages:gh-pages&lt;/span&gt;
 &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git fetch origin -f master:master&lt;/span&gt;
-&lt;span class="l l-Scalar l-Scalar-Plain"&gt;install&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+&lt;span class="nt"&gt;install&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;pip install --upgrade pip&lt;/span&gt;
 &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;pip install -r requirements.txt&lt;/span&gt;
-&lt;span class="l l-Scalar l-Scalar-Plain"&gt;script&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;make github&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Removemos em seguida a chave privada não cifrada para não correr o risco de publicar no repositório:&lt;/p&gt;
@@ -224,12 +224,12 @@ $ pip install --editable .
 &lt;p&gt;Ele irá te fazer algumas perguntas e criar um projeto com o nome que você informou.&lt;/p&gt;
 &lt;h3&gt;Estrutura&lt;/h3&gt;
 &lt;p&gt;Esta é a estrutura básica de um site gerado pelo lektor:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;meusite
-├── assets/
-├── content/
-├── templates/
-├── models/
-└── meusite.lektorproject
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;meusite&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;assets&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;templates&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;meusite&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lektorproject&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

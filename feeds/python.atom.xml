@@ -304,53 +304,53 @@
 &lt;p&gt;Substituindo "&lt;code&gt;&amp;lt;app-name&amp;gt;&lt;/code&gt;" pelo nome de sua aplicação.
 O arquivo manifest.yml criado por Changaco(github) e "forkeado" por Grief(github) contém as configurações de um cartridge customizado que contém o python 3.5.&lt;/p&gt;
 &lt;p&gt;Para os curiosos o conteúdo do arquivo&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;---
-Name: python
-Cartridge-Short-Name: PYTHON
-Display-Name: Only Python
-Description: &amp;#39;An embedded cartridge that provides only python, nothing else.&amp;#39;
-Version: &amp;#39;3.5.0&amp;#39;
-Versions: [&amp;#39;3.5.0&amp;#39;, &amp;#39;2.7.11&amp;#39;]
-License: The Python License
-License-Url: http://docs.python.org/3/license.html
-Vendor: python.org
-Cartridge-Version: 0.0.2
-Cartridge-Vendor: praisebetoscience
-Categories:
-- service
-- python
-- embedded
-Website: https://github.com/praisebetoscience/openshift-cartridge-python-3.5
-Help-Topics:
-  Developer Center: https://www.openshift.com/developers
-Provides:
-- python
-Publishes:
-Subscribes:
-  set-env:
-    Type: ENV:*
-    Required: false
-  set-doc-url:
-    Type: STRING:urlpath
-    Required: false
-Scaling:
-  Min: 1
-  Max: -1
-Version-Overrides:
-  &amp;#39;2.7.11&amp;#39;:
-    Display-Name: Python 2.7
-    License: The Python License, version 2.7
-    Provides:
-    - python-2.7
-    - python
-    - python(version) = 2.7
-  &amp;#39;3.5.0&amp;#39;:
-    Display-Name: Python 3.5
-    License: The Python License, version 3.5
-    Provides:
-    - python-3.5
-    - python
-    - python(version) = 3.5
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;---&lt;/span&gt;
+&lt;span class="nv"&gt;Name&lt;/span&gt;: &lt;span class="nv"&gt;python&lt;/span&gt;
+&lt;span class="nv"&gt;Cartridge&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Short&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Name&lt;/span&gt;: &lt;span class="nv"&gt;PYTHON&lt;/span&gt;
+&lt;span class="nv"&gt;Display&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Name&lt;/span&gt;: &lt;span class="nv"&gt;Only&lt;/span&gt; &lt;span class="nv"&gt;Python&lt;/span&gt;
+&lt;span class="nv"&gt;Description&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;An embedded cartridge that provides only python, nothing else.&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
+&lt;span class="nv"&gt;Version&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;3.5.0&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
+&lt;span class="nv"&gt;Versions&lt;/span&gt;: [&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;3.5.0&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;2.7.11&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;]
+&lt;span class="nv"&gt;License&lt;/span&gt;: &lt;span class="nv"&gt;The&lt;/span&gt; &lt;span class="nv"&gt;Python&lt;/span&gt; &lt;span class="nv"&gt;License&lt;/span&gt;
+&lt;span class="nv"&gt;License&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Url&lt;/span&gt;: &lt;span class="nv"&gt;http&lt;/span&gt;:&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nv"&gt;docs&lt;/span&gt;.&lt;span class="nv"&gt;python&lt;/span&gt;.&lt;span class="nv"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;license&lt;/span&gt;.&lt;span class="nv"&gt;html&lt;/span&gt;
+&lt;span class="nv"&gt;Vendor&lt;/span&gt;: &lt;span class="nv"&gt;python&lt;/span&gt;.&lt;span class="nv"&gt;org&lt;/span&gt;
+&lt;span class="nv"&gt;Cartridge&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Version&lt;/span&gt;: &lt;span class="mi"&gt;0&lt;/span&gt;.&lt;span class="mi"&gt;0&lt;/span&gt;.&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="nv"&gt;Cartridge&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Vendor&lt;/span&gt;: &lt;span class="nv"&gt;praisebetoscience&lt;/span&gt;
+&lt;span class="nv"&gt;Categories&lt;/span&gt;:
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;service&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;embedded&lt;/span&gt;
+&lt;span class="nv"&gt;Website&lt;/span&gt;: &lt;span class="nv"&gt;https&lt;/span&gt;:&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nv"&gt;github&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;praisebetoscience&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;openshift&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;cartridge&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;.&lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;span class="nv"&gt;Help&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Topics&lt;/span&gt;:
+  &lt;span class="nv"&gt;Developer&lt;/span&gt; &lt;span class="nv"&gt;Center&lt;/span&gt;: &lt;span class="nv"&gt;https&lt;/span&gt;:&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nv"&gt;www&lt;/span&gt;.&lt;span class="nv"&gt;openshift&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;developers&lt;/span&gt;
+&lt;span class="nv"&gt;Provides&lt;/span&gt;:
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;
+&lt;span class="nv"&gt;Publishes&lt;/span&gt;:
+&lt;span class="nv"&gt;Subscribes&lt;/span&gt;:
+  &lt;span class="nv"&gt;set&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;env&lt;/span&gt;:
+    &lt;span class="nv"&gt;Type&lt;/span&gt;: &lt;span class="nv"&gt;ENV&lt;/span&gt;:&lt;span class="o"&gt;*&lt;/span&gt;
+    &lt;span class="nv"&gt;Required&lt;/span&gt;: &lt;span class="nv"&gt;false&lt;/span&gt;
+  &lt;span class="nv"&gt;set&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;doc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;:
+    &lt;span class="nv"&gt;Type&lt;/span&gt;: &lt;span class="nv"&gt;STRING&lt;/span&gt;:&lt;span class="nv"&gt;urlpath&lt;/span&gt;
+    &lt;span class="nv"&gt;Required&lt;/span&gt;: &lt;span class="nv"&gt;false&lt;/span&gt;
+&lt;span class="nv"&gt;Scaling&lt;/span&gt;:
+  &lt;span class="nv"&gt;Min&lt;/span&gt;: &lt;span class="mi"&gt;1&lt;/span&gt;
+  &lt;span class="nv"&gt;Max&lt;/span&gt;: &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="nv"&gt;Version&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Overrides&lt;/span&gt;:
+  &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;2.7.11&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;:
+    &lt;span class="nv"&gt;Display&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Name&lt;/span&gt;: &lt;span class="nv"&gt;Python&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;.&lt;span class="mi"&gt;7&lt;/span&gt;
+    &lt;span class="nv"&gt;License&lt;/span&gt;: &lt;span class="nv"&gt;The&lt;/span&gt; &lt;span class="nv"&gt;Python&lt;/span&gt; &lt;span class="nv"&gt;License&lt;/span&gt;, &lt;span class="nv"&gt;version&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;.&lt;span class="mi"&gt;7&lt;/span&gt;
+    &lt;span class="nv"&gt;Provides&lt;/span&gt;:
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;.&lt;span class="mi"&gt;7&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;version&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;.&lt;span class="mi"&gt;7&lt;/span&gt;
+  &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;3.5.0&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;:
+    &lt;span class="nv"&gt;Display&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Name&lt;/span&gt;: &lt;span class="nv"&gt;Python&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;.&lt;span class="mi"&gt;5&lt;/span&gt;
+    &lt;span class="nv"&gt;License&lt;/span&gt;: &lt;span class="nv"&gt;The&lt;/span&gt; &lt;span class="nv"&gt;Python&lt;/span&gt; &lt;span class="nv"&gt;License&lt;/span&gt;, &lt;span class="nv"&gt;version&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;.&lt;span class="mi"&gt;5&lt;/span&gt;
+    &lt;span class="nv"&gt;Provides&lt;/span&gt;:
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;.&lt;span class="mi"&gt;5&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;version&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;.&lt;span class="mi"&gt;5&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -366,8 +366,8 @@ Você verá que a página do seu projeto não é nada mais do que o diy (Dot It 
 &lt;p&gt;Vamos criar um projeto de exemplo, bem simples, que apenas nos retorne a versão do python utilizada.
 Primeiramente vamos criar nosso requirements.txt, com gunicorn e o flask.&lt;/p&gt;
 &lt;p&gt;"requirements.txt"&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gunicorn
-flask
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;gunicorn&lt;/span&gt;
+&lt;span class="n"&gt;flask&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -459,8 +459,8 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span clas
 
 &lt;h3&gt;Referências&lt;/h3&gt;
 &lt;p&gt;Para ler mais sobre a linguagem: 
-&lt;em&gt; &lt;a href="http://python.org"&gt;Python&lt;/a&gt; - Site oficial da Linguagem Python!
-&lt;/em&gt; &lt;a href="https://github.com/python/cpython"&gt;This is Python version 3.7.0 alpha 1&lt;/a&gt; - Git da próxima versão do Python, hospedado no Github!
+* &lt;a href="http://python.org"&gt;Python&lt;/a&gt; - Site oficial da Linguagem Python!
+* &lt;a href="https://github.com/python/cpython"&gt;This is Python version 3.7.0 alpha 1&lt;/a&gt; - Git da próxima versão do Python, hospedado no Github!
 * &lt;a href="http://python.org.br/"&gt;Python-Brasil&lt;/a&gt; - A comunidade Python Brasil reune grupos de usuários em todo o Brasil interessados em difundir e divulgar a linguagem de programação.&lt;/p&gt;</content><category term="python"></category><category term="tutorial"></category><category term="install"></category></entry><entry><title>Abrangência de Listas e Dicionários</title><link href="http://pythonclub.com.br/abrangencia-de-listas-e-dicionarios-com-python.html" rel="alternate"></link><published>2017-01-16T10:37:39-02:00</published><updated>2017-01-16T10:37:39-02:00</updated><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2017-01-16:/abrangencia-de-listas-e-dicionarios-com-python.html</id><summary type="html">&lt;p&gt;A utilização de listas em Python é algo trivial. A facilidade provida pela linguagem aliada a simplicidade da estrutura de dados &lt;em&gt;list&lt;/em&gt; a torna, ao lado dos dicionários &lt;em&gt;dict&lt;/em&gt;, uma das estrutura de dados mais utilizadas em Python. Aqui neste tutorial irei compartilhar algo que aprendi trabalhando com listas e …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A utilização de listas em Python é algo trivial. A facilidade provida pela linguagem aliada a simplicidade da estrutura de dados &lt;em&gt;list&lt;/em&gt; a torna, ao lado dos dicionários &lt;em&gt;dict&lt;/em&gt;, uma das estrutura de dados mais utilizadas em Python. Aqui neste tutorial irei compartilhar algo que aprendi trabalhando com listas e dicionário em Python, mais especificamente no que diz respeito a &lt;em&gt;abrangência&lt;/em&gt; de listas (e dicionários).&lt;/p&gt;
 &lt;h3&gt;Abrangência de listas&lt;/h3&gt;
 &lt;p&gt;A abrangência de listas, ou do inglês &lt;em&gt;list comprehensions&lt;/em&gt;, é um  termo utilizado para descrever uma sintaxe compacta que o Python nos oferece para criamos uma lista baseada em outra lista. Pareceu confuso? Ok, vamos aos exemplos!&lt;/p&gt;
@@ -1120,34 +1120,34 @@ que está coberta por testes. Você pode clicar na badge ou ir até o seu perfil
 
 
 &lt;p&gt;Observe que o nome do arquivo obrigatoriamente deve inciar com ponto. Após criarmos o arquivo, teremos a seguinte estrutura de diretórios:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
-├── codigo_avulso_test_tutorial
-│   ├── circulo.py
-│   ├── circulo.pyc
-│   ├── figura_geometrica.py
-│   ├── figura_geometrica.pyc
-│   ├── __init__.py
-│   ├── __init__.pyc
-│   ├── quadrado.py
-│   └── quadrado.pyc
-├── codigo_avulso_test_tutorial.egg-info
-│   ├── dependency_links.txt
-│   ├── PKG-INFO
-│   ├── SOURCES.txt
-│   └── top_level.txt
-├── LICENSE
-├── README.md
-├── setup.py
-├── test
-│   ├── circulo_test.py
-│   ├── circulo_test.pyc
-│   ├── figura_geometrica_test.py
-│   ├── figura_geometrica_test.pyc
-│   ├── __init__.py
-│   ├── __init__.pyc
-│   ├── quadrado_test.py
-│   └── quadrado_test.pyc
-└── .travis.yml
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;quadrado&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;quadrado&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;dependency_links&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;PKG&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;INFO&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;SOURCES&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;top_level&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;LICENSE&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;README&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;travis&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;yml&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1206,13 +1206,13 @@ que está coberta por testes. Você pode clicar na badge ou ir até o seu perfil
 &lt;p&gt;Nesta série de postagem, irei mostrar o passo-a-passo na criação de testes unitários para um pequeno projeto que vamos criar no github. Vou explicar como configurar a ferramenta &lt;a href="https://travis-ci.org/"&gt;Travis&lt;/a&gt;, que será responsável por executar os nossos testes no github. A ferramenta &lt;a href="https://coveralls.io/"&gt;Coveralls&lt;/a&gt;, que mapeia nosso código, e nos indica o quanto dele está coberto por testes. E como bônus, adicionar ao nosso projeto o &lt;a href="https://landscape.io"&gt;Landscape&lt;/a&gt;, ferramenta que monitora a "saúde" do nosso código.&lt;/p&gt;
 &lt;h3&gt;Iniciando nosso projeto&lt;/h3&gt;
 &lt;p&gt;Inicialmente, criei no &lt;a href="https://github.com/"&gt;github&lt;/a&gt; um repositório que vai receber meu código e que posteriormente será configurado para rodar nossos testes. No meu caso, o repositório foi esse &lt;a href="https://github.com/mstuttgart/codigo-avulso-test-tutorial"&gt;codigo-avulso-test-tutorial&lt;/a&gt;. Após realizar o clone, criei a seguite estrutura de diretorios:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
-├── codigo_avulso_test_tutorial
-│   └── __init__.py
-├── LICENSE
-├── README.md
-└── test
-    └── __init__.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;LICENSE&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;README&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+    &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1229,19 +1229,19 @@ O nosso projeto consiste de um grupo de classes representando figuras geométric
 
 
 &lt;p&gt;Uma observação importante é que os arquivos de teste devem ter o nome terminado em &lt;code&gt;test&lt;/code&gt;, para que o módulo de Unittest encontre os nossos arquivos de teste automaticamente. Após a criação dos arquivos, teremos a seguinte estrutura de diretório:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
-├── codigo_avulso_test_tutorial
-│   ├── circulo.py
-│   ├── figura_geometrica.py
-│   ├── __init__.py
-│   └── quadrado.py
-├── LICENSE
-├── README.md
-└── test
-    ├── circulo_test.py
-    ├── figura_geometrica_test.py
-    ├── __init__.py
-    └── quadrado_test.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;quadrado&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;LICENSE&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;README&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+    &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+    &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+    &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+    &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1259,20 +1259,20 @@ O nosso projeto consiste de um grupo de classes representando figuras geométric
 
 
 &lt;p&gt;A estrutura do nosso projeto agora está assim:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
-├── codigo_avulso_test_tutorial
-│   ├── circulo.py
-│   ├── figura_geometrica.py
-│   ├── __init__.py
-│   └── quadrado.py
-├── LICENSE
-├── README.md
-├── setup.py
-└── test
-    ├── circulo_test.py
-    ├── figura_geometrica_test.py
-    ├── __init__.py
-    └── quadrado_test.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;quadrado&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;LICENSE&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;README&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+    &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;circulo_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+    &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+    &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+    &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1344,21 +1344,21 @@ O nosso projeto consiste de um grupo de classes representando figuras geométric
 
 
 &lt;p&gt;Esse nosso comando vai executar a nossa classe &lt;code&gt;TestFiguraGeometrica&lt;/code&gt;. Se tudo estiver correto, teremos a seguinte saída:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;running test
-running egg_info
-writing codigo_avulso_test_tutorial.egg-info/PKG-INFO
-writing top-level names to codigo_avulso_test_tutorial.egg-info/top_level.txt
-writing dependency_links to codigo_avulso_test_tutorial.egg-info/dependency_links.txt
-reading manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
-writing manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
-running build_ext
-test_get_area (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
-test_get_perimetro (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;egg_info&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;PKG&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;INFO&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;level&lt;/span&gt; &lt;span class="k"&gt;names&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;top_level&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;dependency_links&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dependency_links&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;reading&lt;/span&gt; &lt;span class="n"&gt;manifest&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;manifest&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;build_ext&lt;/span&gt;
+&lt;span class="n"&gt;test_get_area&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestFiguraGeometrico&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_perimetro&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestFiguraGeometrico&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
 
-----------------------------------------------------------------------
-Ran 2 tests in 0.000s
+&lt;span class="c1"&gt;----------------------------------------------------------------------&lt;/span&gt;
+&lt;span class="n"&gt;Ran&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;tests&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;000&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
 
-OK
+&lt;span class="n"&gt;OK&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1418,23 +1418,23 @@ OK
 
 
 &lt;p&gt;Se tudo estiver certo, teremos a seguinte saída.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;running test
-running egg_info
-writing codigo_avulso_test_tutorial.egg-info/PKG-INFO
-writing top-level names to codigo_avulso_test_tutorial.egg-info/top_level.txt
-writing dependency_links to codigo_avulso_test_tutorial.egg-info/dependency_links.txt
-reading manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
-writing manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
-running build_ext
-test_get_area (test.quadrado_test.TestQuadrado) ... ok
-test_get_perimetro (test.quadrado_test.TestQuadrado) ... ok
-test_get_area (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
-test_get_perimetro (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;egg_info&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;PKG&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;INFO&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;level&lt;/span&gt; &lt;span class="k"&gt;names&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;top_level&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;dependency_links&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dependency_links&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;reading&lt;/span&gt; &lt;span class="n"&gt;manifest&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;manifest&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;build_ext&lt;/span&gt;
+&lt;span class="n"&gt;test_get_area&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestQuadrado&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_perimetro&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestQuadrado&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_area&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestFiguraGeometrico&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_perimetro&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestFiguraGeometrico&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
 
-----------------------------------------------------------------------
-Ran 4 tests in 0.000s
+&lt;span class="c1"&gt;----------------------------------------------------------------------&lt;/span&gt;
+&lt;span class="n"&gt;Ran&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="n"&gt;tests&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;000&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
 
-OK
+&lt;span class="n"&gt;OK&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1501,33 +1501,33 @@ OK
 
 
 &lt;p&gt;Se tudo estiver certo, teremos a seguinte saída.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;running test
-running egg_info
-writing codigo_avulso_test_tutorial.egg-info/PKG-INFO
-writing top-level names to codigo_avulso_test_tutorial.egg-info/top_level.txt
-writing dependency_links to codigo_avulso_test_tutorial.egg-info/dependency_links.txt
-reading manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
-writing manifest file &amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;
-running build_ext
-test_get_area (test.quadrado_test.TestQuadrado) ... ok
-test_get_perimetro (test.quadrado_test.TestQuadrado) ... ok
-test_get_area (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
-test_get_perimetro (test.figura_geometrica_test.TestFiguraGeometrico) ... ok
-test_get_area (test.circulo_test.TestCirculo) ... ok
-test_get_perimetro (test.circulo_test.TestCirculo) ... ok
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;egg_info&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;PKG&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;INFO&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;level&lt;/span&gt; &lt;span class="k"&gt;names&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;top_level&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;dependency_links&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;codigo_avulso_test_tutorial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;egg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dependency_links&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;reading&lt;/span&gt; &lt;span class="n"&gt;manifest&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="n"&gt;manifest&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;codigo_avulso_test_tutorial.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;build_ext&lt;/span&gt;
+&lt;span class="n"&gt;test_get_area&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestQuadrado&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_perimetro&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quadrado_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestQuadrado&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_area&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestFiguraGeometrico&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_perimetro&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figura_geometrica_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestFiguraGeometrico&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_area&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;circulo_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestCirculo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
+&lt;span class="n"&gt;test_get_perimetro&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;circulo_test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestCirculo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="n"&gt;ok&lt;/span&gt;
 
-----------------------------------------------------------------------
-Ran 6 tests in 0.001s
+&lt;span class="c1"&gt;----------------------------------------------------------------------&lt;/span&gt;
+&lt;span class="n"&gt;Ran&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="n"&gt;tests&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;001&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
 
-OK
+&lt;span class="n"&gt;OK&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;Conclusão&lt;/h3&gt;
 &lt;p&gt;Com os testes ok, só nos resta subir o código para o github:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git add --all
-git commit -m &amp;quot;[NEW] Adicionado classes e testes&amp;quot;
-git push origin master
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;--all&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;commit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;[NEW] Adicionado classes e testes&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;origin&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;master&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2218,11 +2218,11 @@ dados&lt;/a&gt;!&lt;/p&gt;</content><category term="python"></category><category
 &lt;h2&gt;Parte 1 - instalar o Java&lt;/h2&gt;
 &lt;p&gt;As aplicações da JetBrains não são exatamente compatíveis com a versão do Java que vem por padrão no Ubuntu. Por isso, precisamos atualizar. &lt;/p&gt;
 &lt;p&gt;Abra o terminal e execute os comandos abaixo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get update
-echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
-sudo apt-get install oracle-java8-installer -y
-sudo apt-get install oracle-java8-set-default -y
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="k"&gt;add&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;repository&lt;/span&gt; &lt;span class="n"&gt;ppa&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;webupd8team&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt; &lt;span class="k"&gt;update&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="n"&gt;oracle&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;java8&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;installer&lt;/span&gt; &lt;span class="n"&gt;shared&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;accepted&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;oracle&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;license&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;v1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="k"&gt;true&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;debconf&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;set&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;selections&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;oracle&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;java8&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;installer&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;oracle&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;java8&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;set&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2232,20 +2232,20 @@ sudo apt-get install oracle-java8-set-default -y
 
 
 &lt;p&gt;a saída esperada é algo como:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;java version &amp;quot;1.8.0_45&amp;quot;
-Java(TM) SE Runtime Environment (build 1.8.0_45-b14)
-Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt; &lt;span class="k"&gt;version&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;1.8.0_45&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;Java&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TM&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;SE&lt;/span&gt; &lt;span class="n"&gt;Runtime&lt;/span&gt; &lt;span class="n"&gt;Environment&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;_45&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b14&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Java&lt;/span&gt; &lt;span class="n"&gt;HotSpot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TM&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nb"&gt;Bit&lt;/span&gt; &lt;span class="n"&gt;Server&lt;/span&gt; &lt;span class="n"&gt;VM&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;45&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b02&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mixed&lt;/span&gt; &lt;span class="k"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Parte 2 - pip e virtualenv&lt;/h2&gt;
 &lt;p&gt;O PyCharm usa o &lt;strong&gt;pip&lt;/strong&gt; para baixar módulos/bibliotecas/extensões (como quiser chamar) do python, e o &lt;strong&gt;virtualenv&lt;/strong&gt; para criar os queridos ambientes virtuais que mantém a sanidade dos programadores python. Então, para tirar proveito dessas funcionalidades, é bom garantir que estejam instalados também. &lt;/p&gt;
 &lt;p&gt;Para isto, abra o console e:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ~/Downloads
-wget -c https://bootstrap.pypa.io/get-pip.py
-sudo -H python2 get-pip.py
-sudo -H python3 get-pip.py
-sudo -H pip2 install virtualenv
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;Downloads&lt;/span&gt;
+&lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;c&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;bootstrap&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pypa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;get&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;H&lt;/span&gt; &lt;span class="n"&gt;python2&lt;/span&gt; &lt;span class="k"&gt;get&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;H&lt;/span&gt; &lt;span class="n"&gt;python3&lt;/span&gt; &lt;span class="k"&gt;get&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;H&lt;/span&gt; &lt;span class="n"&gt;pip2&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;virtualenv&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2257,7 +2257,7 @@ sudo -H pip2 install virtualenv
 &lt;/ul&gt;
 &lt;h2&gt;Parte 4 - instalar o PyCharm&lt;/h2&gt;
 &lt;p&gt;Com os pré-requisitos prontos e instalados, vamos ao prato principal: &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo tar -C /opt/ -xzf &amp;lt;diretorio_onde_gravou_o_download&amp;gt;/pycharm-community-4.5.1.tar.gz
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;C&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xzf&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;diretorio_onde_gravou_o_download&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;/&lt;/span&gt;&lt;span class="n"&gt;pycharm&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;community&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gz&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -4368,27 +4368,27 @@ alguns tipos de estrutura de dados. Os métodos &lt;strong&gt;iterkeys(), iterva
 iteritems()&lt;/strong&gt; e &lt;strong&gt;iterlists()&lt;/strong&gt;, por exemplo, foram renomeados dos dicionários
 por &lt;strong&gt;keys(), values(), items()&lt;/strong&gt; e &lt;strong&gt;lists()&lt;/strong&gt; respectivamente.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Python 2.7.5&lt;/span&gt;
-&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;my_info&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Artur Sousa&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;my_info&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;itervalues&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;lt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;valueiterator&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x10738e680&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;my_info&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_info&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Artur Sousa&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_info&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;itervalues&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;valueiterator&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x10738e680&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_info&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Artur Sousa&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Python 3.4.0&lt;/span&gt;
-&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;my_info&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Artur Sousa&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;my_info&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_info&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Artur Sousa&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_info&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;dict_values&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Artur Sousa&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Versões compatíveis destes métodos podem ser encontradas no six:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Python 2.x 3.x&lt;/span&gt;
-&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;six&lt;/span&gt;
-&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;my_info&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Artur Sousa&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;six&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;itervalues&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;my_info&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;lt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;valueiterator&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x10738e680&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;six&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iterkeys&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;lt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;dict_keyiterator&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x10b2f4638&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;six&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_info&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Artur Sousa&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;six&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;itervalues&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;my_info&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;valueiterator&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x10738e680&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;six&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iterkeys&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;dict_keyiterator&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x10b2f4638&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

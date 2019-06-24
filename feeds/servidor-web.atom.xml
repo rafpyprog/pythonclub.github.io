@@ -57,13 +57,13 @@ mkdir ~/www ~/env
 &lt;p&gt;Vamos configurar o Nginx e o Supervisor para ele trabalhar na nossa estrutura de arquivos.&lt;/p&gt;
 &lt;p&gt;Edite o arquivo &lt;code&gt;/etc/nginx/nginx.conf&lt;/code&gt;,&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;##
-# Virtual Host Configs
+# &lt;span class="nv"&gt;Virtual&lt;/span&gt; &lt;span class="nv"&gt;Host&lt;/span&gt; &lt;span class="nv"&gt;Configs&lt;/span&gt;
 ##
-include /etc/nginx/conf.d/*.conf;
-include /etc/nginx/sites-enabled/*;
+&lt;span class="k"&gt;include&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;nginx&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;conf&lt;/span&gt;.&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="cm"&gt;/*.conf;&lt;/span&gt;
+&lt;span class="cm"&gt;include /etc/nginx/sites-enabled/*;&lt;/span&gt;
 
-# encontra a configuracao dos seus projetos
-include /home/myusr/www/*/nginx.conf;
+&lt;span class="cm"&gt;# encontra a configuracao dos seus projetos&lt;/span&gt;
+&lt;span class="cm"&gt;include /home/myusr/www/*/&lt;/span&gt;&lt;span class="nv"&gt;nginx&lt;/span&gt;.&lt;span class="nv"&gt;conf&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -136,35 +136,35 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 
 &lt;p&gt;Na linha 6, &lt;em&gt;ADDRESS&lt;/em&gt;, diz que o nosso projeto vai rodar localhost com a porta 8000, esse mesmo ip:porta será usado na configuração do &lt;code&gt;nginx.conf&lt;/code&gt;, as linhas abaixo fazem o processo de ativar o ambiente virtual e navegar para pasta do fonte do projeto, para que o &lt;strong&gt;&lt;em&gt;Gunicorn&lt;/em&gt;&lt;/strong&gt; possa encontrar o arquivo &lt;code&gt;wsgi.py&lt;/code&gt;, esse é o arquivo que configura o ambiente de produção no &lt;strong&gt;&lt;em&gt;Django&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Agora vamos configurar o &lt;code&gt;nginx.conf&lt;/code&gt;, para que ele possa escutar o nosso dominio na porta 80 e redirecionar a requisição para a nossa aplicação no &lt;em&gt;127.0.0.1:8000&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;upstream&lt;/span&gt; &lt;span class="nt"&gt;myproject&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;br&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;server&lt;/span&gt; &lt;span class="err"&gt;127.0.0.1:8000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;upstream&lt;/span&gt; &lt;span class="nv"&gt;myproject&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;.&lt;span class="nv"&gt;br&lt;/span&gt; {
+    &lt;span class="nv"&gt;server&lt;/span&gt; &lt;span class="mi"&gt;127&lt;/span&gt;.&lt;span class="mi"&gt;0&lt;/span&gt;.&lt;span class="mi"&gt;0&lt;/span&gt;.&lt;span class="mi"&gt;1&lt;/span&gt;:&lt;span class="mi"&gt;8000&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+}
 
-&lt;span class="nt"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;listen&lt;/span&gt; &lt;span class="err"&gt;80&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;server_name&lt;/span&gt; &lt;span class="err"&gt;myproject.com.br&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;client_max_body_size&lt;/span&gt; &lt;span class="err"&gt;50M&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="nv"&gt;server&lt;/span&gt; {
+    &lt;span class="nv"&gt;listen&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+    &lt;span class="nv"&gt;server_name&lt;/span&gt; &lt;span class="nv"&gt;myproject&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;.&lt;span class="nv"&gt;br&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+    &lt;span class="nv"&gt;client_max_body_size&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="nv"&gt;M&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
 
-    &lt;span class="err"&gt;access_log&lt;/span&gt; &lt;span class="err"&gt;/home/myusr/www/myproject/logs/access.log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;error_log&lt;/span&gt; &lt;span class="err"&gt;/home/myusr/www/myproject/logs/error.log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nv"&gt;access_log&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;myusr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;logs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;access&lt;/span&gt;.&lt;span class="nv"&gt;log&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+    &lt;span class="nv"&gt;error_log&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;myusr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;logs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;error&lt;/span&gt;.&lt;span class="nv"&gt;log&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
 
-    &lt;span class="err"&gt;location&lt;/span&gt; &lt;span class="err"&gt;/static/&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-        &lt;span class="err"&gt;alias&lt;/span&gt; &lt;span class="err"&gt;/home/myusr/www/myproject/static/&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="nt"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;media&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="err"&gt;alias&lt;/span&gt; &lt;span class="err"&gt;/home/myusr/www/myproject/media/&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="nt"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="err"&gt;proxy_set_header&lt;/span&gt; &lt;span class="err"&gt;X-Forwarded-For&lt;/span&gt; &lt;span class="err"&gt;$proxy_add_x_forwarded_for&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-        &lt;span class="err"&gt;proxy_set_header&lt;/span&gt; &lt;span class="err"&gt;Host&lt;/span&gt; &lt;span class="err"&gt;$http_host&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-        &lt;span class="err"&gt;proxy_redirect&lt;/span&gt; &lt;span class="err"&gt;off&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nv"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;static&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; {
+        &lt;span class="nv"&gt;alias&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;myusr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;static&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+    }
+    &lt;span class="nv"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;media&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; {
+        &lt;span class="nv"&gt;alias&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;myusr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;media&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+    }
+    &lt;span class="nv"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; {
+        &lt;span class="nv"&gt;proxy_set_header&lt;/span&gt; &lt;span class="nv"&gt;X&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Forwarded&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;For&lt;/span&gt; $&lt;span class="nv"&gt;proxy_add_x_forwarded_for&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+        &lt;span class="nv"&gt;proxy_set_header&lt;/span&gt; &lt;span class="nv"&gt;Host&lt;/span&gt; $&lt;span class="nv"&gt;http_host&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+        &lt;span class="nv"&gt;proxy_redirect&lt;/span&gt; &lt;span class="nv"&gt;off&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
 
-        &lt;span class="err"&gt;if&lt;/span&gt; &lt;span class="err"&gt;(!-f&lt;/span&gt; &lt;span class="err"&gt;$request_filename)&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-            &lt;span class="err"&gt;proxy_pass&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-            &lt;span class="err"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-        &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="err"&gt;}&lt;/span&gt;
-&lt;span class="err"&gt;}&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!-&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt; $&lt;span class="nv"&gt;request_filename&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt; {
+            &lt;span class="nv"&gt;proxy_pass&lt;/span&gt; &lt;span class="nv"&gt;http&lt;/span&gt;:&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nv"&gt;myproject&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;.&lt;span class="nv"&gt;br&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+            &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+        }
+    }
+}
 &lt;/pre&gt;&lt;/div&gt;
 
 

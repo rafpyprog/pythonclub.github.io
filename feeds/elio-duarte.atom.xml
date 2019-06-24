@@ -20,7 +20,7 @@ Existem &lt;em&gt;cartridges&lt;/em&gt; que habilitam uma linguagem (Python, Rub
 &lt;p&gt;Você precisa ter uma conta no &lt;a href="https://www.openshift.com/products/online"&gt;Openshift Online&lt;/a&gt; e o programa &lt;strong&gt;rhc&lt;/strong&gt; instalado em sua máquina.&lt;/p&gt;
 &lt;p&gt;Crie uma conta gratuita clicando &lt;a href="https://www.openshift.com/app/account/new"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Depois instale o programa &lt;strong&gt;ruby&lt;/strong&gt; e o &lt;strong&gt;rhc&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get update &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;amp&lt;span class="p"&gt;;&amp;amp;&lt;/span&gt;amp&lt;span class="p"&gt;;&lt;/span&gt; apt-get install -y ruby
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install -y ruby
 sudo gem install rhc
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -83,7 +83,7 @@ Durante o processo de &lt;strong&gt;deploy&lt;/strong&gt; o Openshift automatica
 
 
 &lt;p&gt;Adicione o Django no &lt;em&gt;requirements.txt&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Django==1.7&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt; requirements.txt
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Django==1.7&amp;#39;&lt;/span&gt; &amp;gt; requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -99,10 +99,10 @@ pip install -r requirements.txt
 &lt;p&gt;De agora em diante não direi mais para você fazer o &lt;em&gt;commit&lt;/em&gt; o tempo todo mas é uma boa prática que você o faça a cada etapa.&lt;/p&gt;
 &lt;p&gt;Execute o comando abaixo para criar o arquivo &lt;strong&gt;.gitignore&lt;/strong&gt; e adicionar algumas entradas nele.
 Esse arquivo irá impedir que alguns arquivos desnecessários sejam adicionados ao git.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt; .gitignore &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&lt;/span&gt;EOF
-*.pyc
-*.sqlite3
-EOF
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &amp;gt; .gitignore &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;span class="s"&gt;*.pyc&lt;/span&gt;
+&lt;span class="s"&gt;*.sqlite3&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -130,18 +130,18 @@ Um desses arquivos é o &lt;strong&gt;wsgi.py&lt;/strong&gt; na raiz do reposit�
 O WSGI &lt;em&gt;entry-point&lt;/em&gt; nada mais é do que o &lt;em&gt;callable&lt;/em&gt; do servidor WSGI.
 No nosso caso usamos uma variável mas poderia ser um método ou uma função, o importante é que ele tenha o nome de &lt;strong&gt;application&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Execute o comando abaixo para criar o WSGI &lt;em&gt;entry-point&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt; wsgi.py &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&lt;/span&gt;EOF
-&lt;span class="c1"&gt;#!/usr/bin/python&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &amp;gt; wsgi.py &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;span class="s"&gt;#!/usr/bin/python&lt;/span&gt;
 
-import os
-import sys
-from django.core.wsgi import get_wsgi_application
+&lt;span class="s"&gt;import os&lt;/span&gt;
+&lt;span class="s"&gt;import sys&lt;/span&gt;
+&lt;span class="s"&gt;from django.core.wsgi import get_wsgi_application&lt;/span&gt;
 
-sys.path.append&lt;span class="o"&gt;(&lt;/span&gt;os.path.join&lt;span class="o"&gt;(&lt;/span&gt;os.environ&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;OPENSHIFT_REPO_DIR&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;openshift&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
-os.environ&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;DJANGO_SETTINGS_MODULE&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;openshift.production&amp;#39;&lt;/span&gt;
+&lt;span class="s"&gt;sys.path.append(os.path.join(os.environ[&amp;#39;OPENSHIFT_REPO_DIR&amp;#39;], &amp;#39;openshift&amp;#39;))&lt;/span&gt;
+&lt;span class="s"&gt;os.environ[&amp;#39;DJANGO_SETTINGS_MODULE&amp;#39;] = &amp;#39;openshift.production&amp;#39;&lt;/span&gt;
 
-&lt;span class="nv"&gt;application&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; get_wsgi_application&lt;span class="o"&gt;()&lt;/span&gt;
-EOF
+&lt;span class="s"&gt;application = get_wsgi_application()&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -270,7 +270,7 @@ Outras &lt;strong&gt;markers&lt;/strong&gt; disponíveis estão detalhadas &lt;a
 Em algumas ações o Openshift vai procurar determinados arquivos dentro dela e executá-los em uma determinada ordem.
 Para listar quais são as ações disponíveis execute o comando &lt;code&gt;rhc app --help&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rhc app --help
-Usage: rhc app &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&lt;/span&gt;action&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt;
+Usage: rhc app &amp;lt;action&amp;gt;
 
 Creates and controls an OpenShift application.  To see the list of all applications use the rhc domain show command.  Note that delete is not reversible
 and will stop your application and &lt;span class="k"&gt;then&lt;/span&gt; remove the application and repo from the remote server. No &lt;span class="nb"&gt;local&lt;/span&gt; changes are made.
@@ -314,11 +314,11 @@ Para saber mais sobre &lt;em&gt;action hooks&lt;/em&gt; clique &lt;a href="http:
 
 &lt;p&gt;Em nosso &lt;em&gt;deploy&lt;/em&gt;, apenas vamos atualizar o schema do banco e recolher os arquivos estáticos.
 Note que precisamos informar o arquivo de configuração que usaremos em produção, que é diferente daquele que está no arquivo &lt;strong&gt;manage.py&lt;/strong&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt; .openshift/action_hooks/deploy &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&lt;/span&gt;EOF
-&lt;span class="nv"&gt;PYTHONPATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="se"&gt;\$&lt;/span&gt;OPENSHIFT_REPO_DIR/openshift
-django-admin.py migrate --settings&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;openshift.production&amp;#39;&lt;/span&gt; --pythonpath&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="se"&gt;\$&lt;/span&gt;PYTHONPATH
-python &lt;span class="se"&gt;\$&lt;/span&gt;PYTHONPATH/manage.py collectstatic -c --noinput --settings&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;openshift.production&amp;#39;&lt;/span&gt; --pythonpath&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="se"&gt;\$&lt;/span&gt;PYTHONPATH
-EOF
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat &amp;gt; .openshift/action_hooks/deploy &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;span class="s"&gt;PYTHONPATH=\$OPENSHIFT_REPO_DIR/openshift&lt;/span&gt;
+&lt;span class="s"&gt;django-admin.py migrate --settings=&amp;#39;openshift.production&amp;#39; --pythonpath=\$PYTHONPATH&lt;/span&gt;
+&lt;span class="s"&gt;python \$PYTHONPATH/manage.py collectstatic -c --noinput --settings=&amp;#39;openshift.production&amp;#39; --pythonpath=\$PYTHONPATH&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

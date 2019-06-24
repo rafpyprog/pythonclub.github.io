@@ -19,12 +19,12 @@ $ mv tekton-master projeto_appengine &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt
 
 
 &lt;p&gt;Nesse ponto podemos explorar e conhecer a estrutura de diretórios.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└── backend
- ├── appengine
- ├── apps
- ├── build_scripts
- ├── test
- └── venv
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;backend&lt;/span&gt;
+ &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;appengine&lt;/span&gt;
+ &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;apps&lt;/span&gt;
+ &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;build_scripts&lt;/span&gt;
+ &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+ &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -35,13 +35,13 @@ $ &lt;span class="nb"&gt;source&lt;/span&gt; ./bin/activate
 
 &lt;p&gt;Com o ambiente virtual pronto, tudo deve estar funcionando. Para testar, 
 vamos utilizar o próprio servidor que vem com o pacote antes de subir parao GAE.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ../appengine &amp;amp;&amp;amp; dev_appserver.py . 
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;appengine&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;dev_appserver&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt; 
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Tudo certo! Você deve estar vendo o projeto template no seu localhost:8080&lt;/p&gt;
 &lt;p&gt;Para realizar o deploy no App Engine:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;appcfg.py update . --oauth2
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;appcfg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="k"&gt;update&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="c1"&gt;--oauth2&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
