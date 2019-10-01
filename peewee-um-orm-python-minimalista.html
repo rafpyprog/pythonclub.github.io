@@ -78,13 +78,7 @@
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" href="https://www.facebook.com/michell.stuttgart">
-                            <i class="fa fa-lg fa-fw fa-facebook"></i>
-                            <strong>Facebook</strong>
-                        </a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="http://codigoavulso.com.br">
+                        <a target="_blank" href="https://mstuttgart.github.io/">
                             <i class="fa fa-lg fa-fw fa-globe"></i>
                             <strong>Site</strong>
                         </a>
@@ -111,130 +105,163 @@
             </section>
             <p><a href="http://peewee.readthedocs.io/en/latest/index.html">Peewee</a> é um ORM destinado a criar e gerenciar tabelas de banco de dados relacionais através de objetos Python. Segundo a <a href="https://pt.wikipedia.org/wiki/Mapeamento_objeto-relacional">wikipedia</a>, um ORM é:</p>
 <blockquote>
-<blockquote>
-<blockquote>
-<p>Mapeamento objeto-relacional (ou ORM, do inglês: Object-relational mapping) é uma técnica de desenvolvimento utilizada para reduzir a impedância da programação orientada aos objetos utilizando bancos de dados relacionais. As tabelas do banco de dados são representadas através de classes e os registros de cada tabela são representados como instâncias das classes correspondentes.</p>
+<p>Mapeamento objeto-relacional (ou ORM, do inglês: Object-relational mapping) é uma técnica de desenvolvimento &gt; utilizada para reduzir a impedância da programação orientada aos objetos utilizando bancos de dados relacionais. As tabelas do banco de dados são representadas através de classes e os registros de cada tabela são representados como instâncias das classes correspondentes.</p>
 </blockquote>
-</blockquote>
-</blockquote>
-<p>O que o ORM faz é, basicamente, transformar classes Python em tabelas no banco de dados, além de permitir construir <em>querys</em> usando diretamente objetos Python ao invés de SQL.</p>
-<p>O Peewee é destinado a projetos de pequeno/médio porte, se destacando pela simplicidade quando comparado a outros ORM mais conhecidos, como o SQLAlchemy. Uma analogia utilizada pelo autor da API e que acho muito interessante é que Peewee está para o SQLAlchemy assim como SQLite está para o PostgreSQL.</p>
-<p>Em relação aos recursos por ele oferecidos, podemos citar que ele possui suporte nativo a SQLite, PostgreSQL e MySQL, embora seja necessário a instalação de <em>drivers</em> para utilizá-lo com PostgreSQL e MySQL e suporta tanto Python 2.6+ quanto Python 3.4+. </p>
-<p>Neste tutorial, utilizaremos o SQLite, por sua simplicidade de uso e por não precisar de nenhuma configuração.</p>
-<h3>Instalação</h3>
-<p>O Peewee pode ser facilmente instalado com o gerenciador de pacotes <em>pip</em>:</p>
-<div class="highlight"><pre><span></span>pip install peewee
+<p>O que um ORM faz é, basicamente, transformar classes Python em tabelas no banco de dados, além de permitir construir <em>querys</em> usando diretamente objetos Python ao invés de SQL.</p>
+<p>O Peewee é destinado a projetos de pequeno/médio porte e se destaca pela simplicidade quando comparado a outros ORM mais conhecidos, como o SQLAlchemy. Uma analogia utilizada pelo autor da API e que acho muito interessante é que Peewee está para o SQLAlchemy assim como SQLite está para o PostgreSQL.</p>
+<p>Em relação aos recursos por ele oferecidos, podemos citar que ele possui suporte nativo a SQLite, PostgreSQL e MySQL, embora seja necessário a instalação de <em>drivers</em> para utilizá-lo com PostgreSQL e MySQL e suporta tanto Python 2.6+ quanto Python 3.4+.</p>
+<p>Neste tutorial, utilizaremos o SQLite, por sua simplicidade de uso e pelo Python possuir suporte nativo ao mesmo (usaremos o Python 3.5).</p>
+<h2>Instalação</h2>
+<p>O Peewee pode ser facilmente instalado com o gerenciador de pacotes <em>pip</em> (recomendo a instalação em um virtualenv):</p>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">peewee</span>
 </pre></div>
 
 
-<h3>Criando o banco de dados</h3>
-<p>Para criar as tabelas é bem simples. Inicialmente passamos o nome do nosso banco de dados (a extensão <code>*.db</code> indica um arquivo do SQLite).</p>
+<h2>Criando o banco de dados</h2>
+<p>Para criar o banco de dados é bem simples. Inicialmente passamos o nome do nosso banco de dados (a extensão <code>*.db</code> indica um arquivo do SQLite).</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">peewee</span>
 
+<span class="c1"># Aqui criamos o banco de dados</span>
 <span class="n">db</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">SqliteDatabase</span><span class="p">(</span><span class="s1">&#39;codigo_avulso.db&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Diferente de outros bancos de dados que funcionam através um servidor, o SQLite cria um arquivo de extensão <code>*.db</code>, onde todos os nossos dados são armazenados.</p>
-<p><strong>DICA</strong>: caso deseje ver as tabelas existentes no arquivo <code>codigo_avulso.db</code>, instale o aplicativo <code>SQLiteBrowser</code>. Com ele fica fácil monitorar as tabelas criadas e acompanhar o tutorial.</p>
+<blockquote>
+<p>Caso deseje ver as tabelas existentes no arquivo <code>codigo_avulso.db</code>, instale o aplicativo <code>SQLiteBrowser</code>. Com ele fica fácil monitorar as tabelas criadas e acompanhar o tutorial.</p>
+</blockquote>
 <div class="highlight"><pre><span></span> sudo apt-get install sqlitebrowser
 </pre></div>
 
 
-<p>A título de exemplo, vamos criar um banco destinado a armazenar nomes de livros e de seus respectivos autores. Comecemos primeiro com a classe que representa os autores.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">peewee</span>
+<p>A título de exemplo, vamos criar um banco destinado a armazenar nomes de livros e de seus respectivos autores. Iremos chamá-lo de <code>models.py</code>.</p>
+<p>Inicialmente, vamos criar a classe base para todos os nossos <code>models</code>. Esta é uma abordagem recomendada pela documentação e é considerada uma boa prática. Também adicionaremos um log para acompanharmos as mudanças que são feitas no banco:</p>
+<div class="highlight"><pre><span></span><span class="c1"># models.py</span>
 
+<span class="kn">import</span> <span class="nn">peewee</span>
+
+<span class="c1"># Criamos o banco de dados</span>
 <span class="n">db</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">SqliteDatabase</span><span class="p">(</span><span class="s1">&#39;codigo_avulso.db&#39;</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">Author</span><span class="p">(</span><span class="n">peewee</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Classe que representa a tabela Author</span>
-<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1"># A tabela possui apenas o campo &#39;name&#39;, que</span>
-    <span class="c1"># receberá o nome do autor</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">BaseModel</span><span class="p">(</span><span class="n">peewee</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Classe model base&quot;&quot;&quot;</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="c1"># Indica em qual banco de dados a tabela</span>
         <span class="c1"># &#39;author&#39; sera criada (obrigatorio). Neste caso,</span>
-        <span class="c1"># utilizamos o banco &#39;codigo_avulso.db&#39; criado anteriormente.</span>
+        <span class="c1"># utilizamos o banco &#39;codigo_avulso.db&#39; criado anteriormente</span>
         <span class="n">database</span> <span class="o">=</span> <span class="n">db</span>
 </pre></div>
 
 
-<p>Em seguida, criamos a classe que representa os livros. Ela possui uma relação de "muitos para um" com a tabela de autores, ou seja, cada livro possui apenas um autor, mas um autor pode possuir vários livros.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">peewee</span>
+<p>A class <code>BaseModel</code> é responsável por criar a conexão com nosso banco de dados.</p>
+<p>Agora, vamos criar a model que representa os autores:</p>
+<div class="highlight"><pre><span></span><span class="c1"># models.py</span>
 
-<span class="n">db</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">SqliteDatabase</span><span class="p">(</span><span class="s1">&#39;codigo_avulso.db&#39;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Author</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 
-<span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">peewee</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe que representa a tabela Author</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># A tabela possui apenas o campo &#39;name&#39;, que receberá o nome do autor sera unico</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Se observamos a model <code>Author</code>, veremos que não foi especificado nenhuma coluna como <em>primary key</em> (chave primaria), sendo assim o Peewee irá criar um campo chamado <code>id</code> do tipo inteiro com auto incremento para funcionar como chave primária.
+Em seguida, no mesmo arquivo <code>models.py</code> criamos a classe que representa os livros. Ela possui uma relação de "muitos para um" com a tabela de autores, ou seja, cada livro possui apenas um autor, mas um autor pode possuir vários livros.</p>
+<div class="highlight"><pre><span></span><span class="c1"># models.py</span>
+
+<span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Classe que representa a tabela Book</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1"># A tabela possui apenas o campo &#39;title&#39;, que</span>
-    <span class="c1"># receberá o nome do livro</span>
-    <span class="n">title</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
+    <span class="c1"># A tabela possui apenas o campo &#39;title&#39;, que receberá o nome do livro</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
     <span class="c1"># Chave estrangeira para a tabela Author</span>
     <span class="n">author</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span><span class="n">Author</span><span class="p">)</span>
-
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="c1"># Indica em qual banco de dados a tabela</span>
-        <span class="c1"># &#39;author&#39; sera criada (obrigatorio). Neste caso,</span>
-        <span class="c1"># utilizamos o banco &#39;codigo_avulso.db&#39; criado anteriormente.</span>
-        <span class="n">database</span> <span class="o">=</span> <span class="n">db</span>
 </pre></div>
 
 
-<p>Agora, vamos reunir tudo em um único arquivo <code>model.py</code>. Como exemplo, eu criei um arquivo <em>main.py</em> para utilizarmos as classes que acabamos de criar.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">peewee</span>
-<span class="kn">from</span> <span class="nn">model</span> <span class="kn">import</span> <span class="n">Author</span><span class="p">,</span> <span class="n">Book</span>
-
+<p>Agora, adicionamos o código que cria as tabelas <code>Author</code> e <code>Book</code>.</p>
+<div class="highlight"><pre><span></span><span class="c1"># models.py</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">Author</span><span class="o">.</span><span class="n">create_table</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Tabela &#39;Author&#39; criada com sucesso!&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">peewee</span><span class="o">.</span><span class="n">OperationalError</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s1">&#39;Tabela Author ja existe!&#39;</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Tabela &#39;Author&#39; ja existe!&quot;</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">Book</span><span class="o">.</span><span class="n">create_table</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Tabela &#39;Book&#39; criada com sucesso!&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">peewee</span><span class="o">.</span><span class="n">OperationalError</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s1">&#39;Tabela Book ja existe!&#39;</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Tabela &#39;Book&#39; ja existe!&quot;</span><span class="p">)</span>
 </pre></div>
 
 
-<p>Após executarmos o código, será criado um arquivo de nome <code>codigo_avulso.db</code> no mesmo diretório do nosso arquivo <code>main.py</code>, contendo as tabelas <code>Author</code> e <code>Book</code>. A estrutura do diretório ficou assim:</p>
+<p>excerpt
+Agora executamos o <code>models.py</code>:</p>
+<div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">models</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+
+
+<p>A estrutura do diretório ficou assim:</p>
 <div class="highlight"><pre><span></span>.
 ├── codigo_avulso.db
-├── main.py
-├── model.py
+├── models.py
 </pre></div>
 
 
-<h3>Inserindo dados no banco</h3>
-<p>Agora, vamos popular nosso banco com alguns autores e seus respectivos livros. Isso pode ser feito de dois modos. Através do método <code>create</code>, quando desejamos inserir um registro apenas; ou pelo método <code>insert_many</code>, quando desejamos inserir vários registros de uma vez em uma mesma tabela.</p>
-<div class="highlight"><pre><span></span><span class="c1"># Inserimos um autor de nome &quot;H. G. Wells&quot; na tabela &#39;Author&#39;</span>
+<p>Após executarmos o código, será criado um arquivo de nome <code>codigo_avulso.db</code> no mesmo diretório do nosso arquivo <code>models.py</code>, contendo as tabelas <code>Author</code> e <code>Book</code>.</p>
+<h2>Realizando o CRUD</h2>
+<p>Agora vamos seguir com as 4 principais operações que podemos realizar em um banco de dados, também conhecida como CRUD.</p>
+<p>A sigla <code>CRUD</code> é comumente utilizada para designar as quatro operações básicas que pode-se executar em um banco de dados, sendo elas: </p>
+<div class="highlight"><pre><span></span><span class="o">-</span> <span class="nv">Create</span> <span class="ss">(</span><span class="nv">criar</span> <span class="nv">um</span> <span class="nv">novo</span> <span class="nv">registro</span> <span class="nv">no</span> <span class="nv">banco</span><span class="ss">)</span>
+<span class="o">-</span> <span class="nv">Read</span> <span class="ss">(</span><span class="nv">ler</span><span class="o">/</span><span class="nv">consultar</span> <span class="nv">um</span> <span class="nv">registro</span><span class="ss">)</span>
+<span class="o">-</span> <span class="nv">Update</span> <span class="ss">(</span><span class="nv">atualizar</span> <span class="nv">um</span> <span class="nv">registro</span><span class="ss">)</span>
+<span class="o">-</span> <span class="nv">Delete</span> <span class="ss">(</span><span class="nv">excluir</span> <span class="nv">um</span> <span class="nv">registro</span> <span class="k">do</span> <span class="nv">banco</span><span class="ss">)</span>
+</pre></div>
+
+
+<p>Iremos abordar cada uma dessas operações.</p>
+<h3>Create: Inserindo dados no banco</h3>
+<p>Agora, vamos popular nosso banco com alguns autores e seus respectivos livros. Para isso criamos um arquivo <code>create.py</code>. A estrutura do diretório ficou assim:</p>
+<div class="highlight"><pre><span></span>.
+├── codigo_avulso.db
+├── models.py
+├── create.py
+</pre></div>
+
+
+<p>A criação dos registros no banco pode ser feito através do método <code>create</code>, quando desejamos inserir um registro apenas; ou pelo método <code>insert_many</code>, quando desejamos inserir vários registros de uma vez em uma mesma tabela.</p>
+<div class="highlight"><pre><span></span><span class="c1"># create.py</span>
+
+<span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">Author</span><span class="p">,</span> <span class="n">Book</span>
+
+<span class="c1"># Inserimos um autor de nome &quot;H. G. Wells&quot; na tabela &#39;Author&#39;</span>
 <span class="n">author_1</span> <span class="o">=</span> <span class="n">Author</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;H. G. Wells&#39;</span><span class="p">)</span>
-
-<span class="n">book_1</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;A Máquina do Tempo&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;author&#39;</span><span class="p">:</span> <span class="n">author_1</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="n">book_2</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Guerra dos Mundos&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;author&#39;</span><span class="p">:</span> <span class="n">author_1</span><span class="p">,</span>
-<span class="p">}</span>
 
 <span class="c1"># Inserimos um autor de nome &quot;Julio Verne&quot; na tabela &#39;Author&#39;</span>
 <span class="n">author_2</span> <span class="o">=</span> <span class="n">Author</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Julio Verne&#39;</span><span class="p">)</span>
 
+<span class="n">book_1</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;A Máquina do Tempo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;author_id&#39;</span><span class="p">:</span> <span class="n">author_1</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">book_2</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Guerra dos Mundos&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;author_id&#39;</span><span class="p">:</span> <span class="n">author_1</span><span class="p">,</span>
+<span class="p">}</span>
+
 <span class="n">book_3</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Volta ao Mundo em 80 Dias&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;author&#39;</span><span class="p">:</span> <span class="n">author_2</span><span class="p">,</span>
+    <span class="s1">&#39;author_id&#39;</span><span class="p">:</span> <span class="n">author_2</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">book_4</span> <span class="o">=</span> <span class="p">{</span>
@@ -249,21 +276,30 @@
 </pre></div>
 
 
-<h3>Consultando dados no banco</h3>
+<h3>Read: Consultando dados no banco</h3>
 <p>O Peewee possui comandos destinados a realizar consultas no banco. De maneira semelhante ao conhecido <code>SELECT</code>. Podemos fazer essa consulta de duas maneiras. Se desejamos o primeiro registro que corresponda a nossa pesquisa, podemos utilizar o método <code>get()</code>.</p>
-<div class="highlight"><pre><span></span><span class="n">book</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Volta ao Mundo em 80 Dias&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-<span class="n">book</span><span class="o">.</span><span class="n">title</span>
+<div class="highlight"><pre><span></span><span class="c1"># read.py</span>
+
+<span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">Author</span><span class="p">,</span> <span class="n">Book</span>
+
+<span class="n">book</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Volta ao Mundo em 80 Dias&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+
+<span class="c1"># Resultado</span>
+<span class="c1"># * Volta ao Munto em 80 Dias</span>
 </pre></div>
 
 
 <p>Porém, se desejamos mais de um registro, utilizamos o método <code>select</code>. Por exemplo, para consultar todos os livros escritos pelo autor "H. G. Wells".</p>
-<div class="highlight"><pre><span></span><span class="n">books</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Author</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Author</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;H. G. Wells&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="c1"># read.py</span>
+
+<span class="n">books</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Author</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Author</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;H. G. Wells&#39;</span><span class="p">)</span>
 
 <span class="c1"># Exibe a quantidade de registros que corresponde a nossa pesquisa</span>
-<span class="k">print</span> <span class="n">books</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">books</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
 
 <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">books</span><span class="p">:</span>
-    <span class="n">book</span><span class="o">.</span><span class="n">title</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
 
 <span class="c1"># Resultado:</span>
 <span class="c1"># * A Máquina do Tempo</span>
@@ -273,16 +309,31 @@
 
 
 <p>Também podemos utilizar outras comandos do SQL como <code>limit</code> e <code>group</code> (para mais detalhes, ver a documentação <a href="http://peewee.readthedocs.io/en/latest/index.html">aqui</a>).</p>
-<h3>Alterando dados no banco</h3>
+<p>A estrutura do diretório ficou assim:</p>
+<div class="highlight"><pre><span></span>.
+├── codigo_avulso.db
+├── models.py
+├── create.py
+├── read.py
+</pre></div>
+
+
+<h3>Update: Alterando dados no banco</h3>
 <p>Alterar dados também é bem simples. No exemplo anterior, se observarmos o resultado da consulta dos livros do autor "H. G. Wells", iremos nos deparar com o livro de título "Vinte Mil Léguas Submarinas". Se você, caro leitor, gosta de contos de ficção-científica, sabe que esta obra foi escrito por "Julio Verne", coincidentemente um dos autores que também estão cadastrados em nosso banco. Sendo assim, vamos corrigir o autor do respectivo livro.</p>
 <p>Primeiro vamos buscar o registro do autor e do livro:</p>
-<div class="highlight"><pre><span></span><span class="n">new_author</span> <span class="o">=</span> <span class="n">Author</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Author</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Julio Verne&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="c1"># update.py</span>
+
+<span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">Author</span><span class="p">,</span> <span class="n">Book</span>
+
+<span class="n">new_author</span> <span class="o">=</span> <span class="n">Author</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Author</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Julio Verne&#39;</span><span class="p">)</span>
 <span class="n">book</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">title</span><span class="o">==</span><span class="s2">&quot;Vinte Mil Leguas Submarinas&quot;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Agora vamos alterar o autor e gravar essa alteração no banco.</p>
-<div class="highlight"><pre><span></span><span class="c1"># Alteramos o autor do livro</span>
+<div class="highlight"><pre><span></span><span class="c1"># update.py</span>
+
+<span class="c1"># Alteramos o autor do livro</span>
 <span class="n">book</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">new_author</span>
 
 <span class="c1"># Salvamos a alteração no banco</span>
@@ -290,9 +341,23 @@
 </pre></div>
 
 
-<h3>Deletando dados do banco</h3>
+<p>A estrutura do diretório ficou assim:</p>
+<div class="highlight"><pre><span></span>.
+├── codigo_avulso.db
+├── models.py
+├── create.py
+├── read.py
+├── update.py
+</pre></div>
+
+
+<h3>Delete: Deletando dados do banco</h3>
 <p>Assim como as operações anteriores, também podemos deletar registros do banco de maneira bem prática. Como exemplo, vamos deletar o livro "Guerra dos Mundos" do nosso banco de dados.</p>
-<div class="highlight"><pre><span></span><span class="c1"># Buscamos o livro que desejamos excluir do banco</span>
+<div class="highlight"><pre><span></span><span class="c1"># delete.py</span>
+
+<span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">Author</span><span class="p">,</span> <span class="n">Book</span>
+
+<span class="c1"># Buscamos o livro que desejamos excluir do banco</span>
 <span class="n">book</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">title</span><span class="o">==</span><span class="s2">&quot;Guerra dos Mundos&quot;</span><span class="p">)</span>
 
 <span class="c1"># Excluimos o livro do banco</span>
@@ -301,11 +366,20 @@
 
 
 <p>Simples não?</p>
-<h3>Conclusão</h3>
-<p>É isso pessoal. Este tutorial foi uma introdução bem enxuta sobre o Peewee. Ainda existem muitos tópicos que não abordei aqui, como a criação de <em>primary_key</em>, de campos <em>many2many</em> entre outros recursos, pois foge do escopo deste tutorial. Se você gostou do ORM, aconselho a dar uma olhada também na sua documentação, para conseguir extrair todo o potencial da ferramenta. A utilização de um ORM evita que o desenvolvedor perca tempo escrevendo <em>query</em> SQL e foque totalmente no desenolvimento de código. </p>
-<p>O Peewee também possui suporte ao flamework <em>flask</em>, então dependendo do tamanho do projeto, pode ser uma alternativa interessante no lugar de ORM mais complexos como o SQLAlchemy.</p>
-<p>É isso pessoal. Obrigado pela leitura e até o próximo tutorial!</p>
-<h3>Referências</h3>
+<p>A estrutura do diretório ficou assim:</p>
+<div class="highlight"><pre><span></span>.
+├── codigo_avulso.db
+├── models.py
+├── create.py
+├── read.py
+├── update.py
+├── delete.py
+</pre></div>
+
+
+<h2>Conclusão</h2>
+<p>É isso pessoal. Este tutorial foi uma introdução bem enxuta sobre o Peewee. Ainda existem muitos tópicos que não abordei aqui, como a criação de <em>primary_key</em>, de campos <em>many2many</em> entre outros recursos, pois foge do escopo deste tutorial. Se você gostou do ORM, aconselho a dar uma olhada também na sua documentação, para conseguir extrair todo o potencial da ferramenta. A utilização de um ORM evita que o desenvolvedor perca tempo escrevendo <em>query</em> SQL e foque totalmente no desenvolvimento de código.</p>
+<h2>Referências</h2>
 <ul>
 <li><a href="http://peewee.readthedocs.io/en/latest/index.html">Documentação do Peewee (em inglês)</a></li>
 <li><a href="https://www.blog.pythonlibrary.org/2014/07/17/an-intro-to-peewee-another-python-orm/">An Intro to peewee – Another Python ORM</a></li>

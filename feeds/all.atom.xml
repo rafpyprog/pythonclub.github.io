@@ -1752,130 +1752,163 @@ http http://127.0.0.1:8000/persons.api
 &lt;p&gt;Veremos o básico sobre os tipos de função no próximo tópico.&lt;/p&gt;
 &lt;p&gt;OBS: &lt;a href="https://github.com/z4r4tu5tr4/python-funcional/blob/master/referencias.md"&gt;Referências&lt;/a&gt; usadas durante todos os tópicos.&lt;/p&gt;</content><category term="python"></category><category term="fp"></category><category term="funcional"></category><category term="functional programming"></category></entry><entry><title>Peewee - Um ORM Python minimalista</title><link href="http://pythonclub.com.br/peewee-um-orm-python-minimalista.html" rel="alternate"></link><published>2017-07-20T23:45:24-03:00</published><updated>2017-07-20T23:45:24-03:00</updated><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2017-07-20:/peewee-um-orm-python-minimalista.html</id><summary type="html">&lt;p&gt;Conheça o Peewee, um prático e minimalista ORM Python&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://peewee.readthedocs.io/en/latest/index.html"&gt;Peewee&lt;/a&gt; é um ORM destinado a criar e gerenciar tabelas de banco de dados relacionais através de objetos Python. Segundo a &lt;a href="https://pt.wikipedia.org/wiki/Mapeamento_objeto-relacional"&gt;wikipedia&lt;/a&gt;, um ORM é:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Mapeamento objeto-relacional (ou ORM, do inglês: Object-relational mapping) é uma técnica de desenvolvimento utilizada para reduzir a impedância da programação orientada aos objetos utilizando bancos de dados relacionais. As tabelas do banco de dados são representadas através de classes e os registros de cada tabela são representados como instâncias das classes correspondentes.&lt;/p&gt;
+&lt;p&gt;Mapeamento objeto-relacional (ou ORM, do inglês: Object-relational mapping) é uma técnica de desenvolvimento &amp;gt; utilizada para reduzir a impedância da programação orientada aos objetos utilizando bancos de dados relacionais. As tabelas do banco de dados são representadas através de classes e os registros de cada tabela são representados como instâncias das classes correspondentes.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;O que o ORM faz é, basicamente, transformar classes Python em tabelas no banco de dados, além de permitir construir &lt;em&gt;querys&lt;/em&gt; usando diretamente objetos Python ao invés de SQL.&lt;/p&gt;
-&lt;p&gt;O Peewee é destinado a projetos de pequeno/médio porte, se destacando pela simplicidade quando comparado a outros ORM mais conhecidos, como o SQLAlchemy. Uma analogia utilizada pelo autor da API e que acho muito interessante é que Peewee está para o SQLAlchemy assim como SQLite está para o PostgreSQL.&lt;/p&gt;
-&lt;p&gt;Em relação aos recursos por ele oferecidos, podemos citar que ele possui suporte nativo a SQLite, PostgreSQL e MySQL, embora seja necessário a instalação de &lt;em&gt;drivers&lt;/em&gt; para utilizá-lo com PostgreSQL e MySQL e suporta tanto Python 2.6+ quanto Python 3.4+. &lt;/p&gt;
-&lt;p&gt;Neste tutorial, utilizaremos o SQLite, por sua simplicidade de uso e por não precisar de nenhuma configuração.&lt;/p&gt;
-&lt;h3&gt;Instalação&lt;/h3&gt;
-&lt;p&gt;O Peewee pode ser facilmente instalado com o gerenciador de pacotes &lt;em&gt;pip&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install peewee
+&lt;p&gt;O que um ORM faz é, basicamente, transformar classes Python em tabelas no banco de dados, além de permitir construir &lt;em&gt;querys&lt;/em&gt; usando diretamente objetos Python ao invés de SQL.&lt;/p&gt;
+&lt;p&gt;O Peewee é destinado a projetos de pequeno/médio porte e se destaca pela simplicidade quando comparado a outros ORM mais conhecidos, como o SQLAlchemy. Uma analogia utilizada pelo autor da API e que acho muito interessante é que Peewee está para o SQLAlchemy assim como SQLite está para o PostgreSQL.&lt;/p&gt;
+&lt;p&gt;Em relação aos recursos por ele oferecidos, podemos citar que ele possui suporte nativo a SQLite, PostgreSQL e MySQL, embora seja necessário a instalação de &lt;em&gt;drivers&lt;/em&gt; para utilizá-lo com PostgreSQL e MySQL e suporta tanto Python 2.6+ quanto Python 3.4+.&lt;/p&gt;
+&lt;p&gt;Neste tutorial, utilizaremos o SQLite, por sua simplicidade de uso e pelo Python possuir suporte nativo ao mesmo (usaremos o Python 3.5).&lt;/p&gt;
+&lt;h2&gt;Instalação&lt;/h2&gt;
+&lt;p&gt;O Peewee pode ser facilmente instalado com o gerenciador de pacotes &lt;em&gt;pip&lt;/em&gt; (recomendo a instalação em um virtualenv):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Criando o banco de dados&lt;/h3&gt;
-&lt;p&gt;Para criar as tabelas é bem simples. Inicialmente passamos o nome do nosso banco de dados (a extensão &lt;code&gt;*.db&lt;/code&gt; indica um arquivo do SQLite).&lt;/p&gt;
+&lt;h2&gt;Criando o banco de dados&lt;/h2&gt;
+&lt;p&gt;Para criar o banco de dados é bem simples. Inicialmente passamos o nome do nosso banco de dados (a extensão &lt;code&gt;*.db&lt;/code&gt; indica um arquivo do SQLite).&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;peewee&lt;/span&gt;
 
+&lt;span class="c1"&gt;# Aqui criamos o banco de dados&lt;/span&gt;
 &lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SqliteDatabase&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;codigo_avulso.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Diferente de outros bancos de dados que funcionam através um servidor, o SQLite cria um arquivo de extensão &lt;code&gt;*.db&lt;/code&gt;, onde todos os nossos dados são armazenados.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;DICA&lt;/strong&gt;: caso deseje ver as tabelas existentes no arquivo &lt;code&gt;codigo_avulso.db&lt;/code&gt;, instale o aplicativo &lt;code&gt;SQLiteBrowser&lt;/code&gt;. Com ele fica fácil monitorar as tabelas criadas e acompanhar o tutorial.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Caso deseje ver as tabelas existentes no arquivo &lt;code&gt;codigo_avulso.db&lt;/code&gt;, instale o aplicativo &lt;code&gt;SQLiteBrowser&lt;/code&gt;. Com ele fica fácil monitorar as tabelas criadas e acompanhar o tutorial.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; sudo apt-get install sqlitebrowser
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;A título de exemplo, vamos criar um banco destinado a armazenar nomes de livros e de seus respectivos autores. Comecemos primeiro com a classe que representa os autores.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;peewee&lt;/span&gt;
+&lt;p&gt;A título de exemplo, vamos criar um banco destinado a armazenar nomes de livros e de seus respectivos autores. Iremos chamá-lo de &lt;code&gt;models.py&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Inicialmente, vamos criar a classe base para todos os nossos &lt;code&gt;models&lt;/code&gt;. Esta é uma abordagem recomendada pela documentação e é considerada uma boa prática. Também adicionaremos um log para acompanharmos as mudanças que são feitas no banco:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# models.py&lt;/span&gt;
 
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;peewee&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Criamos o banco de dados&lt;/span&gt;
 &lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SqliteDatabase&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;codigo_avulso.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class="sd"&gt;    Classe que representa a tabela Author&lt;/span&gt;
-&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
 
-    &lt;span class="c1"&gt;# A tabela possui apenas o campo &amp;#39;name&amp;#39;, que&lt;/span&gt;
-    &lt;span class="c1"&gt;# receberá o nome do autor&lt;/span&gt;
-    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BaseModel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Classe model base&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
 
     &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="c1"&gt;# Indica em qual banco de dados a tabela&lt;/span&gt;
         &lt;span class="c1"&gt;# &amp;#39;author&amp;#39; sera criada (obrigatorio). Neste caso,&lt;/span&gt;
-        &lt;span class="c1"&gt;# utilizamos o banco &amp;#39;codigo_avulso.db&amp;#39; criado anteriormente.&lt;/span&gt;
+        &lt;span class="c1"&gt;# utilizamos o banco &amp;#39;codigo_avulso.db&amp;#39; criado anteriormente&lt;/span&gt;
         &lt;span class="n"&gt;database&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Em seguida, criamos a classe que representa os livros. Ela possui uma relação de "muitos para um" com a tabela de autores, ou seja, cada livro possui apenas um autor, mas um autor pode possuir vários livros.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;peewee&lt;/span&gt;
+&lt;p&gt;A class &lt;code&gt;BaseModel&lt;/code&gt; é responsável por criar a conexão com nosso banco de dados.&lt;/p&gt;
+&lt;p&gt;Agora, vamos criar a model que representa os autores:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# models.py&lt;/span&gt;
 
-&lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SqliteDatabase&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;codigo_avulso.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BaseModel&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Book&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    Classe que representa a tabela Author&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="c1"&gt;# A tabela possui apenas o campo &amp;#39;name&amp;#39;, que receberá o nome do autor sera unico&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unique&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Se observamos a model &lt;code&gt;Author&lt;/code&gt;, veremos que não foi especificado nenhuma coluna como &lt;em&gt;primary key&lt;/em&gt; (chave primaria), sendo assim o Peewee irá criar um campo chamado &lt;code&gt;id&lt;/code&gt; do tipo inteiro com auto incremento para funcionar como chave primária.
+Em seguida, no mesmo arquivo &lt;code&gt;models.py&lt;/code&gt; criamos a classe que representa os livros. Ela possui uma relação de "muitos para um" com a tabela de autores, ou seja, cada livro possui apenas um autor, mas um autor pode possuir vários livros.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# models.py&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Book&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BaseModel&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
 &lt;span class="sd"&gt;    Classe que representa a tabela Book&lt;/span&gt;
 &lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
 
-    &lt;span class="c1"&gt;# A tabela possui apenas o campo &amp;#39;title&amp;#39;, que&lt;/span&gt;
-    &lt;span class="c1"&gt;# receberá o nome do livro&lt;/span&gt;
-    &lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="c1"&gt;# A tabela possui apenas o campo &amp;#39;title&amp;#39;, que receberá o nome do livro&lt;/span&gt;
+    &lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unique&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="c1"&gt;# Chave estrangeira para a tabela Author&lt;/span&gt;
     &lt;span class="n"&gt;author&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ForeignKeyField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="c1"&gt;# Indica em qual banco de dados a tabela&lt;/span&gt;
-        &lt;span class="c1"&gt;# &amp;#39;author&amp;#39; sera criada (obrigatorio). Neste caso,&lt;/span&gt;
-        &lt;span class="c1"&gt;# utilizamos o banco &amp;#39;codigo_avulso.db&amp;#39; criado anteriormente.&lt;/span&gt;
-        &lt;span class="n"&gt;database&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Agora, vamos reunir tudo em um único arquivo &lt;code&gt;model.py&lt;/code&gt;. Como exemplo, eu criei um arquivo &lt;em&gt;main.py&lt;/em&gt; para utilizarmos as classes que acabamos de criar.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;peewee&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;model&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;
-
+&lt;p&gt;Agora, adicionamos o código que cria as tabelas &lt;code&gt;Author&lt;/code&gt; e &lt;code&gt;Book&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# models.py&lt;/span&gt;
 
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create_table&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Tabela &amp;#39;Author&amp;#39; criada com sucesso!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;OperationalError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Tabela Author ja existe!&amp;#39;&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Tabela &amp;#39;Author&amp;#39; ja existe!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create_table&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Tabela &amp;#39;Book&amp;#39; criada com sucesso!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;OperationalError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Tabela Book ja existe!&amp;#39;&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Tabela &amp;#39;Book&amp;#39; ja existe!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Após executarmos o código, será criado um arquivo de nome &lt;code&gt;codigo_avulso.db&lt;/code&gt; no mesmo diretório do nosso arquivo &lt;code&gt;main.py&lt;/code&gt;, contendo as tabelas &lt;code&gt;Author&lt;/code&gt; e &lt;code&gt;Book&lt;/code&gt;. A estrutura do diretório ficou assim:&lt;/p&gt;
+&lt;p&gt;excerpt
+Agora executamos o &lt;code&gt;models.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A estrutura do diretório ficou assim:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
 ├── codigo_avulso.db
-├── main.py
-├── model.py
+├── models.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Inserindo dados no banco&lt;/h3&gt;
-&lt;p&gt;Agora, vamos popular nosso banco com alguns autores e seus respectivos livros. Isso pode ser feito de dois modos. Através do método &lt;code&gt;create&lt;/code&gt;, quando desejamos inserir um registro apenas; ou pelo método &lt;code&gt;insert_many&lt;/code&gt;, quando desejamos inserir vários registros de uma vez em uma mesma tabela.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Inserimos um autor de nome &amp;quot;H. G. Wells&amp;quot; na tabela &amp;#39;Author&amp;#39;&lt;/span&gt;
+&lt;p&gt;Após executarmos o código, será criado um arquivo de nome &lt;code&gt;codigo_avulso.db&lt;/code&gt; no mesmo diretório do nosso arquivo &lt;code&gt;models.py&lt;/code&gt;, contendo as tabelas &lt;code&gt;Author&lt;/code&gt; e &lt;code&gt;Book&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Realizando o CRUD&lt;/h2&gt;
+&lt;p&gt;Agora vamos seguir com as 4 principais operações que podemos realizar em um banco de dados, também conhecida como CRUD.&lt;/p&gt;
+&lt;p&gt;A sigla &lt;code&gt;CRUD&lt;/code&gt; é comumente utilizada para designar as quatro operações básicas que pode-se executar em um banco de dados, sendo elas: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;Create&lt;/span&gt; &lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;criar&lt;/span&gt; &lt;span class="nv"&gt;um&lt;/span&gt; &lt;span class="nv"&gt;novo&lt;/span&gt; &lt;span class="nv"&gt;registro&lt;/span&gt; &lt;span class="nv"&gt;no&lt;/span&gt; &lt;span class="nv"&gt;banco&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;Read&lt;/span&gt; &lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ler&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;consultar&lt;/span&gt; &lt;span class="nv"&gt;um&lt;/span&gt; &lt;span class="nv"&gt;registro&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;Update&lt;/span&gt; &lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;atualizar&lt;/span&gt; &lt;span class="nv"&gt;um&lt;/span&gt; &lt;span class="nv"&gt;registro&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;Delete&lt;/span&gt; &lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;excluir&lt;/span&gt; &lt;span class="nv"&gt;um&lt;/span&gt; &lt;span class="nv"&gt;registro&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="nv"&gt;banco&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Iremos abordar cada uma dessas operações.&lt;/p&gt;
+&lt;h3&gt;Create: Inserindo dados no banco&lt;/h3&gt;
+&lt;p&gt;Agora, vamos popular nosso banco com alguns autores e seus respectivos livros. Para isso criamos um arquivo &lt;code&gt;create.py&lt;/code&gt;. A estrutura do diretório ficou assim:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
+├── codigo_avulso.db
+├── models.py
+├── create.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A criação dos registros no banco pode ser feito através do método &lt;code&gt;create&lt;/code&gt;, quando desejamos inserir um registro apenas; ou pelo método &lt;code&gt;insert_many&lt;/code&gt;, quando desejamos inserir vários registros de uma vez em uma mesma tabela.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# create.py&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Inserimos um autor de nome &amp;quot;H. G. Wells&amp;quot; na tabela &amp;#39;Author&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;author_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;H. G. Wells&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;book_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;A Máquina do Tempo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;author&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;author_1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="n"&gt;book_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Guerra dos Mundos&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;author&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;author_1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Inserimos um autor de nome &amp;quot;Julio Verne&amp;quot; na tabela &amp;#39;Author&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;author_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Julio Verne&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
+&lt;span class="n"&gt;book_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;A Máquina do Tempo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;author_id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;author_1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;book_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Guerra dos Mundos&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;author_id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;author_1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
 &lt;span class="n"&gt;book_3&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Volta ao Mundo em 80 Dias&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;author&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;author_2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;author_id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;author_2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="n"&gt;book_4&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -1890,21 +1923,30 @@ http http://127.0.0.1:8000/persons.api
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Consultando dados no banco&lt;/h3&gt;
+&lt;h3&gt;Read: Consultando dados no banco&lt;/h3&gt;
 &lt;p&gt;O Peewee possui comandos destinados a realizar consultas no banco. De maneira semelhante ao conhecido &lt;code&gt;SELECT&lt;/code&gt;. Podemos fazer essa consulta de duas maneiras. Se desejamos o primeiro registro que corresponda a nossa pesquisa, podemos utilizar o método &lt;code&gt;get()&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;book&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Volta ao Mundo em 80 Dias&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# read.py&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;
+
+&lt;span class="n"&gt;book&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Volta ao Mundo em 80 Dias&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Resultado&lt;/span&gt;
+&lt;span class="c1"&gt;# * Volta ao Munto em 80 Dias&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Porém, se desejamos mais de um registro, utilizamos o método &lt;code&gt;select&lt;/code&gt;. Por exemplo, para consultar todos os livros escritos pelo autor "H. G. Wells".&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;books&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;where&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;H. G. Wells&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# read.py&lt;/span&gt;
+
+&lt;span class="n"&gt;books&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;where&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;H. G. Wells&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Exibe a quantidade de registros que corresponde a nossa pesquisa&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;books&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;books&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
 
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;book&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;books&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Resultado:&lt;/span&gt;
 &lt;span class="c1"&gt;# * A Máquina do Tempo&lt;/span&gt;
@@ -1914,16 +1956,31 @@ http http://127.0.0.1:8000/persons.api
 
 
 &lt;p&gt;Também podemos utilizar outras comandos do SQL como &lt;code&gt;limit&lt;/code&gt; e &lt;code&gt;group&lt;/code&gt; (para mais detalhes, ver a documentação &lt;a href="http://peewee.readthedocs.io/en/latest/index.html"&gt;aqui&lt;/a&gt;).&lt;/p&gt;
-&lt;h3&gt;Alterando dados no banco&lt;/h3&gt;
+&lt;p&gt;A estrutura do diretório ficou assim:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
+├── codigo_avulso.db
+├── models.py
+├── create.py
+├── read.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Update: Alterando dados no banco&lt;/h3&gt;
 &lt;p&gt;Alterar dados também é bem simples. No exemplo anterior, se observarmos o resultado da consulta dos livros do autor "H. G. Wells", iremos nos deparar com o livro de título "Vinte Mil Léguas Submarinas". Se você, caro leitor, gosta de contos de ficção-científica, sabe que esta obra foi escrito por "Julio Verne", coincidentemente um dos autores que também estão cadastrados em nosso banco. Sendo assim, vamos corrigir o autor do respectivo livro.&lt;/p&gt;
 &lt;p&gt;Primeiro vamos buscar o registro do autor e do livro:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;new_author&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Julio Verne&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# update.py&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;
+
+&lt;span class="n"&gt;new_author&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Julio Verne&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;book&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Vinte Mil Leguas Submarinas&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Agora vamos alterar o autor e gravar essa alteração no banco.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Alteramos o autor do livro&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# update.py&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Alteramos o autor do livro&lt;/span&gt;
 &lt;span class="n"&gt;book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;author&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new_author&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Salvamos a alteração no banco&lt;/span&gt;
@@ -1931,9 +1988,23 @@ http http://127.0.0.1:8000/persons.api
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Deletando dados do banco&lt;/h3&gt;
+&lt;p&gt;A estrutura do diretório ficou assim:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
+├── codigo_avulso.db
+├── models.py
+├── create.py
+├── read.py
+├── update.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Delete: Deletando dados do banco&lt;/h3&gt;
 &lt;p&gt;Assim como as operações anteriores, também podemos deletar registros do banco de maneira bem prática. Como exemplo, vamos deletar o livro "Guerra dos Mundos" do nosso banco de dados.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Buscamos o livro que desejamos excluir do banco&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# delete.py&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Buscamos o livro que desejamos excluir do banco&lt;/span&gt;
 &lt;span class="n"&gt;book&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Guerra dos Mundos&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Excluimos o livro do banco&lt;/span&gt;
@@ -1942,11 +2013,20 @@ http http://127.0.0.1:8000/persons.api
 
 
 &lt;p&gt;Simples não?&lt;/p&gt;
-&lt;h3&gt;Conclusão&lt;/h3&gt;
-&lt;p&gt;É isso pessoal. Este tutorial foi uma introdução bem enxuta sobre o Peewee. Ainda existem muitos tópicos que não abordei aqui, como a criação de &lt;em&gt;primary_key&lt;/em&gt;, de campos &lt;em&gt;many2many&lt;/em&gt; entre outros recursos, pois foge do escopo deste tutorial. Se você gostou do ORM, aconselho a dar uma olhada também na sua documentação, para conseguir extrair todo o potencial da ferramenta. A utilização de um ORM evita que o desenvolvedor perca tempo escrevendo &lt;em&gt;query&lt;/em&gt; SQL e foque totalmente no desenolvimento de código. &lt;/p&gt;
-&lt;p&gt;O Peewee também possui suporte ao flamework &lt;em&gt;flask&lt;/em&gt;, então dependendo do tamanho do projeto, pode ser uma alternativa interessante no lugar de ORM mais complexos como o SQLAlchemy.&lt;/p&gt;
-&lt;p&gt;É isso pessoal. Obrigado pela leitura e até o próximo tutorial!&lt;/p&gt;
-&lt;h3&gt;Referências&lt;/h3&gt;
+&lt;p&gt;A estrutura do diretório ficou assim:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
+├── codigo_avulso.db
+├── models.py
+├── create.py
+├── read.py
+├── update.py
+├── delete.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+&lt;p&gt;É isso pessoal. Este tutorial foi uma introdução bem enxuta sobre o Peewee. Ainda existem muitos tópicos que não abordei aqui, como a criação de &lt;em&gt;primary_key&lt;/em&gt;, de campos &lt;em&gt;many2many&lt;/em&gt; entre outros recursos, pois foge do escopo deste tutorial. Se você gostou do ORM, aconselho a dar uma olhada também na sua documentação, para conseguir extrair todo o potencial da ferramenta. A utilização de um ORM evita que o desenvolvedor perca tempo escrevendo &lt;em&gt;query&lt;/em&gt; SQL e foque totalmente no desenvolvimento de código.&lt;/p&gt;
+&lt;h2&gt;Referências&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://peewee.readthedocs.io/en/latest/index.html"&gt;Documentação do Peewee (em inglês)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.blog.pythonlibrary.org/2014/07/17/an-intro-to-peewee-another-python-orm/"&gt;An Intro to peewee – Another Python ORM&lt;/a&gt;&lt;/li&gt;
@@ -2963,10 +3043,10 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span clas
 * &lt;a href="http://python.org"&gt;Python&lt;/a&gt; - Site oficial da Linguagem Python!
 * &lt;a href="https://github.com/python/cpython"&gt;This is Python version 3.7.0 alpha 1&lt;/a&gt; - Git da próxima versão do Python, hospedado no Github!
 * &lt;a href="http://python.org.br/"&gt;Python-Brasil&lt;/a&gt; - A comunidade Python Brasil reune grupos de usuários em todo o Brasil interessados em difundir e divulgar a linguagem de programação.&lt;/p&gt;</content><category term="python"></category><category term="tutorial"></category><category term="install"></category></entry><entry><title>Abrangência de Listas e Dicionários</title><link href="http://pythonclub.com.br/abrangencia-de-listas-e-dicionarios-com-python.html" rel="alternate"></link><published>2017-01-16T10:37:39-02:00</published><updated>2017-01-16T10:37:39-02:00</updated><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2017-01-16:/abrangencia-de-listas-e-dicionarios-com-python.html</id><summary type="html">&lt;p&gt;A utilização de listas em Python é algo trivial. A facilidade provida pela linguagem aliada a simplicidade da estrutura de dados &lt;em&gt;list&lt;/em&gt; a torna, ao lado dos dicionários &lt;em&gt;dict&lt;/em&gt;, uma das estrutura de dados mais utilizadas em Python. Aqui neste tutorial irei compartilhar algo que aprendi trabalhando com listas e …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A utilização de listas em Python é algo trivial. A facilidade provida pela linguagem aliada a simplicidade da estrutura de dados &lt;em&gt;list&lt;/em&gt; a torna, ao lado dos dicionários &lt;em&gt;dict&lt;/em&gt;, uma das estrutura de dados mais utilizadas em Python. Aqui neste tutorial irei compartilhar algo que aprendi trabalhando com listas e dicionário em Python, mais especificamente no que diz respeito a &lt;em&gt;abrangência&lt;/em&gt; de listas (e dicionários).&lt;/p&gt;
-&lt;h3&gt;Abrangência de listas&lt;/h3&gt;
+&lt;h2&gt;Abrangência de listas&lt;/h2&gt;
 &lt;p&gt;A abrangência de listas, ou do inglês &lt;em&gt;list comprehensions&lt;/em&gt;, é um  termo utilizado para descrever uma sintaxe compacta que o Python nos oferece para criamos uma lista baseada em outra lista. Pareceu confuso? Ok, vamos aos exemplos!&lt;/p&gt;
-&lt;h4&gt;Exemplo 1&lt;/h4&gt;
-&lt;p&gt;Vamos suport que temos a seguinte lista de valores:&lt;/p&gt;
+&lt;h3&gt;Exemplo 1&lt;/h3&gt;
+&lt;p&gt;Vamos supor que temos a seguinte lista de valores:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -2996,7 +3076,7 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span clas
 
 
 &lt;p&gt;Bacana não? O exemplo seguinte podemos incrementar mais o exemplo acima.&lt;/p&gt;
-&lt;h4&gt;Exemplo 2&lt;/h4&gt;
+&lt;h3&gt;Exemplo 2&lt;/h3&gt;
 &lt;p&gt;Vamos supor que desejamos criar uma lista onde apenas os valores pares (resto da divisão por 2 é zero) serão multiplicados por 2. Abaixo temos a nossa lista de valores:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -3028,7 +3108,7 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span clas
 
 
 &lt;p&gt;Muito mais simples, não? Vamos para o próximo exemplo.&lt;/p&gt;
-&lt;h4&gt;Exemplo 3&lt;/h4&gt;
+&lt;h3&gt;Exemplo 3&lt;/h3&gt;
 &lt;p&gt;De maneira semelhante a lista, nós também podemos aplicar a abrangência em lista e dicionários. Segue um exemplo onde temos o seguinte dicionário:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; &lt;span class="n"&gt;dicionario&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;b&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;e&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;f&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -3058,11 +3138,10 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span clas
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Conclusão&lt;/h3&gt;
+&lt;h2&gt;Conclusão&lt;/h2&gt;
 &lt;p&gt;Chegamos ao final de mais um tutorial! Sempre temos de ter em mente que tão importante quanto escrever um código que funciona, é mantê-lo (seja por você ou por outro programador). Neste ponto, a abrangência de lista (e outras estruturas de dados) nos ajudam a escrever um código claro e fácil de dar manutenção.&lt;/p&gt;
 &lt;p&gt;Até o próximo tutorial pessoal!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://codigoavulso.com.br/abrangencia-de-listas-e-dicionarios.html"&gt;Abrangencia de listas e dicionários com Python&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Referências&lt;/h3&gt;
+&lt;h2&gt;Referências&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://novatec.com.br/livros/python-eficaz/"&gt;Python eficaz: 59 maneiras de programar melhor em Python; Slatkin, Brett; Novatec Editora, 2016.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><category term="python"></category><category term="tutorial"></category><category term="list comprehensions"></category></entry><entry><title>Debugging - logging</title><link href="http://pythonclub.com.br/debugging-logging.html" rel="alternate"></link><published>2016-11-27T17:48:00-02:00</published><updated>2016-11-27T17:48:00-02:00</updated><author><name>Bruno Santana</name></author><id>tag:pythonclub.com.br,2016-11-27:/debugging-logging.html</id><summary type="html">&lt;p&gt;Achei algo interessante no livro que estou lendo (Automatize tarefas maçantes com Python) e resolvi compartilhar.&lt;/p&gt;
@@ -3632,7 +3711,7 @@ Nessa vídeo aula são abordadas as principais diferenças entre Concorrência e
 &lt;a class="reference external" href="http://github.com/carlosmaniero/"&gt;http://github.com/carlosmaniero/&lt;/a&gt;
 &lt;a class="reference external" href="http://github.com/carlosmaniero/curso-asyncio"&gt;http://github.com/carlosmaniero/curso-asyncio&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://carlosmaniero.github.io/"&gt;http://carlosmaniero.github.io/&lt;/a&gt;&lt;/p&gt;
-&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/xGoEpCaachs" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</content><category term="python"></category><category term="asyncio"></category></entry><entry><title>Relatórios de testes com Coveralls</title><link href="http://pythonclub.com.br/gerando-relatorios-de-testes-com-coveralls.html" rel="alternate"></link><published>2016-06-03T11:28:55-03:00</published><updated>2016-06-03T11:28:55-03:00</updated><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-06-03:/gerando-relatorios-de-testes-com-coveralls.html</id><summary type="html">&lt;p&gt;Na &lt;a href="http://codigoavulso.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html"&gt;terceira parte&lt;/a&gt; do tutorial sobre &lt;em&gt;unittest&lt;/em&gt;, vimos como utilizar o serviço &lt;a href="https://coveralls.io/"&gt;Coveralls&lt;/a&gt; para gerar relatórios sobre o testes do nosso projeto. Entretanto, uma "desvantagem" do serviço é que o processo de análise é iniciado apenas quando executarmos um &lt;em&gt;push&lt;/em&gt; ou um &lt;em&gt;pull request&lt;/em&gt;. Sendo assim, não seria interessante termos …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Na &lt;a href="http://codigoavulso.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html"&gt;terceira parte&lt;/a&gt; do tutorial sobre &lt;em&gt;unittest&lt;/em&gt;, vimos como utilizar o serviço &lt;a href="https://coveralls.io/"&gt;Coveralls&lt;/a&gt; para gerar relatórios sobre o testes do nosso projeto. Entretanto, uma "desvantagem" do serviço é que o processo de análise é iniciado apenas quando executarmos um &lt;em&gt;push&lt;/em&gt; ou um &lt;em&gt;pull request&lt;/em&gt;. Sendo assim, não seria interessante termos a liberdade de executar esses testes localmente?&lt;/p&gt;
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/xGoEpCaachs" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</content><category term="python"></category><category term="asyncio"></category></entry><entry><title>Relatórios de testes com Coveralls</title><link href="http://pythonclub.com.br/gerando-relatorios-de-testes-com-coveralls.html" rel="alternate"></link><published>2016-06-03T11:28:55-03:00</published><updated>2016-06-03T11:28:55-03:00</updated><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-06-03:/gerando-relatorios-de-testes-com-coveralls.html</id><summary type="html">&lt;p&gt;Na &lt;a href="https://mstuttgart.github.io/2016/04/29/2016-04-29-python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4/"&gt;terceira parte&lt;/a&gt; do tutorial sobre &lt;em&gt;unittest&lt;/em&gt;, vimos como utilizar o serviço &lt;a href="https://coveralls.io/"&gt;Coveralls&lt;/a&gt; para gerar relatórios sobre o testes do nosso projeto. Entretanto, uma "desvantagem" do serviço é que o processo de análise é iniciado apenas quando executarmos um &lt;em&gt;push&lt;/em&gt; ou um &lt;em&gt;pull request&lt;/em&gt;. Sendo assim, não seria interessante termos …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Na &lt;a href="https://mstuttgart.github.io/2016/04/29/2016-04-29-python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4/"&gt;terceira parte&lt;/a&gt; do tutorial sobre &lt;em&gt;unittest&lt;/em&gt;, vimos como utilizar o serviço &lt;a href="https://coveralls.io/"&gt;Coveralls&lt;/a&gt; para gerar relatórios sobre o testes do nosso projeto. Entretanto, uma "desvantagem" do serviço é que o processo de análise é iniciado apenas quando executarmos um &lt;em&gt;push&lt;/em&gt; ou um &lt;em&gt;pull request&lt;/em&gt;. Sendo assim, não seria interessante termos a liberdade de executar esses testes localmente?&lt;/p&gt;
 &lt;p&gt;Felizmente, os desenvolvedores do &lt;a href="https://coveralls.io/"&gt;Coveralls&lt;/a&gt; pensaram nisso e criaram um conjunto de comandos que nos permite executá-lo pelo terminal.&lt;/p&gt;
 &lt;h3&gt;Instalação&lt;/h3&gt;
 &lt;p&gt;Então, antes de iniciarmos, vamos a instalação do módulo, que pode ser feito pelo comando a seguir:&lt;/p&gt;
@@ -3736,7 +3815,7 @@ TOTAL                                                 &lt;span class="m"&gt;22&l
 &lt;h3&gt;Conclusão&lt;/h3&gt;
 &lt;p&gt;Neste tutorial vimos um pouco mais sobre o &lt;code&gt;Coveralls&lt;/code&gt;. Evitei colocar as informações deste tutorial nos tutoriais anteriores a fim de simplificá-los. Você pode aprender mais sobre o módulo consultando sua documentação &lt;a href="http://coverage.readthedocs.io/en/latest/index.html"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;É isso pessoal, obrigado pela leitura e até o próximo tutorial.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://codigoavulso.com.br/gerando-relatorios-de-testes-com-coveralls.html"&gt;gerando-relatorios-de-testes-com-coveralls&lt;/a&gt;&lt;/p&gt;</content><category term="python"></category><category term="coveralls"></category><category term="coverage"></category><category term="relatório"></category><category term="test"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 4 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html" rel="alternate"></link><published>2016-05-20T21:09:18-03:00</published><updated>2016-05-20T21:09:18-03:00</updated><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-20:/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="https://mstuttgart.github.io/2016/05/18/2016-05-18-gerando-relatorios-de-teste-com-coveralls/"&gt;gerando-relatorios-de-testes-com-coveralls&lt;/a&gt;&lt;/p&gt;</content><category term="python"></category><category term="coveralls"></category><category term="coverage"></category><category term="relatório"></category><category term="test"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 4 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html" rel="alternate"></link><published>2016-05-20T21:09:18-03:00</published><updated>2016-05-20T21:09:18-03:00</updated><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-20:/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
 &lt;p&gt;Na &lt;a href="python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html"&gt;terceira&lt;/a&gt; parte deste tutorial, aprendemos a usar o &lt;code&gt;Coveralls&lt;/code&gt; para gerar relatórios de testes para o nosso projeto. A próxima ferramenta que iremos estudar será o serviço &lt;code&gt;Landscape&lt;/code&gt;. Neste tutorial serei breve, já que o uso &lt;em&gt;default&lt;/em&gt; da ferramenta é bem simples.&lt;/p&gt;
 &lt;h4&gt;Sobre o Landscape …&lt;/h4&gt;</summary><content type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
 &lt;p&gt;Na &lt;a href="python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html"&gt;terceira&lt;/a&gt; parte deste tutorial, aprendemos a usar o &lt;code&gt;Coveralls&lt;/code&gt; para gerar relatórios de testes para o nosso projeto. A próxima ferramenta que iremos estudar será o serviço &lt;code&gt;Landscape&lt;/code&gt;. Neste tutorial serei breve, já que o uso &lt;em&gt;default&lt;/em&gt; da ferramenta é bem simples.&lt;/p&gt;
@@ -3806,7 +3885,7 @@ TOTAL                                                 &lt;span class="m"&gt;22&l
 &lt;p&gt;Pronto pessoal, agora temos o nosso repositório exibindo informações sobre os testes unitários, relatórios de testes e analises de qualidade de código. Isso não garante que seu projeto seja livre de falhas e &lt;em&gt;bugs&lt;/em&gt;, mas te ajuda a evitá-los.&lt;/p&gt;
 &lt;p&gt;Vale lembrar que todas essas ferramentas ajudam muito, mas nada substitui o senso crítico e o hábito de sempre usar boas práticas durante o desenvolvimento. Por isso sempre busque aprender mais, estudar mais, ser humilde e ouvir quem tem mais experiência que você. Enfim, ser um programador e uma pessoa melhor a cada dia. Fica o conselho para todos nós, incluindo para este que vos escreve.&lt;/p&gt;
 &lt;p&gt;Espero que tenham gostado desta série de tutoriais. Obrigado por ler até aqui e até o próximo &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://codigoavulso.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4&lt;/a&gt;&lt;/p&gt;</content><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 3 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html" rel="alternate"></link><published>2016-05-13T12:25:00-03:00</published><updated>2016-05-13T12:25:00-03:00</updated><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-13:/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="https://mstuttgart.github.io/2016/05/07/2016-05-07-python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4/"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4&lt;/a&gt;&lt;/p&gt;</content><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 3 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html" rel="alternate"></link><published>2016-05-13T12:25:00-03:00</published><updated>2016-05-13T12:25:00-03:00</updated><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-13:/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
 &lt;p&gt;Na &lt;a href="python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html"&gt;segunda&lt;/a&gt; parte deste tutorial, aprendemos a usar o &lt;code&gt;Travis CI&lt;/code&gt; para automatizar os testes do nosso projeto, facilitando a manutenção do código quando temos vários colaboradores. Nesta terceira parte, vamos configurar o serviço &lt;a href="https://coveralls.io"&gt;Coveralls&lt;/a&gt; para que o mesmo gere relatórios de teste sobre o nosso …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
 &lt;p&gt;Na &lt;a href="python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html"&gt;segunda&lt;/a&gt; parte deste tutorial, aprendemos a usar o &lt;code&gt;Travis CI&lt;/code&gt; para automatizar os testes do nosso projeto, facilitando a manutenção do código quando temos vários colaboradores. Nesta terceira parte, vamos configurar o serviço &lt;a href="https://coveralls.io"&gt;Coveralls&lt;/a&gt; para que o mesmo gere relatórios de teste sobre o nosso projeto. Os relatórios são muito úteis quando desejamos verificar o quanto do nosso projeto está coberto por testes, evitando assim que alguma &lt;em&gt;feature&lt;/em&gt; importante fique de fora. Assim como o &lt;code&gt;Travis CI&lt;/code&gt;, o &lt;code&gt;Coveralls&lt;/code&gt; será executado após cada &lt;em&gt;push&lt;/em&gt; ou &lt;em&gt;pull request&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Diferente do tutorial anterior, serei breve sobre o processo de inscrição do &lt;code&gt;Coveralls&lt;/code&gt;, focando mais no seu uso.&lt;/p&gt;
@@ -3921,7 +4000,7 @@ que está coberta por testes. Você pode clicar na badge ou ir até o seu perfil
 &lt;h4&gt;Conclusão&lt;/h4&gt;
 &lt;p&gt;Aqui encerramos a terceira parte do nossa série de tutoriais sobre &lt;code&gt;Unittest&lt;/code&gt;. O &lt;code&gt;Coveralls&lt;/code&gt; ainda possui muitas configurações não mostradas aqui, então se você se interessar, fica a sugestão de estudo. No próximo tutorial veremos como utilizar o &lt;code&gt;Landscape&lt;/code&gt;, um &lt;em&gt;linter&lt;/em&gt; que analise nossos códigos atrás de problemas de sintaxe, formatação e possíveis erros de códigos (variáveis não declaradas, varíaveis com escopo incorreto e etc).&lt;/p&gt;
 &lt;p&gt;É isso pessoal. Obrigado por ler até aqui e até o próximo tutorial!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://codigoavulso.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4&lt;/a&gt;&lt;/p&gt;</content><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 2 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html" rel="alternate"></link><published>2016-05-08T20:34:44-03:00</published><updated>2016-05-08T20:34:44-03:00</updated><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-08:/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="https://mstuttgart.github.io/2016/04/29/2016-04-29-python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4/"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4&lt;/a&gt;&lt;/p&gt;</content><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 2 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html" rel="alternate"></link><published>2016-05-08T20:34:44-03:00</published><updated>2016-05-08T20:34:44-03:00</updated><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-08:/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
 &lt;p&gt;Na &lt;a href="python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html"&gt;primeira&lt;/a&gt; parte deste tutorial, aprendemos como criar testes para nosso projeto. Nesta segunda parte, vamos configurar o serviço Travis CI para que o mesmo execute os testes do nosso projeto diretamente no github. Isso é especialmente útil quando possuímos várias pessoas trabalhando em um mesmo …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Fala pessoal, tudo bem?&lt;/p&gt;
 &lt;p&gt;Na &lt;a href="python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html"&gt;primeira&lt;/a&gt; parte deste tutorial, aprendemos como criar testes para nosso projeto. Nesta segunda parte, vamos configurar o serviço Travis CI para que o mesmo execute os testes do nosso projeto diretamente no github. Isso é especialmente útil quando possuímos várias pessoas trabalhando em um mesmo projeto, pois o &lt;code&gt;Travis CI&lt;/code&gt; executa os testes após cada &lt;em&gt;push&lt;/em&gt; ou &lt;em&gt;pull request&lt;/em&gt;. Dessa forma garantimos que um determinado &lt;em&gt;commit&lt;/em&gt; não irá "quebrar" nossa aplicação.&lt;/p&gt;
 &lt;p&gt;Antes de inicarmos nosso trabalho de configuração do &lt;code&gt;Travis CI&lt;/code&gt;, vamos aprender um pouco mais sobre esse serviço.&lt;/p&gt;
@@ -4037,7 +4116,7 @@ que está coberta por testes. Você pode clicar na badge ou ir até o seu perfil
 &lt;p&gt;Aqui encerramos a segunda parte do nossa série de tutoriais sobre &lt;code&gt;Unittest&lt;/code&gt;. Eu decidi separar a série em 4 partes para que cada uma fosse explicada com mais detalhes mas sem deixar o tutorial muito extenso. O &lt;code&gt;Travis IC&lt;/code&gt; ainda possui muitas configurações não abordadas aqui, então se você se interessar, pode dar uma olhada na sua documentação oficial &lt;a href="https://docs.travis-ci.com/"&gt;aqui&lt;/a&gt;. No próximo tutorial veremos como utilizar o &lt;code&gt;Coveralls&lt;/code&gt; para gerar relatórios dos nossos testes.&lt;/p&gt;
 &lt;p&gt;É isso pessoal. Obrigado por ler até aqui!&lt;/p&gt;
 &lt;p&gt;Até o próximo tutorial!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://codigoavulso.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4&lt;/a&gt;&lt;/p&gt;</content><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html" rel="alternate"></link><published>2016-05-06T01:42:18-03:00</published><updated>2016-05-06T01:42:18-03:00</updated><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-06:/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html</id><summary type="html">&lt;p&gt;Durante o desenvolvimento de um software, tão importante quanto escrever um código organizado e que siga as melhores práticas, é garantir que o mesmo cumpra os requisitos a que ele se propõe. Em outras palavras, garantir que o software funcione de maneira adequada.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="https://mstuttgart.github.io/2016/04/19/2016-04-19-python-com-unittest-travis-e-coveralls-parte-2-de-4/"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4&lt;/a&gt;&lt;/p&gt;</content><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry><entry><title>Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)</title><link href="http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html" rel="alternate"></link><published>2016-05-06T01:42:18-03:00</published><updated>2016-05-06T01:42:18-03:00</updated><author><name>Michell Stuttgart</name></author><id>tag:pythonclub.com.br,2016-05-06:/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html</id><summary type="html">&lt;p&gt;Durante o desenvolvimento de um software, tão importante quanto escrever um código organizado e que siga as melhores práticas, é garantir que o mesmo cumpra os requisitos a que ele se propõe. Em outras palavras, garantir que o software funcione de maneira adequada.&lt;/p&gt;
 &lt;p&gt;O processo de testes de um software …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Durante o desenvolvimento de um software, tão importante quanto escrever um código organizado e que siga as melhores práticas, é garantir que o mesmo cumpra os requisitos a que ele se propõe. Em outras palavras, garantir que o software funcione de maneira adequada.&lt;/p&gt;
 &lt;p&gt;O processo de testes de um software faz parte do seu desenvolvimento, porém muitas vezes ele é encarado como algo tedioso e desnecessário. Entretanto, todo bom desenvolvedor sabe que investir tempo escrevendo testes para seu software está longe de ser "desperdício de tempo". O processo de teste, quando feito por uma pessoa, além de sujeitos a falhas é tedioso e demorado. Tendo isso em mente, podemos lançar mão de ferramentas que realizarão o processo de teste por nós. Em Python, umas das ferramentes da bibloteca padrão destinada a teste é a &lt;code&gt;Unittest&lt;/code&gt;, que usaremos nesse tutorial.&lt;/p&gt;
 &lt;p&gt;Nesta série de postagem, irei mostrar o passo-a-passo na criação de testes unitários para um pequeno projeto que vamos criar no github. Vou explicar como configurar a ferramenta &lt;a href="https://travis-ci.org/"&gt;Travis&lt;/a&gt;, que será responsável por executar os nossos testes no github. A ferramenta &lt;a href="https://coveralls.io/"&gt;Coveralls&lt;/a&gt;, que mapeia nosso código, e nos indica o quanto dele está coberto por testes. E como bônus, adicionar ao nosso projeto o &lt;a href="https://landscape.io"&gt;Landscape&lt;/a&gt;, ferramenta que monitora a "saúde" do nosso código.&lt;/p&gt;
@@ -4371,7 +4450,7 @@ O nosso projeto consiste de um grupo de classes representando figuras geométric
 &lt;p&gt;Esse tutorial ficou bem extenso, mas espero que tenha sido útil pra vocês. No próxima parte do tutorial, vamos ver como configurar o Travis, para que ele execute nossos testes quando realizarmos um &lt;code&gt;push&lt;/code&gt; ou um &lt;code&gt;pull request&lt;/code&gt; para o github. Também veremos o Coveralls que emite relatórios do quando do seu código está coberto por testes, algo muito interessante para ver se um &lt;em&gt;software&lt;/em&gt; é bem testado.&lt;/p&gt;
 &lt;p&gt;Os testes que escrevemos foram bem simples, apenas para fim de exemplo. Porém em uma aplicação séria, deve-se ter cuidado na hora de escrever os testes, de maneira a garantir que todas as possibilidades de erros sejam cobertas. A filosofia do TDD de escrever os testes antes do código da nossa aplicação, é algo que exige prática. Eu mesmo ainda não me sinto completamente a vontade seguindo esse fluxo de trabalho. Mas, escrever os testes primeiro te ajuda a manter seu código coerente e funcional, pois vocẽ vai precisar fazê-lo passar pelos testes.&lt;/p&gt;
 &lt;p&gt;É isso pessoal. Obrigado por ler até aqui. Até a próxima postagem!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="http://codigoavulso.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4&lt;/a&gt;&lt;/p&gt;</content><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry><entry><title>GitHub Pages com Pelican e Travis-CI</title><link href="http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html" rel="alternate"></link><published>2016-05-04T21:46:00-03:00</published><updated>2016-05-04T21:46:00-03:00</updated><author><name>Humberto Rocha</name></author><id>tag:pythonclub.com.br,2016-05-04:/github-pages-com-pelican-e-travis-ci.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Publicado originalmente em:&lt;/strong&gt; &lt;a class="reference external" href="http://df.python.org.br/blog/github-pages-com-pelican-e-travis-ci"&gt;df.python.org.br/blog/github-pages-com-pelican-e-travis-ci&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Publicado originalmente:&lt;/strong&gt; &lt;a href="https://mstuttgart.github.io/2016/04/12/2016-04-12-python-com-unittest-travis-e-coveralls-parte-1-de-4/"&gt;python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4&lt;/a&gt;&lt;/p&gt;</content><category term="git"></category><category term="travis-ci"></category><category term="python"></category><category term="coveralls"></category><category term="landscape"></category><category term="test"></category><category term="tutorial"></category></entry><entry><title>GitHub Pages com Pelican e Travis-CI</title><link href="http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html" rel="alternate"></link><published>2016-05-04T21:46:00-03:00</published><updated>2016-05-04T21:46:00-03:00</updated><author><name>Humberto Rocha</name></author><id>tag:pythonclub.com.br,2016-05-04:/github-pages-com-pelican-e-travis-ci.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Publicado originalmente em:&lt;/strong&gt; &lt;a class="reference external" href="http://df.python.org.br/blog/github-pages-com-pelican-e-travis-ci"&gt;df.python.org.br/blog/github-pages-com-pelican-e-travis-ci&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Olá pessoal!&lt;/p&gt;
 &lt;p&gt;Estou fazendo esta postagem para ajudar quem quer criar seu site no &lt;a class="reference external" href="http://pages.github.com"&gt;GitHub Pages&lt;/a&gt; usando &lt;a class="reference external" href="http://blog.getpelican.com"&gt;Pelican&lt;/a&gt; para a criação das páginas e o &lt;a class="reference external" href="https://travis-ci.org"&gt;Travis-CI&lt;/a&gt; para automatizar a tarefa de geração e publicação.&lt;/p&gt;
 &lt;p&gt;Este guia assume que o leitor possua …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Publicado originalmente em:&lt;/strong&gt; &lt;a class="reference external" href="http://df.python.org.br/blog/github-pages-com-pelican-e-travis-ci"&gt;df.python.org.br/blog/github-pages-com-pelican-e-travis-ci&lt;/a&gt;&lt;/p&gt;
