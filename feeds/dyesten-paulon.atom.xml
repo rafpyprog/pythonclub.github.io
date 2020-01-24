@@ -11,7 +11,7 @@ Ao finalizar o cadastro, uma tela como a exibida abaixo estará disponível. Ate
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 &lt;h3&gt;Configurando o ambiente&lt;/h3&gt;
 &lt;p&gt;A instalação do pacote pode ser feita via &lt;strong&gt;pip&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;cloudinary&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;pip install cloudinary&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -19,25 +19,25 @@ Ao finalizar o cadastro, uma tela como a exibida abaixo estará disponível. Ate
 &lt;h3&gt;Configurando o settings&lt;/h3&gt;
 &lt;p&gt;&lt;small&gt;&lt;em&gt;Obs.: focaremos apenas nas configurações do cloudinary.&lt;/em&gt;&lt;/small&gt;&lt;/p&gt;
 &lt;p&gt;Primeiramente no INSTALLED_APPS incluiremos a linha &lt;strong&gt;'cloudinary'&lt;/strong&gt; e a linha com nossa app:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;django.contrib.admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;django.contrib.auth&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;django.contrib.contenttypes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;django.contrib.sessions&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;django.contrib.messages&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;django.contrib.staticfiles&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;cloudinary&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;cloudinary_example.core&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;INSTALLED_APPS = (&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;django.contrib.admin&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;django.contrib.auth&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;django.contrib.contenttypes&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;django.contrib.sessions&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;django.contrib.messages&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;django.contrib.staticfiles&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;cloudinary&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;cloudinary_example.core&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Ainda no settings adicione ao seu arquivo os parâmetros de configuração do Cloudinary:&lt;/p&gt;
 &lt;p&gt;&lt;small&gt;&lt;em&gt;Obs.: estes parâmetros são os mesmo da imagem inicial. E os abaixo apresentados são apenas ficticios.&lt;/em&gt;&lt;/small&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;CLOUDINARY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;cloud_name&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;seu_app_cloud&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;api_key&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;00998877665544&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;api_secret&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;DBseuAPPAKI-mtb7ZklCCBuJNoNetp&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;CLOUDINARY = {&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;cloud_name&amp;#39; : seu_app_cloud,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;api_key&amp;#39; : &amp;#39;00998877665544&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;api_secret&amp;#39;: &amp;#39;DBseuAPPAKI-mtb7ZklCCBuJNoNetp&amp;#39;&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -71,9 +71,9 @@ Ao finalizar o cadastro, uma tela como a exibida abaixo estará disponível. Ate
 
 &lt;p&gt;Agora vamos criar o formulário para fazermos o upload das imagens.
 Antes vamos definir uma rota para nossa &lt;strong&gt;views&lt;/strong&gt;, chamaremos ela de &lt;em&gt;'galeria'&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cloudinary_example.core.views&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^galeria/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;galeria&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;galeria&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;urlpatterns = patterns(&amp;#39;cloudinary_example.core.views&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    url(r&amp;#39;^galeria/$&amp;#39;, &amp;#39;galeria&amp;#39;, name=&amp;#39;galeria&amp;#39;),&lt;/span&gt;
+&lt;span class="err"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -139,22 +139,22 @@ Primeiro vamos incluir as importações do nosso model.&lt;/p&gt;
 &lt;p&gt;Ok, agora nossa imagem já pode ser salva no Cloudinary e nosso banco de dados. E como recuperar as imagens para exibição?
 Neste exemplo vamos utilizar as mesma &lt;em&gt;views&lt;/em&gt; e o mesmo &lt;em&gt;template&lt;/em&gt; para exibição. Para isso vamos alterar nossa &lt;em&gt;views&lt;/em&gt; para buscar os id’s de nossas imagens salvos no banco, 
 altere o seu return para o seguinte:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nv"&gt;render&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;request&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;galeria.html&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;, {&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;form&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;:&lt;span class="nv"&gt;ImagensForm&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;imgs&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;:&lt;span class="nv"&gt;Imagens&lt;/span&gt;.&lt;span class="nv"&gt;objects&lt;/span&gt;.&lt;span class="nv"&gt;all&lt;/span&gt;&lt;span class="ss"&gt;()&lt;/span&gt;}&lt;span class="ss"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;return render(request, &amp;#39;galeria.html&amp;#39;, {&amp;#39;form&amp;#39;:ImagensForm, &amp;#39;imgs&amp;#39;:Imagens.objects.all()})&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Já em seu template, adicione o seguinte código:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nv"&gt;table&lt;/span&gt; &lt;span class="nv"&gt;align&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;center&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-    {&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;img&lt;/span&gt; &lt;span class="nv"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;imgs&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;}
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nv"&gt;tr&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nv"&gt;td&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;{&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nv"&gt;cloudinary&lt;/span&gt; &lt;span class="nv"&gt;img&lt;/span&gt;.&lt;span class="nv"&gt;imagem&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;}&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nv"&gt;td&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nv"&gt;tr&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-    {&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nv"&gt;empty&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;}
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nv"&gt;tr&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nv"&gt;td&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nv"&gt;Sem&lt;/span&gt; &lt;span class="nv"&gt;Itens&lt;/span&gt; &lt;span class="nv"&gt;na&lt;/span&gt; &lt;span class="nv"&gt;Lista&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nv"&gt;td&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nv"&gt;tr&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-    {&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nv"&gt;endfor&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;}
-&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nv"&gt;table&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;table&lt;/span&gt; &lt;span class="na"&gt;align=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;center&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    {% for img in imgs %}
+        &lt;span class="nt"&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;{% cloudinary img.imagem %}&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+    {% empty %}
+        &lt;span class="nt"&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;Sem Itens na Lista&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+    {% endfor %}
+&lt;span class="nt"&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -182,18 +182,18 @@ altere o seu return para o seguinte:&lt;/p&gt;
 
 
 &lt;p&gt;Em seguida, incluiremos após a class meta a linha que indica que nosso campo file input deve ser multiple:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;imagem&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CloudinaryJsFileField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;attrs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;multiple&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;imagens&amp;#39;&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;imagem = CloudinaryJsFileField( attrs={&amp;#39;multiple&amp;#39;: 1, &amp;#39;name&amp;#39;:&amp;#39;imagens&amp;#39;} )&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E nossa view sofre uma pequena alteração para percorrer os itens do request Files:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;def&lt;/span&gt; &lt;span class="nv"&gt;galeria&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;request&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;:
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;request&lt;/span&gt;.&lt;span class="nv"&gt;method&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;POST&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;:
-        &lt;span class="nv"&gt;form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;ImagensForm&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;request&lt;/span&gt;.&lt;span class="nv"&gt;POST&lt;/span&gt;, &lt;span class="nv"&gt;request&lt;/span&gt;.&lt;span class="nv"&gt;FILES&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
-        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="nv"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;request&lt;/span&gt;.&lt;span class="nv"&gt;FILES&lt;/span&gt;.&lt;span class="nv"&gt;getlist&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;imagens&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;:
-            &lt;span class="nv"&gt;Imagens&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;imagem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;.&lt;span class="nv"&gt;save&lt;/span&gt;&lt;span class="ss"&gt;()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;galeria&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;method&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;POST&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ImagensForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;POST&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FILES&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FILES&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getlist&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;imagens&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="n"&gt;Imagens&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;imagem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nv"&gt;render&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;request&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;galeria.html&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;, {&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;form&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;:&lt;span class="nv"&gt;ImagensForm&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;imgs&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;:&lt;span class="nv"&gt;Imagens&lt;/span&gt;.&lt;span class="nv"&gt;objects&lt;/span&gt;.&lt;span class="nv"&gt;all&lt;/span&gt;&lt;span class="ss"&gt;()&lt;/span&gt;}&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;galeria.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;form&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ImagensForm&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;imgs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Imagens&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

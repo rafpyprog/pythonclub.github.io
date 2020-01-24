@@ -33,7 +33,7 @@
 &lt;h1&gt;Problema&lt;/h1&gt;
 &lt;p&gt;Recentemente tivemos um &lt;em&gt;bug&lt;/em&gt; em produção, e uma mudança no pacote &lt;em&gt;core&lt;/em&gt; resolveria. &lt;strong&gt;O que fazer com o sistema principal?&lt;/strong&gt; Nada, não era necessária nenhuma alteração. Só precisaríamos gerar uma nova imagem &lt;em&gt;Docker&lt;/em&gt; que ela seria montada do zero e no momento de instalar os pacotes &lt;em&gt;npm&lt;/em&gt;, baixaria a última versão.&lt;/p&gt;
 &lt;p&gt;Bastava realizar &lt;em&gt;rebuild&lt;/em&gt; na branch &lt;em&gt;master&lt;/em&gt; no &lt;strong&gt;CircleCI&lt;/strong&gt;, que assim que terminado ele trataria de enviar um &lt;em&gt;webhook&lt;/em&gt; para o nossa ferramenta que cria imagens &lt;em&gt;Docker&lt;/em&gt;. Nós utilizamos o seguinte padrão de nomenclatura dessas imagens:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;myapp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;production&lt;/span&gt;&lt;span class="o"&gt;-&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;branch&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;-&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;sha&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;myapp-production-&amp;lt;branch&amp;gt;-&amp;lt;sha[:7]&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

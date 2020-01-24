@@ -11,7 +11,7 @@ Ao finalizar o cadastro, uma tela como a exibida abaixo estará disponível. Ate
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 &lt;h3&gt;Configurando o ambiente&lt;/h3&gt;
 &lt;p&gt;A instalação do pacote pode ser feita via &lt;strong&gt;pip&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;cloudinary&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;pip install cloudinary&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -19,25 +19,25 @@ Ao finalizar o cadastro, uma tela como a exibida abaixo estará disponível. Ate
 &lt;h3&gt;Configurando o settings&lt;/h3&gt;
 &lt;p&gt;&lt;small&gt;&lt;em&gt;Obs.: focaremos apenas nas configurações do cloudinary.&lt;/em&gt;&lt;/small&gt;&lt;/p&gt;
 &lt;p&gt;Primeiramente no INSTALLED_APPS incluiremos a linha &lt;strong&gt;'cloudinary'&lt;/strong&gt; e a linha com nossa app:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;django.contrib.admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;django.contrib.auth&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;django.contrib.contenttypes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;django.contrib.sessions&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;django.contrib.messages&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;django.contrib.staticfiles&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;cloudinary&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;cloudinary_example.core&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;INSTALLED_APPS = (&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;django.contrib.admin&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;django.contrib.auth&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;django.contrib.contenttypes&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;django.contrib.sessions&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;django.contrib.messages&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;django.contrib.staticfiles&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;cloudinary&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;cloudinary_example.core&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Ainda no settings adicione ao seu arquivo os parâmetros de configuração do Cloudinary:&lt;/p&gt;
 &lt;p&gt;&lt;small&gt;&lt;em&gt;Obs.: estes parâmetros são os mesmo da imagem inicial. E os abaixo apresentados são apenas ficticios.&lt;/em&gt;&lt;/small&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;CLOUDINARY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;cloud_name&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;seu_app_cloud&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;api_key&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;00998877665544&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;api_secret&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;DBseuAPPAKI-mtb7ZklCCBuJNoNetp&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;CLOUDINARY = {&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;cloud_name&amp;#39; : seu_app_cloud,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;api_key&amp;#39; : &amp;#39;00998877665544&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;api_secret&amp;#39;: &amp;#39;DBseuAPPAKI-mtb7ZklCCBuJNoNetp&amp;#39;&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -71,9 +71,9 @@ Ao finalizar o cadastro, uma tela como a exibida abaixo estará disponível. Ate
 
 &lt;p&gt;Agora vamos criar o formulário para fazermos o upload das imagens.
 Antes vamos definir uma rota para nossa &lt;strong&gt;views&lt;/strong&gt;, chamaremos ela de &lt;em&gt;'galeria'&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cloudinary_example.core.views&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^galeria/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;galeria&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;galeria&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;urlpatterns = patterns(&amp;#39;cloudinary_example.core.views&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;    url(r&amp;#39;^galeria/$&amp;#39;, &amp;#39;galeria&amp;#39;, name=&amp;#39;galeria&amp;#39;),&lt;/span&gt;
+&lt;span class="err"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -139,22 +139,22 @@ Primeiro vamos incluir as importações do nosso model.&lt;/p&gt;
 &lt;p&gt;Ok, agora nossa imagem já pode ser salva no Cloudinary e nosso banco de dados. E como recuperar as imagens para exibição?
 Neste exemplo vamos utilizar as mesma &lt;em&gt;views&lt;/em&gt; e o mesmo &lt;em&gt;template&lt;/em&gt; para exibição. Para isso vamos alterar nossa &lt;em&gt;views&lt;/em&gt; para buscar os id’s de nossas imagens salvos no banco, 
 altere o seu return para o seguinte:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nv"&gt;render&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;request&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;galeria.html&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;, {&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;form&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;:&lt;span class="nv"&gt;ImagensForm&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;imgs&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;:&lt;span class="nv"&gt;Imagens&lt;/span&gt;.&lt;span class="nv"&gt;objects&lt;/span&gt;.&lt;span class="nv"&gt;all&lt;/span&gt;&lt;span class="ss"&gt;()&lt;/span&gt;}&lt;span class="ss"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;return render(request, &amp;#39;galeria.html&amp;#39;, {&amp;#39;form&amp;#39;:ImagensForm, &amp;#39;imgs&amp;#39;:Imagens.objects.all()})&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Já em seu template, adicione o seguinte código:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nv"&gt;table&lt;/span&gt; &lt;span class="nv"&gt;align&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;center&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-    {&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;img&lt;/span&gt; &lt;span class="nv"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;imgs&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;}
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nv"&gt;tr&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nv"&gt;td&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;{&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nv"&gt;cloudinary&lt;/span&gt; &lt;span class="nv"&gt;img&lt;/span&gt;.&lt;span class="nv"&gt;imagem&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;}&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nv"&gt;td&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nv"&gt;tr&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-    {&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nv"&gt;empty&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;}
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nv"&gt;tr&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nv"&gt;td&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nv"&gt;Sem&lt;/span&gt; &lt;span class="nv"&gt;Itens&lt;/span&gt; &lt;span class="nv"&gt;na&lt;/span&gt; &lt;span class="nv"&gt;Lista&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nv"&gt;td&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nv"&gt;tr&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-    {&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nv"&gt;endfor&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;}
-&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nv"&gt;table&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;table&lt;/span&gt; &lt;span class="na"&gt;align=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;center&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    {% for img in imgs %}
+        &lt;span class="nt"&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;{% cloudinary img.imagem %}&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+    {% empty %}
+        &lt;span class="nt"&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;Sem Itens na Lista&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+    {% endfor %}
+&lt;span class="nt"&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -182,18 +182,18 @@ altere o seu return para o seguinte:&lt;/p&gt;
 
 
 &lt;p&gt;Em seguida, incluiremos após a class meta a linha que indica que nosso campo file input deve ser multiple:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;imagem&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CloudinaryJsFileField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;attrs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;multiple&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;imagens&amp;#39;&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;imagem = CloudinaryJsFileField( attrs={&amp;#39;multiple&amp;#39;: 1, &amp;#39;name&amp;#39;:&amp;#39;imagens&amp;#39;} )&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E nossa view sofre uma pequena alteração para percorrer os itens do request Files:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;def&lt;/span&gt; &lt;span class="nv"&gt;galeria&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;request&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;:
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;request&lt;/span&gt;.&lt;span class="nv"&gt;method&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;POST&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;:
-        &lt;span class="nv"&gt;form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;ImagensForm&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;request&lt;/span&gt;.&lt;span class="nv"&gt;POST&lt;/span&gt;, &lt;span class="nv"&gt;request&lt;/span&gt;.&lt;span class="nv"&gt;FILES&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
-        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="nv"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;request&lt;/span&gt;.&lt;span class="nv"&gt;FILES&lt;/span&gt;.&lt;span class="nv"&gt;getlist&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;imagens&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;:
-            &lt;span class="nv"&gt;Imagens&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;imagem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;.&lt;span class="nv"&gt;save&lt;/span&gt;&lt;span class="ss"&gt;()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;galeria&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;method&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;POST&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ImagensForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;POST&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FILES&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FILES&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getlist&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;imagens&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="n"&gt;Imagens&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;imagem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nv"&gt;render&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;request&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;galeria.html&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;, {&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;form&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;:&lt;span class="nv"&gt;ImagensForm&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;imgs&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;:&lt;span class="nv"&gt;Imagens&lt;/span&gt;.&lt;span class="nv"&gt;objects&lt;/span&gt;.&lt;span class="nv"&gt;all&lt;/span&gt;&lt;span class="ss"&gt;()&lt;/span&gt;}&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;galeria.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;form&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ImagensForm&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;imgs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Imagens&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -211,13 +211,13 @@ O código está disponível no &lt;a href="https://github.com/dyesten/cloudinary
 &lt;p&gt;No caso do Django-Fagungis creio que você tem um argumento a mais para usar um virtualenv: existem forks mais atuais que o projeto disponóvel no pip e possivelmente você vai querer testar diferentes versões.&lt;/p&gt;
 &lt;h3&gt;Então, vamos ao passo a passo.&lt;/h3&gt;
 &lt;p&gt;Digamos que você queira criar um projeto chamado simpleproject, em Python3, em um virtualenv. (Eu vou usar ~/dev/simpleproject).&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;simpleproject&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
-&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;simpleproject&lt;/span&gt;
-&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="c1"&gt;--upgrade virtualenv&lt;/span&gt;
-&lt;span class="n"&gt;virtualenv&lt;/span&gt; &lt;span class="c1"&gt;--unzip-setuptools --python=/usr/bin/python3.4 .&lt;/span&gt;
-&lt;span class="k"&gt;source&lt;/span&gt; &lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
-&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;
-&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;admin&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;startproject&lt;/span&gt; &lt;span class="n"&gt;simpleproject&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;mkdir -p ~/dev/simpleproject.com&lt;/span&gt;
+&lt;span class="err"&gt;cd ~/dev/simpleproject&lt;/span&gt;
+&lt;span class="err"&gt;pip install --upgrade virtualenv&lt;/span&gt;
+&lt;span class="err"&gt;virtualenv --unzip-setuptools --python=/usr/bin/python3.4 .&lt;/span&gt;
+&lt;span class="err"&gt;source bin\activate&lt;/span&gt;
+&lt;span class="err"&gt;pip install django&lt;/span&gt;
+&lt;span class="err"&gt;django-admin.py startproject simpleproject .&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -225,22 +225,22 @@ O código está disponível no &lt;a href="https://github.com/dyesten/cloudinary
 &lt;p&gt;&lt;code&gt;~/dev/tools/django-fagungis-damianmoore&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Notem que deixei o nome do usuário github na pasta para lembrar que estou usando um fork.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Agora vou até a pasta e crio o virtualenv com Python2&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;deactivate&lt;/span&gt;
-&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fagungis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;damianmoore&lt;/span&gt;
-&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fagungis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;damianmoore&lt;/span&gt;
-&lt;span class="n"&gt;virtualenv&lt;/span&gt; &lt;span class="c1"&gt;--unzip-setuptools --python=/usr/bin/python2.7 .&lt;/span&gt;
-&lt;span class="k"&gt;source&lt;/span&gt; &lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;deactivate&lt;/span&gt;
+&lt;span class="err"&gt;mkdir -p ~/dev/tools/django-fagungis-damianmoore&lt;/span&gt;
+&lt;span class="err"&gt;cd ~/dev/tools/django-fagungis-damianmoore&lt;/span&gt;
+&lt;span class="err"&gt;virtualenv --unzip-setuptools --python=/usr/bin/python2.7 .&lt;/span&gt;
+&lt;span class="err"&gt;source bin\activate&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;em&gt;Pode ser que você não precise dizer o caminho do executável do python para a versão 2.7&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;E instalo o django-fagungis::&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;damianmoore&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fagungis&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;pip install git+https://github.com/damianmoore/django-fagungis.git&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E copio o fabfile.py de exemplo para meu projeto:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;cp&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fagungis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;damianmoore&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;python2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;packages&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fagungis&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;example_fabfile&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;simpleproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fabfile&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;cp ~/dev/tools/django-fagungis-damianmoore/lib/python2.7/site-packages/fagungis/example_fabfile.py ~/dev/simpleproject/fabfile.py&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -249,23 +249,23 @@ O código está disponível no &lt;a href="https://github.com/dyesten/cloudinary
 &lt;p&gt;Mude
 &lt;code&gt;def example():&lt;/code&gt; para &lt;code&gt;def simpleproject():&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;E as variáveis env.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;simpleproject_production&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;repository&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;https://github.com/seu-username/simpleproject.git&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;repository_type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;git&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hosts&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;&amp;#39;root@simpleproject.org&amp;#39;, &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;additional_packages&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;&amp;#39;git-core&amp;#39;,&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;env.project = &amp;#39;simpleproject_production&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;env.repository = &amp;#39;https://github.com/seu-username/simpleproject.git&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;env.repository_type = &amp;#39;git&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;env.hosts = [&amp;#39;root@simpleproject.org&amp;#39;, ]&lt;/span&gt;
+&lt;span class="err"&gt;env.additional_packages = [&amp;#39;git-core&amp;#39;,]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Agora, algumas configurações mais sensíveis:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;O Django e o Nginx têm um tratamento particular para a url static, por isso a automatixação fica mais fácil se você não usar essa url no seu projeto.&lt;/p&gt;
 &lt;p&gt;Dê preferência para usar configurações como a seguir:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;#&lt;/span&gt;  &lt;span class="n"&gt;django&lt;/span&gt; &lt;span class="n"&gt;media&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="n"&gt;dir&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;django_media_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/media/&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;django_media_root&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;code_root&lt;/span&gt;
-&lt;span class="o"&gt;#&lt;/span&gt;  &lt;span class="n"&gt;django&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="n"&gt;dir&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;django_static_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/assets/&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;django_static_root&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;code_root&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;#  django media url and root dir&lt;/span&gt;
+&lt;span class="err"&gt;env.django_media_url = &amp;#39;/media/&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;env.django_media_root = env.code_root&lt;/span&gt;
+&lt;span class="err"&gt;#  django static url and root dir&lt;/span&gt;
+&lt;span class="err"&gt;env.django_static_url = &amp;#39;/assets/&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;env.django_static_root = env.code_root&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -281,49 +281,49 @@ O código está disponível no &lt;a href="https://github.com/dyesten/cloudinary
 
 
 &lt;p&gt;&lt;strong&gt;Se você escolheu usar Python3&lt;/strong&gt; no seu projeto, adicione o path para o python3 no virtenv_options&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;virtenv_options&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;distribute&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;no-site-packages&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;python=/usr/bin/python3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;env.virtenv_options = [&amp;#39;distribute&amp;#39;, &amp;#39;no-site-packages&amp;#39;,&amp;#39;python=/usr/bin/python3&amp;#39;, ]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Estamos com tudo quase pronto. Você já pode tentar o deploy do seu projeto, mas para isso terá que ativar o virtualenv onde instalou o django-fagungis. Como esse processo é um pouco chato, criei um script para fazer isso e voltar para o seu projeto. &lt;/p&gt;
 &lt;p&gt;Crie um arquivo fagungis.sh e grave na pasta onde ele está instalado (&lt;code&gt;~/dev/tools/django-fagungis-damianmoore&lt;/code&gt; em nosso caso)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;SCRIPT_NAME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;${BASH_SOURCE[0]}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;span class="nv"&gt;SCRIPT_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;$( dirname &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;$&lt;span class="nv"&gt;SCRIPT_NAME&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt; )&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SCRIPT_NAME=&amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BASH_SOURCE&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;
+SCRIPT_DIR=&amp;quot;$( dirname &amp;quot;&lt;span class="nv"&gt;$SCRIPT_NAME&lt;/span&gt;&amp;quot; )&amp;quot;
 
-&lt;span class="nv"&gt;source&lt;/span&gt; $&lt;span class="nv"&gt;SCRIPT_DIR&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;activate&lt;/span&gt;
-&lt;span class="nv"&gt;fab&lt;/span&gt; &lt;span class="mh"&gt;$1&lt;/span&gt; &lt;span class="mh"&gt;$2&lt;/span&gt;
+source &lt;span class="nv"&gt;$SCRIPT_DIR&lt;/span&gt;/bin/activate
+fab $1 $2
 
-&lt;span class="nv"&gt;PROJECT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;$(cd $(dirname $0) &amp;amp;&amp;amp; pwd)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;span class="nv"&gt;source&lt;/span&gt; $&lt;span class="nv"&gt;PROJECT&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;activate&lt;/span&gt;
+PROJECT=&amp;quot;$(cd $(dirname $0) &lt;span class="err"&gt;&amp;amp;&amp;amp;&lt;/span&gt; pwd)&amp;quot;
+source &lt;span class="nv"&gt;$PROJECT&lt;/span&gt;/bin/activate
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E em seu .bashrc, adicione um alias para ele:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; &lt;span class="k"&gt;alias&lt;/span&gt; &lt;span class="n"&gt;fagungis&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;~/dev/tools/django-fagungis-damianmoore/fagungis.sh&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt; alias fagungis=&amp;#39;~/dev/tools/django-fagungis-damianmoore/fagungis.sh&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Agora é só ir até a raiz do seu projeto, onde está salvo o fabfile.py e digitar:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;fagungis&lt;/span&gt; &lt;span class="n"&gt;simpleproject&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;
-&lt;span class="n"&gt;fagungis&lt;/span&gt; &lt;span class="n"&gt;simpleproject&lt;/span&gt; &lt;span class="n"&gt;deploy&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;fagungis simpleproject setup&lt;/span&gt;
+&lt;span class="err"&gt;fagungis simpleproject deploy&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;lembre-se que para as mudanças no .bashrc terem efeito, você deverá recarregá-lo com&lt;/strong&gt; &lt;code&gt;source ~/.bashrc&lt;/code&gt; &lt;strong&gt;ou reabrir a janela do terminal&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Se tudo correu certo, seu projeto já está rodando no servidor. Mas em alguns casos o &lt;a href="http://docs.gunicorn.org/en/latest/run.html"&gt;Gunicorn&lt;/a&gt; tem um problema com a sintaxe antiga e você precisa ir no pacote do fagungis e mudar o último exec do script: &lt;code&gt;~/dev/tools/django-fagungis-damianmoore/lib/python2.7/site-packages/fagungis/scripts/rungunicorn.sh&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;A chamada do gunicorn deve ficar assim:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;exec&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;virtenv&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;gunicorn&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;w&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;gunicorn_workers&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt; \
-    &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="nv"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=%&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;django_user&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="nv"&gt;group&lt;/span&gt;&lt;span class="o"&gt;=%&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;django_user_group&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt; \
-    &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="nv"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;=%&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;django_project_settings&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt; \
-    &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="nv"&gt;bind&lt;/span&gt;&lt;span class="o"&gt;=%&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;gunicorn_bind&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="nv"&gt;log&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;level&lt;/span&gt;&lt;span class="o"&gt;=%&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;gunicorn_loglevel&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt; \
-    &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="nv"&gt;log&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;file&lt;/span&gt;&lt;span class="o"&gt;=%&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;gunicorn_logfile&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;%&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;gunicorn_logfile&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt; \
-    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;project&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt;.&lt;span class="nv"&gt;wsgi&lt;/span&gt;:&lt;span class="nv"&gt;application&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;exec %(virtenv)s/bin/gunicorn -w %(gunicorn_workers)s \&lt;/span&gt;
+&lt;span class="err"&gt;    --user=%(django_user)s --group=%(django_user_group)s \&lt;/span&gt;
+&lt;span class="err"&gt;    --settings=%(django_project_settings)s \&lt;/span&gt;
+&lt;span class="err"&gt;    --bind=%(gunicorn_bind)s --log-level=%(gunicorn_loglevel)s \&lt;/span&gt;
+&lt;span class="err"&gt;    --log-file=%(gunicorn_logfile)s 2&amp;gt;&amp;gt;%(gunicorn_logfile)s \&lt;/span&gt;
+&lt;span class="err"&gt;    %(project)s.wsgi:application&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Salve o arquivo e tente de novo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;fagungis&lt;/span&gt; &lt;span class="n"&gt;simpleproject&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;
-&lt;span class="n"&gt;fagungis&lt;/span&gt; &lt;span class="n"&gt;simpleproject&lt;/span&gt; &lt;span class="n"&gt;deploy&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;fagungis simpleproject setup&lt;/span&gt;
+&lt;span class="err"&gt;fagungis simpleproject deploy&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

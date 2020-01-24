@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>PythonClub - Lucas Magnum</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Thu, 29 Nov 2018 13:10:00 -0200</lastBuildDate><item><title>Algoritmos de Ordenação</title><link>http://pythonclub.com.br/algoritmos-ordenacao.html</link><description>&lt;p&gt;Fala pessoal, tudo bom?&lt;/p&gt;
+<rss version="2.0"><channel><title>PythonClub - Lucas Magnum</title><link>http://pythonclub.com.br/</link><description></description><lastBuildDate>Fri, 24 Jan 2020 12:10:00 -0300</lastBuildDate><item><title>Criando um CI de uma aplicação Django usando Github Actions</title><link>http://pythonclub.com.br/django-ci-github-actions.html</link><description>&lt;p&gt;Fala pessoal, tudo bom?&lt;/p&gt;
+&lt;p&gt;Nos vídeo abaixo vou mostrar como podemos configurar um CI de uma aplicação Django usando Github Actions.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/watch?v=KpSlY8leYFY"&gt;https://www.youtube.com/watch?v=KpSlY8leYFY&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/KpSlY8leYFY" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lucas Magnum</dc:creator><pubDate>Fri, 24 Jan 2020 12:10:00 -0300</pubDate><guid isPermaLink="false">tag:pythonclub.com.br,2020-01-24:/django-ci-github-actions.html</guid><category>python</category><category>django</category><category>github actions</category></item><item><title>Algoritmos de Ordenação</title><link>http://pythonclub.com.br/algoritmos-ordenacao.html</link><description>&lt;p&gt;Fala pessoal, tudo bom?&lt;/p&gt;
 &lt;p&gt;Nos vídeos abaixo, vamos aprender como implementar alguns dos algoritmos de ordenação usando Python.&lt;/p&gt;
 &lt;div class="section" id="bubble-sort"&gt;
 &lt;h2&gt;Bubble Sort&lt;/h2&gt;

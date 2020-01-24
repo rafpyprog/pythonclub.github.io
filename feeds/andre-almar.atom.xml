@@ -31,7 +31,7 @@ Um exemplo bem simples. Abra o seu interpretador Python e digite a função abai
 &lt;br /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;generator&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Essa  uma função Generator&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Essa  uma função Generator&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;
 
     &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
@@ -48,7 +48,7 @@ Um exemplo bem simples. Abra o seu interpretador Python e digite a função abai
 
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="c1"&gt;# Podemos iterar sobre os items usando next().&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;Essa&lt;/span&gt;  &lt;span class="n"&gt;uma&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt;&lt;span class="err"&gt;çã&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;Generator&lt;/span&gt;
+&lt;span class="n"&gt;Essa&lt;/span&gt;  &lt;span class="n"&gt;uma&lt;/span&gt; &lt;span class="n"&gt;função&lt;/span&gt; &lt;span class="n"&gt;Generator&lt;/span&gt;
 &lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="c1"&gt;# Assim que a função executa o yield, ela é pausada e o controle da execução é transferido para quem a chamou.&lt;/span&gt;
 
@@ -87,9 +87,9 @@ Um exemplo bem simples. Abra o seu interpretador Python e digite a função abai
 &lt;br /&gt;&lt;br&gt;
 Também podemos utilizar &lt;strong&gt;Generators&lt;/strong&gt; dentro de um laço &lt;strong&gt;for&lt;/strong&gt; diretamente. Isso porque o laço &lt;strong&gt;for&lt;/strong&gt; também utiliza a função &lt;em&gt;next()&lt;/em&gt; para iterar e automaticamente encerra a iteração quando a exceção &lt;em&gt;StopIteration&lt;/em&gt; é lançada.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;generator&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;
-&lt;span class="n"&gt;Essa&lt;/span&gt; &lt;span class="err"&gt;é&lt;/span&gt; &lt;span class="n"&gt;uma&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt;&lt;span class="err"&gt;çã&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;Generator&lt;/span&gt;
+&lt;span class="n"&gt;Essa&lt;/span&gt; &lt;span class="n"&gt;é&lt;/span&gt; &lt;span class="n"&gt;uma&lt;/span&gt; &lt;span class="n"&gt;função&lt;/span&gt; &lt;span class="n"&gt;Generator&lt;/span&gt;
 &lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;span class="mi"&gt;2&lt;/span&gt;
 &lt;span class="mi"&gt;3&lt;/span&gt;

@@ -15,9 +15,9 @@ See also the original article in English: &lt;a class="reference external" href=
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;dum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1861-10-23&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;poesia&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;fingir-luta&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;dee&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1861-10-23&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;poesia&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;fingir-luta&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;dum&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;dee&lt;/span&gt;
-&lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="kc"&gt;True&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;dum&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;dee&lt;/span&gt;
-&lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="kc"&gt;False&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dum&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dee&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4313018120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4312991048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -27,9 +27,9 @@ See also the original article in English: &lt;a class="reference external" href=
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;t_doom&lt;/span&gt;
 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1861-10-23&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;poesia&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;fingir-luta&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;t_doom&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;dum&lt;/span&gt;
-&lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="kc"&gt;True&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;t_doom&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;dum&lt;/span&gt;
-&lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="kc"&gt;True&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Então, &lt;tt class="docutils literal"&gt;t_doom&lt;/tt&gt; e &lt;tt class="docutils literal"&gt;dum&lt;/tt&gt; são iguais - mas Alice acharia tolice dizer isso, porque &lt;tt class="docutils literal"&gt;t_doom&lt;/tt&gt; e &lt;tt class="docutils literal"&gt;dum&lt;/tt&gt; referem-se à mesma pessoa: &lt;tt class="docutils literal"&gt;t_doom is dum&lt;/tt&gt;.&lt;/p&gt;
 &lt;img alt="exemplo 2" src="http://pythonclub.com.br/images/ramalho/diagrams/dum-t_doom-dee.png" /&gt;
@@ -52,7 +52,7 @@ See also the original article in English: &lt;a class="reference external" href=
 Cada objeto tem uma identidade, um tipo e um valor. A identidade de um objeto nunca muda, uma vez que tenha sido criado; você pode pensar como se fosse o endereço do objeto na memória. O operador &lt;tt class="docutils literal"&gt;is&lt;/tt&gt; compara a identidade de dois objetos; a função &lt;tt class="docutils literal"&gt;id()&lt;/tt&gt; retorna um inteiro representando a sua identidade.&lt;/blockquote&gt;
 &lt;p&gt;Após &lt;tt class="docutils literal"&gt;dum&lt;/tt&gt; tornar-se um rapper, os irmãos gêmeos não são mais iguais:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;dum&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;dee&lt;/span&gt;
-&lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="kc"&gt;False&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Temos aqui duas tuplas que foram criadas iguais, mas agora elas são diferentes.&lt;/p&gt;
 &lt;p&gt;O outro tipo interno de coleção imutável em Python, &lt;tt class="docutils literal"&gt;frozenset&lt;/tt&gt;, não sofre do problema de ser imutável mas com possibilidade de mudar seus valores. Isso ocorre porque um &lt;tt class="docutils literal"&gt;frozenset&lt;/tt&gt; (ou um &lt;tt class="docutils literal"&gt;set&lt;/tt&gt; simples, nesse sentido) pode apenas conter referências a objetos &lt;tt class="docutils literal"&gt;hashable&lt;/tt&gt; (objetos que podem ser usados como chave em um dicionário), e o valor destes objetos, por definição, nunca pode mudar.&lt;/p&gt;
@@ -64,7 +64,7 @@ Cada objeto tem uma identidade, um tipo e um valor. A identidade de um objeto nu
 &lt;p&gt;Eis uma prova disso. Primeiro criamos uma classe &lt;tt class="docutils literal"&gt;Gizmo&lt;/tt&gt;, e uma instância dela:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Gizmo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;         &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Gizmo id: &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;         &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Gizmo id: &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Gizmo&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;Gizmo&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4328764080&lt;/span&gt;
@@ -77,7 +77,7 @@ Cada objeto tem uma identidade, um tipo e um valor. A identidade de um objeto nu
   &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;unsupported&lt;/span&gt; &lt;span class="n"&gt;operand&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Gizmo&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;int&amp;#39;&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;y&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;globals&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="kc"&gt;False&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Este trecho mostra que o novo objeto foi instanciado (sua identidade é &lt;tt class="docutils literal"&gt;4328764360&lt;/tt&gt;) mas antes que o nome &lt;tt class="docutils literal"&gt;y&lt;/tt&gt; possa ser criado, uma exceção &lt;tt class="docutils literal"&gt;TypeError&lt;/tt&gt; abortou a atribuição. A verificação &lt;tt class="docutils literal"&gt;'y' in globals()&lt;/tt&gt; prova que não existe o nome global &lt;tt class="docutils literal"&gt;y&lt;/tt&gt;.&lt;/p&gt;
 &lt;p&gt;Para fechar: sempre leia lado direito de uma atribuição primero. Ali o objeto é computado ou retornado. Depois disso, o nome no lado esquerdo é vinculado ao objeto, como uma etiqueta afixada nele. Apenas esqueça aquela idéia de variáveis como caixas.&lt;/p&gt;

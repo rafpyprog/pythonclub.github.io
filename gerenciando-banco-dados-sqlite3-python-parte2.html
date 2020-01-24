@@ -237,7 +237,7 @@ PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 t
 </pre></div>
 <p>Agora vamos gerar um telefone com a função <tt class="docutils literal">gen_phone()</tt> no formato (xx) xxxx-xxxx</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen_phone</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s1">&#39;({0}) {1}-{2}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="k">return</span> <span class="s1">&#39;(</span><span class="si">{0}</span><span class="s1">) </span><span class="si">{1}</span><span class="s1">-</span><span class="si">{2}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">rstr</span><span class="o">.</span><span class="n">rstr</span><span class="p">(</span><span class="s1">&#39;1234567890&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
         <span class="n">rstr</span><span class="o">.</span><span class="n">rstr</span><span class="p">(</span><span class="s1">&#39;1234567890&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
         <span class="n">rstr</span><span class="o">.</span><span class="n">rstr</span><span class="p">(</span><span class="s1">&#39;1234567890&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -280,22 +280,22 @@ PS: <em>Considere a sintaxe para Python 3</em>. Mas o programa roda em python2 t
             <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">db_name</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
             <span class="c1"># imprimindo nome do banco</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Banco:&quot;</span><span class="p">,</span> <span class="n">db_name</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Banco:&quot;</span><span class="p">,</span> <span class="n">db_name</span><span class="p">)</span>
             <span class="c1"># lendo a versão do SQLite</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT SQLITE_VERSION()&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
             <span class="c1"># imprimindo a versão do SQLite</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;SQLite version: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SQLite version: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Erro ao abrir banco.&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="bp">False</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erro ao abrir banco.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 <p>Aqui usamos o básico já visto na <a class="reference external" href="http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html">parte 1</a> que são os comandos <tt class="docutils literal">sqlite3.connect()</tt> e <tt class="docutils literal">cursor()</tt>. Criamos uma classe &quot;genérica&quot; chamada <tt class="docutils literal">Connect()</tt> que representa o banco de dados. E no inicializador da classe <tt class="docutils literal">__init__</tt> fazemos a conexão com o banco e imprimimos a versão do SQLite, definido em <tt class="docutils literal"><span class="pre">self.cursor.execute('SELECT</span> <span class="pre">SQLITE_VERSION()')</span></tt>.</p>
 <p>O próximo passo é fechar a conexão com o banco:</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">close_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Conexão fechada.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Conexão fechada.&quot;</span><span class="p">)</span>
 </pre></div>
 <p>Este método está dentro da classe <tt class="docutils literal">Connect()</tt>, portanto atente-se a <strong>identação</strong>.</p>
 <p>Agora, criamos uma instância da classe acima e chamamos de <tt class="docutils literal">ClientesDb()</tt>, representando um banco chamado <em>clientes.db</em>.</p>
@@ -334,7 +334,7 @@ Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&
 <span class="o">&gt;&gt;&gt;</span> <span class="n">db</span> <span class="o">=</span> <span class="n">Connect</span><span class="p">(</span><span class="s1">&#39;clientes.db&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">close_db</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">exit</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">exit</span><span class="p">()</span>
 </pre></div>
 <p>A primeira linha importa a classe <tt class="docutils literal">Connect</tt> do arquivo <em>connect_db.py</em>.</p>
 <p>O comando <tt class="docutils literal">dir(Connect)</tt> lista todos os métodos da classe <tt class="docutils literal">Connect()</tt>, inclusive <tt class="docutils literal">__init__</tt> e <tt class="docutils literal">close_db()</tt>.</p>
@@ -363,13 +363,13 @@ Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&
             <span class="c1"># conectando...</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">db_name</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Banco:&quot;</span><span class="p">,</span> <span class="n">db_name</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Banco:&quot;</span><span class="p">,</span> <span class="n">db_name</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT SQLITE_VERSION()&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;SQLite version: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SQLite version: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Erro ao abrir banco.&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="bp">False</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erro ao abrir banco.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
 
     <span class="k">def</span> <span class="nf">commit_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="p">:</span>
@@ -378,7 +378,7 @@ Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&
     <span class="k">def</span> <span class="nf">close_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Conexão fechada.&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Conexão fechada.&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">ClientesDb</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -406,24 +406,24 @@ $ ls *.db
 <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">ClientesDb</span><span class="p">()</span>
 <span class="n">Banco</span><span class="p">:</span> <span class="n">clientes</span><span class="o">.</span><span class="n">db</span>
 <span class="n">SQLite</span> <span class="n">version</span><span class="p">:</span> <span class="mf">3.8</span><span class="o">.</span><span class="mi">2</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">exit</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">exit</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="section" id="criando-uma-tabela">
 <h2>Criando uma tabela</h2>
 <p>Agora é tudo continuação do arquivo <a class="reference external" href="https://github.com/rg3915/python-sqlite/blob/master/intermediario/manager_db_.py">manager_db.py</a> ...</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">criar_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema_name</span><span class="o">=</span><span class="s1">&#39;sql/clientes_schema.sql&#39;</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Criando tabela </span><span class="si">%s</span><span class="s2"> ...&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Criando tabela </span><span class="si">%s</span><span class="s2"> ...&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">schema_name</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">schema</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">executescript</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Aviso: A tabela </span><span class="si">%s</span><span class="s2"> já existe.&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aviso: A tabela </span><span class="si">%s</span><span class="s2"> já existe.&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Tabela </span><span class="si">%s</span><span class="s2"> criada com sucesso.&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tabela </span><span class="si">%s</span><span class="s2"> criada com sucesso.&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">)</span>
 
     <span class="o">...</span>
 
@@ -460,10 +460,10 @@ $ ls *.db
 <span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
         <span class="c1"># gravando no bd</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Um registro inserido com sucesso.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Um registro inserido com sucesso.&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">IntegrityError</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O email deve ser único.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O email deve ser único.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
 
     <span class="o">...</span>
 
@@ -497,11 +497,11 @@ $ ls *.db
 <span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">lista</span><span class="p">)</span>
         <span class="c1"># gravando no bd</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dados inseridos da lista com sucesso: </span><span class="si">%s</span><span class="s2"> registros.&quot;</span> <span class="o">%</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dados inseridos da lista com sucesso: </span><span class="si">%s</span><span class="s2"> registros.&quot;</span> <span class="o">%</span>
               <span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">))</span>
     <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">IntegrityError</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O email deve ser único.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O email deve ser único.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 </div>
 <div class="section" id="inserindo-registros-de-um-arquivo-externo">
@@ -514,10 +514,10 @@ $ ls *.db
             <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">executescript</span><span class="p">(</span><span class="n">dados</span><span class="p">)</span>
             <span class="c1"># gravando no bd</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dados inseridos do arquivo com sucesso.&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dados inseridos do arquivo com sucesso.&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">IntegrityError</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O email deve ser único.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O email deve ser único.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 </div>
 <div class="section" id="importando-dados-de-um-arquivo-csv">
@@ -538,10 +538,10 @@ $ ls *.db
 <span class="s2">            &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">linha</span><span class="p">)</span>
         <span class="c1"># gravando no bd</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dados importados do csv com sucesso.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dados importados do csv com sucesso.&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">IntegrityError</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O email deve ser único.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O email deve ser único.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 <p><strong>Obs</strong>: Veja em <a class="reference external" href="https://github.com/rg3915/python-sqlite/blob/master/intermediario/gen_csv.py">gen_csv.py</a> como podemos gerar dados randômicos para criar um novo <a class="reference external" href="https://github.com/rg3915/python-sqlite/blob/master/intermediario/csv/clientes.csv">clientes.csv</a>.</p>
 </div>
@@ -568,10 +568,10 @@ $ ls *.db
               <span class="bp">self</span><span class="o">.</span><span class="n">cidade</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">uf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">criado_em</span><span class="p">))</span>
         <span class="c1"># gravando no bd</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dados inseridos com sucesso.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dados inseridos com sucesso.&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">IntegrityError</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O email deve ser único.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O email deve ser único.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 <p>Note que, em <tt class="docutils literal">criado_em</tt> se você não informar uma data ele insere a data atual. E os parâmetros informados são passados no final do comando <tt class="docutils literal">execute()</tt>.</p>
 <p>Veja a interação:</p>
@@ -583,11 +583,11 @@ $ ls *.db
 <span class="n">Nome</span><span class="p">:</span> <span class="n">Regis</span>
 <span class="n">Idade</span><span class="p">:</span> <span class="mi">35</span>
 <span class="n">CPF</span><span class="p">:</span> <span class="mi">11100011100</span>
-<span class="n">Email</span><span class="p">:</span> <span class="n">regis</span><span class="nd">@email.com</span>
+<span class="n">Email</span><span class="p">:</span> <span class="n">regis</span><span class="nd">@email</span><span class="o">.</span><span class="n">com</span>
 <span class="n">Fone</span><span class="p">:</span> <span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="mi">1111</span><span class="o">-</span><span class="mi">1111</span>
-<span class="n">Cidade</span><span class="p">:</span> <span class="n">S</span><span class="err">ã</span><span class="n">o</span> <span class="n">Paulo</span>
+<span class="n">Cidade</span><span class="p">:</span> <span class="n">São</span> <span class="n">Paulo</span>
 <span class="n">UF</span><span class="p">:</span> <span class="n">SP</span>
-<span class="n">Criado</span> <span class="n">em</span> <span class="p">(</span><span class="mi">2014</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mo">07</span> <span class="mo">01</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">48.836683</span><span class="p">):</span>
+<span class="n">Criado</span> <span class="n">em</span> <span class="p">(</span><span class="mi">2014</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">07</span> <span class="mi">01</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">48.836683</span><span class="p">):</span>
 <span class="n">Dados</span> <span class="n">inseridos</span> <span class="n">com</span> <span class="n">sucesso</span><span class="o">.</span>
 </pre></div>
 </div>
@@ -620,11 +620,11 @@ $ ls *.db
 <span class="s2">        VALUES (?,?,?,?,?,?,?,?)</span>
 <span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">lista</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Inserindo </span><span class="si">%s</span><span class="s2"> registros na tabela...&quot;</span> <span class="o">%</span> <span class="n">repeat</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Registros criados com sucesso.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Inserindo </span><span class="si">%s</span><span class="s2"> registros na tabela...&quot;</span> <span class="o">%</span> <span class="n">repeat</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Registros criados com sucesso.&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">IntegrityError</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O email deve ser único.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O email deve ser único.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 </div>
 <div class="section" id="read-lendo-os-dados">
@@ -637,10 +637,10 @@ $ ls *.db
 
 <span class="k">def</span> <span class="nf">imprimir_todos_clientes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">lista</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ler_todos_clientes</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{:&gt;3s} {:20s} {:&lt;5s} {:15s} {:21s} {:14s} {:15s} {:s} {:s}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:&gt;3s}</span><span class="s1"> </span><span class="si">{:20s}</span><span class="s1"> </span><span class="si">{:&lt;5s}</span><span class="s1"> </span><span class="si">{:15s}</span><span class="s1"> </span><span class="si">{:21s}</span><span class="s1"> </span><span class="si">{:14s}</span><span class="s1"> </span><span class="si">{:15s}</span><span class="s1"> </span><span class="si">{:s}</span><span class="s1"> </span><span class="si">{:s}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;nome&#39;</span><span class="p">,</span> <span class="s1">&#39;idade&#39;</span><span class="p">,</span> <span class="s1">&#39;cpf&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;fone&#39;</span><span class="p">,</span> <span class="s1">&#39;cidade&#39;</span><span class="p">,</span> <span class="s1">&#39;uf&#39;</span><span class="p">,</span> <span class="s1">&#39;criado_em&#39;</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{:3d} {:23s} {:2d} {:s} {:&gt;25s} {:s} {:15s} {:s} {:s}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:3d}</span><span class="s1"> </span><span class="si">{:23s}</span><span class="s1"> </span><span class="si">{:2d}</span><span class="s1"> </span><span class="si">{:s}</span><span class="s1"> </span><span class="si">{:&gt;25s}</span><span class="s1"> </span><span class="si">{:s}</span><span class="s1"> </span><span class="si">{:15s}</span><span class="s1"> </span><span class="si">{:s}</span><span class="s1"> </span><span class="si">{:s}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
             <span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span>
             <span class="n">c</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">8</span><span class="p">]))</span>
@@ -649,7 +649,7 @@ $ ls *.db
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">imprimir_todos_clientes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">lista</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ler_todos_clientes</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="mais-select">
@@ -661,23 +661,23 @@ $ ls *.db
     <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">imprimir_cliente</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">localizar_cliente</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Não existe cliente com o id informado.&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">localizar_cliente</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Não existe cliente com o id informado.&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">localizar_cliente</span><span class="p">(</span><span class="nb">id</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">localizar_cliente</span><span class="p">(</span><span class="nb">id</span><span class="p">))</span>
 </pre></div>
 <p>O <tt class="docutils literal">fetchone()</tt> retorna apenas uma linha de registro.</p>
 <p><strong>Exemplo</strong>: Veja um exemplo de como contar os registros.</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">contar_cliente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
         <span class="s1">&#39;SELECT COUNT(*) FROM clientes&#39;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Total de clientes:&quot;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total de clientes:&quot;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 <p><strong>Exemplo</strong>: Contar os clientes maiores que 50 anos de idade. Veja novamente a necessidade da vírgula em <tt class="docutils literal">(t,)</tt>.</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">contar_cliente_por_idade</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
         <span class="s1">&#39;SELECT COUNT(*) FROM clientes WHERE idade &gt; ?&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="p">,))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Clientes maiores que&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;anos:&quot;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clientes maiores que&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;anos:&quot;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 <p>Caso queira outra idade mude o valor ao chamar a função:</p>
 <div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">contar_cliente_por_idade</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
@@ -686,17 +686,17 @@ $ ls *.db
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">localizar_cliente_por_idade</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="n">resultado</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
         <span class="s1">&#39;SELECT * FROM clientes WHERE idade &gt; ?&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="p">,))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Clientes maiores que&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;anos:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clientes maiores que&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;anos:&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">cliente</span> <span class="ow">in</span> <span class="n">resultado</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">cliente</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">cliente</span><span class="p">)</span>
 </pre></div>
 <p><strong>Exemplo</strong>: Localizar clientes por uf.</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">localizar_cliente_por_uf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="s1">&#39;SP&#39;</span><span class="p">):</span>
     <span class="n">resultado</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
         <span class="s1">&#39;SELECT * FROM clientes WHERE uf = ?&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="p">,))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Clientes do estado de&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clientes do estado de&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">cliente</span> <span class="ow">in</span> <span class="n">resultado</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">cliente</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">cliente</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="select-personalizado">
@@ -707,7 +707,7 @@ $ ls *.db
     <span class="c1"># gravando no bd</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">cliente</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">cliente</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">cliente</span><span class="p">)</span>
 </pre></div>
 <p>Assim, podemos escrever qualquer <tt class="docutils literal">SELECT</tt> direto na chamada da função:</p>
 <div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">meu_select</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM clientes WHERE uf=&#39;MG&#39; ORDER BY nome;&quot;</span><span class="p">)</span>
@@ -725,11 +725,11 @@ $ ls *.db
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">dados</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
         <span class="n">sqlcomandos</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Consulta feita a partir de arquivo externo.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Consulta feita a partir de arquivo externo.&quot;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">comando</span> <span class="ow">in</span> <span class="n">sqlcomandos</span><span class="p">:</span>
             <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">comando</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
-                <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
     <span class="c1"># gravando no bd</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
 </pre></div>
@@ -754,9 +754,9 @@ $ ls *.db
 <span class="s2">            &quot;&quot;&quot;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">novo_fone</span><span class="p">,</span> <span class="nb">id</span><span class="p">,))</span>
             <span class="c1"># gravando no bd</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dados atualizados com sucesso.&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dados atualizados com sucesso.&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Não existe cliente com o id informado.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Não existe cliente com o id informado.&#39;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">e</span>
 </pre></div>
@@ -777,9 +777,9 @@ $ ls *.db
 <span class="s2">            &quot;&quot;&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">id</span><span class="p">,))</span>
             <span class="c1"># gravando no bd</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Registro </span><span class="si">%d</span><span class="s2"> excluído com sucesso.&quot;</span> <span class="o">%</span> <span class="nb">id</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Registro </span><span class="si">%d</span><span class="s2"> excluído com sucesso.&quot;</span> <span class="o">%</span> <span class="nb">id</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Não existe cliente com o código informado.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Não existe cliente com o código informado.&#39;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">e</span>
 </pre></div>
@@ -798,10 +798,10 @@ $ ls *.db
 <span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
         <span class="c1"># gravando no bd</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Novo campo adicionado com sucesso.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Novo campo adicionado com sucesso.&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">OperationalError</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O campo &#39;bloqueado&#39; já existe.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O campo &#39;bloqueado&#39; já existe.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 </div>
 <div class="section" id="lendo-as-informacoes-do-banco-de-dados">
@@ -809,9 +809,9 @@ $ ls *.db
 <p>Obtendo informações da tabela</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">table_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="s1">&#39;PRAGMA table_info({})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">))</span>
+        <span class="s1">&#39;PRAGMA table_info(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">))</span>
     <span class="n">colunas</span> <span class="o">=</span> <span class="p">[</span><span class="n">tupla</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">tupla</span> <span class="ow">in</span> <span class="n">t</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()]</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Colunas:&#39;</span><span class="p">,</span> <span class="n">colunas</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Colunas:&#39;</span><span class="p">,</span> <span class="n">colunas</span><span class="p">)</span>
 </pre></div>
 <p>Chamando e vendo o resultado:</p>
 <div class="highlight"><pre><span></span>&gt;&gt;&gt; c.table_info<span class="o">()</span>
@@ -822,9 +822,9 @@ Colunas: <span class="o">[</span><span class="s1">&#39;id&#39;</span>, <span cla
     <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    SELECT name FROM sqlite_master WHERE type=&#39;table&#39; ORDER BY name</span>
 <span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Tabelas:&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tabelas:&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">tabela</span> <span class="ow">in</span> <span class="n">l</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">tabela</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">tabela</span><span class="p">))</span>
 </pre></div>
 <p>Chamando e vendo o resultado:</p>
 <div class="highlight"><pre><span></span>&gt;&gt;&gt; c.table_list<span class="o">()</span>
@@ -838,9 +838,9 @@ sqlite_sequence
 <span class="s2">    SELECT sql FROM sqlite_master WHERE type=&#39;table&#39; AND name=?</span>
 <span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">,))</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Schema:&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Schema:&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">schema</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">schema</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">schema</span><span class="p">))</span>
 </pre></div>
 <p>Chamando e vendo o resultado:</p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">c</span><span class="p">.</span><span class="n">table_schema</span><span class="p">()</span>
@@ -867,8 +867,8 @@ sqlite_sequence
         <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">iterdump</span><span class="p">():</span>
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">linha</span><span class="p">)</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Backup realizado com sucesso.&#39;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Salvo como </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Backup realizado com sucesso.&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Salvo como </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span>
 </pre></div>
 <p>Se quiser pode salvar com outro nome.</p>
 <div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">backup</span><span class="p">(</span><span class="s1">&#39;sql/clientes_backup.sql&#39;</span><span class="p">)</span>
@@ -883,13 +883,13 @@ sqlite_sequence
         <span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
         <span class="n">sql</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">executescript</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Banco de dados recuperado com sucesso.&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Salvo como </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">db_name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Banco de dados recuperado com sucesso.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Salvo como </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">db_name</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">OperationalError</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span>
+        <span class="nb">print</span><span class="p">(</span>
             <span class="s2">&quot;Aviso: O banco de dados </span><span class="si">%s</span><span class="s2"> já existe. Exclua-o e faça novamente.&quot;</span> <span class="o">%</span>
             <span class="n">db_name</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 <p>Fechando conexão:</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fechar_conexao</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -912,17 +912,17 @@ sqlite_sequence
 </pre></div>
 <p>Criando o <em>schema</em> a partir de <a class="reference external" href="https://raw.githubusercontent.com/rg3915/python-sqlite/master/intermediario/sql/pessoas_schema_.sql">pessoas_schema.sql</a>.</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">criar_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema_name</span><span class="o">=</span><span class="s1">&#39;sql/pessoas_schema.sql&#39;</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Criando tabela </span><span class="si">%s</span><span class="s2"> ...&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Criando tabela </span><span class="si">%s</span><span class="s2"> ...&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">schema_name</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">schema</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">executescript</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Aviso: A tabela </span><span class="si">%s</span><span class="s2"> já existe.&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aviso: A tabela </span><span class="si">%s</span><span class="s2"> já existe.&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Tabela </span><span class="si">%s</span><span class="s2"> criada com sucesso.&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tabela </span><span class="si">%s</span><span class="s2"> criada com sucesso.&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb_name</span><span class="p">)</span>
 </pre></div>
 <p>Inserindo as cidades a partir de <a class="reference external" href="https://github.com/rg3915/python-sqlite/blob/master/intermediario/csv/cidades.csv">cidades.csv</a>.</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">inserir_de_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;csv/cidades.csv&#39;</span><span class="p">):</span>
@@ -937,10 +937,10 @@ sqlite_sequence
 <span class="s2">            &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
         <span class="c1"># gravando no bd</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dados importados do csv com sucesso.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dados importados do csv com sucesso.&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">IntegrityError</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Aviso: A cidade deve ser única.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aviso: A cidade deve ser única.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 <p>Agora vamos contar quantas cidades temos na tabela...</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen_cidade</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -964,11 +964,11 @@ sqlite_sequence
 <span class="s2">        VALUES (?,?,?,?)</span>
 <span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">lista</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Inserindo </span><span class="si">%s</span><span class="s2"> registros na tabela...&quot;</span> <span class="o">%</span> <span class="n">repeat</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Registros criados com sucesso.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Inserindo </span><span class="si">%s</span><span class="s2"> registros na tabela...&quot;</span> <span class="o">%</span> <span class="n">repeat</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Registros criados com sucesso.&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">IntegrityError</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O email deve ser único.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aviso: O email deve ser único.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 <p>Agora é só alegria!</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ler_todas_pessoas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -979,24 +979,24 @@ sqlite_sequence
 <span class="k">def</span> <span class="nf">imprimir_todas_pessoas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">lista</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ler_todas_pessoas</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 
 <span class="c1"># myselect, imprime todos os nomes que começam com R</span>
 <span class="k">def</span> <span class="nf">meu_select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sql</span><span class="o">=</span><span class="s2">&quot;SELECT * FROM pessoas WHERE nome LIKE &#39;R%&#39; ORDER BY nome;&quot;</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit_db</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Nomes que começam com R:&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nomes que começam com R:&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">table_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="c1"># listando as tabelas do bd</span>
     <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    SELECT name FROM sqlite_master WHERE type=&#39;table&#39; ORDER BY name</span>
 <span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Tabelas:&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tabelas:&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">tabela</span> <span class="ow">in</span> <span class="n">l</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">tabela</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">tabela</span><span class="p">))</span>
 
 <span class="k">def</span> <span class="nf">fechar_conexao</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close_db</span><span class="p">()</span>
@@ -1135,7 +1135,7 @@ sqlite_sequence
         });
 
         $(function(){
-            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/crie_dict-a-partir-de-outros-dicts.html", "title": "Criando dicts a partir de outros dicts"}, {"url": "http://pythonclub.com.br/tutorial-django-2.html", "title": "Tutorial Django 2.2"}, {"url": "http://pythonclub.com.br/algoritmos-ordenacao.html", "title": "Algoritmos de Ordena\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/trabalhando-com-operadores-ternarios.html", "title": "Trabalhando com operadores tern\u00e1rios"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-com-socket-e-struct.html", "title": "Upload de Arquivos com Socket e Struct"}, {"url": "http://pythonclub.com.br/monitorando-ips-duplicados-na-rede.html", "title": "Monitorando Ips Duplicados na Rede"}, {"url": "http://pythonclub.com.br/django-rest-framework-class-based-views.html", "title": "Django Rest Framework - #3 Class Based Views"}, {"url": "http://pythonclub.com.br/django-rest-framework-requests-responses.html", "title": "Django Rest Framework - #2 Requests and Responses"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-2.html", "title": "Programa\u00e7\u00e3o funcional com Python #2 - Iteraveis e iteradores"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-1.html", "title": "Programa\u00e7\u00e3o funcional com Python #1 - Fun\u00e7\u00f5es"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-0.html", "title": "Programa\u00e7\u00e3o funcional com Python #0 - Saindo da zona de conforto"}, {"url": "http://pythonclub.com.br/peewee-um-orm-python-minimalista.html", "title": "Peewee - Um ORM Python minimalista"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html", "title": "What the Flask? pt 4 - Extens\u00f5es para o Flask"}, {"url": "http://pythonclub.com.br/configurando-python-3.5-openshift-flask-gunicorn.html", "title": "Configurando OpenShift com Python 3.5 + Flask + Gunicorn"}, {"url": "http://pythonclub.com.br/instalando-o-python-vers\u00e3o-3.7.0-alpha-1-no-ubuntu-16.04.md.html", "title": "Instalando o Python vers\u00e3o 3.7.0 alpha 1 no Ubuntu 16.04"}, {"url": "http://pythonclub.com.br/abrangencia-de-listas-e-dicionarios-com-python.html", "title": "Abrang\u00eancia de Listas e Dicion\u00e1rios"}, {"url": "http://pythonclub.com.br/debugging-logging.html", "title": "Debugging - logging"}, {"url": "http://pythonclub.com.br/deploy-rapido-simples-com-dokku.html", "title": "Deploy r\u00e1pido e simples com Dokku"}, {"url": "http://pythonclub.com.br/bot-telegram-mais-web-scraping-parte-1.html", "title": "Bot telegram mais web scraping - parte 1"}, {"url": "http://pythonclub.com.br/como-distribuir-sua-aplicacao-python-com-pypi.html", "title": "Como distribuir sua aplica\u00e7\u00e3o Python com PyPI"}, {"url": "http://pythonclub.com.br/python-webassets-elm.html", "title": "Python webassets & Elm"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula1.html", "title": "Curso Python asyncio: Aula 01 - Iterators e Generators"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula00.html", "title": "Curso Python asyncio: Aula 00 - Introdu\u00e7\u00e3o ao m\u00f3dulo asyncio"}, {"url": "http://pythonclub.com.br/gerando-relatorios-de-testes-com-coveralls.html", "title": "Relat\u00f3rios de testes com Coveralls"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 4 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 3 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 2 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)"}, {"url": "http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html", "title": "GitHub Pages com Pelican e Travis-CI"}, {"url": "http://pythonclub.com.br/sites-estaticos-com-lektor.html", "title": "Sites Est\u00e1ticos com Lektor"}, {"url": "http://pythonclub.com.br/django-rest-framework-serialization.html", "title": "Django Rest Framework Serialization"}, {"url": "http://pythonclub.com.br/explicit-is-better-than-implicit.html", "title": "Explicit is better than implicit"}, {"url": "http://pythonclub.com.br/tdd-com-python-e-flask.html", "title": "TDD com Python e Flask"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html", "title": "Upload de arquivos no Django: entendendo os modos de leitura"}, {"url": "http://pythonclub.com.br/python-generators.html", "title": "Python Generators"}, {"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/django-ci-github-actions.html", "title": "Criando um CI de uma aplica\u00e7\u00e3o Django usando Github Actions"}, {"url": "http://pythonclub.com.br/crie_dict-a-partir-de-outros-dicts.html", "title": "Criando dicts a partir de outros dicts"}, {"url": "http://pythonclub.com.br/tutorial-django-2.html", "title": "Tutorial Django 2.2"}, {"url": "http://pythonclub.com.br/algoritmos-ordenacao.html", "title": "Algoritmos de Ordena\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/trabalhando-com-operadores-ternarios.html", "title": "Trabalhando com operadores tern\u00e1rios"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-com-socket-e-struct.html", "title": "Upload de Arquivos com Socket e Struct"}, {"url": "http://pythonclub.com.br/monitorando-ips-duplicados-na-rede.html", "title": "Monitorando Ips Duplicados na Rede"}, {"url": "http://pythonclub.com.br/django-rest-framework-class-based-views.html", "title": "Django Rest Framework - #3 Class Based Views"}, {"url": "http://pythonclub.com.br/django-rest-framework-requests-responses.html", "title": "Django Rest Framework - #2 Requests and Responses"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-2.html", "title": "Programa\u00e7\u00e3o funcional com Python #2 - Iteraveis e iteradores"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-1.html", "title": "Programa\u00e7\u00e3o funcional com Python #1 - Fun\u00e7\u00f5es"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-0.html", "title": "Programa\u00e7\u00e3o funcional com Python #0 - Saindo da zona de conforto"}, {"url": "http://pythonclub.com.br/peewee-um-orm-python-minimalista.html", "title": "Peewee - Um ORM Python minimalista"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html", "title": "What the Flask? pt 4 - Extens\u00f5es para o Flask"}, {"url": "http://pythonclub.com.br/configurando-python-3.5-openshift-flask-gunicorn.html", "title": "Configurando OpenShift com Python 3.5 + Flask + Gunicorn"}, {"url": "http://pythonclub.com.br/instalando-o-python-vers\u00e3o-3.7.0-alpha-1-no-ubuntu-16.04.md.html", "title": "Instalando o Python vers\u00e3o 3.7.0 alpha 1 no Ubuntu 16.04"}, {"url": "http://pythonclub.com.br/abrangencia-de-listas-e-dicionarios-com-python.html", "title": "Abrang\u00eancia de Listas e Dicion\u00e1rios"}, {"url": "http://pythonclub.com.br/debugging-logging.html", "title": "Debugging - logging"}, {"url": "http://pythonclub.com.br/deploy-rapido-simples-com-dokku.html", "title": "Deploy r\u00e1pido e simples com Dokku"}, {"url": "http://pythonclub.com.br/bot-telegram-mais-web-scraping-parte-1.html", "title": "Bot telegram mais web scraping - parte 1"}, {"url": "http://pythonclub.com.br/como-distribuir-sua-aplicacao-python-com-pypi.html", "title": "Como distribuir sua aplica\u00e7\u00e3o Python com PyPI"}, {"url": "http://pythonclub.com.br/python-webassets-elm.html", "title": "Python webassets & Elm"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula1.html", "title": "Curso Python asyncio: Aula 01 - Iterators e Generators"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula00.html", "title": "Curso Python asyncio: Aula 00 - Introdu\u00e7\u00e3o ao m\u00f3dulo asyncio"}, {"url": "http://pythonclub.com.br/gerando-relatorios-de-testes-com-coveralls.html", "title": "Relat\u00f3rios de testes com Coveralls"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 4 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 3 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 2 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)"}, {"url": "http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html", "title": "GitHub Pages com Pelican e Travis-CI"}, {"url": "http://pythonclub.com.br/sites-estaticos-com-lektor.html", "title": "Sites Est\u00e1ticos com Lektor"}, {"url": "http://pythonclub.com.br/django-rest-framework-serialization.html", "title": "Django Rest Framework Serialization"}, {"url": "http://pythonclub.com.br/explicit-is-better-than-implicit.html", "title": "Explicit is better than implicit"}, {"url": "http://pythonclub.com.br/tdd-com-python-e-flask.html", "title": "TDD com Python e Flask"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html", "title": "Upload de arquivos no Django: entendendo os modos de leitura"}, {"url": "http://pythonclub.com.br/python-generators.html", "title": "Python Generators"}, {"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
         });
         
     </script>

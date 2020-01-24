@@ -72,7 +72,7 @@ user@machine:~/heroku_hello_world$ &lt;span class="nb"&gt;source&lt;/span&gt; ve
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vm"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 
-&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;h1&amp;gt;Hello World&amp;lt;/hi&amp;gt;&amp;quot;&lt;/span&gt;
 
@@ -101,8 +101,8 @@ Initialized empty Git repository in /home/user/heroku_hello_world/.git/
 
 
 &lt;p&gt;Para não &lt;em&gt;sujar&lt;/em&gt; nosso repositório com arquivos desnecessários como por exemplo o virtualenv, crie um arquivo chamado &lt;code&gt;.gitignore&lt;/code&gt; na raiz do repositório e nele iremos determinar quais arquivos o git deve ignorar.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;
-&lt;span class="n"&gt;venv&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;*.pyc&lt;/span&gt;
+&lt;span class="err"&gt;venv&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
