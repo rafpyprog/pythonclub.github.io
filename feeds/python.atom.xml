@@ -1,5 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub - Python</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/python.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2020-01-24T12:10:00-03:00</updated><entry><title>Criando um CI de uma aplicação Django usando Github Actions</title><link href="http://pythonclub.com.br/django-ci-github-actions.html" rel="alternate"></link><published>2020-01-24T12:10:00-03:00</published><updated>2020-01-24T12:10:00-03:00</updated><author><name>Lucas Magnum</name></author><id>tag:pythonclub.com.br,2020-01-24:/django-ci-github-actions.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bom?&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub - Python</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/python.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2020-10-30T10:40:00-03:00</updated><entry><title>Fazendo backup do banco de dados no Django</title><link href="http://pythonclub.com.br/fazendo-backup-do-banco-de-dados-no-django.html" rel="alternate"></link><published>2020-10-30T10:40:00-03:00</published><updated>2020-10-30T10:40:00-03:00</updated><author><name>Jackson Osvaldo</name></author><id>tag:pythonclub.com.br,2020-10-30:/fazendo-backup-do-banco-de-dados-no-django.html</id><summary type="html">&lt;h2&gt;Apresentação&lt;/h2&gt;
+&lt;p&gt;Em algum momento, durante o seu processo de desenvolvimento com Django, pode ser que surja a necessidade de criar e restaurar o banco de dados da aplicação. Pensando nisso, resolvi fazer um pequeno tutorial, básico, de como realizar essa operação.&lt;/p&gt;
+&lt;p&gt;Nesse tutorial, usaremos o &lt;a href="https://github.com/django-dbbackup/django-dbbackup"&gt;django-dbbackup&lt;/a&gt;, um pacote desenvolvido especificamente …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Apresentação&lt;/h2&gt;
+&lt;p&gt;Em algum momento, durante o seu processo de desenvolvimento com Django, pode ser que surja a necessidade de criar e restaurar o banco de dados da aplicação. Pensando nisso, resolvi fazer um pequeno tutorial, básico, de como realizar essa operação.&lt;/p&gt;
+&lt;p&gt;Nesse tutorial, usaremos o &lt;a href="https://github.com/django-dbbackup/django-dbbackup"&gt;django-dbbackup&lt;/a&gt;, um pacote desenvolvido especificamente para isso.&lt;/p&gt;
+&lt;h2&gt;Configurando nosso ambiente&lt;/h2&gt;
+&lt;p&gt;Primeiro, partindo do início, vamos criar uma pasta para o nosso projeto e, nela, isolar o nosso ambiente de desenvolvimento usando uma &lt;a href="https://virtualenv.pypa.io/en/latest/index.html"&gt;virtualenv&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir projeto_db &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; projeto_db &lt;span class="c1"&gt;#criando a pasta do nosso projeto&lt;/span&gt;
+
+virtualenv -p python3.8 env &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;source&lt;/span&gt; env/bin/activate &lt;span class="c1"&gt;#criando e ativando a nossa virtualenv&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Depois disso e com o nosso ambiente já ativo, vamos realizar os seguintes procedimentos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install -U pip &lt;span class="c1"&gt;#com isso, atualizamos a verão do pip instalado&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Instalando as dependências&lt;/h2&gt;
+&lt;p&gt;Agora, vamos instalar o &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; e o pacote que usaremos para fazer nossos backups.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install &lt;span class="nv"&gt;Django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.1.2 &lt;span class="c1"&gt;#instalando o Django&lt;/span&gt;
+
+pip install django-dbbackup &lt;span class="c1"&gt;#instalando o django-dbbackup&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Criando e configurando projeto&lt;/h2&gt;
+&lt;p&gt;Depois de instaladas nossas dependências, vamos criar o nosso projeto e configurar o nosso pacote nas configurações do Django.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;django-admin startproject django_db . &lt;span class="c1"&gt;#dentro da nossa pasta projeto_db, criamos um projeto Django com o nome de django_db.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Depois de criado nosso projeto, vamos criar e popular o nosso banco de dados.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py migrate &lt;span class="c1"&gt;#com isso, sincronizamos o estado do banco de dados com o conjunto atual de modelos e migrações.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Criado nosso banco de dados, vamos criar um superusuário para podemos o painel admin do nosso projeto.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py createsuperuser
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Perfeito. Já temos tudo que precisamos para executar nosso projeto. Para execução dele, é só fazermos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py runserver
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Você terá uma imagem assim do seu projeto:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://jacksonosvaldo.github.io/img/django_db.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Configurando o django-dbbackup&lt;/h2&gt;
+&lt;p&gt;Dentro do seu projeto, vamos acessar o arquivo settings.py, como expresso abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;django_db/
+├── settings.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Dentro desse arquivos iremos, primeiro, adiconar o django-dbbackup às apps do projeto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;dbbackup&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="c1"&gt;# adicionando django-dbbackup&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Depois de adicionado às apps, vamos dizer para o Django o que vamos salvar no backup e, depois, indicar a pasta para onde será encaminhado esse arquivo. Essa inserção deve ou pode ser feita no final do arquivo &lt;em&gt;settings.py&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;DBBACKUP_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;django.core.files.storage.FileSystemStorage&amp;#39;&lt;/span&gt; &lt;span class="c1"&gt;#o que salvar&lt;/span&gt;
+&lt;span class="n"&gt;DBBACKUP_STORAGE_OPTIONS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;location&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;backups/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="c1"&gt;# onde salvar&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Percebam que dissemos para o Django salvar o backup na pasta &lt;em&gt;backups&lt;/em&gt;, mas essa pasta ainda não existe no nosso projeto. Por isso, precisamos criá-la [fora da pasta do projeto]:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir backups
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Criando e restaurando nosso backup&lt;/h2&gt;
+&lt;p&gt;Já temos tudo pronto. Agora, vamos criar o nosso primeiro backup:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py dbbackup
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Depois de exetudado, será criado um arquivo -- no nosso exemplo, esse arquivo terá uma extensão .dump --, salvo na pasta &lt;em&gt;backups&lt;/em&gt;. Esse arquivo contem todo backup do nosso banco de dados.&lt;/p&gt;
+&lt;p&gt;Para recuperarmos nosso banco, vamos supor que migramos nosso sistema de um servidor antigo para um novo e, por algum motivo, nossa base de dados foi corrompida, inviabilizando seu uso. Ou seja, estamos com o sistema/projeto sem banco de dados -- ou seja, exlua ou mova a a sua base dados .sqlite3 para que esse exemplo seja útil --, mas temos os backups. Com isso, vamos restaurar o banco:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py dbrestore
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Prontinho, restauramos nosso banco de dados. O interessante do django-dbbackup, dentre outras coisas, é que ele gera os backups com datas e horários específicos, facilitando o processo de recuperação das informações mais recentes.&lt;/p&gt;
+&lt;p&gt;Por hoje é isso, pessoal. Até a próxima. ;) &lt;/p&gt;</content><category term="Python"></category><category term="Django"></category><category term="backup"></category></entry><entry><title>Criando um CI de uma aplicação Django usando Github Actions</title><link href="http://pythonclub.com.br/django-ci-github-actions.html" rel="alternate"></link><published>2020-01-24T12:10:00-03:00</published><updated>2020-01-24T12:10:00-03:00</updated><author><name>Lucas Magnum</name></author><id>tag:pythonclub.com.br,2020-01-24:/django-ci-github-actions.html</id><summary type="html">&lt;p&gt;Fala pessoal, tudo bom?&lt;/p&gt;
 &lt;p&gt;Nos vídeo abaixo vou mostrar como podemos configurar um CI de uma aplicação Django usando Github Actions.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/watch?v=KpSlY8leYFY"&gt;https://www.youtube.com/watch?v=KpSlY8leYFY&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/KpSlY8leYFY" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Fala pessoal, tudo bom?&lt;/p&gt;
