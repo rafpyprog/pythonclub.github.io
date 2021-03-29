@@ -1,5 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub - Eduardo Klosowski</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/eduardo-klosowski.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2021-03-02T15:00:00-03:00</updated><entry><title>Encapsulamento da lógica do algoritmo</title><link href="http://pythonclub.com.br/encapsulamento-da-logica-do-algoritmo.html" rel="alternate"></link><published>2021-03-02T15:00:00-03:00</published><updated>2021-03-02T15:00:00-03:00</updated><author><name>Eduardo Klosowski</name></author><id>tag:pythonclub.com.br,2021-03-02:/encapsulamento-da-logica-do-algoritmo.html</id><summary type="html">&lt;p&gt;Muitas listas de exercícios de lógica de programação pedem em algum momento que um valor seja lido do teclado, e caso esse valor seja inválido, deve-se avisar, e repetir a leitura até que um valor válido seja informado. Utilizando a ideia de &lt;a href="https://dev.to/acaverna/otimizando-o-algoritmo-passo-a-passo-4co0"&gt;otimização do algoritmo passo a passo&lt;/a&gt;, começando com …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Muitas listas de exercícios de lógica de programação pedem em algum momento que um valor seja lido do teclado, e caso esse valor seja inválido, deve-se avisar, e repetir a leitura até que um valor válido seja informado. Utilizando a ideia de &lt;a href="https://dev.to/acaverna/otimizando-o-algoritmo-passo-a-passo-4co0"&gt;otimização do algoritmo passo a passo&lt;/a&gt;, começando com uma solução simples, pretendo estudar como reduzir a duplicação de código alterando o algoritmo, encapsulando a lógica em funções, e encapsulando em classes.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub - Eduardo Klosowski</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/eduardo-klosowski.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2021-03-29T12:00:00-03:00</updated><entry><title>Funções in place ou cópia de valor</title><link href="http://pythonclub.com.br/funcao-inplace-ou-copia-de-valor.html" rel="alternate"></link><published>2021-03-29T12:00:00-03:00</published><updated>2021-03-29T12:00:00-03:00</updated><author><name>Eduardo Klosowski</name></author><id>tag:pythonclub.com.br,2021-03-29:/funcao-inplace-ou-copia-de-valor.html</id><summary type="html">&lt;p&gt;Eventualmente observo dificuldades de algumas pessoas em usar corretamente alguma função, seja porque a função deveria ser executada isoladamente, e utilizado a própria variável que foi passada como argumento posteriormente, seja porque deveria se atribuir o retorno da função a alguma variável, e utilizar essa nova variável. No Python, essa …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Eventualmente observo dificuldades de algumas pessoas em usar corretamente alguma função, seja porque a função deveria ser executada isoladamente, e utilizado a própria variável que foi passada como argumento posteriormente, seja porque deveria se atribuir o retorno da função a alguma variável, e utilizar essa nova variável. No Python, essa diferença pode ser observada nos métodos das listas &lt;code&gt;sort&lt;/code&gt; e &lt;code&gt;reverse&lt;/code&gt; para as funções &lt;code&gt;sorted&lt;/code&gt; e &lt;code&gt;reversed&lt;/code&gt;, que são implementadas com padrões diferentes, &lt;em&gt;in place&lt;/em&gt; e cópia de valor respectivamente. Assim pretendo discutir esses dois padrões de funções, comentando qual a diferença e o melhor caso de aplicação de cada padrão.&lt;/p&gt;
+&lt;h2&gt;Função de exemplo&lt;/h2&gt;
+&lt;p&gt;Para demonstrar como esses padrões funcionam, será implementado uma função que recebe uma lista e calcula o dobro dos valores dessa lista. Exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;entrada&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Execução da função&lt;/span&gt;
+
+&lt;span class="n"&gt;resultado&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Função com in place&lt;/h3&gt;
+&lt;p&gt;A ideia do padrão &lt;em&gt;in place&lt;/em&gt; é alterar a própria variável recebida pela função (ou o próprio objeto, caso esteja lidando com orientação a objetos). Neste caso, bastaria calcular o dobro do valor de cada posição da lista, e sobrescrever a posição com seu resultado. Exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;NoReturn&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;dobro_inplace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;NoReturn&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+        &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+
+&lt;span class="n"&gt;valores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;retorno&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dobro_inplace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Variável: valores | Tipo: {type(valores)} | Valor: &lt;/span&gt;&lt;span class="si"&gt;{valores}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Variável: retorno | Tipo: {type(retorno)} | Valor: &lt;/span&gt;&lt;span class="si"&gt;{retorno}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Resultado da execução:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Variável: valores | Tipo: &amp;lt;class &amp;#39;list&amp;#39;&amp;gt; | Valor: [10, 4, 16, 12, 8]&lt;/span&gt;
+&lt;span class="err"&gt;Variável: retorno | Tipo: &amp;lt;class &amp;#39;NoneType&amp;#39;&amp;gt; | Valor: None&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Com essa execução é possível observar que os valores da lista foram alterados, e que o retorno da função é nulo (&lt;code&gt;None&lt;/code&gt;), ou seja, a função alterou a própria lista passada como argumento. Outro ponto importante a ser observado é a assinatura da função (tipo dos argumentos e do retorno da função), que recebe uma lista de inteiros e não tem retorno (&lt;code&gt;NoReturn&lt;/code&gt;). Dessa forma embora seja possível chamar essa função diretamente quando está se informando os argumentos de outra função, como &lt;code&gt;print(dobro_inplace(valores))&lt;/code&gt;, a função &lt;code&gt;print&lt;/code&gt; receberia &lt;code&gt;None&lt;/code&gt; e não a lista como argumento.&lt;/p&gt;
+&lt;h3&gt;Função com cópia de valor&lt;/h3&gt;
+&lt;p&gt;A ideia do padrão cópia de valor é criar uma cópia do valor passado como argumento e retornar essa cópia, sem alterar a variável recebida (ou criando um novo objeto, no caso de orientação a objetos). Neste caso, é necessário criar uma nova lista e adicionar nela os valores calculados. Exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;dobro_copia&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+    &lt;span class="n"&gt;nova_lista&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+        &lt;span class="n"&gt;nova_lista&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;nova_lista&lt;/span&gt;
+
+
+&lt;span class="n"&gt;valores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;retorno&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dobro_copia&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Variável: valores | Tipo: {type(valores)} | Valor: &lt;/span&gt;&lt;span class="si"&gt;{valores}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Variável: retorno | Tipo: {type(retorno)} | Valor: &lt;/span&gt;&lt;span class="si"&gt;{retorno}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Resultado da execução:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Variável: valores | Tipo: &amp;lt;class &amp;#39;list&amp;#39;&amp;gt; | Valor: [5, 2, 8, 6, 4]&lt;/span&gt;
+&lt;span class="err"&gt;Variável: retorno | Tipo: &amp;lt;class &amp;#39;list&amp;#39;&amp;gt; | Valor: [10, 4, 16, 12, 8]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Com essa execução é possível observar que a variável &lt;code&gt;valores&lt;/code&gt; continua com os valores que tinha antes da execução da função, e a variável retorno apresenta uma lista com os dobros, ou seja, a função não altera a lista passada como argumento e retorna uma nova lista com os valores calculados. Observado a assinatura da função, ela recebe uma lista de inteiros e retorna uma lista de inteiros. Isso permite chamar essa função diretamente nos argumentos para outra função, como &lt;code&gt;print(dobro_copia(valores))&lt;/code&gt;, nesse caso a função &lt;code&gt;print&lt;/code&gt; receberia a lista de dobros como argumento. Porém caso o retorno da função não seja armazenado, parecerá que a função não fez nada, ou não funcionou. Então em alguns casos, quando o valor anterior não é mais necessário, pode-se reatribuir o retorno da função a própria variável passada como argumento:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dobro_copia&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Função híbrida&lt;/h3&gt;
+&lt;p&gt;Ainda é possível mesclar os dois padrões de função, alterando o valor passado e retornando-o. Exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;dobro_hibrido&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+        &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;
+
+
+&lt;span class="n"&gt;valores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;retorno&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dobro_hibrido&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Variável: valores | Tipo: {type(valores)} | Valor: &lt;/span&gt;&lt;span class="si"&gt;{valores}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Variável: retorno | Tipo: {type(retorno)} | Valor: &lt;/span&gt;&lt;span class="si"&gt;{retorno}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Resultado da execução:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Variável: valores | Tipo: &amp;lt;class &amp;#39;list&amp;#39;&amp;gt; | Valor: [10, 4, 16, 12, 8]&lt;/span&gt;
+&lt;span class="err"&gt;Variável: retorno | Tipo: &amp;lt;class &amp;#39;list&amp;#39;&amp;gt; | Valor: [10, 4, 16, 12, 8]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Nesse caso, pode-se apenas chamar a função, como também utilizá-la nos argumentos de outras funções. Porém para se ter os valores originais, deve-se fazer uma cópia manualmente antes de executar a função.&lt;/p&gt;
+&lt;h2&gt;Exemplo na biblioteca padrão&lt;/h2&gt;
+&lt;p&gt;Na biblioteca padrão do Python, existem os métodos &lt;code&gt;sort&lt;/code&gt; e &lt;code&gt;reverse&lt;/code&gt; que seguem o padrão &lt;em&gt;in place&lt;/em&gt;, e as funções &lt;code&gt;sorted&lt;/code&gt; e &lt;code&gt;reversed&lt;/code&gt; que seguem o padrão cópia de valor, podendo ser utilizados para ordenar e inverter os valores de uma lista, por exemplo. Quando não é mais necessário uma cópia da lista com a ordem original, é preferível utilizar funções &lt;em&gt;in place&lt;/em&gt;, que alteram a própria lista, e como não criam uma cópia da lista, utilizam menos memória. Exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;valores&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;valores&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Se for necessário manter uma cópia da lista inalterada, deve-se optar pelas funções de cópia de valor. Exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;novos_valores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;reversed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;novos_valores&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Porém esse exemplo cria duas cópias da lista, uma em cada função. Para criar apenas uma cópia, pode-se misturar funções &lt;em&gt;in place&lt;/em&gt; com cópia de valor. Exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;novos_valores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;novos_valores&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;novos_valores&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Também vale observar que algumas utilizações dessas funções podem dar a impressão de que elas não funcionaram, como:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# Imprime a lista original, e não a ordenada&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;  &lt;span class="c1"&gt;# Imprime None e não a lista&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Considerações&lt;/h2&gt;
+&lt;p&gt;Nem sempre é possível utilizar o padrão desejado, &lt;em&gt;strings&lt;/em&gt; no Python (&lt;code&gt;str&lt;/code&gt;) são imutáveis, logo todas as funções que manipulam elas seguiram o padrão cópia de valor, e para outros tipos, pode ocorrer de só existir funções &lt;em&gt;in place&lt;/em&gt;, sendo necessário fazer uma cópia manualmente antes de chamar a função, caso necessário. Para saber qual padrão a função implementa, é necessário consultar sua documentação, ou verificando sua assinatura, embora ainda possa existir uma dúvida entre cópia de valor e híbrida, visto que a assinatura dos dois padrões são iguais.&lt;/p&gt;
+&lt;p&gt;Os exemplos aqui dados são didáticos. Caso deseja-se ordenar de forma reversa, tanto o método &lt;code&gt;sort&lt;/code&gt;, quanto a função &lt;code&gt;sorted&lt;/code&gt; podem receber como argumento &lt;code&gt;reverse=True&lt;/code&gt;, e assim já fazer a ordenação reversa. Assim como é possível criar uma nova lista já com os valores, sem precisar adicionar manualmente item por item, como os exemplos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;valores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;partes_dos_valores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;valores&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;
+&lt;span class="n"&gt;novos_valores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;valor&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;valor&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;valores&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;p&gt;Esse artigo foi publicado originalmente no &lt;a href="https://eduardoklosowski.github.io/blog/"&gt;meu blog&lt;/a&gt;, passe por lá, ou siga-me no &lt;a href="https://dev.to/eduardoklosowski"&gt;DEV&lt;/a&gt; para ver mais artigos que eu escrevi.&lt;/p&gt;</content><category term="python"></category><category term="funções"></category></entry><entry><title>Encapsulamento da lógica do algoritmo</title><link href="http://pythonclub.com.br/encapsulamento-da-logica-do-algoritmo.html" rel="alternate"></link><published>2021-03-02T15:00:00-03:00</published><updated>2021-03-02T15:00:00-03:00</updated><author><name>Eduardo Klosowski</name></author><id>tag:pythonclub.com.br,2021-03-02:/encapsulamento-da-logica-do-algoritmo.html</id><summary type="html">&lt;p&gt;Muitas listas de exercícios de lógica de programação pedem em algum momento que um valor seja lido do teclado, e caso esse valor seja inválido, deve-se avisar, e repetir a leitura até que um valor válido seja informado. Utilizando a ideia de &lt;a href="https://dev.to/acaverna/otimizando-o-algoritmo-passo-a-passo-4co0"&gt;otimização do algoritmo passo a passo&lt;/a&gt;, começando com …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Muitas listas de exercícios de lógica de programação pedem em algum momento que um valor seja lido do teclado, e caso esse valor seja inválido, deve-se avisar, e repetir a leitura até que um valor válido seja informado. Utilizando a ideia de &lt;a href="https://dev.to/acaverna/otimizando-o-algoritmo-passo-a-passo-4co0"&gt;otimização do algoritmo passo a passo&lt;/a&gt;, começando com uma solução simples, pretendo estudar como reduzir a duplicação de código alterando o algoritmo, encapsulando a lógica em funções, e encapsulando em classes.&lt;/p&gt;
 &lt;h2&gt;Exercício&lt;/h2&gt;
 &lt;p&gt;Um exemplo de exercício que pede esse tipo de validação é a leitura de notas, que devem estar entre 0 e 10. A solução mais simples, consiste em ler um valor, e enquanto esse valor for inválido, dar o aviso e ler outro valor. Exemplo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;nota&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Digite a nota: &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
