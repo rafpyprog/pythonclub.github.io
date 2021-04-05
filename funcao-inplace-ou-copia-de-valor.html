@@ -115,10 +115,10 @@
 
 <h3>Função com in place</h3>
 <p>A ideia do padrão <em>in place</em> é alterar a própria variável recebida pela função (ou o próprio objeto, caso esteja lidando com orientação a objetos). Neste caso, bastaria calcular o dobro do valor de cada posição da lista, e sobrescrever a posição com seu resultado. Exemplo:</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">NoReturn</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 
-<span class="k">def</span> <span class="nf">dobro_inplace</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">dobro_inplace</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">)):</span>
         <span class="n">lista</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">lista</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 
@@ -137,7 +137,7 @@
 </pre></div>
 
 
-<p>Com essa execução é possível observar que os valores da lista foram alterados, e que o retorno da função é nulo (<code>None</code>), ou seja, a função alterou a própria lista passada como argumento. Outro ponto importante a ser observado é a assinatura da função (tipo dos argumentos e do retorno da função), que recebe uma lista de inteiros e não tem retorno (<code>NoReturn</code>). Dessa forma embora seja possível chamar essa função diretamente quando está se informando os argumentos de outra função, como <code>print(dobro_inplace(valores))</code>, a função <code>print</code> receberia <code>None</code> e não a lista como argumento.</p>
+<p>Com essa execução é possível observar que os valores da lista foram alterados, e que o retorno da função é nulo (<code>None</code>), ou seja, a função alterou a própria lista passada como argumento. Outro ponto importante a ser observado é a assinatura da função (tipo dos argumentos e do retorno da função), que recebe uma lista de inteiros e não tem retorno ou é nulo (<code>None</code>). Dessa forma embora seja possível chamar essa função diretamente quando está se informando os argumentos de outra função, como <code>print(dobro_inplace(valores))</code>, a função <code>print</code> receberia <code>None</code> e não a lista como argumento.</p>
 <h3>Função com cópia de valor</h3>
 <p>A ideia do padrão cópia de valor é criar uma cópia do valor passado como argumento e retornar essa cópia, sem alterar a variável recebida (ou criando um novo objeto, no caso de orientação a objetos). Neste caso, é necessário criar uma nova lista e adicionar nela os valores calculados. Exemplo:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
