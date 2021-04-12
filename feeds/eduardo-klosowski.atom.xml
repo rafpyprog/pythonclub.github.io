@@ -1,5 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub - Eduardo Klosowski</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/eduardo-klosowski.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2021-03-29T12:00:00-03:00</updated><entry><title>Funções in place ou cópia de valor</title><link href="http://pythonclub.com.br/funcao-inplace-ou-copia-de-valor.html" rel="alternate"></link><published>2021-03-29T12:00:00-03:00</published><updated>2021-03-29T12:00:00-03:00</updated><author><name>Eduardo Klosowski</name></author><id>tag:pythonclub.com.br,2021-03-29:/funcao-inplace-ou-copia-de-valor.html</id><summary type="html">&lt;p&gt;Eventualmente observo dificuldades de algumas pessoas em usar corretamente alguma função, seja porque a função deveria ser executada isoladamente, e utilizado a própria variável que foi passada como argumento posteriormente, seja porque deveria se atribuir o retorno da função a alguma variável, e utilizar essa nova variável. No Python, essa …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Eventualmente observo dificuldades de algumas pessoas em usar corretamente alguma função, seja porque a função deveria ser executada isoladamente, e utilizado a própria variável que foi passada como argumento posteriormente, seja porque deveria se atribuir o retorno da função a alguma variável, e utilizar essa nova variável. No Python, essa diferença pode ser observada nos métodos das listas &lt;code&gt;sort&lt;/code&gt; e &lt;code&gt;reverse&lt;/code&gt; para as funções &lt;code&gt;sorted&lt;/code&gt; e &lt;code&gt;reversed&lt;/code&gt;, que são implementadas com padrões diferentes, &lt;em&gt;in place&lt;/em&gt; e cópia de valor respectivamente. Assim pretendo discutir esses dois padrões de funções, comentando qual a diferença e o melhor caso de aplicação de cada padrão.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub - Eduardo Klosowski</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/eduardo-klosowski.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2021-04-12T15:00:00-03:00</updated><entry><title>Orientação a objetos de outra forma: Classes e objetos</title><link href="http://pythonclub.com.br/oo-de-outra-forma-1.html" rel="alternate"></link><published>2021-04-12T15:00:00-03:00</published><updated>2021-04-12T15:00:00-03:00</updated><author><name>Eduardo Klosowski</name></author><id>tag:pythonclub.com.br,2021-04-12:/oo-de-outra-forma-1.html</id><summary type="html">&lt;p&gt;Nas poucas e raríssimas lives que eu fiz na &lt;a href="https://www.twitch.tv/eduardoklosowski"&gt;Twitch&lt;/a&gt;, surgiu a ideia de escrever sobre programação orientada a objetos em &lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt;, principalmente por algumas diferenças de como ela foi implementada nessa linguagem. Aproveitando o tema, vou fazer uma série de postagens dando uma visão diferente sobre orientação a objetos …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nas poucas e raríssimas lives que eu fiz na &lt;a href="https://www.twitch.tv/eduardoklosowski"&gt;Twitch&lt;/a&gt;, surgiu a ideia de escrever sobre programação orientada a objetos em &lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt;, principalmente por algumas diferenças de como ela foi implementada nessa linguagem. Aproveitando o tema, vou fazer uma série de postagens dando uma visão diferente sobre orientação a objetos. E nessa primeira postagem falarei sobre classes e objetos.&lt;/p&gt;
+&lt;h2&gt;Usando um dicionário&lt;/h2&gt;
+&lt;p&gt;Entretanto, antes de começar com orientação a objetos, gostaria de apresentar e discutir alguns exemplos sem utilizar esse paradigma de programação.&lt;/p&gt;
+&lt;p&gt;Pensando em um sistema que precise manipular dados de pessoas, é possível utilizar os &lt;a href="https://docs.python.org/pt-br/3/library/stdtypes.html#mapping-types-dict"&gt;dicionários&lt;/a&gt; do Python para agrupar os dados de uma pessoa em uma única variável, como no exemplo a baixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pessoa&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;João&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;sobrenome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;da Silva&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;idade&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Onde os dados poderiam ser acessados através da variável e do nome do dado desejado, como:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;  &lt;span class="c1"&gt;# Imprimindo João&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Assim, todos os dados de uma pessoa ficam agrupados em uma variável, o que facilita bastante a programação, visto que não é necessário criar uma variável para cada dado, e quando se manipula os dados de diferentes pessoas fica muito mais fácil identificar de qual pessoa aquele dado se refere, bastando utilizar variáveis diferentes.&lt;/p&gt;
+&lt;h3&gt;Função para criar o dicionário&lt;/h3&gt;
+&lt;p&gt;Apesar de prático, é necessário replicar essa estrutura de dicionário toda vez que se desejar utilizar os dados de uma nova pessoa. Para evitar a repetição de código, a criação desse dicionário pode ser feita dentro de uma função que pode ser colocada em um módulo &lt;code&gt;pessoa&lt;/code&gt; (arquivo, nesse caso com o nome de &lt;code&gt;pessoa.py&lt;/code&gt;):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Arquivo: pessoa.py&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;nova&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sobrenome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;sobrenome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;sobrenome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;idade&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;E para criar o dicionário que representa uma pessoa, basta importar esse módulo (arquivo) e chamar a função &lt;code&gt;nova&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pessoa&lt;/span&gt;
+
+&lt;span class="n"&gt;p1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;João&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;da Silva&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;p2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Maria&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dos Santos&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Desta forma, garante-se que todos os dicionários representando pessoas terão os campos desejados e devidamente preenchidos.&lt;/p&gt;
+&lt;h3&gt;Função com o dicionário&lt;/h3&gt;
+&lt;p&gt;Também é possível criar algumas funções para executar operações com os dados desses dicionários, como pegar o nome completo da pessoa, trocar o seu sobrenome, ou fazer aniversário (o que aumentaria a idade da pessoa em um ano):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Arquivo: pessoa.py&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;nova&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sobrenome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;  &lt;span class="c1"&gt;# Código abreviado&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;nome_completo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{pessoa[&amp;#39;nome&amp;#39;]}&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="si"&gt;{pessoa[&amp;#39;sobrenome&amp;#39;]}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;trocar_sobrenome&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sobrenome&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sobrenome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sobrenome&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fazer_aniversario&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;idade&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;E sendo usado como:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pessoa&lt;/span&gt;
+
+&lt;span class="n"&gt;p1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;João&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;da Silva&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;trocar_sobrenome&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dos Santos&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome_completo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fazer_aniversario&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;idade&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Nesse caso, pode-se observar que todas as funções aqui implementadas seguem o padrão de receber o dicionário que representa a pessoa como primeiro argumento, podendo ter outros argumentos ou não conforme a necessidade, acessando e alterando os valores desse dicionário.&lt;/p&gt;
+&lt;h2&gt;Versão com orientação a objetos&lt;/h2&gt;
+&lt;p&gt;Antes de entrar na versão orientada a objetos propriamente dita dos exemplos anteriores, vou fazer uma pequena alteração para facilitar o entendimento posterior. A função &lt;code&gt;nova&lt;/code&gt; será separada em duas partes, a primeira que criará um dicionário, e chamará uma segunda função (&lt;code&gt;init&lt;/code&gt;), que receberá esse dicionário como primeiro argumento (seguindo o padrão das demais funções) e criará sua estrutura com os devidos valores.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Arquivo: pessoa.py&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;init&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sobrenome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;
+    &lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sobrenome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sobrenome&lt;/span&gt;
+    &lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;idade&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;nova&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sobrenome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;pessoa&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+    &lt;span class="n"&gt;init&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sobrenome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;pessoa&lt;/span&gt;
+
+
+&lt;span class="o"&gt;...&lt;/span&gt;  &lt;span class="c1"&gt;# Demais funções do arquivo&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Porém isso não muda a forma de uso:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pessoa&lt;/span&gt;
+
+&lt;span class="n"&gt;p1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pessoa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;João&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;da Silva&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Função para criar uma pessoa&lt;/h3&gt;
+&lt;p&gt;A maioria das linguagens de programação que possuem o paradigma de programação orientado a objetos faz o uso de classes para definir a estrutura dos objetos. O Python também utiliza classes, que podem ser definidas com a palavra-chave &lt;code&gt;class&lt;/code&gt; seguidas de um nome para ela. E dentro dessa estrutura, podem ser definidas funções para manipular os objetos daquela classe, que em algumas linguagens também são chamadas de métodos (funções declaradas dentro do escopo uma classe).&lt;/p&gt;
+&lt;p&gt;Para converter o dicionário para uma classe, o primeiro passo é implementar uma função para criar a estrutura desejada. Essa função deve possui o nome &lt;code&gt;__init__&lt;/code&gt;, e é bastante similar a função &lt;code&gt;init&lt;/code&gt; do código anterior:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Pessoa&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sobrenome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sobrenome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sobrenome&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;idade&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;As diferenças são que agora o primeiro parâmetro se chama &lt;code&gt;self&lt;/code&gt;, que é um padrão utilizado no Python, e em vez de usar colchetes e aspas para acessar os dados, aqui basta utilizar o ponto e o nome do dado desejado (que aqui também pode ser chamado de atributo, visto que é uma variável do objeto). A função &lt;code&gt;nova&lt;/code&gt; implementada anteriormente não é necessária, a própria linguagem cria um objeto e passa ele como primeiro argumento para o &lt;code&gt;__init__&lt;/code&gt;. E assim para se criar um objeto da classe &lt;code&gt;Pessoa&lt;/code&gt; basta chamar a classe como se fosse uma função, ignorando o argumento &lt;code&gt;self&lt;/code&gt; e informando os demais, como se estivesse chamando a função &lt;code&gt;__init__&lt;/code&gt; diretamente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Pessoa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;João&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;da Silva&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Nesse caso, como a própria classe cria um contexto diferente para as funções (escopo ou &lt;em&gt;namespace&lt;/em&gt;), não está mais sendo utilizado arquivos diferentes, porém ainda é possível fazê-lo, sendo necessário apenas fazer o &lt;code&gt;import&lt;/code&gt; adequado. Mas para simplificação, tanto a declaração da classe, como a criação do objeto da classe &lt;code&gt;Pessoa&lt;/code&gt; podem ser feitas no mesmo arquivo, assim como os demais exemplos dessa postagem.&lt;/p&gt;
+&lt;h3&gt;Outras funções&lt;/h3&gt;
+&lt;p&gt;As demais funções feitas anteriormente para o dicionário também podem ser feitas na classe &lt;code&gt;Pessoa&lt;/code&gt;, seguindo as mesmas diferenças já apontadas anteriormente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Pessoa&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sobrenome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sobrenome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sobrenome&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;idade&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;idade&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;nome_completo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;{self.nome}&lt;/span&gt;&lt;span class="s1"&gt; &lt;/span&gt;&lt;span class="si"&gt;{self.sobrenome}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;trocar_sobrenome&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sobrenome&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sobrenome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sobrenome&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fazer_aniversario&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;idade&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para se chamar essas funções, basta acessá-las através do contexto da classe, passando o objeto criado anteriormente como primeiro argumento:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Pessoa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;João&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dos Santos&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Pessoa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;trocar_sobrenome&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dos Santos&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Pessoa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome_completo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;Pessoa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fazer_aniversario&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Essa sintaxe é bastante semelhante a versão sem orientação a objetos implementada anteriormente. Porém quando se está utilizando objetos, é possível chamar essas funções com uma outra sintaxe, informando primeiro o objeto, seguido de ponto e o nome da função desejada, com a diferença de que não é mais necessário informar o objeto como primeiro argumento. Como a função foi chamada através de um objeto, o próprio Python se encarrega de passá-lo para o argumento &lt;code&gt;self&lt;/code&gt;, sendo necessário informar apenas os demais argumentos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;trocar_sobrenome&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;dos Santos&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nome_completo&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fazer_aniversario&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;idade&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Existem algumas diferenças entre as duas sintaxes, porém isso será tratado posteriormente. Por enquanto a segunda sintaxe pode ser vista como um &lt;a href="https://pt.wikipedia.org/wiki/A%C3%A7%C3%BAcar_sint%C3%A1tico"&gt;açúcar sintático&lt;/a&gt; da primeira, ou seja, uma forma mais rápida e fácil de fazer a mesma coisa que a primeira, e por isso sendo a recomendada.&lt;/p&gt;
+&lt;h2&gt;Considerações&lt;/h2&gt;
+&lt;p&gt;Como visto nos exemplos, programação orientada a objetos é uma técnica para juntar variáveis em uma mesma estrutura e facilitar a escrita de funções que seguem um determinado padrão, recebendo a estrutura como argumento, porém a sintaxe mais utilizada no Python para chamar as funções de um objeto (métodos) posiciona a variável que guarda a estrutura antes do nome da função, em vez do primeiro argumento.&lt;/p&gt;
+&lt;p&gt;No Python, o argumento da estrutura ou objeto (&lt;code&gt;self&lt;/code&gt;) aparece explicitamente como primeiro argumento da função, enquanto em outras linguagens essa variável pode receber outro nome (como &lt;code&gt;this&lt;/code&gt;) e não aparece explicitamente nos argumentos da função, embora essa variável tenha que ser criada dentro do contexto da função para permitir manipular o objeto.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Esse artigo foi publicado originalmente no &lt;a href="https://eduardoklosowski.github.io/blog/"&gt;meu blog&lt;/a&gt;, passe por lá, ou siga-me no &lt;a href="https://dev.to/eduardoklosowski"&gt;DEV&lt;/a&gt; para ver mais artigos que eu escrevi.&lt;/p&gt;</content><category term="python"></category><category term="orientação a objetos"></category></entry><entry><title>Funções in place ou cópia de valor</title><link href="http://pythonclub.com.br/funcao-inplace-ou-copia-de-valor.html" rel="alternate"></link><published>2021-03-29T12:00:00-03:00</published><updated>2021-03-29T12:00:00-03:00</updated><author><name>Eduardo Klosowski</name></author><id>tag:pythonclub.com.br,2021-03-29:/funcao-inplace-ou-copia-de-valor.html</id><summary type="html">&lt;p&gt;Eventualmente observo dificuldades de algumas pessoas em usar corretamente alguma função, seja porque a função deveria ser executada isoladamente, e utilizado a própria variável que foi passada como argumento posteriormente, seja porque deveria se atribuir o retorno da função a alguma variável, e utilizar essa nova variável. No Python, essa …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Eventualmente observo dificuldades de algumas pessoas em usar corretamente alguma função, seja porque a função deveria ser executada isoladamente, e utilizado a própria variável que foi passada como argumento posteriormente, seja porque deveria se atribuir o retorno da função a alguma variável, e utilizar essa nova variável. No Python, essa diferença pode ser observada nos métodos das listas &lt;code&gt;sort&lt;/code&gt; e &lt;code&gt;reverse&lt;/code&gt; para as funções &lt;code&gt;sorted&lt;/code&gt; e &lt;code&gt;reversed&lt;/code&gt;, que são implementadas com padrões diferentes, &lt;em&gt;in place&lt;/em&gt; e cópia de valor respectivamente. Assim pretendo discutir esses dois padrões de funções, comentando qual a diferença e o melhor caso de aplicação de cada padrão.&lt;/p&gt;
 &lt;h2&gt;Função de exemplo&lt;/h2&gt;
 &lt;p&gt;Para demonstrar como esses padrões funcionam, será implementado uma função que recebe uma lista e calcula o dobro dos valores dessa lista. Exemplo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;entrada&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
