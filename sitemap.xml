@@ -5,51 +5,65 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/</loc>
-<lastmod>2021-04-20T02:37:29-00:00</lastmod>
+<lastmod>2021-05-03T18:34:15-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2021-04-20T02:37:29-00:00</lastmod>
+<lastmod>2021-05-03T18:34:15-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2021-04-20T02:37:29-00:00</lastmod>
+<lastmod>2021-05-03T18:34:15-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/authors.html</loc>
-<lastmod>2021-04-20T02:37:29-00:00</lastmod>
+<lastmod>2021-05-03T18:34:15-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2021-04-20T02:37:29-00:00</lastmod>
+<lastmod>2021-05-03T18:34:15-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br//home/travis/build/pythonclub/pythonclub.github.io/output/pages/search.html</loc>
-<lastmod>2021-04-20T02:37:29-00:00</lastmod>
+<lastmod>2021-05-03T18:34:15-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2021-04-20T02:37:29-00:00</lastmod>
+<lastmod>2021-05-03T18:34:15-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/oo-de-outra-forma-4.html</loc>
+<lastmod>2021-05-03T15:00:00-03:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/oo-de-outra-forma-3.html</loc>
+<lastmod>2021-04-26T17:00:00-03:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -901,7 +915,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/category/python.html</loc>
-<lastmod>2021-04-19T17:00:00-03:06</lastmod>
+<lastmod>2021-05-03T15:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1118,7 +1132,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/python.html</loc>
-<lastmod>2021-04-19T17:00:00-03:06</lastmod>
+<lastmod>2021-05-03T15:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1650,7 +1664,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/orientacao-a-objetos.html</loc>
-<lastmod>2021-04-19T17:00:00-03:06</lastmod>
+<lastmod>2021-05-03T15:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -2042,7 +2056,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/author/eduardo-klosowski.html</loc>
-<lastmod>2021-04-19T17:00:00-03:06</lastmod>
+<lastmod>2021-05-03T15:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

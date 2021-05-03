@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PythonClub, ">
+    <meta name="theme-color" content="#101212">
+
+        <link rel="alternate"  href="http://pythonclub.com.br/feeds/all.atom.xml" type="application/atom+xml" title="PythonClub Full Atom Feed"/>
+        <link rel="alternate" href="http://pythonclub.com.br/feeds/all.rss.xml" type="application/rss+xml" title="PythonClub Full RSS Feed"/>
+
+    <link rel="shortcut icon" href="http://pythonclub.com.br/theme/images/favicon.ico" >
+
+            <title>Orientação a objetos de outra forma: Herança múltiplas e mixins por Eduardo Klosowski // #PythonClub // </title>
+
+    <meta property="fb:app_id" content="1487080281503641" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Orientação a objetos de outra forma: Herança múltiplas e mixins" />
+    <meta property="og:site_name" content="PythonClub" />
+    <meta property="og:url" content="http://pythonclub.com.br/oo-de-outra-forma-4.html" />
+    <meta property="og:description" content="No texto anterior foi apresentando o conceito de herança, que herda toda a estrutura e comportamento de uma classe, podendo estendê-la com outros atributos e comportamentos. Esse texto apresentará a ideia de herança múltipla, e uma forma para se aproveitar esse recurso, através de mixins. Herança múltiplas Voltando ao sistema …" />
+    <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/custom.css">
+
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pygments.css">
+
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50935105-1', 'pythonclub.com.br');
+      ga('require', 'linkid', 'linkid.js');
+      ga('send', 'pageview');
+
+    </script>
+    <!-- transifex -->
+    <!-- <script type="text/javascript">  -->
+    <!-- window.liveSettings = {  -->
+    <!--     api_key: "f8fd260a9bdc4e9195c80e31416bb254",  -->
+    <!--     picker: "bottom-right",  -->
+    <!--     detectlang: true,  -->
+    <!--     autocollect: true  -->
+    <!-- };  -->
+    <!-- </script>  -->
+    <!-- <script type="text/javascript" src="//cdn.transifex.com/live.js"></script>  -->
+    <!-- end transifex -->
+    <meta name="google-site-verification" content="XQc_QtnTecI9nxAfplXGtECCpZQDwbDRcn7pyDVa1LE" />
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://pythonclub.com.br/author/eduardo-klosowski.html" title="See posts by Eduardo Klosowski">
+                        <img class="article-avatar" alt="Eduardo Klosowski" src="https://www.gravatar.com/avatar/d6efd90a61f485b1b0c5ffaf6caf501d">
+                </a>
+                <h2 class="article-info">Eduardo Klosowski</h2>
+    			<ul class="author-social">
+                    <li>
+                        <a target="_blank" href="https://github.com/eduardoklosowski">
+                            <i class="fa fa-lg fa-fw fa-github"></i>
+                            <strong>Github</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://twitter.com/eduklosowski">
+                            <i class="fa fa-lg fa-fw fa-twitter"></i>
+                            <strong>Twitter</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://dev.to/eduardoklosowski">
+                            <i class="fa fa-lg fa-fw fa-globe"></i>
+                            <strong>Site</strong>
+                        </a>
+                    </li>
+                </ul>
+                    <small class="about-author">Programador, formado em redes de computadores e estuda DevOps</small>
+                <h5>Publicado em:</h5>
+                <p>Mon 03 May 2021</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Orientação a objetos de outra forma: Herança múltiplas e mixins</h1>
+                        <p class="post-meta">
+                            // Tags                                 <a class="post-category" href="http://pythonclub.com.br/tag/python.html">python</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/orientacao-a-objetos.html">orientação a objetos</a>
+                        </p>
+                </header>
+            </section>
+            <p>No <a href="https://dev.to/acaverna/orientacao-a-objetos-de-outra-forma-heranca-3dm7">texto anterior</a> foi apresentando o conceito de herança, que herda toda a estrutura e comportamento de uma classe, podendo estendê-la com outros atributos e comportamentos. Esse texto apresentará a ideia de <a href="https://pt.wikipedia.org/wiki/Heran%C3%A7a_m%C3%BAltipla">herança múltipla</a>, e uma forma para se aproveitar esse recurso, através de mixins.</p>
+<h2>Herança múltiplas</h2>
+<p>Voltando ao sistema para lidar com dados das pessoas, onde algumas dessas pessoas possuem a possibilidade de acessar o sistema através de usuário e senha, também deseja-se permitir que outros sistemas autentiquem e tenham acesso os dados através de uma <a href="https://pt.wikipedia.org/wiki/Interface_de_programa%C3%A7%C3%A3o_de_aplica%C3%A7%C3%B5es">API</a>. Isso pode ser feito criando uma classe para representar os sistemas que terão permissão para acessar os dados. Exemplo:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sistema</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usuario</span><span class="p">,</span> <span class="n">senha</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usuario</span> <span class="o">=</span> <span class="n">usuario</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">senha</span> <span class="o">=</span> <span class="n">senha</span>
+
+    <span class="k">def</span> <span class="nf">autenticar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usuario</span><span class="p">,</span> <span class="n">senha</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">usuario</span> <span class="o">==</span> <span class="n">usuario</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">senha</span> <span class="o">==</span> <span class="n">senha</span>
+</pre></div>
+
+
+<p>Porém, esse código repete a implementação feita para <code>PessoaAutenticavel</code>:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PessoaAutenticavel</span><span class="p">(</span><span class="n">Pessoa</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nome</span><span class="p">,</span> <span class="n">sobrenome</span><span class="p">,</span> <span class="n">idade</span><span class="p">,</span> <span class="n">usuario</span><span class="p">,</span> <span class="n">senha</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">nome</span><span class="p">,</span> <span class="n">sobrenome</span><span class="p">,</span> <span class="n">idade</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usuario</span> <span class="o">=</span> <span class="n">usuario</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">senha</span> <span class="o">=</span> <span class="n">senha</span>
+
+    <span class="k">def</span> <span class="nf">autenticar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usuario</span><span class="p">,</span> <span class="n">senha</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">usuario</span> <span class="o">==</span> <span class="n">usuario</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">senha</span> <span class="o">==</span> <span class="n">senha</span>
+</pre></div>
+
+
+<p>Aproveitando que Python, diferente de outras linguagens, possui herança múltipla, é possível extrair essa lógica das classes, centralizando a implementação em uma outra classe e simplesmente herdá-la. Exemplo:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Autenticavel</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">usuario</span><span class="p">,</span> <span class="n">senha</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usuario</span> <span class="o">=</span> <span class="n">usuario</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">senha</span> <span class="o">=</span> <span class="n">senha</span>
+
+    <span class="k">def</span> <span class="nf">autenticar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usuario</span><span class="p">,</span> <span class="n">senha</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">usuario</span> <span class="o">==</span> <span class="n">usuario</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">senha</span> <span class="o">==</span> <span class="n">senha</span>
+
+
+<span class="k">class</span> <span class="nc">PessoaAutenticavel</span><span class="p">(</span><span class="n">Autenticavel</span><span class="p">,</span> <span class="n">Pessoa</span><span class="p">):</span>
+    <span class="o">...</span>
+
+
+<span class="k">class</span> <span class="nc">Sistema</span><span class="p">(</span><span class="n">Autenticavel</span><span class="p">):</span>
+    <span class="o">...</span>
+
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">PessoaAutenticavel</span><span class="p">(</span><span class="n">nome</span><span class="o">=</span><span class="s1">&#39;João&#39;</span><span class="p">,</span> <span class="n">sobrenome</span><span class="o">=</span><span class="s1">&#39;da Silva&#39;</span><span class="p">,</span> <span class="n">idade</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                       <span class="n">usuario</span><span class="o">=</span><span class="s1">&#39;joao&#39;</span><span class="p">,</span> <span class="n">senha</span><span class="o">=</span><span class="s1">&#39;secreta&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>A primeira coisa a ser observada são os argumentos <code>*args</code> e <code>**kwargs</code> no <code>__init__</code> da classe <code>Autenticavel</code>, eles são usados uma vez que não se sabe todos os argumentos que o <code>__init__</code> da classe que estenderá o <code>Autenticavel</code> espera receber, funcionando de forma dinâmica (mais sobre esse recurso pode ser visto na <a href="https://docs.python.org/pt-br/3/tutorial/controlflow.html#more-on-defining-functions">documentação do Python</a>).</p>
+<p>A segunda coisa a ser verificada é que para a classe <code>PessoaAutenticavel</code>, agora cria em seus objetos, a estrutura tanto da classe <code>Pessoa</code>, quanto <code>Autenticavel</code>. Algo similar a versão sem orientação a objetos a baixo:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Arquivo: pessoa_autenticavel.py</span>
+
+<span class="kn">import</span> <span class="nn">autenticavel</span>
+<span class="kn">import</span> <span class="nn">pessoa</span>
+
+
+<span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">nome</span><span class="p">,</span> <span class="n">sobrenome</span><span class="p">,</span> <span class="n">idade</span><span class="p">,</span> <span class="n">usuario</span><span class="p">,</span> <span class="n">senha</span><span class="p">):</span>
+    <span class="n">pessoa</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">nome</span><span class="p">,</span> <span class="n">sobrenome</span><span class="p">,</span> <span class="n">idade</span><span class="p">)</span>
+    <span class="n">autenticavel</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">usuario</span><span class="p">,</span> <span class="n">senha</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Também vale observar que as classes <code>PessoaAutenticavel</code> e <code>Sistema</code> não precisam definir nenhuma função, uma vez que elas cumprem seus papéis apenas herdando outras classes, porém seria possível implementar funções específicas dessas classes, assim como sobrescrever as funções definidas por outras classes.</p>
+<h2>Ordem de resolução de métodos</h2>
+<p>Embora herança múltiplas sejam interessantes, existe um problema, se ambas as classes pai possuírem uma função com um mesmo nome, a classe filha deveria chamar qual das funções? A do primeiro pai? A do último? Para lidar com esse problema o Python usa o MRO (<em>method resolution order</em>, ordem de resolução do método), que consiste em uma tupla com a ordem de qual classe o Python usará para encontrar o método a ser chamado. Exemplo:</p>
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">PessoaAutenticavel</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>
+<span class="c1"># (&lt;class &#39;__main__.PessoaAutenticavel&#39;&gt;, &lt;class &#39;__main__.Autenticavel&#39;&gt;, &lt;class &#39;__main__.Pessoa&#39;&gt;, &lt;class &#39;object&#39;&gt;)</span>
+</pre></div>
+
+
+<p>Por esse motivo que também foi possível chamar o <code>super().__init__</code> dentro de <code>Autenticavel</code>, que devido ao MRO, o Python chama o <code>__init__</code> da outra classe pai da classe que estendeu <code>Autenticavel</code>, em vez de precisar fazer um método <code>__init__</code> em <code>PessoaAutenticavel</code> chamando o <code>__init__</code> de todas as suas classes pais, como foi feito na versão sem orientação a objetos. E por isso a ordem <code>Autenticavel</code> e <code>Pessoa</code> na herança de <code>PessoaAutenticavel</code>, para fazer o MRO procurar os métodos primeiro em <code>Autenticavel</code> e depois em <code>Pessoa</code>.</p>
+<p>Para tentar fugir da complexidade que pode ser herança múltipla, é possível escrever classes que tem por objetivo unicamente incluir alguma funcionalidade em outra, como o caso da classe <code>Autenticavel</code>, que pode ser herdada por qualquer outra classe do sistema para permitir o acesso ao sistema. Essas classes recebem o nome de mixins, e adiciona uma funcionalidade bem definida.</p>
+<h2>Estendendo mixins</h2>
+<p>Imagine se além de permitir o acesso ao sistema, também gostaríamos de registrar algumas tentativas de acesso, informando quando houve a tentativa e se o acesso foi concedido ou não. Como <code>Autenticavel</code> é uma classe, é possível extendê-la para implementar essa funcionalidade na função <code>autenticar</code>. Exemplo:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+
+<span class="k">class</span> <span class="nc">AutenticavelComRegistro</span><span class="p">(</span><span class="n">Autenticavel</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_data</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">/%m/%Y %T&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">autenticar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usuario</span><span class="p">,</span> <span class="n">senha</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;{self._get_data()} Tentativa de acesso de </span><span class="si">{usuario}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">acesso</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">autenticar</span><span class="p">(</span><span class="n">usuario</span><span class="p">,</span> <span class="n">senha</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">acesso</span><span class="p">:</span>
+            <span class="n">acesso_str</span> <span class="o">=</span> <span class="s1">&#39;permitido&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">acesso_str</span> <span class="o">=</span> <span class="s1">&#39;negado&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;{self._get_data()} Acesso de </span><span class="si">{usuario}</span><span class="s1"> </span><span class="si">{acesso_str}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">acesso</span>
+
+
+<span class="k">class</span> <span class="nc">PessoaAutenticavelComRegistro</span><span class="p">(</span><span class="n">AutenticavelComRegistro</span><span class="p">,</span> <span class="n">Pessoa</span><span class="p">):</span>
+    <span class="o">...</span>
+
+
+<span class="k">class</span> <span class="nc">SistemaAutenticavelComRegistro</span><span class="p">(</span><span class="n">AutenticavelComRegistro</span><span class="p">,</span> <span class="n">Sistema</span><span class="p">):</span>
+    <span class="o">...</span>
+
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">PessoaAutenticavelComRegistro</span><span class="p">(</span>
+    <span class="n">nome</span><span class="o">=</span><span class="s1">&#39;João&#39;</span><span class="p">,</span> <span class="n">sobrenome</span><span class="o">=</span><span class="s1">&#39;da Silva&#39;</span><span class="p">,</span> <span class="n">idade</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">usuario</span><span class="o">=</span><span class="s1">&#39;joao&#39;</span><span class="p">,</span> <span class="n">senha</span><span class="o">=</span><span class="s1">&#39;secreta&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">autenticar</span><span class="p">(</span><span class="s1">&#39;joao&#39;</span><span class="p">,</span> <span class="s1">&#39;secreta&#39;</span><span class="p">)</span>
+<span class="c1"># Saída na tela:</span>
+<span class="c1"># 23/04/2021 16:56:58 Tentativa de acesso de joao</span>
+<span class="c1"># 23/04/2021 16:56:58 Acesso de joao permitido</span>
+</pre></div>
+
+
+<p>Essa implementação utiliza-se do <code>super()</code> para acessar a função <code>autenticar</code> da classe <code>Autenticavel</code> para não precisar reimplementar a autenticação. Porém, antes de chamá-la, manipula seus argumentos para registrar quem tentou acessar o sistema, assim como também manipula o seu retorno para registrar se o acesso foi permitido ou não.</p>
+<p>Essa classe também permite analisar melhor a ordem em que as classes são consultadas quando uma função é chamada:</p>
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">PessoaAutenticavelComRegistro</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>
+<span class="c1"># (&lt;class &#39;__main__.PessoaAutenticavelComRegistro&#39;&gt;, &lt;class &#39;__main__.AutenticavelComRegistro&#39;&gt;, &lt;class &#39;__main__.Autenticavel&#39;&gt;, &lt;class &#39;__main__.Pessoa&#39;&gt;, &lt;class &#39;object&#39;&gt;)</span>
+</pre></div>
+
+
+<p>Que também pode ser visto na forma de um digrama de classes:</p>
+<p><img alt="Diagrama de classes" src="images/eduardoklosowski/oo-de-outra-forma-4/mro.png"></p>
+<p>Onde é feito uma <a href="https://pt.wikipedia.org/wiki/Busca_em_profundidade">busca em profundidade</a>, como se a função fosse chamada no primeiro pai, e só se ela não for encontrada, busca-se no segundo pai e assim por diante. Também é possível observar a classe <code>object</code>, que sempre será a última classe, e é a classe pai de todas as outras classes do Python quando elas não possuirem um pai declarado explicitamente.</p>
+<h2>Considerações</h2>
+<p>Herança múltipla pode dificultar bastante o entendimento do código, principalmente para encontrar onde determinada função está definida, porém pode facilitar bastante o código. Um exemplo que usa bastante herança e mixins são as <em>views</em> baseadas em classe do django (<a href="https://docs.djangoproject.com/pt-br/3.2/topics/class-based-views/"><em>class-based views</em></a>), porém para facilitar a visualização existe o site <a href="https://ccbv.co.uk/">Classy Class-Based Views</a> que lista todas as classes, e os mixins utilizados em cada uma, como pode ser visto em "Ancestors" como na <a href="https://ccbv.co.uk/projects/Django/3.1/django.views.generic.edit/UpdateView/">UpdateView</a>, que é usado para criar uma página com formulário para editar um registro já existente no banco, assim ela usa mixins para pegar um objeto do banco (<code>SingleObjectMixin</code>), processar formulário baseado em uma tabela do banco (<code>ModelFormMixin</code>) e algumas outras funcionalidades necessárias para implementar essa página.</p>
+<hr>
+<p>Esse artigo foi publicado originalmente no <a href="https://eduardoklosowski.github.io/blog/">meu blog</a>, passe por lá, ou siga-me no <a href="https://dev.to/eduardoklosowski">DEV</a> para ver mais artigos que eu escrevi.</p>
+
+            <div class="licence">
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licença Creative Commons"
+                                                                                               style="border-width:0"
+                                                                                               src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"/></a><br/><a
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title"
+                    href="http://pythonclub.com.br/oo-de-outra-forma-4.html">"Orientação a objetos de outra forma: Herança múltiplas e mixins"</a> de <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="http://pythonclub.com.br/author/eduardo-klosowski.html"
+                    property="cc:attributionName" rel="cc:attributionURL">"Eduardo Klosowski"</a> está licenciado com uma Licença
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons -
+                    Atribuição-NãoComercial-SemDerivações 4.0 Internacional</a>.
+            </div>
+
+            <div class="sharing">
+                <!-- Facebook sharing -->
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=1487080281503641&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-share-button" data-href="http://pythonclub.com.br/oo-de-outra-forma-4.html" data-type="button_count"></div>
+
+                <!-- Google+ sharing -->
+                <div class="g-plus alinhar" data-action="share" data-annotation="bubble" data-href="http://pythonclub.com.br/oo-de-outra-forma-4.html"></div>
+
+                <!-- Twitter sharing -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="pt" style="margin-bottom: -4px !important;">Tweetar</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Topo</a>
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES: THIS CODE IS ONLY AN EXAMPLE * * */
+                        var disqus_shortname = 'pythonclub'; // Required - Replace example with your forum shortname
+                        var disqus_identifier = 'oo-de-outra-forma-4.html';
+                        var disqus_title = 'Orientação a objetos de outra forma: Herança múltiplas e mixins';
+                        var disqus_url = 'http://pythonclub.com.br/oo-de-outra-forma-4.html';
+                    
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </div>
+<footer class="footer">
+    <p>&copy; PythonClub &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://pythonclub.com.br/theme/js/dynamic_random_articles.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+        $(window).load(function(){
+          $("iframe").css("margin-bottom", "-6px")
+          $("#twitter-widget-0").css("margin-bottom", "-5px");
+          $("#twitter-widget-0").css("margin-left", "-1px");
+        });
+    </script>
+    <script type="text/javascript" src="https://apis.google.com/js/platform.js">
+      {lang: 'pt-BR'}
+    </script>
+
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+
+        $(function(){
+            show_random_articles($('#random-articles'), [{"url": "http://pythonclub.com.br/oo-de-outra-forma-4.html", "title": "Orienta\u00e7\u00e3o a objetos de outra forma: Heran\u00e7a m\u00faltiplas e mixins"}, {"url": "http://pythonclub.com.br/oo-de-outra-forma-3.html", "title": "Orienta\u00e7\u00e3o a objetos de outra forma: Heran\u00e7a"}, {"url": "http://pythonclub.com.br/oo-de-outra-forma-2.html", "title": "Orienta\u00e7\u00e3o a objetos de outra forma: M\u00e9todos est\u00e1ticos e de classes"}, {"url": "http://pythonclub.com.br/oo-de-outra-forma-1.html", "title": "Orienta\u00e7\u00e3o a objetos de outra forma: Classes e objetos"}, {"url": "http://pythonclub.com.br/funcao-inplace-ou-copia-de-valor.html", "title": "Fun\u00e7\u00f5es in place ou c\u00f3pia de valor"}, {"url": "http://pythonclub.com.br/encapsulamento-da-logica-do-algoritmo.html", "title": "Encapsulamento da l\u00f3gica do algoritmo"}, {"url": "http://pythonclub.com.br/fazendo-backup-do-banco-de-dados-no-django.html", "title": "Fazendo backup do banco de dados no Django"}, {"url": "http://pythonclub.com.br/django-ci-github-actions.html", "title": "Criando um CI de uma aplica\u00e7\u00e3o Django usando Github Actions"}, {"url": "http://pythonclub.com.br/crie_dict-a-partir-de-outros-dicts.html", "title": "Criando dicts a partir de outros dicts"}, {"url": "http://pythonclub.com.br/tutorial-django-2.html", "title": "Tutorial Django 2.2"}, {"url": "http://pythonclub.com.br/algoritmos-ordenacao.html", "title": "Algoritmos de Ordena\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/trabalhando-com-operadores-ternarios.html", "title": "Trabalhando com operadores tern\u00e1rios"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-com-socket-e-struct.html", "title": "Upload de Arquivos com Socket e Struct"}, {"url": "http://pythonclub.com.br/monitorando-ips-duplicados-na-rede.html", "title": "Monitorando Ips Duplicados na Rede"}, {"url": "http://pythonclub.com.br/django-rest-framework-class-based-views.html", "title": "Django Rest Framework - #3 Class Based Views"}, {"url": "http://pythonclub.com.br/django-rest-framework-requests-responses.html", "title": "Django Rest Framework - #2 Requests and Responses"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-2.html", "title": "Programa\u00e7\u00e3o funcional com Python #2 - Iteraveis e iteradores"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-1.html", "title": "Programa\u00e7\u00e3o funcional com Python #1 - Fun\u00e7\u00f5es"}, {"url": "http://pythonclub.com.br/progrmacao-funcional-com-python-0.html", "title": "Programa\u00e7\u00e3o funcional com Python #0 - Saindo da zona de conforto"}, {"url": "http://pythonclub.com.br/peewee-um-orm-python-minimalista.html", "title": "Peewee - Um ORM Python minimalista"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-4-extensoes-para-o-flask.html", "title": "What the Flask? pt 4 - Extens\u00f5es para o Flask"}, {"url": "http://pythonclub.com.br/configurando-python-3.5-openshift-flask-gunicorn.html", "title": "Configurando OpenShift com Python 3.5 + Flask + Gunicorn"}, {"url": "http://pythonclub.com.br/instalando-o-python-vers\u00e3o-3.7.0-alpha-1-no-ubuntu-16.04.md.html", "title": "Instalando o Python vers\u00e3o 3.7.0 alpha 1 no Ubuntu 16.04"}, {"url": "http://pythonclub.com.br/abrangencia-de-listas-e-dicionarios-com-python.html", "title": "Abrang\u00eancia de Listas e Dicion\u00e1rios"}, {"url": "http://pythonclub.com.br/debugging-logging.html", "title": "Debugging - logging"}, {"url": "http://pythonclub.com.br/deploy-rapido-simples-com-dokku.html", "title": "Deploy r\u00e1pido e simples com Dokku"}, {"url": "http://pythonclub.com.br/bot-telegram-mais-web-scraping-parte-1.html", "title": "Bot telegram mais web scraping - parte 1"}, {"url": "http://pythonclub.com.br/como-distribuir-sua-aplicacao-python-com-pypi.html", "title": "Como distribuir sua aplica\u00e7\u00e3o Python com PyPI"}, {"url": "http://pythonclub.com.br/python-webassets-elm.html", "title": "Python webassets & Elm"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula1.html", "title": "Curso Python asyncio: Aula 01 - Iterators e Generators"}, {"url": "http://pythonclub.com.br/curso-asyncio-aula00.html", "title": "Curso Python asyncio: Aula 00 - Introdu\u00e7\u00e3o ao m\u00f3dulo asyncio"}, {"url": "http://pythonclub.com.br/gerando-relatorios-de-testes-com-coveralls.html", "title": "Relat\u00f3rios de testes com Coveralls"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-4-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 4 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-3-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 3 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-2-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 2 de 4)"}, {"url": "http://pythonclub.com.br/python-com-unittest-travis-ci-coveralls-e-landscape-parte-1-de-4.html", "title": "Python com Unittest, Travis CI, Coveralls e Landscape (Parte 1 de 4)"}, {"url": "http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html", "title": "GitHub Pages com Pelican e Travis-CI"}, {"url": "http://pythonclub.com.br/sites-estaticos-com-lektor.html", "title": "Sites Est\u00e1ticos com Lektor"}, {"url": "http://pythonclub.com.br/django-rest-framework-serialization.html", "title": "Django Rest Framework Serialization"}, {"url": "http://pythonclub.com.br/explicit-is-better-than-implicit.html", "title": "Explicit is better than implicit"}, {"url": "http://pythonclub.com.br/tdd-com-python-e-flask.html", "title": "TDD com Python e Flask"}, {"url": "http://pythonclub.com.br/upload-de-arquivos-no-django-entendendo-os-modos-de-leitura.html", "title": "Upload de arquivos no Django: entendendo os modos de leitura"}, {"url": "http://pythonclub.com.br/python-generators.html", "title": "Python Generators"}, {"url": "http://pythonclub.com.br/paralelismo-em-python-usando-concurrent.futures.html", "title": "Paralelismo em Python usando concurrent.futures"}, {"url": "http://pythonclub.com.br/salvando-grafico-github-python-selenium.html", "title": "Salvando gr\u00e1fico de contribui\u00e7\u00f5es do Github com Python e Selenium"}, {"url": "http://pythonclub.com.br/como-encontrar-solucoes-python.html", "title": "Como encontrar solu\u00e7\u00f5es para seus problemas com Python"}, {"url": "http://pythonclub.com.br/criando-novos-comandos-no-django-admin.html", "title": "Criando novos comandos no django-admin"}, {"url": "http://pythonclub.com.br/extraindo-texto-de-imagens-com-python.html", "title": "Extraindo Texto de Imagens com Python"}, {"url": "http://pythonclub.com.br/django-rest-framework-quickstart.html", "title": "Django Rest Framework Quickstart"}, {"url": "http://pythonclub.com.br/material-do-tutorial-web-scraping-na-nuvem.html", "title": "Web Scraping na Nuvem com Scrapy"}, {"url": "http://pythonclub.com.br/class-based-views-django.html", "title": "Class Based Views no Django"}, {"url": "http://pythonclub.com.br/django-na-pratica-aula-01.html", "title": "Django na pr\u00e1tica - Hello World"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-3-plug-use-extensoes-essenciais-para-iniciar-seu-projeto.html", "title": "What the Flask? Pt-3 Plug & Use - extens\u00f5es essenciais para iniciar seu projeto"}, {"url": "http://pythonclub.com.br/raspando-a-web-com-python-parte-1.html", "title": "Raspando a Web com Python: Introdu\u00e7\u00e3o"}, {"url": "http://pythonclub.com.br/instalando-pycharm-ubuntu.html", "title": "Instalando o PyCharm no Ubuntu (e irm\u00e3os)"}, {"url": "http://pythonclub.com.br/a-armadilha-dos-argumentos-com-valores-padrao.html", "title": "A armadilha dos argumentos com valores padr\u00e3o"}, {"url": "http://pythonclub.com.br/desenvolvendo-para-google-app-engine-com-tekton.html", "title": "Cria\u00e7\u00e3o de aplica\u00e7\u00f5es no Google App Engine com o Tekton"}, {"url": "http://pythonclub.com.br/django-introducao-queries.html", "title": "Como otimizar suas consultas no Django - De N a 1 em 20 minutos"}, {"url": "http://pythonclub.com.br/django-overview-10-minutos.html", "title": "Django - 3 anos em 10 minutos"}, {"url": "http://pythonclub.com.br/configurando-ambiente-django-com-apache-e-mod-wsgi.html", "title": "Configurando ambiente Django com Apache e mod_wsgi"}, {"url": "http://pythonclub.com.br/tuplas-mutantes-em-python.html", "title": "Tuplas mutantes em Python"}, {"url": "http://pythonclub.com.br/postgresql-e-django.html", "title": "PostgreSql e Django - parte 3"}, {"url": "http://pythonclub.com.br/postgresql-e-python3.html", "title": "PostgreSql e Python3 - parte 2"}, {"url": "http://pythonclub.com.br/microframework-contra-baterias-incluidas.html", "title": "Microframework contra &quot;Baterias Inclu\u00eddas&quot;"}, {"url": "http://pythonclub.com.br/debugging-em-python-sem-ide.html", "title": "Debugging em python (sem IDE)"}, {"url": "http://pythonclub.com.br/tutorial-postgresql.html", "title": "Tutorial PostgreSql - parte 1"}, {"url": "http://pythonclub.com.br/conteinerizando-suas-aplicacoes-django-com-docker-e-fig.html", "title": "Conteinerizando suas aplica\u00e7\u00f5es django com docker e fig"}, {"url": "http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html", "title": "Publicando seu Hello World no Heroku"}, {"url": "http://pythonclub.com.br/entrevista-henrique-bastos.html", "title": "Entrevista com Henrique Bastos"}, {"url": "http://pythonclub.com.br/testes-de-carga-com-o-locust.html", "title": "Testes de carga com o Locust"}, {"url": "http://pythonclub.com.br/tutorial-django-17.html", "title": "Tutorial Django 1.7"}, {"url": "http://pythonclub.com.br/integrando-django-com-cloudinary.html", "title": "Integrando o Django com Cloudinary"}, {"url": "http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html", "title": "Bottle Framework full stack sem Django"}, {"url": "http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html", "title": "Desenvolvendo com Bottle - Parte 1"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 2"}, {"url": "http://pythonclub.com.br/solucao-quase-definitiva-para-permissoes-em-projetos-django.html", "title": "Solu\u00e7\u00e3o (quase) definitiva para permiss\u00f5es em projetos Django"}, {"url": "http://pythonclub.com.br/gerenciando-assets-com-django-pipeline.html", "title": "Gerenciando assets com django-pipeline"}, {"url": "http://pythonclub.com.br/deploy-app-django-openshift.html", "title": "Deploy App Django no Openshift"}, {"url": "http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html", "title": "Criando sites est\u00e1ticos com Pelican Framework"}, {"url": "http://pythonclub.com.br/selenium-parte-4.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 4"}, {"url": "http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html", "title": "Configurando um servidor de produ\u00e7\u00e3o para aplica\u00e7\u00f5es Python"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html", "title": "What the Flask? Pt-2 Flask Patterns - boas pr\u00e1ticas na estrutura de aplica\u00e7\u00f5es Flask"}, {"url": "http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html", "title": "Gerenciando banco de dados SQLite3 com Python - Parte 1"}, {"url": "http://pythonclub.com.br/introducao-classes-metodos-python-basico.html", "title": "Introdu\u00e7\u00e3o a Classes e M\u00e9todos em Python (b\u00e1sico)"}, {"url": "http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html", "title": "pyftpdlib - Criando um servidor FTP simples com python"}, {"url": "http://pythonclub.com.br/usando-redis-cache-django.html", "title": "Usando Redis para cache e sess\u00e3o do Django"}, {"url": "http://pythonclub.com.br/aprendendo-e-ensinando-python.html", "title": "Aprendendo e Ensinando Python"}, {"url": "http://pythonclub.com.br/selenium-parte-3.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 3"}, {"url": "http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html", "title": "What the Flask? Pt-1 Introdu\u00e7\u00e3o ao desenvolvimento web com Python"}, {"url": "http://pythonclub.com.br/selenium-parte-2.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 2"}, {"url": "http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html", "title": "Guia r\u00e1pido de comandos SQLite3"}, {"url": "http://pythonclub.com.br/editando-o-admin-do-django.html", "title": "Editando o Admin do Django"}, {"url": "http://pythonclub.com.br/instalacao-python-django-windows.html", "title": "Instalando e Configurando o Python e Django no Windows"}, {"url": "http://pythonclub.com.br/criar-site-com-form-lista-30-min.html", "title": "Como criar um site com formul\u00e1rio e lista em 30 minutos?"}, {"url": "http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html", "title": "Principais d\u00favidas de quem quer aprender Django"}, {"url": "http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html", "title": "Exemplo de como &quot;Parsear&quot; Sites com BeautifulSoup"}, {"url": "http://pythonclub.com.br/deploy-com-django-fagungis.html", "title": "Publica\u00e7\u00e3o de projetos com o Django-Fagungis"}, {"url": "http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html", "title": "Como fazer fork, clone, push pull-request no Github"}, {"url": "http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html", "title": "Seu primeiro projeto Django com Sublime Text no Linux"}, {"url": "http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html", "title": "Introdu\u00e7\u00e3o a testes funcionais com Selenium e Python"}, {"url": "http://pythonclub.com.br/selenium-parte-1.html", "title": "Selenium - O que voc\u00ea deveria saber - Parte 1"}, {"url": "http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html", "title": "5 Django Apps que n\u00e3o vivo sem"}, {"url": "http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html", "title": "Sobre o six e como ele ajuda a escrever c\u00f3digo compat\u00edvel com python 2 e 3"}, {"url": "http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html", "title": "Como colaborar na tradu\u00e7\u00e3o do Djangobook sem conhecer programa\u00e7\u00e3o"}], 10);
+        });
+        
+    </script>
+        <!-- spot_im -->
+        <!--    <div id="spot-im-root"></div> -->
+        <!--    <script type="text/javascript">!function(t,o,p){function e(){var t=o.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"==o.location.protocol?"https":"http")+":"+p,o.body.appendChild(t)}t.spotId="3de816246c80a51757bb01c5b8c95cda",t.spotName="",t.allowDesktop=!0,t.allowMobile=!1,t.containerId="spot-im-root",e()}(window.SPOTIM={},document,"//www.spot.im/embed/scripts/launcher.js");</script> -->
+        <!-- end spot_im -->
+   
+            <script>
+              ((window.gitter = {}).chat = {}).options = {
+                    room: 'pythonclub/pythonclub.github.io'
+              };
+            </script>
+            <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+   
+</body>
+</html>
